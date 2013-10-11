@@ -22,17 +22,3 @@
 #define DidLoadMovieNotification @"didLoadMovie"
 #define WillLoadMovieNotification @"willLoadMovie"
 #define DidLoadMoviesNotification @"didLoadMovies"
-
-#define TmdbApiKey @"58941f25d1c85eb024206cbf1a9a89b0"
-
-#define MainTmdbUrl @"http://api.themoviedb.org/3/"
-
-#define UrlConfiguration @"configuration"
-#define UrlSearchMovie @"search/movie"
-#define UrlMovie(movieId) [NSString stringWithFormat:@"movie/%@",movieId]
-#define UrlPerson(personId) [NSString stringWithFormat:@"person/%@",personId]
-
-#define UrlUpcoming @"movie/upcoming"
-#define UrlNowPlaying @"movie/now_playing"
-#define UrlPopular @"movie/popular"
-#define UrlTopRated @"movie/top_rated"

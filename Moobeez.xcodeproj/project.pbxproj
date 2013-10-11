@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64392EAF18084BA500504C78 /* TmdbConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64392EAE18084BA500504C78 /* TmdbConnection.m */; };
 		64B2AAC418082AE600E02E2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC318082AE600E02E2F /* Foundation.framework */; };
 		64B2AAC618082AE600E02E2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC518082AE600E02E2F /* CoreGraphics.framework */; };
 		64B2AAC818082AE600E02E2F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC718082AE600E02E2F /* UIKit.framework */; };
@@ -72,6 +73,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		64392EAD18084BA500504C78 /* TmdbConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbConnection.h; sourceTree = "<group>"; };
+		64392EAE18084BA500504C78 /* TmdbConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmdbConnection.m; sourceTree = "<group>"; };
+		64392EB218084D9200504C78 /* TmdbConnections.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TmdbConnections.h; sourceTree = "<group>"; };
 		64B2AAC018082AE600E02E2F /* Moobeez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moobeez.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B2AAC318082AE600E02E2F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		64B2AAC518082AE600E02E2F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -152,7 +156,6 @@
 		64B2AB5518083CBF00E02E2F /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		64B2AB7818083ED600E02E2F /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		64B2AB7918083ED600E02E2F /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
-		64B2AB7B18083FA900E02E2F /* Connections.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Connections.h; sourceTree = "<group>"; };
 		64B2AB7C18083FC700E02E2F /* Moobeez.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Moobeez.h; path = Moobeez/Moobeez.h; sourceTree = "<group>"; };
 		64B2AB7E1808412300E02E2F /* ConnectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectionViewController.h; sourceTree = "<group>"; };
 		64B2AB7F1808412300E02E2F /* ConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionViewController.m; sourceTree = "<group>"; };
@@ -194,6 +197,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		64392EB018084D6B00504C78 /* Tmdb Connections */ = {
+			isa = PBXGroup;
+			children = (
+				64392EB218084D9200504C78 /* TmdbConnections.h */,
+				64392EB118084D7800504C78 /* Tmdb Connection */,
+			);
+			name = "Tmdb Connections";
+			sourceTree = "<group>";
+		};
+		64392EB118084D7800504C78 /* Tmdb Connection */ = {
+			isa = PBXGroup;
+			children = (
+				64392EAD18084BA500504C78 /* TmdbConnection.h */,
+				64392EAE18084BA500504C78 /* TmdbConnection.m */,
+			);
+			name = "Tmdb Connection";
+			sourceTree = "<group>";
+		};
 		64B2AAB718082AE600E02E2F = {
 			isa = PBXGroup;
 			children = (
@@ -321,8 +342,8 @@
 		64B2AB2118083CBF00E02E2F /* Connection */ = {
 			isa = PBXGroup;
 			children = (
-				64B2AB2218083CBF00E02E2F /* Connection */,
 				64B2AB2518083CBF00E02E2F /* ConnectionLibrary.h */,
+				64B2AB2218083CBF00E02E2F /* Connection */,
 				64B2AB2618083CBF00E02E2F /* ConnectionsManager */,
 				64B2AB2918083CBF00E02E2F /* URLConnection */,
 			);
@@ -420,7 +441,7 @@
 		64B2AB4C18083CBF00E02E2F /* Connections */ = {
 			isa = PBXGroup;
 			children = (
-				64B2AB7B18083FA900E02E2F /* Connections.h */,
+				64392EB018084D6B00504C78 /* Tmdb Connections */,
 			);
 			path = Connections;
 			sourceTree = "<group>";
@@ -696,6 +717,7 @@
 				64B2AB7018083CBF00E02E2F /* SBJsonWriter.m in Sources */,
 				64B2AB6718083CBF00E02E2F /* SBJsonParser.m in Sources */,
 				64B2AB6D18083CBF00E02E2F /* SBJsonStreamWriterState.m in Sources */,
+				64392EAF18084BA500504C78 /* TmdbConnection.m in Sources */,
 				64B2AB6218083CBF00E02E2F /* Alert.m in Sources */,
 				64B2AB6418083CBF00E02E2F /* ConnectionsManager.m in Sources */,
 			);
@@ -898,6 +920,7 @@
 				64B2AAF718082AE600E02E2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		64B2AAF818082AE600E02E2F /* Build configuration list for PBXNativeTarget "MoobeezTests" */ = {
 			isa = XCConfigurationList;
@@ -906,6 +929,7 @@
 				64B2AAFA18082AE600E02E2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

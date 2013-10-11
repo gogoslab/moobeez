@@ -15,6 +15,6 @@
 
 #import "Utils.h"
 
-#import "Connections.h"
+#import "TmdbConnections.h"
 
 #endif
