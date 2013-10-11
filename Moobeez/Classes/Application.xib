@@ -32,29 +32,62 @@
             <nil key="simulatedBottomBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <tabBar key="tabBar" contentMode="scaleToFill" id="pgm-AL-opG">
+            <tabBar key="tabBar" contentMode="scaleToFill" selectedItem="dFg-Tl-lH1" id="pgm-AL-opG">
                 <rect key="frame" x="0.0" y="519" width="320" height="49"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
             </tabBar>
             <viewControllers>
-                <viewController id="z1R-cO-boU">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="6j7-L5-EBB"/>
-                    <nil key="simulatedStatusBarMetrics"/>
+                <navigationController definesPresentationContext="YES" id="rwR-FB-TtH">
+                    <tabBarItem key="tabBarItem" title="Moobeez" image="tab_bar_icon_moobeez.png" id="6j7-L5-EBB"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <nil key="simulatedDestinationMetrics"/>
-                </viewController>
-                <viewController id="HCj-Q1-Y38">
-                    <tabBarItem key="tabBarItem" title="Item 2" id="dFg-Tl-lH1"/>
-                    <nil key="simulatedStatusBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="81H-qc-fTz">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <viewControllers>
+                        <viewController title="Moobeez" nibName="MoobeezViewController" id="z1R-cO-boU" customClass="MoobeezViewController">
+                            <navigationItem key="navigationItem" title="Moobeez" id="YaQ-sc-SeH"/>
+                            <nil key="simulatedStatusBarMetrics"/>
+                            <nil key="simulatedTopBarMetrics"/>
+                            <nil key="simulatedBottomBarMetrics"/>
+                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                            <nil key="simulatedDestinationMetrics"/>
+                        </viewController>
+                    </viewControllers>
+                </navigationController>
+                <navigationController definesPresentationContext="YES" id="ZEc-is-EWj">
+                    <tabBarItem key="tabBarItem" title="Movies" image="tab_bar_icon_movies.png" id="dFg-Tl-lH1"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <nil key="simulatedDestinationMetrics"/>
-                </viewController>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="j4G-Ln-pNj">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <viewControllers>
+                        <viewController title="Movies" nibName="MoviesViewController" id="HCj-Q1-Y38" customClass="MoviesViewController">
+                            <navigationItem key="navigationItem" title="Movies" id="70E-RU-B7G"/>
+                            <nil key="simulatedStatusBarMetrics"/>
+                            <nil key="simulatedTopBarMetrics"/>
+                            <nil key="simulatedBottomBarMetrics"/>
+                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                            <nil key="simulatedDestinationMetrics"/>
+                        </viewController>
+                    </viewControllers>
+                </navigationController>
             </viewControllers>
         </tabBarController>
     </objects>
+    <resources>
+        <image name="tab_bar_icon_moobeez.png" width="30" height="30"/>
+        <image name="tab_bar_icon_movies.png" width="30" height="30"/>
+    </resources>
 </document>

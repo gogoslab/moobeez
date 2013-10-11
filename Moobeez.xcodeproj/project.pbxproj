@@ -51,6 +51,14 @@
 		64B2AB7A18083ED600E02E2F /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB7918083ED600E02E2F /* UIColor+Hex.m */; };
 		64B2AB801808412300E02E2F /* ConnectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB7F1808412300E02E2F /* ConnectionViewController.m */; };
 		64B2AB831808421700E02E2F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB821808421700E02E2F /* ViewController.m */; };
+		64B2AB88180844F800E02E2F /* MoobeezViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB86180844F800E02E2F /* MoobeezViewController.m */; };
+		64B2AB89180844F800E02E2F /* MoobeezViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AB87180844F800E02E2F /* MoobeezViewController.xib */; };
+		64B2AB8E1808452700E02E2F /* MoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB8C1808452700E02E2F /* MoviesViewController.m */; };
+		64B2AB8F1808452700E02E2F /* MoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AB8D1808452700E02E2F /* MoviesViewController.xib */; };
+		64B2AB941808486200E02E2F /* tab_bar_icon_moobeez.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AB921808486200E02E2F /* tab_bar_icon_moobeez.png */; };
+		64B2AB951808486200E02E2F /* tab_bar_icon_moobeez@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AB931808486200E02E2F /* tab_bar_icon_moobeez@2x.png */; };
+		64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AB961808496B00E02E2F /* tab_bar_icon_movies.png */; };
+		64B2AB991808496B00E02E2F /* tab_bar_icon_movies@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AB971808496B00E02E2F /* tab_bar_icon_movies@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +158,16 @@
 		64B2AB7F1808412300E02E2F /* ConnectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionViewController.m; sourceTree = "<group>"; };
 		64B2AB811808421700E02E2F /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		64B2AB821808421700E02E2F /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		64B2AB85180844F800E02E2F /* MoobeezViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoobeezViewController.h; sourceTree = "<group>"; };
+		64B2AB86180844F800E02E2F /* MoobeezViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoobeezViewController.m; sourceTree = "<group>"; };
+		64B2AB87180844F800E02E2F /* MoobeezViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoobeezViewController.xib; sourceTree = "<group>"; };
+		64B2AB8B1808452700E02E2F /* MoviesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesViewController.h; sourceTree = "<group>"; };
+		64B2AB8C1808452700E02E2F /* MoviesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesViewController.m; sourceTree = "<group>"; };
+		64B2AB8D1808452700E02E2F /* MoviesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesViewController.xib; sourceTree = "<group>"; };
+		64B2AB921808486200E02E2F /* tab_bar_icon_moobeez.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_bar_icon_moobeez.png; sourceTree = "<group>"; };
+		64B2AB931808486200E02E2F /* tab_bar_icon_moobeez@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_bar_icon_moobeez@2x.png"; sourceTree = "<group>"; };
+		64B2AB961808496B00E02E2F /* tab_bar_icon_movies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_bar_icon_movies.png; sourceTree = "<group>"; };
+		64B2AB971808496B00E02E2F /* tab_bar_icon_movies@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_bar_icon_movies@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,6 +279,7 @@
 		64B2AB0518082C4A00E02E2F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				64B2AB911808486200E02E2F /* Tab Bar Icons */,
 				64B2AADE18082AE600E02E2F /* Images.xcassets */,
 			);
 			path = Images;
@@ -437,8 +456,9 @@
 		64B2AB5618083CBF00E02E2F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				64B2AB811808421700E02E2F /* ViewController.h */,
-				64B2AB821808421700E02E2F /* ViewController.m */,
+				64B2AB84180844C300E02E2F /* View Controller */,
+				64B2AB8A180844FE00E02E2F /* Moobeez View Controller */,
+				64B2AB901808452B00E02E2F /* Movies View Controller */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -498,6 +518,46 @@
 				64B2AB7F1808412300E02E2F /* ConnectionViewController.m */,
 			);
 			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		64B2AB84180844C300E02E2F /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64B2AB811808421700E02E2F /* ViewController.h */,
+				64B2AB821808421700E02E2F /* ViewController.m */,
+			);
+			name = "View Controller";
+			sourceTree = "<group>";
+		};
+		64B2AB8A180844FE00E02E2F /* Moobeez View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64B2AB85180844F800E02E2F /* MoobeezViewController.h */,
+				64B2AB86180844F800E02E2F /* MoobeezViewController.m */,
+				64B2AB87180844F800E02E2F /* MoobeezViewController.xib */,
+			);
+			name = "Moobeez View Controller";
+			sourceTree = "<group>";
+		};
+		64B2AB901808452B00E02E2F /* Movies View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64B2AB8B1808452700E02E2F /* MoviesViewController.h */,
+				64B2AB8C1808452700E02E2F /* MoviesViewController.m */,
+				64B2AB8D1808452700E02E2F /* MoviesViewController.xib */,
+			);
+			name = "Movies View Controller";
+			sourceTree = "<group>";
+		};
+		64B2AB911808486200E02E2F /* Tab Bar Icons */ = {
+			isa = PBXGroup;
+			children = (
+				64B2AB961808496B00E02E2F /* tab_bar_icon_movies.png */,
+				64B2AB971808496B00E02E2F /* tab_bar_icon_movies@2x.png */,
+				64B2AB921808486200E02E2F /* tab_bar_icon_moobeez.png */,
+				64B2AB931808486200E02E2F /* tab_bar_icon_moobeez@2x.png */,
+			);
+			path = "Tab Bar Icons";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -577,8 +637,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				64B2AADF18082AE600E02E2F /* Images.xcassets in Resources */,
+				64B2AB991808496B00E02E2F /* tab_bar_icon_movies@2x.png in Resources */,
+				64B2AB951808486200E02E2F /* tab_bar_icon_moobeez@2x.png in Resources */,
 				64B2AACE18082AE600E02E2F /* InfoPlist.strings in Resources */,
+				64B2AB89180844F800E02E2F /* MoobeezViewController.xib in Resources */,
 				64B2AB0718082C4A00E02E2F /* Application.xib in Resources */,
+				64B2AB941808486200E02E2F /* tab_bar_icon_moobeez.png in Resources */,
+				64B2AB8F1808452700E02E2F /* MoviesViewController.xib in Resources */,
+				64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,6 +675,7 @@
 				64B2AB6118083CBF00E02E2F /* UIView+Extra.m in Sources */,
 				64B2AB7318083CBF00E02E2F /* ImageView+Tmdb.m in Sources */,
 				64B2AB7418083CBF00E02E2F /* UIColor+Moobeez.m in Sources */,
+				64B2AB8E1808452700E02E2F /* MoviesViewController.m in Sources */,
 				64B2AB7A18083ED600E02E2F /* UIColor+Hex.m in Sources */,
 				64B2AB6B18083CBF00E02E2F /* SBJsonStreamWriter.m in Sources */,
 				64B2AB6A18083CBF00E02E2F /* SBJsonStreamParserState.m in Sources */,
@@ -623,6 +690,7 @@
 				64B2AB5818083CBF00E02E2F /* NSDate+Calculator.m in Sources */,
 				64B2AB7218083CBF00E02E2F /* ImageView.m in Sources */,
 				64B2AB5F18083CBF00E02E2F /* UIImage+Resize.m in Sources */,
+				64B2AB88180844F800E02E2F /* MoobeezViewController.m in Sources */,
 				64B2AB6518083CBF00E02E2F /* URLConnection.m in Sources */,
 				64B2AB831808421700E02E2F /* ViewController.m in Sources */,
 				64B2AB7018083CBF00E02E2F /* SBJsonWriter.m in Sources */,
