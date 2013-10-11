@@ -1,0 +1,196 @@
+//
+//  NSDate+Calculator.m
+//  Gogz
+//
+//  Created by Radu Banea on 10/11/13.
+//  Copyright (c) 2013 Goggzy. All rights reserved.
+//
+
+#import "NSDate+Calculator.h"
+
+
+@implementation NSDate (Calculator)
+
++ (id)dateWithDay:(int)day month:(int)month andYear:(int)year {
+    __autoreleasing NSDateComponents* dateComponents = [[NSDateComponents alloc] init];
+    
+    [dateComponents setDay:day];
+    [dateComponents setMonth:month];
+    [dateComponents setYear:year];
+    
+    return [[NSCalendar currentCalendar] dateFromComponents:dateComponents];
+}
+
+- (NSDate*)resetToMidnight {
+    
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents* dateComponents = [calendar components:AllComponents fromDate:self];
+    
+    [dateComponents setHour:0];
+    [dateComponents setMinute:0];
+    [dateComponents setSecond:0];
+    
+    return [calendar dateFromComponents:dateComponents];
+}
+
+- (NSDate*)resetToLateMidnight {
+    
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents* dateComponents = [calendar components:AllComponents fromDate:self];
+    
+    [dateComponents setHour:23];
+    [dateComponents setMinute:59];
+    [dateComponents setSecond:59];
+    
+    return [calendar dateFromComponents:dateComponents];
+}
+
+- (BOOL)isEqualWithDate:(NSDate*)date {
+    NSDate* firstDate = [self resetToMidnight];
+    NSDate* secondDate = [date resetToMidnight];
+    
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents* firstDateComponents = [calendar components:AllComponents fromDate:firstDate];
+    NSDateComponents* secondDateComponents = [calendar components:AllComponents fromDate:secondDate];
+    
+    BOOL sameDay = ([firstDateComponents day] == [secondDateComponents day]);
+    BOOL sameMonth = ([firstDateComponents month] == [secondDateComponents month]);
+    BOOL sameYear = ([firstDateComponents year] == [secondDateComponents year]);
+    
+    return (sameDay && sameMonth && sameYear);
+}
+
+- (BOOL)isEqualWithDate:(NSDate*)date forFrequency:(EKRecurrenceFrequency)frequency andInterval:(int)interval {
+
+    NSDate* firstDate = [self resetToMidnight];
+    NSDate* secondDate = [date resetToMidnight];
+
+    if ([firstDate timeIntervalSinceDate:secondDate] > 0) {
+        return NO;
+    }
+    
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents* firstDateComponents = [calendar components:AllComponents fromDate:firstDate];
+    NSDateComponents* secondDateComponents = [calendar components:AllComponents fromDate:secondDate];
+
+    BOOL sameDay = ([firstDateComponents day] == [secondDateComponents day]);
+    BOOL sameWeekDay = ([firstDateComponents weekday] == [secondDateComponents weekday]);
+    BOOL sameMonth = ([firstDateComponents month] == [secondDateComponents month]);
+    
+    int numberOfDaysInMonth = secondDate.numberOfDaysInMonth;
+    
+    //check if the day of the first date can exist in the second date
+    if ([firstDateComponents day] >= numberOfDaysInMonth
+        && ([secondDateComponents day] + 1) == numberOfDaysInMonth) {
+        sameDay = YES;
+    }
+    
+    switch (frequency) {
+
+        case EKRecurrenceFrequencyDaily:
+        {
+            NSDateComponents* dateComponents = [calendar components:AllComponents fromDate:firstDate toDate:secondDate options:0];
+
+            return (abs([dateComponents day]) % interval == 0);
+        }
+            break;
+
+        case EKRecurrenceFrequencyWeekly:
+        {
+            NSDateComponents* dateComponents = [calendar components:AllComponents fromDate:firstDate toDate:secondDate options:0];
+            return (sameWeekDay && (abs([dateComponents week]) % interval == 0));
+        }
+            break;
+
+        case EKRecurrenceFrequencyMonthly: {
+            NSDateComponents* dateComponents = [calendar components:AllComponents fromDate:firstDate toDate:secondDate options:0];
+
+            return (sameDay && (abs([dateComponents month]) % interval == 0));
+        }
+            break;
+
+        case EKRecurrenceFrequencyYearly: {
+            NSDateComponents* dateComponents = [calendar components:AllComponents fromDate:firstDate toDate:secondDate options:0];
+        
+            return (sameDay && sameMonth && (abs([dateComponents year]) % interval == 0));
+        }
+            break;
+
+        default:
+            break;
+    }
+    
+    return NO;
+
+}
+
+- (NSDate*)firstDayOfMonth {
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents* dateComponents = [calendar components:AllComponents fromDate:self];
+    
+    [dateComponents setDay:1];
+    
+    return [calendar dateFromComponents:dateComponents];
+}
+
+- (NSDate*)dateByAddingDays:(NSInteger)days {
+
+    __autoreleasing NSDateComponents* dateComponents = [[NSDateComponents alloc] init];
+    
+    [dateComponents setDay:days];
+    
+    return [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:self options:0];
+}
+
+- (NSDate*)dateByAddingMonths:(NSInteger)months {
+    __autoreleasing NSDateComponents* dateComponents = [[NSDateComponents alloc] init];
+    
+    [dateComponents setMonth:months];
+    
+    return [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:self options:0];
+
+}
+
+- (NSDate*)dateByAddingYears:(NSInteger)years {
+    __autoreleasing NSDateComponents* dateComponents = [[NSDateComponents alloc] init];
+    
+    [dateComponents setYear:years];
+    
+    return [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:self options:0];
+}
+
+- (int)weekday {
+    return [[[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:self] weekday];
+}
+
+- (int)day {
+    return [[[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:self] day];
+}
+
+- (int)month {
+    return [[[NSCalendar currentCalendar] components:NSMonthCalendarUnit fromDate:self] month];
+}
+
+- (int)year {
+    return [[[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:self] year];
+}
+
+- (int)hour {
+    return [[[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:self] hour];
+}
+
+- (int)minutes {
+    return [[[NSCalendar currentCalendar] components:NSMinuteCalendarUnit fromDate:self] minute];
+}
+
+- (int)numberOfDaysInMonth {
+    return [[NSCalendar currentCalendar]
+            rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:self].length;
+}
+
+@end
