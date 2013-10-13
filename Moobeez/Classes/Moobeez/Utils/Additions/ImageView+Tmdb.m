@@ -15,6 +15,6 @@
         self.image = nil;
         return;
     }
-    [self loadImageWithPath:[NSString stringWithFormat:@"w%d%@", width, path]];
+    [self loadImageWithPath:[NSString stringWithFormat:@"w%ld%@", (long)width, path]];
 }
 @end

@@ -63,7 +63,7 @@
     return (sameDay && sameMonth && sameYear);
 }
 
-- (BOOL)isEqualWithDate:(NSDate*)date forFrequency:(EKRecurrenceFrequency)frequency andInterval:(int)interval {
+- (BOOL)isEqualWithDate:(NSDate*)date forFrequency:(EKRecurrenceFrequency)frequency andInterval:(NSInteger)interval {
 
     NSDate* firstDate = [self resetToMidnight];
     NSDate* secondDate = [date resetToMidnight];
@@ -81,7 +81,7 @@
     BOOL sameWeekDay = ([firstDateComponents weekday] == [secondDateComponents weekday]);
     BOOL sameMonth = ([firstDateComponents month] == [secondDateComponents month]);
     
-    int numberOfDaysInMonth = secondDate.numberOfDaysInMonth;
+    NSInteger numberOfDaysInMonth = secondDate.numberOfDaysInMonth;
     
     //check if the day of the first date can exist in the second date
     if ([firstDateComponents day] >= numberOfDaysInMonth
@@ -95,28 +95,28 @@
         {
             NSDateComponents* dateComponents = [calendar components:AllComponents fromDate:firstDate toDate:secondDate options:0];
 
-            return (abs([dateComponents day]) % interval == 0);
+            return (labs([dateComponents day]) % interval == 0);
         }
             break;
 
         case EKRecurrenceFrequencyWeekly:
         {
             NSDateComponents* dateComponents = [calendar components:AllComponents fromDate:firstDate toDate:secondDate options:0];
-            return (sameWeekDay && (abs([dateComponents week]) % interval == 0));
+            return (sameWeekDay && (labs([dateComponents week]) % interval == 0));
         }
             break;
 
         case EKRecurrenceFrequencyMonthly: {
             NSDateComponents* dateComponents = [calendar components:AllComponents fromDate:firstDate toDate:secondDate options:0];
 
-            return (sameDay && (abs([dateComponents month]) % interval == 0));
+            return (sameDay && (labs([dateComponents month]) % interval == 0));
         }
             break;
 
         case EKRecurrenceFrequencyYearly: {
             NSDateComponents* dateComponents = [calendar components:AllComponents fromDate:firstDate toDate:secondDate options:0];
         
-            return (sameDay && sameMonth && (abs([dateComponents year]) % interval == 0));
+            return (sameDay && sameMonth && (labs([dateComponents year]) % interval == 0));
         }
             break;
 
@@ -164,31 +164,31 @@
     return [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:self options:0];
 }
 
-- (int)weekday {
+- (NSInteger)weekday {
     return [[[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:self] weekday];
 }
 
-- (int)day {
+- (NSInteger)day {
     return [[[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:self] day];
 }
 
-- (int)month {
+- (NSInteger)month {
     return [[[NSCalendar currentCalendar] components:NSMonthCalendarUnit fromDate:self] month];
 }
 
-- (int)year {
+- (NSInteger)year {
     return [[[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:self] year];
 }
 
-- (int)hour {
+- (NSInteger)hour {
     return [[[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:self] hour];
 }
 
-- (int)minutes {
+- (NSInteger)minutes {
     return [[[NSCalendar currentCalendar] components:NSMinuteCalendarUnit fromDate:self] minute];
 }
 
-- (int)numberOfDaysInMonth {
+- (NSInteger)numberOfDaysInMonth {
     return [[NSCalendar currentCalendar]
             rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:self].length;
 }

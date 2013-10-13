@@ -18,9 +18,11 @@ typedef void (^RawConnectionCompletionHandler) (NSURLResponse* response, id resu
 @property (strong, nonatomic) UIActivityIndicatorView* activityIndicator;
 
 - (id)initWithUrlString:(NSString*)urlString inputJson:(id)inputJson completionHandler:(RawConnectionCompletionHandler)handler;
+- (id)initWithUrlString:(NSString*)urlString parameters:(NSDictionary*)parameters completionHandler:(RawConnectionCompletionHandler)handler;
 - (id)initWithUrlString:(NSString*)urlString completionHandler:(RawConnectionCompletionHandler)handler;
 
 - (id)startSynchronousConnectionWithUrlString:(NSString*)urlString inputJson:(id)inputJson;
+- (id)startSynchronousConnectionWithUrlString:(NSString*)urlString parameters:(NSDictionary*)parameters;
 
 - (void)startConnection;
 - (void)stopConnection;

@@ -18,7 +18,7 @@
 + (id)dateWithDay:(int)day month:(int)month andYear:(int)year;
 
 - (BOOL)isEqualWithDate:(NSDate*)date;
-- (BOOL)isEqualWithDate:(NSDate*)date forFrequency:(EKRecurrenceFrequency)frequency andInterval:(int)interval;
+- (BOOL)isEqualWithDate:(NSDate*)date forFrequency:(EKRecurrenceFrequency)frequency andInterval:(NSInteger)interval;
 
 - (NSDate*)resetToMidnight;
 - (NSDate*)resetToLateMidnight;
@@ -27,13 +27,13 @@
 - (NSDate*)dateByAddingMonths:(NSInteger)months;
 - (NSDate*)dateByAddingYears:(NSInteger)years;
 
-@property (readonly) int weekday;
-@property (readonly) int day;
-@property (readonly) int month;
-@property (readonly) int year;
-@property (readonly) int hour;
-@property (readonly) int minutes;
+@property (readonly) NSInteger weekday;
+@property (readonly) NSInteger day;
+@property (readonly) NSInteger month;
+@property (readonly) NSInteger year;
+@property (readonly) NSInteger hour;
+@property (readonly) NSInteger minutes;
 
-@property (readonly) int numberOfDaysInMonth;
+@property (readonly) NSInteger numberOfDaysInMonth;
 
 @end

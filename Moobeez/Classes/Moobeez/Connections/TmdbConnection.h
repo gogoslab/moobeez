@@ -29,8 +29,8 @@ typedef void (^ConnectionCodeHandler) (WebserviceResultCode code);
 
 @property (readonly, nonatomic) AppDelegate* appDelegate;
 
-- (id)initWithInputJson:(id)inputJson completionHandler:(ConnectionCompletionHandler)handler;
+- (id)initWithParameters:(NSDictionary*)parameters completionHandler:(ConnectionCompletionHandler)handler;
 
-- (id)startSynchronousConnectionWithInputJson:(id)inputJson;
+- (id)startSynchronousConnectionWithParameters:(NSDictionary*)parameters;
 
 @end

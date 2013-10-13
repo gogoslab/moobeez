@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		640865EA180B4FC200725CE4 /* URLParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 640865E9180B4FC200725CE4 /* URLParameters.m */; };
 		64392EAF18084BA500504C78 /* TmdbConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64392EAE18084BA500504C78 /* TmdbConnection.m */; };
 		64B2AAC418082AE600E02E2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC318082AE600E02E2F /* Foundation.framework */; };
 		64B2AAC618082AE600E02E2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC518082AE600E02E2F /* CoreGraphics.framework */; };
@@ -73,6 +74,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		640865E8180B4FC200725CE4 /* URLParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLParameters.h; sourceTree = "<group>"; };
+		640865E9180B4FC200725CE4 /* URLParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLParameters.m; sourceTree = "<group>"; };
 		64392EAD18084BA500504C78 /* TmdbConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbConnection.h; sourceTree = "<group>"; };
 		64392EAE18084BA500504C78 /* TmdbConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmdbConnection.m; sourceTree = "<group>"; };
 		64392EB218084D9200504C78 /* TmdbConnections.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TmdbConnections.h; sourceTree = "<group>"; };
@@ -513,6 +516,8 @@
 				64B2AB1318083CBF00E02E2F /* NSMutableDictionary+Extensions.m */,
 				64B2AB1018083CBF00E02E2F /* NSFileManager+ExtraAtributtes.h */,
 				64B2AB1118083CBF00E02E2F /* NSFileManager+ExtraAtributtes.m */,
+				640865E8180B4FC200725CE4 /* URLParameters.h */,
+				640865E9180B4FC200725CE4 /* URLParameters.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -709,6 +714,7 @@
 				64B2AB6E18083CBF00E02E2F /* SBJsonTokeniser.m in Sources */,
 				64B2AB5A18083CBF00E02E2F /* NSDictionary+Extensions.m in Sources */,
 				64B2AB5818083CBF00E02E2F /* NSDate+Calculator.m in Sources */,
+				640865EA180B4FC200725CE4 /* URLParameters.m in Sources */,
 				64B2AB7218083CBF00E02E2F /* ImageView.m in Sources */,
 				64B2AB5F18083CBF00E02E2F /* UIImage+Resize.m in Sources */,
 				64B2AB88180844F800E02E2F /* MoobeezViewController.m in Sources */,

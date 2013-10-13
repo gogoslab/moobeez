@@ -19,9 +19,8 @@
 
 @implementation TmdbConnection
 
-- (id)initWithInputJson:(id)inputJson completionHandler:(ConnectionCompletionHandler)handler {
-    
-    self = [super initWithUrlString:[self.rootUrlPath stringByAppendingString:self.urlSubpath] inputJson:inputJson completionHandler:^(NSURLResponse *response, id result, NSError *error) {
+- (id)initWithParameters:(NSDictionary*)parameters completionHandler:(ConnectionCompletionHandler)handler {
+    self = [super initWithUrlString:[self.rootUrlPath stringByAppendingString:self.urlSubpath] parameters:parameters completionHandler:^(NSURLResponse *response, id result, NSError *error) {
         if (error) {
             self.handler(WebserviceResultError, result, error);
         }
@@ -40,40 +39,10 @@
     return self;
 }
 
-- (id)startSynchronousConnectionWithInputJson:(id)inputJson {
+- (id)startSynchronousConnectionWithParameters:(NSDictionary*)parameters {
     
-    return [self startSynchronousConnectionWithUrlString:[self.rootUrlPath stringByAppendingString:self.urlSubpath] inputJson:inputJson];
+    return [self startSynchronousConnectionWithUrlString:[self.rootUrlPath stringByAppendingString:self.urlSubpath] parameters:parameters];
 
-}
-
-- (NSMutableURLRequest*)requestWithUrl:(NSString*)urlString andInputJSON:(id)inputJSON
-{
-    NSURL *url = [NSURL URLWithString:urlString];
-	
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-	[request setTimeoutInterval:10];
-	[request setHTTPMethod:@"POST"];
-    
-    [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    
-    NSError* jsonError;
-    SBJsonWriter* writer = [[SBJsonWriter alloc] init];
-    
-    NSString* message = [writer stringWithObject:inputJSON error:&jsonError];
-    
-	if (message)
-	{
-		[request setHTTPBody:[message dataUsingEncoding:NSUTF8StringEncoding]];
-	}
-    else {
-        if (jsonError) {
-            NSLog(@"json write error: %@", jsonError.description);
-        }
-    }
-    
-    NSLog(@"create request with connection: %@ and input: %@", urlString, inputJSON);
-    
-    return request;
 }
 
 - (NSString*)urlSubpath {

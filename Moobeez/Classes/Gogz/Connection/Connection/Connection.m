@@ -8,6 +8,7 @@
 
 #import "ConnectionLibrary.h"
 #import "SBJson.h"
+#import "URLParameters.h"
 
 @interface Connection ()
 
@@ -27,6 +28,18 @@
     
     if (self) {
         self.urlConnection = [self connectionWithRequest:[self requestWithUrl:urlString andInputJSON:inputJson]];
+        self.rawHandler = handler;
+    }
+    
+    return self;
+}
+
+- (id)initWithUrlString:(NSString*)urlString parameters:(NSDictionary*)parameters completionHandler:(RawConnectionCompletionHandler)handler {
+    
+    self = [super init];
+    
+    if (self) {
+        self.urlConnection = [self connectionWithRequest:[self requestWithUrl:urlString andParameters:parameters]];
         self.rawHandler = handler;
     }
     
@@ -60,6 +73,21 @@
     
     
     NSData* data = [NSURLConnection sendSynchronousRequest:[self requestWithUrl:urlString andInputJSON:inputJson] returningResponse:&response error:&error];
+    
+    if (error) {
+        NSLog(@"error at sync connection %@ : %@", urlString, error.description);
+    }
+    
+    return [self jsonForData:data];
+}
+
+- (id)startSynchronousConnectionWithUrlString:(NSString*)urlString parameters:(NSDictionary*)parameters {
+    
+    NSURLResponse* response;
+    NSError* error;
+    
+    
+    NSData* data = [NSURLConnection sendSynchronousRequest:[self requestWithUrl:urlString andParameters:parameters] returningResponse:&response error:&error];
     
     if (error) {
         NSLog(@"error at sync connection %@ : %@", urlString, error.description);
@@ -141,6 +169,26 @@
 }
 */
 
+//use this one for input url parameters for the request
+
+- (NSMutableURLRequest*)requestWithUrl:(NSString*)urlString andParameters:(NSDictionary*)parameters
+{
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    urlString = [urlString stringByAppendingString:parameters.parametersString];
+    
+	NSURL *url = [NSURL URLWithString:urlString];
+	
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+	[request setTimeoutInterval:60];
+	[request setHTTPMethod:@"GET"];
+    
+    [request setValue:@"application/json; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    
+    return request;
+}
+
+
 - (URLConnection*)connectionWithRequest:(NSURLRequest*)request {
     
 	URLConnection* connection = [[URLConnection alloc] initWithRequest:request delegate:self startImmediately:NO];
@@ -149,22 +197,8 @@
 	return connection;
 }
 
-- (URLConnection*)startGetConnectionWithURL:(NSString*)urlString AndMessage:(NSString*)message {
-    
-	NSURL *url = [NSURL URLWithString:urlString];
-	
-	NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-	[request setTimeoutInterval:10];
-	[request setHTTPMethod:@"GET"];
-    
-	if (message)
-	{
-        NSLog(@"message %@",message);
-		[request setHTTPBody:[message dataUsingEncoding:NSUTF8StringEncoding]];
-	}
-	
-    return [self connectionWithRequest:request];
-}
+
+#pragma mark - Delegate
 
 - (void)connection:(URLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {

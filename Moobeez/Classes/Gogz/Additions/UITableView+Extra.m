@@ -13,10 +13,10 @@
 - (CGFloat)tableViewHeight {
     CGFloat height = 0.0;
  
-    int nbSections = [self.dataSource numberOfSectionsInTableView:self];
+    NSInteger nbSections = [self.dataSource numberOfSectionsInTableView:self];
     
     for (int section = 0; section < nbSections; ++section) {
-        int nbRows = [self.dataSource tableView:self numberOfRowsInSection:section];
+        NSInteger nbRows = [self.dataSource tableView:self numberOfRowsInSection:section];
         
         if ([self.delegate respondsToSelector:@selector(tableView:heightForRowAtIndexPath:)]) {
             for (int row = 0; row < nbRows; ++row) {

@@ -12,6 +12,7 @@
 #import "NSDictionary+Extensions.h"
 #import "NSMutableDictionary+Extensions.h"
 #import "NSFileManager+ExtraAtributtes.h"
+#import "URLParameters.h"
 
 #import "NSDate+Calculator.h"
 #import "NSDateFormatter+Extensions.h"
