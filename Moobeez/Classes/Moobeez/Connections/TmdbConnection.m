@@ -20,7 +20,11 @@
 @implementation TmdbConnection
 
 - (id)initWithParameters:(NSDictionary*)parameters completionHandler:(ConnectionCompletionHandler)handler {
-    self = [super initWithUrlString:[self.rootUrlPath stringByAppendingString:self.urlSubpath] parameters:parameters completionHandler:^(NSURLResponse *response, id result, NSError *error) {
+    
+    NSMutableDictionary* tmdbParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
+    [tmdbParameters setObject:TmdbApiKey forKey:@"api_key"];
+
+    self = [super initWithUrlString:[self.rootUrlPath stringByAppendingString:self.urlSubpath] parameters:tmdbParameters completionHandler:^(NSURLResponse *response, id result, NSError *error) {
         if (error) {
             self.handler(WebserviceResultError, result, error);
         }

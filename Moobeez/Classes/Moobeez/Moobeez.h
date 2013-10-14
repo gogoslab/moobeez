@@ -17,4 +17,13 @@
 
 #import "TmdbConnections.h"
 
+#import "Database.h"
+
+
+#import "ViewController.h"
+#import "MoobeezViewController.h"
+#import "MoviesViewController.h"
+
+#import "MoobeeCell.h"
+
 #endif

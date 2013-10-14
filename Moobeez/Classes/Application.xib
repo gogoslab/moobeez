@@ -23,9 +23,29 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
-                <outlet property="rootViewController" destination="OSe-Ds-l2e" id="Mxv-h5-hzL"/>
+                <outlet property="rootViewController" destination="Ay7-JO-b7H" id="80d-3V-ZlD"/>
             </connections>
         </window>
+        <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="Ay7-JO-b7H">
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZTH-eZ-3kr">
+                <autoresizingMask key="autoresizingMask"/>
+            </navigationBar>
+            <viewControllers>
+                <viewController nibName="LoadingViewController" id="Db7-oh-AAB" customClass="LoadingViewController">
+                    <navigationItem key="navigationItem" title="Item" id="HAG-7v-DOF"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+            </viewControllers>
+        </navigationController>
         <tabBarController definesPresentationContext="YES" id="OSe-Ds-l2e">
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>

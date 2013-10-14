@@ -175,7 +175,9 @@
 {
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    urlString = [urlString stringByAppendingString:parameters.parametersString];
+    if (parameters) {
+        urlString = [urlString stringByAppendingString:parameters.parametersString];
+    }
     
 	NSURL *url = [NSURL URLWithString:urlString];
 	

@@ -15,6 +15,11 @@
 {
     // Override point for customization after application launch.
     
+    NSArray* array = [[NSArray alloc] initWithContentsOfFile:MY_MOVIES_PATH];
+    if (array.count) {
+        [[Database sharedDatabase] populateWithOldDatabase:array];
+    }
+    
     [self.window makeKeyAndVisible];
     
     return YES;

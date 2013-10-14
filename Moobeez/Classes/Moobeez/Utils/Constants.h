@@ -10,6 +10,8 @@
 
 #define MY_MOVIES_PATH [DOCUMENTS_DIRECTORY stringByAppendingPathComponent:@"Movies.plist"]
 
+#define MY_DATABASE_PATH [DOCUMENTS_DIRECTORY stringByAppendingPathComponent:@"MoobeezDatabase"]
+
 #define EndLoadingNotification @"endLoading"
 
 #define DidInitCalendarStoreNotification @"didInitCalendarStore"

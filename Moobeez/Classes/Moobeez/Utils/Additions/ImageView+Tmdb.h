@@ -10,6 +10,8 @@
 
 @interface ImageView (Tmdb)
 
++ (void)setTmdbRootPath:(NSString*)tmdbRootPath;
+
 - (void)loadImageWithPath:(NSString*)path andWidth:(NSInteger)width;
 
 @end

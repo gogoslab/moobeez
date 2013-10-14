@@ -10,11 +10,21 @@
 
 @implementation ImageView (Tmdb)
 
+static NSString* _tmdbRootPath;
+
++ (void)setTmdbRootPath:(NSString*)tmdbRootPath {
+    _tmdbRootPath = tmdbRootPath;
+}
+
+- (void)awakeFromNib {
+    self.defaultImage = [UIImage imageNamed:@"default_image.png"];
+}
+
 - (void)loadImageWithPath:(NSString*)path andWidth:(NSInteger)width {
     if (!path) {
         self.image = nil;
         return;
     }
-    [self loadImageWithPath:[NSString stringWithFormat:@"w%ld%@", (long)width, path]];
+    [self loadImageWithPath:[_tmdbRootPath stringByAppendingString:[NSString stringWithFormat:@"w%ld%@", (long)width, path]]];
 }
 @end

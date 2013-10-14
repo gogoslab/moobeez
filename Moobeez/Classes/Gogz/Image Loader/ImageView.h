@@ -13,12 +13,12 @@
     
 }
 
-@property (nonatomic, retain) IBOutlet UIImageView* borderImageView;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView* activityIndicator;
+@property (strong, nonatomic) IBOutlet UIImageView* borderImageView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView* activityIndicator;
 @property (readwrite, nonatomic) BOOL resize;
 @property (readwrite, nonatomic) CGRect borderExtraFrame;
-@property (nonatomic, readwrite) BOOL loadSyncronized;
-
+@property (readwrite, nonatomic) BOOL loadSyncronized;
+@property (strong, nonatomic) UIImage* defaultImage;
 
 - (void)loadImageWithPath:(NSString*)path;
 - (void)loadImageWithPath:(NSString*)path resize:(BOOL)resize;

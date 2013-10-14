@@ -98,20 +98,28 @@
 
     self.image = [UIImage imageWithContentsOfFile:[offlineRootPath stringByAppendingPathComponent:self.offlinePath]];
     
+    [self.activityIndicator stopAnimating];
+    
+}
+
+- (void)setImage:(UIImage *)image {
+    if (!image) {
+        super.image = self.defaultImage;
+    }
+    else {
+        super.image = image;
+    }
+    
     float scaleFactor = MIN(self.frame.size.width / self.image.size.width, self.frame.size.height / self.image.size.height);
     float widthScale = scaleFactor * self.image.size.width / self.frame.size.width;
     float heightScale = scaleFactor * self.image.size.height / self.frame.size.height;
     
-    if (self.image) {
-        self.borderImageView.frame = CGRectMake(0, 0, widthScale * self.borderImageView.image.size.width, heightScale * self.borderImageView.image.size.height + self.borderExtraFrame.size.height);
-    }
+    self.borderImageView.frame = CGRectMake(0, 0, widthScale * self.borderImageView.image.size.width, heightScale * self.borderImageView.image.size.height + self.borderExtraFrame.size.height);
     
     //self.borderImageView.center = self.center;
     self.borderImageView.center = CGPointMake(self.center.x, self.center.y + self.borderExtraFrame.origin.y);
     
-    [self.activityIndicator stopAnimating];
-    
-    self.borderImageView.hidden = NO;
+    self.borderImageView.hidden = (self.image == nil);
 }
 
 - (void)didFailToLoadImage {

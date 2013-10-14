@@ -36,4 +36,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (AppDelegate*)appDelegate {
+    return (AppDelegate*) [UIApplication sharedApplication].delegate;
+}
+
 @end

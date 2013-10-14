@@ -23,4 +23,7 @@
 #define UrlPopular @"movie/popular"
 #define UrlTopRated @"movie/top_rated"
 
+
+#import "ConfigurationConnection.h"
+
 #endif
