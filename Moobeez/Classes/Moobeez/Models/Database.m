@@ -53,7 +53,7 @@ static Database* sharedDatabase;
 
 #pragma mark - General Methods
 
-- (void)insertDictionary:(NSDictionary*)dictionary intoTable:(NSString*)table {
+- (BOOL)insertDictionary:(NSDictionary*)dictionary intoTable:(NSString*)table {
     
     NSArray* allKeys = dictionary.allKeys;
     
@@ -76,7 +76,7 @@ static Database* sharedDatabase;
     
     if (prepare != SQLITE_OK) {
         NSLog(@"prepare: %d", prepare);
-        return;
+        return NO;
     }
     
     int step = sqlite3_step(statement);
@@ -84,6 +84,8 @@ static Database* sharedDatabase;
     switch (step) {
         case SQLITE_DONE:
             NSLog(@"yey");
+            sqlite3_finalize(statement);
+            return YES;
             break;
         case SQLITE_ERROR:
             NSLog(@"error");
@@ -98,12 +100,15 @@ static Database* sharedDatabase;
     
     sqlite3_finalize(statement);
     
+    return NO;
 }
 
 
 #pragma mark - Old To New
 
 - (void)populateWithOldDatabase:(NSArray*)oldDatabase {
+    
+    NSMutableArray* untransferredDatabase = [[NSMutableArray alloc] init];
     
     for (NSDictionary* dictionary in oldDatabase) {
         
@@ -125,12 +130,12 @@ static Database* sharedDatabase;
         
         NSInteger type = 0;
         
-        if ([dictionary[@"wished"] boolValue] || [dictionary[@"watchlist"] boolValue]) {
+        if (date >= 0) {
+            type = 2;
+        }
+        else if ([dictionary[@"wished"] boolValue] || [dictionary[@"watchlist"] boolValue]) {
             type = 1;
             date = -1;
-        }
-        else if (date >= 0) {
-            type = 2;
         }
 
         NSMutableDictionary* addDictionary = [[NSMutableDictionary alloc] init];
@@ -145,7 +150,16 @@ static Database* sharedDatabase;
         addDictionary[@"type"] = [NSString stringWithFormat:@"%ld", (long)type];
         addDictionary[@"isFavorite"] = [NSString stringWithFormat:@"%ld", (long)isFavorite];
         
-        [self insertDictionary:addDictionary intoTable:@"Moobeez"];
+        if (![self insertDictionary:addDictionary intoTable:@"Moobeez"]) {
+            [untransferredDatabase addObject:dictionary];
+        }
+    }
+    
+    if (untransferredDatabase.count == 0) {
+        [[NSFileManager defaultManager] removeItemAtPath:MY_MOVIES_PATH error:nil];
+    }
+    else {
+        [untransferredDatabase writeToFile:MY_MOVIES_PATH atomically:YES];
     }
 }
 
@@ -154,13 +168,30 @@ static Database* sharedDatabase;
 
 - (NSMutableArray*)moobeezWithType:(MoobeeType)type {
     
-    NSString* conditions = @"";
+    NSString* query = @"";
     
-    if (type != MoobeeAllType) {
-        conditions = [NSString stringWithFormat:@"WHERE type = %d", type];
+    switch (type) {
+        case MoobeeSeenType:
+            query = [NSString stringWithFormat:@"SELECT * FROM Moobeez WHERE type = %d ORDER BY date DESC", type];
+            break;
+        case MoobeeOnWatchlistType:
+            query = [NSString stringWithFormat:@"SELECT * FROM Moobeez WHERE type = %d ORDER BY ID DESC", type];
+            break;
+        default:
+            query = [NSString stringWithFormat:@"SELECT * FROM Moobeez ORDER BY date, ID DESC"];
+            break;
     }
     
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM Moobeez %@", conditions];
+    return [self moobeezWithQuery:query];
+}
+
+- (NSMutableArray*)favoritesMoobeez {
+    
+    return [self moobeezWithQuery:@"SELECT * FROM Moobeez WHERE isFavorite = TRUE ORDER BY date, ID DESC"];
+}
+
+- (NSMutableArray*)moobeezWithQuery:(NSString*)query {
+    
     sqlite3_stmt *statement;
     
     NSMutableArray* results = [[NSMutableArray alloc] init];

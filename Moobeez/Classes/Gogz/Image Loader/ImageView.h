@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ImageLoader.h"
 
+typedef void (^ImageViewCompletionHandler) (BOOL didLoadImage);
+
 @interface ImageView : UIImageView {
     
 }
@@ -20,9 +22,11 @@
 @property (readwrite, nonatomic) BOOL loadSyncronized;
 @property (strong, nonatomic) UIImage* defaultImage;
 
-- (void)loadImageWithPath:(NSString*)path;
-- (void)loadImageWithPath:(NSString*)path resize:(BOOL)resize;
-- (void)loadImageWithPath:(NSString*)path resize:(BOOL)resize withPriority:(enum ImageLoadingPriority)priority;
-- (void)loadImageWithPath:(NSString*)path withPriority:(enum ImageLoadingPriority)priority;
+@property (copy, nonatomic) ImageViewCompletionHandler completionHandler;
+
+- (void)loadImageWithPath:(NSString*)path completion:(ImageViewCompletionHandler)completionHandler;
+- (void)loadImageWithPath:(NSString*)path resize:(BOOL)resize completion:(ImageViewCompletionHandler)completionHandler;
+- (void)loadImageWithPath:(NSString*)path resize:(BOOL)resize withPriority:(enum ImageLoadingPriority)priority completion:(ImageViewCompletionHandler)completionHandler;
+- (void)loadImageWithPath:(NSString*)path withPriority:(enum ImageLoadingPriority)priority completion:(ImageViewCompletionHandler)completionHandler;
 
 @end

@@ -20,7 +20,6 @@
 - (id)initWithCompletionHandler:(ConnectionCodeHandler)handler {
     
     self = [super initWithParameters:nil completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
-        NSLog(@"result: %@", resultDictionary);
         
         [ImageView setTmdbRootPath:resultDictionary[@"images"][@"secure_base_url"]];
         

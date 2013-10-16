@@ -37,7 +37,9 @@
     return self;
 }
 
-- (void)loadImageWithPath:(NSString*)path resize:(BOOL)resize withPriority:(enum ImageLoadingPriority)priority {
+- (void)loadImageWithPath:(NSString*)path resize:(BOOL)resize withPriority:(enum ImageLoadingPriority)priority completion:(ImageViewCompletionHandler)completionHandler {
+    
+    self.completionHandler = completionHandler;
     
 #ifdef OFFLINE
     self.image = [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[path stringByDeletingPathExtension] ofType:[path pathExtension]]];
@@ -79,16 +81,16 @@
     self.onlinePath = path;
 }
 
-- (void)loadImageWithPath:(NSString *)path {
-    [self loadImageWithPath:path resize:NO];
+- (void)loadImageWithPath:(NSString *)path completion:(ImageViewCompletionHandler)completionHandler {
+    [self loadImageWithPath:path resize:NO completion:completionHandler];
 }
 
-- (void)loadImageWithPath:(NSString *)path resize:(BOOL)resize {
-    [self loadImageWithPath:path resize:resize withPriority:ImageLoadingPriorityMedium];
+- (void)loadImageWithPath:(NSString *)path resize:(BOOL)resize completion:(ImageViewCompletionHandler)completionHandler {
+    [self loadImageWithPath:path resize:resize withPriority:ImageLoadingPriorityMedium completion:completionHandler];
 }
 
-- (void)loadImageWithPath:(NSString *)path withPriority:(enum ImageLoadingPriority)priority {
-    [self loadImageWithPath:path resize:NO withPriority:priority];
+- (void)loadImageWithPath:(NSString *)path withPriority:(enum ImageLoadingPriority)priority completion:(ImageViewCompletionHandler)completionHandler {
+    [self loadImageWithPath:path resize:NO withPriority:priority completion:completionHandler];
 }
 
 - (void)didLoadImage {
@@ -96,9 +98,13 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DidLoadImageNotification object:self.offlinePath];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DidFailToLoadImageNotification object:self.offlinePath];
 
-    self.image = [UIImage imageWithContentsOfFile:[offlineRootPath stringByAppendingPathComponent:self.offlinePath]];
+    UIImage* image = [UIImage imageWithContentsOfFile:[offlineRootPath stringByAppendingPathComponent:self.offlinePath]];
+    
+    self.image = image;
     
     [self.activityIndicator stopAnimating];
+    
+    self.completionHandler(image != nil);
     
 }
 
@@ -127,6 +133,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:DidFailToLoadImageNotification object:self.offlinePath];
     
     [self.activityIndicator stopAnimating];
+    
+    self.completionHandler(NO);
 }
 
 - (void)setLoadSyncronized:(BOOL)loadSyncronized {

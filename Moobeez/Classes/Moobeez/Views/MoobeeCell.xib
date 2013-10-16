@@ -6,34 +6,64 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QnY-HS-pVu" customClass="MoobeeCell">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MoobeeCell" id="QnY-HS-pVu" customClass="MoobeeCell">
             <rect key="frame" x="0.0" y="0.0" width="90" height="140"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="90" height="140"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fj1-Kh-Th3" customClass="ImageView">
+                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jT7-5l-NUZ">
                         <rect key="frame" x="0.0" y="0.0" width="90" height="140"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    </imageView>
-                    <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="90" translatesAutoresizingMaskIntoConstraints="NO" id="cfM-D8-YwP">
-                        <rect key="frame" x="0.0" y="103" width="90" height="37"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.9567175094" green="0.95562843610000003" blue="0.97465183420000001" alpha="0.75" colorSpace="calibratedRGB"/>
-                        <string key="text">Label
-dsad</string>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fj1-Kh-Th3" customClass="ImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="90" height="140"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VO2-sa-ZSk">
+                                <rect key="frame" x="0.0" y="0.0" width="90" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="empty_stars_small.png" translatesAutoresizingMaskIntoConstraints="NO" id="0Qf-N0-m5I">
+                                        <rect key="frame" x="5" y="2" width="80" height="16"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" fixedFrame="YES" image="full_stars_small.png" translatesAutoresizingMaskIntoConstraints="NO" id="pf3-Un-sdr">
+                                        <rect key="frame" x="5" y="2" width="80" height="16"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.9567175094" green="0.95562843610000003" blue="0.97465183420000001" alpha="0.75" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="90" translatesAutoresizingMaskIntoConstraints="NO" id="ojh-aB-O9i">
+                                <rect key="frame" x="0.0" y="107" width="90" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.9567175094" green="0.95562843610000003" blue="0.97465183420000001" alpha="0.75" colorSpace="calibratedRGB"/>
+                                <string key="text">Label
+dasd</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <size key="customSize" width="80" height="146"/>
             <connections>
-                <outlet property="nameLabel" destination="cfM-D8-YwP" id="7dg-O0-FYh"/>
+                <outlet property="contentView" destination="jT7-5l-NUZ" id="gDI-dn-DDS"/>
+                <outlet property="emptyStarsImageView" destination="0Qf-N0-m5I" id="29B-gN-pto"/>
+                <outlet property="fullStarsImageView" destination="pf3-Un-sdr" id="dzv-tk-JBk"/>
+                <outlet property="nameLabel" destination="ojh-aB-O9i" id="7Ea-OT-gNj"/>
                 <outlet property="posterImageView" destination="Fj1-Kh-Th3" id="IHR-px-a7i"/>
+                <outlet property="starsView" destination="VO2-sa-ZSk" id="wPQ-5M-NCS"/>
             </connections>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="empty_stars_small.png" width="80" height="16"/>
+        <image name="full_stars_small.png" width="80" height="16"/>
+    </resources>
 </document>

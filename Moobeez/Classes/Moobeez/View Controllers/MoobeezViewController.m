@@ -14,6 +14,9 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (strong, nonatomic) NSMutableArray* moobeezArray;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *typeSegmentedControl;
+
 @end
 
 @implementation MoobeezViewController
@@ -32,9 +35,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.collectionView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0);
+
     [self.collectionView registerNib:[UINib nibWithNibName:@"MoobeeCell" bundle:nil] forCellWithReuseIdentifier:@"MoobeeCell"];
     
     self.moobeezArray = [[Database sharedDatabase] moobeezWithType:MoobeeSeenType];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,5 +74,31 @@
     
     return cell;
 }
+
+
+#pragma mark - Type
+
+- (IBAction)typeSegmentedControlValueChanged:(id)sender {
+    
+    switch (self.typeSegmentedControl.selectedSegmentIndex) {
+        case 0:
+            self.moobeezArray = [[Database sharedDatabase] moobeezWithType:MoobeeSeenType];
+            break;
+        case 1:
+            self.moobeezArray = [[Database sharedDatabase] moobeezWithType:MoobeeOnWatchlistType];
+            break;
+        case 2:
+            self.moobeezArray = [[Database sharedDatabase] favoritesMoobeez];
+            break;
+        default:
+            break;
+    }
+    
+    self.collectionView.contentOffset = CGPointZero;
+    self.collectionView.contentSize = CGSizeZero;
+    [self.collectionView reloadData];
+    
+}
+
 
 @end

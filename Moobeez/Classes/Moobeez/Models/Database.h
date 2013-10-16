@@ -20,6 +20,7 @@
 - (void)populateWithOldDatabase:(NSArray*)oldDatabase;
 
 - (NSMutableArray*)moobeezWithType:(MoobeeType)type;
+- (NSMutableArray*)favoritesMoobeez;
 - (Moobee*)moobeeWithId:(NSInteger)id;
 
 @end

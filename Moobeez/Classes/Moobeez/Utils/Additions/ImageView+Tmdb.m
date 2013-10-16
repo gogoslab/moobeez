@@ -20,11 +20,11 @@ static NSString* _tmdbRootPath;
     self.defaultImage = [UIImage imageNamed:@"default_image.png"];
 }
 
-- (void)loadImageWithPath:(NSString*)path andWidth:(NSInteger)width {
+- (void)loadImageWithPath:(NSString*)path andWidth:(NSInteger)width completion:(ImageViewCompletionHandler)completionHandler  {
     if (!path) {
         self.image = nil;
         return;
     }
-    [self loadImageWithPath:[_tmdbRootPath stringByAppendingString:[NSString stringWithFormat:@"w%ld%@", (long)width, path]]];
+    [self loadImageWithPath:[_tmdbRootPath stringByAppendingString:[NSString stringWithFormat:@"w%ld%@", (long)width, path]] completion:completionHandler];
 }
 @end

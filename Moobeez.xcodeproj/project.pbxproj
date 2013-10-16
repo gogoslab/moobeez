@@ -20,6 +20,12 @@
 		64177862180C336000CDFA25 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64177860180C336000CDFA25 /* LoadingViewController.m */; };
 		64177863180C336000CDFA25 /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64177861180C336000CDFA25 /* LoadingViewController.xib */; };
 		64177867180C3B5A00CDFA25 /* default_image.png in Resources */ = {isa = PBXBuildFile; fileRef = 64177866180C3B5A00CDFA25 /* default_image.png */; };
+		6417786D180C8A7400CDFA25 /* empty_stars_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 64177869180C8A7400CDFA25 /* empty_stars_small.png */; };
+		6417786E180C8A7400CDFA25 /* empty_stars_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6417786A180C8A7400CDFA25 /* empty_stars_small@2x.png */; };
+		6417786F180C8A7400CDFA25 /* full_stars_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 6417786B180C8A7400CDFA25 /* full_stars_small.png */; };
+		64177870180C8A7400CDFA25 /* full_stars_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6417786C180C8A7400CDFA25 /* full_stars_small@2x.png */; };
+		64177874180CA24000CDFA25 /* AMBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64177873180CA24000CDFA25 /* AMBlurView.m */; };
+		64177876180CA5D900CDFA25 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 64177875180CA5D900CDFA25 /* background.png */; };
 		64392EAF18084BA500504C78 /* TmdbConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64392EAE18084BA500504C78 /* TmdbConnection.m */; };
 		64B2AAC418082AE600E02E2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC318082AE600E02E2F /* Foundation.framework */; };
 		64B2AAC618082AE600E02E2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC518082AE600E02E2F /* CoreGraphics.framework */; };
@@ -107,6 +113,13 @@
 		64177860180C336000CDFA25 /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
 		64177861180C336000CDFA25 /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		64177866180C3B5A00CDFA25 /* default_image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_image.png; sourceTree = "<group>"; };
+		64177869180C8A7400CDFA25 /* empty_stars_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty_stars_small.png; sourceTree = "<group>"; };
+		6417786A180C8A7400CDFA25 /* empty_stars_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty_stars_small@2x.png"; sourceTree = "<group>"; };
+		6417786B180C8A7400CDFA25 /* full_stars_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = full_stars_small.png; sourceTree = "<group>"; };
+		6417786C180C8A7400CDFA25 /* full_stars_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full_stars_small@2x.png"; sourceTree = "<group>"; };
+		64177872180CA24000CDFA25 /* AMBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMBlurView.h; sourceTree = "<group>"; };
+		64177873180CA24000CDFA25 /* AMBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMBlurView.m; sourceTree = "<group>"; };
+		64177875180CA5D900CDFA25 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		64392EAD18084BA500504C78 /* TmdbConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbConnection.h; sourceTree = "<group>"; };
 		64392EAE18084BA500504C78 /* TmdbConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmdbConnection.m; sourceTree = "<group>"; };
 		64392EB218084D9200504C78 /* TmdbConnections.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TmdbConnections.h; sourceTree = "<group>"; };
@@ -294,8 +307,29 @@
 			isa = PBXGroup;
 			children = (
 				64177866180C3B5A00CDFA25 /* default_image.png */,
+				64177875180CA5D900CDFA25 /* background.png */,
 			);
 			path = "Common Images";
+			sourceTree = "<group>";
+		};
+		64177868180C8A7400CDFA25 /* Moobeez */ = {
+			isa = PBXGroup;
+			children = (
+				64177869180C8A7400CDFA25 /* empty_stars_small.png */,
+				6417786A180C8A7400CDFA25 /* empty_stars_small@2x.png */,
+				6417786B180C8A7400CDFA25 /* full_stars_small.png */,
+				6417786C180C8A7400CDFA25 /* full_stars_small@2x.png */,
+			);
+			path = Moobeez;
+			sourceTree = "<group>";
+		};
+		64177871180CA24000CDFA25 /* AMBlurView */ = {
+			isa = PBXGroup;
+			children = (
+				64177872180CA24000CDFA25 /* AMBlurView.h */,
+				64177873180CA24000CDFA25 /* AMBlurView.m */,
+			);
+			path = AMBlurView;
 			sourceTree = "<group>";
 		};
 		64392EB018084D6B00504C78 /* Tmdb Connections */ = {
@@ -403,6 +437,7 @@
 		64B2AB0518082C4A00E02E2F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				64177868180C8A7400CDFA25 /* Moobeez */,
 				64177865180C3B5A00CDFA25 /* Common Images */,
 				64B2AB911808486200E02E2F /* Tab Bar Icons */,
 				64B2AADE18082AE600E02E2F /* Images.xcassets */,
@@ -484,6 +519,7 @@
 		64B2AB2C18083CBF00E02E2F /* External SDKs */ = {
 			isa = PBXGroup;
 			children = (
+				64177871180CA24000CDFA25 /* AMBlurView */,
 				64B2AB2D18083CBF00E02E2F /* SBJson */,
 			);
 			path = "External SDKs";
@@ -774,13 +810,18 @@
 				64B2AB951808486200E02E2F /* tab_bar_icon_moobeez@2x.png in Resources */,
 				64177863180C336000CDFA25 /* LoadingViewController.xib in Resources */,
 				64B2AACE18082AE600E02E2F /* InfoPlist.strings in Resources */,
+				6417786D180C8A7400CDFA25 /* empty_stars_small.png in Resources */,
 				64B2AB89180844F800E02E2F /* MoobeezViewController.xib in Resources */,
+				64177876180CA5D900CDFA25 /* background.png in Resources */,
 				64B2AB0718082C4A00E02E2F /* Application.xib in Resources */,
 				6417785A180C221800CDFA25 /* MoobeeCell.xib in Resources */,
+				6417786E180C8A7400CDFA25 /* empty_stars_small@2x.png in Resources */,
 				64B2AB941808486200E02E2F /* tab_bar_icon_moobeez.png in Resources */,
 				64B2AB8F1808452700E02E2F /* MoviesViewController.xib in Resources */,
 				64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */,
+				64177870180C8A7400CDFA25 /* full_stars_small@2x.png in Resources */,
 				64177867180C3B5A00CDFA25 /* default_image.png in Resources */,
+				6417786F180C8A7400CDFA25 /* full_stars_small.png in Resources */,
 				640865F6180B62EC00725CE4 /* MoobeezDatabase in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -819,6 +860,7 @@
 				64B2AB8E1808452700E02E2F /* MoviesViewController.m in Sources */,
 				64B2AB7A18083ED600E02E2F /* UIColor+Hex.m in Sources */,
 				64B2AB6B18083CBF00E02E2F /* SBJsonStreamWriter.m in Sources */,
+				64177874180CA24000CDFA25 /* AMBlurView.m in Sources */,
 				64B2AB6A18083CBF00E02E2F /* SBJsonStreamParserState.m in Sources */,
 				64B2AB6818083CBF00E02E2F /* SBJsonStreamParser.m in Sources */,
 				64B2AB6918083CBF00E02E2F /* SBJsonStreamParserAccumulator.m in Sources */,
