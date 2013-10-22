@@ -23,6 +23,7 @@
 #import "ViewController.h"
 #import "MoobeezViewController.h"
 #import "MoviesViewController.h"
+#import "MovieViewController.h"
 
 #import "MoobeeCell.h"
 

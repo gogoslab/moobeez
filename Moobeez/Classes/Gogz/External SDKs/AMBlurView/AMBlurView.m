@@ -48,7 +48,9 @@
     
     if (![self toolbar]) {
         [self setToolbar:[[UIToolbar alloc] initWithFrame:[self bounds]]];
+        self.toolbar.barTintColor = self.tintColor;
         [self.layer insertSublayer:[self.toolbar layer] atIndex:0];
+        self.alpha = 0.8;
     }
 }
 

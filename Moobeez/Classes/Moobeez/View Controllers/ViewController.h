@@ -14,4 +14,6 @@
 
 @property (readonly, nonatomic) AppDelegate* appDelegate;
 
+@property (readonly, nonatomic) ViewController* previousViewController;
+
 @end

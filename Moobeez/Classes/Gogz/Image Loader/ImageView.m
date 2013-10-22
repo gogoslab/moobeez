@@ -59,6 +59,7 @@
     [self.activityIndicator startAnimating];
     
     self.image = nil;
+    
     self.borderImageView.hidden = YES;
     
     CGSize size = self.frame.size;

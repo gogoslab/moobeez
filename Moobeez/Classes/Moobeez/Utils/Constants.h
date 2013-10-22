@@ -24,3 +24,5 @@
 #define DidLoadMovieNotification @"didLoadMovie"
 #define WillLoadMovieNotification @"willLoadMovie"
 #define DidLoadMoviesNotification @"didLoadMovies"
+
+typedef void (^EmptyHandler) ();

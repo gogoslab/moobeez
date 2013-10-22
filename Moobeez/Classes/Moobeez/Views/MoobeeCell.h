@@ -14,4 +14,9 @@
 
 @property (weak, nonatomic) Moobee* moobee;
 
+- (void)animateGrowWithCompletion:(void (^)(void))completionHandler;
+- (void)animateShrinkWithCompletion:(void (^)(void))completionHandler;
+
++ (CGFloat)cellHeight;
+
 @end

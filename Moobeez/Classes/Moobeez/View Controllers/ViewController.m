@@ -40,4 +40,15 @@
     return (AppDelegate*) [UIApplication sharedApplication].delegate;
 }
 
+- (ViewController*)previousViewController {
+    @try {
+        return self.navigationController.viewControllers[[self.navigationController.viewControllers indexOfObject:self] - 1];
+    }
+    @catch (NSException *exception) {
+        return nil;
+    }
+    @finally {
+    }
+}
+
 @end
