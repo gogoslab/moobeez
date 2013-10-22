@@ -45,10 +45,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="271"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="toolbox_up_arrow.png" id="svD-XX-fbC">
-                    <rect key="frame" x="135" y="7" width="50" height="15"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="toolbox_up_arrow.png" id="svD-XX-fbC">
+                    <rect key="frame" x="140" y="7" width="40" height="15"/>
                     <autoresizingMask key="autoresizingMask"/>
                 </imageView>
             </subviews>
