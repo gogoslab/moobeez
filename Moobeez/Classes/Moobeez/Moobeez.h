@@ -13,6 +13,10 @@
 
 #import "AppDelegate.h"
 
+
+
+#pragma mark - Utils
+
 #import "Utils.h"
 
 #import "TmdbConnections.h"
@@ -20,11 +24,31 @@
 #import "Database.h"
 
 
+
+#pragma mark - View Controllers
+
 #import "ViewController.h"
 #import "MoobeezViewController.h"
 #import "MoviesViewController.h"
 #import "MovieViewController.h"
 
+
+#pragma mark - Cells
+
 #import "MoobeeCell.h"
+#import "CharacterCell.h"
+
+
+
+#pragma mark - Toolboxes
+
+#import "ToolboxView.h"
+#import "MovieToolboxView.h"
+
+
+
+#pragma mark - Stars View
+
+#import "StarsView.h"
 
 #endif

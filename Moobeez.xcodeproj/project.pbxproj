@@ -29,6 +29,20 @@
 		642CA8ED181542FA00A293E4 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642CA8EB181542FA00A293E4 /* MovieViewController.m */; };
 		642CA8EE181542FA00A293E4 /* MovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 642CA8EC181542FA00A293E4 /* MovieViewController.xib */; };
 		64392EAF18084BA500504C78 /* TmdbConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64392EAE18084BA500504C78 /* TmdbConnection.m */; };
+		649C3A661817FE7F0000A34C /* ToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A651817FE7F0000A34C /* ToolboxView.m */; };
+		649C3A6D1817FFEA0000A34C /* MovieToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A6C1817FFEA0000A34C /* MovieToolboxView.m */; };
+		649C3A751818068F0000A34C /* empty_stars_big.png in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A711818068F0000A34C /* empty_stars_big.png */; };
+		649C3A761818068F0000A34C /* empty_stars_big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A721818068F0000A34C /* empty_stars_big@2x.png */; };
+		649C3A771818068F0000A34C /* full_stars_big.png in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A731818068F0000A34C /* full_stars_big.png */; };
+		649C3A781818068F0000A34C /* full_stars_big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A741818068F0000A34C /* full_stars_big@2x.png */; };
+		649C3A7B181812790000A34C /* StarsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A7A181812790000A34C /* StarsView.m */; };
+		649C3A7F181820FF0000A34C /* TmdbMovie.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A7E181820FF0000A34C /* TmdbMovie.m */; };
+		649C3A83181822E60000A34C /* MovieConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A82181822E60000A34C /* MovieConnection.m */; };
+		649C3A87181825630000A34C /* TmdbPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A86181825630000A34C /* TmdbPerson.m */; };
+		649C3A8B181825810000A34C /* TmdbImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A8A181825810000A34C /* TmdbImage.m */; };
+		649C3A9118182BCA0000A34C /* TmdbCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A9018182BCA0000A34C /* TmdbCharacter.m */; };
+		649C3A9518182FD30000A34C /* CharacterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A9418182FD30000A34C /* CharacterCell.m */; };
+		649C3A98181830240000A34C /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A97181830240000A34C /* CharacterCell.xib */; };
 		64B2AAC418082AE600E02E2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC318082AE600E02E2F /* Foundation.framework */; };
 		64B2AAC618082AE600E02E2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC518082AE600E02E2F /* CoreGraphics.framework */; };
 		64B2AAC818082AE600E02E2F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC718082AE600E02E2F /* UIKit.framework */; };
@@ -136,6 +150,29 @@
 		64392EAD18084BA500504C78 /* TmdbConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbConnection.h; sourceTree = "<group>"; };
 		64392EAE18084BA500504C78 /* TmdbConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmdbConnection.m; sourceTree = "<group>"; };
 		64392EB218084D9200504C78 /* TmdbConnections.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TmdbConnections.h; sourceTree = "<group>"; };
+		649C3A641817FE7F0000A34C /* ToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolboxView.h; sourceTree = "<group>"; };
+		649C3A651817FE7F0000A34C /* ToolboxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolboxView.m; sourceTree = "<group>"; };
+		649C3A6B1817FFEA0000A34C /* MovieToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieToolboxView.h; sourceTree = "<group>"; };
+		649C3A6C1817FFEA0000A34C /* MovieToolboxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieToolboxView.m; sourceTree = "<group>"; };
+		649C3A711818068F0000A34C /* empty_stars_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty_stars_big.png; sourceTree = "<group>"; };
+		649C3A721818068F0000A34C /* empty_stars_big@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty_stars_big@2x.png"; sourceTree = "<group>"; };
+		649C3A731818068F0000A34C /* full_stars_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = full_stars_big.png; sourceTree = "<group>"; };
+		649C3A741818068F0000A34C /* full_stars_big@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full_stars_big@2x.png"; sourceTree = "<group>"; };
+		649C3A79181812790000A34C /* StarsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarsView.h; sourceTree = "<group>"; };
+		649C3A7A181812790000A34C /* StarsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarsView.m; sourceTree = "<group>"; };
+		649C3A7D181820FF0000A34C /* TmdbMovie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbMovie.h; sourceTree = "<group>"; };
+		649C3A7E181820FF0000A34C /* TmdbMovie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmdbMovie.m; sourceTree = "<group>"; };
+		649C3A81181822E60000A34C /* MovieConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieConnection.h; sourceTree = "<group>"; };
+		649C3A82181822E60000A34C /* MovieConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieConnection.m; sourceTree = "<group>"; };
+		649C3A85181825630000A34C /* TmdbPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbPerson.h; sourceTree = "<group>"; };
+		649C3A86181825630000A34C /* TmdbPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmdbPerson.m; sourceTree = "<group>"; };
+		649C3A89181825810000A34C /* TmdbImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbImage.h; sourceTree = "<group>"; };
+		649C3A8A181825810000A34C /* TmdbImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmdbImage.m; sourceTree = "<group>"; };
+		649C3A8F18182BCA0000A34C /* TmdbCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbCharacter.h; sourceTree = "<group>"; };
+		649C3A9018182BCA0000A34C /* TmdbCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmdbCharacter.m; sourceTree = "<group>"; };
+		649C3A9318182FD30000A34C /* CharacterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterCell.h; sourceTree = "<group>"; };
+		649C3A9418182FD30000A34C /* CharacterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterCell.m; sourceTree = "<group>"; };
+		649C3A97181830240000A34C /* CharacterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterCell.xib; sourceTree = "<group>"; };
 		64B2AAC018082AE600E02E2F /* Moobeez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moobeez.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B2AAC318082AE600E02E2F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		64B2AAC518082AE600E02E2F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -291,18 +328,19 @@
 				64086603180B6D2E00725CE4 /* Database.m */,
 				640865FA180B64EB00725CE4 /* Database Item */,
 				64086601180B6D0C00725CE4 /* Moobee */,
+				649C3A8E181825A50000A34C /* Tmdb models */,
 			);
 			name = Database;
 			sourceTree = "<group>";
 		};
-		64177858180C21F700CDFA25 /* MoobeeCell */ = {
+		64177858180C21F700CDFA25 /* Moobee Cell */ = {
 			isa = PBXGroup;
 			children = (
 				64177855180C21F200CDFA25 /* MoobeeCell.h */,
 				64177856180C21F200CDFA25 /* MoobeeCell.m */,
 				64177859180C221700CDFA25 /* MoobeeCell.xib */,
 			);
-			name = MoobeeCell;
+			name = "Moobee Cell";
 			sourceTree = "<group>";
 		};
 		6417785E180C314D00CDFA25 /* Configuration Connection */ = {
@@ -344,6 +382,10 @@
 		64177868180C8A7400CDFA25 /* Moobeez */ = {
 			isa = PBXGroup;
 			children = (
+				649C3A711818068F0000A34C /* empty_stars_big.png */,
+				649C3A721818068F0000A34C /* empty_stars_big@2x.png */,
+				649C3A731818068F0000A34C /* full_stars_big.png */,
+				649C3A741818068F0000A34C /* full_stars_big@2x.png */,
 				64177869180C8A7400CDFA25 /* empty_stars_small.png */,
 				6417786A180C8A7400CDFA25 /* empty_stars_small@2x.png */,
 				6417786B180C8A7400CDFA25 /* full_stars_small.png */,
@@ -376,6 +418,8 @@
 			children = (
 				64392EB218084D9200504C78 /* TmdbConnections.h */,
 				64392EB118084D7800504C78 /* Tmdb Connection */,
+				6417785E180C314D00CDFA25 /* Configuration Connection */,
+				649C3A84181822EA0000A34C /* Movie Connection */,
 			);
 			name = "Tmdb Connections";
 			sourceTree = "<group>";
@@ -387,6 +431,117 @@
 				64392EAE18084BA500504C78 /* TmdbConnection.m */,
 			);
 			name = "Tmdb Connection";
+			sourceTree = "<group>";
+		};
+		649C3A671817FE840000A34C /* Toolbox View */ = {
+			isa = PBXGroup;
+			children = (
+				649C3A641817FE7F0000A34C /* ToolboxView.h */,
+				649C3A651817FE7F0000A34C /* ToolboxView.m */,
+			);
+			name = "Toolbox View";
+			sourceTree = "<group>";
+		};
+		649C3A6E1817FFF00000A34C /* Movie Toolbox View */ = {
+			isa = PBXGroup;
+			children = (
+				649C3A6B1817FFEA0000A34C /* MovieToolboxView.h */,
+				649C3A6C1817FFEA0000A34C /* MovieToolboxView.m */,
+			);
+			name = "Movie Toolbox View";
+			sourceTree = "<group>";
+		};
+		649C3A6F1817FFF90000A34C /* Toolboxes */ = {
+			isa = PBXGroup;
+			children = (
+				649C3A671817FE840000A34C /* Toolbox View */,
+				649C3A6E1817FFF00000A34C /* Movie Toolbox View */,
+			);
+			name = Toolboxes;
+			sourceTree = "<group>";
+		};
+		649C3A70181800000000A34C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				64177858180C21F700CDFA25 /* Moobee Cell */,
+				649C3A9618182FD80000A34C /* Character Cell */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		649C3A7C1818127F0000A34C /* Stars View */ = {
+			isa = PBXGroup;
+			children = (
+				649C3A79181812790000A34C /* StarsView.h */,
+				649C3A7A181812790000A34C /* StarsView.m */,
+			);
+			name = "Stars View";
+			sourceTree = "<group>";
+		};
+		649C3A80181821050000A34C /* Tmdb Movie */ = {
+			isa = PBXGroup;
+			children = (
+				649C3A7D181820FF0000A34C /* TmdbMovie.h */,
+				649C3A7E181820FF0000A34C /* TmdbMovie.m */,
+			);
+			name = "Tmdb Movie";
+			sourceTree = "<group>";
+		};
+		649C3A84181822EA0000A34C /* Movie Connection */ = {
+			isa = PBXGroup;
+			children = (
+				649C3A81181822E60000A34C /* MovieConnection.h */,
+				649C3A82181822E60000A34C /* MovieConnection.m */,
+			);
+			name = "Movie Connection";
+			sourceTree = "<group>";
+		};
+		649C3A881818256B0000A34C /* Tmdb Person */ = {
+			isa = PBXGroup;
+			children = (
+				649C3A85181825630000A34C /* TmdbPerson.h */,
+				649C3A86181825630000A34C /* TmdbPerson.m */,
+			);
+			name = "Tmdb Person";
+			sourceTree = "<group>";
+		};
+		649C3A8C181825850000A34C /* Tmdb Image */ = {
+			isa = PBXGroup;
+			children = (
+				649C3A89181825810000A34C /* TmdbImage.h */,
+				649C3A8A181825810000A34C /* TmdbImage.m */,
+			);
+			name = "Tmdb Image";
+			sourceTree = "<group>";
+		};
+		649C3A8E181825A50000A34C /* Tmdb models */ = {
+			isa = PBXGroup;
+			children = (
+				649C3A80181821050000A34C /* Tmdb Movie */,
+				649C3A881818256B0000A34C /* Tmdb Person */,
+				649C3A9218182BCE0000A34C /* Tmdb Character */,
+				649C3A8C181825850000A34C /* Tmdb Image */,
+			);
+			name = "Tmdb models";
+			sourceTree = "<group>";
+		};
+		649C3A9218182BCE0000A34C /* Tmdb Character */ = {
+			isa = PBXGroup;
+			children = (
+				649C3A8F18182BCA0000A34C /* TmdbCharacter.h */,
+				649C3A9018182BCA0000A34C /* TmdbCharacter.m */,
+			);
+			name = "Tmdb Character";
+			sourceTree = "<group>";
+		};
+		649C3A9618182FD80000A34C /* Character Cell */ = {
+			isa = PBXGroup;
+			children = (
+				649C3A9318182FD30000A34C /* CharacterCell.h */,
+				649C3A9418182FD30000A34C /* CharacterCell.m */,
+				649C3A97181830240000A34C /* CharacterCell.xib */,
+			);
+			name = "Character Cell";
 			sourceTree = "<group>";
 		};
 		64B2AAB718082AE600E02E2F = {
@@ -621,7 +776,6 @@
 			isa = PBXGroup;
 			children = (
 				64392EB018084D6B00504C78 /* Tmdb Connections */,
-				6417785E180C314D00CDFA25 /* Configuration Connection */,
 			);
 			path = Connections;
 			sourceTree = "<group>";
@@ -670,7 +824,9 @@
 		64B2AB5718083CBF00E02E2F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				64177858180C21F700CDFA25 /* MoobeeCell */,
+				649C3A70181800000000A34C /* Cells */,
+				649C3A6F1817FFF90000A34C /* Toolboxes */,
+				649C3A7C1818127F0000A34C /* Stars View */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -856,14 +1012,19 @@
 				6417786D180C8A7400CDFA25 /* empty_stars_small.png in Resources */,
 				64B2AB89180844F800E02E2F /* MoobeezViewController.xib in Resources */,
 				64DC8C1A1817215E002C11D8 /* toolbox_down_arrow@2x.png in Resources */,
+				649C3A771818068F0000A34C /* full_stars_big.png in Resources */,
 				64177876180CA5D900CDFA25 /* background.png in Resources */,
 				64B2AB0718082C4A00E02E2F /* Application.xib in Resources */,
 				6417785A180C221800CDFA25 /* MoobeeCell.xib in Resources */,
+				649C3A98181830240000A34C /* CharacterCell.xib in Resources */,
 				6417786E180C8A7400CDFA25 /* empty_stars_small@2x.png in Resources */,
 				64B2AB941808486200E02E2F /* tab_bar_icon_moobeez.png in Resources */,
+				649C3A761818068F0000A34C /* empty_stars_big@2x.png in Resources */,
 				64DC8C191817215E002C11D8 /* toolbox_down_arrow.png in Resources */,
 				64B2AB8F1808452700E02E2F /* MoviesViewController.xib in Resources */,
+				649C3A751818068F0000A34C /* empty_stars_big.png in Resources */,
 				64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */,
+				649C3A781818068F0000A34C /* full_stars_big@2x.png in Resources */,
 				64DC8C1B1817215E002C11D8 /* toolbox_line.png in Resources */,
 				64177870180C8A7400CDFA25 /* full_stars_small@2x.png in Resources */,
 				64177867180C3B5A00CDFA25 /* default_image.png in Resources */,
@@ -890,10 +1051,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				649C3A661817FE7F0000A34C /* ToolboxView.m in Sources */,
 				64B2AB6018083CBF00E02E2F /* UITableView+Extra.m in Sources */,
+				649C3A9118182BCA0000A34C /* TmdbCharacter.m in Sources */,
 				64B2AB6318083CBF00E02E2F /* Connection.m in Sources */,
 				64B2AB5C18083CBF00E02E2F /* NSMutableDictionary+Extensions.m in Sources */,
 				64B2AB0618082C4A00E02E2F /* AppDelegate.m in Sources */,
+				649C3A87181825630000A34C /* TmdbPerson.m in Sources */,
+				649C3A8B181825810000A34C /* TmdbImage.m in Sources */,
 				64B2AB801808412300E02E2F /* ConnectionViewController.m in Sources */,
 				64B2AB6618083CBF00E02E2F /* NSObject+SBJson.m in Sources */,
 				64177857180C21F200CDFA25 /* MoobeeCell.m in Sources */,
@@ -910,8 +1075,11 @@
 				64B2AB7A18083ED600E02E2F /* UIColor+Hex.m in Sources */,
 				64B2AB6B18083CBF00E02E2F /* SBJsonStreamWriter.m in Sources */,
 				64177874180CA24000CDFA25 /* AMBlurView.m in Sources */,
+				649C3A9518182FD30000A34C /* CharacterCell.m in Sources */,
 				64B2AB6A18083CBF00E02E2F /* SBJsonStreamParserState.m in Sources */,
+				649C3A7F181820FF0000A34C /* TmdbMovie.m in Sources */,
 				64B2AB6818083CBF00E02E2F /* SBJsonStreamParser.m in Sources */,
+				649C3A83181822E60000A34C /* MovieConnection.m in Sources */,
 				64B2AB6918083CBF00E02E2F /* SBJsonStreamParserAccumulator.m in Sources */,
 				64B2AB7118083CBF00E02E2F /* ImageLoader.m in Sources */,
 				640865FD180B6AF600725CE4 /* NSMutableDictionary+SQL.m in Sources */,
@@ -923,6 +1091,7 @@
 				64B2AB5818083CBF00E02E2F /* NSDate+Calculator.m in Sources */,
 				640865EA180B4FC200725CE4 /* URLParameters.m in Sources */,
 				64B2AB7218083CBF00E02E2F /* ImageView.m in Sources */,
+				649C3A7B181812790000A34C /* StarsView.m in Sources */,
 				64B2AB5F18083CBF00E02E2F /* UIImage+Resize.m in Sources */,
 				64B2AB88180844F800E02E2F /* MoobeezViewController.m in Sources */,
 				640865F9180B64E700725CE4 /* DatabaseItem.m in Sources */,
@@ -936,6 +1105,7 @@
 				64B2AB6218083CBF00E02E2F /* Alert.m in Sources */,
 				64B2AB6418083CBF00E02E2F /* ConnectionsManager.m in Sources */,
 				64177862180C336000CDFA25 /* LoadingViewController.m in Sources */,
+				649C3A6D1817FFEA0000A34C /* MovieToolboxView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

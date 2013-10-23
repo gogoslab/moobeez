@@ -9,20 +9,11 @@
 #import "MovieViewController.h"
 #import "Moobeez.h"
 
-#define MIN_TOOLBOX_HEIGHT 72
-
-@interface MovieViewController ()
+@interface MovieViewController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet ImageView *posterImageView;
 
-@property (strong, nonatomic) IBOutlet UIView *toolboxView;
-@property (weak, nonatomic) IBOutlet UIImageView *toolboxHandlerImageView;
-
-@property (readwrite, nonatomic) CGFloat toolboxStartPoint;
-@property (readwrite, nonatomic) CGFloat delta;
-
-@property (readwrite, nonatomic) CGFloat minToolboxY;
-@property (readwrite, nonatomic) CGFloat maxToolboxY;
+@property (strong, nonatomic) IBOutlet MovieToolboxView *toolboxView;
 
 @end
 
@@ -48,7 +39,15 @@
     }];
     
     [self.view addSubview:self.toolboxView];
-    self.toolboxView.y = self.maxToolboxY;
+    self.toolboxView.y = self.toolboxView.maxToolboxY;
+    self.toolboxView.moobee = self.moobee;
+    
+    MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:self.moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+        self.tmdbMovie = movie;
+        self.toolboxView.tmdbMovie = movie;
+    }];
+    
+    [self startConnection:connection];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,93 +63,5 @@
     }];
     
 }
-
-- (IBAction)toolboxDidPan:(id)sender {
-    
-    UIPanGestureRecognizer* gesture = (UIPanGestureRecognizer*) sender;
-    
-    switch (gesture.state) {
-        case UIGestureRecognizerStateBegan:
-            self.toolboxStartPoint = [gesture translationInView:self.view].y;
-            break;
-        case UIGestureRecognizerStateChanged:
-        {
-            self.toolboxHandlerImageView.image = [UIImage imageNamed:@"toolbox_line.png"];
-
-            int point = [gesture translationInView:self.view].y;
-            
-            int toolboxViewY = self.toolboxView.y;
-            toolboxViewY += point - self.toolboxStartPoint;
-            
-            toolboxViewY = MAX(toolboxViewY, self.minToolboxY);
-            toolboxViewY = MIN(toolboxViewY, self.maxToolboxY);
-            
-            self.delta = toolboxViewY - self.toolboxView.y;
-            self.toolboxStartPoint += self.delta;
-            
-            [UIView animateWithDuration:0.05 animations:^{
-                self.toolboxView.y = toolboxViewY;
-            }];
-        }
-            break;
-        case UIGestureRecognizerStateEnded:
-        case UIGestureRecognizerStateCancelled:
-        {
-            if (abs(self.delta) > 1) {
-                if (self.delta > 0) {
-                    [self hideFullToolbox];
-                }
-                else if (self.delta < 0) {
-                    [self showFullToolbox];
-                }
-            }
-            else {
-                
-                CGFloat position = (self.toolboxView.y - self.minToolboxY) / (self.maxToolboxY - self.minToolboxY);
-                
-                if (position > 0.5) {
-                    [self hideFullToolbox];
-                }
-                else {
-                    [self showFullToolbox];
-                }
-            }
-        }
-            break;
-        default:
-            break;
-    }
-}
-
-- (void)showFullToolbox {
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        self.toolboxView.y = self.minToolboxY;
-    } completion:^(BOOL finished) {
-        self.toolboxHandlerImageView.image = [UIImage imageNamed:@"toolbox_down_arrow.png"];
-    }];
-    
-}
-
-- (void)hideFullToolbox {
-    
-    [UIView animateWithDuration:0.5 animations:^{
-        self.toolboxView.y = self.maxToolboxY;
-    } completion:^(BOOL finished) {
-        self.toolboxHandlerImageView.image = [UIImage imageNamed:@"toolbox_up_arrow.png"];
-    }];
-    
-}
-
-- (CGFloat)minToolboxY {
-    return self.view.height - self.toolboxView.height;
-}
-
-- (CGFloat)maxToolboxY {
-    return self.view.height - MIN_TOOLBOX_HEIGHT;
-}
-
-
-
 
 @end

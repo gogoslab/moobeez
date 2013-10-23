@@ -14,6 +14,6 @@
 @property (readonly, nonatomic) NSInteger id;
 
 + (id)initWithId:(NSInteger)id;
-- (id)initWithDictionary:(NSDictionary*)dictionary;
+- (id)initWithDatabaseDictionary:(NSDictionary*)databaseDictionary;
 
 @end

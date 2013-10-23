@@ -10,10 +10,12 @@
 #import "Constants.h"
 
 @class Moobee;
+@class TmdbMovie;
 
 @interface MovieViewController : ViewController
 
 @property (strong, nonatomic) Moobee* moobee;
+@property (strong, nonatomic) TmdbMovie* tmdbMovie;
 
 @property (copy, nonatomic) EmptyHandler closeHandler;
 

@@ -200,7 +200,7 @@ static Database* sharedDatabase;
         == SQLITE_OK) {
         while (sqlite3_step(statement) == SQLITE_ROW) {
             
-            Moobee* moobee = [[Moobee alloc] initWithDictionary:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
+            Moobee* moobee = [[Moobee alloc] initWithDatabaseDictionary:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
             
             [results addObject:moobee];
         }
@@ -212,7 +212,7 @@ static Database* sharedDatabase;
 
 - (Moobee*)moobeeWithId:(NSInteger)id {
     
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM Moobeez WHERE ID = %ld", id];
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM Moobeez WHERE ID = %ld", (long)id];
     sqlite3_stmt *statement;
     
     if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
@@ -222,7 +222,7 @@ static Database* sharedDatabase;
         
         while (sqlite3_step(statement) == SQLITE_ROW) {
             
-            moobee = [[Moobee alloc] initWithDictionary:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
+            moobee = [[Moobee alloc] initWithDatabaseDictionary:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
             
             break;
         }

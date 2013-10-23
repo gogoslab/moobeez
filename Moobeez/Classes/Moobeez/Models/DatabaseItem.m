@@ -20,13 +20,13 @@
     return [[DatabaseItem alloc] init];
 }
 
-- (id)initWithDictionary:(NSDictionary *)dictionary {
+- (id)initWithDatabaseDictionary:(NSDictionary*)databaseDictionary {
     
     self = [self init];
     
     if (self) {
         
-        self.id = [dictionary[@"ID"] integerValue];
+        self.id = [databaseDictionary[@"ID"] integerValue];
         
     }
     

@@ -12,6 +12,11 @@
 #import "DatabaseItem.h"
 #import "Moobee.h"
 
+#import "TmdbMovie.h"
+#import "TmdbPerson.h"
+#import "TmdbImage.h"
+#import "TmdbCharacter.h"
+
 @interface Database : NSObject {
     sqlite3 *database;
 }

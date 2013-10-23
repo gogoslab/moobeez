@@ -15,20 +15,20 @@
     return [[Database sharedDatabase] moobeeWithId:id];
 }
 
-- (id)initWithDictionary:(NSDictionary *)dictionary {
+- (id)initWithDatabaseDictionary:(NSDictionary*)databaseDictionary {
     
-    self = [super initWithDictionary:dictionary];
+    self = [super initWithDatabaseDictionary:databaseDictionary];
     
     if (self) {
 
-        self.tmdbId = [dictionary[@"tmdbId"] integerValue];
-        self.name = dictionary[@"name"];
-        self.comments = dictionary[@"comments"];
-        self.posterPath = dictionary[@"posterPath"];
-        self.rating = [dictionary[@"rating"] floatValue];
-        self.date = [NSDate dateWithTimeIntervalSinceReferenceDate:[dictionary[@"date"] doubleValue]];
-        self.type = [dictionary[@"type"] intValue];
-        self.isFavorite = [dictionary[@"isFavorite"] boolValue];
+        self.tmdbId = [databaseDictionary[@"tmdbId"] integerValue];
+        self.name = databaseDictionary[@"name"];
+        self.comments = databaseDictionary[@"comments"];
+        self.posterPath = databaseDictionary[@"posterPath"];
+        self.rating = [databaseDictionary[@"rating"] floatValue];
+        self.date = [NSDate dateWithTimeIntervalSinceReferenceDate:[databaseDictionary[@"date"] doubleValue]];
+        self.type = [databaseDictionary[@"type"] intValue];
+        self.isFavorite = [databaseDictionary[@"isFavorite"] boolValue];
 
     }
 
