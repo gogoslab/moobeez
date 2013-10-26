@@ -68,7 +68,7 @@
             TmdbPerson* person = [[TmdbPerson alloc] initWithTmdbDictionary:castDictionary];
             
             TmdbCharacter* character = [[TmdbCharacter alloc] init];
-            character.name = castDictionary[@"character"];
+            character.name = [castDictionary stringForKey:@"character"];
             character.person = person;
             
             [self.characters addObject:character];

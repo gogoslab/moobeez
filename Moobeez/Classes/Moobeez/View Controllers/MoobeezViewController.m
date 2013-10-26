@@ -151,15 +151,23 @@ enum CollectionSections {
         
         MoobeeCell* cell = (MoobeeCell*) [collectionView cellForItemAtIndexPath:indexPath];
         
-        [cell animateGrowWithCompletion:^{
-            MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
-            viewController.moobee = self.moobeezArray[indexPath.row];
-            [self presentViewController:viewController animated:NO completion:^{}];
-
-            viewController.closeHandler = ^{
-                [cell animateShrinkWithCompletion:^{}];
-            };
+        Moobee* moobee = self.moobeezArray[indexPath.row];
+        
+        MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+            [cell animateGrowWithCompletion:^{
+                MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
+                viewController.moobee = moobee;
+                viewController.tmdbMovie = movie;
+                [self presentViewController:viewController animated:NO completion:^{}];
+                
+                viewController.closeHandler = ^{
+                    [cell animateShrinkWithCompletion:^{}];
+                };
+            }];
         }];
+        
+        connection.activityIndicator = cell.activityIndicator;
+        [self.connectionsManager startConnection:connection];
     }
 }
 

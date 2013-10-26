@@ -14,11 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIView* contentView;
 
 @property (weak, nonatomic) IBOutlet ImageView *posterImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *emptyStarsImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *fullStarsImageView;
-@property (weak, nonatomic) IBOutlet UIView *starsView;
+@property (weak, nonatomic) IBOutlet StarsView *starsView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UIView *fullStarsContentView;
 
 @end
 
@@ -38,9 +35,7 @@
     
     self.nameLabel.text = moobee.name;
     
-    self.fullStarsContentView.autoresizesSubviews = NO;
-    self.fullStarsContentView.width = self.fullStarsImageView.width * self.moobee.rating / 5;
-    self.fullStarsContentView.autoresizesSubviews = YES;
+    self.starsView.rating = self.moobee.rating;
 
     self.posterImageView.defaultImage = [UIImage imageNamed:@"default_image.png"];
     self.posterImageView.loadSyncronized = YES;
@@ -52,9 +47,7 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    self.fullStarsContentView.autoresizesSubviews = NO;
-    self.fullStarsContentView.width = self.fullStarsImageView.width * self.moobee.rating / 5;
-    self.fullStarsContentView.autoresizesSubviews = YES;
+    self.starsView.rating = self.moobee.rating;
 
     [super drawRect:rect];
 }

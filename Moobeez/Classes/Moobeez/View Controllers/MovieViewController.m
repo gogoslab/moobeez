@@ -41,13 +41,7 @@
     [self.view addSubview:self.toolboxView];
     self.toolboxView.y = self.toolboxView.maxToolboxY;
     self.toolboxView.moobee = self.moobee;
-    
-    MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:self.moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
-        self.tmdbMovie = movie;
-        self.toolboxView.tmdbMovie = movie;
-    }];
-    
-    [self startConnection:connection];
+    self.toolboxView.tmdbMovie = self.tmdbMovie;
 }
 
 - (void)didReceiveMemoryWarning

@@ -18,6 +18,9 @@
 
 @implementation StarsView
 
+- (void)awakeFromNib {
+    _rating = 5;
+}
 
 - (IBAction)starsViewDidPan:(id)sender {
     
@@ -49,17 +52,19 @@
 }
 
 - (void)setRating:(CGFloat)rating {
-    _rating = rating;
     
-    self.ratingInPixels = self.width * rating / 5;
+    self.ratingInPixels = self.fullStarsImageView.width * rating / _rating;
+
+    _rating = rating;
 }
 
 - (void)setRatingInPixels:(CGFloat)ratingInPixels {
     _ratingInPixels = ratingInPixels;
     
     self.fullStarsImageView.width = ratingInPixels;
-    self.emptyStarsImageView.width = self.width - ratingInPixels;
-    self.emptyStarsImageView.x = ratingInPixels;
+    int right = self.emptyStarsImageView.width + self.emptyStarsImageView.x;
+    self.emptyStarsImageView.x = self.fullStarsImageView.x + self.fullStarsImageView.width;
+    self.emptyStarsImageView.width = right - self.emptyStarsImageView.x;
 }
 
 @end

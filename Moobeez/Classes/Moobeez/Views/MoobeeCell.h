@@ -13,6 +13,9 @@
 @interface MoobeeCell : UICollectionViewCell
 
 @property (weak, nonatomic) Moobee* moobee;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
+
 
 - (void)animateGrowWithCompletion:(void (^)(void))completionHandler;
 - (void)animateShrinkWithCompletion:(void (^)(void))completionHandler;
