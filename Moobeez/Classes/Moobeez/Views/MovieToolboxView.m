@@ -25,6 +25,13 @@
 @property (strong, nonatomic) IBOutlet UITableViewCell *castCell;
 @property (weak, nonatomic) IBOutlet UICollectionView *castCollectionView;
 
+@property (weak, nonatomic) IBOutlet UITableViewCell *buttonsCell;
+@property (weak, nonatomic) IBOutlet UIButton *descriptionButton;
+@property (weak, nonatomic) IBOutlet UIButton *castButton;
+@property (weak, nonatomic) IBOutlet UIButton *photosButton;
+@property (weak, nonatomic) IBOutlet UIButton *trailerButton;
+@property (weak, nonatomic) IBOutlet UIButton *favoritesButton;
+
 @property (strong, nonatomic) NSMutableArray* cells;
 
 @end
@@ -33,7 +40,7 @@
 
 - (void)awakeFromNib {
     
-    [self.castCollectionView registerNib:[UINib nibWithNibName:@"CharacterCell" bundle:nil] forCellWithReuseIdentifier:@"CharacterCell"];
+    [self.castCollectionView registerNib:[UINib nibWithNibName:@"CharacterCellSmall" bundle:nil] forCellWithReuseIdentifier:@"CharacterCell"];
 }
 
 - (void)setMoobee:(Moobee *)moobee {
@@ -70,6 +77,8 @@
         [self.cells addObject:self.castCell];
         [self.castCollectionView reloadData];
     }
+    
+    [self.cells addObject:self.buttonsCell];
 
 }
 
@@ -127,4 +136,22 @@
     return cell;
 }
 
+#pragma mark - Buttons
+
+- (IBAction)descriptionButtonPressed:(id)sender {
+}
+
+- (IBAction)castButtonPressed:(id)sender {
+}
+
+- (IBAction)photosButtonPressed:(id)sender {
+}
+
+- (IBAction)trailerButtonPressed:(id)sender {
+}
+
+- (IBAction)favoritesButtonPressed:(id)sender {
+    self.moobee.isFavorite = !self.moobee.isFavorite;
+    self.favoritesButton.selected = self.moobee.isFavorite;
+}
 @end
