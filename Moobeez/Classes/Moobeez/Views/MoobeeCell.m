@@ -84,6 +84,8 @@
     self.contentView.frame = appDelegate.window.bounds;
     [appDelegate.window addSubview:self.contentView];
     
+    self.starsView.hidden = YES;
+    
     [UIView animateWithDuration:0.5 animations:^{
         self.contentView.frame = [appDelegate.window convertRect:self.frame fromView:self.superview];
     } completion:^(BOOL finished) {

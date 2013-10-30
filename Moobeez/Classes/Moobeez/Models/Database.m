@@ -55,11 +55,13 @@ static Database* sharedDatabase;
 
 - (BOOL)insertDictionary:(NSDictionary*)dictionary intoTable:(NSString*)table {
     
+    sqlite_int64 nextId = sqlite3_last_insert_rowid(database) + 1;
+    
     NSArray* allKeys = dictionary.allKeys;
     
     NSString* columns = [allKeys componentsJoinedByString:@","];
     
-    NSMutableArray* allValues = [NSMutableArray array];
+    NSMutableArray* allValues = [NSMutableArray arrayWithObject:[NSString stringWithFormat:@"ID = %lld", nextId]];
     for (NSString* key in allKeys) {
         [allValues addObject:[NSString stringWithFormat:@"%@", dictionary[key]]];
     }
@@ -103,24 +105,86 @@ static Database* sharedDatabase;
     return NO;
 }
 
+- (BOOL)updateDictionary:(NSDictionary*)dictionary intoTable:(NSString*)table where:(NSDictionary*)whereDictionary {
+    
+    NSMutableArray* setValues = [NSMutableArray array];
+    for (NSString* key in dictionary.allKeys) {
+        [setValues addObject:[NSString stringWithFormat:@"%@='%@'", key, dictionary[key]]];
+    }
+    
+    NSString* set = [setValues componentsJoinedByString:@","];
+    
+    NSMutableArray* whereValues = [NSMutableArray array];
+    for (NSString* key in whereDictionary.allKeys) {
+        [whereValues addObject:[NSString stringWithFormat:@"%@='%@'", key, whereDictionary[key]]];
+    }
+    
+    NSString* where = [whereValues componentsJoinedByString:@" AND "];
+    
+    NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET %@", table, set];
+    
+    if (where.length) {
+        
+        query = [query stringByAppendingFormat:@" WHERE %@", where];
+        
+    }
+    
+    sqlite3_stmt *statement;
+    
+    NSLog(@"query: %@", query);
+    
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        return NO;
+    }
+    
+    int step = sqlite3_step(statement);
+    
+    switch (step) {
+        case SQLITE_DONE:
+            NSLog(@"yey");
+            sqlite3_finalize(statement);
+            return YES;
+            break;
+        case SQLITE_ERROR:
+            NSLog(@"error");
+            break;
+        case SQLITE_MISUSE:
+            NSLog(@"missue");
+            break;
+        default:
+            NSLog(@"NOOOOO!!!");
+            break;
+    }
+    
+    sqlite3_finalize(statement);
+    
+    return NO;
+}
 
 #pragma mark - Old To New
 
-- (void)populateWithOldDatabase:(NSArray*)oldDatabase {
+- (void)populateWithOldDatabase {
+    
+    NSArray* oldDatabase = [[NSArray alloc] initWithContentsOfFile:MY_MOVIES_PATH];
+
+    if (!oldDatabase.count) {
+        return;
+    }
     
     NSMutableArray* untransferredDatabase = [[NSMutableArray alloc] init];
     
     for (NSDictionary* dictionary in oldDatabase) {
         
-        sqlite_int64 nextId = sqlite3_last_insert_rowid(database) + 1;
-        
         NSInteger tmdbId = [dictionary[@"id"] integerValue];
         
-        NSString* name = [dictionary stringForKey:@"title"];
+        NSString* name = [[dictionary stringForKey:@"title"] stringByResolvingSQLIssues];
         
-        NSString* comments = [dictionary stringForKey:@"comments"];
+        NSString* comments = [[dictionary stringForKey:@"comments"] stringByResolvingSQLIssues];
         
-        NSString* posterPath = [dictionary stringForKey:@"poster"];
+        NSString* posterPath = [[dictionary stringForKey:@"poster"] stringByResolvingSQLIssues];
         
         CGFloat rating = [dictionary[@"rating"] floatValue];
         
@@ -140,7 +204,6 @@ static Database* sharedDatabase;
 
         NSMutableDictionary* addDictionary = [[NSMutableDictionary alloc] init];
         
-        addDictionary[@"ID"] = [NSString stringWithFormat:@"%ld", (long)nextId];
         addDictionary[@"tmdbId"] = [NSString stringWithFormat:@"%ld", (long)tmdbId];
         addDictionary[@"name"] = [NSString stringWithFormat:@"'%@'", name];
         addDictionary[@"comments"] = [NSString stringWithFormat:@"'%@'", comments];
@@ -161,6 +224,51 @@ static Database* sharedDatabase;
     else {
         [untransferredDatabase writeToFile:MY_MOVIES_PATH atomically:YES];
     }
+}
+
+- (void)replaceOldDatabase {
+    
+    [self clearTable:@"Moobeez"];
+    
+    [self populateWithOldDatabase];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidReloadNotification object:nil userInfo:nil];
+
+}
+
+- (void)clearTable:(NSString*)tableName {
+    
+    NSString *query = [NSString stringWithFormat:@"DELETE FROM %@", tableName];
+    
+    sqlite3_stmt *statement;
+    
+    NSLog(@"query: %@", query);
+    
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        return;
+    }
+    
+    int step = sqlite3_step(statement);
+    
+    switch (step) {
+        case SQLITE_DONE:
+            NSLog(@"clear table: %@", tableName);
+            break;
+        case SQLITE_ERROR:
+            NSLog(@"error clear table: %@", tableName);
+            break;
+        case SQLITE_MISUSE:
+            NSLog(@"misuse clear table: %@", tableName);
+            break;
+        default:
+            NSLog(@"unkown clear table: %@", tableName);
+            break;
+    }
+    
+    sqlite3_finalize(statement);
 }
 
 
@@ -233,7 +341,21 @@ static Database* sharedDatabase;
     
     
     return nil;
+}
 
+- (BOOL)saveMoobee:(Moobee*)moobee {
+    
+    NSMutableDictionary* moobeeDictionary = moobee.databaseDictionary;
+    
+    if (moobee.id != -1) {
+        
+        if ([self updateDictionary:moobee.databaseDictionary intoTable:@"Moobeez" where:@{@"ID" : [NSString stringWithFormat:@"%ld", moobee.id]}]) {
+            return YES;
+        }
+        
+    }
+    
+    return [self insertDictionary:moobeeDictionary intoTable:@"Moobeez"];
     
 }
 

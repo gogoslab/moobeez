@@ -9,6 +9,7 @@
 
 #import "ImageView+Tmdb.h"
 #import "UIColor+Moobeez.h"
+#import "NSString+SQL.h"
 
 #import "Constants.h"
 

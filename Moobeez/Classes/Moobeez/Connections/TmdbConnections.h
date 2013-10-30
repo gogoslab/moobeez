@@ -15,7 +15,7 @@
 
 #define UrlConfiguration @"configuration"
 #define UrlSearchMovie @"search/movie"
-#define UrlMovie(movieId) [NSString stringWithFormat:@"movie/%d",movieId]
+#define UrlMovie(movieId) [NSString stringWithFormat:@"movie/%ld",movieId]
 #define UrlPerson(personId) [NSString stringWithFormat:@"person/%@",personId]
 
 #define UrlUpcoming @"movie/upcoming"

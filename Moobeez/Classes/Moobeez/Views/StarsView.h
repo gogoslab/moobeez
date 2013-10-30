@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Constants.h"
+
 
 @interface StarsView : UIView
 
 @property (readwrite, nonatomic) CGFloat rating;
 @property (readwrite, nonatomic) CGFloat ratingInPixels;
+
+@property (copy, nonatomic) EmptyHandler updateHandler;
 
 @end

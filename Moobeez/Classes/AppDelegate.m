@@ -9,17 +9,23 @@
 #import "AppDelegate.h"
 #import "Moobeez.h"
 
+void uncaughtExceptionHandler(NSException *exception);
+
+void uncaughtExceptionHandler(NSException *exception) {
+    
+    NSLog(@"CRASH: %@", exception);
+    NSLog(@"Stack Trace: %@", [exception callStackSymbols]);
+    // Internal error reporting
+}
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     
-    NSArray* array = [[NSArray alloc] initWithContentsOfFile:MY_MOVIES_PATH];
-    if (array.count) {
-        [[Database sharedDatabase] populateWithOldDatabase:array];
-    }
-    
+    NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
+
     [self.window makeKeyAndVisible];
     
     return YES;
@@ -50,6 +56,25 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+#pragma mark - load movies
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    if ([[[url lastPathComponent] pathExtension] isEqualToString:@"moobeezbackup"]) {
+
+        NSData* data = [NSData dataWithContentsOfURL:url];
+        [data writeToFile:MY_MOVIES_PATH atomically:YES];
+        [[NSFileManager defaultManager] removeItemAtURL:url error:nil];
+        
+        [[Database sharedDatabase] replaceOldDatabase];
+        
+        return YES;
+    }
+
+    return YES;
+//    return [FBSession.activeSession handleOpenURL:url];
 }
 
 @end

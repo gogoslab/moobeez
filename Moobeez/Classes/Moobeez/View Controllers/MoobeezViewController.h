@@ -10,4 +10,6 @@
 
 @interface MoobeezViewController : ViewController
 
+- (void)reloadMoobeez;
+
 @end

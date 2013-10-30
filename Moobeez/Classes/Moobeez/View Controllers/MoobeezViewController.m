@@ -53,6 +53,8 @@ enum CollectionSections {
     
     self.moobeezArray = [[Database sharedDatabase] moobeezWithType:MoobeeSeenType];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadMoobeez) name:DatabaseDidReloadNotification object:nil];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -84,6 +86,28 @@ enum CollectionSections {
 }
 
 #pragma mark - Collection View
+
+- (void)reloadMoobeez {
+    
+    switch (self.typeSegmentedControl.selectedSegmentIndex) {
+        case 0:
+            self.moobeezArray = [[Database sharedDatabase] moobeezWithType:MoobeeSeenType];
+            break;
+        case 1:
+            self.moobeezArray = [[Database sharedDatabase] moobeezWithType:MoobeeOnWatchlistType];
+            break;
+        case 2:
+            self.moobeezArray = [[Database sharedDatabase] favoritesMoobeez];
+            break;
+        default:
+            break;
+    }
+    
+    [self reloadData];
+    
+    self.collectionView.contentOffset = CGPointMake(0, -60);
+    
+}
 
 - (void)reloadData {
 
@@ -161,6 +185,8 @@ enum CollectionSections {
                 [self presentViewController:viewController animated:NO completion:^{}];
                 
                 viewController.closeHandler = ^{
+                    [moobee save];
+                    cell.moobee = moobee;
                     [cell animateShrinkWithCompletion:^{}];
                 };
             }];
@@ -176,23 +202,7 @@ enum CollectionSections {
 
 - (IBAction)typeSegmentedControlValueChanged:(id)sender {
     
-    switch (self.typeSegmentedControl.selectedSegmentIndex) {
-        case 0:
-            self.moobeezArray = [[Database sharedDatabase] moobeezWithType:MoobeeSeenType];
-            break;
-        case 1:
-            self.moobeezArray = [[Database sharedDatabase] moobeezWithType:MoobeeOnWatchlistType];
-            break;
-        case 2:
-            self.moobeezArray = [[Database sharedDatabase] favoritesMoobeez];
-            break;
-        default:
-            break;
-    }
-    
-    [self reloadData];
-    
-    self.collectionView.contentOffset = CGPointMake(0, -60);
+    [self reloadMoobeez];
 
 }
 

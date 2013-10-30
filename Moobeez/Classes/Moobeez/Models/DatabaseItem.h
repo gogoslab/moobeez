@@ -16,4 +16,6 @@
 + (id)initWithId:(NSInteger)id;
 - (id)initWithDatabaseDictionary:(NSDictionary*)databaseDictionary;
 
+- (BOOL)save;
+
 @end

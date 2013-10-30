@@ -32,4 +32,10 @@
     
     return self;
 }
+
+- (BOOL)save {
+    
+    return YES;
+}
+
 @end

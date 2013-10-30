@@ -29,5 +29,6 @@ typedef enum MoobeeType {
 @property (readwrite, nonatomic) MoobeeType type;
 @property (readwrite, nonatomic) BOOL isFavorite;
 
+@property (readonly, nonatomic) NSMutableDictionary* databaseDictionary;
 
 @end

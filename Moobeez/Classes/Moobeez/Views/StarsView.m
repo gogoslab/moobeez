@@ -9,6 +9,8 @@
 #import "StarsView.h"
 #import "Moobeez.h"
 
+#define MAX_RATING 5
+
 @interface StarsView ()
 
 @property (weak, nonatomic) IBOutlet UIImageView* emptyStarsImageView;
@@ -19,7 +21,7 @@
 @implementation StarsView
 
 - (void)awakeFromNib {
-    _rating = 5;
+    _rating = MAX_RATING;
 }
 
 - (IBAction)starsViewDidPan:(id)sender {
@@ -43,6 +45,8 @@
         case UIGestureRecognizerStateEnded:
         case UIGestureRecognizerStateCancelled:
         {
+            _rating = self.ratingInPixels / (self.emptyStarsImageView.width + self.fullStarsImageView.width) * MAX_RATING;
+            self.updateHandler();
         }
             break;
         default:
@@ -52,8 +56,13 @@
 }
 
 - (void)setRating:(CGFloat)rating {
-    
-    self.ratingInPixels = self.fullStarsImageView.width * rating / _rating;
+
+    if (_rating > 0) {
+        self.ratingInPixels = self.fullStarsImageView.width * rating / _rating;
+    }
+    else {
+        self.ratingInPixels = self.emptyStarsImageView.width * rating / MAX_RATING;
+    }
 
     _rating = rating;
 }

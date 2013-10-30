@@ -17,15 +17,19 @@
 #import "TmdbImage.h"
 #import "TmdbCharacter.h"
 
+#define DatabaseDidReloadNotification @"DidReloadDatabaseNotification"
+
 @interface Database : NSObject {
     sqlite3 *database;
 }
 
 + (Database*)sharedDatabase;
-- (void)populateWithOldDatabase:(NSArray*)oldDatabase;
+- (void)populateWithOldDatabase;
+- (void)replaceOldDatabase;
 
 - (NSMutableArray*)moobeezWithType:(MoobeeType)type;
 - (NSMutableArray*)favoritesMoobeez;
 - (Moobee*)moobeeWithId:(NSInteger)id;
+- (BOOL)saveMoobee:(Moobee*)moobee;
 
 @end

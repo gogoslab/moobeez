@@ -29,6 +29,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [self performSelector:@selector(startLoading) withObject:nil afterDelay:0.01];
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)startLoading {
+    
+    [[Database sharedDatabase] populateWithOldDatabase];
+    
     ConfigurationConnection* connection = [[ConfigurationConnection alloc] initWithCompletionHandler:^(WebserviceResultCode code) {
         if (code == WebserviceResultOk) {
             [self.navigationController pushViewController:self.appDelegate.tabBarController animated:NO];
@@ -36,12 +49,7 @@
     }];
     
     [self startConnection:connection];
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
