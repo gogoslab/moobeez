@@ -11,7 +11,7 @@
 @implementation UIColor (Moobeez)
 
 + (UIColor*)mainColor {
-    return [UIColor colorWithRed:0.0 green:154.0/255.0 blue:227.0/255.0 alpha:1.0];
+    return [UIColor colorWithRed:66.0 / 255.0 green:163.0/255.0 blue:222.0/255.0 alpha:1.0];
 }
 
 @end

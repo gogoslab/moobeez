@@ -30,6 +30,8 @@ enum CollectionSections {
 
 @property (strong, nonatomic) MoobeeCell* animationCell;
 
+@property (strong, nonatomic) SearchNewMovieViewController* searchNewMovieController;
+
 @end
 
 @implementation MoobeezViewController
@@ -56,6 +58,10 @@ enum CollectionSections {
     self.moobeezArray = [[Database sharedDatabase] moobeezWithType:MoobeeSeenType];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadMoobeez) name:DatabaseDidReloadNotification object:nil];
+    
+    UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
+    addButton.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = addButton;
     
 }
 
@@ -190,23 +196,7 @@ enum CollectionSections {
             self.animationCell.moobee = moobee;
             
             [self.animationCell animateGrowWithCompletion:^{
-                MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
-                viewController.moobee = moobee;
-                viewController.tmdbMovie = movie;
-                [self presentViewController:viewController animated:NO completion:^{}];
-                
-                viewController.closeHandler = ^{
-                    [moobee save];
-                    
-                    [self.moobeezArray sortUsingSelector:@selector(compareByDate:)];
-                    
-                    [self.collectionView reloadData];
-                    
-                    self.animationCell.moobee = moobee;
-                    [self.animationCell prepareForShrink];
-
-                    [self performSelector:@selector(hideMoobee:) withObject:moobee afterDelay:0.01];
-                };
+                [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie];
                 
                 [self.animationCell removeFromSuperview];
             }];
@@ -240,6 +230,30 @@ enum CollectionSections {
 
 }
 
+- (void)goToMovieDetailsScreenForMoobee:(Moobee*)moobee andMovie:(TmdbMovie*)movie {
+    
+    MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
+    viewController.moobee = moobee;
+    viewController.tmdbMovie = movie;
+    [self presentViewController:viewController animated:NO completion:^{}];
+    
+    viewController.closeHandler = ^{
+        
+        if (moobee.id == -1) {
+            return;
+        }
+        
+        [self.moobeezArray sortUsingSelector:@selector(compareByDate:)];
+        
+        [self.collectionView reloadData];
+        
+        self.animationCell.moobee = moobee;
+        [self.animationCell prepareForShrink];
+        
+        [self performSelector:@selector(hideMoobee:) withObject:moobee afterDelay:0.01];
+    };
+    
+}
 
 #pragma mark - Type
 
@@ -249,5 +263,46 @@ enum CollectionSections {
 
 }
 
+#pragma mark - Add Moobee
+
+- (void)addButtonPressed:(id)sender {
+    
+    [self.appDelegate.window addSubview:self.searchNewMovieController.view];
+    
+    self.searchNewMovieController.selectHandler = ^ (TmdbMovie* movie) {
+        
+        Moobee* moobee = [[Moobee alloc] initWithTmdbMovie:movie];
+        switch (self.typeSegmentedControl.selectedSegmentIndex) {
+            case 0:
+                moobee.type = MoobeeSeenType;
+                moobee.date = [NSDate date];
+                moobee.rating = 2.5;
+                break;
+            case 1:
+                moobee.type = MoobeeOnWatchlistType;
+                break;
+            case 2:
+                moobee.type = MoobeeNoneType;
+                moobee.isFavorite = YES;
+                break;
+            default:
+                break;
+        }
+        MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+            [self.searchNewMovieController.view removeFromSuperview];
+            [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie];
+        }];
+        [self startConnection:connection];
+    };
+}
+
+- (SearchNewMovieViewController*)searchNewMovieController {
+    if (!_searchNewMovieController) {
+        _searchNewMovieController = [[SearchNewMovieViewController alloc] initWithNibName:@"SearchNewMovieViewController" bundle:nil];
+        _searchNewMovieController.view.frame = self.appDelegate.window.bounds;
+    }
+    
+    return _searchNewMovieController;
+}
 
 @end

@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieViewController">
             <connections>
+                <outlet property="addButton" destination="hYj-cz-CBW" id="Z5u-WD-fcz"/>
                 <outlet property="hideToolboxRecognizer" destination="CDQ-ZO-lUv" id="QXc-oh-fpX"/>
                 <outlet property="posterImageView" destination="Syz-af-7nb" id="4JW-yI-L8h"/>
                 <outlet property="toolboxView" destination="xj6-Jc-xBi" id="Iey-i0-Y2X"/>
@@ -30,6 +31,17 @@
                     </state>
                     <connections>
                         <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="2bR-kd-GXJ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hYj-cz-CBW">
+                    <rect key="frame" x="55" y="20" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" backgroundImage="add_button.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="addButtonPressed:" destination="-1" eventType="touchUpInside" id="ORY-O6-hxx"/>
                     </connections>
                 </button>
                 <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ltn-h3-cW7">
@@ -382,6 +394,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="add_button.png" width="40" height="40"/>
         <image name="back_button.png" width="40" height="40"/>
         <image name="button_cast.png" width="50" height="50"/>
         <image name="button_description.png" width="50" height="50"/>

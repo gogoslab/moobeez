@@ -124,4 +124,11 @@
     
 }
 
+#pragma mark - Comparison selectors
+
+- (NSComparisonResult)compareByDate:(TmdbMovie*)movie {
+    return [movie.releaseDate compare:self.releaseDate];
+}
+
+
 @end

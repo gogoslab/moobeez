@@ -26,5 +26,6 @@
 
 #import "ConfigurationConnection.h"
 #import "MovieConnection.h"
+#import "SearchMovieConnection.h"
 
 #endif

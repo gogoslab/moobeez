@@ -269,6 +269,13 @@
 		64CA53861823DD2C000699C5 /* MovieButtonsWhite.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 64CA53851823DD2C000699C5 /* MovieButtonsWhite.bundle */; };
 		64CA53891823E6A9000699C5 /* empty_stars_big_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CA53871823E6A9000699C5 /* empty_stars_big_white.png */; };
 		64CA538A1823E6A9000699C5 /* empty_stars_big_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CA53881823E6A9000699C5 /* empty_stars_big_white@2x.png */; };
+		64CA538E1823ECDC000699C5 /* SearchNewMovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64CA538C1823ECDC000699C5 /* SearchNewMovieViewController.m */; };
+		64CA538F1823ECDC000699C5 /* SearchNewMovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64CA538D1823ECDC000699C5 /* SearchNewMovieViewController.xib */; };
+		64CA53931823F48A000699C5 /* SearchMovieConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64CA53921823F48A000699C5 /* SearchMovieConnection.m */; };
+		64CA53971823F8C6000699C5 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64CA53961823F8C6000699C5 /* SearchResultCell.m */; };
+		64CA539A1823F8E1000699C5 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64CA53991823F8E1000699C5 /* SearchResultCell.xib */; };
+		64CA539D1824060C000699C5 /* add_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CA539B1824060C000699C5 /* add_button.png */; };
+		64CA539E1824060C000699C5 /* add_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CA539C1824060C000699C5 /* add_button@2x.png */; };
 		64DC8C111817137F002C11D8 /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C0F1817137F002C11D8 /* back_button.png */; };
 		64DC8C121817137F002C11D8 /* back_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C101817137F002C11D8 /* back_button@2x.png */; };
 		64DC8C191817215E002C11D8 /* toolbox_down_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C131817215E002C11D8 /* toolbox_down_arrow.png */; };
@@ -784,6 +791,16 @@
 		64CA53851823DD2C000699C5 /* MovieButtonsWhite.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MovieButtonsWhite.bundle; sourceTree = "<group>"; };
 		64CA53871823E6A9000699C5 /* empty_stars_big_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty_stars_big_white.png; sourceTree = "<group>"; };
 		64CA53881823E6A9000699C5 /* empty_stars_big_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty_stars_big_white@2x.png"; sourceTree = "<group>"; };
+		64CA538B1823ECDC000699C5 /* SearchNewMovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchNewMovieViewController.h; sourceTree = "<group>"; };
+		64CA538C1823ECDC000699C5 /* SearchNewMovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchNewMovieViewController.m; sourceTree = "<group>"; };
+		64CA538D1823ECDC000699C5 /* SearchNewMovieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchNewMovieViewController.xib; sourceTree = "<group>"; };
+		64CA53911823F48A000699C5 /* SearchMovieConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchMovieConnection.h; sourceTree = "<group>"; };
+		64CA53921823F48A000699C5 /* SearchMovieConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchMovieConnection.m; sourceTree = "<group>"; };
+		64CA53951823F8C6000699C5 /* SearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
+		64CA53961823F8C6000699C5 /* SearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
+		64CA53991823F8E1000699C5 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
+		64CA539B1824060C000699C5 /* add_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_button.png; sourceTree = "<group>"; };
+		64CA539C1824060C000699C5 /* add_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_button@2x.png"; sourceTree = "<group>"; };
 		64DC8C0F1817137F002C11D8 /* back_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button.png; sourceTree = "<group>"; };
 		64DC8C101817137F002C11D8 /* back_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_button@2x.png"; sourceTree = "<group>"; };
 		64DC8C131817215E002C11D8 /* toolbox_down_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbox_down_arrow.png; sourceTree = "<group>"; };
@@ -891,6 +908,8 @@
 		64177865180C3B5A00CDFA25 /* Common Images */ = {
 			isa = PBXGroup;
 			children = (
+				64CA539B1824060C000699C5 /* add_button.png */,
+				64CA539C1824060C000699C5 /* add_button@2x.png */,
 				644121F5181C351400260497 /* share_button.png */,
 				644121F6181C351400260497 /* share_button@2x.png */,
 				64DC8C131817215E002C11D8 /* toolbox_down_arrow.png */,
@@ -950,6 +969,7 @@
 				64392EB118084D7800504C78 /* Tmdb Connection */,
 				6417785E180C314D00CDFA25 /* Configuration Connection */,
 				649C3A84181822EA0000A34C /* Movie Connection */,
+				64CA53941823F48E000699C5 /* Search Movie Connection */,
 			);
 			name = "Tmdb Connections";
 			sourceTree = "<group>";
@@ -1004,6 +1024,7 @@
 			children = (
 				64177858180C21F700CDFA25 /* Moobee Cell */,
 				649C3A9618182FD80000A34C /* Character Cell */,
+				64CA53981823F8C9000699C5 /* Search Result Cell */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1363,6 +1384,7 @@
 				64B2AB8A180844FE00E02E2F /* Moobeez View Controller */,
 				64B2AB901808452B00E02E2F /* Movies View Controller */,
 				642CA8EF181542FD00A293E4 /* Movie View Controller */,
+				64CA53901823ECE2000699C5 /* Search New Movie */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1839,6 +1861,35 @@
 			path = iOS;
 			sourceTree = "<group>";
 		};
+		64CA53901823ECE2000699C5 /* Search New Movie */ = {
+			isa = PBXGroup;
+			children = (
+				64CA538B1823ECDC000699C5 /* SearchNewMovieViewController.h */,
+				64CA538C1823ECDC000699C5 /* SearchNewMovieViewController.m */,
+				64CA538D1823ECDC000699C5 /* SearchNewMovieViewController.xib */,
+			);
+			name = "Search New Movie";
+			sourceTree = "<group>";
+		};
+		64CA53941823F48E000699C5 /* Search Movie Connection */ = {
+			isa = PBXGroup;
+			children = (
+				64CA53911823F48A000699C5 /* SearchMovieConnection.h */,
+				64CA53921823F48A000699C5 /* SearchMovieConnection.m */,
+			);
+			name = "Search Movie Connection";
+			sourceTree = "<group>";
+		};
+		64CA53981823F8C9000699C5 /* Search Result Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64CA53951823F8C6000699C5 /* SearchResultCell.h */,
+				64CA53961823F8C6000699C5 /* SearchResultCell.m */,
+				64CA53991823F8E1000699C5 /* SearchResultCell.xib */,
+			);
+			name = "Search Result Cell";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1928,6 +1979,7 @@
 				64B2AACE18082AE600E02E2F /* InfoPlist.strings in Resources */,
 				6417786D180C8A7400CDFA25 /* empty_stars_small.png in Resources */,
 				64B2AB89180844F800E02E2F /* MoobeezViewController.xib in Resources */,
+				64CA539E1824060C000699C5 /* add_button@2x.png in Resources */,
 				64DC8C1A1817215E002C11D8 /* toolbox_down_arrow@2x.png in Resources */,
 				649C3A771818068F0000A34C /* full_stars_big.png in Resources */,
 				64177876180CA5D900CDFA25 /* background.png in Resources */,
@@ -1948,11 +2000,14 @@
 				64412223181D3D7F00260497 /* CharacterCell.xib in Resources */,
 				64DC8C1B1817215E002C11D8 /* toolbox_line.png in Resources */,
 				64177870180C8A7400CDFA25 /* full_stars_small@2x.png in Resources */,
+				64CA538F1823ECDC000699C5 /* SearchNewMovieViewController.xib in Resources */,
 				64177867180C3B5A00CDFA25 /* default_image.png in Resources */,
 				64CA53861823DD2C000699C5 /* MovieButtonsWhite.bundle in Resources */,
 				64DC8C121817137F002C11D8 /* back_button@2x.png in Resources */,
+				64CA539A1823F8E1000699C5 /* SearchResultCell.xib in Resources */,
 				6417786F180C8A7400CDFA25 /* full_stars_small.png in Resources */,
 				64DC8C1C1817215E002C11D8 /* toolbox_line@2x.png in Resources */,
+				64CA539D1824060C000699C5 /* add_button.png in Resources */,
 				642CA8EE181542FA00A293E4 /* MovieViewController.xib in Resources */,
 				64CA53891823E6A9000699C5 /* empty_stars_big_white.png in Resources */,
 				644121F7181C351400260497 /* share_button.png in Resources */,
@@ -2127,6 +2182,7 @@
 				64B9F5F51822A3F0002E322F /* GPUImageLanczosResamplingFilter.m in Sources */,
 				64B9F5B41822A3F0002E322F /* GPUImage3x3TextureSamplingFilter.m in Sources */,
 				64B9F5BA1822A3F0002E322F /* GPUImageAverageLuminanceThresholdFilter.m in Sources */,
+				64CA53931823F48A000699C5 /* SearchMovieConnection.m in Sources */,
 				649C3A7B181812790000A34C /* StarsView.m in Sources */,
 				64B9F6211822A3F0002E322F /* GPUImageRGBErosionFilter.m in Sources */,
 				64B9F5D71822A3F0002E322F /* GPUImageErosionFilter.m in Sources */,
@@ -2169,6 +2225,7 @@
 				64B9F64D1822A3F0002E322F /* GPUImageZoomBlurFilter.m in Sources */,
 				64B9F6511822A3F0002E322F /* GPUImageView.m in Sources */,
 				64B9F5CD1822A3F0002E322F /* GPUImageCrosshairGenerator.m in Sources */,
+				64CA53971823F8C6000699C5 /* SearchResultCell.m in Sources */,
 				64B9F6291822A3F0002E322F /* GPUImageShiTomasiFeatureDetectionFilter.m in Sources */,
 				64B9F6431822A3F0002E322F /* GPUImageTwoPassFilter.m in Sources */,
 				642CA8ED181542FA00A293E4 /* MovieViewController.m in Sources */,
@@ -2194,6 +2251,7 @@
 				64B9F5F81822A3F0002E322F /* GPUImageLightenBlendFilter.m in Sources */,
 				64B9F63D1822A3F0002E322F /* GPUImageTiltShiftFilter.m in Sources */,
 				64B9F5ED1822A3F0002E322F /* GPUImageHoughTransformLineDetector.m in Sources */,
+				64CA538E1823ECDC000699C5 /* SearchNewMovieViewController.m in Sources */,
 				649C3A6D1817FFEA0000A34C /* MovieToolboxView.m in Sources */,
 				64B9F6371822A3F0002E322F /* GPUImageTextureInput.m in Sources */,
 				64B9F5DB1822A3F0002E322F /* GPUImageFASTCornerDetectionFilter.m in Sources */,

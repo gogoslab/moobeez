@@ -179,6 +179,10 @@
         urlString = [urlString stringByAppendingString:parameters.parametersString];
     }
     
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSLog(@"request url: %@", urlString);
+    
 	NSURL *url = [NSURL URLWithString:urlString];
 	
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];

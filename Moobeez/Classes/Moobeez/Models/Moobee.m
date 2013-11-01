@@ -9,6 +9,12 @@
 #import "Moobee.h"
 #import "Moobeez.h"
 
+@interface Moobee ()
+
+@property (readwrite, nonatomic) NSInteger id;
+
+@end
+
 @implementation Moobee
 
 + (id)initWithId:(NSInteger)id {
@@ -55,11 +61,26 @@
     return databaseDictionary;
 }
 
+- (id)initWithTmdbMovie:(TmdbMovie*)movie {
+    self = [self init];
+    
+    if (self) {
+        self.name = movie.name;
+        self.tmdbId = movie.id;
+        self.posterPath = movie.posterPath;
+        self.id = -1;
+    }
+    
+    return self;
+}
+
 - (BOOL)save {
     
     return [[Database sharedDatabase] saveMoobee:self];
     
 }
+
+#pragma mark - Comparison selectors
 
 - (NSComparisonResult)compareByDate:(Moobee*)moobee {
     return [moobee.date compare:self.date];

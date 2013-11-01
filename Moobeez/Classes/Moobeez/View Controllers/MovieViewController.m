@@ -16,6 +16,9 @@
 @property (strong, nonatomic) IBOutlet MovieToolboxView *toolboxView;
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *hideToolboxRecognizer;
+
+@property (weak, nonatomic) IBOutlet UIButton *addButton;
+
 @end
 
 @implementation MovieViewController
@@ -44,6 +47,7 @@
     self.toolboxView.moobee = self.moobee;
     self.toolboxView.tmdbMovie = self.tmdbMovie;
     
+    self.addButton.hidden = (self.moobee.id != -1);
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,11 +59,20 @@
 - (IBAction)backButtonPressed:(id)sender {
     
     [self dismissViewControllerAnimated:NO completion:^{
+        if (self.moobee.id != -1) {
+            [self.moobee save];
+        }
         self.closeHandler();
     }];
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
+}
+
+- (IBAction)addButtonPressed:(id)sender {
+    if([self.moobee save]) {
+        self.addButton.hidden = YES;
+    }
 }
 
 - (IBAction)hideToolbox:(id)sender {

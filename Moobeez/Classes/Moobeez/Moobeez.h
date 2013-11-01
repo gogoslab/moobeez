@@ -31,13 +31,13 @@
 #import "MoobeezViewController.h"
 #import "MoviesViewController.h"
 #import "MovieViewController.h"
-
+#import "SearchNewMovieViewController.h"
 
 #pragma mark - Cells
 
 #import "MoobeeCell.h"
 #import "CharacterCell.h"
-
+#import "SearchResultCell.h"
 
 
 #pragma mark - Toolboxes
