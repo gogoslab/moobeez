@@ -18,6 +18,7 @@
 
 
 - (void)animateGrowWithCompletion:(void (^)(void))completionHandler;
+- (void)prepareForShrink;
 - (void)animateShrinkWithCompletion:(void (^)(void))completionHandler;
 
 + (CGFloat)cellHeight;

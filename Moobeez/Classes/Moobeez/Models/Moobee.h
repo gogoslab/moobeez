@@ -31,4 +31,6 @@ typedef enum MoobeeType {
 
 @property (readonly, nonatomic) NSMutableDictionary* databaseDictionary;
 
+- (NSComparisonResult)compareByDate:(Moobee*)moobee;
+
 @end

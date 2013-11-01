@@ -49,7 +49,7 @@
     if (![self toolbar]) {
         [self setToolbar:[[UIToolbar alloc] initWithFrame:[self bounds]]];
         [self.layer insertSublayer:[self.toolbar layer] atIndex:0];
-//        self.alpha = 0.95;
+        [self setBlurTintColor:[UIColor colorWithWhite:0.8 alpha:0.5]];
     }
 }
 

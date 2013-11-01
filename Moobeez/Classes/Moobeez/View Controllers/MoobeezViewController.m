@@ -28,6 +28,8 @@ enum CollectionSections {
 
 @property (readwrite, nonatomic) CGFloat initialCollectionViewHeight;
 
+@property (strong, nonatomic) MoobeeCell* animationCell;
+
 @end
 
 @implementation MoobeezViewController
@@ -178,7 +180,16 @@ enum CollectionSections {
         Moobee* moobee = self.moobeezArray[indexPath.row];
         
         MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
-            [cell animateGrowWithCompletion:^{
+            if (!self.animationCell) {
+                self.animationCell = [[NSBundle mainBundle] loadNibNamed:@"MoobeeCell" owner:self options:nil][0];
+            }
+            
+            [self.view addSubview:self.animationCell];
+            self.animationCell.frame = [self.view convertRect:cell.frame fromView:cell.superview];
+            
+            self.animationCell.moobee = moobee;
+            
+            [self.animationCell animateGrowWithCompletion:^{
                 MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
                 viewController.moobee = moobee;
                 viewController.tmdbMovie = movie;
@@ -186,15 +197,47 @@ enum CollectionSections {
                 
                 viewController.closeHandler = ^{
                     [moobee save];
-                    cell.moobee = moobee;
-                    [cell animateShrinkWithCompletion:^{}];
+                    
+                    [self.moobeezArray sortUsingSelector:@selector(compareByDate:)];
+                    
+                    [self.collectionView reloadData];
+                    
+                    self.animationCell.moobee = moobee;
+                    [self.animationCell prepareForShrink];
+
+                    [self performSelector:@selector(hideMoobee:) withObject:moobee afterDelay:0.01];
                 };
+                
+                [self.animationCell removeFromSuperview];
             }];
         }];
         
         connection.activityIndicator = cell.activityIndicator;
         [self.connectionsManager startConnection:connection];
     }
+}
+
+- (void)hideMoobee:(Moobee*)moobee {
+    
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:[self.moobeezArray indexOfObject:moobee] inSection:MoobeezSection];
+ 
+    MoobeeCell* cell = (MoobeeCell*) [self.collectionView cellForItemAtIndexPath:indexPath];
+    
+    if (!cell) {
+        [self.collectionView scrollToItemAtIndexPath:indexPath atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
+        [self performSelector:@selector(hideMoobee:) withObject:moobee afterDelay:0.01];
+        return;
+    }
+    
+    cell.moobee = moobee;
+    
+    [self.view addSubview:self.animationCell];
+    self.animationCell.frame = [self.view convertRect:cell.frame fromView:cell.superview];
+    
+    [self.animationCell animateShrinkWithCompletion:^{
+        [self.animationCell removeFromSuperview];
+    }];
+
 }
 
 

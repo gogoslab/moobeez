@@ -7,7 +7,7 @@
 //
 
 #import "ImageLoader.h"
-#import "UIImage+Resize.h"
+#import "UIImage+Extra.h"
 #import "NSObject+Mutable.h"
 
 @interface ImageLoader ()

@@ -9,12 +9,13 @@
 #import "MovieViewController.h"
 #import "Moobeez.h"
 
-@interface MovieViewController () <UITextFieldDelegate>
+@interface MovieViewController () <UITextFieldDelegate, ToolboxViewDelegate>
 
 @property (weak, nonatomic) IBOutlet ImageView *posterImageView;
 
 @property (strong, nonatomic) IBOutlet MovieToolboxView *toolboxView;
 
+@property (strong, nonatomic) IBOutlet UITapGestureRecognizer *hideToolboxRecognizer;
 @end
 
 @implementation MovieViewController
@@ -38,10 +39,11 @@
         [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
     }];
     
-    [self.view addSubview:self.toolboxView];
-    self.toolboxView.y = self.toolboxView.maxToolboxY;
+    [self.toolboxView addToSuperview:self.view];
+
     self.toolboxView.moobee = self.moobee;
     self.toolboxView.tmdbMovie = self.tmdbMovie;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,10 +57,21 @@
     [self dismissViewControllerAnimated:NO completion:^{
         self.closeHandler();
     }];
-    
 }
 
 - (IBAction)shareButtonPressed:(id)sender {
+}
+
+- (IBAction)hideToolbox:(id)sender {
+    [self.toolboxView hideFullToolbox];
+}
+
+- (void)toolboxViewDidShow:(ToolboxView *)toolboxView {
+    [self.posterImageView addGestureRecognizer:self.hideToolboxRecognizer];
+}
+
+- (void)toolboxViewWillHide:(ToolboxView *)toolboxView {
+    [self.posterImageView removeGestureRecognizer:self.hideToolboxRecognizer];
 }
 
 @end

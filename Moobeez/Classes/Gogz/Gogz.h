@@ -20,7 +20,7 @@
 
 #import "UIView+Extra.h"
 #import "UITableView+Extra.h"
-#import "UIImage+Resize.h"
+#import "UIImage+Extra.h"
 #import "UIColor+Hex.h"
 
 
@@ -53,3 +53,6 @@
 
 #import "SBJson.h"
 #import "AMBlurView.h"
+#import "DRNRealTimeBlurView.h"
+//#import "RWBlurPopover.h"
+#import "GPUImage.h"

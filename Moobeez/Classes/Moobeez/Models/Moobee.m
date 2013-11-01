@@ -61,5 +61,10 @@
     
 }
 
+- (NSComparisonResult)compareByDate:(Moobee*)moobee {
+    return [moobee.date compare:self.date];
+}
+
+
 
 @end

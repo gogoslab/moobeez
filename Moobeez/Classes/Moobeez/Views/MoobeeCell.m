@@ -77,14 +77,20 @@
     [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
 }
 
-- (void)animateShrinkWithCompletion:(void (^)(void))completionHandler {
-    
+- (void)prepareForShrink {
     AppDelegate* appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
     
     self.contentView.frame = appDelegate.window.bounds;
     [appDelegate.window addSubview:self.contentView];
     
     self.starsView.hidden = YES;
+}
+
+- (void)animateShrinkWithCompletion:(void (^)(void))completionHandler {
+    
+    AppDelegate* appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
+    
+    [self prepareForShrink];
     
     [UIView animateWithDuration:0.5 animations:^{
         self.contentView.frame = [appDelegate.window convertRect:self.frame fromView:self.superview];

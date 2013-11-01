@@ -36,7 +36,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *watchlistButton;
 @property (weak, nonatomic) IBOutlet UIButton *sawButton;
 @property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *watchlistLabels;
-
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *sawLabels;
 
 @property (strong, nonatomic) NSMutableArray* cells;
 
@@ -45,6 +45,8 @@
 @implementation MovieToolboxView
 
 - (void)awakeFromNib {
+    
+    [super awakeFromNib];
     
     [self.castCollectionView registerNib:[UINib nibWithNibName:@"CharacterCellSmall" bundle:nil] forCellWithReuseIdentifier:@"CharacterCell"];
     
@@ -110,6 +112,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return [self.cells[indexPath.section][indexPath.row] height];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell == self.seenDateCell) {
+        [DatePickerView showDatePickerWithDate:self.moobee.date inView:self.superview completionHandler:^(NSDate *date) {
+            self.moobee.date = date;
+            self.seenDateLabel.text = [[NSDateFormatter dateFormatterWithFormat:@"dd MMMM yyyy"] stringFromDate:self.moobee.date];
+        }];
+    }
 }
 
 #pragma mark - Text Field delegate
@@ -194,5 +206,19 @@
 - (IBAction)favoritesButtonPressed:(id)sender {
     self.moobee.isFavorite = !self.moobee.isFavorite;
     self.favoritesButton.selected = self.moobee.isFavorite;
+}
+
+- (void)setTextsColor:(UIColor *)textsColor {
+    super.textsColor = textsColor;
+    
+    self.movieNameTextField.textColor = self.textsColor;
+    self.seenDateLabel.textColor = self.textsColor;
+    for (UILabel* label in self.watchlistLabels) {
+        label.textColor = self.textsColor;
+    }
+    for (UILabel* label in self.sawLabels) {
+        label.textColor = self.textsColor;
+    }
+    
 }
 @end

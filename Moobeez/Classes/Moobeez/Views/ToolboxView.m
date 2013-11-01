@@ -22,6 +22,48 @@
 
 @implementation ToolboxView
 
+- (void)addToSuperview:(UIView *)view {
+    
+    [self prepareBlurInView:view];
+    
+    [view addSubview:self];
+    self.y = self.maxToolboxY;
+    
+    [view insertSubview:self.blurImageView belowSubview:self];
+    self.blurImageView.y = self.y;
+    self.blurImageView.height = view.height - self.blurImageView.y;
+}
+
+- (void)prepareBlurInView:(UIView*)view {
+    
+    CGSize size = view.bounds.size;
+    
+    CGFloat scale = 1;//[UIScreen mainScreen].scale;
+    size.width *= scale;
+    size.height *= scale;
+    
+    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+    CGContextScaleCTM(ctx, scale, scale);
+    
+    [view.layer renderInContext:ctx];
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    GPUImageiOSBlurFilter *filter = [[GPUImageiOSBlurFilter alloc] init];
+    filter.blurRadiusInPixels = [UIScreen mainScreen].scale * 4;
+    self.blurImageView.image = [filter imageByFilteringImage:image];
+    
+    self.blurImageView.contentMode = UIViewContentModeBottom;
+    
+    CGFloat luminosity = [image luminosity];
+ 
+    self.textsColor = (luminosity > 70 ? [UIColor blackColor] : [UIColor whiteColor]);
+}
+
 - (IBAction)toolboxDidPan:(id)sender {
     
     UIPanGestureRecognizer* gesture = (UIPanGestureRecognizer*) sender;
@@ -47,6 +89,10 @@
             
             [UIView animateWithDuration:0.05 animations:^{
                 self.y = toolboxViewY;
+                CGRect frame = self.blurImageView.frame;
+                frame.origin.y = self.y;
+                frame.size.height = self.superview.height - self.y;
+                self.blurImageView.frame = frame;
             }];
         }
             break;
@@ -83,10 +129,22 @@
     
     CGFloat duration = 0.32 * (self.y - self.minToolboxY) / 216;
     
+    if ([self.delegate respondsToSelector:@selector(toolboxViewWillShow:)]) {
+        [self.delegate toolboxViewWillShow:self];
+    }
+    
     [UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.y = self.minToolboxY;
+        CGRect frame = self.blurImageView.frame;
+        frame.origin.y = self.y;
+        frame.size.height = self.superview.height - self.y;
+        self.blurImageView.frame = frame;
     } completion:^(BOOL finished) {
         self.toolboxHandlerImageView.image = [UIImage imageNamed:@"toolbox_down_arrow.png"];
+        
+        if ([self.delegate respondsToSelector:@selector(toolboxViewDidShow:)]) {
+            [self.delegate toolboxViewDidShow:self];
+        }
     }];
     
 }
@@ -95,10 +153,23 @@
     
     CGFloat duration = 0.32 * (self.maxToolboxY - self.y) / 216;
 
+    if ([self.delegate respondsToSelector:@selector(toolboxViewWillHide:)]) {
+        [self.delegate toolboxViewWillHide:self];
+    }
+    
     [UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.y = self.maxToolboxY;
+        CGRect frame = self.blurImageView.frame;
+        frame.origin.y = self.y;
+        frame.size.height = self.superview.height - self.y;
+        self.blurImageView.frame = frame;
+
     } completion:^(BOOL finished) {
         self.toolboxHandlerImageView.image = [UIImage imageNamed:@"toolbox_up_arrow.png"];
+        
+        if ([self.delegate respondsToSelector:@selector(toolboxViewDidHide:)]) {
+            [self.delegate toolboxViewDidHide:self];
+        }
     }];
     
 }
