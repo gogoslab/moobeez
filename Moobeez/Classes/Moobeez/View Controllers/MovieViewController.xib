@@ -144,7 +144,7 @@
                         <rect key="frame" x="60" y="1" width="200" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="right" image="empty_stars_big.png" id="eeW-wI-uGS">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="right" image="empty_stars_big_black.png" highlightedImage="empty_stars_big_white.png" id="eeW-wI-uGS">
                                 <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -392,7 +392,8 @@
         <image name="button_trailer.png" width="50" height="50"/>
         <image name="button_wishlist_add.png" width="60" height="60"/>
         <image name="button_wishlist_remove.png" width="60" height="60"/>
-        <image name="empty_stars_big.png" width="200" height="40"/>
+        <image name="empty_stars_big_black.png" width="200" height="40"/>
+        <image name="empty_stars_big_white.png" width="200" height="40"/>
         <image name="full_stars_big.png" width="200" height="40"/>
         <image name="share_button.png" width="40" height="40"/>
         <image name="toolbox_up_arrow.png" width="50" height="15"/>

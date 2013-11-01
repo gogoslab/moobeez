@@ -13,9 +13,6 @@
 
 @interface StarsView ()
 
-@property (weak, nonatomic) IBOutlet UIImageView* emptyStarsImageView;
-@property (weak, nonatomic) IBOutlet UIImageView* fullStarsImageView;
-
 @end
 
 @implementation StarsView

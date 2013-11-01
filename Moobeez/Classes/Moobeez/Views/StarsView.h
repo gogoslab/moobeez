@@ -12,6 +12,9 @@
 
 @interface StarsView : UIView
 
+@property (weak, nonatomic) IBOutlet UIImageView* emptyStarsImageView;
+@property (weak, nonatomic) IBOutlet UIImageView* fullStarsImageView;
+
 @property (readwrite, nonatomic) CGFloat rating;
 @property (readwrite, nonatomic) CGFloat ratingInPixels;
 

@@ -28,7 +28,7 @@
 @property (readwrite, nonatomic) CGFloat minToolboxY;
 @property (readwrite, nonatomic) CGFloat maxToolboxY;
 
-@property (strong, nonatomic) UIColor* textsColor;
+@property (readwrite, nonatomic) BOOL isLightInterface;
 
 @property (weak, nonatomic) IBOutlet id<ToolboxViewDelegate> delegate;
 

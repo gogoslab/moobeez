@@ -61,7 +61,7 @@
     
     CGFloat luminosity = [image luminosity];
  
-    self.textsColor = (luminosity > 70 ? [UIColor blackColor] : [UIColor whiteColor]);
+    self.isLightInterface = (luminosity <= 70);
 }
 
 - (IBAction)toolboxDidPan:(id)sender {
