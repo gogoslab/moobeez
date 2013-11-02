@@ -108,6 +108,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     self.selectHandler(self.movies[indexPath.row]);
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 @end

@@ -32,6 +32,8 @@ enum CollectionSections {
 
 @property (strong, nonatomic) SearchNewMovieViewController* searchNewMovieController;
 
+@property (readonly, nonatomic) MoobeeType selectedType;
+
 @end
 
 @implementation MoobeezViewController
@@ -95,16 +97,20 @@ enum CollectionSections {
 
 #pragma mark - Collection View
 
+- (MoobeeType)selectedType {
+    return (MoobeeType) (2 - self.typeSegmentedControl.selectedSegmentIndex);
+}
+
 - (void)reloadMoobeez {
     
-    switch (self.typeSegmentedControl.selectedSegmentIndex) {
-        case 0:
+    switch (self.selectedType) {
+        case MoobeeSeenType:
             self.moobeezArray = [[Database sharedDatabase] moobeezWithType:MoobeeSeenType];
             break;
-        case 1:
+        case MoobeeOnWatchlistType:
             self.moobeezArray = [[Database sharedDatabase] moobeezWithType:MoobeeOnWatchlistType];
             break;
-        case 2:
+        case MoobeeFavoriteType:
             self.moobeezArray = [[Database sharedDatabase] favoritesMoobeez];
             break;
         default:
@@ -121,7 +127,7 @@ enum CollectionSections {
 
     [self.collectionView reloadData];
     
-    self.collectionView.height = MIN(self.collectionView.collectionViewLayout.collectionViewContentSize.height, self.initialCollectionViewHeight);
+    self.collectionView.height = MIN(self.collectionView.collectionViewLayout.collectionViewContentSize.height + self.searchCell.height, self.initialCollectionViewHeight);
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -186,9 +192,6 @@ enum CollectionSections {
         Moobee* moobee = self.moobeezArray[indexPath.row];
         
         MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
-            if (!self.animationCell) {
-                self.animationCell = [[NSBundle mainBundle] loadNibNamed:@"MoobeeCell" owner:self options:nil][0];
-            }
             
             [self.view addSubview:self.animationCell];
             self.animationCell.frame = [self.view convertRect:cell.frame fromView:cell.superview];
@@ -196,6 +199,9 @@ enum CollectionSections {
             self.animationCell.moobee = moobee;
             
             [self.animationCell animateGrowWithCompletion:^{
+                
+                self.view.userInteractionEnabled = YES;
+                
                 [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie];
                 
                 [self.animationCell removeFromSuperview];
@@ -204,7 +210,18 @@ enum CollectionSections {
         
         connection.activityIndicator = cell.activityIndicator;
         [self.connectionsManager startConnection:connection];
+        
+        self.view.userInteractionEnabled = NO;
     }
+}
+
+#pragma mark - Animations
+
+- (MoobeeCell*)animationCell {
+    if (!_animationCell) {
+        _animationCell = [[NSBundle mainBundle] loadNibNamed:@"MoobeeCell" owner:self options:nil][0];
+    }
+    return _animationCell;
 }
 
 - (void)hideMoobee:(Moobee*)moobee {
@@ -243,7 +260,36 @@ enum CollectionSections {
             return;
         }
         
-        [self.moobeezArray sortUsingSelector:@selector(compareByDate:)];
+        // change type moobee
+        
+        BOOL sameType;
+        if (self.selectedType == MoobeeFavoriteType) {
+            sameType = moobee.isFavorite;
+        }
+        else {
+            sameType = (moobee.type == self.selectedType);
+        }
+        
+        if (!sameType) {
+            if ([self.moobeezArray containsObject:moobee]) {
+                [self.moobeezArray removeObject:moobee];
+                [self.collectionView reloadData];
+            }
+            
+            return;
+        }
+        
+        // new moobee
+        if (![self.moobeezArray containsObject:moobee]) {
+            [self.moobeezArray addObject:moobee];
+        }
+        
+        if (self.selectedType != MoobeeOnWatchlistType) {
+            [self.moobeezArray sortUsingSelector:@selector(compareByDate:)];
+        }
+        else {
+            [self.moobeezArray sortUsingSelector:@selector(compareById:)];
+        }
         
         [self.collectionView reloadData];
         
@@ -271,24 +317,30 @@ enum CollectionSections {
     
     self.searchNewMovieController.selectHandler = ^ (TmdbMovie* movie) {
         
-        Moobee* moobee = [[Moobee alloc] initWithTmdbMovie:movie];
-        switch (self.typeSegmentedControl.selectedSegmentIndex) {
-            case 0:
-                moobee.type = MoobeeSeenType;
-                moobee.date = [NSDate date];
-                moobee.rating = 2.5;
-                break;
-            case 1:
-                moobee.type = MoobeeOnWatchlistType;
-                break;
-            case 2:
-                moobee.type = MoobeeNoneType;
-                moobee.isFavorite = YES;
-                break;
-            default:
-                break;
+        Moobee* moobee = [Moobee moobeeWithTmdbMovie:movie];
+        
+        if (moobee.id == -1) {
+            switch (self.selectedType) {
+                case MoobeeSeenType:
+                    moobee.type = MoobeeSeenType;
+                    moobee.date = [NSDate date];
+                    moobee.rating = 2.5;
+                    break;
+                case MoobeeOnWatchlistType:
+                    moobee.type = MoobeeOnWatchlistType;
+                    break;
+                case MoobeeFavoriteType:
+                    moobee.type = MoobeeNoneType;
+                    moobee.isFavorite = YES;
+                    break;
+                default:
+                    break;
+            }
         }
+        
+        self.view.userInteractionEnabled = NO;
         MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+            self.view.userInteractionEnabled = YES;
             [self.searchNewMovieController.view removeFromSuperview];
             [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie];
         }];

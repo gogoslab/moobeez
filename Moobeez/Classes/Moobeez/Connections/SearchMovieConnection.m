@@ -29,7 +29,10 @@
         NSMutableArray* movies = [[NSMutableArray alloc] init];
         
         for (NSDictionary* movieDictionary in resultDictionary[@"results"]) {
-            if ([movieDictionary[@"title"] rangeOfString:self.query options:NSCaseInsensitiveSearch].location == NSNotFound) {
+            if (![movieDictionary isKindOfClass:[NSDictionary class]]) {
+                continue;
+            }
+            if ([[movieDictionary stringForKey:@"title"] rangeOfString:self.query options:NSCaseInsensitiveSearch].location == NSNotFound) {
                 continue;
             }
             

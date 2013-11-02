@@ -14,13 +14,17 @@ typedef enum MoobeeType {
     MoobeeOnWatchlistType = 1,
     MoobeeSeenType = 2,
 
-    MoobeeAllType
+    MoobeeAllType,
+    
+    MoobeeFavoriteType = 0
     
 } MoobeeType;
 
 @class TmdbMovie;
 
 @interface Moobee : DatabaseItem
+
+@property (readwrite, nonatomic) NSInteger id;
 
 @property (readwrite, nonatomic) NSInteger tmdbId;
 @property (strong, nonatomic) NSString* name;
@@ -33,8 +37,9 @@ typedef enum MoobeeType {
 
 @property (readonly, nonatomic) NSMutableDictionary* databaseDictionary;
 
-- (NSComparisonResult)compareByDate:(Moobee*)moobee;
++ (id)moobeeWithTmdbMovie:(TmdbMovie*)movie;
 
-- (id)initWithTmdbMovie:(TmdbMovie*)movie;
+- (NSComparisonResult)compareByDate:(Moobee*)moobee;
+- (NSComparisonResult)compareById:(Moobee*)moobee;
 
 @end

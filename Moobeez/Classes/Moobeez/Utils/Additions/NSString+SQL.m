@@ -11,7 +11,10 @@
 @implementation NSString (SQL)
 
 - (NSString*)stringByResolvingSQLIssues {
-    return [self stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
+    if (self.length) {
+        return [self stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
+    }
+    return @"";
 }
 
 @end

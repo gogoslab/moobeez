@@ -30,6 +30,7 @@
 - (NSMutableArray*)moobeezWithType:(MoobeeType)type;
 - (NSMutableArray*)favoritesMoobeez;
 - (Moobee*)moobeeWithId:(NSInteger)id;
+- (Moobee*)moobeeWithTmdbId:(NSInteger)tmdbId;
 - (BOOL)saveMoobee:(Moobee*)moobee;
 
 @end

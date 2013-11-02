@@ -20,6 +20,15 @@ static Database* sharedDatabase;
     return sharedDatabase;
 }
 
+- (NSInteger)generateNewId {
+    NSInteger lastId = [[[NSUserDefaults standardUserDefaults] objectForKey:@"lastId"] integerValue];
+    lastId++;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:lastId] forKey:@"lastId"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    return lastId;
+}
+
 - (id)init {
     self = [super init];
     
@@ -53,17 +62,22 @@ static Database* sharedDatabase;
 
 #pragma mark - General Methods
 
-- (BOOL)insertDictionary:(NSDictionary*)dictionary intoTable:(NSString*)table {
+- (NSInteger)insertDictionary:(NSDictionary*)dictionary intoTable:(NSString*)table {
     
-    sqlite_int64 nextId = sqlite3_last_insert_rowid(database) + 1;
+    sqlite_int64 nextId = [self generateNewId];
+
+    NSMutableDictionary* dictionaryWithId = [NSMutableDictionary dictionaryWithDictionary:dictionary];
     
-    NSArray* allKeys = dictionary.allKeys;
+    dictionaryWithId[@"ID"] = [NSString stringWithFormat:@"%lld", nextId];
+    
+    NSArray* allKeys = dictionaryWithId.allKeys;
     
     NSString* columns = [allKeys componentsJoinedByString:@","];
     
-    NSMutableArray* allValues = [NSMutableArray arrayWithObject:[NSString stringWithFormat:@"ID = %lld", nextId]];
+    NSMutableArray* allValues = [[NSMutableArray alloc] init];
+    
     for (NSString* key in allKeys) {
-        [allValues addObject:[NSString stringWithFormat:@"%@", dictionary[key]]];
+        [allValues addObject:[NSString stringWithFormat:@"'%@'", dictionaryWithId[key]]];
     }
     
     NSString* values = [allValues componentsJoinedByString:@","];
@@ -78,7 +92,10 @@ static Database* sharedDatabase;
     
     if (prepare != SQLITE_OK) {
         NSLog(@"prepare: %d", prepare);
-        return NO;
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+        return -1;
     }
     
     int step = sqlite3_step(statement);
@@ -87,7 +104,7 @@ static Database* sharedDatabase;
         case SQLITE_DONE:
             NSLog(@"yey");
             sqlite3_finalize(statement);
-            return YES;
+            return nextId;
             break;
         case SQLITE_ERROR:
             NSLog(@"error");
@@ -102,7 +119,7 @@ static Database* sharedDatabase;
     
     sqlite3_finalize(statement);
     
-    return NO;
+    return -1;
 }
 
 - (BOOL)updateDictionary:(NSDictionary*)dictionary intoTable:(NSString*)table where:(NSDictionary*)whereDictionary {
@@ -205,15 +222,15 @@ static Database* sharedDatabase;
         NSMutableDictionary* addDictionary = [[NSMutableDictionary alloc] init];
         
         addDictionary[@"tmdbId"] = [NSString stringWithFormat:@"%ld", (long)tmdbId];
-        addDictionary[@"name"] = [NSString stringWithFormat:@"'%@'", name];
-        addDictionary[@"comments"] = [NSString stringWithFormat:@"'%@'", comments];
-        addDictionary[@"posterPath"] = [NSString stringWithFormat:@"'%@'", posterPath];
+        addDictionary[@"name"] = [NSString stringWithFormat:@"%@", name];
+        addDictionary[@"comments"] = [NSString stringWithFormat:@"%@", comments];
+        addDictionary[@"posterPath"] = [NSString stringWithFormat:@"%@", posterPath];
         addDictionary[@"rating"] = [NSString stringWithFormat:@"%.1f", rating];
         addDictionary[@"date"] = [NSString stringWithFormat:@"%.0f", date];
         addDictionary[@"type"] = [NSString stringWithFormat:@"%ld", (long)type];
         addDictionary[@"isFavorite"] = [NSString stringWithFormat:@"%ld", (long)isFavorite];
         
-        if (![self insertDictionary:addDictionary intoTable:@"Moobeez"]) {
+        if ([self insertDictionary:addDictionary intoTable:@"Moobeez"] == -1) {
             [untransferredDatabase addObject:dictionary];
         }
     }
@@ -286,7 +303,7 @@ static Database* sharedDatabase;
             query = [NSString stringWithFormat:@"SELECT * FROM Moobeez WHERE type = %d ORDER BY ID DESC", type];
             break;
         default:
-            query = [NSString stringWithFormat:@"SELECT * FROM Moobeez ORDER BY date, ID DESC"];
+            query = [NSString stringWithFormat:@"SELECT * FROM Moobeez ORDER BY date DESC, ID DESC"];
             break;
     }
     
@@ -295,7 +312,7 @@ static Database* sharedDatabase;
 
 - (NSMutableArray*)favoritesMoobeez {
     
-    return [self moobeezWithQuery:@"SELECT * FROM Moobeez WHERE isFavorite = TRUE ORDER BY date, ID DESC"];
+    return [self moobeezWithQuery:@"SELECT * FROM Moobeez WHERE isFavorite = '1' ORDER BY date DESC, ID DESC"];
 }
 
 - (NSMutableArray*)moobeezWithQuery:(NSString*)query {
@@ -343,6 +360,31 @@ static Database* sharedDatabase;
     return nil;
 }
 
+- (Moobee*)moobeeWithTmdbId:(NSInteger)tmdbId {
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM Moobeez WHERE tmdbId = %ld", (long)tmdbId];
+    sqlite3_stmt *statement;
+    
+    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
+        == SQLITE_OK) {
+        
+        Moobee* moobee = nil;
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            
+            moobee = [[Moobee alloc] initWithDatabaseDictionary:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
+            
+            break;
+        }
+        sqlite3_finalize(statement);
+        
+        return moobee;
+    }
+    
+    
+    return nil;
+}
+
 - (BOOL)saveMoobee:(Moobee*)moobee {
     
     NSMutableDictionary* moobeeDictionary = moobee.databaseDictionary;
@@ -355,7 +397,11 @@ static Database* sharedDatabase;
         
     }
     
-    return [self insertDictionary:moobeeDictionary intoTable:@"Moobeez"];
+    NSInteger moobeeId = [self insertDictionary:moobeeDictionary intoTable:@"Moobeez"];
+    
+    moobee.id = moobeeId;
+    
+    return (moobeeId != -1);
     
 }
 

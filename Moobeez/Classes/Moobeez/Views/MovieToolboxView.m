@@ -78,9 +78,7 @@
     if (self.moobee.type == MoobeeSeenType) {
         [self.cells addObject:@[self.starsCell, self.seenDateCell]];
 
-        self.starsView.rating = self.moobee.rating;
-        
-        self.seenDateLabel.text = [[NSDateFormatter dateFormatterWithFormat:@"dd MMMM yyyy"] stringFromDate:self.moobee.date];
+        [self refreshMoobeeInfo];
     }
     else {
         [self.cells addObject:@[self.typeButtonsCell]];
@@ -93,7 +91,14 @@
     }
     
     [self.cells addObject:@[self.buttonsCell]];
+    self.favoritesButton.selected = self.moobee.isFavorite;
+    
+}
 
+- (void)refreshMoobeeInfo {
+    self.starsView.rating = self.moobee.rating;
+    
+    self.seenDateLabel.text = [[NSDateFormatter dateFormatterWithFormat:@"dd MMMM yyyy"] stringFromDate:self.moobee.date];
 }
 
 #pragma mark - Table View
@@ -182,6 +187,9 @@
 
 - (IBAction)sawButtonPressed:(id)sender {
     self.moobee.type = MoobeeSeenType;
+    self.moobee.date = [NSDate date];
+    self.moobee.rating = 2.5;
+    [self refreshMoobeeInfo];
     
     [self.cells replaceObjectAtIndex:1 withObject:@[self.starsCell, self.seenDateCell]];
     

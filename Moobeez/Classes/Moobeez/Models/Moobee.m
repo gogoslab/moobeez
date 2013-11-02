@@ -11,8 +11,6 @@
 
 @interface Moobee ()
 
-@property (readwrite, nonatomic) NSInteger id;
-
 @end
 
 @implementation Moobee
@@ -49,7 +47,7 @@
     
     databaseDictionary[@"tmdbId"] = [NSString stringWithFormat:@"%ld", self.tmdbId];
     databaseDictionary[@"name"] = [self.name stringByResolvingSQLIssues];
-    databaseDictionary[@"comments"] = [self.name stringByResolvingSQLIssues];
+    databaseDictionary[@"comments"] = [self.comments stringByResolvingSQLIssues];
     databaseDictionary[@"posterPath"] = [self.posterPath stringByResolvingSQLIssues];
     databaseDictionary[@"rating"] = [NSString stringWithFormat:@"%.1f", self.rating];
     if (self.date) {
@@ -61,17 +59,24 @@
     return databaseDictionary;
 }
 
-- (id)initWithTmdbMovie:(TmdbMovie*)movie {
-    self = [self init];
++ (id)moobeeWithTmdbMovie:(TmdbMovie*)movie {
+    Moobee* moobee = [[Database sharedDatabase] moobeeWithTmdbId:movie.id];
     
-    if (self) {
-        self.name = movie.name;
-        self.tmdbId = movie.id;
-        self.posterPath = movie.posterPath;
-        self.id = -1;
+    if (moobee) {
+        return moobee;
     }
     
-    return self;
+    moobee = [[Moobee alloc] init];
+    
+    if (moobee) {
+        moobee.name = movie.name;
+        moobee.tmdbId = movie.id;
+        moobee.posterPath = movie.posterPath;
+        moobee.comments = @"";
+        moobee.id = -1;
+    }
+    
+    return moobee;
 }
 
 - (BOOL)save {
@@ -86,6 +91,19 @@
     return [moobee.date compare:self.date];
 }
 
+- (NSComparisonResult)compareById:(Moobee*)moobee {
+    return [[NSNumber numberWithInteger:moobee.id] compare:[NSNumber numberWithInteger:self.id]];
+}
+
+- (BOOL)isEqual:(id)object {
+    if ([object isKindOfClass:[Moobee class]]) {
+        if (self.id == ((Moobee*) object).id) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
 
 
 @end
