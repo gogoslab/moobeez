@@ -12,6 +12,7 @@
 enum CollectionSections {
     SearchSection = 0,
     MoobeezSection,
+    EmptySection,
     SectionsCount
     };
 
@@ -19,7 +20,8 @@ enum CollectionSections {
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (strong, nonatomic) NSMutableArray* moobeezArray;
+@property (strong, nonatomic) NSMutableArray* moobeez;
+@property (strong, nonatomic) NSArray* displayedMoobeez;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *typeSegmentedControl;
 
@@ -52,12 +54,9 @@ enum CollectionSections {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.collectionView.contentInset = UIEdgeInsetsMake(44, 0, 0, 0);
-
     [self.collectionView registerNib:[UINib nibWithNibName:@"MoobeeCell" bundle:nil] forCellWithReuseIdentifier:@"MoobeeCell"];
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"EmptyCell"];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"SearchCell"];
-    
-    self.moobeezArray = [[Database sharedDatabase] moobeezWithType:MoobeeSeenType];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadMoobeez) name:DatabaseDidReloadNotification object:nil];
     
@@ -76,10 +75,11 @@ enum CollectionSections {
     if (firstAppear) {
         self.initialCollectionViewHeight = self.collectionView.height;
 
-        [self reloadData];
+        [self reloadMoobeez];
     
-        self.collectionView.contentOffset = CGPointMake(0, 6);
         firstAppear = NO;
+        
+        self.collectionView.contentOffset = CGPointMake(0, 0);
     }
     
 }
@@ -105,17 +105,20 @@ enum CollectionSections {
     
     switch (self.selectedType) {
         case MoobeeSeenType:
-            self.moobeezArray = [[Database sharedDatabase] moobeezWithType:MoobeeSeenType];
+            self.moobeez = [[Database sharedDatabase] moobeezWithType:MoobeeSeenType];
             break;
         case MoobeeOnWatchlistType:
-            self.moobeezArray = [[Database sharedDatabase] moobeezWithType:MoobeeOnWatchlistType];
+            self.moobeez = [[Database sharedDatabase] moobeezWithType:MoobeeOnWatchlistType];
             break;
         case MoobeeFavoriteType:
-            self.moobeezArray = [[Database sharedDatabase] favoritesMoobeez];
+            self.moobeez = [[Database sharedDatabase] favoritesMoobeez];
             break;
         default:
             break;
     }
+    
+    self.searchBar.text = @"";
+    [self applyFilter];
     
     [self reloadData];
     
@@ -123,11 +126,18 @@ enum CollectionSections {
     
 }
 
+- (void)applyFilter {
+    self.displayedMoobeez = [self.moobeez filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+        if (self.searchBar.text.length == 0 || [((Moobee*) evaluatedObject).name rangeOfString:self.searchBar.text options:NSCaseInsensitiveSearch].location !=  NSNotFound) {
+            return YES;
+        }
+        return NO;
+    }]];
+}
+
 - (void)reloadData {
 
     [self.collectionView reloadData];
-    
-    self.collectionView.height = MIN(self.collectionView.collectionViewLayout.collectionViewContentSize.height + self.searchCell.height, self.initialCollectionViewHeight);
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -141,7 +151,10 @@ enum CollectionSections {
             return 1;
             break;
         case MoobeezSection:
-            return self.moobeezArray.count;
+            return self.displayedMoobeez.count;
+            break;
+        case EmptySection:
+            return 1;
             break;
         default:
             break;
@@ -164,9 +177,15 @@ enum CollectionSections {
         return self.searchCell;
     }
     
+    if (indexPath.section == EmptySection) {
+        UICollectionViewCell* emptyCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EmptyCell" forIndexPath:indexPath];
+        emptyCell.backgroundColor = [UIColor clearColor];
+        return emptyCell;
+    }
+    
     MoobeeCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MoobeeCell" forIndexPath:indexPath];
 
-    cell.moobee = self.moobeezArray[indexPath.row];
+    cell.moobee = self.displayedMoobeez[indexPath.row];
     
     return cell;
     
@@ -180,6 +199,12 @@ enum CollectionSections {
         
     }
     
+    if (indexPath.section == EmptySection) {
+        
+        return CGSizeMake(296, MAX(0, self.collectionView.height - [MoobeeCell cellHeight] * (self.displayedMoobeez.count - 1 / 3 + 1)));
+        
+    }
+    
     return CGSizeMake(90, [MoobeeCell cellHeight]);
     
 }
@@ -189,7 +214,7 @@ enum CollectionSections {
         
         MoobeeCell* cell = (MoobeeCell*) [collectionView cellForItemAtIndexPath:indexPath];
         
-        Moobee* moobee = self.moobeezArray[indexPath.row];
+        Moobee* moobee = self.displayedMoobeez[indexPath.row];
         
         MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
             
@@ -226,7 +251,7 @@ enum CollectionSections {
 
 - (void)hideMoobee:(Moobee*)moobee {
     
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:[self.moobeezArray indexOfObject:moobee] inSection:MoobeezSection];
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:[self.displayedMoobeez indexOfObject:moobee] inSection:MoobeezSection];
  
     MoobeeCell* cell = (MoobeeCell*) [self.collectionView cellForItemAtIndexPath:indexPath];
     
@@ -271,8 +296,9 @@ enum CollectionSections {
         }
         
         if (!sameType) {
-            if ([self.moobeezArray containsObject:moobee]) {
-                [self.moobeezArray removeObject:moobee];
+            if ([self.moobeez containsObject:moobee]) {
+                [self.moobeez removeObject:moobee];
+                [self applyFilter];
                 [self.collectionView reloadData];
             }
             
@@ -280,16 +306,18 @@ enum CollectionSections {
         }
         
         // new moobee
-        if (![self.moobeezArray containsObject:moobee]) {
-            [self.moobeezArray addObject:moobee];
+        if (![self.moobeez containsObject:moobee]) {
+            [self.moobeez addObject:moobee];
         }
         
         if (self.selectedType != MoobeeOnWatchlistType) {
-            [self.moobeezArray sortUsingSelector:@selector(compareByDate:)];
+            [self.moobeez sortUsingSelector:@selector(compareByDate:)];
         }
         else {
-            [self.moobeezArray sortUsingSelector:@selector(compareById:)];
+            [self.moobeez sortUsingSelector:@selector(compareById:)];
         }
+        
+        [self applyFilter];
         
         [self.collectionView reloadData];
         
@@ -355,6 +383,22 @@ enum CollectionSections {
     }
     
     return _searchNewMovieController;
+}
+
+#pragma mark - Filter
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    self.searchBar.text = @"";
+    [searchBar resignFirstResponder];
+    [self applyFilter];
+    [self reloadData];
+    self.collectionView.contentOffset = CGPointMake(0, -60);
+}
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+    [self applyFilter];
+    [self reloadData];
 }
 
 @end

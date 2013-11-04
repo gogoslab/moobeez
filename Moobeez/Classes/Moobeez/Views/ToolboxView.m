@@ -61,7 +61,7 @@
     
     CGFloat luminosity = [image luminosity];
  
-    self.isLightInterface = (luminosity <= 70);
+    self.isLightInterface = (luminosity <= 100);
 }
 
 - (IBAction)toolboxDidPan:(id)sender {
