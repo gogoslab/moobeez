@@ -199,18 +199,6 @@
     [self.tableView endUpdates];
 }
 
-- (IBAction)descriptionButtonPressed:(id)sender {
-}
-
-- (IBAction)castButtonPressed:(id)sender {
-}
-
-- (IBAction)photosButtonPressed:(id)sender {
-}
-
-- (IBAction)trailerButtonPressed:(id)sender {
-}
-
 - (IBAction)favoritesButtonPressed:(id)sender {
     self.moobee.isFavorite = !self.moobee.isFavorite;
     self.favoritesButton.selected = self.moobee.isFavorite;

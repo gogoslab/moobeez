@@ -28,10 +28,14 @@
 #pragma mark - View Controllers
 
 #import "ViewController.h"
+
 #import "MoobeezViewController.h"
-#import "MoviesViewController.h"
-#import "MovieViewController.h"
 #import "SearchNewMovieViewController.h"
+
+#import "MoviesViewController.h"
+
+#import "MovieViewController.h"
+#import "TextViewController.h"
 
 #pragma mark - Cells
 

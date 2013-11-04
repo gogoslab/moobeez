@@ -19,6 +19,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 
+
+@property (strong, nonatomic) TextViewController* descriptionViewController;
+
 @end
 
 @implementation MovieViewController
@@ -85,6 +88,33 @@
 
 - (void)toolboxViewWillHide:(ToolboxView *)toolboxView {
     [self.posterImageView removeGestureRecognizer:self.hideToolboxRecognizer];
+}
+
+
+#pragma mark - Description
+
+- (IBAction)descriptionButtonPressed:(id)sender {
+    
+    self.descriptionViewController.text = self.tmdbMovie.description;
+    [self.appDelegate.window addSubview:self.descriptionViewController.view];
+}
+
+- (TextViewController*)descriptionViewController {
+    if (!_descriptionViewController) {
+        _descriptionViewController = [[TextViewController alloc] initWithNibName:@"TextViewController" bundle:nil];
+        _descriptionViewController.view.frame = self.appDelegate.window.bounds;
+    }
+    return _descriptionViewController;
+}
+
+
+- (IBAction)castButtonPressed:(id)sender {
+}
+
+- (IBAction)photosButtonPressed:(id)sender {
+}
+
+- (IBAction)trailerButtonPressed:(id)sender {
 }
 
 @end

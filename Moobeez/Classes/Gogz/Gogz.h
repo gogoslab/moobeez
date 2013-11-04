@@ -22,7 +22,7 @@
 #import "UITableView+Extra.h"
 #import "UIImage+Extra.h"
 #import "UIColor+Hex.h"
-
+#import "UIMaskView.h"
 
 
 #pragma mark - Alert

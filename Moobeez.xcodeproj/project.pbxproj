@@ -35,6 +35,8 @@
 		644121F7181C351400260497 /* share_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 644121F5181C351400260497 /* share_button.png */; };
 		644121F8181C351400260497 /* share_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644121F6181C351400260497 /* share_button@2x.png */; };
 		64412223181D3D7F00260497 /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64412222181D3D7F00260497 /* CharacterCell.xib */; };
+		64648EC6182849B800365EC7 /* UIMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648EC5182849B800365EC7 /* UIMaskView.m */; };
+		64648EC81828502E00365EC7 /* description_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64648EC71828502E00365EC7 /* description_mask@2x.png */; };
 		649C3A661817FE7F0000A34C /* ToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A651817FE7F0000A34C /* ToolboxView.m */; };
 		649C3A6D1817FFEA0000A34C /* MovieToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A6C1817FFEA0000A34C /* MovieToolboxView.m */; };
 		649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A711818068F0000A34C /* empty_stars_big_black.png */; };
@@ -284,6 +286,9 @@
 		64DC8C1C1817215E002C11D8 /* toolbox_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C161817215E002C11D8 /* toolbox_line@2x.png */; };
 		64DC8C1D1817215E002C11D8 /* toolbox_up_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C171817215E002C11D8 /* toolbox_up_arrow.png */; };
 		64DC8C1E1817215E002C11D8 /* toolbox_up_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C181817215E002C11D8 /* toolbox_up_arrow@2x.png */; };
+		64F25A141827D32C005AB9F8 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F25A121827D32C005AB9F8 /* TextViewController.m */; };
+		64F25A151827D32C005AB9F8 /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F25A131827D32C005AB9F8 /* TextViewController.xib */; };
+		64F25A181827EC02005AB9F8 /* description_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F25A171827EC02005AB9F8 /* description_mask.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -339,6 +344,9 @@
 		644121F5181C351400260497 /* share_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_button.png; sourceTree = "<group>"; };
 		644121F6181C351400260497 /* share_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_button@2x.png"; sourceTree = "<group>"; };
 		64412222181D3D7F00260497 /* CharacterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterCell.xib; sourceTree = "<group>"; };
+		64648EC4182849B800365EC7 /* UIMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMaskView.h; sourceTree = "<group>"; };
+		64648EC5182849B800365EC7 /* UIMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMaskView.m; sourceTree = "<group>"; };
+		64648EC71828502E00365EC7 /* description_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "description_mask@2x.png"; sourceTree = "<group>"; };
 		649C3A641817FE7F0000A34C /* ToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolboxView.h; sourceTree = "<group>"; };
 		649C3A651817FE7F0000A34C /* ToolboxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolboxView.m; sourceTree = "<group>"; };
 		649C3A6B1817FFEA0000A34C /* MovieToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieToolboxView.h; sourceTree = "<group>"; };
@@ -809,6 +817,10 @@
 		64DC8C161817215E002C11D8 /* toolbox_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbox_line@2x.png"; sourceTree = "<group>"; };
 		64DC8C171817215E002C11D8 /* toolbox_up_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbox_up_arrow.png; sourceTree = "<group>"; };
 		64DC8C181817215E002C11D8 /* toolbox_up_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbox_up_arrow@2x.png"; sourceTree = "<group>"; };
+		64F25A111827D32C005AB9F8 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
+		64F25A121827D32C005AB9F8 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
+		64F25A131827D32C005AB9F8 /* TextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
+		64F25A171827EC02005AB9F8 /* description_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = description_mask.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -986,6 +998,8 @@
 		644121F9181C3B4F00260497 /* Movie Details */ = {
 			isa = PBXGroup;
 			children = (
+				64648EC71828502E00365EC7 /* description_mask@2x.png */,
+				64F25A171827EC02005AB9F8 /* description_mask.png */,
 				64CA53831823DC48000699C5 /* MovieButtonsBlack.bundle */,
 				64CA53851823DD2C000699C5 /* MovieButtonsWhite.bundle */,
 			);
@@ -1381,10 +1395,9 @@
 			children = (
 				64B2AB84180844C300E02E2F /* View Controller */,
 				64177864180C336300CDFA25 /* Loading View Controller */,
-				64B2AB8A180844FE00E02E2F /* Moobeez View Controller */,
-				64B2AB901808452B00E02E2F /* Movies View Controller */,
-				642CA8EF181542FD00A293E4 /* Movie View Controller */,
-				64CA53901823ECE2000699C5 /* Search New Movie */,
+				64F25A0E1827D2CF005AB9F8 /* Moobeez Screen */,
+				64F25A0F1827D2E2005AB9F8 /* Movies Screen */,
+				64F25A101827D2E9005AB9F8 /* Movie Details Screen */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1441,6 +1454,8 @@
 				64B2AB1918083CBF00E02E2F /* UIImage+Extra.m */,
 				64B2AB7818083ED600E02E2F /* UIColor+Hex.h */,
 				64B2AB7918083ED600E02E2F /* UIColor+Hex.m */,
+				64648EC4182849B800365EC7 /* UIMaskView.h */,
+				64648EC5182849B800365EC7 /* UIMaskView.m */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -1890,6 +1905,42 @@
 			name = "Search Result Cell";
 			sourceTree = "<group>";
 		};
+		64F25A0E1827D2CF005AB9F8 /* Moobeez Screen */ = {
+			isa = PBXGroup;
+			children = (
+				64B2AB8A180844FE00E02E2F /* Moobeez View Controller */,
+				64CA53901823ECE2000699C5 /* Search New Movie */,
+			);
+			name = "Moobeez Screen";
+			sourceTree = "<group>";
+		};
+		64F25A0F1827D2E2005AB9F8 /* Movies Screen */ = {
+			isa = PBXGroup;
+			children = (
+				64B2AB901808452B00E02E2F /* Movies View Controller */,
+			);
+			name = "Movies Screen";
+			sourceTree = "<group>";
+		};
+		64F25A101827D2E9005AB9F8 /* Movie Details Screen */ = {
+			isa = PBXGroup;
+			children = (
+				642CA8EF181542FD00A293E4 /* Movie View Controller */,
+				64F25A161827D331005AB9F8 /* Text View Controller */,
+			);
+			name = "Movie Details Screen";
+			sourceTree = "<group>";
+		};
+		64F25A161827D331005AB9F8 /* Text View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64F25A111827D32C005AB9F8 /* TextViewController.h */,
+				64F25A121827D32C005AB9F8 /* TextViewController.m */,
+				64F25A131827D32C005AB9F8 /* TextViewController.xib */,
+			);
+			name = "Text View Controller";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1989,6 +2040,7 @@
 				6417786E180C8A7400CDFA25 /* empty_stars_small@2x.png in Resources */,
 				64B2AB941808486200E02E2F /* tab_bar_icon_moobeez.png in Resources */,
 				649C3A761818068F0000A34C /* empty_stars_big_black@2x.png in Resources */,
+				64F25A181827EC02005AB9F8 /* description_mask.png in Resources */,
 				64DC8C191817215E002C11D8 /* toolbox_down_arrow.png in Resources */,
 				64B2AB8F1808452700E02E2F /* MoviesViewController.xib in Resources */,
 				64CA538A1823E6A9000699C5 /* empty_stars_big_white@2x.png in Resources */,
@@ -2005,11 +2057,13 @@
 				64CA53861823DD2C000699C5 /* MovieButtonsWhite.bundle in Resources */,
 				64DC8C121817137F002C11D8 /* back_button@2x.png in Resources */,
 				64CA539A1823F8E1000699C5 /* SearchResultCell.xib in Resources */,
+				64F25A151827D32C005AB9F8 /* TextViewController.xib in Resources */,
 				6417786F180C8A7400CDFA25 /* full_stars_small.png in Resources */,
 				64DC8C1C1817215E002C11D8 /* toolbox_line@2x.png in Resources */,
 				64CA539D1824060C000699C5 /* add_button.png in Resources */,
 				642CA8EE181542FA00A293E4 /* MovieViewController.xib in Resources */,
 				64CA53891823E6A9000699C5 /* empty_stars_big_white.png in Resources */,
+				64648EC81828502E00365EC7 /* description_mask@2x.png in Resources */,
 				644121F7181C351400260497 /* share_button.png in Resources */,
 				6414A3011821B90D009397FF /* DatePickerView.xib in Resources */,
 				640865F6180B62EC00725CE4 /* MoobeezDatabase in Resources */,
@@ -2031,6 +2085,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64F25A141827D32C005AB9F8 /* TextViewController.m in Sources */,
 				64B9F5F61822A3F0002E322F /* GPUImageLaplacianFilter.m in Sources */,
 				64B9F63A1822A3F0002E322F /* GPUImageThresholdEdgeDetectionFilter.m in Sources */,
 				649C3A661817FE7F0000A34C /* ToolboxView.m in Sources */,
@@ -2192,6 +2247,7 @@
 				64B9F60B1822A3F0002E322F /* GPUImageMultiplyBlendFilter.m in Sources */,
 				640865F9180B64E700725CE4 /* DatabaseItem.m in Sources */,
 				64B9F6131822A3F0002E322F /* GPUImageParallelCoordinateLineTransformFilter.m in Sources */,
+				64648EC6182849B800365EC7 /* UIMaskView.m in Sources */,
 				64B9F62B1822A3F0002E322F /* GPUImageSketchFilter.m in Sources */,
 				64B9F5F31822A3F0002E322F /* GPUImageKuwaharaFilter.m in Sources */,
 				64B9F5C31822A3F0002E322F /* GPUImageChromaKeyFilter.m in Sources */,
