@@ -28,7 +28,12 @@ static NSString* _tmdbRootPath;
     [self loadImageWithPath:[_tmdbRootPath stringByAppendingString:[NSString stringWithFormat:@"w%ld%@", (long)width, path]] completion:completionHandler];
 }
 
-- (void)replaceWithImageWithPath:(NSString*)path andWidth:(NSInteger)width completion:(ImageViewCompletionHandler)completionHandler  {
-
+- (void)loadImageWithPath:(NSString*)path andHeight:(NSInteger)height completion:(ImageViewCompletionHandler)completionHandler  {
+    if (!path) {
+        self.image = nil;
+        return;
+    }
+    [self loadImageWithPath:[_tmdbRootPath stringByAppendingString:[NSString stringWithFormat:@"h%ld%@", (long)height, path]] completion:completionHandler];
 }
+
 @end

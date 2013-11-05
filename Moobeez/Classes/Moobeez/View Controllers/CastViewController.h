@@ -7,12 +7,16 @@
 //
 
 #import "ViewController.h"
+#import "TmdbCharacter.h"
 
 @interface CastViewController : ViewController
 
 @property (strong, nonatomic) NSArray* castArray;
 @property (strong, nonatomic) UIView* sourceButton;
 
+@property (copy, nonatomic) CharacterSelectionHandler characterSelectionHandler;
+
 - (void)startAnimation;
+
 
 @end

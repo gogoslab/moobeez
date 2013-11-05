@@ -16,7 +16,7 @@
 #define UrlConfiguration @"configuration"
 #define UrlSearchMovie @"search/movie"
 #define UrlMovie(movieId) [NSString stringWithFormat:@"movie/%ld",movieId]
-#define UrlPerson(personId) [NSString stringWithFormat:@"person/%@",personId]
+#define UrlPerson(personId) [NSString stringWithFormat:@"person/%ld",personId]
 
 #define UrlUpcoming @"movie/upcoming"
 #define UrlNowPlaying @"movie/now_playing"
@@ -26,6 +26,7 @@
 
 #import "ConfigurationConnection.h"
 #import "MovieConnection.h"
+#import "PersonConnection.h"
 #import "SearchMovieConnection.h"
 
 #endif

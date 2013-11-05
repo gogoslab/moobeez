@@ -101,6 +101,11 @@
     self.seenDateLabel.text = [[NSDateFormatter dateFormatterWithFormat:@"dd MMMM yyyy"] stringFromDate:self.moobee.date];
 }
 
+- (void)hideFullToolbox {
+    [super hideFullToolbox];
+    [self.movieNameTextField resignFirstResponder];
+}
+
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -163,6 +168,13 @@
     cell.character = self.tmdbMovie.characters[indexPath.row];
     
     return cell;
+
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    self.characterSelectionHandler(self.tmdbMovie.characters[indexPath.row]);
+    
 }
 
 #pragma mark - Buttons

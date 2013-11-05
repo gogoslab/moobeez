@@ -337,7 +337,6 @@
                         </state>
                         <state key="selected" backgroundImage="button_wishlist_remove.png"/>
                         <connections>
-                            <action selector="descriptionButtonPressed:" destination="xj6-Jc-xBi" eventType="touchUpInside" id="RH8-s1-2mN"/>
                             <action selector="watchButtonPressed:" destination="xj6-Jc-xBi" eventType="touchUpInside" id="2Rj-aw-iWP"/>
                         </connections>
                     </button>
@@ -348,7 +347,6 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
-                            <action selector="descriptionButtonPressed:" destination="xj6-Jc-xBi" eventType="touchUpInside" id="AUU-7F-i6u"/>
                             <action selector="sawButtonPressed:" destination="xj6-Jc-xBi" eventType="touchUpInside" id="dz3-xn-P7u"/>
                         </connections>
                     </button>

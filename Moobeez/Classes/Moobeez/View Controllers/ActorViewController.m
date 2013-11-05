@@ -2,30 +2,27 @@
 //  MovieViewController.m
 //  Moobeez
 //
-//  Created by Radu Banea on 10/21/13.
+//  Created by Radu Banea on 11/05/13.
 //  Copyright (c) 2013 Goggzy. All rights reserved.
 //
 
-#import "MovieViewController.h"
+#import "ActorViewController.h"
 #import "Moobeez.h"
 
-@interface MovieViewController () <UITextFieldDelegate, ToolboxViewDelegate>
+@interface ActorViewController () <UITextFieldDelegate, ToolboxViewDelegate>
 
 @property (weak, nonatomic) IBOutlet ImageView *posterImageView;
 
-@property (strong, nonatomic) IBOutlet MovieToolboxView *toolboxView;
+@property (strong, nonatomic) IBOutlet ActorToolboxView *toolboxView;
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *hideToolboxRecognizer;
-
-@property (weak, nonatomic) IBOutlet UIButton *addButton;
-
 
 @property (strong, nonatomic) TextViewController* descriptionViewController;
 @property (strong, nonatomic) CastViewController* castViewController;
 
 @end
 
-@implementation MovieViewController
+@implementation ActorViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,26 +38,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:154 completion:^(BOOL didLoadImage) {
-        
+    [self.posterImageView loadImageWithPath:self.tmdbActor.profilePath andWidth:185 completion:^(BOOL didLoadImage) {
         [self.toolboxView addToSuperview:self.view];
-        self.toolboxView.moobee = self.moobee;
-        self.toolboxView.tmdbMovie = self.tmdbMovie;
-
+        self.toolboxView.tmdbPerson = self.tmdbActor;
         self.toolboxView.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter) {
-            if (tmdbCharacter.person) {
-                [self openPerson:tmdbCharacter.person];
+            if (tmdbCharacter.movie) {
+                [self openMovie:tmdbCharacter.movie];
             }
         };
 
         self.posterImageView.defaultImage = self.posterImageView.image;
-        
-        [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:500 completion:^(BOOL didLoadImage) {
-            
+        [self.posterImageView loadImageWithPath:self.tmdbActor.profilePath andHeight:632 completion:^(BOOL didLoadImage) {
         }];
     }];
-    
-    self.addButton.hidden = (self.moobee.id != -1);
 }
 
 - (void)didReceiveMemoryWarning
@@ -71,23 +61,7 @@
 
 - (IBAction)backButtonPressed:(id)sender {
     
-    [self dismissViewControllerAnimated:NO completion:^{
-        if (self.moobee.id != -1) {
-            [self.moobee save];
-        }
-        if (self.closeHandler) {
-            self.closeHandler();
-        }
-    }];
-}
-
-- (IBAction)shareButtonPressed:(id)sender {
-}
-
-- (IBAction)addButtonPressed:(id)sender {
-    if([self.moobee save]) {
-        self.addButton.hidden = YES;
-    }
+    [self dismissViewControllerAnimated:YES completion:^{}];
 }
 
 - (IBAction)hideToolbox:(id)sender {
@@ -109,7 +83,7 @@
     
     [self.view addSubview:self.descriptionViewController.view];
     self.descriptionViewController.sourceButton = sender;
-    self.descriptionViewController.text = self.tmdbMovie.description;
+    self.descriptionViewController.text = self.tmdbActor.description;
     [self.descriptionViewController startAnimation];
 }
 
@@ -126,12 +100,12 @@
 - (IBAction)castButtonPressed:(id)sender {
     [self.view addSubview:self.castViewController.view];
     self.castViewController.sourceButton = sender;
-    self.castViewController.castArray = self.tmdbMovie.characters;
+    self.castViewController.castArray = self.tmdbActor.characters;
     [self.castViewController startAnimation];
     
     self.castViewController.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter) {
-        if (tmdbCharacter.person) {
-            [self openPerson:tmdbCharacter.person];
+        if (tmdbCharacter.movie) {
+            [self openMovie:tmdbCharacter.movie];
         }
     };
 }
@@ -144,17 +118,25 @@
     return _castViewController;
 }
 
-- (void)openPerson:(TmdbPerson*)person {
-    PersonConnection* connection = [[PersonConnection alloc] initWithTmdbId:person.id completionHandler:^(WebserviceResultCode code, TmdbPerson *person) {
-        ActorViewController* viewController = [[ActorViewController alloc] initWithNibName:@"ActorViewController" bundle:nil];
-        viewController.tmdbActor = person;
-        viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self presentViewController:viewController animated:YES completion:^{}];
-    }];
+- (void)openMovie:(TmdbMovie*)movie {
     
-    [self startConnection:connection];
-}
+    Moobee* moobee = [Moobee moobeeWithTmdbMovie:movie];
+    
+    if (moobee.id == -1) {
+        moobee.type = MoobeeNoneType;
+    }
+    
+    self.view.userInteractionEnabled = NO;
+    MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+        MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
+        viewController.moobee = moobee;
+        viewController.tmdbMovie = movie;
+        [self presentViewController:viewController animated:NO completion:^{}];
 
+    }];
+    [self startConnection:connection];
+
+}
 
 - (IBAction)photosButtonPressed:(id)sender {
 }

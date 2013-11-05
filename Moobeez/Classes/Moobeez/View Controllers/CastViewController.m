@@ -48,8 +48,8 @@
     
     CGPoint bubbleSourceCenter = [self.contentView.sourceButton.superview convertPoint:self.contentView.sourceButton.center toView:self.view];
     
-    self.contentView.x += sourceCenter.x - bubbleSourceCenter.x;
-    self.contentView.y += sourceCenter.y - bubbleSourceCenter.y;
+    self.contentView.sourceButton.x += sourceCenter.x - bubbleSourceCenter.x;
+    self.contentView.sourceButton.y += sourceCenter.y - bubbleSourceCenter.y;
 
     self.tableView.hidden = YES;
     
@@ -77,6 +77,11 @@
     cell.character = self.castArray[indexPath.row];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    self.characterSelectionHandler(self.castArray[indexPath.row]);
 }
 
 #pragma mark - Back Button

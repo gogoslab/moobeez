@@ -7,6 +7,7 @@
 //
 
 #import "ToolboxView.h"
+#import "TmdbCharacter.h"
 
 @class Moobee;
 @class TmdbMovie;
@@ -15,5 +16,7 @@
 
 @property (strong, nonatomic) Moobee* moobee;
 @property (strong, nonatomic) TmdbMovie* tmdbMovie;
+
+@property (copy, nonatomic) CharacterSelectionHandler characterSelectionHandler;
 
 @end

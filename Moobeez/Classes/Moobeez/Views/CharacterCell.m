@@ -19,7 +19,6 @@
 @implementation CharacterCell
 
 - (void)awakeFromNib {
-    self.imageView.layer.cornerRadius = self.imageView.width / 2;
 }
 
 - (void)setCharacter:(TmdbCharacter *)character {
@@ -27,6 +26,7 @@
     _character = character;
     
     if (character.person) {
+        self.imageView.layer.cornerRadius = self.imageView.width / 2;
         [self.imageView loadImageWithPath:character.person.profilePath andWidth:185 completion:^(BOOL didLoadImage) {}];
     }
     else if (character.movie) {

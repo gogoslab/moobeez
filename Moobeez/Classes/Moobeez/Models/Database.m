@@ -22,7 +22,12 @@ static Database* sharedDatabase;
 
 - (NSInteger)generateNewId {
     NSInteger lastId = [[[NSUserDefaults standardUserDefaults] objectForKey:@"lastId"] integerValue];
-    lastId++;
+    if (lastId < 300) {
+        lastId = 300;
+    }
+    else {
+        lastId++;
+    }
     
     [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:lastId] forKey:@"lastId"];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -400,6 +405,10 @@ static Database* sharedDatabase;
     NSInteger moobeeId = [self insertDictionary:moobeeDictionary intoTable:@"Moobeez"];
     
     moobee.id = moobeeId;
+    
+    if (moobeeId != -1) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidReloadNotification object:nil userInfo:nil];
+    }
     
     return (moobeeId != -1);
     

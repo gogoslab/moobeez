@@ -16,6 +16,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" id="e7X-JO-PLV">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="i4a-eg-h95" appends="YES" id="3Wf-CN-Qyh"/>
+                    </connections>
+                </view>
                 <view contentMode="scaleToFill" id="yiu-aS-Z5E" customClass="BubblePopupView">
                     <rect key="frame" x="7" y="78" width="306" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,9 +52,6 @@
             <gestureRecognizers/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <connections>
-                <outletCollection property="gestureRecognizers" destination="i4a-eg-h95" appends="YES" id="BcZ-d4-cBQ"/>
-            </connections>
         </view>
         <tapGestureRecognizer id="i4a-eg-h95">
             <connections>

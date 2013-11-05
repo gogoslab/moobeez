@@ -38,6 +38,8 @@
 #import "TextViewController.h"
 #import "CastViewController.h"
 
+#import "ActorViewController.h"
+
 #pragma mark - Cells
 
 #import "MoobeeCell.h"
@@ -50,7 +52,7 @@
 
 #import "ToolboxView.h"
 #import "MovieToolboxView.h"
-
+#import "ActorToolboxView.h"
 
 #pragma mark - Date Picker View
 

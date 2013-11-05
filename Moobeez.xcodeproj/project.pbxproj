@@ -42,6 +42,10 @@
 		64648ED11829303300365EC7 /* CastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64648ECF1829303300365EC7 /* CastViewController.xib */; };
 		64648ED51829320C00365EC7 /* CharacterTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648ED41829320C00365EC7 /* CharacterTableCell.m */; };
 		64648ED81829323F00365EC7 /* CharacterTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64648ED71829323F00365EC7 /* CharacterTableCell.xib */; };
+		64648EDC1829956200365EC7 /* ActorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648EDA1829956200365EC7 /* ActorViewController.m */; };
+		64648EDD1829956200365EC7 /* ActorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64648EDB1829956200365EC7 /* ActorViewController.xib */; };
+		64648EE218299DD400365EC7 /* ActorToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648EE118299DD400365EC7 /* ActorToolboxView.m */; };
+		64648EE61829A36900365EC7 /* PersonConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648EE51829A36900365EC7 /* PersonConnection.m */; };
 		649C3A661817FE7F0000A34C /* ToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A651817FE7F0000A34C /* ToolboxView.m */; };
 		649C3A6D1817FFEA0000A34C /* MovieToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A6C1817FFEA0000A34C /* MovieToolboxView.m */; };
 		649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A711818068F0000A34C /* empty_stars_big_black.png */; };
@@ -360,6 +364,13 @@
 		64648ED31829320C00365EC7 /* CharacterTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterTableCell.h; sourceTree = "<group>"; };
 		64648ED41829320C00365EC7 /* CharacterTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterTableCell.m; sourceTree = "<group>"; };
 		64648ED71829323F00365EC7 /* CharacterTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterTableCell.xib; sourceTree = "<group>"; };
+		64648ED91829956200365EC7 /* ActorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorViewController.h; sourceTree = "<group>"; };
+		64648EDA1829956200365EC7 /* ActorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActorViewController.m; sourceTree = "<group>"; };
+		64648EDB1829956200365EC7 /* ActorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActorViewController.xib; sourceTree = "<group>"; };
+		64648EE018299DD400365EC7 /* ActorToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActorToolboxView.h; sourceTree = "<group>"; };
+		64648EE118299DD400365EC7 /* ActorToolboxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActorToolboxView.m; sourceTree = "<group>"; };
+		64648EE41829A36900365EC7 /* PersonConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonConnection.h; sourceTree = "<group>"; };
+		64648EE51829A36900365EC7 /* PersonConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonConnection.m; sourceTree = "<group>"; };
 		649C3A641817FE7F0000A34C /* ToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolboxView.h; sourceTree = "<group>"; };
 		649C3A651817FE7F0000A34C /* ToolboxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolboxView.m; sourceTree = "<group>"; };
 		649C3A6B1817FFEA0000A34C /* MovieToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieToolboxView.h; sourceTree = "<group>"; };
@@ -994,6 +1005,7 @@
 				64392EB118084D7800504C78 /* Tmdb Connection */,
 				6417785E180C314D00CDFA25 /* Configuration Connection */,
 				649C3A84181822EA0000A34C /* Movie Connection */,
+				64648EE71829A36F00365EC7 /* Person Connection */,
 				64CA53941823F48E000699C5 /* Search Movie Connection */,
 			);
 			name = "Tmdb Connections";
@@ -1048,6 +1060,42 @@
 			name = "Character Table Cell";
 			sourceTree = "<group>";
 		};
+		64648EDE1829956800365EC7 /* Actor View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64648ED91829956200365EC7 /* ActorViewController.h */,
+				64648EDA1829956200365EC7 /* ActorViewController.m */,
+				64648EDB1829956200365EC7 /* ActorViewController.xib */,
+			);
+			name = "Actor View Controller";
+			sourceTree = "<group>";
+		};
+		64648EDF1829957300365EC7 /* Actor Details Screen */ = {
+			isa = PBXGroup;
+			children = (
+				64648EDE1829956800365EC7 /* Actor View Controller */,
+			);
+			name = "Actor Details Screen";
+			sourceTree = "<group>";
+		};
+		64648EE318299DD800365EC7 /* Actor Toolbox View */ = {
+			isa = PBXGroup;
+			children = (
+				64648EE018299DD400365EC7 /* ActorToolboxView.h */,
+				64648EE118299DD400365EC7 /* ActorToolboxView.m */,
+			);
+			name = "Actor Toolbox View";
+			sourceTree = "<group>";
+		};
+		64648EE71829A36F00365EC7 /* Person Connection */ = {
+			isa = PBXGroup;
+			children = (
+				64648EE41829A36900365EC7 /* PersonConnection.h */,
+				64648EE51829A36900365EC7 /* PersonConnection.m */,
+			);
+			name = "Person Connection";
+			sourceTree = "<group>";
+		};
 		649C3A671817FE840000A34C /* Toolbox View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1071,6 +1119,7 @@
 			children = (
 				649C3A671817FE840000A34C /* Toolbox View */,
 				649C3A6E1817FFF00000A34C /* Movie Toolbox View */,
+				64648EE318299DD800365EC7 /* Actor Toolbox View */,
 			);
 			name = Toolboxes;
 			sourceTree = "<group>";
@@ -1441,6 +1490,7 @@
 				64F25A0E1827D2CF005AB9F8 /* Moobeez Screen */,
 				64F25A0F1827D2E2005AB9F8 /* Movies Screen */,
 				64F25A101827D2E9005AB9F8 /* Movie Details Screen */,
+				64648EDF1829957300365EC7 /* Actor Details Screen */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -2093,6 +2143,7 @@
 				649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */,
 				644121F8181C351400260497 /* share_button@2x.png in Resources */,
 				64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */,
+				64648EDD1829956200365EC7 /* ActorViewController.xib in Resources */,
 				649C3A781818068F0000A34C /* full_stars_big@2x.png in Resources */,
 				64CA53841823DC48000699C5 /* MovieButtonsBlack.bundle in Resources */,
 				64412223181D3D7F00260497 /* CharacterCell.xib in Resources */,
@@ -2134,6 +2185,7 @@
 			files = (
 				64F25A141827D32C005AB9F8 /* TextViewController.m in Sources */,
 				64B9F5F61822A3F0002E322F /* GPUImageLaplacianFilter.m in Sources */,
+				64648EDC1829956200365EC7 /* ActorViewController.m in Sources */,
 				64B9F63A1822A3F0002E322F /* GPUImageThresholdEdgeDetectionFilter.m in Sources */,
 				649C3A661817FE7F0000A34C /* ToolboxView.m in Sources */,
 				64B2AB6018083CBF00E02E2F /* UITableView+Extra.m in Sources */,
@@ -2143,6 +2195,7 @@
 				64B9F6111822A3F0002E322F /* GPUImageOutput.m in Sources */,
 				64648ED51829320C00365EC7 /* CharacterTableCell.m in Sources */,
 				64B2AB6318083CBF00E02E2F /* Connection.m in Sources */,
+				64648EE61829A36900365EC7 /* PersonConnection.m in Sources */,
 				64B9F5FA1822A3F0002E322F /* GPUImageLineGenerator.m in Sources */,
 				64B9F6181822A3F0002E322F /* GPUImagePoissonBlendFilter.m in Sources */,
 				64B9F6101822A3F0002E322F /* GPUImageOpeningFilter.m in Sources */,
@@ -2250,6 +2303,7 @@
 				64B9F5BE1822A3F0002E322F /* GPUImageBuffer.m in Sources */,
 				649C3A83181822E60000A34C /* MovieConnection.m in Sources */,
 				64B9F63F1822A3F0002E322F /* GPUImageToonFilter.m in Sources */,
+				64648EE218299DD400365EC7 /* ActorToolboxView.m in Sources */,
 				64B9F5EB1822A3F0002E322F /* GPUImageHistogramFilter.m in Sources */,
 				64B2AB6918083CBF00E02E2F /* SBJsonStreamParserAccumulator.m in Sources */,
 				64B9F5BD1822A3F0002E322F /* GPUImageBrightnessFilter.m in Sources */,
