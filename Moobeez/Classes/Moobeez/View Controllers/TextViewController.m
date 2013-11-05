@@ -12,13 +12,11 @@
 @interface TextViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
-@property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet AMBlurView *blurView;
-@property (weak, nonatomic) IBOutlet UIImageView *maskView;
-
-@property (weak, nonatomic) IBOutlet UIImageView *test;
+@property (weak, nonatomic) IBOutlet BubblePopupView *contentView;
 
 @property (readwrite, nonatomic) CGFloat maximumContentHeight;
+
+
 @end
 
 @implementation TextViewController
@@ -37,19 +35,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.contentView.layer.cornerRadius = 25;
-    
     self.maximumContentHeight = self.contentView.height;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+}
+
+- (void)setText:(NSString *)text {
+    _text = text;
     
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
     
     self.textView.text = self.text;
     self.textView.textAlignment = NSTextAlignmentJustified;
-
+    
     int oldTextHeight = self.textView.height;
     
     [self.textView sizeToFit];
@@ -65,7 +65,23 @@
     self.contentView.height = MAX(self.contentView.height, 100);
     
     self.contentView.y += self.contentView.height - oldTextHeight;
+    
+    CGPoint sourceCenter = [self.sourceButton.superview convertPoint:self.sourceButton.center toView:self.view];
+    
+    CGPoint bubbleSourceCenter = [self.contentView.sourceButton.superview convertPoint:self.contentView.sourceButton.center toView:self.view];
+    
+    self.contentView.x += sourceCenter.x - bubbleSourceCenter.x;
+    self.contentView.y += sourceCenter.y - bubbleSourceCenter.y;
+}
 
+- (void)startAnimation {
+    
+    self.textView.hidden = YES;
+    
+    [self.contentView startAnimation];
+    self.contentView.animationCompletionHandler = ^{
+        self.textView.hidden = NO;
+    };
 }
 
 - (void)didReceiveMemoryWarning

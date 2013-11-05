@@ -1,16 +1,16 @@
 //
-//  TextViewController.h
+//  CastViewController.h
 //  Moobeez
 //
-//  Created by Radu Banea on 04/11/13.
+//  Created by Radu Banea on 05/11/13.
 //  Copyright (c) 2013 Goggzy. All rights reserved.
 //
 
 #import "ViewController.h"
 
-@interface TextViewController : ViewController
+@interface CastViewController : ViewController
 
-@property (strong, nonatomic) NSString* text;
+@property (strong, nonatomic) NSArray* castArray;
 @property (strong, nonatomic) UIView* sourceButton;
 
 - (void)startAnimation;

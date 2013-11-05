@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TextViewController">
             <connections>
-                <outlet property="blurView" destination="CWg-2W-jvc" id="7Dz-Fs-yzh"/>
                 <outlet property="contentView" destination="OzE-GE-tY5" id="VUf-P8-CwL"/>
                 <outlet property="textView" destination="5Fv-ID-mqH" id="sJe-3V-3Nt"/>
                 <outlet property="view" destination="etV-wV-vUi" id="pFh-Oa-im2"/>
@@ -17,29 +16,26 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view clipsSubviews="YES" contentMode="scaleToFill" id="OzE-GE-tY5">
-                    <rect key="frame" x="8" y="78" width="304" height="480"/>
+                <view contentMode="scaleToFill" id="OzE-GE-tY5" customClass="BubblePopupView">
+                    <rect key="frame" x="7" y="78" width="306" height="480"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <view hidden="YES" clipsSubviews="YES" alpha="0.98000001907348633" contentMode="scaleToFill" id="CWg-2W-jvc" customClass="AMBlurView">
-                            <rect key="frame" x="0.0" y="0.0" width="304" height="480"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
-                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.90000000000000002" contentMode="scaleToFill" image="description_mask.png" id="mjP-5B-W5I">
-                            <rect key="frame" x="0.0" y="0.0" width="304" height="480"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.84999999999999998"/>
-                        </imageView>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="5Fv-ID-mqH">
-                            <rect key="frame" x="12" y="8" width="279" height="425"/>
+                            <rect key="frame" x="12" y="7" width="281" height="422"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
+                        <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="button_description.png" id="w35-RL-JAQ">
+                            <rect key="frame" x="0.0" y="432" width="50" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="sourceButton" destination="w35-RL-JAQ" id="xMc-LV-Bcu"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.34999999999999998" colorSpace="calibratedWhite"/>
@@ -57,6 +53,6 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="description_mask.png" width="304" height="480"/>
+        <image name="button_description.png" width="50" height="50"/>
     </resources>
 </document>

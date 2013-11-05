@@ -37,6 +37,11 @@
 		64412223181D3D7F00260497 /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64412222181D3D7F00260497 /* CharacterCell.xib */; };
 		64648EC6182849B800365EC7 /* UIMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648EC5182849B800365EC7 /* UIMaskView.m */; };
 		64648EC81828502E00365EC7 /* description_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64648EC71828502E00365EC7 /* description_mask@2x.png */; };
+		64648ECB18292B1000365EC7 /* BubblePopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648ECA18292B1000365EC7 /* BubblePopupView.m */; };
+		64648ED01829303300365EC7 /* CastViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648ECE1829303300365EC7 /* CastViewController.m */; };
+		64648ED11829303300365EC7 /* CastViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64648ECF1829303300365EC7 /* CastViewController.xib */; };
+		64648ED51829320C00365EC7 /* CharacterTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648ED41829320C00365EC7 /* CharacterTableCell.m */; };
+		64648ED81829323F00365EC7 /* CharacterTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64648ED71829323F00365EC7 /* CharacterTableCell.xib */; };
 		649C3A661817FE7F0000A34C /* ToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A651817FE7F0000A34C /* ToolboxView.m */; };
 		649C3A6D1817FFEA0000A34C /* MovieToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A6C1817FFEA0000A34C /* MovieToolboxView.m */; };
 		649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A711818068F0000A34C /* empty_stars_big_black.png */; };
@@ -347,6 +352,14 @@
 		64648EC4182849B800365EC7 /* UIMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMaskView.h; sourceTree = "<group>"; };
 		64648EC5182849B800365EC7 /* UIMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMaskView.m; sourceTree = "<group>"; };
 		64648EC71828502E00365EC7 /* description_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "description_mask@2x.png"; sourceTree = "<group>"; };
+		64648EC918292B1000365EC7 /* BubblePopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubblePopupView.h; sourceTree = "<group>"; };
+		64648ECA18292B1000365EC7 /* BubblePopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubblePopupView.m; sourceTree = "<group>"; };
+		64648ECD1829303300365EC7 /* CastViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CastViewController.h; sourceTree = "<group>"; };
+		64648ECE1829303300365EC7 /* CastViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CastViewController.m; sourceTree = "<group>"; };
+		64648ECF1829303300365EC7 /* CastViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CastViewController.xib; sourceTree = "<group>"; };
+		64648ED31829320C00365EC7 /* CharacterTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterTableCell.h; sourceTree = "<group>"; };
+		64648ED41829320C00365EC7 /* CharacterTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterTableCell.m; sourceTree = "<group>"; };
+		64648ED71829323F00365EC7 /* CharacterTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterTableCell.xib; sourceTree = "<group>"; };
 		649C3A641817FE7F0000A34C /* ToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolboxView.h; sourceTree = "<group>"; };
 		649C3A651817FE7F0000A34C /* ToolboxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolboxView.m; sourceTree = "<group>"; };
 		649C3A6B1817FFEA0000A34C /* MovieToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieToolboxView.h; sourceTree = "<group>"; };
@@ -1006,6 +1019,35 @@
 			path = "Movie Details";
 			sourceTree = "<group>";
 		};
+		64648ECC18292B1500365EC7 /* Bubble Popup View */ = {
+			isa = PBXGroup;
+			children = (
+				64648EC918292B1000365EC7 /* BubblePopupView.h */,
+				64648ECA18292B1000365EC7 /* BubblePopupView.m */,
+			);
+			name = "Bubble Popup View";
+			sourceTree = "<group>";
+		};
+		64648ED21829303700365EC7 /* Cast View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64648ECD1829303300365EC7 /* CastViewController.h */,
+				64648ECE1829303300365EC7 /* CastViewController.m */,
+				64648ECF1829303300365EC7 /* CastViewController.xib */,
+			);
+			name = "Cast View Controller";
+			sourceTree = "<group>";
+		};
+		64648ED61829320E00365EC7 /* Character Table Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64648ED31829320C00365EC7 /* CharacterTableCell.h */,
+				64648ED41829320C00365EC7 /* CharacterTableCell.m */,
+				64648ED71829323F00365EC7 /* CharacterTableCell.xib */,
+			);
+			name = "Character Table Cell";
+			sourceTree = "<group>";
+		};
 		649C3A671817FE840000A34C /* Toolbox View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1039,6 +1081,7 @@
 				64177858180C21F700CDFA25 /* Moobee Cell */,
 				649C3A9618182FD80000A34C /* Character Cell */,
 				64CA53981823F8C9000699C5 /* Search Result Cell */,
+				64648ED61829320E00365EC7 /* Character Table Cell */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1409,6 +1452,7 @@
 				649C3A6F1817FFF90000A34C /* Toolboxes */,
 				6414A2FC1821B8BE009397FF /* Date Picker View */,
 				649C3A7C1818127F0000A34C /* Stars View */,
+				64648ECC18292B1500365EC7 /* Bubble Popup View */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1927,6 +1971,7 @@
 			children = (
 				642CA8EF181542FD00A293E4 /* Movie View Controller */,
 				64F25A161827D331005AB9F8 /* Text View Controller */,
+				64648ED21829303700365EC7 /* Cast View Controller */,
 			);
 			name = "Movie Details Screen";
 			sourceTree = "<group>";
@@ -2037,6 +2082,7 @@
 				64B2AB0718082C4A00E02E2F /* Application.xib in Resources */,
 				6417785A180C221800CDFA25 /* MoobeeCell.xib in Resources */,
 				649C3A98181830240000A34C /* CharacterCellSmall.xib in Resources */,
+				64648ED11829303300365EC7 /* CastViewController.xib in Resources */,
 				6417786E180C8A7400CDFA25 /* empty_stars_small@2x.png in Resources */,
 				64B2AB941808486200E02E2F /* tab_bar_icon_moobeez.png in Resources */,
 				649C3A761818068F0000A34C /* empty_stars_big_black@2x.png in Resources */,
@@ -2052,6 +2098,7 @@
 				64412223181D3D7F00260497 /* CharacterCell.xib in Resources */,
 				64DC8C1B1817215E002C11D8 /* toolbox_line.png in Resources */,
 				64177870180C8A7400CDFA25 /* full_stars_small@2x.png in Resources */,
+				64648ED81829323F00365EC7 /* CharacterTableCell.xib in Resources */,
 				64CA538F1823ECDC000699C5 /* SearchNewMovieViewController.xib in Resources */,
 				64177867180C3B5A00CDFA25 /* default_image.png in Resources */,
 				64CA53861823DD2C000699C5 /* MovieButtonsWhite.bundle in Resources */,
@@ -2094,6 +2141,7 @@
 				64B9F6221822A3F0002E322F /* GPUImageRGBFilter.m in Sources */,
 				649C3A9118182BCA0000A34C /* TmdbCharacter.m in Sources */,
 				64B9F6111822A3F0002E322F /* GPUImageOutput.m in Sources */,
+				64648ED51829320C00365EC7 /* CharacterTableCell.m in Sources */,
 				64B2AB6318083CBF00E02E2F /* Connection.m in Sources */,
 				64B9F5FA1822A3F0002E322F /* GPUImageLineGenerator.m in Sources */,
 				64B9F6181822A3F0002E322F /* GPUImagePoissonBlendFilter.m in Sources */,
@@ -2114,6 +2162,7 @@
 				64B9F5D31822A3F0002E322F /* GPUimageDirectionalSobelEdgeDetectionFilter.m in Sources */,
 				6414A3001821B90D009397FF /* DatePickerView.m in Sources */,
 				64B9F5F21822A3F0002E322F /* GPUImageJFAVoronoiFilter.m in Sources */,
+				64648ED01829303300365EC7 /* CastViewController.m in Sources */,
 				64B2AB0618082C4A00E02E2F /* AppDelegate.m in Sources */,
 				64B9F5DE1822A3F0002E322F /* GPUImageFilterPipeline.m in Sources */,
 				64B9F60A1822A3F0002E322F /* GPUImageMovieComposition.m in Sources */,
@@ -2255,6 +2304,7 @@
 				64B9F5B31822A3F0002E322F /* GPUImage3x3ConvolutionFilter.m in Sources */,
 				64B9F64B1822A3F0002E322F /* GPUImageWhiteBalanceFilter.m in Sources */,
 				64B9F6041822A3F0002E322F /* GPUImageMissEtikateFilter.m in Sources */,
+				64648ECB18292B1000365EC7 /* BubblePopupView.m in Sources */,
 				64B9F64A1822A3F0002E322F /* GPUImageWeakPixelInclusionFilter.m in Sources */,
 				64B2AB6518083CBF00E02E2F /* URLConnection.m in Sources */,
 				64B9F62F1822A3F0002E322F /* GPUImageSoftLightBlendFilter.m in Sources */,

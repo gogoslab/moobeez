@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CastViewController">
+            <connections>
+                <outlet property="contentView" destination="yiu-aS-Z5E" id="etd-84-Jfd"/>
+                <outlet property="tableView" destination="bnq-PX-zOY" id="yf6-wW-bJc"/>
+                <outlet property="view" destination="tQH-BU-SXm" id="iuz-0Z-ARU"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="tQH-BU-SXm">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="yiu-aS-Z5E" customClass="BubblePopupView">
+                    <rect key="frame" x="7" y="78" width="306" height="480"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="button_cast.png" id="KMZ-p3-aNJ">
+                            <rect key="frame" x="64" y="432" width="50" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        </imageView>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="bnq-PX-zOY">
+                            <rect key="frame" x="3" y="7" width="300" height="417"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="hyB-os-fyV"/>
+                                <outlet property="delegate" destination="-1" id="jPt-Oi-tN1"/>
+                            </connections>
+                        </tableView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="sourceButton" destination="KMZ-p3-aNJ" id="AAb-rB-kYl"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.34999999999999998" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="i4a-eg-h95" appends="YES" id="BcZ-d4-cBQ"/>
+            </connections>
+        </view>
+        <tapGestureRecognizer id="i4a-eg-h95">
+            <connections>
+                <action selector="backButtonPressed:" destination="-1" id="zDH-5L-kUf"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="button_cast.png" width="50" height="50"/>
+    </resources>
+</document>

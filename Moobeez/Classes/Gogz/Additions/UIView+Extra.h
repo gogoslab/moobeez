@@ -15,4 +15,7 @@
 @property (readwrite) CGFloat width;
 @property (readwrite) CGFloat height;
 
+@property (readonly) CGFloat right;
+@property (readonly) CGFloat bottom;
+
 @end

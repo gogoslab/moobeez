@@ -36,11 +36,13 @@
 
 #import "MovieViewController.h"
 #import "TextViewController.h"
+#import "CastViewController.h"
 
 #pragma mark - Cells
 
 #import "MoobeeCell.h"
 #import "CharacterCell.h"
+#import "CharacterTableCell.h"
 #import "SearchResultCell.h"
 
 
@@ -57,5 +59,9 @@
 #pragma mark - Stars View
 
 #import "StarsView.h"
+
+#pragma mark - Bubble Popup View
+
+#import "BubblePopupView.h"
 
 #endif

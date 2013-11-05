@@ -21,6 +21,10 @@
 
 @implementation SearchResultCell
 
+- (void)awakeFromNib {
+    self.posterImageView.loadSyncronized = YES;
+}
+
 - (void)setTmdbMovie:(TmdbMovie *)tmdbMovie {
     _tmdbMovie = tmdbMovie;
     

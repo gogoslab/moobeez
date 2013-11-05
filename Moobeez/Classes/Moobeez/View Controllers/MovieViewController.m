@@ -21,6 +21,7 @@
 
 
 @property (strong, nonatomic) TextViewController* descriptionViewController;
+@property (strong, nonatomic) CastViewController* castViewController;
 
 @end
 
@@ -95,21 +96,37 @@
 
 - (IBAction)descriptionButtonPressed:(id)sender {
     
+    [self.view addSubview:self.descriptionViewController.view];
+    self.descriptionViewController.sourceButton = sender;
     self.descriptionViewController.text = self.tmdbMovie.description;
-    [self.appDelegate.window addSubview:self.descriptionViewController.view];
+    [self.descriptionViewController startAnimation];
 }
 
 - (TextViewController*)descriptionViewController {
     if (!_descriptionViewController) {
         _descriptionViewController = [[TextViewController alloc] initWithNibName:@"TextViewController" bundle:nil];
-        _descriptionViewController.view.frame = self.appDelegate.window.bounds;
+        _descriptionViewController.view.frame = self.view.bounds;
     }
     return _descriptionViewController;
 }
 
+#pragma mark - Cast
 
 - (IBAction)castButtonPressed:(id)sender {
+    [self.view addSubview:self.castViewController.view];
+    self.castViewController.sourceButton = sender;
+    self.castViewController.castArray = self.tmdbMovie.characters;
+    [self.castViewController startAnimation];
 }
+
+- (CastViewController*)castViewController {
+    if (!_castViewController) {
+        _castViewController = [[CastViewController alloc] initWithNibName:@"CastViewController" bundle:nil];
+        _castViewController.view.frame = self.view.bounds;
+    }
+    return _castViewController;
+}
+
 
 - (IBAction)photosButtonPressed:(id)sender {
 }

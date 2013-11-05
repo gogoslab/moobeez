@@ -49,4 +49,12 @@
     frame.size.height = height;
     self.frame = frame;
 }
+
+- (CGFloat)right {
+    return self.x + self.width;
+}
+
+- (CGFloat)bottom {
+    return self.y + self.height;
+}
 @end
