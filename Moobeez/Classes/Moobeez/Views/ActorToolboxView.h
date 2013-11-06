@@ -15,6 +15,6 @@
 
 @property (strong, nonatomic) TmdbPerson* tmdbPerson;
 
-@property (copy, nonatomic) CharacterSelectionHandler characterSelectionHandler;
+@property (copy, nonatomic) CharacterCellSelectionHandler characterSelectionHandler;
 
 @end

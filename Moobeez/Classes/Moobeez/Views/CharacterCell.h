@@ -13,5 +13,10 @@
 @interface CharacterCell : UICollectionViewCell
 
 @property (strong, nonatomic) TmdbCharacter* character;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+
+- (void)animateGrowWithCompletion:(void (^)(void))completionHandler;
+- (void)prepareForShrink;
+- (void)animateShrinkWithCompletion:(void (^)(void))completionHandler;
 
 @end

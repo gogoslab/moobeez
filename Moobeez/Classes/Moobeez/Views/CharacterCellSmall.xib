@@ -13,17 +13,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="64" height="66"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="OUT-pB-r2y" customClass="ImageView">
+                    <view contentMode="scaleToFill" id="0Wx-53-WAa">
                         <rect key="frame" x="7" y="8" width="50" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="OUT-pB-r2y" customClass="ImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" id="uAi-dY-J2u">
+                                <rect key="frame" x="16" y="14" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </imageView>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="imageView" destination="OUT-pB-r2y" id="Mbs-pJ-aDc"/>
+                <outlet property="activityIndicator" destination="uAi-dY-J2u" id="860-Fe-yR4"/>
+                <outlet property="animatedView" destination="0Wx-53-WAa" id="sgh-OG-iVt"/>
+                <outlet property="posterImageView" destination="OUT-pB-r2y" id="lx8-g9-zPe"/>
             </connections>
         </collectionViewCell>
     </objects>

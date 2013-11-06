@@ -112,10 +112,6 @@
 		64B2AB951808486200E02E2F /* tab_bar_icon_moobeez@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AB931808486200E02E2F /* tab_bar_icon_moobeez@2x.png */; };
 		64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AB961808496B00E02E2F /* tab_bar_icon_movies.png */; };
 		64B2AB991808496B00E02E2F /* tab_bar_icon_movies@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AB971808496B00E02E2F /* tab_bar_icon_movies@2x.png */; };
-		64B9F45418229F1B002E322F /* BlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B9F45318229F1B002E322F /* BlurView.m */; };
-		64B9F45B1822A252002E322F /* DRNRealTimeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B9F4581822A252002E322F /* DRNRealTimeBlurView.m */; };
-		64B9F45C1822A252002E322F /* UIImage+BoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B9F45A1822A252002E322F /* UIImage+BoxBlur.m */; };
-		64B9F46D1822A354002E322F /* RWBlurPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B9F46C1822A354002E322F /* RWBlurPopover.m */; };
 		64B9F5B21822A3F0002E322F /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B9F4701822A3EF002E322F /* GLProgram.m */; };
 		64B9F5B31822A3F0002E322F /* GPUImage3x3ConvolutionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B9F4731822A3EF002E322F /* GPUImage3x3ConvolutionFilter.m */; };
 		64B9F5B41822A3F0002E322F /* GPUImage3x3TextureSamplingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B9F4751822A3EF002E322F /* GPUImage3x3TextureSamplingFilter.m */; };
@@ -489,14 +485,6 @@
 		64B2AB931808486200E02E2F /* tab_bar_icon_moobeez@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_bar_icon_moobeez@2x.png"; sourceTree = "<group>"; };
 		64B2AB961808496B00E02E2F /* tab_bar_icon_movies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_bar_icon_movies.png; sourceTree = "<group>"; };
 		64B2AB971808496B00E02E2F /* tab_bar_icon_movies@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_bar_icon_movies@2x.png"; sourceTree = "<group>"; };
-		64B9F45218229F1B002E322F /* BlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlurView.h; path = BlurView/BlurView.h; sourceTree = "<group>"; };
-		64B9F45318229F1B002E322F /* BlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlurView.m; path = BlurView/BlurView.m; sourceTree = "<group>"; };
-		64B9F4571822A252002E322F /* DRNRealTimeBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRNRealTimeBlurView.h; sourceTree = "<group>"; };
-		64B9F4581822A252002E322F /* DRNRealTimeBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRNRealTimeBlurView.m; sourceTree = "<group>"; };
-		64B9F4591822A252002E322F /* UIImage+BoxBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BoxBlur.h"; sourceTree = "<group>"; };
-		64B9F45A1822A252002E322F /* UIImage+BoxBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BoxBlur.m"; sourceTree = "<group>"; };
-		64B9F46B1822A354002E322F /* RWBlurPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RWBlurPopover.h; sourceTree = "<group>"; };
-		64B9F46C1822A354002E322F /* RWBlurPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RWBlurPopover.m; sourceTree = "<group>"; };
 		64B9F46F1822A3EF002E322F /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
 		64B9F4701822A3EF002E322F /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgram.m; sourceTree = "<group>"; };
 		64B9F4711822A3EF002E322F /* GPUImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImage.h; sourceTree = "<group>"; };
@@ -1383,9 +1371,7 @@
 			children = (
 				64177871180CA24000CDFA25 /* AMBlurView */,
 				64B2AB2D18083CBF00E02E2F /* SBJson */,
-				64B9F4561822A252002E322F /* DRNRealTimeBlurView */,
-				64B9F45518229F1E002E322F /* Blur View */,
-				64B9F45D1822A311002E322F /* RWBlurPopover */,
+				64B9F46E1822A3EF002E322F /* GPUImage */,
 			);
 			path = "External SDKs";
 			sourceTree = "<group>";
@@ -1601,36 +1587,6 @@
 				64B2AB931808486200E02E2F /* tab_bar_icon_moobeez@2x.png */,
 			);
 			path = "Tab Bar Icons";
-			sourceTree = "<group>";
-		};
-		64B9F45518229F1E002E322F /* Blur View */ = {
-			isa = PBXGroup;
-			children = (
-				64B9F45218229F1B002E322F /* BlurView.h */,
-				64B9F45318229F1B002E322F /* BlurView.m */,
-			);
-			name = "Blur View";
-			sourceTree = "<group>";
-		};
-		64B9F4561822A252002E322F /* DRNRealTimeBlurView */ = {
-			isa = PBXGroup;
-			children = (
-				64B9F4571822A252002E322F /* DRNRealTimeBlurView.h */,
-				64B9F4581822A252002E322F /* DRNRealTimeBlurView.m */,
-				64B9F4591822A252002E322F /* UIImage+BoxBlur.h */,
-				64B9F45A1822A252002E322F /* UIImage+BoxBlur.m */,
-			);
-			path = DRNRealTimeBlurView;
-			sourceTree = "<group>";
-		};
-		64B9F45D1822A311002E322F /* RWBlurPopover */ = {
-			isa = PBXGroup;
-			children = (
-				64B9F46B1822A354002E322F /* RWBlurPopover.h */,
-				64B9F46C1822A354002E322F /* RWBlurPopover.m */,
-				64B9F46E1822A3EF002E322F /* GPUImage */,
-			);
-			path = RWBlurPopover;
 			sourceTree = "<group>";
 		};
 		64B9F46E1822A3EF002E322F /* GPUImage */ = {
@@ -1951,7 +1907,8 @@
 				64B9F5A71822A3F0002E322F /* GPUImageZoomBlurFilter.m */,
 				64B9F5A81822A3F0002E322F /* iOS */,
 			);
-			path = GPUImage;
+			name = GPUImage;
+			path = RWBlurPopover/GPUImage;
 			sourceTree = "<group>";
 		};
 		64B9F5A81822A3F0002E322F /* iOS */ = {
@@ -2259,13 +2216,11 @@
 				64B9F63C1822A3F0002E322F /* GPUImageThresholdSketchFilter.m in Sources */,
 				64B9F5E41822A3F0002E322F /* GPUImageGrayscaleFilter.m in Sources */,
 				64B9F5C91822A3F0002E322F /* GPUImageColorMatrixFilter.m in Sources */,
-				64B9F46D1822A354002E322F /* RWBlurPopover.m in Sources */,
 				64B9F6141822A3F0002E322F /* GPUImagePerlinNoiseFilter.m in Sources */,
 				64B9F5EE1822A3F0002E322F /* GPUImageHSBFilter.m in Sources */,
 				64B9F5E51822A3F0002E322F /* GPUImageHalftoneFilter.m in Sources */,
 				64B9F5D91822A3F0002E322F /* GPUImageExposureFilter.m in Sources */,
 				64B9F61D1822A3F0002E322F /* GPUImageRawDataInput.m in Sources */,
-				64B9F45C1822A252002E322F /* UIImage+BoxBlur.m in Sources */,
 				64B9F6311822A3F0002E322F /* GPUImageSourceOverBlendFilter.m in Sources */,
 				64B9F5EF1822A3F0002E322F /* GPUImageHueBlendFilter.m in Sources */,
 				64B9F5BF1822A3F0002E322F /* GPUImageBulgeDistortionFilter.m in Sources */,
@@ -2368,7 +2323,6 @@
 				64B9F5E91822A3F0002E322F /* GPUImageHighlightShadowFilter.m in Sources */,
 				64B9F6031822A3F0002E322F /* GPUImageMedianFilter.m in Sources */,
 				64B9F6261822A3F0002E322F /* GPUImageScreenBlendFilter.m in Sources */,
-				64B9F45418229F1B002E322F /* BlurView.m in Sources */,
 				64B9F6191822A3F0002E322F /* GPUImagePolarPixellateFilter.m in Sources */,
 				64B2AB831808421700E02E2F /* ViewController.m in Sources */,
 				64B9F5E81822A3F0002E322F /* GPUImageHazeFilter.m in Sources */,
@@ -2395,7 +2349,6 @@
 				64B2AB6D18083CBF00E02E2F /* SBJsonStreamWriterState.m in Sources */,
 				64B9F6361822A3F0002E322F /* GPUImageSwirlFilter.m in Sources */,
 				64B9F5DA1822A3F0002E322F /* GPUImageFalseColorFilter.m in Sources */,
-				64B9F45B1822A252002E322F /* DRNRealTimeBlurView.m in Sources */,
 				64392EAF18084BA500504C78 /* TmdbConnection.m in Sources */,
 				64B9F6331822A3F0002E322F /* GPUImageStillCamera.m in Sources */,
 				64B9F5E31822A3F0002E322F /* GPUImageGlassSphereFilter.m in Sources */,

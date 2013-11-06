@@ -34,6 +34,10 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CharacterTableCell" bundle:nil] forCellReuseIdentifier:@"CharacterTableCell"];
     
+    if (self.areMovies) {
+        self.tableView.rowHeight = 80;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -81,7 +85,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    self.characterSelectionHandler(self.castArray[indexPath.row]);
+    self.characterSelectionHandler(self.castArray[indexPath.row], (CharacterTableCell*) [tableView cellForRowAtIndexPath:indexPath]);
 }
 
 #pragma mark - Back Button

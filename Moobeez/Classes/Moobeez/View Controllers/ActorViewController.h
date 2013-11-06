@@ -16,4 +16,6 @@
 
 @property (strong, nonatomic) TmdbPerson* tmdbActor;
 
+@property (copy, nonatomic) EmptyHandler closeHandler;
+
 @end

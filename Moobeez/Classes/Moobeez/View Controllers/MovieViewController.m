@@ -47,9 +47,9 @@
         self.toolboxView.moobee = self.moobee;
         self.toolboxView.tmdbMovie = self.tmdbMovie;
 
-        self.toolboxView.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter) {
+        self.toolboxView.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterCell* cell) {
             if (tmdbCharacter.person) {
-                [self openPerson:tmdbCharacter.person];
+                [self openPerson:tmdbCharacter.person fromCharacterCell:cell];
             }
         };
 
@@ -58,6 +58,8 @@
         [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:500 completion:^(BOOL didLoadImage) {
             
         }];
+        
+        [self.toolboxView performSelector:@selector(showFullToolbox) withObject:nil afterDelay:0.5];
     }];
     
     self.addButton.hidden = (self.moobee.id != -1);
@@ -129,9 +131,9 @@
     self.castViewController.castArray = self.tmdbMovie.characters;
     [self.castViewController startAnimation];
     
-    self.castViewController.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter) {
+    self.castViewController.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterTableCell* cell) {
         if (tmdbCharacter.person) {
-            [self openPerson:tmdbCharacter.person];
+            [self openPerson:tmdbCharacter.person fromCharacterTableCell:cell];
         }
     };
 }
@@ -144,15 +146,36 @@
     return _castViewController;
 }
 
-- (void)openPerson:(TmdbPerson*)person {
+- (void)openPerson:(TmdbPerson*)person fromCharacterTableCell:(CharacterTableCell*)cell {
     PersonConnection* connection = [[PersonConnection alloc] initWithTmdbId:person.id completionHandler:^(WebserviceResultCode code, TmdbPerson *person) {
-        ActorViewController* viewController = [[ActorViewController alloc] initWithNibName:@"ActorViewController" bundle:nil];
-        viewController.tmdbActor = person;
-        viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self presentViewController:viewController animated:YES completion:^{}];
+        [cell animateGrowWithCompletion:^{
+            ActorViewController* viewController = [[ActorViewController alloc] initWithNibName:@"ActorViewController" bundle:nil];
+            viewController.tmdbActor = person;
+            viewController.closeHandler = ^{
+                [cell animateShrinkWithCompletion:^{}];
+            };
+            [self presentViewController:viewController animated:NO completion:^{}];
+        }];
     }];
     
-    [self startConnection:connection];
+    connection.activityIndicator = cell.activityIndicator;
+    [self.connectionsManager startConnection:connection];
+}
+
+- (void)openPerson:(TmdbPerson*)person fromCharacterCell:(CharacterCell*)cell {
+    PersonConnection* connection = [[PersonConnection alloc] initWithTmdbId:person.id completionHandler:^(WebserviceResultCode code, TmdbPerson *person) {
+        [cell animateGrowWithCompletion:^{
+            ActorViewController* viewController = [[ActorViewController alloc] initWithNibName:@"ActorViewController" bundle:nil];
+            viewController.tmdbActor = person;
+            viewController.closeHandler = ^{
+                [cell animateShrinkWithCompletion:^{}];
+            };
+            [self presentViewController:viewController animated:NO completion:^{}];
+        }];
+    }];
+    
+    connection.activityIndicator = cell.activityIndicator;
+    [self.connectionsManager startConnection:connection];
 }
 
 

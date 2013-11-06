@@ -11,8 +11,7 @@
 @class TmdbMovie;
 @class TmdbPerson;
 @class TmdbCharacter;
-
-typedef void (^CharacterSelectionHandler) (TmdbCharacter* tmdbCharacter);
+@class CharacterCell;
 
 @interface TmdbCharacter : DatabaseItem
 

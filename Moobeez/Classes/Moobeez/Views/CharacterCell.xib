@@ -31,7 +31,7 @@ Aniston</string>
             </view>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="imageView" destination="OUT-pB-r2y" id="Mbs-pJ-aDc"/>
+                <outlet property="posterImageView" destination="OUT-pB-r2y" id="XmE-2L-FEB"/>
                 <outlet property="titleLabel" destination="CAZ-EG-8gh" id="tSh-tS-xdL"/>
             </connections>
         </collectionViewCell>

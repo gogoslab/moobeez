@@ -13,8 +13,8 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-@property (strong, nonatomic) IBOutlet UITableViewCell *movieNameCell;
-@property (weak, nonatomic) IBOutlet UITextField *movieNameTextField;
+@property (strong, nonatomic) IBOutlet UITableViewCell *actorNameCell;
+@property (weak, nonatomic) IBOutlet UILabel *actorNameLabel;
 
 @property (strong, nonatomic) IBOutlet UITableViewCell *castCell;
 @property (weak, nonatomic) IBOutlet UICollectionView *castCollectionView;
@@ -48,9 +48,9 @@
 
     self.cells = [[NSMutableArray alloc] init];
     
-    [self.cells addObject:@[self.movieNameCell]];
+    [self.cells addObject:@[self.actorNameCell]];
     
-    self.movieNameTextField.text = self.tmdbPerson.name;
+    self.actorNameLabel.text = self.tmdbPerson.name;
     
     [self.cells addObject:@[self.castCell]];
     
@@ -59,7 +59,6 @@
 
 - (void)hideFullToolbox {
     [super hideFullToolbox];
-    [self.movieNameTextField resignFirstResponder];
 }
 
 #pragma mark - Table View
@@ -118,8 +117,9 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    self.characterSelectionHandler(self.tmdbPerson.characters[indexPath.row]);
+    CharacterCell* cell = (CharacterCell*) [collectionView cellForItemAtIndexPath:indexPath];
     
+    self.characterSelectionHandler(self.tmdbPerson.characters[indexPath.row], cell);
 }
 
 #pragma mark - Buttons
@@ -129,7 +129,7 @@
 
     UIColor* textsColor = (self.isLightInterface ? [UIColor whiteColor] : [UIColor blackColor]);
     
-    self.movieNameTextField.textColor = textsColor;
+    self.actorNameLabel.textColor = textsColor;
     
     NSBundle* bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:(self.isLightInterface ? @"MovieButtonsWhite" : @"MovieButtonsBlack") ofType:@"bundle"]];
     

@@ -12,6 +12,7 @@
 @interface TextViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UITextView *tempTextView;
 @property (weak, nonatomic) IBOutlet BubblePopupView *contentView;
 
 @property (readwrite, nonatomic) CGFloat maximumContentHeight;
@@ -45,17 +46,18 @@
 - (void)setText:(NSString *)text {
     _text = text;
     
-    self.textView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
+    self.tempTextView.hidden = NO;
+    self.tempTextView.text = self.text;
+    self.tempTextView.textAlignment = NSTextAlignmentJustified;
+   
+    int oldTextHeight = self.tempTextView.height;
     
-    self.textView.text = self.text;
-    self.textView.textAlignment = NSTextAlignmentJustified;
+    CGSize size = [self.tempTextView sizeThatFits:CGSizeMake(self.textView.width, FLT_MAX)];
     
-    int oldTextHeight = self.textView.height;
+    int newTextHeight = size.height * 1.1;
     
-    [self.textView sizeToFit];
-    
-    self.contentView.height += self.textView.height - oldTextHeight;
-    self.contentView.y -= self.textView.height - oldTextHeight;
+    self.contentView.height += newTextHeight - oldTextHeight;
+    self.contentView.y -= newTextHeight - oldTextHeight;
     
     self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
@@ -65,6 +67,7 @@
     self.contentView.height = MAX(self.contentView.height, 100);
     
     self.contentView.y += self.contentView.height - oldTextHeight;
+     
     
     CGPoint sourceCenter = [self.sourceButton.superview convertPoint:self.sourceButton.center toView:self.view];
     
@@ -72,6 +75,9 @@
     
     self.contentView.x += sourceCenter.x - bubbleSourceCenter.x;
     self.contentView.y += sourceCenter.y - bubbleSourceCenter.y;
+
+    self.tempTextView.hidden = YES;
+
 }
 
 - (void)startAnimation {
@@ -81,6 +87,8 @@
     [self.contentView startAnimation];
     self.contentView.animationCompletionHandler = ^{
         self.textView.hidden = NO;
+        self.textView.text = self.text;
+        self.textView.textAlignment = NSTextAlignmentJustified;
     };
 }
 

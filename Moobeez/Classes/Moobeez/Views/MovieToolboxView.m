@@ -173,7 +173,7 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    self.characterSelectionHandler(self.tmdbMovie.characters[indexPath.row]);
+    self.characterSelectionHandler(self.tmdbMovie.characters[indexPath.row], (CharacterCell*) [collectionView cellForItemAtIndexPath:indexPath]);
     
 }
 

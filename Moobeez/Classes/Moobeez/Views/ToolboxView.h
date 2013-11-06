@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class TmdbCharacter;
+@class CharacterCell;
+
+typedef void (^CharacterCellSelectionHandler) (TmdbCharacter* tmdbCharacter, CharacterCell* cell);
+
 @class ToolboxView;
 
 @protocol ToolboxViewDelegate <NSObject>

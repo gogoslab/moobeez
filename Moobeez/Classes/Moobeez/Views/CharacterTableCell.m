@@ -17,12 +17,14 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *detailsLabel;
 
+@property (weak, nonatomic) IBOutlet UIView* animatedView;
+@property (readwrite, nonatomic) CGRect initialAnimatedFrame;
+
 @end
 
 @implementation CharacterTableCell
 
 - (void)awakeFromNib {
-    self.posterImageView.layer.cornerRadius = self.posterImageView.width / 2;
     self.posterImageView.loadSyncronized = YES;
 }
 
@@ -31,6 +33,7 @@
     _character = character;
     
     if (character.person) {
+        self.posterImageView.layer.cornerRadius = self.posterImageView.width / 2;
         [self.posterImageView loadImageWithPath:character.person.profilePath andWidth:185 completion:^(BOOL didLoadImage) {}];
         self.titleLabel.text = character.person.name;
     }
@@ -43,5 +46,63 @@
 
 }
 
+- (void)animateGrowWithCompletion:(void (^)(void))completionHandler {
+    
+    AppDelegate* appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
+    
+    self.initialAnimatedFrame = self.animatedView.frame;
+    
+    self.animatedView.center = [appDelegate.window convertPoint:self.animatedView.center fromView:self.animatedView.superview];
+    [appDelegate.window addSubview:self.animatedView];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.animatedView.frame = appDelegate.window.bounds;
+    } completion:^(BOOL finished) {
+        self.animatedView.frame = self.bounds;
+        [self addSubview:self.animatedView];
+        
+        completionHandler();
+    }];
+    
+    self.posterImageView.defaultImage = self.posterImageView.image;
+    
+    if (self.character.person) {
+        self.posterImageView.layer.cornerRadius = 0;
+        [self.posterImageView loadImageWithPath:self.character.person.profilePath andHeight:632 completion:^(BOOL didLoadImage) {}];
+    }
+    else if (self.character.movie) {
+        [self.posterImageView loadImageWithPath:self.character.movie.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
+    }
+}
 
+- (void)prepareForShrink {
+    AppDelegate* appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
+    
+    self.animatedView.frame = appDelegate.window.bounds;
+    [appDelegate.window addSubview:self.animatedView];
+}
+
+- (void)animateShrinkWithCompletion:(void (^)(void))completionHandler {
+    
+    AppDelegate* appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
+    
+    [self prepareForShrink];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.animatedView.frame = [appDelegate.window convertRect:self.initialAnimatedFrame fromView:self];
+    } completion:^(BOOL finished) {
+        self.animatedView.frame = self.initialAnimatedFrame;
+        [self addSubview:self.animatedView];
+        
+        completionHandler();
+    }];
+    
+    if (self.character.person) {
+        self.posterImageView.layer.cornerRadius = self.posterImageView.width / 2;
+        [self.posterImageView loadImageWithPath:self.character.person.profilePath andWidth:185 completion:^(BOOL didLoadImage) {}];
+    }
+    else if (self.character.movie) {
+        [self.posterImageView loadImageWithPath:self.character.movie.posterPath andWidth:154 completion:^(BOOL didLoadImage) {}];
+    }
+}
 @end
