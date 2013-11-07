@@ -25,8 +25,13 @@
 
 
 #import "ConfigurationConnection.h"
+
 #import "MovieConnection.h"
+#import "MovieImagesConnection.h"
+#import "MovieTrailersConnection.h"
+
 #import "PersonConnection.h"
+
 #import "SearchMovieConnection.h"
 
 #endif

@@ -1,19 +1,18 @@
 //
-//  ViewController.m
+//  NavigationController.m
 //  Moobeez
 //
-//  Created by Radu Banea on 10/11/13.
+//  Created by Radu Banea on 07/11/13.
 //  Copyright (c) 2013 Goggzy. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "Moobeez.h"
+#import "NavigationController.h"
 
-@interface ViewController ()
+@interface NavigationController ()
 
 @end
 
-@implementation ViewController
+@implementation NavigationController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,21 +35,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (AppDelegate*)appDelegate {
-    return (AppDelegate*) [UIApplication sharedApplication].delegate;
-}
-
-- (ViewController*)previousViewController {
-    @try {
-        return self.navigationController.viewControllers[[self.navigationController.viewControllers indexOfObject:self] - 1];
-    }
-    @catch (NSException *exception) {
-        return nil;
-    }
-    @finally {
-    }
-}
-
 - (BOOL)shouldAutorotate {
     return YES;
 }
@@ -58,5 +42,6 @@
 - (NSUInteger)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
 }
+
 
 @end

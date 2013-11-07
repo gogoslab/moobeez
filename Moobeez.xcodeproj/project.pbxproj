@@ -16,6 +16,11 @@
 		64086604180B6D2E00725CE4 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 64086603180B6D2E00725CE4 /* Database.m */; };
 		6414A3001821B90D009397FF /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414A2FE1821B90D009397FF /* DatePickerView.m */; };
 		6414A3011821B90D009397FF /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6414A2FF1821B90D009397FF /* DatePickerView.xib */; };
+		64158316182BCD7A00BB599C /* MovieImagesConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64158315182BCD7A00BB599C /* MovieImagesConnection.m */; };
+		6415831A182BD00600BB599C /* MovieTrailersConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64158319182BD00600BB599C /* MovieTrailersConnection.m */; };
+		6415831F182BD28800BB599C /* ImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6415831D182BD28800BB599C /* ImagesViewController.m */; };
+		64158320182BD28800BB599C /* ImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6415831E182BD28800BB599C /* ImagesViewController.xib */; };
+		64158328182BD71A00BB599C /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64158327182BD71A00BB599C /* NavigationController.m */; };
 		64177857180C21F200CDFA25 /* MoobeeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64177856180C21F200CDFA25 /* MoobeeCell.m */; };
 		6417785A180C221800CDFA25 /* MoobeeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64177859180C221700CDFA25 /* MoobeeCell.xib */; };
 		6417785D180C314500CDFA25 /* ConfigurationConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6417785C180C314500CDFA25 /* ConfigurationConnection.m */; };
@@ -322,6 +327,15 @@
 		6414A2FD1821B90D009397FF /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
 		6414A2FE1821B90D009397FF /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
 		6414A2FF1821B90D009397FF /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
+		64158314182BCD7A00BB599C /* MovieImagesConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieImagesConnection.h; sourceTree = "<group>"; };
+		64158315182BCD7A00BB599C /* MovieImagesConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieImagesConnection.m; sourceTree = "<group>"; };
+		64158318182BD00600BB599C /* MovieTrailersConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieTrailersConnection.h; sourceTree = "<group>"; };
+		64158319182BD00600BB599C /* MovieTrailersConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieTrailersConnection.m; sourceTree = "<group>"; };
+		6415831C182BD28800BB599C /* ImagesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesViewController.h; sourceTree = "<group>"; };
+		6415831D182BD28800BB599C /* ImagesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesViewController.m; sourceTree = "<group>"; };
+		6415831E182BD28800BB599C /* ImagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagesViewController.xib; sourceTree = "<group>"; };
+		64158326182BD71A00BB599C /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		64158327182BD71A00BB599C /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		64177855180C21F200CDFA25 /* MoobeeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoobeeCell.h; sourceTree = "<group>"; };
 		64177856180C21F200CDFA25 /* MoobeeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoobeeCell.m; sourceTree = "<group>"; };
 		64177859180C221700CDFA25 /* MoobeeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoobeeCell.xib; sourceTree = "<group>"; };
@@ -900,6 +914,43 @@
 			name = "Date Picker View";
 			sourceTree = "<group>";
 		};
+		64158317182BCD7D00BB599C /* Movie Images Connection */ = {
+			isa = PBXGroup;
+			children = (
+				64158314182BCD7A00BB599C /* MovieImagesConnection.h */,
+				64158315182BCD7A00BB599C /* MovieImagesConnection.m */,
+			);
+			name = "Movie Images Connection";
+			sourceTree = "<group>";
+		};
+		6415831B182BD00A00BB599C /* Movie Trailers Connection */ = {
+			isa = PBXGroup;
+			children = (
+				64158318182BD00600BB599C /* MovieTrailersConnection.h */,
+				64158319182BD00600BB599C /* MovieTrailersConnection.m */,
+			);
+			name = "Movie Trailers Connection";
+			sourceTree = "<group>";
+		};
+		64158321182BD28C00BB599C /* Images View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6415831C182BD28800BB599C /* ImagesViewController.h */,
+				6415831D182BD28800BB599C /* ImagesViewController.m */,
+				6415831E182BD28800BB599C /* ImagesViewController.xib */,
+			);
+			name = "Images View Controller";
+			sourceTree = "<group>";
+		};
+		64158329182BD79A00BB599C /* Navigation Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64158326182BD71A00BB599C /* NavigationController.h */,
+				64158327182BD71A00BB599C /* NavigationController.m */,
+			);
+			name = "Navigation Controller";
+			sourceTree = "<group>";
+		};
 		64177858180C21F700CDFA25 /* Moobee Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -993,6 +1044,8 @@
 				64392EB118084D7800504C78 /* Tmdb Connection */,
 				6417785E180C314D00CDFA25 /* Configuration Connection */,
 				649C3A84181822EA0000A34C /* Movie Connection */,
+				64158317182BCD7D00BB599C /* Movie Images Connection */,
+				6415831B182BD00A00BB599C /* Movie Trailers Connection */,
 				64648EE71829A36F00365EC7 /* Person Connection */,
 				64CA53941823F48E000699C5 /* Search Movie Connection */,
 			);
@@ -1471,6 +1524,7 @@
 		64B2AB5618083CBF00E02E2F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				64158329182BD79A00BB599C /* Navigation Controller */,
 				64B2AB84180844C300E02E2F /* View Controller */,
 				64177864180C336300CDFA25 /* Loading View Controller */,
 				64F25A0E1827D2CF005AB9F8 /* Moobeez Screen */,
@@ -1979,6 +2033,7 @@
 				642CA8EF181542FD00A293E4 /* Movie View Controller */,
 				64F25A161827D331005AB9F8 /* Text View Controller */,
 				64648ED21829303700365EC7 /* Cast View Controller */,
+				64158321182BD28C00BB599C /* Images View Controller */,
 			);
 			name = "Movie Details Screen";
 			sourceTree = "<group>";
@@ -2088,6 +2143,7 @@
 				64177876180CA5D900CDFA25 /* background.png in Resources */,
 				64B2AB0718082C4A00E02E2F /* Application.xib in Resources */,
 				6417785A180C221800CDFA25 /* MoobeeCell.xib in Resources */,
+				64158320182BD28800BB599C /* ImagesViewController.xib in Resources */,
 				649C3A98181830240000A34C /* CharacterCellSmall.xib in Resources */,
 				64648ED11829303300365EC7 /* CastViewController.xib in Resources */,
 				6417786E180C8A7400CDFA25 /* empty_stars_small@2x.png in Resources */,
@@ -2165,6 +2221,7 @@
 				64B9F5D51822A3F0002E322F /* GPUImageDivideBlendFilter.m in Sources */,
 				64B9F5B81822A3F0002E322F /* GPUImageAmatorkaFilter.m in Sources */,
 				64B2AB5C18083CBF00E02E2F /* NSMutableDictionary+Extensions.m in Sources */,
+				6415831F182BD28800BB599C /* ImagesViewController.m in Sources */,
 				64B9F61C1822A3F0002E322F /* GPUImagePrewittEdgeDetectionFilter.m in Sources */,
 				64B9F64E1822A3F0002E322F /* GPUImageContext.m in Sources */,
 				64B9F60C1822A3F0002E322F /* GPUImageNobleCornerDetectionFilter.m in Sources */,
@@ -2176,6 +2233,7 @@
 				64B2AB0618082C4A00E02E2F /* AppDelegate.m in Sources */,
 				64B9F5DE1822A3F0002E322F /* GPUImageFilterPipeline.m in Sources */,
 				64B9F60A1822A3F0002E322F /* GPUImageMovieComposition.m in Sources */,
+				64158328182BD71A00BB599C /* NavigationController.m in Sources */,
 				64B9F5FC1822A3F0002E322F /* GPUImageLookupFilter.m in Sources */,
 				64B9F6281822A3F0002E322F /* GPUImageSharpenFilter.m in Sources */,
 				64B9F5CB1822A3F0002E322F /* GPUImageContrastFilter.m in Sources */,
@@ -2204,6 +2262,7 @@
 				64B9F5B71822A3F0002E322F /* GPUImageAlphaBlendFilter.m in Sources */,
 				64B9F6401822A3F0002E322F /* GPUImageTransformFilter.m in Sources */,
 				64B2AB5D18083CBF00E02E2F /* NSObject+Mutable.m in Sources */,
+				64158316182BCD7A00BB599C /* MovieImagesConnection.m in Sources */,
 				64B2AB5918083CBF00E02E2F /* NSDateFormatter+Extensions.m in Sources */,
 				64B9F5CA1822A3F0002E322F /* GPUImageColorPackingFilter.m in Sources */,
 				6417785D180C314500CDFA25 /* ConfigurationConnection.m in Sources */,
@@ -2315,6 +2374,7 @@
 				64B9F6041822A3F0002E322F /* GPUImageMissEtikateFilter.m in Sources */,
 				64648ECB18292B1000365EC7 /* BubblePopupView.m in Sources */,
 				64B9F64A1822A3F0002E322F /* GPUImageWeakPixelInclusionFilter.m in Sources */,
+				6415831A182BD00600BB599C /* MovieTrailersConnection.m in Sources */,
 				64B2AB6518083CBF00E02E2F /* URLConnection.m in Sources */,
 				64B9F62F1822A3F0002E322F /* GPUImageSoftLightBlendFilter.m in Sources */,
 				64B9F6491822A3F0002E322F /* GPUImageVoronoiConsumerFilter.m in Sources */,

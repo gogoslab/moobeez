@@ -37,7 +37,7 @@
 }
 
 - (NSString*)defaultUrlSubpath {
-    return UrlPerson(self.tmdbId);
+    return UrlPerson((long)self.tmdbId);
 }
 
 @end

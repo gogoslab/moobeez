@@ -20,6 +20,25 @@
 
 @synthesize activityIndicator = _activityIndicator;
 
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    
+    if (self) {
+        self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        self.activityIndicator.hidesWhenStopped = YES;
+        self.activityIndicator.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
+        self.activityIndicator.autoresizingMask = UIViewAutoresizingNone;
+        
+        [self addSubview:self.activityIndicator];
+        
+        self.imageLoader = [[ImageLoader alloc] init];
+        
+        self.borderExtraFrame = CGRectZero;
+    }
+    
+    return self;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     
@@ -28,6 +47,8 @@
         self.activityIndicator.hidesWhenStopped = YES;
         self.activityIndicator.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
         self.activityIndicator.autoresizingMask = UIViewAutoresizingNone;
+        
+        [self addSubview:self.activityIndicator];
         
         self.imageLoader = [[ImageLoader alloc] init];
         

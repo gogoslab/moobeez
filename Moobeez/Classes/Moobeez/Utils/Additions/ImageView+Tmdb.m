@@ -36,4 +36,12 @@ static NSString* _tmdbRootPath;
     [self loadImageWithPath:[_tmdbRootPath stringByAppendingString:[NSString stringWithFormat:@"h%ld%@", (long)height, path]] completion:completionHandler];
 }
 
+- (void)loadOriginalImageWithPath:(NSString*)path completion:(ImageViewCompletionHandler)completionHandler  {
+    if (!path) {
+        self.image = nil;
+        return;
+    }
+    [self loadImageWithPath:[_tmdbRootPath stringByAppendingFormat:@"original%@", path] completion:completionHandler];
+}
+
 @end

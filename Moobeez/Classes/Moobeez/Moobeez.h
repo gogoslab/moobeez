@@ -37,6 +37,7 @@
 #import "MovieViewController.h"
 #import "TextViewController.h"
 #import "CastViewController.h"
+#import "ImagesViewController.h"
 
 #import "ActorViewController.h"
 

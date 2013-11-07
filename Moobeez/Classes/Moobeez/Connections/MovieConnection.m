@@ -22,7 +22,7 @@
     
     self.tmdbId = tmdbId;
     
-    self = [super initWithParameters:[NSDictionary dictionaryWithObject:@"casts,trailers,images" forKey:@"append_to_response"] completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
+    self = [super initWithParameters:[NSDictionary dictionaryWithObject:@"casts" forKey:@"append_to_response"] completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
         
         NSLog(@"result: %@", resultDictionary);
 
@@ -37,7 +37,7 @@
 }
 
 - (NSString*)defaultUrlSubpath {
-    return UrlMovie(self.tmdbId);
+    return UrlMovie((long)self.tmdbId);
 }
 
 @end

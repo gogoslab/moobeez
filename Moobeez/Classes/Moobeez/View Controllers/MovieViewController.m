@@ -178,8 +178,28 @@
     [self.connectionsManager startConnection:connection];
 }
 
+#pragma mark - Images
 
 - (IBAction)photosButtonPressed:(id)sender {
+    if (!self.tmdbMovie.backdropsImages) {
+        MovieImagesConnection* connection = [[MovieImagesConnection alloc] initWithTmdbMovie:self.tmdbMovie completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+            [self openImages];
+        }];
+        [self startConnection:connection];
+    }
+    else {
+        [self openImages];
+    }
+    
+}
+
+- (void)openImages {
+    
+    ImagesViewController* viewController = [[ImagesViewController alloc] initWithNibName:@"ImagesViewController" bundle:nil];
+    viewController.images = self.tmdbMovie.backdropsImages;
+    viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:viewController animated:YES completion:^{}];
+    
 }
 
 - (IBAction)trailerButtonPressed:(id)sender {
