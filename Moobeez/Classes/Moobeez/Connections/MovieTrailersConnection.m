@@ -24,9 +24,10 @@
     
     self = [super initWithParameters:@{} completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
         
-        NSLog(@"result: %@", resultDictionary);
-        
-        [self.movie addEntriesFromTmdbDictionary:@{@"trailers" : resultDictionary}];
+        if (code == WebserviceResultOk) {
+            
+            [self.movie addEntriesFromTmdbDictionary:@{@"trailers" : resultDictionary}];
+        }
 
         self.customHandler(code, self.movie);
     }];

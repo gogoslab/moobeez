@@ -25,10 +25,16 @@
     self = [super initWithParameters:[NSDictionary dictionaryWithObject:@"casts" forKey:@"append_to_response"] completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
         
         NSLog(@"result: %@", resultDictionary);
-
-        TmdbMovie* tmdbMovie = [[TmdbMovie alloc] initWithTmdbDictionary:resultDictionary];
         
-        self.customHandler(code, tmdbMovie);
+        if (code == WebserviceResultOk) {
+
+            TmdbMovie* tmdbMovie = [[TmdbMovie alloc] initWithTmdbDictionary:resultDictionary];
+        
+            self.customHandler(code, tmdbMovie);
+        }
+        else {
+            self.customHandler(code, nil);
+        }
     }];
     
     self.customHandler = handler;

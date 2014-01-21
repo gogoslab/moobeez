@@ -218,19 +218,21 @@ enum CollectionSections {
         
         MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
             
-            [self.view addSubview:self.animationCell];
-            self.animationCell.frame = [self.view convertRect:cell.frame fromView:cell.superview];
-            
-            self.animationCell.moobee = moobee;
-            
-            [self.animationCell animateGrowWithCompletion:^{
+            if (code == WebserviceResultOk) {
+                [self.view addSubview:self.animationCell];
+                self.animationCell.frame = [self.view convertRect:cell.frame fromView:cell.superview];
                 
-                self.view.userInteractionEnabled = YES;
+                self.animationCell.moobee = moobee;
                 
-                [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie];
-                
-                [self.animationCell removeFromSuperview];
-            }];
+                [self.animationCell animateGrowWithCompletion:^{
+                    
+                    self.view.userInteractionEnabled = YES;
+                    
+                    [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie];
+                    
+                    [self.animationCell removeFromSuperview];
+                }];
+            }
         }];
         
         connection.activityIndicator = cell.activityIndicator;
@@ -368,9 +370,11 @@ enum CollectionSections {
         
         self.view.userInteractionEnabled = NO;
         MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
-            self.view.userInteractionEnabled = YES;
-            [self.searchNewMovieController.view removeFromSuperview];
-            [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie];
+            if (code == WebserviceResultOk) {
+                self.view.userInteractionEnabled = YES;
+                [self.searchNewMovieController.view removeFromSuperview];
+                [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie];
+            }
         }];
         [self startConnection:connection];
     };

@@ -150,14 +150,16 @@
 
 - (void)openPerson:(TmdbPerson*)person fromCharacterTableCell:(CharacterTableCell*)cell {
     PersonConnection* connection = [[PersonConnection alloc] initWithTmdbId:person.id completionHandler:^(WebserviceResultCode code, TmdbPerson *person) {
-        [cell animateGrowWithCompletion:^{
-            ActorViewController* viewController = [[ActorViewController alloc] initWithNibName:@"ActorViewController" bundle:nil];
-            viewController.tmdbActor = person;
-            viewController.closeHandler = ^{
-                [cell animateShrinkWithCompletion:^{}];
-            };
-            [self presentViewController:viewController animated:NO completion:^{}];
-        }];
+        if (code == WebserviceResultOk) {
+            [cell animateGrowWithCompletion:^{
+                ActorViewController* viewController = [[ActorViewController alloc] initWithNibName:@"ActorViewController" bundle:nil];
+                viewController.tmdbActor = person;
+                viewController.closeHandler = ^{
+                    [cell animateShrinkWithCompletion:^{}];
+                };
+                [self presentViewController:viewController animated:NO completion:^{}];
+            }];
+        }
     }];
     
     connection.activityIndicator = cell.activityIndicator;
@@ -166,14 +168,16 @@
 
 - (void)openPerson:(TmdbPerson*)person fromCharacterCell:(CharacterCell*)cell {
     PersonConnection* connection = [[PersonConnection alloc] initWithTmdbId:person.id completionHandler:^(WebserviceResultCode code, TmdbPerson *person) {
-        [cell animateGrowWithCompletion:^{
-            ActorViewController* viewController = [[ActorViewController alloc] initWithNibName:@"ActorViewController" bundle:nil];
-            viewController.tmdbActor = person;
-            viewController.closeHandler = ^{
-                [cell animateShrinkWithCompletion:^{}];
-            };
-            [self presentViewController:viewController animated:NO completion:^{}];
-        }];
+        if (code == WebserviceResultOk) {
+            [cell animateGrowWithCompletion:^{
+                ActorViewController* viewController = [[ActorViewController alloc] initWithNibName:@"ActorViewController" bundle:nil];
+                viewController.tmdbActor = person;
+                viewController.closeHandler = ^{
+                    [cell animateShrinkWithCompletion:^{}];
+                };
+                [self presentViewController:viewController animated:NO completion:^{}];
+            }];
+        }
     }];
     
     connection.activityIndicator = cell.activityIndicator;

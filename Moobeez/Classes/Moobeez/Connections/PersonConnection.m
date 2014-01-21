@@ -26,9 +26,15 @@
         
         NSLog(@"result: %@", resultDictionary);
 
-        TmdbPerson* tmdbPerson = [[TmdbPerson alloc] initWithTmdbDictionary:resultDictionary];
+        if (code == WebserviceResultOk) {
         
-        self.customHandler(code, tmdbPerson);
+            TmdbPerson* tmdbPerson = [[TmdbPerson alloc] initWithTmdbDictionary:resultDictionary];
+        
+            self.customHandler(code, tmdbPerson);
+        }
+        else {
+            self.customHandler(code, nil);
+        }
     }];
     
     self.customHandler = handler;

@@ -64,7 +64,9 @@ static NSMutableArray* alerts;
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    self.callbackBlock(buttonIndex);
+    if (self.callbackBlock) {
+        self.callbackBlock(buttonIndex);
+    }
     [[Alert alerts] removeObject:self];
 }
 

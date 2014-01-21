@@ -137,17 +137,19 @@
     self.view.userInteractionEnabled = NO;
     MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
         
-        [cell animateGrowWithCompletion:^{
-            MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
-            viewController.moobee = moobee;
-            viewController.tmdbMovie = movie;
-            
-            viewController.closeHandler = ^{
-                [cell animateShrinkWithCompletion:^{}];
-            };
-            
-            [self presentViewController:viewController animated:NO completion:^{}];
-        }];
+        if (code == WebserviceResultOk) {
+            [cell animateGrowWithCompletion:^{
+                MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
+                viewController.moobee = moobee;
+                viewController.tmdbMovie = movie;
+                
+                viewController.closeHandler = ^{
+                    [cell animateShrinkWithCompletion:^{}];
+                };
+                
+                [self presentViewController:viewController animated:NO completion:^{}];
+            }];
+        }
     }];
     connection.activityIndicator = cell.activityIndicator;
     [self.connectionsManager startConnection:connection];
@@ -165,18 +167,19 @@
     
     self.view.userInteractionEnabled = NO;
     MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
-        
-        [cell animateGrowWithCompletion:^{
-            MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
-            viewController.moobee = moobee;
-            viewController.tmdbMovie = movie;
-            
-            viewController.closeHandler = ^{
-                [cell animateShrinkWithCompletion:^{}];
-            };
-            
-            [self presentViewController:viewController animated:NO completion:^{}];
-        }];
+        if (code == WebserviceResultOk) {
+            [cell animateGrowWithCompletion:^{
+                MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
+                viewController.moobee = moobee;
+                viewController.tmdbMovie = movie;
+                
+                viewController.closeHandler = ^{
+                    [cell animateShrinkWithCompletion:^{}];
+                };
+                
+                [self presentViewController:viewController animated:NO completion:^{}];
+            }];
+        }
     }];
     connection.activityIndicator = cell.activityIndicator;
     [self.connectionsManager startConnection:connection];
@@ -184,9 +187,13 @@
 }
 
 - (IBAction)photosButtonPressed:(id)sender {
+    
+    ImagesViewController* viewController = [[ImagesViewController alloc] initWithNibName:@"ImagesViewController" bundle:nil];
+    viewController.images = self.tmdbActor.profileImages;
+    viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentViewController:viewController animated:YES completion:^{}];
+    
 }
 
-- (IBAction)trailerButtonPressed:(id)sender {
-}
 
 @end

@@ -33,4 +33,6 @@ typedef void (^ConnectionCodeHandler) (WebserviceResultCode code);
 
 - (id)startSynchronousConnectionWithParameters:(NSDictionary*)parameters;
 
+- (void)showErrorAlert;
+
 @end

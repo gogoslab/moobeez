@@ -75,8 +75,10 @@
     [searchBar resignFirstResponder];
 
     SearchMovieConnection* connection = [[SearchMovieConnection alloc] initWithQuery:searchBar.text completionHandler:^(WebserviceResultCode code, NSMutableArray *movies) {
-        self.movies = movies;
-        [self reloadData];
+        if (code == WebserviceResultOk) {
+            self.movies = movies;
+            [self reloadData];
+        }
     }];
     
     [self startConnection:connection];

@@ -17,6 +17,8 @@
 
 @property (strong, nonatomic) NSMutableArray* imageViewsArray;
 
+@property (readwrite, nonatomic) BOOL isLandscape;
+
 @end
 
 @implementation ImagesViewController
@@ -34,6 +36,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    if (self.images.count) {
+        self.isLandscape = (((TmdbImage*) self.images[0]).aspectRatio >= 1.0);
+    }
     
 }
 
@@ -98,15 +104,15 @@
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskLandscape;
+    return (self.isLandscape ? UIInterfaceOrientationMaskLandscape : UIInterfaceOrientationMaskPortrait);
 }
 
 - (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
-    return UIInterfaceOrientationLandscapeLeft;
+    return (self.isLandscape ? UIInterfaceOrientationLandscapeLeft : UIInterfaceOrientationPortrait);
 }
 
 - (BOOL)prefersStatusBarHidden {
-    return YES;
+    return self.isLandscape;
 }
 
 - (IBAction)backButtonPressed:(id)sender {

@@ -27,6 +27,7 @@
     self = [super initWithUrlString:[self.rootUrlPath stringByAppendingString:self.urlSubpath] parameters:tmdbParameters completionHandler:^(NSURLResponse *response, id result, NSError *error) {
         if (error) {
             self.handler(WebserviceResultError, result, error);
+            [self showErrorAlert];
         }
         else  if ([result isKindOfClass:[NSDictionary class]]) {
             self.handler(WebserviceResultOk, result, error);
@@ -69,4 +70,7 @@
     return (AppDelegate*) [UIApplication sharedApplication].delegate;
 }
 
+- (void)showErrorAlert {
+    [Alert showAlertViewWithTitle:@"Error" message:@"Unable to connect to the server, please try again later" buttonClickedCallback:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+}
 @end
