@@ -9,6 +9,8 @@
 #import "MovieViewController.h"
 #import "Moobeez.h"
 
+#import <MediaPlayer/MediaPlayer.h>
+
 @interface MovieViewController () <UITextFieldDelegate, ToolboxViewDelegate>
 
 @property (weak, nonatomic) IBOutlet ImageView *posterImageView;
@@ -56,7 +58,7 @@
         self.posterImageView.defaultImage = self.posterImageView.image;
         
         [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:500 completion:^(BOOL didLoadImage) {
-            
+          
         }];
         
         [self.toolboxView performSelector:@selector(showFullToolbox) withObject:nil afterDelay:0.5];
@@ -203,6 +205,41 @@
 }
 
 - (IBAction)trailerButtonPressed:(id)sender {
+    
+    if (!self.tmdbMovie.trailerPath) {
+        MovieTrailersConnection* connection = [[MovieTrailersConnection alloc] initWithTmdbMovie:self.tmdbMovie completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+            if (code == WebserviceResultOk) {
+                [self playTrailer];
+            }
+        }];
+        
+        [self startConnection:connection];
+    }
+    else {
+        [self playTrailer];
+    }
+}
+
+- (void)playTrailer {
+
+    switch (self.tmdbMovie.trailerType) {
+        case TmdbTrailerQuicktimeType:
+        {
+            MPMoviePlayerViewController* viewController = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:self.tmdbMovie.trailerPath]];
+            [self presentMoviePlayerViewControllerAnimated:viewController];
+        }
+            break;
+        case TmdbTrailerYoutubeType:
+        {
+            YouTubeViewController* viewController = [[YouTubeViewController alloc] initWithNibName:@"YouTubeViewController" bundle:nil];
+            viewController.youtubeId = self.tmdbMovie.trailerPath;
+            [self presentViewController:viewController animated:YES completion:nil];
+        }
+            break;
+        default:
+            break;
+    }
+
 }
 
 @end

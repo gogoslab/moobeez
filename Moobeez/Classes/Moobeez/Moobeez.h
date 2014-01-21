@@ -38,6 +38,7 @@
 #import "TextViewController.h"
 #import "CastViewController.h"
 #import "ImagesViewController.h"
+#import "YouTubeViewController.h"
 
 #import "ActorViewController.h"
 

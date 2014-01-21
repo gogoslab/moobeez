@@ -26,7 +26,7 @@
         
         NSLog(@"result: %@", resultDictionary);
         
-        [self.movie addEntriesFromTmdbDictionary:resultDictionary];
+        [self.movie addEntriesFromTmdbDictionary:@{@"trailers" : resultDictionary}];
 
         self.customHandler(code, self.movie);
     }];
