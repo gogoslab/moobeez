@@ -40,6 +40,12 @@
 		644121F7181C351400260497 /* share_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 644121F5181C351400260497 /* share_button.png */; };
 		644121F8181C351400260497 /* share_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644121F6181C351400260497 /* share_button@2x.png */; };
 		64412223181D3D7F00260497 /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64412222181D3D7F00260497 /* CharacterCell.xib */; };
+		64646C5B1892BF3C007926FE /* featured_cells_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 64646C591892BF3C007926FE /* featured_cells_header.png */; };
+		64646C5C1892BF3C007926FE /* featured_cells_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64646C5A1892BF3C007926FE /* featured_cells_header@2x.png */; };
+		64646C5F189415B9007926FE /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64646C5E189415B9007926FE /* MovieCell.m */; };
+		64646C62189415F8007926FE /* MovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64646C61189415F8007926FE /* MovieCell.xib */; };
+		64646C6518942956007926FE /* MoviesHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64646C6418942956007926FE /* MoviesHeaderView.m */; };
+		64646C6818942973007926FE /* MoviesHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64646C6718942973007926FE /* MoviesHeaderView.xib */; };
 		64648EC6182849B800365EC7 /* UIMaskView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648EC5182849B800365EC7 /* UIMaskView.m */; };
 		64648EC81828502E00365EC7 /* description_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64648EC71828502E00365EC7 /* description_mask@2x.png */; };
 		64648ECB18292B1000365EC7 /* BubblePopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648ECA18292B1000365EC7 /* BubblePopupView.m */; };
@@ -69,6 +75,11 @@
 		64A8AD67188EC3D800DBECD7 /* YouTubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A8AD65188EC3D800DBECD7 /* YouTubeViewController.m */; };
 		64A8AD68188EC3D800DBECD7 /* YouTubeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A8AD66188EC3D800DBECD7 /* YouTubeViewController.xib */; };
 		64A8AD6B188EC42C00DBECD7 /* YouTubeTemplate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 64A8AD6A188EC42C00DBECD7 /* YouTubeTemplate.txt */; };
+		64A8AD6E188F33D500DBECD7 /* MoviesListConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A8AD6D188F33D500DBECD7 /* MoviesListConnection.m */; };
+		64A8AD72188F39B400DBECD7 /* FeatureMoviesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A8AD71188F39B400DBECD7 /* FeatureMoviesCell.m */; };
+		64A8AD75188F39D400DBECD7 /* FeatureMoviesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A8AD74188F39D400DBECD7 /* FeatureMoviesCell.xib */; };
+		64A8AD781890201400DBECD7 /* MoviePosterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A8AD771890201400DBECD7 /* MoviePosterView.m */; };
+		64A8AD7B1890203200DBECD7 /* MoviePosterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A8AD7A1890203200DBECD7 /* MoviePosterView.xib */; };
 		64B2AAC418082AE600E02E2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC318082AE600E02E2F /* Foundation.framework */; };
 		64B2AAC618082AE600E02E2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC518082AE600E02E2F /* CoreGraphics.framework */; };
 		64B2AAC818082AE600E02E2F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC718082AE600E02E2F /* UIKit.framework */; };
@@ -367,6 +378,14 @@
 		644121F5181C351400260497 /* share_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_button.png; sourceTree = "<group>"; };
 		644121F6181C351400260497 /* share_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_button@2x.png"; sourceTree = "<group>"; };
 		64412222181D3D7F00260497 /* CharacterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterCell.xib; sourceTree = "<group>"; };
+		64646C591892BF3C007926FE /* featured_cells_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = featured_cells_header.png; sourceTree = "<group>"; };
+		64646C5A1892BF3C007926FE /* featured_cells_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "featured_cells_header@2x.png"; sourceTree = "<group>"; };
+		64646C5D189415B9007926FE /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
+		64646C5E189415B9007926FE /* MovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCell.m; sourceTree = "<group>"; };
+		64646C61189415F8007926FE /* MovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCell.xib; sourceTree = "<group>"; };
+		64646C6318942956007926FE /* MoviesHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesHeaderView.h; sourceTree = "<group>"; };
+		64646C6418942956007926FE /* MoviesHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesHeaderView.m; sourceTree = "<group>"; };
+		64646C6718942973007926FE /* MoviesHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesHeaderView.xib; sourceTree = "<group>"; };
 		64648EC4182849B800365EC7 /* UIMaskView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMaskView.h; sourceTree = "<group>"; };
 		64648EC5182849B800365EC7 /* UIMaskView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIMaskView.m; sourceTree = "<group>"; };
 		64648EC71828502E00365EC7 /* description_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "description_mask@2x.png"; sourceTree = "<group>"; };
@@ -413,6 +432,14 @@
 		64A8AD65188EC3D800DBECD7 /* YouTubeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeViewController.m; sourceTree = "<group>"; };
 		64A8AD66188EC3D800DBECD7 /* YouTubeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YouTubeViewController.xib; sourceTree = "<group>"; };
 		64A8AD6A188EC42C00DBECD7 /* YouTubeTemplate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YouTubeTemplate.txt; sourceTree = "<group>"; };
+		64A8AD6C188F33D500DBECD7 /* MoviesListConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesListConnection.h; sourceTree = "<group>"; };
+		64A8AD6D188F33D500DBECD7 /* MoviesListConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesListConnection.m; sourceTree = "<group>"; };
+		64A8AD70188F39B400DBECD7 /* FeatureMoviesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeatureMoviesCell.h; sourceTree = "<group>"; };
+		64A8AD71188F39B400DBECD7 /* FeatureMoviesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeatureMoviesCell.m; sourceTree = "<group>"; };
+		64A8AD74188F39D400DBECD7 /* FeatureMoviesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeatureMoviesCell.xib; sourceTree = "<group>"; };
+		64A8AD761890201400DBECD7 /* MoviePosterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviePosterView.h; sourceTree = "<group>"; };
+		64A8AD771890201400DBECD7 /* MoviePosterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviePosterView.m; sourceTree = "<group>"; };
+		64A8AD7A1890203200DBECD7 /* MoviePosterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviePosterView.xib; sourceTree = "<group>"; };
 		64B2AAC018082AE600E02E2F /* Moobeez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moobeez.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B2AAC318082AE600E02E2F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		64B2AAC518082AE600E02E2F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1058,6 +1085,7 @@
 				6415831B182BD00A00BB599C /* Movie Trailers Connection */,
 				64648EE71829A36F00365EC7 /* Person Connection */,
 				64CA53941823F48E000699C5 /* Search Movie Connection */,
+				64A8AD6F188F33DA00DBECD7 /* Movies List Connection */,
 			);
 			name = "Tmdb Connections";
 			sourceTree = "<group>";
@@ -1080,6 +1108,35 @@
 				64CA53851823DD2C000699C5 /* MovieButtonsWhite.bundle */,
 			);
 			path = "Movie Details";
+			sourceTree = "<group>";
+		};
+		64646C581892BF3C007926FE /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				64646C591892BF3C007926FE /* featured_cells_header.png */,
+				64646C5A1892BF3C007926FE /* featured_cells_header@2x.png */,
+			);
+			path = Movies;
+			sourceTree = "<group>";
+		};
+		64646C60189415CB007926FE /* Movie Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64646C5D189415B9007926FE /* MovieCell.h */,
+				64646C5E189415B9007926FE /* MovieCell.m */,
+				64646C61189415F8007926FE /* MovieCell.xib */,
+			);
+			name = "Movie Cell";
+			sourceTree = "<group>";
+		};
+		64646C661894295A007926FE /* Movies Header View */ = {
+			isa = PBXGroup;
+			children = (
+				64646C6318942956007926FE /* MoviesHeaderView.h */,
+				64646C6418942956007926FE /* MoviesHeaderView.m */,
+				64646C6718942973007926FE /* MoviesHeaderView.xib */,
+			);
+			name = "Movies Header View";
 			sourceTree = "<group>";
 		};
 		64648ECC18292B1500365EC7 /* Bubble Popup View */ = {
@@ -1182,6 +1239,9 @@
 				649C3A9618182FD80000A34C /* Character Cell */,
 				64CA53981823F8C9000699C5 /* Search Result Cell */,
 				64648ED61829320E00365EC7 /* Character Table Cell */,
+				64A8AD73188F39B900DBECD7 /* Feature Movies Cell */,
+				64A8AD791890201700DBECD7 /* Movie Poster View */,
+				64646C60189415CB007926FE /* Movie Cell */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1270,6 +1330,35 @@
 				64A8AD66188EC3D800DBECD7 /* YouTubeViewController.xib */,
 			);
 			name = YouTubeViewController;
+			sourceTree = "<group>";
+		};
+		64A8AD6F188F33DA00DBECD7 /* Movies List Connection */ = {
+			isa = PBXGroup;
+			children = (
+				64A8AD6C188F33D500DBECD7 /* MoviesListConnection.h */,
+				64A8AD6D188F33D500DBECD7 /* MoviesListConnection.m */,
+			);
+			name = "Movies List Connection";
+			sourceTree = "<group>";
+		};
+		64A8AD73188F39B900DBECD7 /* Feature Movies Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64A8AD70188F39B400DBECD7 /* FeatureMoviesCell.h */,
+				64A8AD71188F39B400DBECD7 /* FeatureMoviesCell.m */,
+				64A8AD74188F39D400DBECD7 /* FeatureMoviesCell.xib */,
+			);
+			name = "Feature Movies Cell";
+			sourceTree = "<group>";
+		};
+		64A8AD791890201700DBECD7 /* Movie Poster View */ = {
+			isa = PBXGroup;
+			children = (
+				64A8AD761890201400DBECD7 /* MoviePosterView.h */,
+				64A8AD771890201400DBECD7 /* MoviePosterView.m */,
+				64A8AD7A1890203200DBECD7 /* MoviePosterView.xib */,
+			);
+			name = "Movie Poster View";
 			sourceTree = "<group>";
 		};
 		64B2AAB718082AE600E02E2F = {
@@ -1361,6 +1450,7 @@
 		64B2AB0518082C4A00E02E2F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				64646C581892BF3C007926FE /* Movies */,
 				644121F9181C3B4F00260497 /* Movie Details */,
 				64177868180C8A7400CDFA25 /* Moobeez */,
 				64177865180C3B5A00CDFA25 /* Common Images */,
@@ -1565,6 +1655,7 @@
 				6414A2FC1821B8BE009397FF /* Date Picker View */,
 				649C3A7C1818127F0000A34C /* Stars View */,
 				64648ECC18292B1500365EC7 /* Bubble Popup View */,
+				64646C661894295A007926FE /* Movies Header View */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2155,6 +2246,7 @@
 				64B2AB991808496B00E02E2F /* tab_bar_icon_movies@2x.png in Resources */,
 				64DC8C111817137F002C11D8 /* back_button.png in Resources */,
 				64B2AB951808486200E02E2F /* tab_bar_icon_moobeez@2x.png in Resources */,
+				64A8AD75188F39D400DBECD7 /* FeatureMoviesCell.xib in Resources */,
 				64DC8C1D1817215E002C11D8 /* toolbox_up_arrow.png in Resources */,
 				64177863180C336000CDFA25 /* LoadingViewController.xib in Resources */,
 				64B2AACE18082AE600E02E2F /* InfoPlist.strings in Resources */,
@@ -2173,6 +2265,7 @@
 				64B2AB941808486200E02E2F /* tab_bar_icon_moobeez.png in Resources */,
 				649C3A761818068F0000A34C /* empty_stars_big_black@2x.png in Resources */,
 				64F25A181827EC02005AB9F8 /* description_mask.png in Resources */,
+				64646C6818942973007926FE /* MoviesHeaderView.xib in Resources */,
 				64DC8C191817215E002C11D8 /* toolbox_down_arrow.png in Resources */,
 				64B2AB8F1808452700E02E2F /* MoviesViewController.xib in Resources */,
 				64CA538A1823E6A9000699C5 /* empty_stars_big_white@2x.png in Resources */,
@@ -2180,9 +2273,11 @@
 				649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */,
 				644121F8181C351400260497 /* share_button@2x.png in Resources */,
 				64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */,
+				64646C5C1892BF3C007926FE /* featured_cells_header@2x.png in Resources */,
 				64648EDD1829956200365EC7 /* ActorViewController.xib in Resources */,
 				649C3A781818068F0000A34C /* full_stars_big@2x.png in Resources */,
 				64CA53841823DC48000699C5 /* MovieButtonsBlack.bundle in Resources */,
+				64A8AD7B1890203200DBECD7 /* MoviePosterView.xib in Resources */,
 				64412223181D3D7F00260497 /* CharacterCell.xib in Resources */,
 				64DC8C1B1817215E002C11D8 /* toolbox_line.png in Resources */,
 				64177870180C8A7400CDFA25 /* full_stars_small@2x.png in Resources */,
@@ -2194,12 +2289,14 @@
 				64CA539A1823F8E1000699C5 /* SearchResultCell.xib in Resources */,
 				64F25A151827D32C005AB9F8 /* TextViewController.xib in Resources */,
 				6417786F180C8A7400CDFA25 /* full_stars_small.png in Resources */,
+				64646C5B1892BF3C007926FE /* featured_cells_header.png in Resources */,
 				64DC8C1C1817215E002C11D8 /* toolbox_line@2x.png in Resources */,
 				64CA539D1824060C000699C5 /* add_button.png in Resources */,
 				642CA8EE181542FA00A293E4 /* MovieViewController.xib in Resources */,
 				64CA53891823E6A9000699C5 /* empty_stars_big_white.png in Resources */,
 				64648EC81828502E00365EC7 /* description_mask@2x.png in Resources */,
 				644121F7181C351400260497 /* share_button.png in Resources */,
+				64646C62189415F8007926FE /* MovieCell.xib in Resources */,
 				64A8AD6B188EC42C00DBECD7 /* YouTubeTemplate.txt in Resources */,
 				6414A3011821B90D009397FF /* DatePickerView.xib in Resources */,
 				640865F6180B62EC00725CE4 /* MoobeezDatabase in Resources */,
@@ -2264,6 +2361,7 @@
 				64B9F6281822A3F0002E322F /* GPUImageSharpenFilter.m in Sources */,
 				64B9F5CB1822A3F0002E322F /* GPUImageContrastFilter.m in Sources */,
 				64B9F5C21822A3F0002E322F /* GPUImageChromaKeyBlendFilter.m in Sources */,
+				64A8AD72188F39B400DBECD7 /* FeatureMoviesCell.m in Sources */,
 				64B9F6351822A3F0002E322F /* GPUImageSubtractBlendFilter.m in Sources */,
 				64B9F5CF1822A3F0002E322F /* GPUImageDarkenBlendFilter.m in Sources */,
 				64B9F6451822A3F0002E322F /* GPUImageUIElement.m in Sources */,
@@ -2302,6 +2400,7 @@
 				64B9F5E41822A3F0002E322F /* GPUImageGrayscaleFilter.m in Sources */,
 				64B9F5C91822A3F0002E322F /* GPUImageColorMatrixFilter.m in Sources */,
 				64B9F6141822A3F0002E322F /* GPUImagePerlinNoiseFilter.m in Sources */,
+				64646C6518942956007926FE /* MoviesHeaderView.m in Sources */,
 				64B9F5EE1822A3F0002E322F /* GPUImageHSBFilter.m in Sources */,
 				64B9F5E51822A3F0002E322F /* GPUImageHalftoneFilter.m in Sources */,
 				64B9F5D91822A3F0002E322F /* GPUImageExposureFilter.m in Sources */,
@@ -2327,6 +2426,7 @@
 				64B2AB6B18083CBF00E02E2F /* SBJsonStreamWriter.m in Sources */,
 				64B9F5B51822A3F0002E322F /* GPUImageAdaptiveThresholdFilter.m in Sources */,
 				64177874180CA24000CDFA25 /* AMBlurView.m in Sources */,
+				64646C5F189415B9007926FE /* MovieCell.m in Sources */,
 				64B9F5F41822A3F0002E322F /* GPUImageKuwaharaRadius3Filter.m in Sources */,
 				64B9F5DF1822A3F0002E322F /* GPUImageGammaFilter.m in Sources */,
 				649C3A9518182FD30000A34C /* CharacterCell.m in Sources */,
@@ -2348,6 +2448,7 @@
 				64B2AB6918083CBF00E02E2F /* SBJsonStreamParserAccumulator.m in Sources */,
 				64B9F5BD1822A3F0002E322F /* GPUImageBrightnessFilter.m in Sources */,
 				64B2AB7118083CBF00E02E2F /* ImageLoader.m in Sources */,
+				64A8AD781890201400DBECD7 /* MoviePosterView.m in Sources */,
 				640865FD180B6AF600725CE4 /* NSMutableDictionary+SQL.m in Sources */,
 				64B2AB5B18083CBF00E02E2F /* NSFileManager+ExtraAtributtes.m in Sources */,
 				64B9F6461822A3F0002E322F /* GPUImageUnsharpMaskFilter.m in Sources */,
@@ -2411,6 +2512,7 @@
 				64B9F6261822A3F0002E322F /* GPUImageScreenBlendFilter.m in Sources */,
 				64B9F6191822A3F0002E322F /* GPUImagePolarPixellateFilter.m in Sources */,
 				64B2AB831808421700E02E2F /* ViewController.m in Sources */,
+				64A8AD6E188F33D500DBECD7 /* MoviesListConnection.m in Sources */,
 				64B9F5E81822A3F0002E322F /* GPUImageHazeFilter.m in Sources */,
 				64B9F5FE1822A3F0002E322F /* GPUImageLuminanceRangeFilter.m in Sources */,
 				64B2AB7018083CBF00E02E2F /* SBJsonWriter.m in Sources */,

@@ -34,4 +34,6 @@
 
 #import "SearchMovieConnection.h"
 
+#import "MoviesListConnection.h"
+
 #endif

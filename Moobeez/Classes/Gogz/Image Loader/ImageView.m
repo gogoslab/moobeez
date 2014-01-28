@@ -27,7 +27,7 @@
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         self.activityIndicator.hidesWhenStopped = YES;
         self.activityIndicator.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
-        self.activityIndicator.autoresizingMask = UIViewAutoresizingNone;
+        self.activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         
         [self addSubview:self.activityIndicator];
         
@@ -46,7 +46,7 @@
         self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         self.activityIndicator.hidesWhenStopped = YES;
         self.activityIndicator.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
-        self.activityIndicator.autoresizingMask = UIViewAutoresizingNone;
+        self.activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
         
         [self addSubview:self.activityIndicator];
         

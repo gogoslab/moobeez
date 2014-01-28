@@ -39,7 +39,7 @@
 
     self.posterImageView.defaultImage = [UIImage imageNamed:@"default_image.png"];
     self.posterImageView.loadSyncronized = YES;
-    [self.posterImageView loadImageWithPath:moobee.posterPath andWidth:154 completion:^(BOOL didLoadImage) {
+    [self.posterImageView loadImageWithPath:moobee.posterPath andWidth:185 completion:^(BOOL didLoadImage) {
         self.nameLabel.hidden = didLoadImage;
     }];
     
@@ -103,7 +103,7 @@
         completionHandler();
     }];
     
-    [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:154 completion:^(BOOL didLoadImage) {}];
+    [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:185 completion:^(BOOL didLoadImage) {}];
 }
 
 

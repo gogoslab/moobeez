@@ -49,6 +49,10 @@
 #import "CharacterTableCell.h"
 #import "SearchResultCell.h"
 
+#import "FeatureMoviesCell.h"
+#import "MoviePosterView.h"
+#import "MovieCell.h"
+#import "MoviesHeaderView.h"
 
 #pragma mark - Toolboxes
 

@@ -27,6 +27,7 @@ typedef enum TmdbTrailerType {
 @property (strong, nonatomic) NSMutableArray* postersImages;
 
 @property (strong, nonatomic) NSString* posterPath;
+@property (strong, nonatomic) NSString* backdropPath;
 
 @property (strong, nonatomic) NSDate* releaseDate;
 

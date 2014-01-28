@@ -61,7 +61,11 @@
     if ([[tmdbDictionary stringForKey:@"poster_path"] length]) {
         self.posterPath = [tmdbDictionary stringForKey:@"poster_path"];
     }
-
+    
+    if ([[tmdbDictionary stringForKey:@"backdrop_path"] length]) {
+        self.backdropPath = [tmdbDictionary stringForKey:@"backdrop_path"];
+    }
+    
     if (tmdbDictionary[@"casts"][@"cast"]) {
         self.characters = [[NSMutableArray alloc] init];
         for (NSDictionary* castDictionary in tmdbDictionary[@"casts"][@"cast"]) {
