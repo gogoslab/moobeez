@@ -29,7 +29,7 @@
 
 - (void)awakeFromNib {
     self.height = [MoviePosterView height];
-    self.postersContentView.height = [MoviePosterView height];
+    self.postersContentView.height = [MoviePosterView height] + 1;
 }
 
 - (void)setMovies:(NSArray *)movies {
@@ -181,6 +181,11 @@
     if (self.isAnimationRunning) {
         return;
     }
+    
+    if (!self.movies.count) {
+        return;
+    }
+    
     self.isAnimationRunning = YES;
     
     if (!self.isMoving) {

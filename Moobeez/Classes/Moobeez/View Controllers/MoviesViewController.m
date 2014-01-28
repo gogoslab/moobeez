@@ -108,6 +108,7 @@ typedef enum MoviesSection {
             if ([self.tableView indexPathForCell:self.featuredCells[section]]) {
                 [self.featuredCells[section] performSelector:@selector(startAnimating) withObject:nil afterDelay:section * 0.3];
             }
+            [self.tableView reloadData];
         }
     }];
     
@@ -130,7 +131,14 @@ typedef enum MoviesSection {
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return ([self.expandedSections[section] boolValue] ? ((FeatureMoviesCell*) self.featuredCells[section]).movies.count : 1);
+    
+    NSInteger moviesCount = ((FeatureMoviesCell*) self.featuredCells[section]).movies.count;
+    
+    if (moviesCount) {
+        return ([self.expandedSections[section] boolValue] ? moviesCount : 1);
+    }
+    
+    return 0;
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -140,6 +148,8 @@ typedef enum MoviesSection {
         NSArray* movies = ((FeatureMoviesCell*) self.featuredCells[indexPath.section]).movies;
         
         MovieCell* cell = (MovieCell*) [tableView dequeueReusableCellWithIdentifier:@"MovieCell"];
+        
+        cell.parentTableView = tableView;
         
         cell.movie = movies[indexPath.row];
         
@@ -154,7 +164,13 @@ typedef enum MoviesSection {
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([self.expandedSections[indexPath.section] boolValue]) {
         
-        return 120;
+        CGFloat rowHeight = 120;
+        
+        if (indexPath.row == 0) {
+            return rowHeight + 41;
+        }
+        
+        return rowHeight;
         
     }
     else {
@@ -169,7 +185,7 @@ typedef enum MoviesSection {
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     if ([self.expandedSections[section] boolValue]) {
-        return [self.headersViews[section] height];
+        return 1;//[self.headersViews[section] height];
     }
     
     return 0.0;
@@ -177,12 +193,23 @@ typedef enum MoviesSection {
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     
+    
     [tableView beginUpdates];
     
-    self.expandedSections[indexPath.section] = @YES;
+    self.expandedSections[indexPath.section] = @(![self.expandedSections[indexPath.section] boolValue]);
     
     [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
     [tableView insertSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
+    
+    
+    if (![self.expandedSections[indexPath.section] boolValue]) {
+        [tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:indexPath.section] atScrollPosition:UITableViewScrollPositionNone animated:YES];
+//        NSIndexPath topIndexPath = [tableView indexPathForCell:[tableView visibleCells][0]];
+//        
+//        if (topIndexPath.section == indexPath.section) {
+//            [tableView scrollToRowAtIndexPath:[NSIndexPath inde] atScrollPosition:<#(UITableViewScrollPosition)#> animated:<#(BOOL)#>]
+//        }
+    }
     
     [tableView endUpdates];
 }
@@ -311,23 +338,6 @@ typedef enum MoviesSection {
     }
 
     return YES;
-}
-
-#pragma mark - Collapse
-
-- (IBAction)collapseButtonPressed:(id)sender {
-    
-    NSInteger section = ((UIButton*) sender).tag;
-    
-    [self.tableView beginUpdates];
-    
-    self.expandedSections[section] = @NO;
-    
-    [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationFade];
-    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:section] withRowAnimation:UITableViewRowAnimationFade];
-    
-    [self.tableView endUpdates];
-
 }
 
 @end

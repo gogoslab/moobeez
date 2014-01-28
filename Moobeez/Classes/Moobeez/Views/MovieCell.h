@@ -17,4 +17,6 @@
 
 @property (weak, nonatomic) IBOutlet MoviePosterView *posterView;
 
+@property (weak, nonatomic) UITableView* parentTableView;
+
 @end

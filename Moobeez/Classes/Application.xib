@@ -92,7 +92,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <nil key="simulatedDestinationMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="j4G-Ln-pNj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="j4G-Ln-pNj">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
