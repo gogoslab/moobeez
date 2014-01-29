@@ -45,7 +45,7 @@
     
     NSMutableDictionary* databaseDictionary = [NSMutableDictionary dictionary];
     
-    databaseDictionary[@"tmdbId"] = [NSString stringWithFormat:@"%ld", self.tmdbId];
+    databaseDictionary[@"tmdbId"] = [NSString stringWithFormat:@"%ld", (long)self.tmdbId];
     databaseDictionary[@"name"] = [self.name stringByResolvingSQLIssues];
     databaseDictionary[@"comments"] = [self.comments stringByResolvingSQLIssues];
     databaseDictionary[@"posterPath"] = [self.posterPath stringByResolvingSQLIssues];

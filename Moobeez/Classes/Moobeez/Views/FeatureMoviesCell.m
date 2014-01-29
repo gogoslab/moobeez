@@ -91,14 +91,14 @@
     CGFloat left = 0;
     
     if (self.posterViews.count) {
-        left = [self.posterViews[0] x];
+        left = ((UIView*) self.posterViews[0]).x;
     }
     
     while (left > -50) {
         
         [self addPosterBefore:YES];
         
-        left = [self.posterViews[0] x];
+        left = ((UIView*) self.posterViews[0]).x;
         
     }
 }
@@ -156,7 +156,7 @@
         CGFloat lastX = self.postersContentView.width;
         
         if (self.posterViews.count > 0) {
-            lastX = [self.posterViews[0] x];
+            lastX = ((UIView*) self.posterViews[0]).x;
         }
         
         posterView.right = lastX;

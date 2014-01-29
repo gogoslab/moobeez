@@ -80,6 +80,7 @@
 		649C3A9518182FD30000A34C /* CharacterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A9418182FD30000A34C /* CharacterCell.m */; };
 		649C3A98181830240000A34C /* CharacterCellSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A97181830240000A34C /* CharacterCellSmall.xib */; };
 		649EF25C18999B7100FC796D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 649EF25B18999B7100FC796D /* background@2x.png */; };
+		649EF25E1899A76200FC796D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 649EF25D1899A76200FC796D /* Crashlytics.framework */; };
 		64A8AD63188EC12300DBECD7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A8AD62188EC12300DBECD7 /* MediaPlayer.framework */; };
 		64A8AD67188EC3D800DBECD7 /* YouTubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A8AD65188EC3D800DBECD7 /* YouTubeViewController.m */; };
 		64A8AD68188EC3D800DBECD7 /* YouTubeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A8AD66188EC3D800DBECD7 /* YouTubeViewController.xib */; };
@@ -446,6 +447,7 @@
 		649C3A9418182FD30000A34C /* CharacterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterCell.m; sourceTree = "<group>"; };
 		649C3A97181830240000A34C /* CharacterCellSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterCellSmall.xib; sourceTree = "<group>"; };
 		649EF25B18999B7100FC796D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
+		649EF25D1899A76200FC796D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		64A8AD62188EC12300DBECD7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		64A8AD64188EC3D800DBECD7 /* YouTubeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeViewController.h; sourceTree = "<group>"; };
 		64A8AD65188EC3D800DBECD7 /* YouTubeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeViewController.m; sourceTree = "<group>"; };
@@ -909,6 +911,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				649EF25E1899A76200FC796D /* Crashlytics.framework in Frameworks */,
 				64897F2B1898AA7D001F9EDE /* FacebookSDK.framework in Frameworks */,
 				64897F271898A448001F9EDE /* Accounts.framework in Frameworks */,
 				64897F251898A441001F9EDE /* Social.framework in Frameworks */,
@@ -1412,6 +1415,7 @@
 		64B2AAC218082AE600E02E2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				649EF25D1899A76200FC796D /* Crashlytics.framework */,
 				64897F2A1898AA7D001F9EDE /* FacebookSDK.framework */,
 				64897F261898A448001F9EDE /* Accounts.framework */,
 				64897F241898A441001F9EDE /* Social.framework */,
@@ -2204,6 +2208,7 @@
 				64B2AABC18082AE600E02E2F /* Sources */,
 				64B2AABD18082AE600E02E2F /* Frameworks */,
 				64B2AABE18082AE600E02E2F /* Resources */,
+				649EF25F1899A8ED00FC796D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -2349,6 +2354,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		649EF25F1899A8ED00FC796D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 975fc7e2b44d8ca7ec8ff096827064b0c5c0facb";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		64B2AABC18082AE600E02E2F /* Sources */ = {
@@ -2717,8 +2738,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Classes/Gogz/External\\ SDKs",
-					"\\\\\\\"$(SRCROOT)/Moobeez/Classes/Gogz/External\\\\\\ SDKs\\\\\\\"",
 					/Users/radubanea/Documents/FacebookSDK,
+					/Users/radubanea/Developer/Mine/Moobeez,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Moobeez/Moobeez-Prefix.pch";
@@ -2739,8 +2760,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Classes/Gogz/External\\ SDKs",
-					"\\\\\\\"$(SRCROOT)/Moobeez/Classes/Gogz/External\\\\\\ SDKs\\\\\\\"",
 					/Users/radubanea/Documents/FacebookSDK,
+					/Users/radubanea/Developer/Mine/Moobeez,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Moobeez/Moobeez-Prefix.pch";
