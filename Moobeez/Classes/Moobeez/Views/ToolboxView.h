@@ -37,6 +37,8 @@ typedef void (^CharacterCellSelectionHandler) (TmdbCharacter* tmdbCharacter, Cha
 
 @property (weak, nonatomic) IBOutlet id<ToolboxViewDelegate> delegate;
 
+@property (readwrite, nonatomic) BOOL isFullyDisplayed;
+
 - (void)showFullToolbox;
 - (void)hideFullToolbox;
 

@@ -11,9 +11,11 @@
 
 @interface BubblePopupView : UIView
 
-@property (weak, nonatomic) IBOutlet UIImageView *sourceButton;
+@property (weak, nonatomic) IBOutlet UIView *sourceButton;
 @property (copy, nonatomic) EmptyHandler animationCompletionHandler;
 
 - (void)startAnimation;
+
+- (void)addQuarterCircleCurveToPath:(CGMutablePathRef)path from:(CGPoint)startPoint to:(CGPoint)endPoint convex:(BOOL)convex;
 
 @end

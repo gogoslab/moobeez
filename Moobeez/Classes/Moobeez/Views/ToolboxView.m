@@ -142,6 +142,8 @@
     } completion:^(BOOL finished) {
         self.toolboxHandlerImageView.image = [UIImage imageNamed:@"toolbox_down_arrow.png"];
         
+        self.isFullyDisplayed = YES;
+
         if ([self.delegate respondsToSelector:@selector(toolboxViewDidShow:)]) {
             [self.delegate toolboxViewDidShow:self];
         }
@@ -166,6 +168,8 @@
 
     } completion:^(BOOL finished) {
         self.toolboxHandlerImageView.image = [UIImage imageNamed:@"toolbox_up_arrow.png"];
+        
+        self.isFullyDisplayed = NO;
         
         if ([self.delegate respondsToSelector:@selector(toolboxViewDidHide:)]) {
             [self.delegate toolboxViewDidHide:self];

@@ -21,6 +21,9 @@
 
 @implementation BubblePopupView
 
+- (void)awakeFromNib {
+}
+
 - (void)startAnimation {
     
     CGColorRef color = [[UIColor colorWithWhite:0.95 alpha:0.85] CGColor];
@@ -56,7 +59,7 @@
     self.rightPathLayer.fillColor = [[UIColor clearColor] CGColor];
     self.rightPathLayer.strokeColor = color;
     self.rightPathLayer.lineWidth = 1.0;
-    
+
     [self.layer addSublayer:self.rightPathLayer];
     
     pathAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];

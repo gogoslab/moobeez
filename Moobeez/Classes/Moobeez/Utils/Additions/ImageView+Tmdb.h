@@ -12,6 +12,8 @@
 
 + (void)setTmdbRootPath:(NSString*)tmdbRootPath;
 
++ (NSString*)imagePath:(NSString*)path forWidth:(NSInteger)width;
+
 - (void)loadImageWithPath:(NSString*)path andWidth:(NSInteger)width completion:(ImageViewCompletionHandler)completionHandler;
 
 - (void)loadImageWithPath:(NSString*)path andHeight:(NSInteger)height completion:(ImageViewCompletionHandler)completionHandler;

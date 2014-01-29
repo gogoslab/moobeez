@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Moobeez.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 void uncaughtExceptionHandler(NSException *exception);
 
@@ -29,7 +30,10 @@ void uncaughtExceptionHandler(NSException *exception) {
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor mainColor],NSForegroundColorAttributeName,nil] forState:UIControlStateNormal];
     
     [self.window makeKeyAndVisible];
-    
+
+    //init facebook framework
+    [FBProfilePictureView class];
+
     return YES;
 }
 							
@@ -53,6 +57,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [FBSession.activeSession handleDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
@@ -75,8 +80,7 @@ void uncaughtExceptionHandler(NSException *exception) {
         return YES;
     }
 
-    return YES;
-//    return [FBSession.activeSession handleOpenURL:url];
+    return [FBSession.activeSession handleOpenURL:url];
 }
 
 @end

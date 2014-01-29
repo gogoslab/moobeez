@@ -9,6 +9,8 @@
                 <outlet property="addButton" destination="hYj-cz-CBW" id="Z5u-WD-fcz"/>
                 <outlet property="hideToolboxRecognizer" destination="CDQ-ZO-lUv" id="QXc-oh-fpX"/>
                 <outlet property="posterImageView" destination="Syz-af-7nb" id="4JW-yI-L8h"/>
+                <outlet property="shareBubbleView" destination="Rm8-7K-RxQ" id="WWi-zl-rXD"/>
+                <outlet property="shareButtonsView" destination="Wwd-bK-Rts" id="LEC-yc-TYP"/>
                 <outlet property="toolboxView" destination="xj6-Jc-xBi" id="Iey-i0-Y2X"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -21,7 +23,64 @@
                 <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Syz-af-7nb" customClass="ImageView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="CDQ-ZO-lUv" appends="YES" id="Ytl-uA-Hhz"/>
+                    </connections>
                 </imageView>
+                <view hidden="YES" contentMode="scaleToFill" id="Rm8-7K-RxQ" customClass="BubbleUpsideDownPopupView">
+                    <rect key="frame" x="269" y="18" width="42" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView hidden="YES" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="share_button.png" id="jRu-Iv-hhZ">
+                            <rect key="frame" x="0.0" y="3" width="42" height="42"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </imageView>
+                        <view hidden="YES" contentMode="scaleToFill" id="Wwd-bK-Rts">
+                            <rect key="frame" x="1" y="45" width="40" height="82"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ezZ-LI-KlD">
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" backgroundImage="share_facebook_button.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="facebookButtonPressed:" destination="-1" eventType="touchUpInside" id="nDx-JY-Qfn"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="l9c-hO-n2n">
+                                    <rect key="frame" x="0.0" y="42" width="40" height="40"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <state key="normal" backgroundImage="share_twitter_button.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="twitterButtonPressed:" destination="-1" eventType="touchUpInside" id="X3Y-tl-tKT"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="sourceButton" destination="jRu-Iv-hhZ" id="e5e-JE-qmC"/>
+                    </connections>
+                </view>
+                <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ltn-h3-cW7">
+                    <rect key="frame" x="270" y="22" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" backgroundImage="share_button.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="shareButtonPressed:" destination="-1" eventType="touchUpInside" id="cdY-Dh-Ybp"/>
+                    </connections>
+                </button>
                 <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5t5-KH-d1Q">
                     <rect key="frame" x="10" y="20" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -42,17 +101,6 @@
                     </state>
                     <connections>
                         <action selector="addButtonPressed:" destination="-1" eventType="touchUpInside" id="ORY-O6-hxx"/>
-                    </connections>
-                </button>
-                <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ltn-h3-cW7">
-                    <rect key="frame" x="270" y="20" width="40" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" backgroundImage="share_button.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="shareButtonPressed:" destination="-1" eventType="touchUpInside" id="cdY-Dh-Ybp"/>
                     </connections>
                 </button>
             </subviews>
@@ -407,6 +455,8 @@
         <image name="empty_stars_big_white.png" width="200" height="40"/>
         <image name="full_stars_big.png" width="200" height="40"/>
         <image name="share_button.png" width="40" height="40"/>
+        <image name="share_facebook_button.png" width="40" height="40"/>
+        <image name="share_twitter_button.png" width="40" height="40"/>
         <image name="toolbox_up_arrow.png" width="50" height="15"/>
     </resources>
 </document>

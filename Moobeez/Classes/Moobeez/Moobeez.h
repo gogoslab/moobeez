@@ -71,5 +71,6 @@
 #pragma mark - Bubble Popup View
 
 #import "BubblePopupView.h"
+#import "BubbleUpsideDownPopupView.h"
 
 #endif

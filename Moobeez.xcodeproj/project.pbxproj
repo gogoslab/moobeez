@@ -57,6 +57,14 @@
 		64648EDD1829956200365EC7 /* ActorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64648EDB1829956200365EC7 /* ActorViewController.xib */; };
 		64648EE218299DD400365EC7 /* ActorToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648EE118299DD400365EC7 /* ActorToolboxView.m */; };
 		64648EE61829A36900365EC7 /* PersonConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648EE51829A36900365EC7 /* PersonConnection.m */; };
+		64897F1718988970001F9EDE /* BubbleUpsideDownPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64897F1618988970001F9EDE /* BubbleUpsideDownPopupView.m */; };
+		64897F1C189895C9001F9EDE /* share_twitter_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64897F18189895C9001F9EDE /* share_twitter_button.png */; };
+		64897F1D189895C9001F9EDE /* share_twitter_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64897F19189895C9001F9EDE /* share_twitter_button@2x.png */; };
+		64897F1E189895C9001F9EDE /* share_facebook_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64897F1A189895C9001F9EDE /* share_facebook_button.png */; };
+		64897F1F189895C9001F9EDE /* share_facebook_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64897F1B189895C9001F9EDE /* share_facebook_button@2x.png */; };
+		64897F251898A441001F9EDE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64897F241898A441001F9EDE /* Social.framework */; };
+		64897F271898A448001F9EDE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64897F261898A448001F9EDE /* Accounts.framework */; };
+		64897F2B1898AA7D001F9EDE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64897F2A1898AA7D001F9EDE /* FacebookSDK.framework */; };
 		649C3A661817FE7F0000A34C /* ToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A651817FE7F0000A34C /* ToolboxView.m */; };
 		649C3A6D1817FFEA0000A34C /* MovieToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A6C1817FFEA0000A34C /* MovieToolboxView.m */; };
 		649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A711818068F0000A34C /* empty_stars_big_black.png */; };
@@ -404,6 +412,15 @@
 		64648EE118299DD400365EC7 /* ActorToolboxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActorToolboxView.m; sourceTree = "<group>"; };
 		64648EE41829A36900365EC7 /* PersonConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonConnection.h; sourceTree = "<group>"; };
 		64648EE51829A36900365EC7 /* PersonConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonConnection.m; sourceTree = "<group>"; };
+		64897F1518988970001F9EDE /* BubbleUpsideDownPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleUpsideDownPopupView.h; sourceTree = "<group>"; };
+		64897F1618988970001F9EDE /* BubbleUpsideDownPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleUpsideDownPopupView.m; sourceTree = "<group>"; };
+		64897F18189895C9001F9EDE /* share_twitter_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_twitter_button.png; sourceTree = "<group>"; };
+		64897F19189895C9001F9EDE /* share_twitter_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_twitter_button@2x.png"; sourceTree = "<group>"; };
+		64897F1A189895C9001F9EDE /* share_facebook_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_facebook_button.png; sourceTree = "<group>"; };
+		64897F1B189895C9001F9EDE /* share_facebook_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_facebook_button@2x.png"; sourceTree = "<group>"; };
+		64897F241898A441001F9EDE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		64897F261898A448001F9EDE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		64897F2A1898AA7D001F9EDE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		649C3A641817FE7F0000A34C /* ToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolboxView.h; sourceTree = "<group>"; };
 		649C3A651817FE7F0000A34C /* ToolboxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolboxView.m; sourceTree = "<group>"; };
 		649C3A6B1817FFEA0000A34C /* MovieToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieToolboxView.h; sourceTree = "<group>"; };
@@ -890,6 +907,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64897F2B1898AA7D001F9EDE /* FacebookSDK.framework in Frameworks */,
+				64897F271898A448001F9EDE /* Accounts.framework in Frameworks */,
+				64897F251898A441001F9EDE /* Social.framework in Frameworks */,
 				64A8AD63188EC12300DBECD7 /* MediaPlayer.framework in Frameworks */,
 				640865F4180B5D3800725CE4 /* libsqlite3.dylib in Frameworks */,
 				64B2AAC618082AE600E02E2F /* CoreGraphics.framework in Frameworks */,
@@ -1020,6 +1040,10 @@
 		64177865180C3B5A00CDFA25 /* Common Images */ = {
 			isa = PBXGroup;
 			children = (
+				64897F18189895C9001F9EDE /* share_twitter_button.png */,
+				64897F19189895C9001F9EDE /* share_twitter_button@2x.png */,
+				64897F1A189895C9001F9EDE /* share_facebook_button.png */,
+				64897F1B189895C9001F9EDE /* share_facebook_button@2x.png */,
 				64CA539B1824060C000699C5 /* add_button.png */,
 				64CA539C1824060C000699C5 /* add_button@2x.png */,
 				644121F5181C351400260497 /* share_button.png */,
@@ -1144,6 +1168,8 @@
 			children = (
 				64648EC918292B1000365EC7 /* BubblePopupView.h */,
 				64648ECA18292B1000365EC7 /* BubblePopupView.m */,
+				64897F1518988970001F9EDE /* BubbleUpsideDownPopupView.h */,
+				64897F1618988970001F9EDE /* BubbleUpsideDownPopupView.m */,
 			);
 			name = "Bubble Popup View";
 			sourceTree = "<group>";
@@ -1383,6 +1409,9 @@
 		64B2AAC218082AE600E02E2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				64897F2A1898AA7D001F9EDE /* FacebookSDK.framework */,
+				64897F261898A448001F9EDE /* Accounts.framework */,
+				64897F241898A441001F9EDE /* Social.framework */,
 				64A8AD62188EC12300DBECD7 /* MediaPlayer.framework */,
 				640865F3180B5D3800725CE4 /* libsqlite3.dylib */,
 				64B2AAC318082AE600E02E2F /* Foundation.framework */,
@@ -2251,9 +2280,11 @@
 				64177863180C336000CDFA25 /* LoadingViewController.xib in Resources */,
 				64B2AACE18082AE600E02E2F /* InfoPlist.strings in Resources */,
 				6417786D180C8A7400CDFA25 /* empty_stars_small.png in Resources */,
+				64897F1F189895C9001F9EDE /* share_facebook_button@2x.png in Resources */,
 				64B2AB89180844F800E02E2F /* MoobeezViewController.xib in Resources */,
 				64CA539E1824060C000699C5 /* add_button@2x.png in Resources */,
 				64DC8C1A1817215E002C11D8 /* toolbox_down_arrow@2x.png in Resources */,
+				64897F1E189895C9001F9EDE /* share_facebook_button.png in Resources */,
 				649C3A771818068F0000A34C /* full_stars_big.png in Resources */,
 				64177876180CA5D900CDFA25 /* background.png in Resources */,
 				64B2AB0718082C4A00E02E2F /* Application.xib in Resources */,
@@ -2292,6 +2323,7 @@
 				64646C5B1892BF3C007926FE /* featured_cells_header.png in Resources */,
 				64DC8C1C1817215E002C11D8 /* toolbox_line@2x.png in Resources */,
 				64CA539D1824060C000699C5 /* add_button.png in Resources */,
+				64897F1C189895C9001F9EDE /* share_twitter_button.png in Resources */,
 				642CA8EE181542FA00A293E4 /* MovieViewController.xib in Resources */,
 				64CA53891823E6A9000699C5 /* empty_stars_big_white.png in Resources */,
 				64648EC81828502E00365EC7 /* description_mask@2x.png in Resources */,
@@ -2299,6 +2331,7 @@
 				64646C62189415F8007926FE /* MovieCell.xib in Resources */,
 				64A8AD6B188EC42C00DBECD7 /* YouTubeTemplate.txt in Resources */,
 				6414A3011821B90D009397FF /* DatePickerView.xib in Resources */,
+				64897F1D189895C9001F9EDE /* share_twitter_button@2x.png in Resources */,
 				640865F6180B62EC00725CE4 /* MoobeezDatabase in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2497,6 +2530,7 @@
 				64B9F5C31822A3F0002E322F /* GPUImageChromaKeyFilter.m in Sources */,
 				64B9F6151822A3F0002E322F /* GPUImagePinchDistortionFilter.m in Sources */,
 				64B9F5B31822A3F0002E322F /* GPUImage3x3ConvolutionFilter.m in Sources */,
+				64897F1718988970001F9EDE /* BubbleUpsideDownPopupView.m in Sources */,
 				64B9F64B1822A3F0002E322F /* GPUImageWhiteBalanceFilter.m in Sources */,
 				64B9F6041822A3F0002E322F /* GPUImageMissEtikateFilter.m in Sources */,
 				64648ECB18292B1000365EC7 /* BubblePopupView.m in Sources */,
@@ -2676,6 +2710,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Classes/Gogz/External\\ SDKs",
+					"\\\\\\\"$(SRCROOT)/Moobeez/Classes/Gogz/External\\\\\\ SDKs\\\\\\\"",
+					/Users/radubanea/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Moobeez/Moobeez-Prefix.pch";
 				INFOPLIST_FILE = "Moobeez/Moobeez-Info.plist";
@@ -2692,6 +2732,12 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Classes/Gogz/External\\ SDKs",
+					"\\\\\\\"$(SRCROOT)/Moobeez/Classes/Gogz/External\\\\\\ SDKs\\\\\\\"",
+					/Users/radubanea/Documents/FacebookSDK,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Moobeez/Moobeez-Prefix.pch";
 				INFOPLIST_FILE = "Moobeez/Moobeez-Info.plist";
