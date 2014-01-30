@@ -81,6 +81,7 @@
 		649C3A98181830240000A34C /* CharacterCellSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A97181830240000A34C /* CharacterCellSmall.xib */; };
 		649EF25C18999B7100FC796D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 649EF25B18999B7100FC796D /* background@2x.png */; };
 		649EF25E1899A76200FC796D /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 649EF25D1899A76200FC796D /* Crashlytics.framework */; };
+		649EF2621899CEC000FC796D /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 649EF2611899CEC000FC796D /* Settings.m */; };
 		64A8AD63188EC12300DBECD7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A8AD62188EC12300DBECD7 /* MediaPlayer.framework */; };
 		64A8AD67188EC3D800DBECD7 /* YouTubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A8AD65188EC3D800DBECD7 /* YouTubeViewController.m */; };
 		64A8AD68188EC3D800DBECD7 /* YouTubeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A8AD66188EC3D800DBECD7 /* YouTubeViewController.xib */; };
@@ -448,6 +449,8 @@
 		649C3A97181830240000A34C /* CharacterCellSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterCellSmall.xib; sourceTree = "<group>"; };
 		649EF25B18999B7100FC796D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		649EF25D1899A76200FC796D /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		649EF2601899CEC000FC796D /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = "../../../../../Moobeez 1.0/Moobeez/Classes/Models/Settings.h"; sourceTree = "<group>"; };
+		649EF2611899CEC000FC796D /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = "../../../../../Moobeez 1.0/Moobeez/Classes/Models/Settings.m"; sourceTree = "<group>"; };
 		64A8AD62188EC12300DBECD7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		64A8AD64188EC3D800DBECD7 /* YouTubeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeViewController.h; sourceTree = "<group>"; };
 		64A8AD65188EC3D800DBECD7 /* YouTubeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeViewController.m; sourceTree = "<group>"; };
@@ -1354,6 +1357,15 @@
 			name = "Character Cell";
 			sourceTree = "<group>";
 		};
+		649EF2631899CEC300FC796D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				649EF2601899CEC000FC796D /* Settings.h */,
+				649EF2611899CEC000FC796D /* Settings.m */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		64A8AD69188EC40500DBECD7 /* YouTubeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1642,6 +1654,7 @@
 			isa = PBXGroup;
 			children = (
 				64086605180B6D3500725CE4 /* Database */,
+				649EF2631899CEC300FC796D /* Settings */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -2558,6 +2571,7 @@
 				64897F1718988970001F9EDE /* BubbleUpsideDownPopupView.m in Sources */,
 				64B9F64B1822A3F0002E322F /* GPUImageWhiteBalanceFilter.m in Sources */,
 				64B9F6041822A3F0002E322F /* GPUImageMissEtikateFilter.m in Sources */,
+				649EF2621899CEC000FC796D /* Settings.m in Sources */,
 				64648ECB18292B1000365EC7 /* BubblePopupView.m in Sources */,
 				64B9F64A1822A3F0002E322F /* GPUImageWeakPixelInclusionFilter.m in Sources */,
 				6415831A182BD00600BB599C /* MovieTrailersConnection.m in Sources */,
@@ -2733,8 +2747,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Radu Banea (TCZG753697)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Radu Banea (TCZG753697)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Classes/Gogz/External\\ SDKs",
@@ -2745,7 +2759,7 @@
 				GCC_PREFIX_HEADER = "Moobeez/Moobeez-Prefix.pch";
 				INFOPLIST_FILE = "Moobeez/Moobeez-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "3E129D3B-733D-4647-B938-358EB1B8DF5F";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2755,8 +2769,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Radu Banea (Z4252ZWMEJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Radu Banea (Z4252ZWMEJ)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Classes/Gogz/External\\ SDKs",
@@ -2767,7 +2781,7 @@
 				GCC_PREFIX_HEADER = "Moobeez/Moobeez-Prefix.pch";
 				INFOPLIST_FILE = "Moobeez/Moobeez-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "C039EA6D-FD58-4B8B-8D53-05DBD30E15BD";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

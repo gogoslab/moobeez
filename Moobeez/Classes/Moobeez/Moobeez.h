@@ -23,6 +23,7 @@
 
 #import "Database.h"
 
+#import "Settings.h"
 
 
 #pragma mark - View Controllers

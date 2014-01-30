@@ -52,7 +52,7 @@
    
     int oldTextHeight = self.tempTextView.height;
     
-    CGSize size = [self.tempTextView sizeThatFits:CGSizeMake(self.textView.width, FLT_MAX)];
+    CGSize size = [self.tempTextView sizeThatFits:CGSizeMake(self.textView.width, 2000)];
     
     int newTextHeight = size.height * 1.1;
     

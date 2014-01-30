@@ -29,6 +29,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [[Settings sharedSettings] loadSettings];
+    [[Settings sharedSettings] deleteOldImages];
+
     [self performSelector:@selector(startLoading) withObject:nil afterDelay:0.01];
 }
 
@@ -51,5 +54,6 @@
     [self startConnection:connection];
 
 }
+
 
 @end
