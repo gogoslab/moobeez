@@ -1,21 +1,21 @@
 //
-//  TmdbMovie.m
+//  TmdbTV.m
 //  Moobeez
 //
-//  Created by Radu Banea on 10/23/13.
-//  Copyright (c) 2013 Goggzy. All rights reserved.
+//  Created by Radu Banea on 30/01/14.
+//  Copyright (c) 2014 Goggzy. All rights reserved.
 //
 
-#import "TmdbMovie.h"
+#import "TmdbTV.h"
 #import "Moobeez.h"
 
-@interface TmdbMovie ()
+@interface TmdbTV ()
 
 @property (readwrite, nonatomic) NSInteger id;
 
 @end
 
-@implementation TmdbMovie
+@implementation TmdbTV
 
 - (id)initWithTmdbDictionary:(NSDictionary *)tmdbDictionary {
     
@@ -35,8 +35,8 @@
         self.id = [tmdbDictionary[@"id"] integerValue];
     }
     
-    if ([[tmdbDictionary stringForKey:@"title"] length]) {
-        self.name = [tmdbDictionary stringForKey:@"title"];
+    if ([[tmdbDictionary stringForKey:@"name"] length]) {
+        self.name = [tmdbDictionary stringForKey:@"name"];
     }
     
     if ([[tmdbDictionary stringForKey:@"overview"] length]) {
@@ -84,39 +84,35 @@
         self.imdbId = tmdbDictionary[@"imdb_id"];
     }
     
-    self.trailerPath = nil;
+    if ([[tmdbDictionary stringForKey:@"release_date"] length]) {
+        self.releaseDate = [[NSDateFormatter dateFormatterWithFormat:@"yyyy-MM-dd"] dateFromString:[tmdbDictionary stringForKey:@"release_date"]];
+    }
     
-    for (NSDictionary* trailerDictionary in tmdbDictionary[@"trailers"][@"quicktime"]) {
-        
-        for (NSDictionary* sourceDictionary in trailerDictionary[@"sources"]) {
-            if ([sourceDictionary[@"size"] isEqualToString:@"720p"]) {
-                self.trailerPath = sourceDictionary[@"source"];
-                self.trailerType = TmdbTrailerQuicktimeType;
-                break;
-            }
-            
-            if ([sourceDictionary[@"size"] isEqualToString:@"480p"] && !self.trailerPath) {
-                self.trailerPath = sourceDictionary[@"source"];
-                self.trailerType = TmdbTrailerQuicktimeType;
-            }
+    if (tmdbDictionary[@"in_production"]) {
+        self.inProduction = [tmdbDictionary[@"in_production"] boolValue];
+    }
+    
+    if (tmdbDictionary[@"ended"]) {
+        self.ended = [tmdbDictionary[@"ended"] boolValue];
+    }
+    
+    if (tmdbDictionary[@"seasons"]) {
+        self.seasons = [[NSMutableArray alloc] init];
+        for (NSMutableDictionary* seasonsDictionary in tmdbDictionary[@"seasons"]) {
+            [self.seasons addObject:[[TmdbTvSeason alloc] initWithTmdbDictionary:seasonsDictionary]];
         }
     }
     
-    if (!self.trailerPath && [tmdbDictionary[@"trailers"][@"youtube"] count]) {
-        self.trailerPath = tmdbDictionary[@"trailers"][@"youtube"][0][@"source"];
-        self.trailerType = TmdbTrailerYoutubeType;
-    }
-    
-    if ([[tmdbDictionary stringForKey:@"release_date"] length]) {
-        self.releaseDate = [[NSDateFormatter dateFormatterWithFormat:@"yyyy-MM-dd"] dateFromString:[tmdbDictionary stringForKey:@"release_date"]];
+    if (tmdbDictionary[@"vote_average"]) {
+        self.rating = [tmdbDictionary[@"vote_average"] floatValue];
     }
     
 }
 
 #pragma mark - Comparison selectors
 
-- (NSComparisonResult)compareByDate:(TmdbMovie*)movie {
-    return [movie.releaseDate compare:self.releaseDate];
+- (NSComparisonResult)compareByDate:(TmdbTV*)tv {
+    return [tv.releaseDate compare:self.releaseDate];
 }
 
 

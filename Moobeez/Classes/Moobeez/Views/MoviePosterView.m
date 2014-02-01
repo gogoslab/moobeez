@@ -14,15 +14,31 @@
 @property (weak, nonatomic) IBOutlet ImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
+@property (readonly, nonatomic) NSString* posterPath;
+
 @end
 
 @implementation MoviePosterView
+
+- (NSString*)posterPath {
+    
+    if ([self.movie isKindOfClass:[TmdbTV class]]) {
+        return ((TmdbTV*) self.movie).posterPath;
+    }
+    
+    if ([self.movie isKindOfClass:[TmdbMovie class]]) {
+        return ((TmdbMovie*) self.movie).posterPath;
+    }
+    
+    return @"";
+    
+}
 
 - (void)setMovie:(TmdbMovie *)movie {
     
     _movie = movie;
     
-    [self.imageView loadImageWithPath:movie.posterPath andWidth:185 completion:^(BOOL didLoadImage) {
+    [self.imageView loadImageWithPath:self.posterPath andWidth:185 completion:^(BOOL didLoadImage) {
         
     }];
     
@@ -65,7 +81,7 @@
     }];
     
     self.imageView.defaultImage = self.imageView.image;
-    [self.imageView loadImageWithPath:self.movie.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
+    [self.imageView loadImageWithPath:self.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
 }
 
 - (void)prepareForShrink {
@@ -90,7 +106,7 @@
         completionHandler();
     }];
     
-    [self.imageView loadImageWithPath:self.movie.posterPath andWidth:185 completion:^(BOOL didLoadImage) {}];
+    [self.imageView loadImageWithPath:self.posterPath andWidth:185 completion:^(BOOL didLoadImage) {}];
 }
 
 @end

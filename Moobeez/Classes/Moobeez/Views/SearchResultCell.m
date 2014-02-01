@@ -45,4 +45,15 @@
     self.detailsLabel.hidden = (self.detailsLabel.text.length == 0);
 }
 
+- (void)setTmdbTv:(TmdbTV *)tmdbTv {
+    _tmdbTv = tmdbTv;
+    
+    [self.posterImageView loadImageWithPath:tmdbTv.posterPath andWidth:92 completion:^(BOOL didLoadImage) {}];
+    self.titleLabel.text = tmdbTv.name;
+    self.detailsLabel.text = [[NSDateFormatter dateFormatterWithFormat:@"dd MMM yyyy"] stringFromDate:tmdbTv.releaseDate];
+    
+    self.detailsLabel.hidden = (self.detailsLabel.text.length == 0);
+}
+
+
 @end

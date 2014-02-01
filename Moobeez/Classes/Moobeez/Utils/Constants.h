@@ -10,7 +10,9 @@
 
 #define MY_MOVIES_PATH [DOCUMENTS_DIRECTORY stringByAppendingPathComponent:@"Movies.plist"]
 
-#define MY_DATABASE_PATH [DOCUMENTS_DIRECTORY stringByAppendingPathComponent:@"MoobeezDatabase"]
+#define OLD_DATABASE_PATH [DOCUMENTS_DIRECTORY stringByAppendingPathComponent:@"MoobeezDatabase"]
+
+#define MY_DATABASE_PATH [DOCUMENTS_DIRECTORY stringByAppendingPathComponent:@"MoobeezDatabase_2.0"]
 
 #define EndLoadingNotification @"endLoading"
 

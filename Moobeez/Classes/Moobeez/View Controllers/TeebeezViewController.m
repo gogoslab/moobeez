@@ -1,27 +1,27 @@
 //
-//  MoobeezViewController.m
-//  Moobeez
+//  TeebeezViewController.m
+//  Teebeez
 //
-//  Created by Radu Banea on 10/11/13.
-//  Copyright (c) 2013 Goggzy. All rights reserved.
+//  Created by Radu Banea on 02/01/14.
+//  Copyright (c) 2014 Goggzy. All rights reserved.
 //
 
-#import "MoobeezViewController.h"
+#import "TeebeezViewController.h"
 #import "Moobeez.h"
 
 enum CollectionSections {
     SearchSection = 0,
-    MoobeezSection,
+    TeebeezSection,
     EmptySection,
     SectionsCount
     };
 
-@interface MoobeezViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate>
+@interface TeebeezViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
-@property (strong, nonatomic) NSMutableArray* moobeez;
-@property (strong, nonatomic) NSArray* displayedMoobeez;
+@property (strong, nonatomic) NSMutableArray* teebeez;
+@property (strong, nonatomic) NSArray* displayedTeebeez;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *typeSegmentedControl;
 
@@ -32,13 +32,13 @@ enum CollectionSections {
 
 @property (strong, nonatomic) BeeCell* animationCell;
 
-@property (strong, nonatomic) SearchNewMovieViewController* searchNewMovieController;
+@property (strong, nonatomic) SearchNewTvViewController* searchNewTvViewController;
 
-@property (readonly, nonatomic) MoobeeType selectedType;
+@property (readonly, nonatomic) TeebeeType selectedType;
 
 @end
 
-@implementation MoobeezViewController
+@implementation TeebeezViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,7 +58,7 @@ enum CollectionSections {
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"EmptyCell"];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"SearchCell"];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadMoobeez) name:DatabaseDidReloadNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTeebeez) name:DatabaseDidReloadNotification object:nil];
     
     UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
     addButton.tintColor = [UIColor whiteColor];
@@ -75,7 +75,7 @@ enum CollectionSections {
     if (firstAppear) {
         self.initialCollectionViewHeight = self.collectionView.height;
 
-        [self reloadMoobeez];
+        [self reloadTeebeez];
     
         firstAppear = NO;
         
@@ -97,21 +97,21 @@ enum CollectionSections {
 
 #pragma mark - Collection View
 
-- (MoobeeType)selectedType {
-    return (MoobeeType) (2 - self.typeSegmentedControl.selectedSegmentIndex);
+- (TeebeeType)selectedType {
+    return (TeebeeType) (self.typeSegmentedControl.selectedSegmentIndex + 1);
 }
 
-- (void)reloadMoobeez {
+- (void)reloadTeebeez {
     
     switch (self.selectedType) {
-        case MoobeeSeenType:
-            self.moobeez = [[Database sharedDatabase] moobeezWithType:MoobeeSeenType];
+        case TeebeeToSeeType:
+            self.teebeez = [[Database sharedDatabase] teebeezWithType:TeebeeToSeeType];
             break;
-        case MoobeeOnWatchlistType:
-            self.moobeez = [[Database sharedDatabase] moobeezWithType:MoobeeOnWatchlistType];
+        case TeebeeSoonType:
+            self.teebeez = [[Database sharedDatabase] teebeezWithType:TeebeeSoonType];
             break;
-        case MoobeeFavoriteType:
-            self.moobeez = [[Database sharedDatabase] favoritesMoobeez];
+        case TeebeeAllType:
+            self.teebeez = [[Database sharedDatabase] teebeezWithType:TeebeeAllType];
             break;
         default:
             break;
@@ -127,7 +127,7 @@ enum CollectionSections {
 }
 
 - (void)applyFilter {
-    self.displayedMoobeez = [self.moobeez filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+    self.displayedTeebeez = [self.teebeez filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         if (self.searchBar.text.length == 0 || [((Moobee*) evaluatedObject).name rangeOfString:self.searchBar.text options:NSCaseInsensitiveSearch].location !=  NSNotFound) {
             return YES;
         }
@@ -150,8 +150,8 @@ enum CollectionSections {
         case SearchSection:
             return 1;
             break;
-        case MoobeezSection:
-            return self.displayedMoobeez.count;
+        case TeebeezSection:
+            return self.displayedTeebeez.count;
             break;
         case EmptySection:
             return 1;
@@ -185,7 +185,7 @@ enum CollectionSections {
     
     BeeCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BeeCell" forIndexPath:indexPath];
 
-    cell.bee = self.displayedMoobeez[indexPath.row];
+    cell.bee = self.displayedTeebeez[indexPath.row];
     
     return cell;
     
@@ -201,7 +201,7 @@ enum CollectionSections {
     
     if (indexPath.section == EmptySection) {
         
-        return CGSizeMake(296, MAX(0, self.collectionView.height - [BeeCell cellHeight] * (self.displayedMoobeez.count - 1 / 3 + 1)));
+        return CGSizeMake(296, MAX(0, self.collectionView.height - [BeeCell cellHeight] * (self.displayedTeebeez.count - 1 / 3 + 1)));
         
     }
     
@@ -210,11 +210,11 @@ enum CollectionSections {
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == MoobeezSection) {
+    if (indexPath.section == TeebeezSection) {
         
         BeeCell* cell = (BeeCell*) [collectionView cellForItemAtIndexPath:indexPath];
         
-        Moobee* moobee = self.displayedMoobeez[indexPath.row];
+        Moobee* moobee = self.displayedTeebeez[indexPath.row];
         
         MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
             
@@ -253,7 +253,7 @@ enum CollectionSections {
 
 - (void)hideMoobee:(Moobee*)moobee {
     
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:[self.displayedMoobeez indexOfObject:moobee] inSection:MoobeezSection];
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:[self.displayedTeebeez indexOfObject:moobee] inSection:TeebeezSection];
  
     BeeCell* cell = (BeeCell*) [self.collectionView cellForItemAtIndexPath:indexPath];
     
@@ -298,8 +298,8 @@ enum CollectionSections {
         }
         
         if (!sameType) {
-            if ([self.moobeez containsObject:moobee]) {
-                [self.moobeez removeObject:moobee];
+            if ([self.teebeez containsObject:moobee]) {
+                [self.teebeez removeObject:moobee];
                 [self applyFilter];
                 [self.collectionView reloadData];
             }
@@ -308,15 +308,15 @@ enum CollectionSections {
         }
         
         // new moobee
-        if (![self.moobeez containsObject:moobee]) {
-            [self.moobeez addObject:moobee];
+        if (![self.teebeez containsObject:moobee]) {
+            [self.teebeez addObject:moobee];
         }
         
         if (self.selectedType != MoobeeOnWatchlistType) {
-            [self.moobeez sortUsingSelector:@selector(compareByDate:)];
+            [self.teebeez sortUsingSelector:@selector(compareByDate:)];
         }
         else {
-            [self.moobeez sortUsingSelector:@selector(compareById:)];
+            [self.teebeez sortUsingSelector:@selector(compareById:)];
         }
         
         [self applyFilter];
@@ -335,7 +335,7 @@ enum CollectionSections {
 
 - (IBAction)typeSegmentedControlValueChanged:(id)sender {
     
-    [self reloadMoobeez];
+    [self reloadTeebeez];
 
 }
 
@@ -343,32 +343,18 @@ enum CollectionSections {
 
 - (void)addButtonPressed:(id)sender {
     
-    [self.appDelegate.window addSubview:self.searchNewMovieController.view];
+    [self.appDelegate.window addSubview:self.searchNewTvViewController.view];
     
-    self.searchNewMovieController.selectHandler = ^ (TmdbMovie* movie) {
+    self.searchNewTvViewController.selectHandler = ^ (TmdbTV* tv) {
         
-        Moobee* moobee = [Moobee moobeeWithTmdbMovie:movie];
+        Teebee* teebee = [Teebee teebeeWithTmdbTV:tv];
         
-        if (moobee.id == -1) {
-            switch (self.selectedType) {
-                case MoobeeSeenType:
-                    moobee.type = MoobeeSeenType;
-                    moobee.date = [NSDate date];
-                    moobee.rating = 2.5;
-                    break;
-                case MoobeeOnWatchlistType:
-                    moobee.type = MoobeeOnWatchlistType;
-                    break;
-                case MoobeeFavoriteType:
-                    moobee.type = MoobeeNoneType;
-                    moobee.isFavorite = YES;
-                    break;
-                default:
-                    break;
-            }
+        if (teebee.id == -1) {
+            teebee.rating = 2.5;
         }
         
         self.view.userInteractionEnabled = NO;
+        /*
         MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
             if (code == WebserviceResultOk) {
                 self.view.userInteractionEnabled = YES;
@@ -377,16 +363,17 @@ enum CollectionSections {
             }
         }];
         [self startConnection:connection];
+         */
     };
 }
 
-- (SearchNewMovieViewController*)searchNewMovieController {
-    if (!_searchNewMovieController) {
-        _searchNewMovieController = [[SearchNewMovieViewController alloc] initWithNibName:@"SearchNewMovieViewController" bundle:nil];
-        _searchNewMovieController.view.frame = self.appDelegate.window.bounds;
+- (SearchNewTvViewController*)searchNewTvViewController {
+    if (!_searchNewTvViewController) {
+        _searchNewTvViewController = [[SearchNewTvViewController alloc] initWithNibName:@"SearchNewTvViewController" bundle:nil];
+        _searchNewTvViewController.view.frame = self.appDelegate.window.bounds;
     }
     
-    return _searchNewMovieController;
+    return _searchNewTvViewController;
 }
 
 #pragma mark - Filter

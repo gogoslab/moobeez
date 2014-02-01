@@ -1,23 +1,22 @@
 //
-//  MoviesViewController.m
+//  TVsViewController.m
 //  Moobeez
 //
-//  Created by Radu Banea on 10/11/13.
-//  Copyright (c) 2013 Goggzy. All rights reserved.
+//  Created by Radu Banea on 02/01/14.
+//  Copyright (c) 2014 Goggzy. All rights reserved.
 //
 
-#import "MoviesViewController.h"
+#import "TVsViewController.h"
 #import "Moobeez.h"
 
-typedef enum MoviesSection {
-    SectionNowPlaying = 0,
-    SectionUpcomingType,
+typedef enum TVsSection {
+    SectionOnTheAir = 0,
     SectionPopularType,
     SectionTopRatedType,
     SectionsCount
-    } MoviesSection;
+    } TVsSection;
 
-@interface MoviesViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
+@interface TVsViewController () <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -35,7 +34,7 @@ typedef enum MoviesSection {
 
 @end
 
-@implementation MoviesViewController
+@implementation TVsViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,7 +50,7 @@ typedef enum MoviesSection {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.sectionsTitles = @[@"NOW PLAYING", @"UPCOMING", @"POPULAR", @"TOP RATED"];
+    self.sectionsTitles = @[@"ON THE AIR", @"POPULAR", @"TOP RATED"];
     
     self.featuredCells = [[NSMutableArray alloc] init];
     self.expandedSections = [[NSMutableArray alloc] init];
@@ -100,11 +99,11 @@ typedef enum MoviesSection {
     
 }
 
-- (void)loadMoviesWithType:(MoviesListType)moviesType inSection:(MoviesSection)section {
+- (void)loadMoviesWithType:(TVsListType)tvsType inSection:(TVsSection)section {
     
-    MoviesListConnection* connection = [[MoviesListConnection alloc] initWithType:moviesType completionHandler:^(WebserviceResultCode code, NSMutableArray *movies) {
+    TVsListConnection* connection = [[TVsListConnection alloc] initWithType:tvsType completionHandler:^(WebserviceResultCode code, NSMutableArray *tvs) {
         if (code == WebserviceResultOk) {
-            [self.featuredCells[section] setMovies:movies];
+            [self.featuredCells[section] setMovies:tvs];
             if ([self.tableView indexPathForCell:self.featuredCells[section]]) {
                 [self.featuredCells[section] performSelector:@selector(startAnimating) withObject:nil afterDelay:section * 0.3];
             }
@@ -245,7 +244,7 @@ typedef enum MoviesSection {
         self.animatedPosterView.frame = [self.view convertRect:posterView.frame fromView:posterView.superview];
         self.animatedPosterView.movie = posterView.movie;
         
-        MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:((TmdbMovie*) posterView.movie).id completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+        MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:((TmdbTV*)posterView.movie).id completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
             
             if (code == WebserviceResultOk) {
                 self.selectedSection = indexPath.section;

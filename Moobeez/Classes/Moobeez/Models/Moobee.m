@@ -25,14 +25,6 @@
     
     if (self) {
 
-        self.tmdbId = [databaseDictionary[@"tmdbId"] integerValue];
-        self.name = databaseDictionary[@"name"];
-        self.comments = databaseDictionary[@"comments"];
-        self.posterPath = databaseDictionary[@"posterPath"];
-        self.rating = [databaseDictionary[@"rating"] floatValue];
-        if (databaseDictionary[@"date"]) {
-            self.date = [NSDate dateWithTimeIntervalSinceReferenceDate:[databaseDictionary[@"date"] doubleValue]];
-        }
         self.type = [databaseDictionary[@"type"] intValue];
         self.isFavorite = [databaseDictionary[@"isFavorite"] boolValue];
 
@@ -43,16 +35,8 @@
 
 - (NSMutableDictionary*)databaseDictionary {
     
-    NSMutableDictionary* databaseDictionary = [NSMutableDictionary dictionary];
+    NSMutableDictionary* databaseDictionary = super.databaseDictionary;
     
-    databaseDictionary[@"tmdbId"] = [NSString stringWithFormat:@"%ld", (long)self.tmdbId];
-    databaseDictionary[@"name"] = [self.name stringByResolvingSQLIssues];
-    databaseDictionary[@"comments"] = [self.comments stringByResolvingSQLIssues];
-    databaseDictionary[@"posterPath"] = [self.posterPath stringByResolvingSQLIssues];
-    databaseDictionary[@"rating"] = [NSString stringWithFormat:@"%.1f", self.rating];
-    if (self.date) {
-        databaseDictionary[@"date"] = [NSString stringWithFormat:@"%.0f", [self.date timeIntervalSinceReferenceDate]];
-    }
     databaseDictionary[@"type"] = [NSString stringWithFormat:@"%d", self.type];
     databaseDictionary[@"isFavorite"] = [NSString stringWithFormat:@"%d", self.isFavorite];
     
@@ -84,26 +68,5 @@
     return [[Database sharedDatabase] saveMoobee:self];
     
 }
-
-#pragma mark - Comparison selectors
-
-- (NSComparisonResult)compareByDate:(Moobee*)moobee {
-    return [moobee.date compare:self.date];
-}
-
-- (NSComparisonResult)compareById:(Moobee*)moobee {
-    return [[NSNumber numberWithInteger:moobee.id] compare:[NSNumber numberWithInteger:self.id]];
-}
-
-- (BOOL)isEqual:(id)object {
-    if ([object isKindOfClass:[Moobee class]]) {
-        if (self.id == ((Moobee*) object).id) {
-            return YES;
-        }
-    }
-    
-    return NO;
-}
-
 
 @end

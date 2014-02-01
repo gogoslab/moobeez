@@ -21,8 +21,8 @@
 		6415831F182BD28800BB599C /* ImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6415831D182BD28800BB599C /* ImagesViewController.m */; };
 		64158320182BD28800BB599C /* ImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6415831E182BD28800BB599C /* ImagesViewController.xib */; };
 		64158328182BD71A00BB599C /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64158327182BD71A00BB599C /* NavigationController.m */; };
-		64177857180C21F200CDFA25 /* MoobeeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64177856180C21F200CDFA25 /* MoobeeCell.m */; };
-		6417785A180C221800CDFA25 /* MoobeeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64177859180C221700CDFA25 /* MoobeeCell.xib */; };
+		64177857180C21F200CDFA25 /* BeeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64177856180C21F200CDFA25 /* BeeCell.m */; };
+		6417785A180C221800CDFA25 /* BeeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64177859180C221700CDFA25 /* BeeCell.xib */; };
 		6417785D180C314500CDFA25 /* ConfigurationConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6417785C180C314500CDFA25 /* ConfigurationConnection.m */; };
 		64177862180C336000CDFA25 /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64177860180C336000CDFA25 /* LoadingViewController.m */; };
 		64177863180C336000CDFA25 /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64177861180C336000CDFA25 /* LoadingViewController.xib */; };
@@ -314,6 +314,17 @@
 		64CA539A1823F8E1000699C5 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64CA53991823F8E1000699C5 /* SearchResultCell.xib */; };
 		64CA539D1824060C000699C5 /* add_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CA539B1824060C000699C5 /* add_button.png */; };
 		64CA539E1824060C000699C5 /* add_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CA539C1824060C000699C5 /* add_button@2x.png */; };
+		64D7413D189D1FB10011C39A /* SearchNewTvViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D74132189D1FB10011C39A /* SearchNewTvViewController.m */; };
+		64D7413E189D1FB10011C39A /* SearchNewTvViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D74133189D1FB10011C39A /* SearchNewTvViewController.xib */; };
+		64D7413F189D1FB10011C39A /* TeebeezViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D74135189D1FB10011C39A /* TeebeezViewController.m */; };
+		64D74140189D1FB10011C39A /* TeebeezViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D74136189D1FB10011C39A /* TeebeezViewController.xib */; };
+		64D74141189D1FB10011C39A /* TVsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D74138189D1FB10011C39A /* TVsViewController.m */; };
+		64D74142189D1FB10011C39A /* TVsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D74139189D1FB10011C39A /* TVsViewController.xib */; };
+		64D74143189D1FB10011C39A /* TvViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7413B189D1FB10011C39A /* TvViewController.m */; };
+		64D74144189D1FB10011C39A /* TvViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D7413C189D1FB10011C39A /* TvViewController.xib */; };
+		64D7414E189D272A0011C39A /* Bee.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D7414D189D272A0011C39A /* Bee.m */; };
+		64D74152189D2E750011C39A /* SearchTvConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D74151189D2E740011C39A /* SearchTvConnection.m */; };
+		64D74156189D3D240011C39A /* TVsListConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D74155189D3D240011C39A /* TVsListConnection.m */; };
 		64DC8C111817137F002C11D8 /* back_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C0F1817137F002C11D8 /* back_button.png */; };
 		64DC8C121817137F002C11D8 /* back_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C101817137F002C11D8 /* back_button@2x.png */; };
 		64DC8C191817215E002C11D8 /* toolbox_down_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C131817215E002C11D8 /* toolbox_down_arrow.png */; };
@@ -322,6 +333,11 @@
 		64DC8C1C1817215E002C11D8 /* toolbox_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C161817215E002C11D8 /* toolbox_line@2x.png */; };
 		64DC8C1D1817215E002C11D8 /* toolbox_up_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C171817215E002C11D8 /* toolbox_up_arrow.png */; };
 		64DC8C1E1817215E002C11D8 /* toolbox_up_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C181817215E002C11D8 /* toolbox_up_arrow@2x.png */; };
+		64F1DECE189AA1B600F2F88D /* TmdbTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1DECA189A9D1200F2F88D /* TmdbTV.m */; };
+		64F1DECF189AA1E700F2F88D /* Teebee.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1DEC6189A987D00F2F88D /* Teebee.m */; };
+		64F1DED2189AB68E00F2F88D /* TmdbTvSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1DED1189AB68E00F2F88D /* TmdbTvSeason.m */; };
+		64F1DED6189AB94900F2F88D /* TmdbTvEpisode.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1DED5189AB94900F2F88D /* TmdbTvEpisode.m */; };
+		64F1DEDA189ABBD800F2F88D /* TeebeeEpisode.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1DED9189ABBD800F2F88D /* TeebeeEpisode.m */; };
 		64F25A141827D32C005AB9F8 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F25A121827D32C005AB9F8 /* TextViewController.m */; };
 		64F25A151827D32C005AB9F8 /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F25A131827D32C005AB9F8 /* TextViewController.xib */; };
 		64F25A181827EC02005AB9F8 /* description_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F25A171827EC02005AB9F8 /* description_mask.png */; };
@@ -362,9 +378,9 @@
 		6415831E182BD28800BB599C /* ImagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImagesViewController.xib; sourceTree = "<group>"; };
 		64158326182BD71A00BB599C /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		64158327182BD71A00BB599C /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
-		64177855180C21F200CDFA25 /* MoobeeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoobeeCell.h; sourceTree = "<group>"; };
-		64177856180C21F200CDFA25 /* MoobeeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoobeeCell.m; sourceTree = "<group>"; };
-		64177859180C221700CDFA25 /* MoobeeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoobeeCell.xib; sourceTree = "<group>"; };
+		64177855180C21F200CDFA25 /* BeeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeeCell.h; sourceTree = "<group>"; };
+		64177856180C21F200CDFA25 /* BeeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeeCell.m; sourceTree = "<group>"; };
+		64177859180C221700CDFA25 /* BeeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BeeCell.xib; sourceTree = "<group>"; };
 		6417785B180C314500CDFA25 /* ConfigurationConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationConnection.h; sourceTree = "<group>"; };
 		6417785C180C314500CDFA25 /* ConfigurationConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationConnection.m; sourceTree = "<group>"; };
 		6417785F180C336000CDFA25 /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
@@ -895,6 +911,24 @@
 		64CA53991823F8E1000699C5 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		64CA539B1824060C000699C5 /* add_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_button.png; sourceTree = "<group>"; };
 		64CA539C1824060C000699C5 /* add_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_button@2x.png"; sourceTree = "<group>"; };
+		64D74131189D1FB10011C39A /* SearchNewTvViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchNewTvViewController.h; sourceTree = "<group>"; };
+		64D74132189D1FB10011C39A /* SearchNewTvViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchNewTvViewController.m; sourceTree = "<group>"; };
+		64D74133189D1FB10011C39A /* SearchNewTvViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchNewTvViewController.xib; sourceTree = "<group>"; };
+		64D74134189D1FB10011C39A /* TeebeezViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeebeezViewController.h; sourceTree = "<group>"; };
+		64D74135189D1FB10011C39A /* TeebeezViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeebeezViewController.m; sourceTree = "<group>"; };
+		64D74136189D1FB10011C39A /* TeebeezViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeebeezViewController.xib; sourceTree = "<group>"; };
+		64D74137189D1FB10011C39A /* TVsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVsViewController.h; sourceTree = "<group>"; };
+		64D74138189D1FB10011C39A /* TVsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVsViewController.m; sourceTree = "<group>"; };
+		64D74139189D1FB10011C39A /* TVsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TVsViewController.xib; sourceTree = "<group>"; };
+		64D7413A189D1FB10011C39A /* TvViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvViewController.h; sourceTree = "<group>"; };
+		64D7413B189D1FB10011C39A /* TvViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TvViewController.m; sourceTree = "<group>"; };
+		64D7413C189D1FB10011C39A /* TvViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TvViewController.xib; sourceTree = "<group>"; };
+		64D7414C189D272A0011C39A /* Bee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bee.h; sourceTree = "<group>"; };
+		64D7414D189D272A0011C39A /* Bee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bee.m; sourceTree = "<group>"; };
+		64D74150189D2E740011C39A /* SearchTvConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchTvConnection.h; sourceTree = "<group>"; };
+		64D74151189D2E740011C39A /* SearchTvConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchTvConnection.m; sourceTree = "<group>"; };
+		64D74154189D3D240011C39A /* TVsListConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TVsListConnection.h; sourceTree = "<group>"; };
+		64D74155189D3D240011C39A /* TVsListConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TVsListConnection.m; sourceTree = "<group>"; };
 		64DC8C0F1817137F002C11D8 /* back_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back_button.png; sourceTree = "<group>"; };
 		64DC8C101817137F002C11D8 /* back_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_button@2x.png"; sourceTree = "<group>"; };
 		64DC8C131817215E002C11D8 /* toolbox_down_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbox_down_arrow.png; sourceTree = "<group>"; };
@@ -903,6 +937,16 @@
 		64DC8C161817215E002C11D8 /* toolbox_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbox_line@2x.png"; sourceTree = "<group>"; };
 		64DC8C171817215E002C11D8 /* toolbox_up_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbox_up_arrow.png; sourceTree = "<group>"; };
 		64DC8C181817215E002C11D8 /* toolbox_up_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbox_up_arrow@2x.png"; sourceTree = "<group>"; };
+		64F1DEC5189A987D00F2F88D /* Teebee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teebee.h; sourceTree = "<group>"; };
+		64F1DEC6189A987D00F2F88D /* Teebee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teebee.m; sourceTree = "<group>"; };
+		64F1DEC9189A9D1200F2F88D /* TmdbTV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbTV.h; sourceTree = "<group>"; };
+		64F1DECA189A9D1200F2F88D /* TmdbTV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmdbTV.m; sourceTree = "<group>"; };
+		64F1DED0189AB68E00F2F88D /* TmdbTvSeason.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbTvSeason.h; sourceTree = "<group>"; };
+		64F1DED1189AB68E00F2F88D /* TmdbTvSeason.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmdbTvSeason.m; sourceTree = "<group>"; };
+		64F1DED4189AB94900F2F88D /* TmdbTvEpisode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbTvEpisode.h; sourceTree = "<group>"; };
+		64F1DED5189AB94900F2F88D /* TmdbTvEpisode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmdbTvEpisode.m; sourceTree = "<group>"; };
+		64F1DED8189ABBD800F2F88D /* TeebeeEpisode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeebeeEpisode.h; sourceTree = "<group>"; };
+		64F1DED9189ABBD800F2F88D /* TeebeeEpisode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeebeeEpisode.m; sourceTree = "<group>"; };
 		64F25A111827D32C005AB9F8 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextViewController.h; sourceTree = "<group>"; };
 		64F25A121827D32C005AB9F8 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
 		64F25A131827D32C005AB9F8 /* TextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
@@ -963,7 +1007,9 @@
 				64086602180B6D2E00725CE4 /* Database.h */,
 				64086603180B6D2E00725CE4 /* Database.m */,
 				640865FA180B64EB00725CE4 /* Database Item */,
+				64D7414F189D272F0011C39A /* Bee */,
 				64086601180B6D0C00725CE4 /* Moobee */,
+				64F1DEC8189A98B500F2F88D /* Teebee */,
 				649C3A8E181825A50000A34C /* Tmdb models */,
 			);
 			name = Database;
@@ -1016,14 +1062,14 @@
 			name = "Navigation Controller";
 			sourceTree = "<group>";
 		};
-		64177858180C21F700CDFA25 /* Moobee Cell */ = {
+		64177858180C21F700CDFA25 /* Bee Cell */ = {
 			isa = PBXGroup;
 			children = (
-				64177855180C21F200CDFA25 /* MoobeeCell.h */,
-				64177856180C21F200CDFA25 /* MoobeeCell.m */,
-				64177859180C221700CDFA25 /* MoobeeCell.xib */,
+				64177855180C21F200CDFA25 /* BeeCell.h */,
+				64177856180C21F200CDFA25 /* BeeCell.m */,
+				64177859180C221700CDFA25 /* BeeCell.xib */,
 			);
-			name = "Moobee Cell";
+			name = "Bee Cell";
 			sourceTree = "<group>";
 		};
 		6417785E180C314D00CDFA25 /* Configuration Connection */ = {
@@ -1119,6 +1165,8 @@
 				64648EE71829A36F00365EC7 /* Person Connection */,
 				64CA53941823F48E000699C5 /* Search Movie Connection */,
 				64A8AD6F188F33DA00DBECD7 /* Movies List Connection */,
+				64D74153189D2E790011C39A /* Search Tv Connection */,
+				64D74157189D3D2B0011C39A /* TVs List Connection */,
 			);
 			name = "Tmdb Connections";
 			sourceTree = "<group>";
@@ -1270,7 +1318,7 @@
 		649C3A70181800000000A34C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				64177858180C21F700CDFA25 /* Moobee Cell */,
+				64177858180C21F700CDFA25 /* Bee Cell */,
 				649C3A9618182FD80000A34C /* Character Cell */,
 				64CA53981823F8C9000699C5 /* Search Result Cell */,
 				64648ED61829320E00365EC7 /* Character Table Cell */,
@@ -1330,9 +1378,12 @@
 			isa = PBXGroup;
 			children = (
 				649C3A80181821050000A34C /* Tmdb Movie */,
+				64F1DECC189A9D1700F2F88D /* Tmdb TV */,
 				649C3A881818256B0000A34C /* Tmdb Person */,
 				649C3A9218182BCE0000A34C /* Tmdb Character */,
 				649C3A8C181825850000A34C /* Tmdb Image */,
+				64F1DED3189AB69100F2F88D /* Tmd Tv Season */,
+				64F1DED7189AB94C00F2F88D /* Tmdb Tv Episode */,
 			);
 			name = "Tmdb models";
 			sourceTree = "<group>";
@@ -1692,6 +1743,9 @@
 				64F25A0F1827D2E2005AB9F8 /* Movies Screen */,
 				64F25A101827D2E9005AB9F8 /* Movie Details Screen */,
 				64648EDF1829957300365EC7 /* Actor Details Screen */,
+				64D74147189D21E00011C39A /* Teebeez Screen */,
+				64D74148189D21FE0011C39A /* TVs Screen */,
+				64D7414B189D22400011C39A /* Tv Detail Screen */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -2172,6 +2226,144 @@
 			name = "Search Result Cell";
 			sourceTree = "<group>";
 		};
+		64D74145189D21AC0011C39A /* Search New Tv View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64D74131189D1FB10011C39A /* SearchNewTvViewController.h */,
+				64D74132189D1FB10011C39A /* SearchNewTvViewController.m */,
+				64D74133189D1FB10011C39A /* SearchNewTvViewController.xib */,
+			);
+			name = "Search New Tv View Controller";
+			sourceTree = "<group>";
+		};
+		64D74146189D21C90011C39A /* Teebeez View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64D74134189D1FB10011C39A /* TeebeezViewController.h */,
+				64D74135189D1FB10011C39A /* TeebeezViewController.m */,
+				64D74136189D1FB10011C39A /* TeebeezViewController.xib */,
+			);
+			name = "Teebeez View Controller";
+			sourceTree = "<group>";
+		};
+		64D74147189D21E00011C39A /* Teebeez Screen */ = {
+			isa = PBXGroup;
+			children = (
+				64D74146189D21C90011C39A /* Teebeez View Controller */,
+				64D74145189D21AC0011C39A /* Search New Tv View Controller */,
+			);
+			name = "Teebeez Screen";
+			sourceTree = "<group>";
+		};
+		64D74148189D21FE0011C39A /* TVs Screen */ = {
+			isa = PBXGroup;
+			children = (
+				64D74149189D220C0011C39A /* Tvs View Controller */,
+			);
+			name = "TVs Screen";
+			sourceTree = "<group>";
+		};
+		64D74149189D220C0011C39A /* Tvs View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64D74137189D1FB10011C39A /* TVsViewController.h */,
+				64D74138189D1FB10011C39A /* TVsViewController.m */,
+				64D74139189D1FB10011C39A /* TVsViewController.xib */,
+			);
+			name = "Tvs View Controller";
+			sourceTree = "<group>";
+		};
+		64D7414A189D222A0011C39A /* Tv View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64D7413A189D1FB10011C39A /* TvViewController.h */,
+				64D7413B189D1FB10011C39A /* TvViewController.m */,
+				64D7413C189D1FB10011C39A /* TvViewController.xib */,
+			);
+			name = "Tv View Controller";
+			sourceTree = "<group>";
+		};
+		64D7414B189D22400011C39A /* Tv Detail Screen */ = {
+			isa = PBXGroup;
+			children = (
+				64D7414A189D222A0011C39A /* Tv View Controller */,
+			);
+			name = "Tv Detail Screen";
+			sourceTree = "<group>";
+		};
+		64D7414F189D272F0011C39A /* Bee */ = {
+			isa = PBXGroup;
+			children = (
+				64D7414C189D272A0011C39A /* Bee.h */,
+				64D7414D189D272A0011C39A /* Bee.m */,
+			);
+			name = Bee;
+			sourceTree = "<group>";
+		};
+		64D74153189D2E790011C39A /* Search Tv Connection */ = {
+			isa = PBXGroup;
+			children = (
+				64D74150189D2E740011C39A /* SearchTvConnection.h */,
+				64D74151189D2E740011C39A /* SearchTvConnection.m */,
+			);
+			name = "Search Tv Connection";
+			sourceTree = "<group>";
+		};
+		64D74157189D3D2B0011C39A /* TVs List Connection */ = {
+			isa = PBXGroup;
+			children = (
+				64D74154189D3D240011C39A /* TVsListConnection.h */,
+				64D74155189D3D240011C39A /* TVsListConnection.m */,
+			);
+			name = "TVs List Connection";
+			sourceTree = "<group>";
+		};
+		64F1DEC8189A98B500F2F88D /* Teebee */ = {
+			isa = PBXGroup;
+			children = (
+				64F1DEC5189A987D00F2F88D /* Teebee.h */,
+				64F1DEC6189A987D00F2F88D /* Teebee.m */,
+				64F1DEDB189ABBDD00F2F88D /* Teebee Episode */,
+			);
+			name = Teebee;
+			sourceTree = "<group>";
+		};
+		64F1DECC189A9D1700F2F88D /* Tmdb TV */ = {
+			isa = PBXGroup;
+			children = (
+				64F1DEC9189A9D1200F2F88D /* TmdbTV.h */,
+				64F1DECA189A9D1200F2F88D /* TmdbTV.m */,
+			);
+			name = "Tmdb TV";
+			sourceTree = "<group>";
+		};
+		64F1DED3189AB69100F2F88D /* Tmd Tv Season */ = {
+			isa = PBXGroup;
+			children = (
+				64F1DED0189AB68E00F2F88D /* TmdbTvSeason.h */,
+				64F1DED1189AB68E00F2F88D /* TmdbTvSeason.m */,
+			);
+			name = "Tmd Tv Season";
+			sourceTree = "<group>";
+		};
+		64F1DED7189AB94C00F2F88D /* Tmdb Tv Episode */ = {
+			isa = PBXGroup;
+			children = (
+				64F1DED4189AB94900F2F88D /* TmdbTvEpisode.h */,
+				64F1DED5189AB94900F2F88D /* TmdbTvEpisode.m */,
+			);
+			name = "Tmdb Tv Episode";
+			sourceTree = "<group>";
+		};
+		64F1DEDB189ABBDD00F2F88D /* Teebee Episode */ = {
+			isa = PBXGroup;
+			children = (
+				64F1DED8189ABBD800F2F88D /* TeebeeEpisode.h */,
+				64F1DED9189ABBD800F2F88D /* TeebeeEpisode.m */,
+			);
+			name = "Teebee Episode";
+			sourceTree = "<group>";
+		};
 		64F25A0E1827D2CF005AB9F8 /* Moobeez Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -2305,12 +2497,13 @@
 				64B2AB89180844F800E02E2F /* MoobeezViewController.xib in Resources */,
 				64CA539E1824060C000699C5 /* add_button@2x.png in Resources */,
 				64DC8C1A1817215E002C11D8 /* toolbox_down_arrow@2x.png in Resources */,
+				64D7413E189D1FB10011C39A /* SearchNewTvViewController.xib in Resources */,
 				649EF25C18999B7100FC796D /* background@2x.png in Resources */,
 				64897F1E189895C9001F9EDE /* share_facebook_button.png in Resources */,
 				649C3A771818068F0000A34C /* full_stars_big.png in Resources */,
 				64177876180CA5D900CDFA25 /* background.png in Resources */,
 				64B2AB0718082C4A00E02E2F /* Application.xib in Resources */,
-				6417785A180C221800CDFA25 /* MoobeeCell.xib in Resources */,
+				6417785A180C221800CDFA25 /* BeeCell.xib in Resources */,
 				64158320182BD28800BB599C /* ImagesViewController.xib in Resources */,
 				649C3A98181830240000A34C /* CharacterCellSmall.xib in Resources */,
 				64648ED11829303300365EC7 /* CastViewController.xib in Resources */,
@@ -2348,13 +2541,16 @@
 				64897F1C189895C9001F9EDE /* share_twitter_button.png in Resources */,
 				642CA8EE181542FA00A293E4 /* MovieViewController.xib in Resources */,
 				64CA53891823E6A9000699C5 /* empty_stars_big_white.png in Resources */,
+				64D74144189D1FB10011C39A /* TvViewController.xib in Resources */,
 				64648EC81828502E00365EC7 /* description_mask@2x.png in Resources */,
 				644121F7181C351400260497 /* share_button.png in Resources */,
 				64646C62189415F8007926FE /* MovieCell.xib in Resources */,
+				64D74142189D1FB10011C39A /* TVsViewController.xib in Resources */,
 				64A8AD6B188EC42C00DBECD7 /* YouTubeTemplate.txt in Resources */,
 				6414A3011821B90D009397FF /* DatePickerView.xib in Resources */,
 				64897F1D189895C9001F9EDE /* share_twitter_button@2x.png in Resources */,
 				640865F6180B62EC00725CE4 /* MoobeezDatabase in Resources */,
+				64D74140189D1FB10011C39A /* TeebeezViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2412,20 +2608,25 @@
 				64B9F6241822A3F0002E322F /* GPUImageSaturationBlendFilter.m in Sources */,
 				64B9F63E1822A3F0002E322F /* GPUImageToneCurveFilter.m in Sources */,
 				64B9F5D51822A3F0002E322F /* GPUImageDivideBlendFilter.m in Sources */,
+				64D74156189D3D240011C39A /* TVsListConnection.m in Sources */,
 				64B9F5B81822A3F0002E322F /* GPUImageAmatorkaFilter.m in Sources */,
 				64B2AB5C18083CBF00E02E2F /* NSMutableDictionary+Extensions.m in Sources */,
 				6415831F182BD28800BB599C /* ImagesViewController.m in Sources */,
 				64B9F61C1822A3F0002E322F /* GPUImagePrewittEdgeDetectionFilter.m in Sources */,
+				64F1DEDA189ABBD800F2F88D /* TeebeeEpisode.m in Sources */,
 				64B9F64E1822A3F0002E322F /* GPUImageContext.m in Sources */,
 				64B9F60C1822A3F0002E322F /* GPUImageNobleCornerDetectionFilter.m in Sources */,
 				64B9F5C41822A3F0002E322F /* GPUImageClosingFilter.m in Sources */,
 				64B9F5D31822A3F0002E322F /* GPUimageDirectionalSobelEdgeDetectionFilter.m in Sources */,
+				64D7413F189D1FB10011C39A /* TeebeezViewController.m in Sources */,
 				6414A3001821B90D009397FF /* DatePickerView.m in Sources */,
 				64B9F5F21822A3F0002E322F /* GPUImageJFAVoronoiFilter.m in Sources */,
 				64648ED01829303300365EC7 /* CastViewController.m in Sources */,
+				64F1DECE189AA1B600F2F88D /* TmdbTV.m in Sources */,
 				64B2AB0618082C4A00E02E2F /* AppDelegate.m in Sources */,
 				64B9F5DE1822A3F0002E322F /* GPUImageFilterPipeline.m in Sources */,
 				64B9F60A1822A3F0002E322F /* GPUImageMovieComposition.m in Sources */,
+				64D7413D189D1FB10011C39A /* SearchNewTvViewController.m in Sources */,
 				64A8AD67188EC3D800DBECD7 /* YouTubeViewController.m in Sources */,
 				64158328182BD71A00BB599C /* NavigationController.m in Sources */,
 				64B9F5FC1822A3F0002E322F /* GPUImageLookupFilter.m in Sources */,
@@ -2447,7 +2648,7 @@
 				64B9F5E11822A3F0002E322F /* GPUImageGaussianBlurPositionFilter.m in Sources */,
 				64B2AB801808412300E02E2F /* ConnectionViewController.m in Sources */,
 				64B2AB6618083CBF00E02E2F /* NSObject+SBJson.m in Sources */,
-				64177857180C21F200CDFA25 /* MoobeeCell.m in Sources */,
+				64177857180C21F200CDFA25 /* BeeCell.m in Sources */,
 				64B9F6321822A3F0002E322F /* GPUImageSphereRefractionFilter.m in Sources */,
 				64B9F5E21822A3F0002E322F /* GPUImageGaussianSelectiveBlurFilter.m in Sources */,
 				64B9F6381822A3F0002E322F /* GPUImageTextureOutput.m in Sources */,
@@ -2464,6 +2665,7 @@
 				64B9F6301822A3F0002E322F /* GPUImageSolidColorGenerator.m in Sources */,
 				64B9F5D41822A3F0002E322F /* GPUImageDissolveBlendFilter.m in Sources */,
 				64B9F5D61822A3F0002E322F /* GPUImageEmbossFilter.m in Sources */,
+				64D74143189D1FB10011C39A /* TvViewController.m in Sources */,
 				64B9F5C51822A3F0002E322F /* GPUImageColorBlendFilter.m in Sources */,
 				64B2AB6118083CBF00E02E2F /* UIView+Extra.m in Sources */,
 				64086600180B6D0500725CE4 /* Moobee.m in Sources */,
@@ -2524,6 +2726,7 @@
 				64B2AB5B18083CBF00E02E2F /* NSFileManager+ExtraAtributtes.m in Sources */,
 				64B9F6461822A3F0002E322F /* GPUImageUnsharpMaskFilter.m in Sources */,
 				64B9F64C1822A3F0002E322F /* GPUImageXYDerivativeFilter.m in Sources */,
+				64F1DED2189AB68E00F2F88D /* TmdbTvSeason.m in Sources */,
 				64B2AAD018082AE600E02E2F /* main.m in Sources */,
 				64B9F63B1822A3F0002E322F /* GPUImageThresholdedNonMaximumSuppressionFilter.m in Sources */,
 				64B9F61E1822A3F0002E322F /* GPUImageRawDataOutput.m in Sources */,
@@ -2545,6 +2748,7 @@
 				64B9F6471822A3F0002E322F /* GPUImageVideoCamera.m in Sources */,
 				64B9F60D1822A3F0002E322F /* GPUImageNonMaximumSuppressionFilter.m in Sources */,
 				64B9F6121822A3F0002E322F /* GPUImageOverlayBlendFilter.m in Sources */,
+				64D7414E189D272A0011C39A /* Bee.m in Sources */,
 				64B2AB7218083CBF00E02E2F /* ImageView.m in Sources */,
 				64B9F5DC1822A3F0002E322F /* GPUImageFilter.m in Sources */,
 				64B9F6161822A3F0002E322F /* GPUImagePixellateFilter.m in Sources */,
@@ -2562,11 +2766,13 @@
 				64B9F60B1822A3F0002E322F /* GPUImageMultiplyBlendFilter.m in Sources */,
 				640865F9180B64E700725CE4 /* DatabaseItem.m in Sources */,
 				64B9F6131822A3F0002E322F /* GPUImageParallelCoordinateLineTransformFilter.m in Sources */,
+				64D74141189D1FB10011C39A /* TVsViewController.m in Sources */,
 				64648EC6182849B800365EC7 /* UIMaskView.m in Sources */,
 				64B9F62B1822A3F0002E322F /* GPUImageSketchFilter.m in Sources */,
 				64B9F5F31822A3F0002E322F /* GPUImageKuwaharaFilter.m in Sources */,
 				64B9F5C31822A3F0002E322F /* GPUImageChromaKeyFilter.m in Sources */,
 				64B9F6151822A3F0002E322F /* GPUImagePinchDistortionFilter.m in Sources */,
+				64D74152189D2E750011C39A /* SearchTvConnection.m in Sources */,
 				64B9F5B31822A3F0002E322F /* GPUImage3x3ConvolutionFilter.m in Sources */,
 				64897F1718988970001F9EDE /* BubbleUpsideDownPopupView.m in Sources */,
 				64B9F64B1822A3F0002E322F /* GPUImageWhiteBalanceFilter.m in Sources */,
@@ -2587,6 +2793,7 @@
 				64B2AB831808421700E02E2F /* ViewController.m in Sources */,
 				64A8AD6E188F33D500DBECD7 /* MoviesListConnection.m in Sources */,
 				64B9F5E81822A3F0002E322F /* GPUImageHazeFilter.m in Sources */,
+				64F1DECF189AA1E700F2F88D /* Teebee.m in Sources */,
 				64B9F5FE1822A3F0002E322F /* GPUImageLuminanceRangeFilter.m in Sources */,
 				64B2AB7018083CBF00E02E2F /* SBJsonWriter.m in Sources */,
 				64B9F62D1822A3F0002E322F /* GPUImageSobelEdgeDetectionFilter.m in Sources */,
@@ -2610,6 +2817,7 @@
 				64B2AB6D18083CBF00E02E2F /* SBJsonStreamWriterState.m in Sources */,
 				64B9F6361822A3F0002E322F /* GPUImageSwirlFilter.m in Sources */,
 				64B9F5DA1822A3F0002E322F /* GPUImageFalseColorFilter.m in Sources */,
+				64F1DED6189AB94900F2F88D /* TmdbTvEpisode.m in Sources */,
 				64392EAF18084BA500504C78 /* TmdbConnection.m in Sources */,
 				64B9F6331822A3F0002E322F /* GPUImageStillCamera.m in Sources */,
 				64B9F5E31822A3F0002E322F /* GPUImageGlassSphereFilter.m in Sources */,

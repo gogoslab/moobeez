@@ -6,9 +6,11 @@
 //  Copyright (c) 2013 Goggzy. All rights reserved.
 //
 
-#import "DatabaseItem.h"
+#import <Foundation/Foundation.h>
 
-@interface TmdbPerson : DatabaseItem
+@interface TmdbPerson : NSObject
+
+@property (readonly, nonatomic) NSInteger id;
 
 @property (strong, nonatomic) NSString* name;
 @property (strong, nonatomic) NSString* description;

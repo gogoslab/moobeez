@@ -12,7 +12,7 @@
 
 @interface MoviePosterView : UIView
 
-@property (strong, nonatomic) TmdbMovie* movie;
+@property (strong, nonatomic) NSObject* movie;
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 

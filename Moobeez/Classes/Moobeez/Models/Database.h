@@ -10,12 +10,20 @@
 #import <sqlite3.h>
 
 #import "DatabaseItem.h"
+
+#import "Bee.h"
+
 #import "Moobee.h"
 
+#import "Teebee.h"
+
 #import "TmdbMovie.h"
+#import "TmdbTV.h"
 #import "TmdbPerson.h"
 #import "TmdbImage.h"
 #import "TmdbCharacter.h"
+#import "TmdbTvSeason.h"
+#import "TmdbTvEpisode.h"
 
 #define DatabaseDidReloadNotification @"DidReloadDatabaseNotification"
 
@@ -32,5 +40,11 @@
 - (Moobee*)moobeeWithId:(NSInteger)id;
 - (Moobee*)moobeeWithTmdbId:(NSInteger)tmdbId;
 - (BOOL)saveMoobee:(Moobee*)moobee;
+
+
+- (NSMutableArray*)teebeezWithType:(TeebeeType)type;
+- (Teebee*)teebeeWithId:(NSInteger)id;
+- (Teebee*)teebeeWithTmdbId:(NSInteger)tmdbId;
+- (BOOL)saveTeebee:(Teebee*)teebee;
 
 @end

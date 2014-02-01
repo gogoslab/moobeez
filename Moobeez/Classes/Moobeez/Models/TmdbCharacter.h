@@ -6,14 +6,16 @@
 //  Copyright (c) 2013 Goggzy. All rights reserved.
 //
 
-#import "DatabaseItem.h"
+#import <Foundation/Foundation.h>
 
 @class TmdbMovie;
 @class TmdbPerson;
 @class TmdbCharacter;
 @class CharacterCell;
 
-@interface TmdbCharacter : DatabaseItem
+@interface TmdbCharacter : NSObject
+
+@property (readonly, nonatomic) NSInteger id;
 
 @property (strong, nonatomic) NSString* name;
 @property (strong, nonatomic) TmdbMovie* movie;

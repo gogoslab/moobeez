@@ -43,9 +43,16 @@
 
 #import "ActorViewController.h"
 
+#import "TeebeezViewController.h"
+#import "SearchNewTvViewController.h"
+
+#import "TVsViewController.h"
+
+#import "TvViewController.h"
+
 #pragma mark - Cells
 
-#import "MoobeeCell.h"
+#import "BeeCell.h"
 #import "CharacterCell.h"
 #import "CharacterTableCell.h"
 #import "SearchResultCell.h"

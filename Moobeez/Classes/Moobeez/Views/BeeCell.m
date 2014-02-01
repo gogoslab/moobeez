@@ -1,15 +1,15 @@
 //
-//  MoobeeCell.m
+//  BeeCell.m
 //  Moobeez
 //
 //  Created by Radu Banea on 10/14/13.
 //  Copyright (c) 2013 Goggzy. All rights reserved.
 //
 
-#import "MoobeeCell.h"
+#import "BeeCell.h"
 #import "Moobeez.h"
 
-@interface MoobeeCell ()
+@interface BeeCell ()
 
 @property (weak, nonatomic) IBOutlet UIView* contentView;
 
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation MoobeeCell
+@implementation BeeCell
 
 - (void)awakeFromNib {
     
@@ -30,24 +30,29 @@
     self.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
 }
 
-- (void)setMoobee:(Moobee *)moobee {
-    _moobee = moobee;
+- (void)setBee:(Bee *)bee {
+    _bee = bee;
     
-    self.nameLabel.text = moobee.name;
+    self.nameLabel.text = self.bee.name;
     
-    self.starsView.rating = self.moobee.rating;
+    self.starsView.rating = self.bee.rating;
 
     self.posterImageView.defaultImage = [UIImage imageNamed:@"default_image.png"];
     self.posterImageView.loadSyncronized = YES;
-    [self.posterImageView loadImageWithPath:moobee.posterPath andWidth:185 completion:^(BOOL didLoadImage) {
+    [self.posterImageView loadImageWithPath:self.bee.posterPath andWidth:185 completion:^(BOOL didLoadImage) {
         self.nameLabel.hidden = didLoadImage;
     }];
     
-    self.starsView.hidden = (moobee.type != MoobeeSeenType);
+    self.starsView.hidden = NO;
+    
+    if ([self.bee isKindOfClass:[Moobee class]]) {
+        self.starsView.hidden = (((Moobee*) self.bee).type != MoobeeSeenType);
+    }
+    
 }
 
 - (void)drawRect:(CGRect)rect {
-    self.starsView.rating = self.moobee.rating;
+    self.starsView.rating = self.bee.rating;
 
     [super drawRect:rect];
 }
@@ -74,7 +79,7 @@
     }];
     
     self.posterImageView.defaultImage = self.posterImageView.image;
-    [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
+    [self.posterImageView loadImageWithPath:self.bee.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
 }
 
 - (void)prepareForShrink {
@@ -98,12 +103,16 @@
         self.contentView.frame = self.bounds;
         [self addSubview:self.contentView];
         
-        self.starsView.hidden = (self.moobee.type != MoobeeSeenType);
+        self.starsView.hidden = NO;
+        
+        if ([self.bee isKindOfClass:[Moobee class]]) {
+            self.starsView.hidden = (((Moobee*) self.bee).type != MoobeeSeenType);
+        }
 
         completionHandler();
     }];
     
-    [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:185 completion:^(BOOL didLoadImage) {}];
+    [self.posterImageView loadImageWithPath:self.bee.posterPath andWidth:185 completion:^(BOOL didLoadImage) {}];
 }
 
 
@@ -113,7 +122,7 @@
     
     if (cellHeight == -1) {
         
-        MoobeeCell* cell = [[NSBundle mainBundle] loadNibNamed:@"MoobeeCell" owner:self options:nil][0];
+        BeeCell* cell = [[NSBundle mainBundle] loadNibNamed:@"BeeCell" owner:self options:nil][0];
         
         UIWindow* window = ((AppDelegate*) [UIApplication sharedApplication].delegate).window;
         

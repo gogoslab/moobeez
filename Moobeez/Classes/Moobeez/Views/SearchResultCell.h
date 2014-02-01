@@ -10,10 +10,12 @@
 
 @class TmdbMovie;
 @class TmdbPerson;
+@class TmdbTV;
 
 @interface SearchResultCell : UITableViewCell
 
 @property (strong, nonatomic) TmdbMovie* tmdbMovie;
 @property (strong, nonatomic) TmdbPerson* tmdbPerson;
+@property (strong, nonatomic) TmdbTV* tmdbTv;
 
 @end

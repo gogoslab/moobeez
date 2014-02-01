@@ -1,5 +1,5 @@
 //
-//  MoobeeCell.h
+//  BeeCell.h
 //  Moobeez
 //
 //  Created by Radu Banea on 10/14/13.
@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class Moobee;
+@class Bee;
 
-@interface MoobeeCell : UICollectionViewCell
+@interface BeeCell : UICollectionViewCell
 
-@property (weak, nonatomic) Moobee* moobee;
+@property (weak, nonatomic) Bee* bee;
+
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-
-
 
 - (void)animateGrowWithCompletion:(void (^)(void))completionHandler;
 - (void)prepareForShrink;

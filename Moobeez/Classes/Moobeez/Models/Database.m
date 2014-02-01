@@ -56,6 +56,67 @@ static Database* sharedDatabase;
     }
     else {
         NSLog(@"Yeeeey to open database!");
+        
+
+        if ([[NSFileManager defaultManager] fileExistsAtPath:OLD_DATABASE_PATH]) {
+            
+            NSString* attach = [NSString stringWithFormat:@"ATTACH DATABASE '%@' AS OldDatabase", OLD_DATABASE_PATH];
+            
+            char* errorMessage;
+            
+            BOOL everthingOk = NO;
+            
+            if (sqlite3_exec(database, [attach UTF8String], NULL, NULL, &errorMessage) == SQLITE_OK)
+            {
+                sqlite3_stmt *statement;
+                
+                NSString* query = @"SELECT name FROM sqlite_master WHERE type='table'";
+                
+                if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
+                    == SQLITE_OK) {
+                    
+                    everthingOk = YES;
+                    
+                    while (sqlite3_step(statement) == SQLITE_ROW) {
+                        
+                        NSString* tableName = [NSString stringWithUTF8String:(char *) sqlite3_column_text(statement, 0)];
+                        
+                        [self clearTable:tableName];
+                        
+                        NSString* copyTables = [NSString stringWithFormat:@"INSERT INTO %@ SELECT * FROM OldDatabase.%@", tableName, tableName];
+                        
+                        sqlite3_stmt *copyStatement;
+                        
+                        if (sqlite3_prepare_v2(database, [copyTables UTF8String], -1, &copyStatement, nil)
+                            == SQLITE_OK) {
+                            int step = sqlite3_step(copyStatement);
+                            
+                            switch (step) {
+                                case SQLITE_DONE:
+                                    NSLog(@"yey");
+                                    break;
+//                                case SQLITE_ERROR:
+//                                    NSLog(@"error");
+//                                    break;
+//                                case SQLITE_MISUSE:
+//                                    NSLog(@"missue");
+//                                    break;
+                                default:
+                                    NSLog(@"NOOOOO!!!");
+                                    everthingOk = NO;
+                                    break;
+                            }
+                        }
+                        sqlite3_finalize(copyStatement);
+                    }
+                    sqlite3_finalize(statement);
+                }
+                
+                if (everthingOk) {
+                    [[NSFileManager defaultManager] removeItemAtPath:OLD_DATABASE_PATH error:nil];
+                }
+            }
+        }
     }
     
     return self;
@@ -411,6 +472,121 @@ static Database* sharedDatabase;
     }
     
     return (moobeeId != -1);
+    
+}
+
+#pragma mark - Teebeez
+
+- (NSMutableArray*)teebeezWithType:(TeebeeType)type {
+    
+    NSString* query = @"";
+    
+    switch (type) {
+        case TeebeeToSeeType:
+            query = [NSString stringWithFormat:@"SELECT * FROM Teebeez WHERE type = %d ORDER BY date DESC", type];
+            break;
+        case TeebeeSoonType:
+            query = [NSString stringWithFormat:@"SELECT * FROM Teebeez WHERE type = %d ORDER BY ID DESC", type];
+            break;
+        default:
+            query = [NSString stringWithFormat:@"SELECT * FROM Teebeez ORDER BY ID DESC"];
+            break;
+    }
+    
+    return [self teebeezWithQuery:query];
+}
+
+- (NSMutableArray*)teebeezWithQuery:(NSString*)query {
+    
+    sqlite3_stmt *statement;
+    
+    NSMutableArray* results = [[NSMutableArray alloc] init];
+    
+    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
+        == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            
+            Teebee* teebee = [[Teebee alloc] initWithDatabaseDictionary:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
+            
+            [results addObject:teebee];
+        }
+        sqlite3_finalize(statement);
+    }
+    
+    return results;
+}
+
+- (Teebee*)teebeeWithId:(NSInteger)id {
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM Teebeez WHERE ID = %ld", (long)id];
+    sqlite3_stmt *statement;
+    
+    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
+        == SQLITE_OK) {
+        
+        Teebee* teebee = nil;
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            
+            teebee = [[Teebee alloc] initWithDatabaseDictionary:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
+            
+            break;
+        }
+        sqlite3_finalize(statement);
+        
+        return teebee;
+    }
+    
+    
+    return nil;
+}
+
+- (Teebee*)teebeeWithTmdbId:(NSInteger)tmdbId {
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM Teebeez WHERE tmdbId = %ld", (long)tmdbId];
+    sqlite3_stmt *statement;
+    
+    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
+        == SQLITE_OK) {
+        
+        Teebee* teebee = nil;
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            
+            teebee = [[Teebee alloc] initWithDatabaseDictionary:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
+            
+            break;
+        }
+        sqlite3_finalize(statement);
+        
+        return teebee;
+    }
+    
+    
+    return nil;
+}
+
+- (BOOL)saveTeebee:(Teebee*)teebee {
+    
+    NSMutableDictionary* teebeeDictionary = teebee.databaseDictionary;
+    
+    if (teebee.id != -1) {
+        
+        if ([self updateDictionary:teebee.databaseDictionary intoTable:@"Teebeez" where:@{@"ID" : [NSString stringWithFormat:@"%ld", teebee.id]}]) {
+            return YES;
+        }
+        
+    }
+    
+    NSInteger teebeeId = [self insertDictionary:teebeeDictionary intoTable:@"Teebeez"];
+    
+    teebee.id = teebeeId;
+    
+    if (teebeeId != -1) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidReloadNotification object:nil userInfo:nil];
+    }
+    
+    return (teebeeId != -1);
     
 }
 
