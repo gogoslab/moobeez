@@ -17,7 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet ImageView *posterImageView;
 
-@property (strong, nonatomic) IBOutlet MovieToolboxView *toolboxView;
+@property (strong, nonatomic) IBOutlet TvToolboxView *toolboxView;
 
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *hideToolboxRecognizer;
 
@@ -29,6 +29,9 @@
 
 @property (weak, nonatomic) IBOutlet BubbleUpsideDownPopupView *shareBubbleView;
 @property (weak, nonatomic) IBOutlet UIView *shareButtonsView;
+
+
+
 @end
 
 @implementation TvViewController
@@ -47,11 +50,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:185 completion:^(BOOL didLoadImage) {
+    [self.posterImageView loadImageWithPath:self.teebee.posterPath andWidth:185 completion:^(BOOL didLoadImage) {
         
         [self.toolboxView addToSuperview:self.view];
-        self.toolboxView.moobee = self.moobee;
-        self.toolboxView.tmdbMovie = self.tmdbMovie;
+        self.toolboxView.teebee = self.teebee;
+        self.toolboxView.tmdbTv = self.tmdbTv;
 
         self.toolboxView.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterCell* cell) {
             if (tmdbCharacter.person) {
@@ -61,14 +64,14 @@
 
         self.posterImageView.defaultImage = self.posterImageView.image;
         
-        [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:500 completion:^(BOOL didLoadImage) {
+        [self.posterImageView loadImageWithPath:self.teebee.posterPath andWidth:500 completion:^(BOOL didLoadImage) {
           
         }];
         
         [self.toolboxView performSelector:@selector(showFullToolbox) withObject:nil afterDelay:0.5];
     }];
     
-    self.addButton.hidden = (self.moobee.id != -1);
+    self.addButton.hidden = (self.teebee.id != -1);
     
 }
 
@@ -81,8 +84,8 @@
 - (IBAction)backButtonPressed:(id)sender {
     
     [self dismissViewControllerAnimated:NO completion:^{
-        if (self.moobee.id != -1) {
-            [self.moobee save];
+        if (self.teebee.id != -1) {
+            [self.teebee save];
         }
         if (self.closeHandler) {
             self.closeHandler();
@@ -91,7 +94,8 @@
 }
 
 - (IBAction)addButtonPressed:(id)sender {
-    if([self.moobee save]) {
+    if([self.teebee save]) {
+        [self.teebee updateEpisodes];
         self.addButton.hidden = YES;
     }
 }
@@ -121,7 +125,7 @@
     
     [self.view addSubview:self.descriptionViewController.view];
     self.descriptionViewController.sourceButton = sender;
-    self.descriptionViewController.text = self.tmdbMovie.description;
+    self.descriptionViewController.text = self.tmdbTv.description;
     [self.descriptionViewController startAnimation];
 }
 
@@ -138,7 +142,7 @@
 - (IBAction)castButtonPressed:(id)sender {
     [self.view addSubview:self.castViewController.view];
     self.castViewController.sourceButton = sender;
-    self.castViewController.castArray = self.tmdbMovie.characters;
+    self.castViewController.castArray = self.tmdbTv.characters;
     [self.castViewController startAnimation];
     
     self.castViewController.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterTableCell* cell) {
@@ -195,8 +199,8 @@
 #pragma mark - Images
 
 - (IBAction)photosButtonPressed:(id)sender {
-    if (!self.tmdbMovie.backdropsImages) {
-        MovieImagesConnection* connection = [[MovieImagesConnection alloc] initWithTmdbMovie:self.tmdbMovie completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+    if (!self.tmdbTv.backdropsImages) {
+        MovieImagesConnection* connection = [[MovieImagesConnection alloc] initWithTmdbMovie:self.tmdbTv completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
             [self openImages];
         }];
         [self startConnection:connection];
@@ -210,48 +214,13 @@
 - (void)openImages {
     
     ImagesViewController* viewController = [[ImagesViewController alloc] initWithNibName:@"ImagesViewController" bundle:nil];
-    viewController.images = self.tmdbMovie.backdropsImages;
+    viewController.images = self.tmdbTv.backdropsImages;
     viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:viewController animated:YES completion:^{}];
     
 }
 
-- (IBAction)trailerButtonPressed:(id)sender {
-    
-    if (!self.tmdbMovie.trailerPath) {
-        MovieTrailersConnection* connection = [[MovieTrailersConnection alloc] initWithTmdbMovie:self.tmdbMovie completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
-            if (code == WebserviceResultOk) {
-                [self playTrailer];
-            }
-        }];
-        
-        [self startConnection:connection];
-    }
-    else {
-        [self playTrailer];
-    }
-}
-
-- (void)playTrailer {
-
-    switch (self.tmdbMovie.trailerType) {
-        case TmdbTrailerQuicktimeType:
-        {
-            MPMoviePlayerViewController* viewController = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:self.tmdbMovie.trailerPath]];
-            [self presentMoviePlayerViewControllerAnimated:viewController];
-        }
-            break;
-        case TmdbTrailerYoutubeType:
-        {
-            YouTubeViewController* viewController = [[YouTubeViewController alloc] initWithNibName:@"YouTubeViewController" bundle:nil];
-            viewController.youtubeId = self.tmdbMovie.trailerPath;
-            [self presentViewController:viewController animated:YES completion:nil];
-        }
-            break;
-        default:
-            break;
-    }
-
+- (IBAction)episodesButtonPressed:(id)sender {
 }
 
 #pragma mark - Share
@@ -278,34 +247,27 @@
 - (NSString*)sharedText {
     NSString* text;
     
-    if (self.moobee.type == MoobeeSeenType) {
-
-        switch (((int) self.moobee.rating)) {
-            case 0:
-                text = [NSString stringWithFormat:@"Just saw %@, didn't like it that much...actually I didn't like it at all!", self.moobee.name];
-                break;
-            case 1:
-                text = [NSString stringWithFormat:@"Just saw %@, didn't like it that much!", self.moobee.name];
-                break;
-            case 2:
-                text = [NSString stringWithFormat:@"Just saw %@, it's ok, but I don't think I would watch it again soon.", self.moobee.name];
-                break;
-            case 3:
-                text = [NSString stringWithFormat:@"Just saw %@, it's great, you should really watch it!", self.moobee.name];
-                break;
-            case 4:
-                text = [NSString stringWithFormat:@"Wow! Just saw %@, it's incredible, I need to see it again! Awesome!!!", self.moobee.name];
-                break;
-            case 5:
-                text = [NSString stringWithFormat:@"OMG! Just saw the best movie ever! %@! It's just unbelievable! It's a must, just blew my mind!", self.moobee.name];
-                break;
-            default:
-                break;
-        }
-        
-    }
-    else {
-        text = [NSString stringWithFormat:@"Check out %@, seems like a great movie and i'm planning to see it!", self.moobee.name];
+    switch (((int) self.teebee.rating)) {
+        case 0:
+            text = [NSString stringWithFormat:@"Just saw %@, didn't like it that much...actually I didn't like it at all!", self.teebee.name];
+            break;
+        case 1:
+            text = [NSString stringWithFormat:@"Just saw %@, didn't like it that much!", self.teebee.name];
+            break;
+        case 2:
+            text = [NSString stringWithFormat:@"Just saw %@, it's ok, but I don't think I would watch it again soon.", self.teebee.name];
+            break;
+        case 3:
+            text = [NSString stringWithFormat:@"Just saw %@, it's great, you should really watch it!", self.teebee.name];
+            break;
+        case 4:
+            text = [NSString stringWithFormat:@"Wow! Just saw %@, it's incredible, I need to see it again! Awesome!!!", self.teebee.name];
+            break;
+        case 5:
+            text = [NSString stringWithFormat:@"OMG! Just saw the best movie ever! %@! It's just unbelievable! It's a must, just blew my mind!", self.teebee.name];
+            break;
+        default:
+            break;
     }
     
     return text;
@@ -316,8 +278,8 @@
 - (IBAction)facebookButtonPressed:(id)sender {
 
     FBShareDialogParams *params = [[FBShareDialogParams alloc] init];
-    params.link = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.imdb.com/title/%@/", self.tmdbMovie.imdbId]];
-    params.name = self.tmdbMovie.name;
+    params.link = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.imdb.com/title/%@/", self.tmdbTv.imdbId]];
+    params.name = self.tmdbTv.name;
     params.description = self.sharedText;
     
     
@@ -348,9 +310,9 @@
         
         // Put together the dialog parameters
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                       self.tmdbMovie.name, @"name",
+                                       self.tmdbTv.name, @"name",
                                        self.sharedText, @"description",
-                                       [NSString stringWithFormat:@"http://www.imdb.com/title/%@/", self.tmdbMovie.imdbId], @"link",
+                                       [NSString stringWithFormat:@"http://www.imdb.com/title/%@/", self.tmdbTv.imdbId], @"link",
                                        nil];
         
         // Show the feed dialog

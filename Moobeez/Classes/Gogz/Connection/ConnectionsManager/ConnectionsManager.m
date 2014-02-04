@@ -38,6 +38,10 @@ static ConnectionsManager* sharedManager;
 
 - (void)startConnection:(Connection*)connection {
     
+    if (connection.fakeConnection) {
+        return;
+    }
+    
     [self.connections addObject:connection];
     connection.connectionManager = self;
     [connection startConnection];
@@ -45,6 +49,10 @@ static ConnectionsManager* sharedManager;
 }
 
 - (void)stopConnection:(Connection*)connection {
+    if (connection.fakeConnection) {
+        return;
+    }
+    
     [self.connections removeObject:connection];
     [connection stopConnection];
 }

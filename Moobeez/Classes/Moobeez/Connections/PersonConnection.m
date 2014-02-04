@@ -22,7 +22,15 @@
     
     self.tmdbId = tmdbId;
     
-    self = [super initWithParameters:[NSDictionary dictionaryWithObject:@"credits,images" forKey:@"append_to_response"] completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
+    self.customHandler = handler;
+    
+    if ([Cache cachedPersons][StringId(self.tmdbId)]) {
+        [self performSelector:@selector(cachedResponse) withObject:nil afterDelay:0.01];
+        return [self initFakeConnection];
+    }
+    
+
+    self = [super initWithParameters:[NSDictionary dictionaryWithObject:@"combined_credits,images" forKey:@"append_to_response"] completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
         
         NSLog(@"result: %@", resultDictionary);
 
@@ -30,6 +38,8 @@
         
             TmdbPerson* tmdbPerson = [[TmdbPerson alloc] initWithTmdbDictionary:resultDictionary];
         
+            [Cache cachedPersons][StringId(tmdbId)] = tmdbPerson;
+            
             self.customHandler(code, tmdbPerson);
         }
         else {
@@ -37,13 +47,20 @@
         }
     }];
     
-    self.customHandler = handler;
-    
     return self;
 }
 
 - (NSString*)defaultUrlSubpath {
     return UrlPerson((long)self.tmdbId);
 }
+
+- (void)cachedResponse {
+    
+    [self.activityIndicator stopAnimating];
+    self.customHandler(WebserviceResultOk, [Cache cachedPersons][StringId(self.tmdbId)]);
+    
+}
+
+
 
 @end

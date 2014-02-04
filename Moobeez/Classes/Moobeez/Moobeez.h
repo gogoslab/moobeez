@@ -23,6 +23,8 @@
 
 #import "Database.h"
 
+#import "Cache.h"
+
 #import "Settings.h"
 
 
@@ -67,6 +69,7 @@
 #import "ToolboxView.h"
 #import "MovieToolboxView.h"
 #import "ActorToolboxView.h"
+#import "TvToolboxView.h"
 
 #pragma mark - Date Picker View
 

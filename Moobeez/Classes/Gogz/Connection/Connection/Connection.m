@@ -22,6 +22,16 @@
 
 @implementation Connection
 
+- (id)initFakeConnection {
+    self = [super init];
+    
+    if (self) {
+        self.fakeConnection = YES;
+    }
+    
+    return self;
+}
+
 - (id)initWithUrlString:(NSString*)urlString inputJson:(id)inputJson completionHandler:(RawConnectionCompletionHandler)handler {
     
     self = [super init];

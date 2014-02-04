@@ -27,7 +27,7 @@
         self.posterPath = tmdbDictionary[@"poster_path"];
     }
 
-    if (tmdbDictionary[@"air_date"]) {
+    if (tmdbDictionary[@"air_date"] && [tmdbDictionary[@"air_date"] isKindOfClass:[NSString class]]) {
         self.date = [[NSDateFormatter dateFormatterWithFormat:@"yyyy-MM-dd"] dateFromString:tmdbDictionary[@"air_date"]];
     }
 

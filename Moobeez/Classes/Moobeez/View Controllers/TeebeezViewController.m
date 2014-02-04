@@ -214,23 +214,26 @@ enum CollectionSections {
         
         BeeCell* cell = (BeeCell*) [collectionView cellForItemAtIndexPath:indexPath];
         
-        Moobee* moobee = self.displayedTeebeez[indexPath.row];
+        Teebee* teebee = self.displayedTeebeez[indexPath.row];
         
-        MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+        TvConnection* connection = [[TvConnection alloc] initWithTmdbId:teebee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbTV *tv) {
             
             if (code == WebserviceResultOk) {
                 [self.view addSubview:self.animationCell];
+
                 self.animationCell.frame = [self.view convertRect:cell.frame fromView:cell.superview];
                 
-                self.animationCell.bee = moobee;
+                self.animationCell.bee = teebee;
                 
                 [self.animationCell animateGrowWithCompletion:^{
                     
                     self.view.userInteractionEnabled = YES;
                     
-                    [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie];
+                    if (self.selectedType == TeebeeSoonType) {
+                        [[Database sharedDatabase] pullTeebeezEpisodesCount:teebee];
+                    }
                     
-                    [self.animationCell removeFromSuperview];
+                    [self goToTvDetailsScreenForTeebee:teebee andTv:tv];
                 }];
             }
         }];
@@ -274,59 +277,39 @@ enum CollectionSections {
 
 }
 
-- (void)goToMovieDetailsScreenForMoobee:(Moobee*)moobee andMovie:(TmdbMovie*)movie {
+- (void)goToTvDetailsScreenForTeebee:(Teebee*)teebee andTv:(TmdbTV*)tv {
     
-    MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
-    viewController.moobee = moobee;
-    viewController.tmdbMovie = movie;
+    TvViewController* viewController = [[TvViewController alloc] initWithNibName:@"TvViewController" bundle:nil];
+    viewController.teebee = teebee;
+    viewController.tmdbTv = tv;
     [self presentViewController:viewController animated:NO completion:^{}];
     
     viewController.closeHandler = ^{
         
-        if (moobee.id == -1) {
-            return;
-        }
-        
-        // change type moobee
-        
-        BOOL sameType;
-        if (self.selectedType == MoobeeFavoriteType) {
-            sameType = moobee.isFavorite;
-        }
-        else {
-            sameType = (moobee.type == self.selectedType);
-        }
-        
-        if (!sameType) {
-            if ([self.teebeez containsObject:moobee]) {
-                [self.teebeez removeObject:moobee];
-                [self applyFilter];
-                [self.collectionView reloadData];
-            }
-            
+        if (teebee.id == -1) {
             return;
         }
         
         // new moobee
-        if (![self.teebeez containsObject:moobee]) {
-            [self.teebeez addObject:moobee];
+        if (![self.teebeez containsObject:teebee]) {
+            [self.teebeez addObject:teebee];
         }
         
-        if (self.selectedType != MoobeeOnWatchlistType) {
-            [self.teebeez sortUsingSelector:@selector(compareByDate:)];
-        }
-        else {
-            [self.teebeez sortUsingSelector:@selector(compareById:)];
-        }
+//        if (self.selectedType != MoobeeOnWatchlistType) {
+//            [self.teebeez sortUsingSelector:@selector(compareByDate:)];
+//        }
+//        else {
+//            [self.teebeez sortUsingSelector:@selector(compareById:)];
+//        }
         
         [self applyFilter];
         
         [self.collectionView reloadData];
         
-        self.animationCell.bee = moobee;
+        self.animationCell.bee = teebee;
         [self.animationCell prepareForShrink];
         
-        [self performSelector:@selector(hideMoobee:) withObject:moobee afterDelay:0.01];
+        [self performSelector:@selector(hideMoobee:) withObject:teebee afterDelay:0.01];
     };
     
 }
@@ -349,21 +332,16 @@ enum CollectionSections {
         
         Teebee* teebee = [Teebee teebeeWithTmdbTV:tv];
         
-        if (teebee.id == -1) {
-            teebee.rating = 2.5;
-        }
-        
         self.view.userInteractionEnabled = NO;
-        /*
-        MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+
+        TvConnection* connection = [[TvConnection alloc] initWithTmdbId:teebee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbTV *tv) {
             if (code == WebserviceResultOk) {
                 self.view.userInteractionEnabled = YES;
-                [self.searchNewMovieController.view removeFromSuperview];
-                [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie];
+                [self.searchNewTvViewController.view removeFromSuperview];
+                [self goToTvDetailsScreenForTeebee:teebee andTv:tv];
             }
         }];
         [self startConnection:connection];
-         */
     };
 }
 

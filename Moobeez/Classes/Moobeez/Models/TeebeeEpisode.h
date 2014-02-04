@@ -10,11 +10,17 @@
 
 @interface TeebeeEpisode : DatabaseItem
 
+@property (readwrite, nonatomic) NSInteger id;
+
 @property (readwrite, nonatomic) NSInteger seasonNumber;
 @property (readwrite, nonatomic) NSInteger episodeNumber;
 
 @property (readwrite, nonatomic) BOOL watched;
 
-@property (readwrite, nonatomic) NSDate* date;
+@property (readwrite, nonatomic) NSDate* airDate;
+
+@property (readwrite, nonatomic) BOOL updated;
+
+@property (readonly, nonatomic) NSMutableDictionary* databaseDictionary;
 
 @end

@@ -46,17 +46,31 @@
         self.profilePath = [tmdbDictionary stringForKey:@"profile_path"];
     }
     
-    if (tmdbDictionary[@"credits"][@"cast"]) {
+    if (tmdbDictionary[@"combined_credits"][@"cast"]) {
         self.characters = [[NSMutableArray alloc] init];
-        for (NSDictionary* castDictionary in tmdbDictionary[@"credits"][@"cast"]) {
-            TmdbMovie* movie = [[TmdbMovie alloc] initWithTmdbDictionary:castDictionary];
-            
+        for (NSDictionary* castDictionary in tmdbDictionary[@"combined_credits"][@"cast"]) {
             TmdbCharacter* character = [[TmdbCharacter alloc] init];
-            character.name = castDictionary[@"character"];
-            character.movie = movie;
+            character.name = [castDictionary stringForKey:@"character"];
+
+            if ([castDictionary[@"media_type"] isEqualToString:@"movie"]) {
+                TmdbMovie* movie = [[TmdbMovie alloc] initWithTmdbDictionary:castDictionary];
+                character.movie = movie;
+            }
+            else {
+                TmdbTV* tv = [[TmdbTV alloc] initWithTmdbDictionary:castDictionary];
+                character.tv = tv;
+            }
             
             [self.characters addObject:character];
         }
+        
+        [self.characters sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            
+            NSDate* firstDate = (((TmdbCharacter*) obj1).movie ? ((TmdbCharacter*) obj1).movie.releaseDate : ((TmdbCharacter*) obj1).tv.releaseDate);
+            NSDate* secondDate = (((TmdbCharacter*) obj2).movie ? ((TmdbCharacter*) obj2).movie.releaseDate : ((TmdbCharacter*) obj2).tv.releaseDate);
+            
+            return [secondDate compare:firstDate];
+        }];
     }
     
     if (tmdbDictionary[@"images"][@"profiles"]) {

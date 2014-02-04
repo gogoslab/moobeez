@@ -92,4 +92,19 @@
     return luminosity;
 }
 
+- (CGFloat)bottomHalfLuminosity {
+    
+    CGFloat luminosity = 0.0f;
+    
+    RGBAPixel* pixels = [self bitmap];
+    
+    for (int i = self.size.width * self.size.height / 2; i < self.size.width * self.size.height; ++i) {
+        luminosity += pixels[i].red * 0.299 + pixels[i].green * 0.587 + pixels[i].blue * 0.114;
+    }
+    
+    luminosity /= self.size.width * self.size.height;
+    
+    return luminosity;
+}
+
 @end

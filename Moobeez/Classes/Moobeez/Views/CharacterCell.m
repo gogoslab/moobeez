@@ -35,8 +35,12 @@
     else if (character.movie) {
         [self.posterImageView loadImageWithPath:character.movie.posterPath andWidth:154 completion:^(BOOL didLoadImage) {}];
     }
+    else if (character.tv) {
+        [self.posterImageView loadImageWithPath:character.tv.posterPath andWidth:154 completion:^(BOOL didLoadImage) {}];
+    }
 
     self.titleLabel.text = character.name;
+    
 }
 
 - (void)animateGrowWithCompletion:(void (^)(void))completionHandler {
@@ -65,6 +69,9 @@
     }
     else if (self.character.movie) {
         [self.posterImageView loadImageWithPath:self.character.movie.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
+    }
+    else if (self.character.tv) {
+        [self.posterImageView loadImageWithPath:self.character.tv.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
     }
 }
 
@@ -96,6 +103,9 @@
     }
     else if (self.character.movie) {
         [self.posterImageView loadImageWithPath:self.character.movie.posterPath andWidth:154 completion:^(BOOL didLoadImage) {}];
+    }
+    else if (self.character.tv) {
+        [self.posterImageView loadImageWithPath:self.character.tv.posterPath andWidth:154 completion:^(BOOL didLoadImage) {}];
     }
 }
 

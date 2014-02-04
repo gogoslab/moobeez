@@ -244,7 +244,7 @@ typedef enum TVsSection {
         self.animatedPosterView.frame = [self.view convertRect:posterView.frame fromView:posterView.superview];
         self.animatedPosterView.movie = posterView.movie;
         
-        MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:((TmdbTV*)posterView.movie).id completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+        TvConnection* connection = [[TvConnection alloc] initWithTmdbId:((TmdbTV*)posterView.movie).id completionHandler:^(WebserviceResultCode code, TmdbTV *tv) {
             
             if (code == WebserviceResultOk) {
                 self.selectedSection = indexPath.section;
@@ -255,13 +255,9 @@ typedef enum TVsSection {
                     
                     self.view.userInteractionEnabled = YES;
                     
-                    Moobee* moobee = [Moobee moobeeWithTmdbMovie:posterView.movie];
+                    Teebee* teebee = [Teebee teebeeWithTmdbTV:tv];
                     
-                    if (moobee.id == -1) {
-                        moobee.type = MoobeeNoneType;
-                    }
-                    
-                    [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie];
+                    [self goToTvDetailsScreenForTeebee:teebee andTv:tv];
                 }];
             }
         }];
@@ -272,11 +268,11 @@ typedef enum TVsSection {
 
 }
 
-- (void)goToMovieDetailsScreenForMoobee:(Moobee*)moobee andMovie:(TmdbMovie*)movie {
+- (void)goToTvDetailsScreenForTeebee:(Teebee*)teebee andTv:(TmdbTV*)tv {
     
-    MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
-    viewController.moobee = moobee;
-    viewController.tmdbMovie = movie;
+    TvViewController* viewController = [[TvViewController alloc] initWithNibName:@"TvViewController" bundle:nil];
+    viewController.teebee = teebee;
+    viewController.tmdbTv = tv;
     [self presentViewController:viewController animated:NO completion:^{}];
     
     viewController.closeHandler = ^{

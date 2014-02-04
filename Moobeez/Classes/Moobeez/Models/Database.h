@@ -16,6 +16,7 @@
 #import "Moobee.h"
 
 #import "Teebee.h"
+#import "TeebeeEpisode.h"
 
 #import "TmdbMovie.h"
 #import "TmdbTV.h"
@@ -45,6 +46,11 @@
 - (NSMutableArray*)teebeezWithType:(TeebeeType)type;
 - (Teebee*)teebeeWithId:(NSInteger)id;
 - (Teebee*)teebeeWithTmdbId:(NSInteger)tmdbId;
+- (BOOL)pullTeebeezEpisodesCount:(Teebee*)teebee;
+- (BOOL)watchAllEpisodes:(BOOL)watch forTeebee:(Teebee*)teebee;
 - (BOOL)saveTeebee:(Teebee*)teebee;
+
+- (NSMutableArray*)insertObjects:(NSArray*)objects atKeys:(NSArray*)keys intoTable:(NSString*)table;
+- (BOOL)updateColumnValues:(NSArray*)values forColumn:(NSString*)column intoTable:(NSString*)table forIds:(NSArray*)ids;
 
 @end

@@ -8,7 +8,22 @@
 
 #import "TeebeeEpisode.h"
 
+@interface TeebeeEpisode ()
+
+@end
+
 @implementation TeebeeEpisode
+
+- (id)init {
+    
+    self = [super init];
+    
+    if (self) {
+        self.id = -1;
+    }
+    
+    return self;
+}
 
 - (id)initWithDatabaseDictionary:(NSDictionary*)databaseDictionary {
     
@@ -21,8 +36,8 @@
 
         self.watched = [databaseDictionary[@"watched"] boolValue];
         
-        if (databaseDictionary[@"date"]) {
-            self.date = [NSDate dateWithTimeIntervalSinceReferenceDate:[databaseDictionary[@"date"] doubleValue]];
+        if (databaseDictionary[@"airDate"]) {
+            self.airDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[databaseDictionary[@"airDate"] doubleValue]];
         }
     }
     
@@ -38,8 +53,8 @@
 
     databaseDictionary[@"watched"] = [NSString stringWithFormat:@"%d", self.watched];
     
-    if (self.date) {
-        databaseDictionary[@"date"] = [NSString stringWithFormat:@"%.0f", [self.date timeIntervalSinceReferenceDate]];
+    if (self.airDate) {
+        databaseDictionary[@"airDate"] = [NSString stringWithFormat:@"%.0f", [self.airDate timeIntervalSince1970]];
     }
     
     return databaseDictionary;

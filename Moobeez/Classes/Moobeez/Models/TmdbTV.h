@@ -27,11 +27,15 @@
 @property (strong, nonatomic) NSDate* releaseDate;
 
 @property (readwrite, nonatomic) BOOL inProduction;
-@property (readwrite, nonatomic) BOOL ended;
+@property (strong, nonatomic) NSString* status;
 
 @property (readwrite, nonatomic) CGFloat rating;
 
 @property (strong, nonatomic) NSMutableArray* seasons;
+
+@property (readwrite, nonatomic) NSInteger episodesCount;
+@property (readwrite, nonatomic) NSInteger seasonsCount;
+
 
 - (id)initWithTmdbDictionary:(NSDictionary *)tmdbDictionary;
 - (void)addEntriesFromTmdbDictionary:(NSDictionary *)tmdbDictionary;

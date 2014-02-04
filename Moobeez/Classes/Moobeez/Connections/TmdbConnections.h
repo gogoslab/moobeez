@@ -17,6 +17,8 @@
 #define UrlSearchMovie @"search/movie"
 #define UrlMovie(movieId) [NSString stringWithFormat:@"movie/%ld",movieId]
 #define UrlPerson(personId) [NSString stringWithFormat:@"person/%ld",personId]
+#define UrlTv(movieId) [NSString stringWithFormat:@"tv/%ld",movieId]
+#define UrlTvSeason(movieId, seasonNumber) [NSString stringWithFormat:@"tv/%ld/season/%ld", movieId, seasonNumber]
 
 #define UrlUpcoming @"movie/upcoming"
 #define UrlNowPlaying @"movie/now_playing"
@@ -44,8 +46,13 @@
 
 #import "SearchMovieConnection.h"
 
+
+#import "TvConnection.h"
+
 #import "SearchTvConnection.h"
 
 #import "TVsListConnection.h"
+
+#import "TvSeasonConnection.h"
 
 #endif

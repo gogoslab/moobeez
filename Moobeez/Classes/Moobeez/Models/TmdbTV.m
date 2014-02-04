@@ -51,9 +51,9 @@
         self.backdropPath = [tmdbDictionary stringForKey:@"backdrop_path"];
     }
     
-    if (tmdbDictionary[@"casts"][@"cast"]) {
+    if (tmdbDictionary[@"credits"][@"cast"]) {
         self.characters = [[NSMutableArray alloc] init];
-        for (NSDictionary* castDictionary in tmdbDictionary[@"casts"][@"cast"]) {
+        for (NSDictionary* castDictionary in tmdbDictionary[@"credits"][@"cast"]) {
             TmdbPerson* person = [[TmdbPerson alloc] initWithTmdbDictionary:castDictionary];
             
             TmdbCharacter* character = [[TmdbCharacter alloc] init];
@@ -84,16 +84,16 @@
         self.imdbId = tmdbDictionary[@"imdb_id"];
     }
     
-    if ([[tmdbDictionary stringForKey:@"release_date"] length]) {
-        self.releaseDate = [[NSDateFormatter dateFormatterWithFormat:@"yyyy-MM-dd"] dateFromString:[tmdbDictionary stringForKey:@"release_date"]];
+    if ([[tmdbDictionary stringForKey:@"first_air_date"] length]) {
+        self.releaseDate = [[NSDateFormatter dateFormatterWithFormat:@"yyyy-MM-dd"] dateFromString:[tmdbDictionary stringForKey:@"first_air_date"]];
     }
     
     if (tmdbDictionary[@"in_production"]) {
         self.inProduction = [tmdbDictionary[@"in_production"] boolValue];
     }
     
-    if (tmdbDictionary[@"ended"]) {
-        self.ended = [tmdbDictionary[@"ended"] boolValue];
+    if (tmdbDictionary[@"status"]) {
+        self.status = tmdbDictionary[@"status"];
     }
     
     if (tmdbDictionary[@"seasons"]) {
@@ -106,6 +106,15 @@
     if (tmdbDictionary[@"vote_average"]) {
         self.rating = [tmdbDictionary[@"vote_average"] floatValue];
     }
+    
+    if (tmdbDictionary[@"number_of_episodes"]) {
+        self.episodesCount = [tmdbDictionary[@"number_of_episodes"] integerValue];
+    }
+    
+    if (tmdbDictionary[@"number_of_seasons"]) {
+        self.seasonsCount = [tmdbDictionary[@"number_of_seasons"] integerValue];
+    }
+    
     
 }
 

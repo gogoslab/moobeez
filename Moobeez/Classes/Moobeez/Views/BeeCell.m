@@ -35,7 +35,6 @@
     
     self.nameLabel.text = self.bee.name;
     
-    self.starsView.rating = self.bee.rating;
 
     self.posterImageView.defaultImage = [UIImage imageNamed:@"default_image.png"];
     self.posterImageView.loadSyncronized = YES;
@@ -45,6 +44,13 @@
     
     self.starsView.hidden = NO;
     
+    if (self.bee.rating >= 0) {
+        self.starsView.rating = self.bee.rating;
+    }
+    else {
+        self.starsView.hidden = YES;
+    }
+    
     if ([self.bee isKindOfClass:[Moobee class]]) {
         self.starsView.hidden = (((Moobee*) self.bee).type != MoobeeSeenType);
     }
@@ -52,7 +58,12 @@
 }
 
 - (void)drawRect:(CGRect)rect {
-    self.starsView.rating = self.bee.rating;
+    if (self.bee.rating >= 0) {
+        self.starsView.rating = self.bee.rating;
+    }
+    else {
+        self.starsView.hidden = YES;
+    }
 
     [super drawRect:rect];
 }

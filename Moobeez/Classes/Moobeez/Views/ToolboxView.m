@@ -59,7 +59,7 @@
     
     self.blurImageView.contentMode = UIViewContentModeBottom;
     
-    CGFloat luminosity = [image luminosity];
+    CGFloat luminosity = [image bottomHalfLuminosity];
  
     self.isLightInterface = (luminosity <= 100);
 }

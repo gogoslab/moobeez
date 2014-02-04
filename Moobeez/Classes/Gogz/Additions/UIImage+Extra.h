@@ -22,5 +22,6 @@ typedef struct RGBAPixel {
 - (UIImage *)scaledToSize:(CGSize)newSize;
 - (RGBAPixel*)bitmap;
 - (CGFloat)luminosity;
+- (CGFloat)bottomHalfLuminosity;
 
 @end

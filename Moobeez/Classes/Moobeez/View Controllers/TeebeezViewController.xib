@@ -53,12 +53,12 @@
                         </barButtonItem>
                         <barButtonItem style="plain" id="PcV-di-BNJ">
                             <segmentedControl key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="6Tj-LS-g87">
-                                <rect key="frame" x="10" y="7" width="300" height="30"/>
+                                <rect key="frame" x="10" y="8" width="300" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
-                                    <segment title="Seen"/>
-                                    <segment title="Watchlist"/>
-                                    <segment title="Favorites"/>
+                                    <segment title="To see"/>
+                                    <segment title="Soon"/>
+                                    <segment title="All"/>
                                 </segments>
                                 <connections>
                                     <action selector="typeSegmentedControlValueChanged:" destination="-1" eventType="valueChanged" id="PpK-oP-L67"/>

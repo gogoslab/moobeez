@@ -10,7 +10,7 @@
 
 @class TmdbMovie;
 @class TmdbPerson;
-@class TmdbCharacter;
+@class TmdbTV;
 @class CharacterCell;
 
 @interface TmdbCharacter : NSObject
@@ -19,6 +19,7 @@
 
 @property (strong, nonatomic) NSString* name;
 @property (strong, nonatomic) TmdbMovie* movie;
+@property (strong, nonatomic) TmdbTV* tv;
 @property (strong, nonatomic) TmdbPerson* person;
 
 @end

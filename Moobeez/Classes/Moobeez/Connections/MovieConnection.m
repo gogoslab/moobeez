@@ -22,6 +22,13 @@
     
     self.tmdbId = tmdbId;
     
+    self.customHandler = handler;
+    
+    if ([Cache cachedMovies][StringId(self.tmdbId)]) {
+        [self performSelector:@selector(cachedResponse) withObject:nil afterDelay:0.01];
+        return [self initFakeConnection];
+    }
+    
     self = [super initWithParameters:[NSDictionary dictionaryWithObject:@"casts" forKey:@"append_to_response"] completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
         
         NSLog(@"result: %@", resultDictionary);
@@ -30,6 +37,8 @@
 
             TmdbMovie* tmdbMovie = [[TmdbMovie alloc] initWithTmdbDictionary:resultDictionary];
         
+            [Cache cachedMovies][StringId(tmdbId)] = tmdbMovie;
+            
             self.customHandler(code, tmdbMovie);
         }
         else {
@@ -37,13 +46,18 @@
         }
     }];
     
-    self.customHandler = handler;
-    
     return self;
 }
 
 - (NSString*)defaultUrlSubpath {
     return UrlMovie((long)self.tmdbId);
+}
+
+- (void)cachedResponse {
+    
+    [self.activityIndicator stopAnimating];
+    self.customHandler(WebserviceResultOk, [Cache cachedMovies][StringId(self.tmdbId)]);
+    
 }
 
 @end

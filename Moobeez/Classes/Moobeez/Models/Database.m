@@ -37,13 +37,13 @@ static Database* sharedDatabase;
 - (id)init {
     self = [super init];
     
-    if (![[NSFileManager defaultManager] fileExistsAtPath:MY_DATABASE_PATH]) {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:CURRENT_DATABASE_PATH]) {
         NSString *sqLiteDb = [[NSBundle mainBundle] pathForResource:@"MoobeezDatabase"
                                                              ofType:@""];
     
         NSError* error = nil;
         
-        [[NSFileManager defaultManager] copyItemAtPath:sqLiteDb toPath:MY_DATABASE_PATH error:&error];
+        [[NSFileManager defaultManager] copyItemAtPath:sqLiteDb toPath:CURRENT_DATABASE_PATH error:&error];
         
         if (error) {
             NSLog(@"error: %@", error);
@@ -51,16 +51,30 @@ static Database* sharedDatabase;
     }
     
     
-    if (sqlite3_open([MY_DATABASE_PATH UTF8String], &database) != SQLITE_OK) {
+    if (sqlite3_open([CURRENT_DATABASE_PATH UTF8String], &database) != SQLITE_OK) {
         NSLog(@"Failed to open database!");
     }
     else {
         NSLog(@"Yeeeey to open database!");
         
+        NSString* oldDatabasePath = nil;
+        
+        for (NSString* subpath in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[CURRENT_DATABASE_PATH stringByDeletingLastPathComponent] error:nil]) {
+            if ([[subpath lastPathComponent] rangeOfString:DATABASE_NAME].location != NSNotFound) {
+                if (![VERSION_OF_DATABASE(subpath) isEqualToString:DATABASE_VERSION]) {
+                    oldDatabasePath = subpath;
+                    break;
+                }
+            }
+        }
+        
+        if (oldDatabasePath) {
+            oldDatabasePath = [[CURRENT_DATABASE_PATH stringByDeletingLastPathComponent] stringByAppendingPathComponent:oldDatabasePath];
+        }
 
-        if ([[NSFileManager defaultManager] fileExistsAtPath:OLD_DATABASE_PATH]) {
+        if ([[NSFileManager defaultManager] fileExistsAtPath:oldDatabasePath]) {
             
-            NSString* attach = [NSString stringWithFormat:@"ATTACH DATABASE '%@' AS OldDatabase", OLD_DATABASE_PATH];
+            NSString* attach = [NSString stringWithFormat:@"ATTACH DATABASE '%@' AS OldDatabase", oldDatabasePath];
             
             char* errorMessage;
             
@@ -113,7 +127,7 @@ static Database* sharedDatabase;
                 }
                 
                 if (everthingOk) {
-                    [[NSFileManager defaultManager] removeItemAtPath:OLD_DATABASE_PATH error:nil];
+                    [[NSFileManager defaultManager] removeItemAtPath:oldDatabasePath error:nil];
                 }
             }
         }
@@ -188,6 +202,89 @@ static Database* sharedDatabase;
     return -1;
 }
 
+- (NSMutableArray*)insertObjects:(NSArray*)objects atKeys:(NSArray*)keys intoTable:(NSString*)table {
+    
+    NSMutableArray* valuesArray = [[NSMutableArray alloc] init];
+    
+    NSMutableArray* allKeys = [[NSMutableArray alloc] initWithArray:keys];
+    if (![allKeys containsObject:@"ID"]) {
+        [allKeys addObject:@"ID"];
+    }
+    
+    NSString* columns = [allKeys componentsJoinedByString:@","];
+    
+    NSMutableArray* ids = [[NSMutableArray alloc] init];
+    
+    for (NSDictionary* dictionary in objects) {
+
+        sqlite_int64 nextId = [self generateNewId];
+
+        NSMutableDictionary* dictionaryWithId = [NSMutableDictionary dictionaryWithDictionary:dictionary];
+        
+        if (!dictionaryWithId[@"ID"]) {
+            dictionaryWithId[@"ID"] = [NSString stringWithFormat:@"%lld", nextId];
+        }
+        else {
+            nextId = [dictionaryWithId[@"ID"] longLongValue];
+        }
+        
+        NSMutableArray* allValues = [[NSMutableArray alloc] init];
+        
+        for (NSString* key in allKeys) {
+            NSString* value = dictionaryWithId[key];
+            if ([value isKindOfClass:[NSString class]]) {
+                value = [value stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
+            }
+            [allValues addObject:[NSString stringWithFormat:@"'%@'", value]];
+        }
+        
+        NSString* values = [NSString stringWithFormat:@"(%@)", [allValues componentsJoinedByString:@","]];
+        
+        [valuesArray addObject:values];
+        
+        [ids addObject:@(nextId)];
+    }
+    
+    NSString *query = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES %@", table, columns, [valuesArray componentsJoinedByString:@", "]];
+    
+    sqlite3_stmt *statement;
+    
+    NSLog(@"query: %@", query);
+    
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+        return nil;
+    }
+    
+    int step = sqlite3_step(statement);
+    
+    switch (step) {
+        case SQLITE_DONE:
+            NSLog(@"yey");
+            sqlite3_finalize(statement);
+            return ids;
+            break;
+        case SQLITE_ERROR:
+            NSLog(@"error");
+            break;
+        case SQLITE_MISUSE:
+            NSLog(@"missue");
+            break;
+        default:
+            NSLog(@"NOOOOO!!!");
+            break;
+    }
+    
+    sqlite3_finalize(statement);
+    
+    return nil;
+}
+
 - (BOOL)updateDictionary:(NSDictionary*)dictionary intoTable:(NSString*)table where:(NSDictionary*)whereDictionary {
     
     NSMutableArray* setValues = [NSMutableArray array];
@@ -246,6 +343,61 @@ static Database* sharedDatabase;
     
     return NO;
 }
+
+- (BOOL)updateColumnValues:(NSArray*)values forColumn:(NSString*)column intoTable:(NSString*)table forIds:(NSArray*)ids {
+
+    NSString* set = [NSString stringWithFormat:@"%@ = CASE ID", column];
+    for (int i = 0; i < MIN(values.count, ids.count) ; ++i) {
+        set = [set stringByAppendingFormat:@"\n WHEN %@ THEN '%@'", ids[i], values[i]];
+    }
+    set = [set stringByAppendingString:@"\nEND"];
+    
+    NSString* where = [NSString stringWithFormat:@"ID in (%@)", [ids componentsJoinedByString:@","]];
+    
+    NSString *query = [NSString stringWithFormat:@"UPDATE %@ SET %@", table, set];
+    
+    if (where.length) {
+        
+        query = [query stringByAppendingFormat:@" WHERE %@", where];
+        
+    }
+    
+    sqlite3_stmt *statement;
+    
+    NSLog(@"query: %@", query);
+    
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        return NO;
+    }
+    
+    int step = sqlite3_step(statement);
+    
+    switch (step) {
+        case SQLITE_DONE:
+            NSLog(@"yey");
+            sqlite3_finalize(statement);
+            return YES;
+            break;
+        case SQLITE_ERROR:
+            NSLog(@"error");
+            break;
+        case SQLITE_MISUSE:
+            NSLog(@"missue");
+            break;
+        default:
+            NSLog(@"NOOOOO!!!");
+            break;
+    }
+    
+    sqlite3_finalize(statement);
+    
+    return NO;
+}
+
+
 
 #pragma mark - Old To New
 
@@ -479,17 +631,19 @@ static Database* sharedDatabase;
 
 - (NSMutableArray*)teebeezWithType:(TeebeeType)type {
     
+    NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
+    
     NSString* query = @"";
     
     switch (type) {
         case TeebeeToSeeType:
-            query = [NSString stringWithFormat:@"SELECT * FROM Teebeez WHERE type = %d ORDER BY date DESC", type];
+            query = [NSString stringWithFormat:@"SELECT Teebeez.*, SUM(CASE WHEN Episodes.watched = '0' THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez JOIN Episodes ON (Teebeez.ID = Episodes.teebeeId AND Episodes.airDate < %f) GROUP BY Teebeez.ID HAVING notWatchedEpisodesCount > 0", now];
             break;
         case TeebeeSoonType:
-            query = [NSString stringWithFormat:@"SELECT * FROM Teebeez WHERE type = %d ORDER BY ID DESC", type];
+            query = [NSString stringWithFormat:@"SELECT Teebeez.*, e1.* FROM Teebeez JOIN Episodes e1 ON (Teebeez.ID = e1.teebeeId AND e1.airDate > %f) LEFT OUTER JOIN Episodes e2 ON (Teebeez.ID = e2.teebeeId AND (e1.airDate < e2.airDate OR e1.airDate = e2.airDate AND e1.id < e2.id)) GROUP BY e1.teebeeId", now];
             break;
         default:
-            query = [NSString stringWithFormat:@"SELECT * FROM Teebeez ORDER BY ID DESC"];
+            query = [NSString stringWithFormat:@"SELECT Teebeez.*, SUM(CASE WHEN Episodes.watched = '0' THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez JOIN Episodes ON (Teebeez.ID = Episodes.teebeeId) GROUP BY Teebeez.ID ORDER BY Teebeez.ID DESC"];
             break;
     }
     
@@ -502,8 +656,15 @@ static Database* sharedDatabase;
     
     NSMutableArray* results = [[NSMutableArray alloc] init];
     
-    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
-        == SQLITE_OK) {
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+    }
+    else {
         while (sqlite3_step(statement) == SQLITE_ROW) {
             
             Teebee* teebee = [[Teebee alloc] initWithDatabaseDictionary:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
@@ -518,7 +679,7 @@ static Database* sharedDatabase;
 
 - (Teebee*)teebeeWithId:(NSInteger)id {
     
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM Teebeez WHERE ID = %ld", (long)id];
+    NSString *query = [NSString stringWithFormat:@"SELECT * ,SUM(CASE WHEN Episodes.watched = '0' THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez WHERE ID = %ld", (long)id];
     sqlite3_stmt *statement;
     
     if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
@@ -543,7 +704,7 @@ static Database* sharedDatabase;
 
 - (Teebee*)teebeeWithTmdbId:(NSInteger)tmdbId {
     
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM Teebeez WHERE tmdbId = %ld", (long)tmdbId];
+    NSString *query = [NSString stringWithFormat:@"SELECT * , SUM(CASE WHEN Episodes.watched = '0' THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez WHERE tmdbId = %ld", (long)tmdbId];
     sqlite3_stmt *statement;
     
     if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
@@ -564,6 +725,49 @@ static Database* sharedDatabase;
     
     
     return nil;
+}
+
+- (BOOL)pullTeebeezEpisodesCount:(Teebee*)teebee {
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT SUM(CASE WHEN Episodes.watched = '0' THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez WHERE ID = %ld", (long)teebee.id];
+    sqlite3_stmt *statement;
+    
+    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
+        == SQLITE_OK) {
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            
+            [teebee addEpisodesCountFromDictionary:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
+            
+            break;
+        }
+        sqlite3_finalize(statement);
+        
+        return YES;
+    }
+    
+    
+    return NO;
+    
+}
+
+- (BOOL)watchAllEpisodes:(BOOL)watch forTeebee:(Teebee*)teebee {
+    
+    NSString *query = [NSString stringWithFormat:@"UPDATE Episodes SET watched = '%d' WHERE teebeeId = %ld AND airDate < %f", watch, (long)teebee.id, [[NSDate date] timeIntervalSince1970]];
+    sqlite3_stmt *statement;
+    
+    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
+        == SQLITE_OK) {
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+        }
+        sqlite3_finalize(statement);
+        
+        return YES;
+    }
+    
+    return NO;
+    
 }
 
 - (BOOL)saveTeebee:(Teebee*)teebee {

@@ -17,6 +17,9 @@ typedef void (^RawConnectionCompletionHandler) (NSURLResponse* response, id resu
 @property (weak, nonatomic) ConnectionsManager* connectionManager;
 @property (strong, nonatomic) UIActivityIndicatorView* activityIndicator;
 
+@property (readwrite, nonatomic) BOOL fakeConnection;
+
+- (id)initFakeConnection;
 - (id)initWithUrlString:(NSString*)urlString inputJson:(id)inputJson completionHandler:(RawConnectionCompletionHandler)handler;
 - (id)initWithUrlString:(NSString*)urlString parameters:(NSDictionary*)parameters completionHandler:(RawConnectionCompletionHandler)handler;
 - (id)initWithUrlString:(NSString*)urlString completionHandler:(RawConnectionCompletionHandler)handler;

@@ -9,13 +9,13 @@
 #import "ViewController.h"
 #import "Constants.h"
 
-@class Moobee;
-@class TmdbMovie;
+@class Teebee;
+@class TmdbTV;
 
 @interface TvViewController : ViewController
 
-@property (strong, nonatomic) Moobee* moobee;
-@property (strong, nonatomic) TmdbMovie* tmdbMovie;
+@property (strong, nonatomic) Teebee* teebee;
+@property (strong, nonatomic) TmdbTV* tmdbTv;
 
 @property (copy, nonatomic) EmptyHandler closeHandler;
 
