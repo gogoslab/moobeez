@@ -343,6 +343,8 @@ enum CollectionSections {
 
 - (void)addButtonPressed:(id)sender {
     
+    [self.searchNewMovieController prepareBlurInView:self.appDelegate.window];
+    
     [self.appDelegate.window addSubview:self.searchNewMovieController.view];
     
     self.searchNewMovieController.selectHandler = ^ (TmdbMovie* movie) {
