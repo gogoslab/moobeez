@@ -327,6 +327,8 @@ enum CollectionSections {
 
 - (void)addButtonPressed:(id)sender {
     
+    [self.searchNewTvViewController prepareBlurInView:self.appDelegate.window];
+
     [self.appDelegate.window addSubview:self.searchNewTvViewController.view];
     
     self.searchNewTvViewController.selectHandler = ^ (TmdbTV* tv) {
