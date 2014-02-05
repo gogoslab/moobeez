@@ -28,6 +28,11 @@
     self.layer.shadowRadius = 4;
     self.layer.shadowOpacity = 0.2;
     self.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.bounds].CGPath;
+    self.notWatchedEpisodesLabel.layer.cornerRadius = self.notWatchedEpisodesLabel.width / 2;
+    self.notWatchedEpisodesLabel.layer.shadowRadius = 2;
+    self.notWatchedEpisodesLabel.layer.shadowOpacity = 0.6;
+    self.notWatchedEpisodesLabel.layer.shadowPath = [UIBezierPath bezierPathWithRect:self.notWatchedEpisodesLabel.bounds].CGPath;
+
 }
 
 - (void)setBee:(Bee *)bee {
@@ -55,6 +60,11 @@
         self.starsView.hidden = (((Moobee*) self.bee).type != MoobeeSeenType);
     }
     
+    if ([self.bee isKindOfClass:[Teebee class]]) {
+        self.notWatchedEpisodesLabel.text = StringId(((Teebee*) self.bee).notWatchedEpisodesCount);
+        self.notWatchedEpisodesLabel.hidden = (((Teebee*) self.bee).notWatchedEpisodesCount <= 0);
+    }
+    
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -79,6 +89,7 @@
     [appDelegate.window addSubview:self.contentView];
 
     self.starsView.hidden = YES;
+    self.notWatchedEpisodesLabel.hidden = YES;
 
     [UIView animateWithDuration:0.5 animations:^{
         self.contentView.frame = appDelegate.window.bounds;
@@ -100,6 +111,7 @@
     [appDelegate.window addSubview:self.contentView];
     
     self.starsView.hidden = YES;
+    self.notWatchedEpisodesLabel.hidden = YES;
 }
 
 - (void)animateShrinkWithCompletion:(void (^)(void))completionHandler {
@@ -119,6 +131,10 @@
         if ([self.bee isKindOfClass:[Moobee class]]) {
             self.starsView.hidden = (((Moobee*) self.bee).type != MoobeeSeenType);
         }
+        if ([self.bee isKindOfClass:[Teebee class]]) {
+            self.notWatchedEpisodesLabel.hidden = (((Teebee*) self.bee).notWatchedEpisodesCount <= 0);
+        }
+
 
         completionHandler();
     }];

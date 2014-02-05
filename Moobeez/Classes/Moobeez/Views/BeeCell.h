@@ -15,6 +15,7 @@
 @property (weak, nonatomic) Bee* bee;
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UILabel *notWatchedEpisodesLabel;
 
 - (void)animateGrowWithCompletion:(void (^)(void))completionHandler;
 - (void)prepareForShrink;

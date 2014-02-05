@@ -186,6 +186,7 @@ enum CollectionSections {
     BeeCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BeeCell" forIndexPath:indexPath];
 
     cell.bee = self.displayedTeebeez[indexPath.row];
+    cell.notWatchedEpisodesLabel.alpha = (self.selectedType == TeebeeSoonType ? 0.0 : 1.0);
     
     return cell;
     

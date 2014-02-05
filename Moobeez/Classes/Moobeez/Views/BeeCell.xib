@@ -53,6 +53,13 @@ dasd</string>
                                 <rect key="frame" x="36" y="57" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="888" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aBl-EU-u1L">
+                                <rect key="frame" x="77" y="-1" width="25" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.92634330580921198" blue="0.30738775939194429" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </view>
@@ -64,6 +71,7 @@ dasd</string>
                 <outlet property="activityIndicator" destination="tA3-bA-WFA" id="kRa-et-X2X"/>
                 <outlet property="contentView" destination="jT7-5l-NUZ" id="gDI-dn-DDS"/>
                 <outlet property="nameLabel" destination="ojh-aB-O9i" id="7Ea-OT-gNj"/>
+                <outlet property="notWatchedEpisodesLabel" destination="aBl-EU-u1L" id="bFI-Fc-dkj"/>
                 <outlet property="posterImageView" destination="Fj1-Kh-Th3" id="IHR-px-a7i"/>
                 <outlet property="starsView" destination="VO2-sa-ZSk" id="87a-Sx-q9z"/>
             </connections>

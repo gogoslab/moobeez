@@ -640,10 +640,10 @@ static Database* sharedDatabase;
             query = [NSString stringWithFormat:@"SELECT Teebeez.*, SUM(CASE WHEN Episodes.watched = '0' THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez JOIN Episodes ON (Teebeez.ID = Episodes.teebeeId AND Episodes.airDate < %f) GROUP BY Teebeez.ID HAVING notWatchedEpisodesCount > 0", now];
             break;
         case TeebeeSoonType:
-            query = [NSString stringWithFormat:@"SELECT Teebeez.*, e1.* FROM Teebeez JOIN Episodes e1 ON (Teebeez.ID = e1.teebeeId AND e1.airDate > %f) LEFT OUTER JOIN Episodes e2 ON (Teebeez.ID = e2.teebeeId AND (e1.airDate < e2.airDate OR e1.airDate = e2.airDate AND e1.id < e2.id)) GROUP BY e1.teebeeId", now];
+            query = [NSString stringWithFormat:@"SELECT Teebeez.*, e1.airDate, e1.seasonNumber, e1.episodeNumber FROM Teebeez JOIN Episodes e1 ON (Teebeez.ID = e1.teebeeId AND e1.airDate > %f) LEFT OUTER JOIN Episodes e2 ON (Teebeez.ID = e2.teebeeId AND (e1.airDate < e2.airDate OR e1.airDate = e2.airDate AND e1.id < e2.id)) GROUP BY e1.teebeeId", now];
             break;
         default:
-            query = [NSString stringWithFormat:@"SELECT Teebeez.*, SUM(CASE WHEN Episodes.watched = '0' THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez JOIN Episodes ON (Teebeez.ID = Episodes.teebeeId) GROUP BY Teebeez.ID ORDER BY Teebeez.ID DESC"];
+            query = [NSString stringWithFormat:@"SELECT Teebeez.*, SUM(CASE WHEN Episodes.watched = '0' AND Episodes.airDate < %f THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez JOIN Episodes ON (Teebeez.ID = Episodes.teebeeId) GROUP BY Teebeez.ID ORDER BY Teebeez.ID DESC", [[NSDate date] timeIntervalSince1970]];
             break;
     }
     
@@ -679,11 +679,18 @@ static Database* sharedDatabase;
 
 - (Teebee*)teebeeWithId:(NSInteger)id {
     
-    NSString *query = [NSString stringWithFormat:@"SELECT * ,SUM(CASE WHEN Episodes.watched = '0' THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez WHERE ID = %ld", (long)id];
+    NSString *query = [NSString stringWithFormat:@"SELECT Teebeez.* ,SUM(CASE WHEN Episodes.watched = '0' AND Episodes.airDate < %f THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId WHERE Teebeez.ID = %ld", [[NSDate date] timeIntervalSince1970], (long)id];
     sqlite3_stmt *statement;
     
-    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
-        == SQLITE_OK) {
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+    }
+    else {
         
         Teebee* teebee = nil;
         
@@ -704,11 +711,18 @@ static Database* sharedDatabase;
 
 - (Teebee*)teebeeWithTmdbId:(NSInteger)tmdbId {
     
-    NSString *query = [NSString stringWithFormat:@"SELECT * , SUM(CASE WHEN Episodes.watched = '0' THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez WHERE tmdbId = %ld", (long)tmdbId];
+    NSString *query = [NSString stringWithFormat:@"SELECT Teebeez.* , SUM(CASE WHEN Episodes.watched = '0' AND Episodes.airDate < %f THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId WHERE Teebeez.tmdbId = %ld", [[NSDate date] timeIntervalSince1970], (long)tmdbId];
     sqlite3_stmt *statement;
     
-    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
-        == SQLITE_OK) {
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+    }
+    else {
         
         Teebee* teebee = nil;
         
@@ -729,11 +743,18 @@ static Database* sharedDatabase;
 
 - (BOOL)pullTeebeezEpisodesCount:(Teebee*)teebee {
     
-    NSString *query = [NSString stringWithFormat:@"SELECT SUM(CASE WHEN Episodes.watched = '0' THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez WHERE ID = %ld", (long)teebee.id];
+    NSString *query = [NSString stringWithFormat:@"SELECT SUM(CASE WHEN Episodes.watched = '0' AND Episodes.airDate < %f THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM (Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId) WHERE Teebeez.ID = '%@'",[[NSDate date] timeIntervalSince1970], StringId(teebee.id)];
     sqlite3_stmt *statement;
     
-    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
-        == SQLITE_OK) {
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+    }
+    else {
         
         while (sqlite3_step(statement) == SQLITE_ROW) {
             
@@ -746,7 +767,6 @@ static Database* sharedDatabase;
         return YES;
     }
     
-    
     return NO;
     
 }
@@ -756,11 +776,19 @@ static Database* sharedDatabase;
     NSString *query = [NSString stringWithFormat:@"UPDATE Episodes SET watched = '%d' WHERE teebeeId = %ld AND airDate < %f", watch, (long)teebee.id, [[NSDate date] timeIntervalSince1970]];
     sqlite3_stmt *statement;
     
-    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
-        == SQLITE_OK) {
-        
-        while (sqlite3_step(statement) == SQLITE_ROW) {
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
         }
+    }
+    else {
+        
+        if (sqlite3_step(statement) == SQLITE_ROW) {
+        }
+        
         sqlite3_finalize(statement);
         
         return YES;
