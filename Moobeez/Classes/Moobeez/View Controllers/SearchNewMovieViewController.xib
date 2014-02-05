@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchNewMovieViewController">
             <connections>
                 <outlet property="activityIndicator" destination="klH-UV-ulo" id="dDK-Kt-6KD"/>
-                <outlet property="blurView" destination="0dT-Xa-Y3K" id="auO-PK-GFy"/>
+                <outlet property="blurView" destination="der-OM-49g" id="Tna-fH-em1"/>
                 <outlet property="contentView" destination="39K-s3-3N2" id="gi4-PH-jcZ"/>
                 <outlet property="searchBar" destination="CD5-jd-5b5" id="K8z-Eb-rGb"/>
                 <outlet property="tableView" destination="yQP-h9-L6B" id="KhS-Cd-uF1"/>
@@ -23,15 +23,16 @@
                     <rect key="frame" x="20" y="80" width="280" height="424"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <subviews>
-                        <view clipsSubviews="YES" alpha="0.97999999999999998" contentMode="scaleToFill" id="0dT-Xa-Y3K" customClass="AMBlurView">
-                            <rect key="frame" x="0.0" y="0.0" width="280" height="424"/>
+                        <imageView userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="der-OM-49g">
+                            <rect key="frame" x="-20" y="-72" width="320" height="568"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
+                        </imageView>
                         <searchBar contentMode="redraw" searchBarStyle="minimal" id="CD5-jd-5b5">
                             <rect key="frame" x="0.0" y="2" width="280" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="barTintColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" red="0.17930874729999999" green="0.45826780509999998" blue="0.62539859689999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="MPV-na-EeZ"/>
@@ -53,7 +54,7 @@
                             <color key="color" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                         </activityIndicatorView>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="n9G-AL-ffI">
                     <rect key="frame" x="10" y="21" width="40" height="40"/>

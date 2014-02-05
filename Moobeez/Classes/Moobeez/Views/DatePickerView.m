@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 
-@property (weak, nonatomic) IBOutlet AMBlurView *blurView;
+@property (weak, nonatomic) IBOutlet UIView *blurView;
 @property (copy, nonatomic) DatePickerCompletionHandler completionHandler;
 
 @end
@@ -39,7 +39,7 @@
 
 - (void)awakeFromNib {
     self.blurView.tintColor = [UIColor colorWithRed:145.0/255 green:180.0/255 blue:192.0/255 alpha:1.0];
-    self.blurView.blurTintColor = self.toolbar.barTintColor;
+
 }
 
 - (void)show {

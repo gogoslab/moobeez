@@ -16,4 +16,6 @@ typedef void (^SelectMovieHandler) (TmdbMovie* movie);
 
 @property (copy, nonatomic) SelectMovieHandler selectHandler;
 
+- (void)prepareBlurInView:(UIView*)view;
+
 @end
