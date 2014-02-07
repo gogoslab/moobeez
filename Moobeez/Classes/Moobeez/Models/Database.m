@@ -798,6 +798,60 @@ static Database* sharedDatabase;
     
 }
 
+- (BOOL)watchAllEpisodes:(BOOL)watch forTeebee:(Teebee*)teebee inSeason:(NSInteger)seasonNumber {
+    
+    NSString *query = [NSString stringWithFormat:@"UPDATE Episodes SET watched = '%d' WHERE teebeeId = %ld AND airDate < %f AND seasonNumber = '%ld'", watch, (long)teebee.id, [[NSDate date] timeIntervalSince1970], seasonNumber];
+    sqlite3_stmt *statement;
+    
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+    }
+    else {
+        
+        if (sqlite3_step(statement) == SQLITE_ROW) {
+        }
+        
+        sqlite3_finalize(statement);
+        
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
+- (BOOL)watch:(BOOL)watch episode:(TeebeeEpisode*)episode forTeebee:(Teebee*)teebee {
+    
+    NSString *query = [NSString stringWithFormat:@"UPDATE Episodes SET watched = '%d' WHERE teebeeId = %ld AND episodeNumber = '%ld' AND seasonNumber = '%ld'", watch, (long)teebee.id, episode.episodeNumber, episode.seasonNumber];
+    sqlite3_stmt *statement;
+    
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+    }
+    else {
+        
+        if (sqlite3_step(statement) == SQLITE_ROW) {
+        }
+        
+        sqlite3_finalize(statement);
+        
+        return YES;
+    }
+    
+    return NO;
+    
+}
+
 - (BOOL)saveTeebee:(Teebee*)teebee {
     
     NSMutableDictionary* teebeeDictionary = teebee.databaseDictionary;
@@ -820,6 +874,78 @@ static Database* sharedDatabase;
     
     return (teebeeId != -1);
     
+}
+
+- (BOOL)pullSeasonsForTeebee:(Teebee*)teebee {
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT seasonNumber, SUM(CASE WHEN watched = '1' THEN 1 ELSE 0 END) AS seasonWatchedEpisodes FROM Episodes WHERE teebeeId = '%@' GROUP BY seasonNumber",StringId(teebee.id)];
+    sqlite3_stmt *statement;
+    
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+    }
+    else {
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            
+            if (!teebee.seasons) {
+                teebee.seasons = [[NSMutableDictionary alloc] init];
+            }
+            
+            NSMutableDictionary* seasonDictionary = [[NSMutableDictionary alloc] initWithSqlStatement:statement];
+            teebee.seasons[seasonDictionary[@"seasonNumber"]] = @([seasonDictionary[@"seasonWatchedEpisodes"] integerValue]);
+            
+        }
+        sqlite3_finalize(statement);
+        
+        return YES;
+    }
+    
+    return NO;
+
+}
+
+- (BOOL)pullEpisodesForTeebee:(Teebee*)teebee inSeason:(NSInteger)seasonNumber {
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM Episodes WHERE teebeeId = '%@' AND seasonNumber = '%ld'",StringId(teebee.id), (long)seasonNumber];
+    sqlite3_stmt *statement;
+    
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+    }
+    else {
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            
+            if (!teebee.episodes) {
+                teebee.episodes = [[NSMutableDictionary alloc] init];
+            }
+            
+            if (!teebee.episodes[StringId(seasonNumber)]) {
+                teebee.episodes[StringId(seasonNumber)] = [[NSMutableArray alloc] init];
+            }
+            
+            NSMutableDictionary* episodeDictionary = [[NSMutableDictionary alloc] initWithSqlStatement:statement];
+            TeebeeEpisode* episode = [[TeebeeEpisode alloc] initWithDatabaseDictionary:episodeDictionary];
+            teebee.episodes[StringId(seasonNumber)][StringId(episode.episodeNumber)] = episode;
+            
+        }
+        sqlite3_finalize(statement);
+        
+        return YES;
+    }
+    
+    return NO;
 }
 
 @end

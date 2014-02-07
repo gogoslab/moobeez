@@ -52,6 +52,10 @@
 
 #import "TvViewController.h"
 
+#import "TvWatchedViewController.h"
+#import "SeasonsViewController.h"
+#import "EpisodesViewController.h"
+
 #pragma mark - Cells
 
 #import "BeeCell.h"
@@ -60,8 +64,14 @@
 #import "SearchResultCell.h"
 
 #import "FeatureMoviesCell.h"
-#import "MoviePosterView.h"
+
 #import "MovieCell.h"
+
+#import "SeasonCell.h"
+#import "EpisodeCell.h"
+
+#import "MoviePosterView.h"
+
 #import "MoviesHeaderView.h"
 
 #pragma mark - Toolboxes

@@ -30,4 +30,6 @@
 
 #define StringId(Id) [NSString stringWithFormat:@"%ld", Id]
 
+#define DidUpdateWatchedEpisodesNotification @"DidUpdateWatchedEpisodesNotification" 
+
 typedef void (^EmptyHandler) ();

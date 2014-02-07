@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSString* posterPath;
 @property (readwrite, nonatomic) NSInteger episodeNumber;
+@property (readwrite, nonatomic) NSInteger seasonNumber;
 @property (strong, nonatomic) NSDate* date;
 
 - (id)initWithTmdbDictionary:(NSDictionary *)tmdbDictionary;

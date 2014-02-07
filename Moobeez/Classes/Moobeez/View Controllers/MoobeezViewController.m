@@ -36,6 +36,8 @@ enum CollectionSections {
 
 @property (readonly, nonatomic) MoobeeType selectedType;
 
+@property (readwrite, nonatomic) CGFloat previousScrollViewYOffset;
+
 @end
 
 @implementation MoobeezViewController

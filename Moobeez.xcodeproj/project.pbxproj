@@ -32,6 +32,16 @@
 		6417786F180C8A7400CDFA25 /* full_stars_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 6417786B180C8A7400CDFA25 /* full_stars_small.png */; };
 		64177870180C8A7400CDFA25 /* full_stars_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6417786C180C8A7400CDFA25 /* full_stars_small@2x.png */; };
 		64177876180CA5D900CDFA25 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = 64177875180CA5D900CDFA25 /* background.png */; };
+		6428B89718A39F2500E1A904 /* TvWatchedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B89518A39F2500E1A904 /* TvWatchedViewController.m */; };
+		6428B89818A39F2500E1A904 /* TvWatchedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6428B89618A39F2500E1A904 /* TvWatchedViewController.xib */; };
+		6428B89D18A3A36600E1A904 /* SeasonsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B89B18A3A36600E1A904 /* SeasonsViewController.m */; };
+		6428B89E18A3A36600E1A904 /* SeasonsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6428B89C18A3A36600E1A904 /* SeasonsViewController.xib */; };
+		6428B8A318A3E74E00E1A904 /* SeasonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6428B8A118A3E74E00E1A904 /* SeasonCell.m */; };
+		64290E7018A43629009E6B04 /* SeasonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64290E6F18A43629009E6B04 /* SeasonCell.xib */; };
+		64290E7418A46074009E6B04 /* EpisodesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64290E7218A46074009E6B04 /* EpisodesViewController.m */; };
+		64290E7518A46074009E6B04 /* EpisodesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64290E7318A46074009E6B04 /* EpisodesViewController.xib */; };
+		64290E7A18A4627E009E6B04 /* EpisodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64290E7818A4627E009E6B04 /* EpisodeCell.m */; };
+		64290E7B18A4627E009E6B04 /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64290E7918A4627E009E6B04 /* EpisodeCell.xib */; };
 		642CA8ED181542FA00A293E4 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642CA8EB181542FA00A293E4 /* MovieViewController.m */; };
 		642CA8EE181542FA00A293E4 /* MovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 642CA8EC181542FA00A293E4 /* MovieViewController.xib */; };
 		64392EAF18084BA500504C78 /* TmdbConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64392EAE18084BA500504C78 /* TmdbConnection.m */; };
@@ -395,6 +405,21 @@
 		6417786B180C8A7400CDFA25 /* full_stars_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = full_stars_small.png; sourceTree = "<group>"; };
 		6417786C180C8A7400CDFA25 /* full_stars_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full_stars_small@2x.png"; sourceTree = "<group>"; };
 		64177875180CA5D900CDFA25 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		6428B89418A39F2500E1A904 /* TvWatchedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvWatchedViewController.h; sourceTree = "<group>"; };
+		6428B89518A39F2500E1A904 /* TvWatchedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TvWatchedViewController.m; sourceTree = "<group>"; };
+		6428B89618A39F2500E1A904 /* TvWatchedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TvWatchedViewController.xib; sourceTree = "<group>"; };
+		6428B89A18A3A36600E1A904 /* SeasonsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonsViewController.h; sourceTree = "<group>"; };
+		6428B89B18A3A36600E1A904 /* SeasonsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonsViewController.m; sourceTree = "<group>"; };
+		6428B89C18A3A36600E1A904 /* SeasonsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeasonsViewController.xib; sourceTree = "<group>"; };
+		6428B8A018A3E74E00E1A904 /* SeasonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeasonCell.h; sourceTree = "<group>"; };
+		6428B8A118A3E74E00E1A904 /* SeasonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeasonCell.m; sourceTree = "<group>"; };
+		64290E6F18A43629009E6B04 /* SeasonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SeasonCell.xib; sourceTree = "<group>"; };
+		64290E7118A46074009E6B04 /* EpisodesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EpisodesViewController.h; sourceTree = "<group>"; };
+		64290E7218A46074009E6B04 /* EpisodesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EpisodesViewController.m; sourceTree = "<group>"; };
+		64290E7318A46074009E6B04 /* EpisodesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EpisodesViewController.xib; sourceTree = "<group>"; };
+		64290E7718A4627E009E6B04 /* EpisodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EpisodeCell.h; sourceTree = "<group>"; };
+		64290E7818A4627E009E6B04 /* EpisodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EpisodeCell.m; sourceTree = "<group>"; };
+		64290E7918A4627E009E6B04 /* EpisodeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EpisodeCell.xib; sourceTree = "<group>"; };
 		642CA8EA181542FA00A293E4 /* MovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
 		642CA8EB181542FA00A293E4 /* MovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
 		642CA8EC181542FA00A293E4 /* MovieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieViewController.xib; sourceTree = "<group>"; };
@@ -1143,6 +1168,56 @@
 			path = Moobeez;
 			sourceTree = "<group>";
 		};
+		6428B89918A39F2A00E1A904 /* Tv Watched View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6428B89418A39F2500E1A904 /* TvWatchedViewController.h */,
+				6428B89518A39F2500E1A904 /* TvWatchedViewController.m */,
+				6428B89618A39F2500E1A904 /* TvWatchedViewController.xib */,
+			);
+			name = "Tv Watched View Controller";
+			sourceTree = "<group>";
+		};
+		6428B89F18A3A37000E1A904 /* Seasons View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6428B89A18A3A36600E1A904 /* SeasonsViewController.h */,
+				6428B89B18A3A36600E1A904 /* SeasonsViewController.m */,
+				6428B89C18A3A36600E1A904 /* SeasonsViewController.xib */,
+			);
+			name = "Seasons View Controller";
+			sourceTree = "<group>";
+		};
+		6428B8A518A3E75300E1A904 /* Season Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6428B8A018A3E74E00E1A904 /* SeasonCell.h */,
+				6428B8A118A3E74E00E1A904 /* SeasonCell.m */,
+				64290E6F18A43629009E6B04 /* SeasonCell.xib */,
+			);
+			name = "Season Cell";
+			sourceTree = "<group>";
+		};
+		64290E7618A4607A009E6B04 /* Episodes View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64290E7118A46074009E6B04 /* EpisodesViewController.h */,
+				64290E7218A46074009E6B04 /* EpisodesViewController.m */,
+				64290E7318A46074009E6B04 /* EpisodesViewController.xib */,
+			);
+			name = "Episodes View Controller";
+			sourceTree = "<group>";
+		};
+		64290E7C18A46286009E6B04 /* Episode Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64290E7718A4627E009E6B04 /* EpisodeCell.h */,
+				64290E7818A4627E009E6B04 /* EpisodeCell.m */,
+				64290E7918A4627E009E6B04 /* EpisodeCell.xib */,
+			);
+			name = "Episode Cell";
+			sourceTree = "<group>";
+		};
 		642CA8EF181542FD00A293E4 /* Movie View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1328,6 +1403,8 @@
 				64A8AD73188F39B900DBECD7 /* Feature Movies Cell */,
 				64A8AD791890201700DBECD7 /* Movie Poster View */,
 				64646C60189415CB007926FE /* Movie Cell */,
+				6428B8A518A3E75300E1A904 /* Season Cell */,
+				64290E7C18A46286009E6B04 /* Episode Cell */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -2291,6 +2368,9 @@
 			isa = PBXGroup;
 			children = (
 				64D7414A189D222A0011C39A /* Tv View Controller */,
+				6428B89918A39F2A00E1A904 /* Tv Watched View Controller */,
+				6428B89F18A3A37000E1A904 /* Seasons View Controller */,
+				64290E7618A4607A009E6B04 /* Episodes View Controller */,
 			);
 			name = "Tv Detail Screen";
 			sourceTree = "<group>";
@@ -2552,12 +2632,15 @@
 				64F25A181827EC02005AB9F8 /* description_mask.png in Resources */,
 				64646C6818942973007926FE /* MoviesHeaderView.xib in Resources */,
 				64DC8C191817215E002C11D8 /* toolbox_down_arrow.png in Resources */,
+				64290E7518A46074009E6B04 /* EpisodesViewController.xib in Resources */,
 				64B2AB8F1808452700E02E2F /* MoviesViewController.xib in Resources */,
+				6428B89818A39F2500E1A904 /* TvWatchedViewController.xib in Resources */,
 				64CA538A1823E6A9000699C5 /* empty_stars_big_white@2x.png in Resources */,
 				64A8AD68188EC3D800DBECD7 /* YouTubeViewController.xib in Resources */,
 				649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */,
 				644121F8181C351400260497 /* share_button@2x.png in Resources */,
 				64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */,
+				6428B89E18A3A36600E1A904 /* SeasonsViewController.xib in Resources */,
 				64646C5C1892BF3C007926FE /* featured_cells_header@2x.png in Resources */,
 				64648EDD1829956200365EC7 /* ActorViewController.xib in Resources */,
 				649C3A781818068F0000A34C /* full_stars_big@2x.png in Resources */,
@@ -2566,6 +2649,7 @@
 				64412223181D3D7F00260497 /* CharacterCell.xib in Resources */,
 				64DC8C1B1817215E002C11D8 /* toolbox_line.png in Resources */,
 				64177870180C8A7400CDFA25 /* full_stars_small@2x.png in Resources */,
+				64290E7B18A4627E009E6B04 /* EpisodeCell.xib in Resources */,
 				64648ED81829323F00365EC7 /* CharacterTableCell.xib in Resources */,
 				64CA538F1823ECDC000699C5 /* SearchNewMovieViewController.xib in Resources */,
 				64177867180C3B5A00CDFA25 /* default_image.png in Resources */,
@@ -2573,6 +2657,7 @@
 				64DC8C121817137F002C11D8 /* back_button@2x.png in Resources */,
 				64CA539A1823F8E1000699C5 /* SearchResultCell.xib in Resources */,
 				64F25A151827D32C005AB9F8 /* TextViewController.xib in Resources */,
+				64290E7018A43629009E6B04 /* SeasonCell.xib in Resources */,
 				6417786F180C8A7400CDFA25 /* full_stars_small.png in Resources */,
 				64646C5B1892BF3C007926FE /* featured_cells_header.png in Resources */,
 				64DC8C1C1817215E002C11D8 /* toolbox_line@2x.png in Resources */,
@@ -2708,6 +2793,7 @@
 				64B9F5BF1822A3F0002E322F /* GPUImageBulgeDistortionFilter.m in Sources */,
 				64B9F5D11822A3F0002E322F /* GPUImageDilationFilter.m in Sources */,
 				64B2AB7318083CBF00E02E2F /* ImageView+Tmdb.m in Sources */,
+				64290E7A18A4627E009E6B04 /* EpisodeCell.m in Sources */,
 				64B2AB7418083CBF00E02E2F /* UIColor+Moobeez.m in Sources */,
 				64B9F5F01822A3F0002E322F /* GPUImageHueFilter.m in Sources */,
 				64086604180B6D2E00725CE4 /* Database.m in Sources */,
@@ -2727,6 +2813,7 @@
 				64B9F5F41822A3F0002E322F /* GPUImageKuwaharaRadius3Filter.m in Sources */,
 				64B9F5DF1822A3F0002E322F /* GPUImageGammaFilter.m in Sources */,
 				64D74166189FF7720011C39A /* Cache.m in Sources */,
+				6428B89D18A3A36600E1A904 /* SeasonsViewController.m in Sources */,
 				649C3A9518182FD30000A34C /* CharacterCell.m in Sources */,
 				64B9F6061822A3F0002E322F /* GPUImageMosaicFilter.m in Sources */,
 				64B2AB6A18083CBF00E02E2F /* SBJsonStreamParserState.m in Sources */,
@@ -2749,6 +2836,7 @@
 				64A8AD781890201400DBECD7 /* MoviePosterView.m in Sources */,
 				640865FD180B6AF600725CE4 /* NSMutableDictionary+SQL.m in Sources */,
 				64B2AB5B18083CBF00E02E2F /* NSFileManager+ExtraAtributtes.m in Sources */,
+				6428B8A318A3E74E00E1A904 /* SeasonCell.m in Sources */,
 				64B9F6461822A3F0002E322F /* GPUImageUnsharpMaskFilter.m in Sources */,
 				64B9F64C1822A3F0002E322F /* GPUImageXYDerivativeFilter.m in Sources */,
 				64F1DED2189AB68E00F2F88D /* TmdbTvSeason.m in Sources */,
@@ -2769,6 +2857,7 @@
 				64B2AB5818083CBF00E02E2F /* NSDate+Calculator.m in Sources */,
 				640865EA180B4FC200725CE4 /* URLParameters.m in Sources */,
 				64B9F6501822A3F0002E322F /* GPUImagePicture.m in Sources */,
+				6428B89718A39F2500E1A904 /* TvWatchedViewController.m in Sources */,
 				64B9F60E1822A3F0002E322F /* GPUImageNormalBlendFilter.m in Sources */,
 				64B9F6471822A3F0002E322F /* GPUImageVideoCamera.m in Sources */,
 				64B9F60D1822A3F0002E322F /* GPUImageNonMaximumSuppressionFilter.m in Sources */,
@@ -2831,6 +2920,7 @@
 				64B9F6421822A3F0002E322F /* GPUImageTwoInputFilter.m in Sources */,
 				64B9F6171822A3F0002E322F /* GPUImagePixellatePositionFilter.m in Sources */,
 				64B9F64D1822A3F0002E322F /* GPUImageZoomBlurFilter.m in Sources */,
+				64290E7418A46074009E6B04 /* EpisodesViewController.m in Sources */,
 				64B9F6511822A3F0002E322F /* GPUImageView.m in Sources */,
 				64B9F5CD1822A3F0002E322F /* GPUImageCrosshairGenerator.m in Sources */,
 				64CA53971823F8C6000699C5 /* SearchResultCell.m in Sources */,

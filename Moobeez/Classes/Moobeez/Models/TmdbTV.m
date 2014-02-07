@@ -99,7 +99,10 @@
     if (tmdbDictionary[@"seasons"]) {
         self.seasons = [[NSMutableArray alloc] init];
         for (NSMutableDictionary* seasonsDictionary in tmdbDictionary[@"seasons"]) {
-            [self.seasons addObject:[[TmdbTvSeason alloc] initWithTmdbDictionary:seasonsDictionary]];
+            TmdbTvSeason* season = [[TmdbTvSeason alloc] initWithTmdbDictionary:seasonsDictionary];
+            if (season.seasonNumber > 0) {
+                [self.seasons addObject:season];
+            }
         }
     }
     

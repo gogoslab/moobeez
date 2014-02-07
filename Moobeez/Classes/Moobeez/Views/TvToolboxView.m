@@ -49,6 +49,9 @@
     [self.castCollectionView registerNib:[UINib nibWithNibName:@"CharacterCellSmall" bundle:nil] forCellWithReuseIdentifier:@"CharacterCell"];
     
     self.starsView.updateHandler = ^{ self.teebee.rating = self.starsView.rating; };
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateEpisodesSection) name:DidUpdateWatchedEpisodesNotification object:self.teebee];
+
 }
 
 - (void)setTeebee:(Teebee *)teebee {
@@ -195,20 +198,9 @@
 
                 if ([[Database sharedDatabase] watchAllEpisodes:YES forTeebee:self.teebee]) {
                     [[Database sharedDatabase] pullTeebeezEpisodesCount:self.teebee];
+                    [[Database sharedDatabase] pullSeasonsForTeebee:self.teebee];
 
-                    self.watchedButton.selected = YES;
-                    
-                    if (self.teebee.rating < 0) {
-                        self.teebee.rating = 2.5;
-                    }
-                    [self refreshTeebeeInfo];
-                    
-                    [self.cells replaceObjectAtIndex:2 withObject:@[self.starsCell]];
-                    
-                    [self.tableView beginUpdates];
-                    [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
-                    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
-                    [self.tableView endUpdates];
+                    [self updateEpisodesSection];
                 }
                 else {
                     [Alert showAlertViewWithTitle:@"Error" message:@"An error occured while trying to update the database, please try again" buttonClickedCallback:^(NSInteger buttonIndex) {} cancelButtonTitle:@"Ok" otherButtonTitles:nil];
@@ -221,18 +213,9 @@
             if (buttonIndex == 1) {
                 if ([[Database sharedDatabase] watchAllEpisodes:NO forTeebee:self.teebee]) {
                     [[Database sharedDatabase] pullTeebeezEpisodesCount:self.teebee];
-                    
-                    self.watchedButton.selected = NO;
-                    
-                    self.teebee.rating = -1;
-                    [self refreshTeebeeInfo];
-                    
-                    [self.cells replaceObjectAtIndex:2 withObject:@[self.episodesCell]];
-                    
-                    [self.tableView beginUpdates];
-                    [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
-                    [self.tableView insertSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
-                    [self.tableView endUpdates];
+                    [[Database sharedDatabase] pullSeasonsForTeebee:self.teebee];
+
+                    [self updateEpisodesSection];
                 }
                 else {
                     [Alert showAlertViewWithTitle:@"Error" message:@"An error occured while trying to update the database, please try again" buttonClickedCallback:^(NSInteger buttonIndex) {} cancelButtonTitle:@"Ok" otherButtonTitles:nil];
@@ -265,5 +248,40 @@
     
     self.starsView.emptyStarsImageView.highlighted = self.isLightInterface;
 
+}
+
+- (void)updateEpisodesSection {
+    
+    BOOL showWatched = self.teebee.watchedEpisodesCount > 0;
+    
+    self.watchedButton.selected = showWatched;
+    if (showWatched && self.teebee.rating < 0) {
+        self.teebee.rating = 2.5;
+    }
+    if (!showWatched) {
+        self.teebee.rating = -1;
+    }
+    
+    if (!showWatched) {
+        [self.cells replaceObjectAtIndex:2 withObject:@[self.episodesCell]];
+        
+        [self.tableView beginUpdates];
+        [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView insertSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
+    }
+    else {
+        
+        [self.cells replaceObjectAtIndex:2 withObject:@[self.starsCell]];
+        
+        [self.tableView beginUpdates];
+        [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView insertSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView endUpdates];
+
+    }
+    
+    [self refreshTeebeeInfo];
+    
 }
 @end

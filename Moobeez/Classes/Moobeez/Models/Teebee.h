@@ -28,6 +28,7 @@ typedef enum TeebeeType {
 @property (readwrite, nonatomic) NSInteger notWatchedEpisodesCount;
 
 @property (strong, nonatomic) NSMutableDictionary* seasons;
+@property (strong, nonatomic) NSMutableDictionary* episodes;
 
 + (id)teebeeWithTmdbTV:(TmdbTV*)tv;
 - (void)addEpisodesCountFromDictionary:(NSDictionary*)dictionary;

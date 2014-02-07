@@ -48,7 +48,11 @@
 - (Teebee*)teebeeWithTmdbId:(NSInteger)tmdbId;
 - (BOOL)pullTeebeezEpisodesCount:(Teebee*)teebee;
 - (BOOL)watchAllEpisodes:(BOOL)watch forTeebee:(Teebee*)teebee;
+- (BOOL)watchAllEpisodes:(BOOL)watch forTeebee:(Teebee*)teebee inSeason:(NSInteger)seasonNumber;
+- (BOOL)watch:(BOOL)watch episode:(TeebeeEpisode*)episode forTeebee:(Teebee*)teebee;
 - (BOOL)saveTeebee:(Teebee*)teebee;
+- (BOOL)pullSeasonsForTeebee:(Teebee*)teebee;
+- (BOOL)pullEpisodesForTeebee:(Teebee*)teebee inSeason:(NSInteger)seasonNumber;
 
 - (NSMutableArray*)insertObjects:(NSArray*)objects atKeys:(NSArray*)keys intoTable:(NSString*)table;
 - (BOOL)updateColumnValues:(NSArray*)values forColumn:(NSString*)column intoTable:(NSString*)table forIds:(NSArray*)ids;

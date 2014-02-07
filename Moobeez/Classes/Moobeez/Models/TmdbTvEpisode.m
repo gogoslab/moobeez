@@ -23,7 +23,7 @@
 
 - (void)addEntriesFromTmdbDictionary:(NSDictionary *)tmdbDictionary {
     
-    if (tmdbDictionary[@"still_path"]) {
+    if (tmdbDictionary[@"still_path"] && [tmdbDictionary isKindOfClass:[NSString class]]) {
         self.posterPath = tmdbDictionary[@"still_path"];
     }
     

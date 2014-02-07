@@ -46,9 +46,21 @@
     if (tmdbDictionary[@"episodes"]) {
         self.episodes = [[NSMutableArray alloc] init];
         for (NSMutableDictionary* episodeDictionary in tmdbDictionary[@"episodes"]) {
-            [self.episodes addObject:[[TmdbTvEpisode alloc] initWithTmdbDictionary:episodeDictionary]];
+            TmdbTvEpisode* episode = [[TmdbTvEpisode alloc] initWithTmdbDictionary:episodeDictionary];
+            episode.seasonNumber = self.seasonNumber;
+            [self.episodes addObject:episode];
         }
     }
+}
+
+- (NSString*)name {
+    
+    if (!_name) {
+        return [NSString stringWithFormat:@"Season %ld", (long) self.seasonNumber];
+    }
+    
+    return _name;
+    
 }
 
 @end

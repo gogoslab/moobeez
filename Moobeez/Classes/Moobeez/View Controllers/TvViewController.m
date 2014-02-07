@@ -26,11 +26,10 @@
 
 @property (strong, nonatomic) TextViewController* descriptionViewController;
 @property (strong, nonatomic) CastViewController* castViewController;
+@property (strong, nonatomic) TvWatchedViewController* tvWatchedViewController;
 
 @property (weak, nonatomic) IBOutlet BubbleUpsideDownPopupView *shareBubbleView;
 @property (weak, nonatomic) IBOutlet UIView *shareButtonsView;
-
-
 
 @end
 
@@ -220,7 +219,27 @@
     
 }
 
+#pragma mark - Episodes
+
 - (IBAction)episodesButtonPressed:(id)sender {
+    
+    self.tvWatchedViewController.teebee = self.teebee;
+    self.tvWatchedViewController.tv = self.tmdbTv;
+
+    [self.view addSubview:self.tvWatchedViewController.view];
+    self.tvWatchedViewController.sourceButton = sender;
+    [self.tvWatchedViewController startAnimation];
+
+}
+
+- (TvWatchedViewController*)tvWatchedViewController {
+    if (!_tvWatchedViewController) {
+        _tvWatchedViewController = [[TvWatchedViewController alloc] initWithNibName:@"TvWatchedViewController" bundle:nil];
+        self.tvWatchedViewController.teebee = self.teebee;
+        self.tvWatchedViewController.tv = self.tmdbTv;
+        _tvWatchedViewController.view.frame = self.view.bounds;
+    }
+    return _tvWatchedViewController;
 }
 
 #pragma mark - Share

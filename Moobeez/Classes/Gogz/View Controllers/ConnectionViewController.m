@@ -34,8 +34,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-	self.connectionsManager = [[ConnectionsManager alloc] init];
+}
+
+- (ConnectionsManager*)connectionsManager {
+    if (!_connectionsManager) {
+        _connectionsManager = [[ConnectionsManager alloc] init];
+    }
+    return _connectionsManager;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -48,8 +48,6 @@
     if (dictionary[@"notWatchedEpisodesCount"]) {
         self.notWatchedEpisodesCount = [dictionary[@"notWatchedEpisodesCount"] integerValue];
     }
-
-    
 }
 
 - (NSMutableDictionary*)databaseDictionary {
@@ -92,8 +90,8 @@
 
 - (void)updateEpisodes {
     
-    if (!self.seasons) {
-        self.seasons = [[NSMutableDictionary alloc] init];
+    if (!self.episodes) {
+        self.episodes = [[NSMutableDictionary alloc] init];
     }
     
     TvConnection* connection = [[TvConnection alloc] initWithTmdbId:self.tmdbId completionHandler:^(WebserviceResultCode code, TmdbTV *tv) {
@@ -126,11 +124,11 @@
         return;
     }
     
-    NSMutableDictionary* seasonDictionary = self.seasons[StringId(season.seasonNumber)];
+    NSMutableDictionary* seasonDictionary = self.episodes[StringId(season.seasonNumber)];
     
     if (!seasonDictionary) {
         seasonDictionary = [[NSMutableDictionary alloc] init];
-        self.seasons[StringId(season.seasonNumber)] = seasonDictionary;
+        self.episodes[StringId(season.seasonNumber)] = seasonDictionary;
     }
     
     TvSeasonConnection* connection = [[TvSeasonConnection alloc] initWithTmdbId:self.tmdbId seasonNumber:season.seasonNumber completionHandler:^(WebserviceResultCode code, TmdbTvSeason *season) {
@@ -181,7 +179,7 @@
     NSMutableArray* updatedEpisodesIds = [[NSMutableArray alloc] init];
     NSMutableArray* updatedEpisodes = [[NSMutableArray alloc] init];
     
-    for (NSMutableDictionary* season in self.seasons.allValues) {
+    for (NSMutableDictionary* season in self.episodes.allValues) {
         
         for (TeebeeEpisode* episode in season.allValues) {
             
