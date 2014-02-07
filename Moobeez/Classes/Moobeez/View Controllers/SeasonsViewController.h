@@ -13,8 +13,8 @@
 
 @interface SeasonsViewController : ViewController
 
-@property (strong, nonatomic) Teebee* teebee;
-@property (strong, nonatomic) TmdbTV* tv;
+@property (weak, nonatomic) Teebee* teebee;
+@property (weak, nonatomic) TmdbTV* tv;
 
 - (void)reloadData;
 

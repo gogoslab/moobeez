@@ -24,7 +24,7 @@
     
     self.customHandler = handler;
     
-    if ([Cache cachedPersons][StringId(self.tmdbId)]) {
+    if ([Cache cachedPersons][StringInteger(self.tmdbId)]) {
         [self performSelector:@selector(cachedResponse) withObject:nil afterDelay:0.01];
         return [self initFakeConnection];
     }
@@ -38,7 +38,7 @@
         
             TmdbPerson* tmdbPerson = [[TmdbPerson alloc] initWithTmdbDictionary:resultDictionary];
         
-            [Cache cachedPersons][StringId(tmdbId)] = tmdbPerson;
+            [Cache cachedPersons][StringInteger(tmdbId)] = tmdbPerson;
             
             self.customHandler(code, tmdbPerson);
         }
@@ -57,7 +57,7 @@
 - (void)cachedResponse {
     
     [self.activityIndicator stopAnimating];
-    self.customHandler(WebserviceResultOk, [Cache cachedPersons][StringId(self.tmdbId)]);
+    self.customHandler(WebserviceResultOk, [Cache cachedPersons][StringInteger(self.tmdbId)]);
     
 }
 

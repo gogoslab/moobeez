@@ -14,9 +14,9 @@
 
 @interface EpisodeCell : UITableViewCell
 
-@property (strong, nonatomic) TmdbTvEpisode* episode;
-@property (strong, nonatomic) Teebee* teebee;
-@property (strong, nonatomic) TeebeeEpisode* teebeeEpisode;
+@property (weak, nonatomic) TmdbTvEpisode* episode;
+@property (weak, nonatomic) Teebee* teebee;
+@property (weak, nonatomic) TeebeeEpisode* teebeeEpisode;
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 

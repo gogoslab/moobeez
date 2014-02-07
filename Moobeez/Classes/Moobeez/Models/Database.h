@@ -27,6 +27,8 @@
 #import "TmdbTvEpisode.h"
 
 #define DatabaseDidReloadNotification @"DidReloadDatabaseNotification"
+#define MoobeezDidReloadNotification @"MoobeezDidReloadNotification"
+#define TeebeezDidReloadNotification @"TeebeezDidReloadNotification"
 
 @interface Database : NSObject {
     sqlite3 *database;

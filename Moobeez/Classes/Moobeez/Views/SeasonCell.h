@@ -13,8 +13,8 @@
 
 @interface SeasonCell : UITableViewCell
 
-@property (strong, nonatomic) TmdbTvSeason* season;
-@property (strong, nonatomic) Teebee* teebee;
+@property (weak, nonatomic) TmdbTvSeason* season;
+@property (weak, nonatomic) Teebee* teebee;
 @property (strong, nonatomic) NSNumber* numberOfEpisodesWatched;
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;

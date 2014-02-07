@@ -11,9 +11,6 @@
 
 @interface EpisodesViewController () <UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-@property (weak, nonatomic) IBOutlet UILabel *seasonLabel;
 @end
 
 @implementation EpisodesViewController
@@ -24,14 +21,7 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"EpisodeCell" bundle:nil] forCellReuseIdentifier:@"EpisodeCell"];
     
-    self.seasonLabel.text = self.season.name;
-
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    [self.tableView reloadData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:DidUpdateWatchedEpisodesNotification object:self.teebee];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,7 +49,7 @@
     EpisodeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EpisodeCell"];
     
     cell.episode = self.season.episodes[indexPath.row];
-    cell.teebeeEpisode = self.teebee.episodes[StringId(self.season.seasonNumber)][StringId(cell.episode.episodeNumber)];
+    cell.teebeeEpisode = self.teebee.episodes[StringInteger(self.season.seasonNumber)][StringInteger(cell.episode.episodeNumber)];
     cell.teebee = self.teebee;
     
     return cell;
@@ -69,4 +59,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)reloadData {
+
+    [[Database sharedDatabase] pullEpisodesForTeebee:self.teebee inSeason:self.season.seasonNumber];
+    [self.tableView reloadData];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DidUpdateWatchedEpisodesNotification object:self.teebee];
+}
 @end

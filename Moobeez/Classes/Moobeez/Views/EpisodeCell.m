@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet ImageView *posterImageView;
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *episodeLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *detailsLabel;
 
@@ -39,7 +40,8 @@
     _episode = episode;
     
     [self.posterImageView loadImageWithPath:episode.posterPath andWidth:92 completion:^(BOOL didLoadImage) {}];
-    self.titleLabel.text = [NSString stringWithFormat:@"%ld. %@", episode.episodeNumber, episode.name];
+    self.titleLabel.text = episode.name;
+    self.episodeLabel.text = StringInteger(episode.episodeNumber);
 
     if (episode.description) {
         self.detailsLabel.text = episode.description;
@@ -63,24 +65,25 @@
     
     if (!self.watchButton.selected) {
         
-        if ([[Database sharedDatabase] watch:YES episode:self.teebeeEpisode forTeebee:self.teebee]) {
-            self.teebee.watchedEpisodesCount++;
-            self.teebee.notWatchedEpisodesCount--;
-            self.teebee.seasons[StringId(self.teebeeEpisode.seasonNumber)] = @([self.teebee.seasons[StringId(self.teebeeEpisode.seasonNumber)] integerValue] + 1);
-            
-            self.watchButton.selected = YES;
-            
-            [[NSNotificationCenter defaultCenter] postNotificationName:DidUpdateWatchedEpisodesNotification object:self.teebee];
+        if (self.teebee.id == -1) {
+            if ([self.teebee save]) {
+                [self.teebee updateEpisodesWithCompletion:^{
+                    [self watchEpisode];
+                }];
+            }
+            else {
+                [Alert showDatabaseUpdateErrorAlert];
+            }
         }
         else {
-            [Alert showAlertViewWithTitle:@"Error" message:@"An error occured while trying to update the database, please try again" buttonClickedCallback:^(NSInteger buttonIndex) {} cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [self watchEpisode];
         }
     }
     else {
         if ([[Database sharedDatabase] watch:NO episode:self.teebeeEpisode forTeebee:self.teebee]) {
             self.teebee.watchedEpisodesCount--;
             self.teebee.notWatchedEpisodesCount++;
-            self.teebee.seasons[StringId(self.teebeeEpisode.seasonNumber)] = @([self.teebee.seasons[StringId(self.teebeeEpisode.seasonNumber)] integerValue] - 1);
+            self.teebee.seasons[StringInteger(self.teebeeEpisode.seasonNumber)] = @([self.teebee.seasons[StringInteger(self.teebeeEpisode.seasonNumber)] integerValue] - 1);
             
             self.watchButton.selected = NO;
             
@@ -91,5 +94,23 @@
         }
     }
 }
+
+- (void)watchEpisode {
+    
+    if ([[Database sharedDatabase] watch:YES episode:self.teebeeEpisode forTeebee:self.teebee])
+    {
+        self.teebee.watchedEpisodesCount++;
+        self.teebee.notWatchedEpisodesCount--;
+        self.teebee.seasons[StringInteger(self.teebeeEpisode.seasonNumber)] = @([self.teebee.seasons[StringInteger(self.teebeeEpisode.seasonNumber)] integerValue] + 1);
+        
+        self.watchButton.selected = YES;
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:DidUpdateWatchedEpisodesNotification object:self.teebee];
+    }
+    else {
+        [Alert showDatabaseUpdateErrorAlert];
+    }
+}
+
 
 @end

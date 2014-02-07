@@ -58,7 +58,7 @@ enum CollectionSections {
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"EmptyCell"];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"SearchCell"];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTeebeez) name:DatabaseDidReloadNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTeebeez) name:TeebeezDidReloadNotification object:nil];
     
     UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
     addButton.tintColor = [UIColor whiteColor];
@@ -220,6 +220,9 @@ enum CollectionSections {
         TvConnection* connection = [[TvConnection alloc] initWithTmdbId:teebee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbTV *tv) {
             
             if (code == WebserviceResultOk) {
+                
+                cell.notWatchedEpisodesLabel.hidden = YES;
+                
                 [self.view addSubview:self.animationCell];
 
                 self.animationCell.frame = [self.view convertRect:cell.frame fromView:cell.superview];
@@ -291,17 +294,18 @@ enum CollectionSections {
             return;
         }
         
+        if (self.selectedType == TeebeeToSeeType && teebee.notWatchedEpisodesCount == 0) {
+            [self.teebeez removeObject:teebee];
+            [self applyFilter];
+            [self.collectionView reloadData];
+            [self.animationCell removeFromSuperview];
+            return;
+        }
+        
         // new moobee
         if (![self.teebeez containsObject:teebee]) {
             [self.teebeez addObject:teebee];
         }
-        
-//        if (self.selectedType != MoobeeOnWatchlistType) {
-//            [self.teebeez sortUsingSelector:@selector(compareByDate:)];
-//        }
-//        else {
-//            [self.teebeez sortUsingSelector:@selector(compareById:)];
-//        }
         
         [self applyFilter];
         

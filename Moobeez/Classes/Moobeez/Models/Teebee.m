@@ -12,6 +12,7 @@
 @interface Teebee ()
 
 @property (strong, nonatomic) NSMutableArray* seasonsToUpdate;
+@property (copy, nonatomic) EmptyHandler updateEpisodesHandler;
 
 @end
 
@@ -88,7 +89,9 @@
     
 }
 
-- (void)updateEpisodes {
+- (void)updateEpisodesWithCompletion:(EmptyHandler)completion {
+    
+    self.updateEpisodesHandler = completion;
     
     if (!self.episodes) {
         self.episodes = [[NSMutableDictionary alloc] init];
@@ -124,11 +127,11 @@
         return;
     }
     
-    NSMutableDictionary* seasonDictionary = self.episodes[StringId(season.seasonNumber)];
+    NSMutableDictionary* seasonDictionary = self.episodes[StringInteger(season.seasonNumber)];
     
     if (!seasonDictionary) {
         seasonDictionary = [[NSMutableDictionary alloc] init];
-        self.episodes[StringId(season.seasonNumber)] = seasonDictionary;
+        self.episodes[StringInteger(season.seasonNumber)] = seasonDictionary;
     }
     
     TvSeasonConnection* connection = [[TvSeasonConnection alloc] initWithTmdbId:self.tmdbId seasonNumber:season.seasonNumber completionHandler:^(WebserviceResultCode code, TmdbTvSeason *season) {
@@ -137,12 +140,12 @@
             
             for (TmdbTvEpisode* episode in season.episodes) {
                 
-                TeebeeEpisode* teebeeEpisode = seasonDictionary[StringId(episode.episodeNumber)];
+                TeebeeEpisode* teebeeEpisode = seasonDictionary[StringInteger(episode.episodeNumber)];
                 
                 if (!teebeeEpisode) {
                     teebeeEpisode = [[TeebeeEpisode alloc] init];
                     
-                    seasonDictionary[StringId(episode.episodeNumber)] = teebeeEpisode;
+                    seasonDictionary[StringInteger(episode.episodeNumber)] = teebeeEpisode;
                     
                     teebeeEpisode.seasonNumber = season.seasonNumber;
                     teebeeEpisode.episodeNumber = episode.episodeNumber;
@@ -187,7 +190,7 @@
                 
                 NSMutableDictionary* episodeDictionary = episode.databaseDictionary;
                 
-                episodeDictionary[@"teebeeId"] = StringId(self.id);
+                episodeDictionary[@"teebeeId"] = StringInteger(self.id);
                 
                 [insertEpisodesDictionaries addObject:episodeDictionary];
                 [insertEpisodes addObject:episode];
@@ -195,7 +198,7 @@
             else if (episode.updated) {
                 
                 [updatedEpisodesDates addObject:episode.databaseDictionary[@"airDate"]];
-                [updatedEpisodesIds addObject:StringId(episode.id)];
+                [updatedEpisodesIds addObject:StringInteger(episode.id)];
                 [updatedEpisodes addObject:episode];
             }
         }
@@ -220,6 +223,10 @@
                 episode.updated = NO;
             }
         }
+    }
+    
+    if (self.updateEpisodesHandler) {
+        self.updateEpisodesHandler();
     }
 }
 

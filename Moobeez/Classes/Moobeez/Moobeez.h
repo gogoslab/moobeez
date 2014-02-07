@@ -27,6 +27,7 @@
 
 #import "Settings.h"
 
+#import "Alert+Moobeez.h"
 
 #pragma mark - View Controllers
 

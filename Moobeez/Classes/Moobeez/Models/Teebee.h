@@ -7,6 +7,7 @@
 //
 
 #import "Bee.h"
+#import "Constants.h"
 
 typedef enum TeebeeType {
     
@@ -32,6 +33,6 @@ typedef enum TeebeeType {
 
 + (id)teebeeWithTmdbTV:(TmdbTV*)tv;
 - (void)addEpisodesCountFromDictionary:(NSDictionary*)dictionary;
-- (void)updateEpisodes;
+- (void)updateEpisodesWithCompletion:(EmptyHandler)completion;
 
 @end

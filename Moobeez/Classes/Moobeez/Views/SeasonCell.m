@@ -31,7 +31,15 @@
     [self.watchButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_watched_show" ofType:@"png"]] forState:UIControlStateNormal];
     [self.watchButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_watched_show_selected" ofType:@"png"]] forState:UIControlStateSelected];
 
+}
 
+- (void)setTeebee:(Teebee *)teebee {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DidUpdateWatchedEpisodesNotification object:_teebee];
+    
+    _teebee = teebee;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadWatched) name:DidUpdateWatchedEpisodesNotification object:_teebee];
 }
 
 - (void)setNumberOfEpisodesWatched:(NSNumber *)numberOfEpisodesWatched {
@@ -102,15 +110,20 @@
         [Alert showAlertViewWithTitle:@"Attention" message:[NSString stringWithFormat:@"This action will mark all the episodes that aired in season %ld as \"Watched\", are you sure?", (long)self.season.seasonNumber] buttonClickedCallback:^(NSInteger buttonIndex) {
             if (buttonIndex == 1) {
                 
-                if ([[Database sharedDatabase] watchAllEpisodes:YES forTeebee:self.teebee inSeason:self.season.seasonNumber]) {
-                    [[Database sharedDatabase] pullTeebeezEpisodesCount:self.teebee];
-                    [[Database sharedDatabase] pullSeasonsForTeebee:self.teebee];
-                    self.numberOfEpisodesWatched = self.teebee.seasons[StringId(self.season.seasonNumber)];
-                    [[NSNotificationCenter defaultCenter] postNotificationName:DidUpdateWatchedEpisodesNotification object:self.teebee];
+                if (self.teebee.id == -1) {
+                    if ([self.teebee save]) {
+                        [self.teebee updateEpisodesWithCompletion:^{
+                            [self watchAllEpisodes];
+                        }];
+                    }
+                    else {
+                        [Alert showDatabaseUpdateErrorAlert];
+                    }
                 }
                 else {
-                    [Alert showAlertViewWithTitle:@"Error" message:@"An error occured while trying to update the database, please try again" buttonClickedCallback:^(NSInteger buttonIndex) {} cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                    [self watchAllEpisodes];
                 }
+
             }
         } cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     }
@@ -120,16 +133,37 @@
                 if ([[Database sharedDatabase] watchAllEpisodes:NO forTeebee:self.teebee inSeason:self.season.seasonNumber]) {
                     [[Database sharedDatabase] pullTeebeezEpisodesCount:self.teebee];
                     [[Database sharedDatabase] pullSeasonsForTeebee:self.teebee];
-                    self.numberOfEpisodesWatched = self.teebee.seasons[StringId(self.season.seasonNumber)];
                     [[NSNotificationCenter defaultCenter] postNotificationName:DidUpdateWatchedEpisodesNotification object:self.teebee];
                 }
                 else {
-                    [Alert showAlertViewWithTitle:@"Error" message:@"An error occured while trying to update the database, please try again" buttonClickedCallback:^(NSInteger buttonIndex) {} cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                    [self watchAllEpisodes];
                 }
                 
             }
         } cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     }
+}
+
+- (void)watchAllEpisodes {
+    
+    if ([[Database sharedDatabase] watchAllEpisodes:YES forTeebee:self.teebee inSeason:self.season.seasonNumber])
+    {
+        [[Database sharedDatabase] pullTeebeezEpisodesCount:self.teebee];
+        [[Database sharedDatabase] pullSeasonsForTeebee:self.teebee];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DidUpdateWatchedEpisodesNotification object:self.teebee];
+    }
+    else {
+        [Alert showDatabaseUpdateErrorAlert];
+    }
+}
+
+
+- (void)reloadWatched {
+    self.numberOfEpisodesWatched = self.teebee.seasons[StringInteger(self.season.seasonNumber)];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DidUpdateWatchedEpisodesNotification object:self.teebee];
 }
 
 @end

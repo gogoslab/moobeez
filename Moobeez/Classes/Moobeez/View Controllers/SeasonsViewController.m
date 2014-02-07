@@ -13,6 +13,11 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong, nonatomic) EpisodesViewController* episodesViewController;
+@property (strong, nonatomic) UITableViewCell* episodesCell;
+
+@property (readwrite, nonatomic) NSInteger selectedSection;
+
 @end
 
 @implementation SeasonsViewController
@@ -20,6 +25,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    _selectedSection = -1;
     
     [self.tableView registerNib:[UINib nibWithNibName:@"SeasonCell" bundle:nil] forCellReuseIdentifier:@"SeasonCell"];
 
@@ -48,18 +55,35 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    return (self.selectedSection == section ? 2 : 1);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SeasonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SeasonCell"];
+    if (indexPath.row == 0) {
+        SeasonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SeasonCell"];
+        
+        cell.numberOfEpisodesWatched = self.teebee.seasons[StringInteger([self.tv.seasons[indexPath.section] seasonNumber])];
+        cell.season = self.tv.seasons[indexPath.section];
+        cell.teebee = self.teebee;
+        
+        return cell;
+    }
+    else {
+        return self.episodesCell;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    cell.numberOfEpisodesWatched = self.teebee.seasons[StringId([self.tv.seasons[indexPath.section] seasonNumber])];
-    cell.season = self.tv.seasons[indexPath.section];
-    cell.teebee = self.teebee;
+    NSInteger rowHeight = 70;
     
-    return cell;
+    if (indexPath.row == 0) {
+        return rowHeight;
+    }
+    else {
+        return tableView.height - rowHeight;
+    }
 }
 
 
@@ -68,20 +92,24 @@
 // In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    EpisodesViewController *viewController = [[EpisodesViewController alloc] initWithNibName:@"EpisodesViewController" bundle:nil];
-
-    // Pass the selected object to the new view controller.
-    
-    viewController.teebee = self.teebee;
-    viewController.season = self.tv.seasons[indexPath.section];
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:viewController animated:YES];
+    if (indexPath.section == self.selectedSection) {
+        self.selectedSection = -1;
+        [tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationFade];
+        tableView.scrollEnabled = YES;
+    }
+    else {
+        self.selectedSection = indexPath.section;
+        self.episodesViewController.season = self.tv.seasons[indexPath.section];
+        [[Database sharedDatabase] pullEpisodesForTeebee:self.teebee inSeason:self.episodesViewController.season.seasonNumber];
+        [self.episodesViewController.tableView reloadData];
+        
+        [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationFade];
+        
+        tableView.scrollEnabled = NO;
+        
+        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    }
 }
- 
-
 
 - (void)reloadData {
     
@@ -110,6 +138,31 @@
             [self.connectionsManager startConnection:connection];
         }
     }
+}
+
+- (UITableViewCell*)episodesCell {
+    
+    if (!_episodesCell) {
+        _episodesCell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EpisodesCell"];
+        _episodesCell.backgroundColor = [UIColor clearColor];
+        _episodesCell.frame = CGRectMake(0, 0, self.tableView.width, self.tableView.height - 70);
+        
+        self.episodesViewController.view.frame = _episodesCell.bounds;
+        [_episodesCell addSubview:self.episodesViewController.view];
+
+    }
+    
+    return _episodesCell;
+}
+
+- (EpisodesViewController*)episodesViewController {
+    
+    if (!_episodesViewController) {
+        _episodesViewController = [[EpisodesViewController alloc] initWithNibName:@"EpisodesViewController" bundle:nil];
+        _episodesViewController.teebee = self.teebee;
+    }
+    
+    return _episodesViewController;
 }
 
 @end

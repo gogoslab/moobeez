@@ -60,6 +60,7 @@ enum CollectionSections {
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"EmptyCell"];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"SearchCell"];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadMoobeez) name:MoobeezDidReloadNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadMoobeez) name:DatabaseDidReloadNotification object:nil];
     
     UIBarButtonItem* addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];

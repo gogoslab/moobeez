@@ -72,6 +72,8 @@
     
     self.addButton.hidden = (self.teebee.id != -1);
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateWatchedEpisodes) name:DidUpdateWatchedEpisodesNotification object:self.teebee];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,10 +84,12 @@
 
 - (IBAction)backButtonPressed:(id)sender {
     
+    if (self.teebee.id != -1) {
+        [self.teebee save];
+    }
+
     [self dismissViewControllerAnimated:NO completion:^{
-        if (self.teebee.id != -1) {
-            [self.teebee save];
-        }
+        
         if (self.closeHandler) {
             self.closeHandler();
         }
@@ -94,8 +98,10 @@
 
 - (IBAction)addButtonPressed:(id)sender {
     if([self.teebee save]) {
-        [self.teebee updateEpisodes];
-        self.addButton.hidden = YES;
+        [self.teebee updateEpisodesWithCompletion:^{
+            self.addButton.hidden = YES;
+        }];
+        
     }
 }
 
@@ -240,6 +246,10 @@
         _tvWatchedViewController.view.frame = self.view.bounds;
     }
     return _tvWatchedViewController;
+}
+
+- (void)didUpdateWatchedEpisodes {
+    self.addButton.hidden = (self.teebee.id != -1);
 }
 
 #pragma mark - Share

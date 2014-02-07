@@ -620,7 +620,7 @@ static Database* sharedDatabase;
     moobee.id = moobeeId;
     
     if (moobeeId != -1) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidReloadNotification object:nil userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:MoobeezDidReloadNotification object:nil userInfo:nil];
     }
     
     return (moobeeId != -1);
@@ -728,6 +728,12 @@ static Database* sharedDatabase;
         
         while (sqlite3_step(statement) == SQLITE_ROW) {
             
+            NSMutableDictionary* dictionary = [[NSMutableDictionary alloc] initWithSqlStatement:statement];
+            
+            if (![dictionary[@"ID"] length]) {
+                continue;
+            }
+            
             teebee = [[Teebee alloc] initWithDatabaseDictionary:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
             
             break;
@@ -743,7 +749,7 @@ static Database* sharedDatabase;
 
 - (BOOL)pullTeebeezEpisodesCount:(Teebee*)teebee {
     
-    NSString *query = [NSString stringWithFormat:@"SELECT SUM(CASE WHEN Episodes.watched = '0' AND Episodes.airDate < %f THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM (Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId) WHERE Teebeez.ID = '%@'",[[NSDate date] timeIntervalSince1970], StringId(teebee.id)];
+    NSString *query = [NSString stringWithFormat:@"SELECT SUM(CASE WHEN Episodes.watched = '0' AND Episodes.airDate < %f THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM (Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId) WHERE Teebeez.ID = '%@'",[[NSDate date] timeIntervalSince1970], StringInteger(teebee.id)];
     sqlite3_stmt *statement;
     
     int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
@@ -869,7 +875,7 @@ static Database* sharedDatabase;
     teebee.id = teebeeId;
     
     if (teebeeId != -1) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:DatabaseDidReloadNotification object:nil userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:TeebeezDidReloadNotification object:nil userInfo:nil];
     }
     
     return (teebeeId != -1);
@@ -878,7 +884,7 @@ static Database* sharedDatabase;
 
 - (BOOL)pullSeasonsForTeebee:(Teebee*)teebee {
     
-    NSString *query = [NSString stringWithFormat:@"SELECT seasonNumber, SUM(CASE WHEN watched = '1' THEN 1 ELSE 0 END) AS seasonWatchedEpisodes FROM Episodes WHERE teebeeId = '%@' GROUP BY seasonNumber",StringId(teebee.id)];
+    NSString *query = [NSString stringWithFormat:@"SELECT seasonNumber, SUM(CASE WHEN watched = '1' THEN 1 ELSE 0 END) AS seasonWatchedEpisodes FROM Episodes WHERE teebeeId = '%@' GROUP BY seasonNumber",StringInteger(teebee.id)];
     sqlite3_stmt *statement;
     
     int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
@@ -912,7 +918,7 @@ static Database* sharedDatabase;
 
 - (BOOL)pullEpisodesForTeebee:(Teebee*)teebee inSeason:(NSInteger)seasonNumber {
     
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM Episodes WHERE teebeeId = '%@' AND seasonNumber = '%ld'",StringId(teebee.id), (long)seasonNumber];
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM Episodes WHERE teebeeId = '%@' AND seasonNumber = '%ld'",StringInteger(teebee.id), (long)seasonNumber];
     sqlite3_stmt *statement;
     
     int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
@@ -931,13 +937,13 @@ static Database* sharedDatabase;
                 teebee.episodes = [[NSMutableDictionary alloc] init];
             }
             
-            if (!teebee.episodes[StringId(seasonNumber)]) {
-                teebee.episodes[StringId(seasonNumber)] = [[NSMutableArray alloc] init];
+            if (!teebee.episodes[StringInteger(seasonNumber)]) {
+                teebee.episodes[StringInteger(seasonNumber)] = [[NSMutableDictionary alloc] init];
             }
             
             NSMutableDictionary* episodeDictionary = [[NSMutableDictionary alloc] initWithSqlStatement:statement];
             TeebeeEpisode* episode = [[TeebeeEpisode alloc] initWithDatabaseDictionary:episodeDictionary];
-            teebee.episodes[StringId(seasonNumber)][StringId(episode.episodeNumber)] = episode;
+            teebee.episodes[StringInteger(seasonNumber)][StringInteger(episode.episodeNumber)] = episode;
             
         }
         sqlite3_finalize(statement);

@@ -13,7 +13,9 @@
 
 @interface EpisodesViewController : ViewController
 
-@property (strong, nonatomic) Teebee* teebee;
-@property (strong, nonatomic) TmdbTvSeason* season;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) Teebee* teebee;
+@property (weak, nonatomic) TmdbTvSeason* season;
 
 @end

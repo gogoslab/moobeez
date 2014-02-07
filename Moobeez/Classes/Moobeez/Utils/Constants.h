@@ -28,7 +28,7 @@
 #define WillLoadMovieNotification @"willLoadMovie"
 #define DidLoadMoviesNotification @"didLoadMovies"
 
-#define StringId(Id) [NSString stringWithFormat:@"%ld", Id]
+#define StringInteger(Integer) [NSString stringWithFormat:@"%ld", Integer]
 
 #define DidUpdateWatchedEpisodesNotification @"DidUpdateWatchedEpisodesNotification" 
 

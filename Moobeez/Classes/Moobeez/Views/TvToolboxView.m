@@ -196,14 +196,18 @@
         [Alert showAlertViewWithTitle:@"Attention" message:@"This action will mark all the episodes that aired as \"Watched\", are you sure?" buttonClickedCallback:^(NSInteger buttonIndex) {
             if (buttonIndex == 1) {
 
-                if ([[Database sharedDatabase] watchAllEpisodes:YES forTeebee:self.teebee]) {
-                    [[Database sharedDatabase] pullTeebeezEpisodesCount:self.teebee];
-                    [[Database sharedDatabase] pullSeasonsForTeebee:self.teebee];
-
-                    [self updateEpisodesSection];
+                if (self.teebee.id == -1) {
+                    if ([self.teebee save]) {
+                        [self.teebee updateEpisodesWithCompletion:^{
+                            [self watchAllEpisodes];
+                        }];
+                    }
+                    else {
+                        [Alert showDatabaseUpdateErrorAlert];
+                    }
                 }
                 else {
-                    [Alert showAlertViewWithTitle:@"Error" message:@"An error occured while trying to update the database, please try again" buttonClickedCallback:^(NSInteger buttonIndex) {} cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                    [self watchAllEpisodes];
                 }
             }
         } cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
@@ -218,11 +222,25 @@
                     [self updateEpisodesSection];
                 }
                 else {
-                    [Alert showAlertViewWithTitle:@"Error" message:@"An error occured while trying to update the database, please try again" buttonClickedCallback:^(NSInteger buttonIndex) {} cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+                    [Alert showDatabaseUpdateErrorAlert];
                 }
                 
             }
         } cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    }
+}
+
+- (void)watchAllEpisodes {
+    
+    if ([[Database sharedDatabase] watchAllEpisodes:YES forTeebee:self.teebee])
+    {
+        [[Database sharedDatabase] pullTeebeezEpisodesCount:self.teebee];
+        [[Database sharedDatabase] pullSeasonsForTeebee:self.teebee];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:DidUpdateWatchedEpisodesNotification object:self.teebee];
+    }
+    else {
+        [Alert showDatabaseUpdateErrorAlert];
     }
 }
 
@@ -254,6 +272,10 @@
     
     BOOL showWatched = self.teebee.watchedEpisodesCount > 0;
     
+    if (self.watchedButton.selected == showWatched) {
+        return;
+    }
+    
     self.watchedButton.selected = showWatched;
     if (showWatched && self.teebee.rating < 0) {
         self.teebee.rating = 2.5;
@@ -282,6 +304,12 @@
     }
     
     [self refreshTeebeeInfo];
+    
+}
+
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DidUpdateWatchedEpisodesNotification object:self.teebee];
     
 }
 @end

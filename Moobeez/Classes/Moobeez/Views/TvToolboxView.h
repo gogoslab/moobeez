@@ -13,8 +13,8 @@
 
 @interface TvToolboxView : ToolboxView
 
-@property (strong, nonatomic) Teebee* teebee;
-@property (strong, nonatomic) TmdbTV* tmdbTv;
+@property (weak, nonatomic) Teebee* teebee;
+@property (weak, nonatomic) TmdbTV* tmdbTv;
 
 @property (copy, nonatomic) CharacterCellSelectionHandler characterSelectionHandler;
 

@@ -42,6 +42,9 @@
 		64290E7518A46074009E6B04 /* EpisodesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64290E7318A46074009E6B04 /* EpisodesViewController.xib */; };
 		64290E7A18A4627E009E6B04 /* EpisodeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64290E7818A4627E009E6B04 /* EpisodeCell.m */; };
 		64290E7B18A4627E009E6B04 /* EpisodeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64290E7918A4627E009E6B04 /* EpisodeCell.xib */; };
+		64290E7F18A516DA009E6B04 /* blue_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 64290E7D18A516DA009E6B04 /* blue_circle.png */; };
+		64290E8018A516DA009E6B04 /* blue_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64290E7E18A516DA009E6B04 /* blue_circle@2x.png */; };
+		64290E8318A53D41009E6B04 /* Alert+Moobeez.m in Sources */ = {isa = PBXBuildFile; fileRef = 64290E8218A53D41009E6B04 /* Alert+Moobeez.m */; };
 		642CA8ED181542FA00A293E4 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642CA8EB181542FA00A293E4 /* MovieViewController.m */; };
 		642CA8EE181542FA00A293E4 /* MovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 642CA8EC181542FA00A293E4 /* MovieViewController.xib */; };
 		64392EAF18084BA500504C78 /* TmdbConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64392EAE18084BA500504C78 /* TmdbConnection.m */; };
@@ -420,6 +423,10 @@
 		64290E7718A4627E009E6B04 /* EpisodeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EpisodeCell.h; sourceTree = "<group>"; };
 		64290E7818A4627E009E6B04 /* EpisodeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EpisodeCell.m; sourceTree = "<group>"; };
 		64290E7918A4627E009E6B04 /* EpisodeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EpisodeCell.xib; sourceTree = "<group>"; };
+		64290E7D18A516DA009E6B04 /* blue_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_circle.png; sourceTree = "<group>"; };
+		64290E7E18A516DA009E6B04 /* blue_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue_circle@2x.png"; sourceTree = "<group>"; };
+		64290E8118A53D41009E6B04 /* Alert+Moobeez.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Alert+Moobeez.h"; sourceTree = "<group>"; };
+		64290E8218A53D41009E6B04 /* Alert+Moobeez.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Alert+Moobeez.m"; sourceTree = "<group>"; };
 		642CA8EA181542FA00A293E4 /* MovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
 		642CA8EB181542FA00A293E4 /* MovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
 		642CA8EC181542FA00A293E4 /* MovieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieViewController.xib; sourceTree = "<group>"; };
@@ -1128,6 +1135,8 @@
 		64177865180C3B5A00CDFA25 /* Common Images */ = {
 			isa = PBXGroup;
 			children = (
+				64290E7D18A516DA009E6B04 /* blue_circle.png */,
+				64290E7E18A516DA009E6B04 /* blue_circle@2x.png */,
 				649EF25B18999B7100FC796D /* background@2x.png */,
 				64897F18189895C9001F9EDE /* share_twitter_button.png */,
 				64897F19189895C9001F9EDE /* share_twitter_button@2x.png */,
@@ -1808,6 +1817,8 @@
 				64B2AB5318083CBF00E02E2F /* UIColor+Moobeez.m */,
 				643FB23818215FDC00B7CFF7 /* NSString+SQL.h */,
 				643FB23918215FDC00B7CFF7 /* NSString+SQL.m */,
+				64290E8118A53D41009E6B04 /* Alert+Moobeez.h */,
+				64290E8218A53D41009E6B04 /* Alert+Moobeez.m */,
 			);
 			path = Additions;
 			sourceTree = "<group>";
@@ -2631,6 +2642,7 @@
 				649C3A761818068F0000A34C /* empty_stars_big_black@2x.png in Resources */,
 				64F25A181827EC02005AB9F8 /* description_mask.png in Resources */,
 				64646C6818942973007926FE /* MoviesHeaderView.xib in Resources */,
+				64290E8018A516DA009E6B04 /* blue_circle@2x.png in Resources */,
 				64DC8C191817215E002C11D8 /* toolbox_down_arrow.png in Resources */,
 				64290E7518A46074009E6B04 /* EpisodesViewController.xib in Resources */,
 				64B2AB8F1808452700E02E2F /* MoviesViewController.xib in Resources */,
@@ -2655,6 +2667,7 @@
 				64177867180C3B5A00CDFA25 /* default_image.png in Resources */,
 				64CA53861823DD2C000699C5 /* MovieButtonsWhite.bundle in Resources */,
 				64DC8C121817137F002C11D8 /* back_button@2x.png in Resources */,
+				64290E7F18A516DA009E6B04 /* blue_circle.png in Resources */,
 				64CA539A1823F8E1000699C5 /* SearchResultCell.xib in Resources */,
 				64F25A151827D32C005AB9F8 /* TextViewController.xib in Resources */,
 				64290E7018A43629009E6B04 /* SeasonCell.xib in Resources */,
@@ -2769,6 +2782,7 @@
 				64B2AB5D18083CBF00E02E2F /* NSObject+Mutable.m in Sources */,
 				64158316182BCD7A00BB599C /* MovieImagesConnection.m in Sources */,
 				64B2AB5918083CBF00E02E2F /* NSDateFormatter+Extensions.m in Sources */,
+				64290E8318A53D41009E6B04 /* Alert+Moobeez.m in Sources */,
 				64B9F5CA1822A3F0002E322F /* GPUImageColorPackingFilter.m in Sources */,
 				6417785D180C314500CDFA25 /* ConfigurationConnection.m in Sources */,
 				64B9F6301822A3F0002E322F /* GPUImageSolidColorGenerator.m in Sources */,
