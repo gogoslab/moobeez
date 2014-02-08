@@ -32,7 +32,10 @@ typedef enum TeebeeType {
 @property (strong, nonatomic) NSMutableDictionary* episodes;
 
 + (id)teebeeWithTmdbTV:(TmdbTV*)tv;
+
 - (void)addEpisodesCountFromDictionary:(NSDictionary*)dictionary;
+
+- (BOOL)addTeebeeToDatabaseWithCompletion:(EmptyHandler)handler;
 - (void)updateEpisodesWithCompletion:(EmptyHandler)completion;
 
 @end

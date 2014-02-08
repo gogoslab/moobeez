@@ -45,6 +45,11 @@
 		64290E7F18A516DA009E6B04 /* blue_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 64290E7D18A516DA009E6B04 /* blue_circle.png */; };
 		64290E8018A516DA009E6B04 /* blue_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64290E7E18A516DA009E6B04 /* blue_circle@2x.png */; };
 		64290E8318A53D41009E6B04 /* Alert+Moobeez.m in Sources */ = {isa = PBXBuildFile; fileRef = 64290E8218A53D41009E6B04 /* Alert+Moobeez.m */; };
+		64290E8618A540FC009E6B04 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64290E8518A540FC009E6B04 /* LoadingView.m */; };
+		64290E8918A5412A009E6B04 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64290E8818A5412A009E6B04 /* LoadingView.xib */; };
+		64290E8F18A6497C009E6B04 /* TeebeeLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64290E8E18A6497C009E6B04 /* TeebeeLoadingView.xib */; };
+		64290E9218A65AEB009E6B04 /* delete_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64290E9018A65AEB009E6B04 /* delete_button.png */; };
+		64290E9318A65AEB009E6B04 /* delete_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64290E9118A65AEB009E6B04 /* delete_button@2x.png */; };
 		642CA8ED181542FA00A293E4 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642CA8EB181542FA00A293E4 /* MovieViewController.m */; };
 		642CA8EE181542FA00A293E4 /* MovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 642CA8EC181542FA00A293E4 /* MovieViewController.xib */; };
 		64392EAF18084BA500504C78 /* TmdbConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64392EAE18084BA500504C78 /* TmdbConnection.m */; };
@@ -427,6 +432,12 @@
 		64290E7E18A516DA009E6B04 /* blue_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue_circle@2x.png"; sourceTree = "<group>"; };
 		64290E8118A53D41009E6B04 /* Alert+Moobeez.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Alert+Moobeez.h"; sourceTree = "<group>"; };
 		64290E8218A53D41009E6B04 /* Alert+Moobeez.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Alert+Moobeez.m"; sourceTree = "<group>"; };
+		64290E8418A540FC009E6B04 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		64290E8518A540FC009E6B04 /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		64290E8818A5412A009E6B04 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		64290E8E18A6497C009E6B04 /* TeebeeLoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeebeeLoadingView.xib; sourceTree = "<group>"; };
+		64290E9018A65AEB009E6B04 /* delete_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = delete_button.png; sourceTree = "<group>"; };
+		64290E9118A65AEB009E6B04 /* delete_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_button@2x.png"; sourceTree = "<group>"; };
 		642CA8EA181542FA00A293E4 /* MovieViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieViewController.h; sourceTree = "<group>"; };
 		642CA8EB181542FA00A293E4 /* MovieViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieViewController.m; sourceTree = "<group>"; };
 		642CA8EC181542FA00A293E4 /* MovieViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieViewController.xib; sourceTree = "<group>"; };
@@ -1135,6 +1146,8 @@
 		64177865180C3B5A00CDFA25 /* Common Images */ = {
 			isa = PBXGroup;
 			children = (
+				64290E9018A65AEB009E6B04 /* delete_button.png */,
+				64290E9118A65AEB009E6B04 /* delete_button@2x.png */,
 				64290E7D18A516DA009E6B04 /* blue_circle.png */,
 				64290E7E18A516DA009E6B04 /* blue_circle@2x.png */,
 				649EF25B18999B7100FC796D /* background@2x.png */,
@@ -1225,6 +1238,24 @@
 				64290E7918A4627E009E6B04 /* EpisodeCell.xib */,
 			);
 			name = "Episode Cell";
+			sourceTree = "<group>";
+		};
+		64290E8718A54101009E6B04 /* Loading View */ = {
+			isa = PBXGroup;
+			children = (
+				64290E8418A540FC009E6B04 /* LoadingView.h */,
+				64290E8518A540FC009E6B04 /* LoadingView.m */,
+				64290E8818A5412A009E6B04 /* LoadingView.xib */,
+			);
+			name = "Loading View";
+			sourceTree = "<group>";
+		};
+		64290E8D18A64917009E6B04 /* Teebee Loading View */ = {
+			isa = PBXGroup;
+			children = (
+				64290E8E18A6497C009E6B04 /* TeebeeLoadingView.xib */,
+			);
+			name = "Teebee Loading View";
 			sourceTree = "<group>";
 		};
 		642CA8EF181542FD00A293E4 /* Movie View Controller */ = {
@@ -1849,6 +1880,8 @@
 				649C3A7C1818127F0000A34C /* Stars View */,
 				64648ECC18292B1500365EC7 /* Bubble Popup View */,
 				64646C661894295A007926FE /* Movies Header View */,
+				64290E8718A54101009E6B04 /* Loading View */,
+				64290E8D18A64917009E6B04 /* Teebee Loading View */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2613,6 +2646,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64290E9218A65AEB009E6B04 /* delete_button.png in Resources */,
 				64B2AADF18082AE600E02E2F /* Images.xcassets in Resources */,
 				64DC8C1E1817215E002C11D8 /* toolbox_up_arrow@2x.png in Resources */,
 				64B2AB991808496B00E02E2F /* tab_bar_icon_movies@2x.png in Resources */,
@@ -2654,8 +2688,10 @@
 				64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */,
 				6428B89E18A3A36600E1A904 /* SeasonsViewController.xib in Resources */,
 				64646C5C1892BF3C007926FE /* featured_cells_header@2x.png in Resources */,
+				64290E8918A5412A009E6B04 /* LoadingView.xib in Resources */,
 				64648EDD1829956200365EC7 /* ActorViewController.xib in Resources */,
 				649C3A781818068F0000A34C /* full_stars_big@2x.png in Resources */,
+				64290E8F18A6497C009E6B04 /* TeebeeLoadingView.xib in Resources */,
 				64CA53841823DC48000699C5 /* MovieButtonsBlack.bundle in Resources */,
 				64A8AD7B1890203200DBECD7 /* MoviePosterView.xib in Resources */,
 				64412223181D3D7F00260497 /* CharacterCell.xib in Resources */,
@@ -2673,6 +2709,7 @@
 				64290E7018A43629009E6B04 /* SeasonCell.xib in Resources */,
 				6417786F180C8A7400CDFA25 /* full_stars_small.png in Resources */,
 				64646C5B1892BF3C007926FE /* featured_cells_header.png in Resources */,
+				64290E9318A65AEB009E6B04 /* delete_button@2x.png in Resources */,
 				64DC8C1C1817215E002C11D8 /* toolbox_line@2x.png in Resources */,
 				64CA539D1824060C000699C5 /* add_button.png in Resources */,
 				64897F1C189895C9001F9EDE /* share_twitter_button.png in Resources */,
@@ -2958,6 +2995,7 @@
 				64B9F6411822A3F0002E322F /* GPUImageTwoInputCrossTextureSamplingFilter.m in Sources */,
 				64B2AB6218083CBF00E02E2F /* Alert.m in Sources */,
 				64B9F5EC1822A3F0002E322F /* GPUImageHistogramGenerator.m in Sources */,
+				64290E8618A540FC009E6B04 /* LoadingView.m in Sources */,
 				64B2AB6418083CBF00E02E2F /* ConnectionsManager.m in Sources */,
 				64B9F5FF1822A3F0002E322F /* GPUImageLuminanceThresholdFilter.m in Sources */,
 				64177862180C336000CDFA25 /* LoadingViewController.m in Sources */,

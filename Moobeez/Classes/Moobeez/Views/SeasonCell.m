@@ -111,12 +111,11 @@
             if (buttonIndex == 1) {
                 
                 if (self.teebee.id == -1) {
-                    if ([self.teebee save]) {
-                        [self.teebee updateEpisodesWithCompletion:^{
-                            [self watchAllEpisodes];
-                        }];
-                    }
-                    else {
+                    BOOL didAddShowToDatabase = [self.teebee addTeebeeToDatabaseWithCompletion:^{
+                        [self watchAllEpisodes];
+                    }];
+                    if (!didAddShowToDatabase)
+                    {
                         [Alert showDatabaseUpdateErrorAlert];
                     }
                 }

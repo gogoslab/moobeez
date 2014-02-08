@@ -195,14 +195,12 @@
     if (!self.watchedButton.selected) {
         [Alert showAlertViewWithTitle:@"Attention" message:@"This action will mark all the episodes that aired as \"Watched\", are you sure?" buttonClickedCallback:^(NSInteger buttonIndex) {
             if (buttonIndex == 1) {
-
                 if (self.teebee.id == -1) {
-                    if ([self.teebee save]) {
-                        [self.teebee updateEpisodesWithCompletion:^{
-                            [self watchAllEpisodes];
-                        }];
-                    }
-                    else {
+                    BOOL didAddShowToDatabase = [self.teebee addTeebeeToDatabaseWithCompletion:^{
+                        [self watchAllEpisodes];
+                    }];
+                    if (!didAddShowToDatabase)
+                    {
                         [Alert showDatabaseUpdateErrorAlert];
                     }
                 }

@@ -70,7 +70,7 @@
         [self.toolboxView performSelector:@selector(showFullToolbox) withObject:nil afterDelay:0.5];
     }];
     
-    self.addButton.hidden = (self.teebee.id != -1);
+    self.addButton.selected = (self.teebee.id != -1);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateWatchedEpisodes) name:DidUpdateWatchedEpisodesNotification object:self.teebee];
     
@@ -97,11 +97,20 @@
 }
 
 - (IBAction)addButtonPressed:(id)sender {
-    if([self.teebee save]) {
-        [self.teebee updateEpisodesWithCompletion:^{
-            self.addButton.hidden = YES;
+    
+    if (!self.addButton.selected) {
+        [self.teebee addTeebeeToDatabaseWithCompletion:^{
+            self.addButton.selected = (self.teebee.id != -1);
         }];
-        
+    }
+    else {
+        [Alert showAlertViewWithTitle:@"Alert" message:@"Are you sure you want to remove this show from the database?" buttonClickedCallback:^(NSInteger buttonIndex) {
+            
+            if ([[Database sharedDatabase] deleteTeebee:self.teebee]) {
+                self.addButton.selected = NO;
+            }
+            
+        } cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
     }
 }
 
@@ -249,7 +258,7 @@
 }
 
 - (void)didUpdateWatchedEpisodes {
-    self.addButton.hidden = (self.teebee.id != -1);
+    self.addButton.selected = (self.teebee.id != -1);
 }
 
 #pragma mark - Share

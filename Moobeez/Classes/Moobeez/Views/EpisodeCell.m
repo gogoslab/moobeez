@@ -66,12 +66,12 @@
     if (!self.watchButton.selected) {
         
         if (self.teebee.id == -1) {
-            if ([self.teebee save]) {
-                [self.teebee updateEpisodesWithCompletion:^{
-                    [self watchEpisode];
-                }];
-            }
-            else {
+            BOOL didAddShowToDatabase = [self.teebee addTeebeeToDatabaseWithCompletion:^{
+                [self watchEpisode];
+            }];
+
+            if (!didAddShowToDatabase)
+            {
                 [Alert showDatabaseUpdateErrorAlert];
             }
         }

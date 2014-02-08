@@ -68,7 +68,7 @@
         [self.toolboxView performSelector:@selector(showFullToolbox) withObject:nil afterDelay:0.5];
     }];
     
-    self.addButton.hidden = (self.moobee.id != -1);
+    self.addButton.selected = (self.moobee.id != -1);
     
 }
 
@@ -91,8 +91,15 @@
 }
 
 - (IBAction)addButtonPressed:(id)sender {
-    if([self.moobee save]) {
-        self.addButton.hidden = YES;
+    if (self.addButton.selected) {
+        if ([[Database sharedDatabase] deleteMoobee:self.moobee]) {
+            self.addButton.selected = NO;
+        }
+    }
+    else {
+        if([self.moobee save]) {
+            self.addButton.selected = YES;
+        }
     }
 }
 

@@ -291,6 +291,12 @@ enum CollectionSections {
     viewController.closeHandler = ^{
         
         if (teebee.id == -1) {
+            if ([self.teebeez containsObject:teebee]) {
+                [self.teebeez removeObject:teebee];
+                [self applyFilter];
+                [self.collectionView reloadData];
+                [self.animationCell removeFromSuperview];
+            }
             return;
         }
         

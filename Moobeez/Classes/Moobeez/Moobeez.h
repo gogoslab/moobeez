@@ -95,4 +95,8 @@
 #import "BubblePopupView.h"
 #import "BubbleUpsideDownPopupView.h"
 
+#pragma mark - Loading View
+
+#import "LoadingView.h"
+
 #endif

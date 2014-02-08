@@ -83,6 +83,25 @@
     return teebee;
 }
 
+- (BOOL)addTeebeeToDatabaseWithCompletion:(EmptyHandler)handler {
+    
+    UIView* teebeeLoadingView = [[NSBundle mainBundle] loadNibNamed:@"TeebeeLoadingView" owner:self options:nil][0];
+    
+    [LoadingView showLoadingViewWithContent:teebeeLoadingView];
+    
+    if([self save]) {
+        [self updateEpisodesWithCompletion:^{
+            [LoadingView hideLoadingView];
+            handler();
+        }];
+        return YES;
+    }
+    else {
+        [LoadingView hideLoadingView];
+        return NO;
+    }
+}
+
 - (BOOL)save {
     
     return [[Database sharedDatabase] saveTeebee:self];

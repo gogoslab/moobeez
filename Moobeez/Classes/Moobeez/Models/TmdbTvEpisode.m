@@ -28,7 +28,7 @@
     }
     
     if (tmdbDictionary[@"air_date"]) {
-        self.date = [[NSDateFormatter dateFormatterWithFormat:@"yyyy-MM-dd"] dateFromString:tmdbDictionary[@"air_date"]];
+        self.date = [[NSDateFormatter dateFormatterWithFormat:@"yyyy-MM-dd"] dateFromString:[tmdbDictionary stringForKey:@"air_date"]];
     }
     
     if (tmdbDictionary[@"episode_number"]) {

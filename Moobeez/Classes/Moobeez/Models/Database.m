@@ -627,6 +627,37 @@ static Database* sharedDatabase;
     
 }
 
+- (BOOL)deleteMoobee:(Moobee*)moobee {
+    
+    sqlite3_stmt *statement;
+    
+    NSString *query;
+    
+    int prepare;
+    
+    query = [NSString stringWithFormat:@"DELETE FROM Moobeez WHERE ID = '%@'",StringInteger(moobee.id)];
+    
+    prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+        return NO;
+    }
+    else {
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+        }
+        sqlite3_finalize(statement);
+    }
+    
+    moobee.id = -1;
+    
+    return YES;
+}
+
 #pragma mark - Teebeez
 
 - (NSMutableArray*)teebeezWithType:(TeebeeType)type {
@@ -952,6 +983,57 @@ static Database* sharedDatabase;
     }
     
     return NO;
+}
+
+- (BOOL)deleteTeebee:(Teebee*)teebee {
+    
+    sqlite3_stmt *statement;
+    
+    NSString *query;
+    
+    int prepare;
+    
+    query = [NSString stringWithFormat:@"DELETE FROM Teebeez WHERE ID = '%@'",StringInteger(teebee.id)];
+    
+    prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+        return NO;
+    }
+    else {
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+        }
+        sqlite3_finalize(statement);
+    }
+    
+    query = [NSString stringWithFormat:@"DELETE FROM Episodes WHERE teebeeId = '%@'",StringInteger(teebee.id)];
+    
+    prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+//        return NO;
+    }
+    else {
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+        }
+        sqlite3_finalize(statement);
+    }
+    
+
+    
+    teebee.id = -1;
+    
+    return YES;
 }
 
 @end

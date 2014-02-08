@@ -99,6 +99,7 @@
                     <state key="normal" backgroundImage="add_button.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <state key="selected" backgroundImage="delete_button.png"/>
                     <connections>
                         <action selector="addButtonPressed:" destination="-1" eventType="touchUpInside" id="ORY-O6-hxx"/>
                     </connections>
@@ -402,6 +403,7 @@
         <image name="button_photos.png" width="50" height="50"/>
         <image name="button_watched_show.png" width="50" height="50"/>
         <image name="button_watched_show_selected.png" width="50" height="50"/>
+        <image name="delete_button.png" width="40" height="40"/>
         <image name="empty_stars_big_black.png" width="200" height="40"/>
         <image name="empty_stars_big_white.png" width="200" height="40"/>
         <image name="full_stars_big.png" width="200" height="40"/>
