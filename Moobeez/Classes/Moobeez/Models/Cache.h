@@ -14,5 +14,6 @@
 + (NSMutableDictionary*)cachedTVs;
 + (NSMutableDictionary*)cachedPersons;
 + (NSMutableDictionary*)cachedSeasons;
++ (NSMutableDictionary*)cachedTvRageEpisodes;
 
 @end

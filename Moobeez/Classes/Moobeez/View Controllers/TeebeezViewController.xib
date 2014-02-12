@@ -9,6 +9,9 @@
                 <outlet property="collectionView" destination="CJV-nx-c8b" id="6YC-hV-nJz"/>
                 <outlet property="searchBar" destination="g4J-5K-B7f" id="Or5-OG-J6s"/>
                 <outlet property="typeSegmentedControl" destination="6Tj-LS-g87" id="0YK-La-D03"/>
+                <outlet property="updatingLabel" destination="T4O-Nt-cZc" id="ilT-a6-mQm"/>
+                <outlet property="updatingProgressBar" destination="qSR-RN-ccS" id="Blb-Up-883"/>
+                <outlet property="updatingView" destination="h3N-Xi-4V5" id="rAm-D3-erK"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -78,6 +81,28 @@
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+        <view contentMode="scaleToFill" id="h3N-Xi-4V5">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Updating shows..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="T4O-Nt-cZc">
+                    <rect key="frame" x="20" y="219" width="280" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" id="qSR-RN-ccS">
+                    <rect key="frame" x="20" y="259" width="280" height="2"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="progressTintColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </progressView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
 </document>

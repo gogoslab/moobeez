@@ -30,10 +30,24 @@
         self.type = [databaseDictionary[@"type"] intValue];
         self.seasonsToUpdate = [[NSMutableArray alloc] init];
         
+        self.ended = [databaseDictionary[@"ended"] boolValue];
+        
+        if (databaseDictionary[@"lastUpdate"]) {
+            self.lastUpdate = [NSDate dateWithTimeIntervalSince1970:[databaseDictionary[@"lastUpdate"] doubleValue]];
+        }
+        
         self.notWatchedEpisodesCount = -1;
         self.watchedEpisodesCount = 0;
         
         [self addEpisodesCountFromDictionary:databaseDictionary];
+        
+        if (databaseDictionary[@"airDate"]) {
+            self.nextEpisode = [[TeebeeEpisode alloc] initWithDatabaseDictionary:databaseDictionary];
+        }
+        
+        if (databaseDictionary[@"tvRageId"] && [databaseDictionary[@"tvRageId"] isKindOfClass:[NSString class]]) {
+            self.tvRageId = databaseDictionary[@"tvRageId"];
+        }
 
     }
     
@@ -55,6 +69,16 @@
     
     NSMutableDictionary* databaseDictionary = super.databaseDictionary;
     
+    databaseDictionary[@"ended"] = [NSString stringWithFormat:@"%d", self.ended];
+    
+    if (self.lastUpdate) {
+        databaseDictionary[@"lastUpdate"] = [NSString stringWithFormat:@"%.0f", [self.lastUpdate timeIntervalSince1970]];
+    }
+    
+    if (self.tvRageId && [self.tvRageId isKindOfClass:[NSString class]]) {
+        databaseDictionary[@"tvRageId"] = self.tvRageId;
+    }
+    
     return databaseDictionary;
 }
 
@@ -70,11 +94,15 @@
     if (teebee) {
         teebee.name = tv.name;
         teebee.tmdbId = tv.id;
+        if ([tv.tvRageId isKindOfClass:[NSString class]]) {
+            teebee.tvRageId = tv.tvRageId;
+        }
         teebee.posterPath = tv.posterPath;
         teebee.id = -1;
         teebee.watchedEpisodesCount = 0;
         teebee.rating = -1;
         teebee.comments = @"";
+        teebee.ended = [tv.status isEqualToString:@"Ended"];
         
         teebee.seasonsToUpdate = [[NSMutableArray alloc] init];
 
@@ -123,8 +151,16 @@
             if (self.seasonsToUpdate.count == 0) {
                 [self performSelector:@selector(updateNextSeason) withObject:nil afterDelay:0.01];
             }
+
+            NSInteger seasonNumber = [[Database sharedDatabase] lastSeasonOfTeebee:self];
             
-            [self.seasonsToUpdate addObjectsFromArray:tv.seasons];
+            for (TmdbTvSeason* season in tv.seasons) {
+                if (season.seasonNumber >=  seasonNumber) {
+                    [self.seasonsToUpdate addObject:season];
+                }
+            }
+            
+            self.ended = !tv.inProduction;
         }
     }];
     
@@ -156,6 +192,8 @@
     TvSeasonConnection* connection = [[TvSeasonConnection alloc] initWithTmdbId:self.tmdbId seasonNumber:season.seasonNumber completionHandler:^(WebserviceResultCode code, TmdbTvSeason *season) {
         
         if (code == WebserviceResultOk) {
+            
+            [[Database sharedDatabase] pullEpisodesForTeebee:self inSeason:season.seasonNumber];
             
             for (TmdbTvEpisode* episode in season.episodes) {
                 
@@ -244,9 +282,38 @@
         }
     }
     
+    self.lastUpdate = [NSDate date];
+    
+    [self save];
+    
     if (self.updateEpisodesHandler) {
         self.updateEpisodesHandler();
     }
+}
+
+- (void)getTvRageInfo:(CompleteHandler)completion {
+    
+    if (!self.tvRageId) {
+        
+    }
+    else {
+        [self getTvRageEpisodes:completion];
+    }
+}
+
+- (void)getTvRageEpisodes:(CompleteHandler)completion {
+    
+    TvRageEpisodesConnection* connection = [[TvRageEpisodesConnection alloc] initWithTvRageId:[self.tvRageId integerValue] completionHandler:^(WebserviceResultCode code, NSMutableArray *seasons) {
+        if (code == WebserviceResultOk) {
+            self.tvRageSeasons = seasons;
+            completion(YES);
+        }
+        else {
+            completion(NO);
+        }
+    }];
+    
+    [[ConnectionsManager sharedManager] startConnection:connection];
 }
 
 @end

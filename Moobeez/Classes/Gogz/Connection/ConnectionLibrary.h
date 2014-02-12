@@ -7,5 +7,6 @@
 //
 
 #import "Connection.h"
+#import "XMLConnection.h"
 #import "ConnectionsManager.h"
 #import "URLConnection.h"

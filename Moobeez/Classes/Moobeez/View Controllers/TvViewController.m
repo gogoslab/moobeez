@@ -74,6 +74,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateWatchedEpisodes) name:DidUpdateWatchedEpisodesNotification object:self.teebee];
     
+    [self.teebee getTvRageInfo:^(BOOL completed) {
+        
+    }];
 }
 
 - (void)didReceiveMemoryWarning

@@ -20,6 +20,7 @@
 #import "Utils.h"
 
 #import "TmdbConnections.h"
+#import "TvRageConnections.h"
 
 #import "Database.h"
 
@@ -74,6 +75,7 @@
 #import "MoviePosterView.h"
 
 #import "MoviesHeaderView.h"
+#import "TeebeezHeaderView.h"
 
 #pragma mark - Toolboxes
 

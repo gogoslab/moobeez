@@ -45,4 +45,32 @@
     
 }
 
+- (id)initWithTvRageXmlElement:(DDXMLElement *)tvRageXmlElement {
+    
+    self = [super init];
+    
+    if (self) {
+        NSLog(@"el: %@", tvRageXmlElement);
+        
+        if ([[tvRageXmlElement elementsForName:@"airdate"] count]) {
+            NSString* dateString = [[tvRageXmlElement elementsForName:@"airdate"][0] stringValue];
+            self.date = [[NSDateFormatter dateFormatterWithFormat:@"yyyy-MM-dd"] dateFromString:dateString];
+        }
+        
+        if ([[tvRageXmlElement elementsForName:@"epnum"] count]) {
+            self.episodeNumber = [[[tvRageXmlElement elementsForName:@"epnum"][0] stringValue] integerValue];
+        }
+        
+        if ([[tvRageXmlElement elementsForName:@"seasonnum"] count]) {
+            self.seasonNumber = [[[tvRageXmlElement elementsForName:@"seasonnum"][0] stringValue] integerValue];
+        }
+        
+        if ([[tvRageXmlElement elementsForName:@"title"] count]) {
+            self.name = [[tvRageXmlElement elementsForName:@"title"][0] stringValue];
+        }
+    }
+    
+    return self;
+}
+
 @end

@@ -29,7 +29,7 @@
         return [self initFakeConnection];
     }
     
-    self = [super initWithParameters:[NSDictionary dictionaryWithObject:@"credits" forKey:@"append_to_response"] completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
+    self = [super initWithParameters:[NSDictionary dictionaryWithObject:@"credits,external_ids" forKey:@"append_to_response"] completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
         
         NSLog(@"result: %@", resultDictionary);
         

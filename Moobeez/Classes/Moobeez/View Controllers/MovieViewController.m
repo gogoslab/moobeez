@@ -244,7 +244,9 @@
     switch (self.tmdbMovie.trailerType) {
         case TmdbTrailerQuicktimeType:
         {
-            MPMoviePlayerViewController* viewController = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:self.tmdbMovie.trailerPath]];
+            NSURL* url = [NSURL URLWithString:self.tmdbMovie.trailerPath];
+            [url setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
+            MPMoviePlayerViewController* viewController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
             [self presentMoviePlayerViewControllerAnimated:viewController];
         }
             break;

@@ -98,6 +98,17 @@
 		649C3A98181830240000A34C /* CharacterCellSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A97181830240000A34C /* CharacterCellSmall.xib */; };
 		649EF25C18999B7100FC796D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 649EF25B18999B7100FC796D /* background@2x.png */; };
 		649EF2621899CEC000FC796D /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 649EF2611899CEC000FC796D /* Settings.m */; };
+		64A10D9618A8E69F00906081 /* TeebeezHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A10D9518A8E69F00906081 /* TeebeezHeaderView.m */; };
+		64A10D9918A8E6B500906081 /* TeebeezHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A10D9818A8E6B500906081 /* TeebeezHeaderView.xib */; };
+		64A10D9C18A98E8100906081 /* XMLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A10D9B18A98E8100906081 /* XMLConnection.m */; };
+		64A10DAE18A992FA00906081 /* DDXMLElementAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A10DA118A992FA00906081 /* DDXMLElementAdditions.m */; };
+		64A10DAF18A992FA00906081 /* NSString+DDXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A10DA418A992FA00906081 /* NSString+DDXML.m */; };
+		64A10DB018A992FA00906081 /* DDXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A10DA718A992FA00906081 /* DDXMLDocument.m */; };
+		64A10DB118A992FA00906081 /* DDXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A10DA918A992FA00906081 /* DDXMLElement.m */; };
+		64A10DB218A992FA00906081 /* DDXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A10DAB18A992FA00906081 /* DDXMLNode.m */; };
+		64A10DB418A9931D00906081 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A10DB318A9931D00906081 /* libxml2.dylib */; };
+		64A10DB718A999D400906081 /* TvRageConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A10DB618A999D400906081 /* TvRageConnection.m */; };
+		64A10DBD18A99D3B00906081 /* TvRageEpisodesConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A10DBC18A99D3B00906081 /* TvRageEpisodesConnection.m */; };
 		64A8AD63188EC12300DBECD7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A8AD62188EC12300DBECD7 /* MediaPlayer.framework */; };
 		64A8AD67188EC3D800DBECD7 /* YouTubeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A8AD65188EC3D800DBECD7 /* YouTubeViewController.m */; };
 		64A8AD68188EC3D800DBECD7 /* YouTubeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A8AD66188EC3D800DBECD7 /* YouTubeViewController.xib */; };
@@ -510,6 +521,29 @@
 		649EF25B18999B7100FC796D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
 		649EF2601899CEC000FC796D /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = "../../../../../Moobeez 1.0/Moobeez/Classes/Models/Settings.h"; sourceTree = "<group>"; };
 		649EF2611899CEC000FC796D /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = "../../../../../Moobeez 1.0/Moobeez/Classes/Models/Settings.m"; sourceTree = "<group>"; };
+		64A10D9418A8E69F00906081 /* TeebeezHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeebeezHeaderView.h; sourceTree = "<group>"; };
+		64A10D9518A8E69F00906081 /* TeebeezHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeebeezHeaderView.m; sourceTree = "<group>"; };
+		64A10D9818A8E6B500906081 /* TeebeezHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeebeezHeaderView.xib; sourceTree = "<group>"; };
+		64A10D9A18A98E8100906081 /* XMLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLConnection.h; sourceTree = "<group>"; };
+		64A10D9B18A98E8100906081 /* XMLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLConnection.m; sourceTree = "<group>"; };
+		64A10DA018A992FA00906081 /* DDXMLElementAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElementAdditions.h; sourceTree = "<group>"; };
+		64A10DA118A992FA00906081 /* DDXMLElementAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElementAdditions.m; sourceTree = "<group>"; };
+		64A10DA318A992FA00906081 /* NSString+DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DDXML.h"; sourceTree = "<group>"; };
+		64A10DA418A992FA00906081 /* NSString+DDXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DDXML.m"; sourceTree = "<group>"; };
+		64A10DA518A992FA00906081 /* DDXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXML.h; sourceTree = "<group>"; };
+		64A10DA618A992FA00906081 /* DDXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLDocument.h; sourceTree = "<group>"; };
+		64A10DA718A992FA00906081 /* DDXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLDocument.m; sourceTree = "<group>"; };
+		64A10DA818A992FA00906081 /* DDXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLElement.h; sourceTree = "<group>"; };
+		64A10DA918A992FA00906081 /* DDXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLElement.m; sourceTree = "<group>"; };
+		64A10DAA18A992FA00906081 /* DDXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLNode.h; sourceTree = "<group>"; };
+		64A10DAB18A992FA00906081 /* DDXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDXMLNode.m; sourceTree = "<group>"; };
+		64A10DAD18A992FA00906081 /* DDXMLPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDXMLPrivate.h; sourceTree = "<group>"; };
+		64A10DB318A9931D00906081 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		64A10DB518A999D400906081 /* TvRageConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvRageConnection.h; sourceTree = "<group>"; };
+		64A10DB618A999D400906081 /* TvRageConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TvRageConnection.m; sourceTree = "<group>"; };
+		64A10DBA18A99BD000906081 /* TvRageConnections.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TvRageConnections.h; sourceTree = "<group>"; };
+		64A10DBB18A99D3B00906081 /* TvRageEpisodesConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvRageEpisodesConnection.h; sourceTree = "<group>"; };
+		64A10DBC18A99D3B00906081 /* TvRageEpisodesConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TvRageEpisodesConnection.m; sourceTree = "<group>"; };
 		64A8AD62188EC12300DBECD7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		64A8AD64188EC3D800DBECD7 /* YouTubeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YouTubeViewController.h; sourceTree = "<group>"; };
 		64A8AD65188EC3D800DBECD7 /* YouTubeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YouTubeViewController.m; sourceTree = "<group>"; };
@@ -1011,6 +1045,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64A10DB418A9931D00906081 /* libxml2.dylib in Frameworks */,
 				64897F2B1898AA7D001F9EDE /* FacebookSDK.framework in Frameworks */,
 				64897F271898A448001F9EDE /* Accounts.framework in Frameworks */,
 				64897F251898A441001F9EDE /* Social.framework in Frameworks */,
@@ -1537,6 +1572,97 @@
 			name = Settings;
 			sourceTree = "<group>";
 		};
+		64A10D9718A8E6A200906081 /* Teebeez Header View */ = {
+			isa = PBXGroup;
+			children = (
+				64A10D9418A8E69F00906081 /* TeebeezHeaderView.h */,
+				64A10D9518A8E69F00906081 /* TeebeezHeaderView.m */,
+				64A10D9818A8E6B500906081 /* TeebeezHeaderView.xib */,
+			);
+			name = "Teebeez Header View";
+			sourceTree = "<group>";
+		};
+		64A10D9D18A98EA700906081 /* XML Connection */ = {
+			isa = PBXGroup;
+			children = (
+				64A10D9A18A98E8100906081 /* XMLConnection.h */,
+				64A10D9B18A98E8100906081 /* XMLConnection.m */,
+			);
+			name = "XML Connection";
+			path = Connection;
+			sourceTree = "<group>";
+		};
+		64A10D9E18A992FA00906081 /* KissXML */ = {
+			isa = PBXGroup;
+			children = (
+				64A10D9F18A992FA00906081 /* Additions */,
+				64A10DA218A992FA00906081 /* Categories */,
+				64A10DA518A992FA00906081 /* DDXML.h */,
+				64A10DA618A992FA00906081 /* DDXMLDocument.h */,
+				64A10DA718A992FA00906081 /* DDXMLDocument.m */,
+				64A10DA818A992FA00906081 /* DDXMLElement.h */,
+				64A10DA918A992FA00906081 /* DDXMLElement.m */,
+				64A10DAA18A992FA00906081 /* DDXMLNode.h */,
+				64A10DAB18A992FA00906081 /* DDXMLNode.m */,
+				64A10DAC18A992FA00906081 /* Private */,
+			);
+			path = KissXML;
+			sourceTree = "<group>";
+		};
+		64A10D9F18A992FA00906081 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				64A10DA018A992FA00906081 /* DDXMLElementAdditions.h */,
+				64A10DA118A992FA00906081 /* DDXMLElementAdditions.m */,
+			);
+			path = Additions;
+			sourceTree = "<group>";
+		};
+		64A10DA218A992FA00906081 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				64A10DA318A992FA00906081 /* NSString+DDXML.h */,
+				64A10DA418A992FA00906081 /* NSString+DDXML.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		64A10DAC18A992FA00906081 /* Private */ = {
+			isa = PBXGroup;
+			children = (
+				64A10DAD18A992FA00906081 /* DDXMLPrivate.h */,
+			);
+			path = Private;
+			sourceTree = "<group>";
+		};
+		64A10DB818A999DE00906081 /* Tv Rage Connections */ = {
+			isa = PBXGroup;
+			children = (
+				64A10DB918A999EA00906081 /* Tv Rage Connection */,
+				64A10DBE18A99D4000906081 /* TvRage Episodes Connection */,
+				64A10DBA18A99BD000906081 /* TvRageConnections.h */,
+			);
+			name = "Tv Rage Connections";
+			sourceTree = "<group>";
+		};
+		64A10DB918A999EA00906081 /* Tv Rage Connection */ = {
+			isa = PBXGroup;
+			children = (
+				64A10DB518A999D400906081 /* TvRageConnection.h */,
+				64A10DB618A999D400906081 /* TvRageConnection.m */,
+			);
+			name = "Tv Rage Connection";
+			sourceTree = "<group>";
+		};
+		64A10DBE18A99D4000906081 /* TvRage Episodes Connection */ = {
+			isa = PBXGroup;
+			children = (
+				64A10DBB18A99D3B00906081 /* TvRageEpisodesConnection.h */,
+				64A10DBC18A99D3B00906081 /* TvRageEpisodesConnection.m */,
+			);
+			name = "TvRage Episodes Connection";
+			sourceTree = "<group>";
+		};
 		64A8AD69188EC40500DBECD7 /* YouTubeViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1598,6 +1724,7 @@
 		64B2AAC218082AE600E02E2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				64A10DB318A9931D00906081 /* libxml2.dylib */,
 				64897F2A1898AA7D001F9EDE /* FacebookSDK.framework */,
 				64897F261898A448001F9EDE /* Accounts.framework */,
 				64897F241898A441001F9EDE /* Social.framework */,
@@ -1716,6 +1843,7 @@
 			children = (
 				64B2AB2518083CBF00E02E2F /* ConnectionLibrary.h */,
 				64B2AB2218083CBF00E02E2F /* Connection */,
+				64A10D9D18A98EA700906081 /* XML Connection */,
 				64B2AB2618083CBF00E02E2F /* ConnectionsManager */,
 				64B2AB2918083CBF00E02E2F /* URLConnection */,
 			);
@@ -1752,6 +1880,7 @@
 		64B2AB2C18083CBF00E02E2F /* External SDKs */ = {
 			isa = PBXGroup;
 			children = (
+				64A10D9E18A992FA00906081 /* KissXML */,
 				64B2AB2D18083CBF00E02E2F /* SBJson */,
 				64B9F46E1822A3EF002E322F /* GPUImage */,
 			);
@@ -1815,6 +1944,7 @@
 			isa = PBXGroup;
 			children = (
 				64392EB018084D6B00504C78 /* Tmdb Connections */,
+				64A10DB818A999DE00906081 /* Tv Rage Connections */,
 			);
 			path = Connections;
 			sourceTree = "<group>";
@@ -1882,6 +2012,7 @@
 				64646C661894295A007926FE /* Movies Header View */,
 				64290E8718A54101009E6B04 /* Loading View */,
 				64290E8D18A64917009E6B04 /* Teebee Loading View */,
+				64A10D9718A8E6A200906081 /* Teebeez Header View */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2724,6 +2855,7 @@
 				6414A3011821B90D009397FF /* DatePickerView.xib in Resources */,
 				64897F1D189895C9001F9EDE /* share_twitter_button@2x.png in Resources */,
 				640865F6180B62EC00725CE4 /* MoobeezDatabase in Resources */,
+				64A10D9918A8E6B500906081 /* TeebeezHeaderView.xib in Resources */,
 				64D74140189D1FB10011C39A /* TeebeezViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2824,6 +2956,7 @@
 				6417785D180C314500CDFA25 /* ConfigurationConnection.m in Sources */,
 				64B9F6301822A3F0002E322F /* GPUImageSolidColorGenerator.m in Sources */,
 				64B9F5D41822A3F0002E322F /* GPUImageDissolveBlendFilter.m in Sources */,
+				64A10DB218A992FA00906081 /* DDXMLNode.m in Sources */,
 				64B9F5D61822A3F0002E322F /* GPUImageEmbossFilter.m in Sources */,
 				64D74143189D1FB10011C39A /* TvViewController.m in Sources */,
 				64D7416A18A0FC470011C39A /* NSNull+ErrorHandlers.m in Sources */,
@@ -2839,12 +2972,15 @@
 				64B9F5E51822A3F0002E322F /* GPUImageHalftoneFilter.m in Sources */,
 				64B9F5D91822A3F0002E322F /* GPUImageExposureFilter.m in Sources */,
 				64B9F61D1822A3F0002E322F /* GPUImageRawDataInput.m in Sources */,
+				64A10DAF18A992FA00906081 /* NSString+DDXML.m in Sources */,
 				64B9F6311822A3F0002E322F /* GPUImageSourceOverBlendFilter.m in Sources */,
 				64B9F5EF1822A3F0002E322F /* GPUImageHueBlendFilter.m in Sources */,
+				64A10D9C18A98E8100906081 /* XMLConnection.m in Sources */,
 				64B9F5BF1822A3F0002E322F /* GPUImageBulgeDistortionFilter.m in Sources */,
 				64B9F5D11822A3F0002E322F /* GPUImageDilationFilter.m in Sources */,
 				64B2AB7318083CBF00E02E2F /* ImageView+Tmdb.m in Sources */,
 				64290E7A18A4627E009E6B04 /* EpisodeCell.m in Sources */,
+				64A10D9618A8E69F00906081 /* TeebeezHeaderView.m in Sources */,
 				64B2AB7418083CBF00E02E2F /* UIColor+Moobeez.m in Sources */,
 				64B9F5F01822A3F0002E322F /* GPUImageHueFilter.m in Sources */,
 				64086604180B6D2E00725CE4 /* Database.m in Sources */,
@@ -2885,6 +3021,7 @@
 				64B9F5BD1822A3F0002E322F /* GPUImageBrightnessFilter.m in Sources */,
 				64B2AB7118083CBF00E02E2F /* ImageLoader.m in Sources */,
 				64A8AD781890201400DBECD7 /* MoviePosterView.m in Sources */,
+				64A10DAE18A992FA00906081 /* DDXMLElementAdditions.m in Sources */,
 				640865FD180B6AF600725CE4 /* NSMutableDictionary+SQL.m in Sources */,
 				64B2AB5B18083CBF00E02E2F /* NSFileManager+ExtraAtributtes.m in Sources */,
 				6428B8A318A3E74E00E1A904 /* SeasonCell.m in Sources */,
@@ -2949,6 +3086,7 @@
 				6415831A182BD00600BB599C /* MovieTrailersConnection.m in Sources */,
 				64B2AB6518083CBF00E02E2F /* URLConnection.m in Sources */,
 				64B9F62F1822A3F0002E322F /* GPUImageSoftLightBlendFilter.m in Sources */,
+				64A10DB718A999D400906081 /* TvRageConnection.m in Sources */,
 				64B9F6491822A3F0002E322F /* GPUImageVoronoiConsumerFilter.m in Sources */,
 				64B9F5CC1822A3F0002E322F /* GPUImageCropFilter.m in Sources */,
 				64B9F61F1822A3F0002E322F /* GPUImageRGBClosingFilter.m in Sources */,
@@ -2969,10 +3107,13 @@
 				64B9F5D01822A3F0002E322F /* GPUImageDifferenceBlendFilter.m in Sources */,
 				64B9F5F71822A3F0002E322F /* GPUImageLevelsFilter.m in Sources */,
 				64B9F6421822A3F0002E322F /* GPUImageTwoInputFilter.m in Sources */,
+				64A10DB018A992FA00906081 /* DDXMLDocument.m in Sources */,
 				64B9F6171822A3F0002E322F /* GPUImagePixellatePositionFilter.m in Sources */,
 				64B9F64D1822A3F0002E322F /* GPUImageZoomBlurFilter.m in Sources */,
 				64290E7418A46074009E6B04 /* EpisodesViewController.m in Sources */,
+				64A10DB118A992FA00906081 /* DDXMLElement.m in Sources */,
 				64B9F6511822A3F0002E322F /* GPUImageView.m in Sources */,
+				64A10DBD18A99D3B00906081 /* TvRageEpisodesConnection.m in Sources */,
 				64B9F5CD1822A3F0002E322F /* GPUImageCrosshairGenerator.m in Sources */,
 				64CA53971823F8C6000699C5 /* SearchResultCell.m in Sources */,
 				64B9F6291822A3F0002E322F /* GPUImageShiTomasiFeatureDetectionFilter.m in Sources */,
@@ -3080,8 +3221,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lxml2";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3113,7 +3260,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/usr/include/libxml2,
+				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-lxml2";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

@@ -50,4 +50,15 @@ static NSMutableDictionary* _cachedSeasons;
     return _cachedSeasons;
 }
 
+static NSMutableDictionary* _cachedTvRageEpisodes;
+
++ (NSMutableDictionary*)cachedTvRageEpisodes {
+    if (!_cachedTvRageEpisodes) {
+        _cachedTvRageEpisodes = [[NSMutableDictionary alloc] init];
+    }
+    
+    return _cachedTvRageEpisodes;
+}
+
+
 @end

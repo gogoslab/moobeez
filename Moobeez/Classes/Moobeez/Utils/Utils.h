@@ -10,6 +10,7 @@
 #import "ImageView+Tmdb.h"
 #import "UIColor+Moobeez.h"
 #import "NSString+SQL.h"
+#import "DDXML.h"
 
 #import "Constants.h"
 

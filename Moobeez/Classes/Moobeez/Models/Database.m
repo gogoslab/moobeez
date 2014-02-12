@@ -671,7 +671,7 @@ static Database* sharedDatabase;
             query = [NSString stringWithFormat:@"SELECT Teebeez.*, SUM(CASE WHEN Episodes.watched = '0' THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez JOIN Episodes ON (Teebeez.ID = Episodes.teebeeId AND Episodes.airDate < %f) GROUP BY Teebeez.ID HAVING notWatchedEpisodesCount > 0", now];
             break;
         case TeebeeSoonType:
-            query = [NSString stringWithFormat:@"SELECT Teebeez.*, e1.airDate, e1.seasonNumber, e1.episodeNumber FROM Teebeez JOIN Episodes e1 ON (Teebeez.ID = e1.teebeeId AND e1.airDate > %f) LEFT OUTER JOIN Episodes e2 ON (Teebeez.ID = e2.teebeeId AND (e1.airDate < e2.airDate OR e1.airDate = e2.airDate AND e1.id < e2.id)) GROUP BY e1.teebeeId", now];
+            query = [NSString stringWithFormat:@"SELECT Teebeez.*, e1.* FROM Teebeez JOIN (SELECT teebeeId, seasonNumber, episodeNumber, min(airDate) airDate FROM Episodes WHERE (airDate <> '(null)' AND airDate >= '%f') GROUP BY teebeeId) e1 ON (Teebeez.ID = e1.teebeeId)", now];
             break;
         default:
             query = [NSString stringWithFormat:@"SELECT Teebeez.*, SUM(CASE WHEN Episodes.watched = '0' AND Episodes.airDate < %f THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez JOIN Episodes ON (Teebeez.ID = Episodes.teebeeId) GROUP BY Teebeez.ID ORDER BY Teebeez.ID DESC", [[NSDate date] timeIntervalSince1970]];
@@ -679,6 +679,16 @@ static Database* sharedDatabase;
     }
     
     return [self teebeezWithQuery:query];
+}
+
+- (NSMutableArray*)teebeezToUpdate {
+    
+    NSTimeInterval now = [[[NSDate date] resetToMidnight] timeIntervalSince1970];
+    
+    NSString* query = [NSString stringWithFormat:@"SELECT * FROM Teebeez WHERE (ended = NULL OR ended = '0') AND (lastUpdate = NULL OR lastUpdate < '%f')", now - [Settings sharedSettings].updateShowsInterval * 24 * 3600];
+    
+    return [self teebeezWithQuery:query];
+
 }
 
 - (NSMutableArray*)teebeezWithQuery:(NSString*)query {
@@ -1034,6 +1044,37 @@ static Database* sharedDatabase;
     teebee.id = -1;
     
     return YES;
+}
+
+- (NSInteger)lastSeasonOfTeebee:(Teebee*)teebee {
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT seasonNumber FROM Episodes WHERE teebeeId = '%@' AND airDate = (SELECT max(airDate) FROM Episodes WHERE teebeeId = '%@' AND watched = '1')", StringInteger(teebee.id), StringInteger(teebee.id)];
+    
+    sqlite3_stmt *statement;
+    
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+    }
+    else {
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            
+            return [[[NSMutableDictionary alloc] initWithSqlStatement:statement][@"seasonNumber"] integerValue];
+            
+        }
+        sqlite3_finalize(statement);
+        
+        
+        return 1;
+    }
+    
+    return 1;
+    
 }
 
 @end

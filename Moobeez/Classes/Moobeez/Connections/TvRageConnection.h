@@ -1,20 +1,21 @@
 //
-//  ZanaConnection.h
-//  Zana
+//  TvRageConnection.h
+//  Moobeez
 //
-//  Created by Radu Banea on 7/17/13.
-//  Copyright (c) 2013 Cronos Technologies. All rights reserved.
+//  Created by Radu Banea on 11/02/14.
+//  Copyright (c) 2014 Goggzy. All rights reserved.
 //
 
-#import "Connection.h"
+#import "XMLConnection.h"
 #import "Constants.h"
+#import "DDXMLDocument.h"
 
 @class AppDelegate;
 
-typedef void (^ConnectionCompletionHandler) (WebserviceResultCode code, NSMutableDictionary* resultDictionary, NSError* error);
+typedef void (^ConnectionXMLCompletionHandler) (WebserviceResultCode code, DDXMLDocument* xmlDocument, NSError* error);
 typedef void (^ConnectionCodeHandler) (WebserviceResultCode code);
 
-@interface TmdbConnection : Connection
+@interface TvRageConnection : XMLConnection
 
 @property (strong, nonatomic) NSString* urlSubpath;
 
@@ -24,7 +25,7 @@ typedef void (^ConnectionCodeHandler) (WebserviceResultCode code);
 
 @property (readonly, nonatomic) AppDelegate* appDelegate;
 
-- (id)initWithParameters:(NSDictionary*)parameters completionHandler:(ConnectionCompletionHandler)handler;
+- (id)initWithParameters:(NSDictionary*)parameters completionHandler:(ConnectionXMLCompletionHandler)handler;
 
 - (id)startSynchronousConnectionWithParameters:(NSDictionary*)parameters;
 

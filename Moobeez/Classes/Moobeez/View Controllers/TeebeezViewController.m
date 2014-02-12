@@ -12,16 +12,24 @@
 enum CollectionSections {
     SearchSection = 0,
     TeebeezSection,
-    EmptySection,
+    EmptySection = TeebeezSection,
     SectionsCount
     };
+
+typedef enum SoonSections {
+    TodaySection = 0,
+    TommorowSection,
+    ThisWeekSection,
+    SoonSection,
+    SoonSectionsCount
+    } SoonSections;
 
 @interface TeebeezViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (strong, nonatomic) NSMutableArray* teebeez;
-@property (strong, nonatomic) NSArray* displayedTeebeez;
+@property (strong, nonatomic) NSMutableArray* displayedTeebeez;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *typeSegmentedControl;
 
@@ -35,6 +43,14 @@ enum CollectionSections {
 @property (strong, nonatomic) SearchNewTvViewController* searchNewTvViewController;
 
 @property (readonly, nonatomic) TeebeeType selectedType;
+
+
+@property (strong, nonatomic) NSMutableArray* teebeezToUpdate;
+@property (readwrite, nonatomic) NSInteger numberOfTeebeezToUpdate;
+
+@property (strong, nonatomic) IBOutlet UIView *updatingView;
+@property (weak, nonatomic) IBOutlet UILabel *updatingLabel;
+@property (weak, nonatomic) IBOutlet UIProgressView *updatingProgressBar;
 
 @end
 
@@ -57,6 +73,7 @@ enum CollectionSections {
     [self.collectionView registerNib:[UINib nibWithNibName:@"BeeCell" bundle:nil] forCellWithReuseIdentifier:@"BeeCell"];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"EmptyCell"];
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"SearchCell"];
+    [self.collectionView registerNib:[UINib nibWithNibName:@"TeebeezHeaderView" bundle:nil] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"TeebeezHeaderView"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadTeebeez) name:TeebeezDidReloadNotification object:nil];
     
@@ -82,6 +99,18 @@ enum CollectionSections {
         self.collectionView.contentOffset = CGPointMake(0, 0);
     }
     
+    self.teebeezToUpdate = [[Database sharedDatabase] teebeezToUpdate];
+    if (self.teebeezToUpdate.count) {
+        
+        [Alert showAlertViewWithTitle:@"Teebeez outdated" message:@"Do you want to update the teebeez now?" buttonClickedCallback:^(NSInteger buttonIndex) {
+            
+            if (buttonIndex == 1) {
+                [self updateTeebeez];
+            }
+            
+        } cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -127,12 +156,45 @@ enum CollectionSections {
 }
 
 - (void)applyFilter {
-    self.displayedTeebeez = [self.teebeez filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
+    NSArray* filteredTeebeez = [self.teebeez filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
         if (self.searchBar.text.length == 0 || [((Moobee*) evaluatedObject).name rangeOfString:self.searchBar.text options:NSCaseInsensitiveSearch].location !=  NSNotFound) {
             return YES;
         }
         return NO;
     }]];
+    
+    if (self.selectedType == TeebeeSoonType) {
+        NSArray* sortedTeebeez = [filteredTeebeez sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+            return [((Teebee*) obj1).nextEpisode.airDate compare:((Teebee*) obj2).nextEpisode.airDate];
+        }];
+        
+        self.displayedTeebeez = [[NSMutableArray alloc] initWithCapacity:SoonSectionsCount];
+        
+        for (int i = 0; i < SoonSectionsCount; ++i) {
+            [self.displayedTeebeez addObject:[[NSMutableArray alloc] init]];
+        }
+        
+        for (Teebee* teebee in sortedTeebeez) {
+            
+            NSInteger numberOfDays = [[teebee.nextEpisode.airDate resetToMidnight] timeIntervalSinceDate:[[NSDate date] resetToMidnight]] / (24 * 3600);
+
+            if (numberOfDays == 0) {
+                [self.displayedTeebeez[TodaySection] addObject:teebee];
+            }
+            else if (numberOfDays == 1) {
+                [self.displayedTeebeez[TommorowSection] addObject:teebee];
+            }
+            else if (numberOfDays < 7) {
+                [self.displayedTeebeez[ThisWeekSection] addObject:teebee];
+            }
+            else {
+                [self.displayedTeebeez[SoonSection] addObject:teebee];
+            }
+        }
+    }
+    else {
+        self.displayedTeebeez = [NSMutableArray arrayWithObject:filteredTeebeez];
+    }
 }
 
 - (void)reloadData {
@@ -141,26 +203,18 @@ enum CollectionSections {
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return SectionsCount;
+    return SectionsCount + self.displayedTeebeez.count;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    switch (section) {
-        case SearchSection:
-            return 1;
-            break;
-        case TeebeezSection:
-            return self.displayedTeebeez.count;
-            break;
-        case EmptySection:
-            return 1;
-            break;
-        default:
-            break;
+    if (section == SearchSection || section == EmptySection + self.displayedTeebeez.count) {
+        return 1;
     }
     
-    return 0;
+    section -= TeebeezSection;
+    
+    return [self.displayedTeebeez[section] count];
 }
 
 // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -177,15 +231,16 @@ enum CollectionSections {
         return self.searchCell;
     }
     
-    if (indexPath.section == EmptySection) {
+    if (indexPath.section == EmptySection + self.displayedTeebeez.count) {
         UICollectionViewCell* emptyCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EmptyCell" forIndexPath:indexPath];
         emptyCell.backgroundColor = [UIColor clearColor];
         return emptyCell;
     }
     
+    NSInteger section = indexPath.section - TeebeezSection;
     BeeCell* cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"BeeCell" forIndexPath:indexPath];
 
-    cell.bee = self.displayedTeebeez[indexPath.row];
+    cell.bee = self.displayedTeebeez[section][indexPath.row];
     cell.notWatchedEpisodesLabel.alpha = (self.selectedType == TeebeeSoonType ? 0.0 : 1.0);
     
     return cell;
@@ -200,9 +255,15 @@ enum CollectionSections {
         
     }
     
-    if (indexPath.section == EmptySection) {
+    if (indexPath.section == EmptySection + self.displayedTeebeez.count) {
         
-        return CGSizeMake(296, MAX(0, self.collectionView.height - [BeeCell cellHeight] * (self.displayedTeebeez.count - 1 / 3 + 1)));
+        NSInteger numberOfLines = 0;
+        
+        for (NSMutableArray* teebeezSection in self.displayedTeebeez) {
+            numberOfLines += (teebeezSection.count == 0 ? 0 : teebeezSection.count - 1 / 3 + 1);
+        }
+        
+        return CGSizeMake(296, MAX(0, self.collectionView.height - [BeeCell cellHeight] * numberOfLines));
         
     }
     
@@ -211,11 +272,11 @@ enum CollectionSections {
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == TeebeezSection) {
+    if (indexPath.section >= TeebeezSection && indexPath.section < TeebeezSection + self.displayedTeebeez.count) {
         
         BeeCell* cell = (BeeCell*) [collectionView cellForItemAtIndexPath:indexPath];
         
-        Teebee* teebee = self.displayedTeebeez[indexPath.row];
+        Teebee* teebee = self.displayedTeebeez[indexPath.section - TeebeezSection][indexPath.row];
         
         TvConnection* connection = [[TvConnection alloc] initWithTmdbId:teebee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbTV *tv) {
             
@@ -249,6 +310,49 @@ enum CollectionSections {
     }
 }
 
+- (UICollectionReusableView*)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        
+        TeebeezHeaderView* headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"TeebeezHeaderView" forIndexPath:indexPath];
+
+        if (indexPath.section >= TeebeezSection && indexPath.section < TeebeezSection + self.displayedTeebeez.count) {
+            NSInteger section = indexPath.section - TeebeezSection;
+            
+            switch (section) {
+                case TodaySection:
+                    headerView.titleLabel.text = @"TODAY";
+                    break;
+                case TommorowSection:
+                    headerView.titleLabel.text = @"TOMMOROW";
+                    break;
+                case ThisWeekSection:
+                    headerView.titleLabel.text = @"THIS WEEK";
+                    break;
+                case SoonSection:
+                    headerView.titleLabel.text = @"SOON";
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        
+        return headerView;
+    }
+    
+    return nil;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    
+    if (self.selectedType == TeebeeSoonType && section >= TeebeezSection && section < TeebeezSection + self.displayedTeebeez.count && [self.displayedTeebeez[section - TeebeezSection] count] > 0) {
+        return CGSizeMake(320, 26);
+    }
+
+    return CGSizeZero;
+}
+
 #pragma mark - Animations
 
 - (BeeCell*)animationCell {
@@ -260,7 +364,21 @@ enum CollectionSections {
 
 - (void)hideMoobee:(Moobee*)moobee {
     
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:[self.displayedTeebeez indexOfObject:moobee] inSection:TeebeezSection];
+    int section = -1;
+    NSInteger index = -1;
+    for (int i = 0; i < self.displayedTeebeez.count; ++i) {
+        index = [self.displayedTeebeez[i] indexOfObject:moobee];
+        if (index != NSNotFound) {
+            section = i;
+            break;
+        }
+    }
+    
+    if (section == -1) {
+        return;
+    }
+    
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:index inSection:TeebeezSection + section];
  
     BeeCell* cell = (BeeCell*) [self.collectionView cellForItemAtIndexPath:indexPath];
     
@@ -282,6 +400,8 @@ enum CollectionSections {
 }
 
 - (void)goToTvDetailsScreenForTeebee:(Teebee*)teebee andTv:(TmdbTV*)tv {
+    
+    teebee.tvRageId = tv.tvRageId;
     
     TvViewController* viewController = [[TvViewController alloc] initWithNibName:@"TvViewController" bundle:nil];
     viewController.teebee = teebee;
@@ -381,6 +501,42 @@ enum CollectionSections {
     [searchBar resignFirstResponder];
     [self applyFilter];
     [self reloadData];
+}
+
+#pragma mark - Update teebeez
+
+- (void)updateTeebeez {
+    
+    self.numberOfTeebeezToUpdate = self.teebeezToUpdate.count;
+
+    [LoadingView showLoadingViewWithContent:self.updatingView];
+
+    [self updateNextTeebee];
+}
+
+- (void)updateNextTeebee {
+    
+    NSInteger updatedTeebeez = self.numberOfTeebeezToUpdate - self.teebeezToUpdate.count;
+    
+    self.updatingProgressBar.progress = (float)updatedTeebeez / self.numberOfTeebeezToUpdate;
+    
+    if (self.teebeezToUpdate.count) {
+        Teebee* teebee = self.teebeezToUpdate[0];
+        
+        self.updatingLabel.text = [NSString stringWithFormat:@"Update teebeez... %ld/%ld", (long)updatedTeebeez + 1, (long)self.numberOfTeebeezToUpdate];
+
+        [teebee updateEpisodesWithCompletion:^{
+            [self.teebeezToUpdate removeObject:teebee];
+            [self updateNextTeebee];
+        }];
+    }
+    else {
+        [self performSelector:@selector(endUpdate) withObject:nil afterDelay:0.1];
+    }
+}
+
+- (void)endUpdate {
+    [LoadingView hideLoadingView];
 }
 
 @end

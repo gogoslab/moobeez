@@ -20,10 +20,14 @@ typedef enum TeebeeType {
 } TeebeeType;
 
 @class TmdbTV;
+@class TeebeeEpisode;
 
 @interface Teebee : Bee
 
 @property (readwrite, nonatomic) TeebeeType type;
+
+@property (readwrite, nonatomic) BOOL ended;
+@property (strong, nonatomic) NSDate* lastUpdate;
 
 @property (readwrite, nonatomic) NSInteger watchedEpisodesCount;
 @property (readwrite, nonatomic) NSInteger notWatchedEpisodesCount;
@@ -31,11 +35,19 @@ typedef enum TeebeeType {
 @property (strong, nonatomic) NSMutableDictionary* seasons;
 @property (strong, nonatomic) NSMutableDictionary* episodes;
 
+@property (strong, nonatomic) TeebeeEpisode* nextEpisode;
+
+@property (strong, nonatomic) NSString* tvRageId;
+@property (strong, nonatomic) NSMutableArray* tvRageSeasons;
+
+
 + (id)teebeeWithTmdbTV:(TmdbTV*)tv;
 
 - (void)addEpisodesCountFromDictionary:(NSDictionary*)dictionary;
 
 - (BOOL)addTeebeeToDatabaseWithCompletion:(EmptyHandler)handler;
 - (void)updateEpisodesWithCompletion:(EmptyHandler)completion;
+
+- (void)getTvRageInfo:(CompleteHandler)completion;
 
 @end

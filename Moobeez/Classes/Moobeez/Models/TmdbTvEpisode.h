@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DDXML.h"
 
 @interface TmdbTvEpisode : NSObject
 
@@ -20,5 +21,7 @@
 
 - (id)initWithTmdbDictionary:(NSDictionary *)tmdbDictionary;
 - (void)addEntriesFromTmdbDictionary:(NSDictionary *)tmdbDictionary;
+
+- (id)initWithTvRageXmlElement:(DDXMLElement *)tvRageXmlElement;
 
 @end

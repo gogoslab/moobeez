@@ -80,8 +80,12 @@
         }
     }
     
-    if (tmdbDictionary[@"imdb_id"]) {
-        self.imdbId = tmdbDictionary[@"imdb_id"];
+    if (tmdbDictionary[@"external_ids"][@"imdb_id"]) {
+        self.imdbId = tmdbDictionary[@"external_ids"][@"imdb_id"];
+    }
+    
+    if (tmdbDictionary[@"external_ids"][@"tvrage_id"] && ![tmdbDictionary[@"external_ids"][@"tvrage_id"] isKindOfClass:[NSNull class]]) {
+        self.tvRageId = StringInteger([tmdbDictionary[@"external_ids"][@"tvrage_id"] integerValue]);
     }
     
     if ([[tmdbDictionary stringForKey:@"first_air_date"] length]) {

@@ -46,6 +46,7 @@
 - (BOOL)deleteMoobee:(Moobee*)moobee;
 
 - (NSMutableArray*)teebeezWithType:(TeebeeType)type;
+- (NSMutableArray*)teebeezToUpdate;
 - (Teebee*)teebeeWithId:(NSInteger)id;
 - (Teebee*)teebeeWithTmdbId:(NSInteger)tmdbId;
 - (BOOL)pullTeebeezEpisodesCount:(Teebee*)teebee;
@@ -56,8 +57,11 @@
 - (BOOL)pullSeasonsForTeebee:(Teebee*)teebee;
 - (BOOL)pullEpisodesForTeebee:(Teebee*)teebee inSeason:(NSInteger)seasonNumber;
 - (BOOL)deleteTeebee:(Teebee*)teebee;
+- (NSInteger)lastSeasonOfTeebee:(Teebee*)teebee;
 
 - (NSMutableArray*)insertObjects:(NSArray*)objects atKeys:(NSArray*)keys intoTable:(NSString*)table;
 - (BOOL)updateColumnValues:(NSArray*)values forColumn:(NSString*)column intoTable:(NSString*)table forIds:(NSArray*)ids;
+
+- (void)clearTable:(NSString*)tableName;
 
 @end

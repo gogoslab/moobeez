@@ -194,6 +194,7 @@
     NSLog(@"request url: %@", urlString);
     
 	NSURL *url = [NSURL URLWithString:urlString];
+    [url setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
 	
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
 	[request setTimeoutInterval:60];

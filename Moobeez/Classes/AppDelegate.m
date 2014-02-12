@@ -36,7 +36,9 @@ void uncaughtExceptionHandler(NSException *exception) {
 
     //init facebook framework
     [FBProfilePictureView class];
-
+    
+    [[NSFileManager defaultManager] removeItemAtPath:oldOfflineRootPath error:nil];
+    
     return YES;
 }
 							
