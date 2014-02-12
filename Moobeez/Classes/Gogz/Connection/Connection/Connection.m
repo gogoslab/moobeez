@@ -113,7 +113,11 @@
 - (NSMutableURLRequest*)requestWithUrl:(NSString*)urlString andInputJSON:(id)inputJSON
 {
     // Create a POST request
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    
+    NSURL* url = [NSURL URLWithString:urlString];
+    [url setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setHTTPMethod:@"POST"];
     
     // Add HTTP header info

@@ -43,5 +43,9 @@
     return UIInterfaceOrientationMaskPortrait;
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return UIStatusBarStyleLightContent;
+}
+
 
 @end
