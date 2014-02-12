@@ -92,4 +92,21 @@
     return luminosity;
 }
 
+- (CGFloat)luminosityFrom:(CGFloat)from to:(CGFloat)to {
+    
+    CGFloat luminosity = 0.0f;
+    
+    RGBAPixel* pixels = [self bitmap];
+    
+    int start = from * self.size.width * self.size.height;
+    int end = to * self.size.width * self.size.height;
+    
+    for (int i = start; i < end; ++i) {
+        luminosity += pixels[i].red * 0.299 + pixels[i].green * 0.587 + pixels[i].blue * 0.114;
+    }
+    
+    luminosity /= self.size.width * self.size.height;
+    
+    return luminosity;
+}
 @end

@@ -153,7 +153,11 @@ static ImageLoader* sharedLoader;
     
     NSString* offlinePath = [[ImageLoader imagesPaths] objectForKey:onlinePath];
     
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:absolutePath]];
+    NSURL* url = [NSURL URLWithString:absolutePath];
+    
+    [url setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
 	[request setTimeoutInterval:10];
 	[request setHTTPMethod:@"GET"];
     

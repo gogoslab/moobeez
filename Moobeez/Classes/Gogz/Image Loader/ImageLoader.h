@@ -12,7 +12,8 @@
 #define DidLoadImageNotification @"DidLoadImageNotification"
 #define DidFailToLoadImageNotification @"DidFailToLoadImageNotification"
 
-#define offlineRootPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"Images"]
+#define oldOfflineRootPath [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0] stringByAppendingPathComponent:@"Images"]
+#define offlineRootPath [NSTemporaryDirectory() stringByAppendingPathComponent:@"Images"]
 
 enum ImageLoadingPriority {
     ImageLoadingPriorityHigh = 0,

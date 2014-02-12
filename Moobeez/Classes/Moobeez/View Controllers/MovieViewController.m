@@ -29,6 +29,9 @@
 
 @property (weak, nonatomic) IBOutlet BubbleUpsideDownPopupView *shareBubbleView;
 @property (weak, nonatomic) IBOutlet UIView *shareButtonsView;
+
+@property (readwrite, nonatomic) BOOL lightInterface;
+
 @end
 
 @implementation MovieViewController
@@ -70,6 +73,12 @@
     
     self.addButton.hidden = (self.moobee.id != -1);
     
+    self.lightInterface = ([self.posterImageView.image luminosityFrom:0.0 to:0.05] > 0.7);
+    
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return (self.lightInterface ? UIStatusBarStyleDefault : UIStatusBarStyleLightContent);
 }
 
 - (void)didReceiveMemoryWarning
@@ -237,7 +246,9 @@
     switch (self.tmdbMovie.trailerType) {
         case TmdbTrailerQuicktimeType:
         {
-            MPMoviePlayerViewController* viewController = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:self.tmdbMovie.trailerPath]];
+            NSURL* url = [NSURL URLWithString:self.tmdbMovie.trailerPath];
+            [url setResourceValue:@(YES) forKey:NSURLIsExcludedFromBackupKey error:nil];
+            MPMoviePlayerViewController* viewController = [[MPMoviePlayerViewController alloc] initWithContentURL:url];
             [self presentMoviePlayerViewControllerAnimated:viewController];
         }
             break;
