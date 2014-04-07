@@ -17,6 +17,8 @@
 @property (weak, nonatomic) Teebee* teebee;
 @property (strong, nonatomic) NSNumber* numberOfEpisodesWatched;
 
+@property (readwrite, nonatomic) BOOL allEpisodes;
+
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 @end

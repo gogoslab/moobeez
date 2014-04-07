@@ -18,6 +18,8 @@
 
 @property (readwrite, nonatomic) NSInteger selectedSection;
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+
 @end
 
 @implementation SeasonsViewController
@@ -63,6 +65,7 @@
     if (indexPath.row == 0) {
         SeasonCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SeasonCell"];
         
+        cell.allEpisodes = (self.segmentedControl.selectedSegmentIndex == 1);
         cell.numberOfEpisodesWatched = self.teebee.seasons[StringInteger([self.tv.seasons[indexPath.section] seasonNumber])];
         cell.season = self.tv.seasons[indexPath.section];
         cell.teebee = self.teebee;
@@ -79,6 +82,12 @@
     NSInteger rowHeight = 70;
     
     if (indexPath.row == 0) {
+        BOOL hasNotWatchedEpisodes = ([self.teebee.seasons[StringInteger([self.tv.seasons[indexPath.section] seasonNumber])] intValue] < [self.tv.seasons[indexPath.section] episodes].count);
+        
+        if (self.segmentedControl.selectedSegmentIndex == 0 && !hasNotWatchedEpisodes) {
+            return 0.0;
+        }
+
         return rowHeight;
     }
     else {
@@ -93,22 +102,23 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == self.selectedSection) {
-        self.selectedSection = -1;
-        [tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationFade];
-        tableView.scrollEnabled = YES;
+        [self setSelectedSection:-1 animated:YES];
     }
     else {
-        self.selectedSection = indexPath.section;
-        self.episodesViewController.season = self.tv.seasons[indexPath.section];
-        [[Database sharedDatabase] pullEpisodesForTeebee:self.teebee inSeason:self.episodesViewController.season.seasonNumber];
-        [self.episodesViewController.tableView reloadData];
-        
-        [tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:indexPath.section]] withRowAnimation:UITableViewRowAnimationFade];
-        
-        tableView.scrollEnabled = NO;
-        
-        [tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        [self setSelectedSection:indexPath.section animated:YES];
     }
+}
+
+- (IBAction)segmentedControlValueChanged:(id)sender {
+    
+    _selectedSection = -1;
+    self.tableView.scrollEnabled = YES;
+    
+    [self.tableView reloadData];
+    
+    self.episodesViewController.allEpisodes = (self.segmentedControl.selectedSegmentIndex == 1);
+
+    self.tableView.contentOffset = CGPointZero;
 }
 
 - (void)reloadData {
@@ -163,6 +173,54 @@
     }
     
     return _episodesViewController;
+}
+
+- (void)setSelectedSection:(NSInteger)selectedSection {
+    [self setSelectedSection:selectedSection animated:NO];
+}
+
+- (void)setSelectedSection:(NSInteger)selectedSection animated:(BOOL)animated {
+    
+    if (selectedSection == _selectedSection) {
+        return;
+    }
+    
+    if (selectedSection == -1) {
+
+        if (!animated) {
+            [self.tableView reloadData];
+        }
+        else {
+            [self.tableView beginUpdates];
+            
+            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:_selectedSection]] withRowAnimation:UITableViewRowAnimationFade];
+            _selectedSection = selectedSection;
+            
+            [self.tableView endUpdates];
+        }
+        
+        self.tableView.scrollEnabled = YES;
+    }
+    else {
+        _selectedSection = selectedSection;
+
+        self.episodesViewController.season = self.tv.seasons[selectedSection];
+        [[Database sharedDatabase] pullEpisodesForTeebee:self.teebee inSeason:self.episodesViewController.season.seasonNumber];
+        [self.episodesViewController.tableView reloadData];
+        self.episodesViewController.tableView.contentOffset = CGPointZero;
+        
+        if (!animated) {
+            [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:selectedSection]] withRowAnimation:UITableViewRowAnimationFade];
+        }
+        else {
+            [self.tableView reloadData];
+        }
+        
+        self.tableView.scrollEnabled = NO;
+        
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:selectedSection] atScrollPosition:UITableViewScrollPositionTop animated:animated];
+    }
+    
 }
 
 @end

@@ -73,10 +73,11 @@
     self.addButton.selected = (self.teebee.id != -1);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateWatchedEpisodes) name:DidUpdateWatchedEpisodesNotification object:self.teebee];
-    
+
+    /*
     [self.teebee getTvRageInfo:^(BOOL completed) {
         
-    }];
+    }];*/
 }
 
 - (void)didReceiveMemoryWarning
@@ -89,8 +90,9 @@
     
     if (self.teebee.id != -1) {
         [self.teebee save];
+        [[Database sharedDatabase] pullNextExpisodeForTeebee:self.teebee];
     }
-
+    
     [self dismissViewControllerAnimated:NO completion:^{
         
         if (self.closeHandler) {
@@ -217,7 +219,7 @@
 
 - (IBAction)photosButtonPressed:(id)sender {
     if (!self.tmdbTv.backdropsImages) {
-        MovieImagesConnection* connection = [[MovieImagesConnection alloc] initWithTmdbMovie:self.tmdbTv completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+        TvImagesConnection* connection = [[TvImagesConnection alloc] initWithTmdbTv:self.tmdbTv completionHandler:^(WebserviceResultCode code, TmdbTV *tv) {
             [self openImages];
         }];
         [self startConnection:connection];

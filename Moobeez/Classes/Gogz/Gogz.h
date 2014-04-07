@@ -23,7 +23,7 @@
 #import "UIImage+Extra.h"
 #import "UIColor+Hex.h"
 #import "UIMaskView.h"
-
+#import "FloatingHeadersCollectionViewFlowLayout.h"
 
 #pragma mark - Alert
 

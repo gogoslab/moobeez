@@ -58,6 +58,7 @@
 - (BOOL)pullEpisodesForTeebee:(Teebee*)teebee inSeason:(NSInteger)seasonNumber;
 - (BOOL)deleteTeebee:(Teebee*)teebee;
 - (NSInteger)lastSeasonOfTeebee:(Teebee*)teebee;
+- (void)pullNextExpisodeForTeebee:(Teebee*)teebee;
 
 - (NSMutableArray*)insertObjects:(NSArray*)objects atKeys:(NSArray*)keys intoTable:(NSString*)table;
 - (BOOL)updateColumnValues:(NSArray*)values forColumn:(NSString*)column intoTable:(NSString*)table forIds:(NSArray*)ids;

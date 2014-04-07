@@ -20,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *episodesLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *watchButton;
+
 @end
 
 @implementation SeasonCell
@@ -80,15 +81,26 @@
         
         if (self.numberOfEpisodesWatched) {
             
-            NSAttributedString* watchedEpisodesString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d", [self.numberOfEpisodesWatched intValue]] attributes:@{NSForegroundColorAttributeName : [UIColor mainColor]}];
-            
-            NSMutableAttributedString* episodesString = [[NSMutableAttributedString alloc] init];
-            [episodesString appendAttributedString:watchedEpisodesString];
-            [episodesString appendAttributedString:[[NSAttributedString alloc] initWithString:@" / " attributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}]];
-            [episodesString appendAttributedString:allEpisodesString];
-            [episodesString appendAttributedString:[[NSAttributedString alloc] initWithString:@" episodes watched" attributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}]];
-            
-            self.episodesLabel.attributedText = episodesString;
+            if (self.allEpisodes) {
+                NSAttributedString* watchedEpisodesString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%d", [self.numberOfEpisodesWatched intValue]] attributes:@{NSForegroundColorAttributeName : [UIColor mainColor]}];
+                
+                NSMutableAttributedString* episodesString = [[NSMutableAttributedString alloc] init];
+                [episodesString appendAttributedString:watchedEpisodesString];
+                [episodesString appendAttributedString:[[NSAttributedString alloc] initWithString:@" / " attributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}]];
+                [episodesString appendAttributedString:allEpisodesString];
+                [episodesString appendAttributedString:[[NSAttributedString alloc] initWithString:@" episodes watched" attributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}]];
+                
+                self.episodesLabel.attributedText = episodesString;
+            }
+            else {
+                NSAttributedString* watchedEpisodesString = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%lu", self.season.episodes.count - [self.numberOfEpisodesWatched intValue]] attributes:@{NSForegroundColorAttributeName : [UIColor mainColor]}];
+                
+                NSMutableAttributedString* episodesString = [[NSMutableAttributedString alloc] init];
+                [episodesString appendAttributedString:watchedEpisodesString];
+                [episodesString appendAttributedString:[[NSAttributedString alloc] initWithString:@" episodes not watched" attributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}]];
+                
+                self.episodesLabel.attributedText = episodesString;
+            }
         }
         else {
             

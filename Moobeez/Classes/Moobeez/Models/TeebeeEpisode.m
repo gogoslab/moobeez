@@ -37,7 +37,7 @@
         self.watched = [databaseDictionary[@"watched"] boolValue];
         
         if (databaseDictionary[@"airDate"]) {
-            self.airDate = [NSDate dateWithTimeIntervalSinceReferenceDate:[databaseDictionary[@"airDate"] doubleValue]];
+            self.airDate = [NSDate dateWithTimeIntervalSince1970:[databaseDictionary[@"airDate"] doubleValue]];
         }
     }
     

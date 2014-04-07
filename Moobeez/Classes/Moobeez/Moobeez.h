@@ -20,6 +20,7 @@
 #import "Utils.h"
 
 #import "TmdbConnections.h"
+#import "TraktConnections.h"
 #import "TvRageConnections.h"
 
 #import "Database.h"

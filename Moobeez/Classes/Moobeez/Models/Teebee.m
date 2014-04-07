@@ -75,9 +75,9 @@
         databaseDictionary[@"lastUpdate"] = [NSString stringWithFormat:@"%.0f", [self.lastUpdate timeIntervalSince1970]];
     }
     
-    if (self.tvRageId && [self.tvRageId isKindOfClass:[NSString class]]) {
-        databaseDictionary[@"tvRageId"] = self.tvRageId;
-    }
+//    if (self.tvRageId && [self.tvRageId isKindOfClass:[NSString class]]) {
+//        databaseDictionary[@"tvRageId"] = self.tvRageId;
+//    }
     
     return databaseDictionary;
 }

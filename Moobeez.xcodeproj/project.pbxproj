@@ -57,6 +57,9 @@
 		644121F7181C351400260497 /* share_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 644121F5181C351400260497 /* share_button.png */; };
 		644121F8181C351400260497 /* share_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644121F6181C351400260497 /* share_button@2x.png */; };
 		64412223181D3D7F00260497 /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64412222181D3D7F00260497 /* CharacterCell.xib */; };
+		6459F35C18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F35B18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m */; };
+		6459F35F18F2E93500EBFBE0 /* TvImagesConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F35E18F2E93500EBFBE0 /* TvImagesConnection.m */; };
+		645B75B718B255000070EA04 /* TraktConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 645B75B618B255000070EA04 /* TraktConnection.m */; };
 		64646C5B1892BF3C007926FE /* featured_cells_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 64646C591892BF3C007926FE /* featured_cells_header.png */; };
 		64646C5C1892BF3C007926FE /* featured_cells_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64646C5A1892BF3C007926FE /* featured_cells_header@2x.png */; };
 		64646C5F189415B9007926FE /* MovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64646C5E189415B9007926FE /* MovieCell.m */; };
@@ -460,6 +463,13 @@
 		644121F5181C351400260497 /* share_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_button.png; sourceTree = "<group>"; };
 		644121F6181C351400260497 /* share_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_button@2x.png"; sourceTree = "<group>"; };
 		64412222181D3D7F00260497 /* CharacterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterCell.xib; sourceTree = "<group>"; };
+		6459F35A18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingHeadersCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		6459F35B18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingHeadersCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		6459F35D18F2E93500EBFBE0 /* TvImagesConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvImagesConnection.h; sourceTree = "<group>"; };
+		6459F35E18F2E93500EBFBE0 /* TvImagesConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TvImagesConnection.m; sourceTree = "<group>"; };
+		645B75B518B255000070EA04 /* TraktConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraktConnection.h; sourceTree = "<group>"; };
+		645B75B618B255000070EA04 /* TraktConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraktConnection.m; sourceTree = "<group>"; };
+		645B75B818B255380070EA04 /* TraktConnections.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TraktConnections.h; sourceTree = "<group>"; };
 		64646C591892BF3C007926FE /* featured_cells_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = featured_cells_header.png; sourceTree = "<group>"; };
 		64646C5A1892BF3C007926FE /* featured_cells_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "featured_cells_header@2x.png"; sourceTree = "<group>"; };
 		64646C5D189415B9007926FE /* MovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCell.h; sourceTree = "<group>"; };
@@ -1319,8 +1329,9 @@
 				64D74157189D3D2B0011C39A /* TVs List Connection */,
 				64D7415B189FAE570011C39A /* Tv Connection */,
 				64D74163189FF4690011C39A /* Tv Season Connection */,
+				6459F36018F2E93900EBFBE0 /* Tv Images Connection */,
 			);
-			name = "Tmdb Connections";
+			path = "Tmdb Connections";
 			sourceTree = "<group>";
 		};
 		64392EB118084D7800504C78 /* Tmdb Connection */ = {
@@ -1341,6 +1352,34 @@
 				64CA53851823DD2C000699C5 /* MovieButtonsWhite.bundle */,
 			);
 			path = "Movie Details";
+			sourceTree = "<group>";
+		};
+		6459F36018F2E93900EBFBE0 /* Tv Images Connection */ = {
+			isa = PBXGroup;
+			children = (
+				6459F35D18F2E93500EBFBE0 /* TvImagesConnection.h */,
+				6459F35E18F2E93500EBFBE0 /* TvImagesConnection.m */,
+			);
+			name = "Tv Images Connection";
+			sourceTree = "<group>";
+		};
+		645B75B418B255000070EA04 /* Trakt Connections */ = {
+			isa = PBXGroup;
+			children = (
+				645B75B818B255380070EA04 /* TraktConnections.h */,
+				645B75B918B2553E0070EA04 /* Trakt Connection */,
+			);
+			name = "Trakt Connections";
+			path = "Track Connections";
+			sourceTree = "<group>";
+		};
+		645B75B918B2553E0070EA04 /* Trakt Connection */ = {
+			isa = PBXGroup;
+			children = (
+				645B75B518B255000070EA04 /* TraktConnection.h */,
+				645B75B618B255000070EA04 /* TraktConnection.m */,
+			);
+			name = "Trakt Connection";
 			sourceTree = "<group>";
 		};
 		64646C581892BF3C007926FE /* Movies */ = {
@@ -1642,7 +1681,7 @@
 				64A10DBE18A99D4000906081 /* TvRage Episodes Connection */,
 				64A10DBA18A99BD000906081 /* TvRageConnections.h */,
 			);
-			name = "Tv Rage Connections";
+			path = "Tv Rage Connections";
 			sourceTree = "<group>";
 		};
 		64A10DB918A999EA00906081 /* Tv Rage Connection */ = {
@@ -1943,6 +1982,7 @@
 		64B2AB4C18083CBF00E02E2F /* Connections */ = {
 			isa = PBXGroup;
 			children = (
+				645B75B418B255000070EA04 /* Trakt Connections */,
 				64392EB018084D6B00504C78 /* Tmdb Connections */,
 				64A10DB818A999DE00906081 /* Tv Rage Connections */,
 			);
@@ -2062,6 +2102,8 @@
 				64B2AB7918083ED600E02E2F /* UIColor+Hex.m */,
 				64648EC4182849B800365EC7 /* UIMaskView.h */,
 				64648EC5182849B800365EC7 /* UIMaskView.m */,
+				6459F35A18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.h */,
+				6459F35B18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -2987,6 +3029,7 @@
 				643FB23A18215FDC00B7CFF7 /* NSString+SQL.m in Sources */,
 				64B9F5E01822A3F0002E322F /* GPUImageGaussianBlurFilter.m in Sources */,
 				64B2AB8E1808452700E02E2F /* MoviesViewController.m in Sources */,
+				6459F35F18F2E93500EBFBE0 /* TvImagesConnection.m in Sources */,
 				64B9F6071822A3F0002E322F /* GPUImageMotionBlurFilter.m in Sources */,
 				64B9F6051822A3F0002E322F /* GPUImageMonochromeFilter.m in Sources */,
 				64B2AB7A18083ED600E02E2F /* UIColor+Hex.m in Sources */,
@@ -3039,6 +3082,7 @@
 				64B9F5F91822A3F0002E322F /* GPUImageLinearBurnBlendFilter.m in Sources */,
 				64B2AB6E18083CBF00E02E2F /* SBJsonTokeniser.m in Sources */,
 				64B9F5D81822A3F0002E322F /* GPUImageExclusionBlendFilter.m in Sources */,
+				645B75B718B255000070EA04 /* TraktConnection.m in Sources */,
 				64B2AB5A18083CBF00E02E2F /* NSDictionary+Extensions.m in Sources */,
 				64B9F6341822A3F0002E322F /* GPUImageStretchDistortionFilter.m in Sources */,
 				64B9F5CE1822A3F0002E322F /* GPUImageCrosshatchFilter.m in Sources */,
@@ -3115,6 +3159,7 @@
 				64B9F6511822A3F0002E322F /* GPUImageView.m in Sources */,
 				64A10DBD18A99D3B00906081 /* TvRageEpisodesConnection.m in Sources */,
 				64B9F5CD1822A3F0002E322F /* GPUImageCrosshairGenerator.m in Sources */,
+				6459F35C18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m in Sources */,
 				64CA53971823F8C6000699C5 /* SearchResultCell.m in Sources */,
 				64B9F6291822A3F0002E322F /* GPUImageShiTomasiFeatureDetectionFilter.m in Sources */,
 				64B9F6431822A3F0002E322F /* GPUImageTwoPassFilter.m in Sources */,
@@ -3289,7 +3334,7 @@
 				GCC_PREFIX_HEADER = "Moobeez/Moobeez-Prefix.pch";
 				INFOPLIST_FILE = "Moobeez/Moobeez-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3E129D3B-733D-4647-B938-358EB1B8DF5F";
+				PROVISIONING_PROFILE = "93201FAC-D2FD-4842-8CEF-F8E5A4584E89";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3299,8 +3344,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Radu Banea (Z4252ZWMEJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Radu Banea (Z4252ZWMEJ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Classes/Gogz/External\\ SDKs",
@@ -3311,7 +3356,7 @@
 				GCC_PREFIX_HEADER = "Moobeez/Moobeez-Prefix.pch";
 				INFOPLIST_FILE = "Moobeez/Moobeez-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "C039EA6D-FD58-4B8B-8D53-05DBD30E15BD";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

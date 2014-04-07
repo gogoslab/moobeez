@@ -96,7 +96,6 @@ typedef enum SoonSections {
     
         firstAppear = NO;
         
-        self.collectionView.contentOffset = CGPointMake(0, 0);
     }
     
     self.teebeezToUpdate = [[Database sharedDatabase] teebeezToUpdate];
@@ -150,8 +149,6 @@ typedef enum SoonSections {
     [self applyFilter];
     
     [self reloadData];
-    
-    self.collectionView.contentOffset = CGPointMake(0, -60);
     
 }
 
@@ -347,11 +344,22 @@ typedef enum SoonSections {
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
     
     if (self.selectedType == TeebeeSoonType && section >= TeebeezSection && section < TeebeezSection + self.displayedTeebeez.count && [self.displayedTeebeez[section - TeebeezSection] count] > 0) {
-        return CGSizeMake(320, 26);
+        return CGSizeMake(320, 32);
     }
 
-    return CGSizeZero;
+    return CGSizeMake(320, 0);
 }
+
+- (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    
+    if (self.selectedType == TeebeeSoonType && section >= TeebeezSection && section < TeebeezSection + self.displayedTeebeez.count && [self.displayedTeebeez[section - TeebeezSection] count] == 0) {
+        return UIEdgeInsetsMake(0, 12, 0, 12);
+    }
+    
+    return UIEdgeInsetsMake(13, 12, 13, 12);
+    
+}
+
 
 #pragma mark - Animations
 
@@ -494,7 +502,6 @@ typedef enum SoonSections {
     [searchBar resignFirstResponder];
     [self applyFilter];
     [self reloadData];
-    self.collectionView.contentOffset = CGPointMake(0, -60);
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {

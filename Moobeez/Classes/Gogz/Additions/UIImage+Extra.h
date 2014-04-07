@@ -23,5 +23,6 @@ typedef struct RGBAPixel {
 - (RGBAPixel*)bitmap;
 - (CGFloat)luminosity;
 - (CGFloat)bottomHalfLuminosity;
+- (CGFloat)luminosityFrom:(CGFloat)from to:(CGFloat)to;
 
 @end

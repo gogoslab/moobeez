@@ -55,6 +55,19 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    TmdbTvEpisode* tmdbEpisode = self.season.episodes[indexPath.row];
+    TeebeeEpisode* episode = self.teebee.episodes[StringInteger(self.season.seasonNumber)][StringInteger(tmdbEpisode.episodeNumber)];
+    
+    if (!self.allEpisodes && episode.watched) {
+        return 0.0;
+    }
+    
+    return tableView.rowHeight;
+    
+}
+
 - (IBAction)backButtonPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }

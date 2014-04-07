@@ -18,4 +18,6 @@
 @property (weak, nonatomic) Teebee* teebee;
 @property (weak, nonatomic) TmdbTvSeason* season;
 
+@property (readwrite, nonatomic) BOOL allEpisodes;
+
 @end
