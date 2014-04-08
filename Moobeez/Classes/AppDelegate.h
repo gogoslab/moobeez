@@ -8,9 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class SideTabViewController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWindow *window;
 @property (weak, nonatomic) IBOutlet UITabBarController *tabBarController;
+
+@property (strong, nonatomic) SideTabViewController *sideTabController;
+
+@end
+
+@interface NSObject (AppDelegate)
+
+@property (readonly, nonatomic) AppDelegate* appDelegate;
 
 @end

@@ -47,7 +47,7 @@
     
     ConfigurationConnection* connection = [[ConfigurationConnection alloc] initWithCompletionHandler:^(WebserviceResultCode code) {
         if (code == WebserviceResultOk) {
-            [self.navigationController pushViewController:self.appDelegate.tabBarController animated:NO];
+            [self.navigationController pushViewController:self.appDelegate.sideTabController animated:NO];
         }
     }];
     

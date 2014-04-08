@@ -88,4 +88,21 @@ void uncaughtExceptionHandler(NSException *exception) {
     return [FBSession.activeSession handleOpenURL:url];
 }
 
+
+#pragma mark - Side Bar
+
+- (SideTabViewController*)sideTabController {
+    if (!_sideTabController) {
+        _sideTabController = [[SideTabViewController alloc] initWithNibName:@"SideTabViewController" bundle:nil];
+    }
+    return _sideTabController;
+}
+@end
+
+@implementation NSObject (AppDelegate)
+
+- (AppDelegate*)appDelegate {
+    return (AppDelegate*) [UIApplication sharedApplication].delegate;
+}
+
 @end

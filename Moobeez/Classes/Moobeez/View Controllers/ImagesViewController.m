@@ -37,10 +37,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    if (self.images.count) {
-        self.isLandscape = (((TmdbImage*) self.images[0]).aspectRatio >= 1.0);
-    }
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -121,5 +117,23 @@
     
 }
 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
 
+    [UIView animateWithDuration:duration animations:^{
+        for (UIView* view in self.imageViewsArray) {
+            view.bounds = self.scrollView.bounds;
+            view.x = [self.imageViewsArray indexOfObject:view] * view.width;
+        }
+        self.scrollView.contentSize = CGSizeMake(self.scrollView.width * self.imageViewsArray.count, self.scrollView.height);
+    }];
+    
+}
+
+- (BOOL)isLandscape {
+    if (self.images.count) {
+        return (((TmdbImage*) self.images[0]).aspectRatio >= 1.0);
+    }
+    
+    return NO;
+}
 @end

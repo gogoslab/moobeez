@@ -59,6 +59,8 @@
 		64412223181D3D7F00260497 /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64412222181D3D7F00260497 /* CharacterCell.xib */; };
 		6459F35C18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F35B18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m */; };
 		6459F35F18F2E93500EBFBE0 /* TvImagesConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F35E18F2E93500EBFBE0 /* TvImagesConnection.m */; };
+		6459F36418F3391900EBFBE0 /* SideTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F36218F3391900EBFBE0 /* SideTabViewController.m */; };
+		6459F36518F3391900EBFBE0 /* SideTabViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6459F36318F3391900EBFBE0 /* SideTabViewController.xib */; };
 		645B75B718B255000070EA04 /* TraktConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 645B75B618B255000070EA04 /* TraktConnection.m */; };
 		64646C5B1892BF3C007926FE /* featured_cells_header.png in Resources */ = {isa = PBXBuildFile; fileRef = 64646C591892BF3C007926FE /* featured_cells_header.png */; };
 		64646C5C1892BF3C007926FE /* featured_cells_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64646C5A1892BF3C007926FE /* featured_cells_header@2x.png */; };
@@ -173,6 +175,10 @@
 		64B2AB951808486200E02E2F /* tab_bar_icon_moobeez@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AB931808486200E02E2F /* tab_bar_icon_moobeez@2x.png */; };
 		64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AB961808496B00E02E2F /* tab_bar_icon_movies.png */; };
 		64B2AB991808496B00E02E2F /* tab_bar_icon_movies@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AB971808496B00E02E2F /* tab_bar_icon_movies@2x.png */; };
+		64B3E42118F3F28900783B95 /* background_blured.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B3E41F18F3F28900783B95 /* background_blured.png */; };
+		64B3E42218F3F28900783B95 /* background_blured@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B3E42018F3F28900783B95 /* background_blured@2x.png */; };
+		64B3E42818F3FCD000783B95 /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B3E42618F3FCD000783B95 /* menu_button.png */; };
+		64B3E42918F3FCD000783B95 /* menu_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B3E42718F3FCD000783B95 /* menu_button@2x.png */; };
 		64B9F5B21822A3F0002E322F /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B9F4701822A3EF002E322F /* GLProgram.m */; };
 		64B9F5B31822A3F0002E322F /* GPUImage3x3ConvolutionFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B9F4731822A3EF002E322F /* GPUImage3x3ConvolutionFilter.m */; };
 		64B9F5B41822A3F0002E322F /* GPUImage3x3TextureSamplingFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B9F4751822A3EF002E322F /* GPUImage3x3TextureSamplingFilter.m */; };
@@ -467,6 +473,9 @@
 		6459F35B18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingHeadersCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		6459F35D18F2E93500EBFBE0 /* TvImagesConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvImagesConnection.h; sourceTree = "<group>"; };
 		6459F35E18F2E93500EBFBE0 /* TvImagesConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TvImagesConnection.m; sourceTree = "<group>"; };
+		6459F36118F3391900EBFBE0 /* SideTabViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideTabViewController.h; sourceTree = "<group>"; };
+		6459F36218F3391900EBFBE0 /* SideTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideTabViewController.m; sourceTree = "<group>"; };
+		6459F36318F3391900EBFBE0 /* SideTabViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SideTabViewController.xib; sourceTree = "<group>"; };
 		645B75B518B255000070EA04 /* TraktConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraktConnection.h; sourceTree = "<group>"; };
 		645B75B618B255000070EA04 /* TraktConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraktConnection.m; sourceTree = "<group>"; };
 		645B75B818B255380070EA04 /* TraktConnections.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TraktConnections.h; sourceTree = "<group>"; };
@@ -662,6 +671,10 @@
 		64B2AB931808486200E02E2F /* tab_bar_icon_moobeez@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_bar_icon_moobeez@2x.png"; sourceTree = "<group>"; };
 		64B2AB961808496B00E02E2F /* tab_bar_icon_movies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_bar_icon_movies.png; sourceTree = "<group>"; };
 		64B2AB971808496B00E02E2F /* tab_bar_icon_movies@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_bar_icon_movies@2x.png"; sourceTree = "<group>"; };
+		64B3E41F18F3F28900783B95 /* background_blured.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_blured.png; sourceTree = "<group>"; };
+		64B3E42018F3F28900783B95 /* background_blured@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_blured@2x.png"; sourceTree = "<group>"; };
+		64B3E42618F3FCD000783B95 /* menu_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_button.png; sourceTree = "<group>"; };
+		64B3E42718F3FCD000783B95 /* menu_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_button@2x.png"; sourceTree = "<group>"; };
 		64B9F46F1822A3EF002E322F /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
 		64B9F4701822A3EF002E322F /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgram.m; sourceTree = "<group>"; };
 		64B9F4711822A3EF002E322F /* GPUImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPUImage.h; sourceTree = "<group>"; };
@@ -1191,6 +1204,10 @@
 		64177865180C3B5A00CDFA25 /* Common Images */ = {
 			isa = PBXGroup;
 			children = (
+				64B3E42618F3FCD000783B95 /* menu_button.png */,
+				64B3E42718F3FCD000783B95 /* menu_button@2x.png */,
+				64B3E41F18F3F28900783B95 /* background_blured.png */,
+				64B3E42018F3F28900783B95 /* background_blured@2x.png */,
 				64290E9018A65AEB009E6B04 /* delete_button.png */,
 				64290E9118A65AEB009E6B04 /* delete_button@2x.png */,
 				64290E7D18A516DA009E6B04 /* blue_circle.png */,
@@ -1361,6 +1378,16 @@
 				6459F35E18F2E93500EBFBE0 /* TvImagesConnection.m */,
 			);
 			name = "Tv Images Connection";
+			sourceTree = "<group>";
+		};
+		6459F36618F3391E00EBFBE0 /* Side Tab View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6459F36118F3391900EBFBE0 /* SideTabViewController.h */,
+				6459F36218F3391900EBFBE0 /* SideTabViewController.m */,
+				6459F36318F3391900EBFBE0 /* SideTabViewController.xib */,
+			);
+			name = "Side Tab View Controller";
 			sourceTree = "<group>";
 		};
 		645B75B418B255000070EA04 /* Trakt Connections */ = {
@@ -2027,6 +2054,7 @@
 		64B2AB5618083CBF00E02E2F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6459F36618F3391E00EBFBE0 /* Side Tab View Controller */,
 				64158329182BD79A00BB599C /* Navigation Controller */,
 				64B2AB84180844C300E02E2F /* View Controller */,
 				64177864180C336300CDFA25 /* Loading View Controller */,
@@ -2821,11 +2849,14 @@
 			files = (
 				64290E9218A65AEB009E6B04 /* delete_button.png in Resources */,
 				64B2AADF18082AE600E02E2F /* Images.xcassets in Resources */,
+				64B3E42818F3FCD000783B95 /* menu_button.png in Resources */,
 				64DC8C1E1817215E002C11D8 /* toolbox_up_arrow@2x.png in Resources */,
 				64B2AB991808496B00E02E2F /* tab_bar_icon_movies@2x.png in Resources */,
 				64DC8C111817137F002C11D8 /* back_button.png in Resources */,
+				64B3E42118F3F28900783B95 /* background_blured.png in Resources */,
 				64B2AB951808486200E02E2F /* tab_bar_icon_moobeez@2x.png in Resources */,
 				64A8AD75188F39D400DBECD7 /* FeatureMoviesCell.xib in Resources */,
+				64B3E42218F3F28900783B95 /* background_blured@2x.png in Resources */,
 				64DC8C1D1817215E002C11D8 /* toolbox_up_arrow.png in Resources */,
 				64177863180C336000CDFA25 /* LoadingViewController.xib in Resources */,
 				64B2AACE18082AE600E02E2F /* InfoPlist.strings in Resources */,
@@ -2850,6 +2881,7 @@
 				64F25A181827EC02005AB9F8 /* description_mask.png in Resources */,
 				64646C6818942973007926FE /* MoviesHeaderView.xib in Resources */,
 				64290E8018A516DA009E6B04 /* blue_circle@2x.png in Resources */,
+				6459F36518F3391900EBFBE0 /* SideTabViewController.xib in Resources */,
 				64DC8C191817215E002C11D8 /* toolbox_down_arrow.png in Resources */,
 				64290E7518A46074009E6B04 /* EpisodesViewController.xib in Resources */,
 				64B2AB8F1808452700E02E2F /* MoviesViewController.xib in Resources */,
@@ -2891,6 +2923,7 @@
 				64D74144189D1FB10011C39A /* TvViewController.xib in Resources */,
 				64648EC81828502E00365EC7 /* description_mask@2x.png in Resources */,
 				644121F7181C351400260497 /* share_button.png in Resources */,
+				64B3E42918F3FCD000783B95 /* menu_button@2x.png in Resources */,
 				64646C62189415F8007926FE /* MovieCell.xib in Resources */,
 				64D74142189D1FB10011C39A /* TVsViewController.xib in Resources */,
 				64A8AD6B188EC42C00DBECD7 /* YouTubeTemplate.txt in Resources */,
@@ -3034,6 +3067,7 @@
 				64B9F6051822A3F0002E322F /* GPUImageMonochromeFilter.m in Sources */,
 				64B2AB7A18083ED600E02E2F /* UIColor+Hex.m in Sources */,
 				64B9F5DD1822A3F0002E322F /* GPUImageFilterGroup.m in Sources */,
+				6459F36418F3391900EBFBE0 /* SideTabViewController.m in Sources */,
 				64B9F5BB1822A3F0002E322F /* GPUImageBilateralFilter.m in Sources */,
 				64B9F6091822A3F0002E322F /* GPUImageMovie.m in Sources */,
 				64B9F5B61822A3F0002E322F /* GPUImageAddBlendFilter.m in Sources */,

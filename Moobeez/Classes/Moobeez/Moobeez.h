@@ -33,6 +33,8 @@
 
 #pragma mark - View Controllers
 
+#import "SideTabViewController.h"
+
 #import "ViewController.h"
 
 #import "MoobeezViewController.h"

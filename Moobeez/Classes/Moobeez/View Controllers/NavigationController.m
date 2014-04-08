@@ -7,6 +7,7 @@
 //
 
 #import "NavigationController.h"
+#import "Moobeez.h"
 
 @interface NavigationController ()
 
@@ -27,6 +28,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    self.topViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu_button.png"] style:UIBarButtonItemStylePlain target:self.appDelegate.sideTabController action:@selector(showMenu)];
+    self.topViewController.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -46,6 +51,5 @@
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
-
 
 @end
