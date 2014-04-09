@@ -67,13 +67,21 @@
             }
             
             CGFloat headerHeight = CGRectGetHeight(layoutAttributes.frame);
+
+            CGFloat maxY = CGRectGetMaxY(lastObjectAttrs.frame) - headerHeight;
+            
+            if (section < [cv numberOfSections] - 1) {
+                UICollectionViewLayoutAttributes* nextHeaderAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader
+                                                                                                              atIndexPath:[NSIndexPath indexPathForRow:0 inSection:section + 1]];
+                maxY = nextHeaderAttributes.frame.origin.y - headerHeight;
+            }
+            
             CGPoint origin = layoutAttributes.frame.origin;
             origin.y = MIN(
                            MAX(
                                contentOffset.y + cv.contentInset.top,
-                               (CGRectGetMinY(firstObjectAttrs.frame) - headerHeight)
-                               ),
-                           (CGRectGetMaxY(lastObjectAttrs.frame) - headerHeight)
+                               origin.y),
+                           maxY
                            );
             
             layoutAttributes.zIndex = 1024;

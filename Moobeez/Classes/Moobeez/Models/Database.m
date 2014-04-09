@@ -1105,4 +1105,65 @@ static Database* sharedDatabase;
     
 }
 
+- (TeebeeEpisode*)nextEpisodeToWatchForTeebee:(Teebee*)teebee {
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT seasonNumber, episodeNumber, airDate FROM Episodes WHERE (airDate <> '(null)' AND watched = '0' AND teebeeId = '%@') ORDER BY airDate ASC LIMIT 1", StringInteger(teebee.id)];
+    
+    sqlite3_stmt *statement;
+    
+    TeebeeEpisode* episode = nil;
+    
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+    }
+    else {
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            
+            episode = [[TeebeeEpisode alloc] initWithDatabaseDictionary:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
+            
+        }
+        sqlite3_finalize(statement);
+    }
+    
+    return episode;
+}
+
+- (NSInteger)notWatchedEpisodesCount {
+    
+    NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT COUNT(*) AS c FROM Episodes WHERE (airDate <> '(null)' AND airDate <= '%f' AND watched = '0')", now];
+    
+
+    sqlite3_stmt *statement;
+    
+    NSInteger episodesCount = 0;
+    
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+    }
+    else {
+        
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            
+            episodesCount = [[[NSMutableDictionary alloc] initWithSqlStatement:statement][@"c"] integerValue];
+            
+        }
+        sqlite3_finalize(statement);
+    }
+    
+    return episodesCount;
+}
+
 @end

@@ -254,9 +254,11 @@
             }
             else if (episode.updated) {
                 
-                [updatedEpisodesDates addObject:episode.databaseDictionary[@"airDate"]];
-                [updatedEpisodesIds addObject:StringInteger(episode.id)];
-                [updatedEpisodes addObject:episode];
+                if (episode.airDate) {
+                    [updatedEpisodesDates addObject:episode.databaseDictionary[@"airDate"]];
+                    [updatedEpisodesIds addObject:StringInteger(episode.id)];
+                    [updatedEpisodes addObject:episode];
+                }
             }
         }
     }

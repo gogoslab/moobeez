@@ -52,6 +52,8 @@ typedef enum SoonSections {
 @property (weak, nonatomic) IBOutlet UILabel *updatingLabel;
 @property (weak, nonatomic) IBOutlet UIProgressView *updatingProgressBar;
 
+@property (readwrite, nonatomic) BOOL isUpdating;
+
 @end
 
 @implementation TeebeezViewController
@@ -93,22 +95,30 @@ typedef enum SoonSections {
         self.initialCollectionViewHeight = self.collectionView.height;
 
         [self reloadTeebeez];
-    
+     
         firstAppear = NO;
         
     }
     
-    self.teebeezToUpdate = [[Database sharedDatabase] teebeezToUpdate];
-    if (self.teebeezToUpdate.count) {
+    if (!self.isUpdating) {
+
+        self.isUpdating = YES;
         
-        [Alert showAlertViewWithTitle:@"Teebeez outdated" message:@"Do you want to update the teebeez now?" buttonClickedCallback:^(NSInteger buttonIndex) {
+        self.teebeezToUpdate = [[Database sharedDatabase] teebeezToUpdate];
+        if (self.teebeezToUpdate.count) {
             
-            if (buttonIndex == 1) {
-                [self updateTeebeez];
-            }
+            [Alert showAlertViewWithTitle:@"Teebeez outdated" message:@"Do you want to update the teebeez now?" buttonClickedCallback:^(NSInteger buttonIndex) {
+                
+                if (buttonIndex == 1) {
+                    [self updateTeebeez];
+                }
+                else {
+                    self.isUpdating = NO;
+                }
+                
+            } cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
             
-        } cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-        
+        }
     }
 }
 
@@ -352,8 +362,14 @@ typedef enum SoonSections {
 
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
     
-    if (self.selectedType == TeebeeSoonType && section >= TeebeezSection && section < TeebeezSection + self.displayedTeebeez.count && [self.displayedTeebeez[section - TeebeezSection] count] == 0) {
-        return UIEdgeInsetsMake(0, 12, 0, 12);
+    if (self.selectedType == TeebeeSoonType && section >= TeebeezSection && section < TeebeezSection + self.displayedTeebeez.count) {
+        if ([self.displayedTeebeez[section - TeebeezSection] count] == 0) {
+            return UIEdgeInsetsMake(0, 12, 0, 12);
+        }
+        return UIEdgeInsetsMake(6, 12, 6, 12);
+    }
+    if (self.selectedType == TeebeeSoonType && section == 0) {
+        return UIEdgeInsetsMake(13, 12, 20, 12);
     }
     
     return UIEdgeInsetsMake(13, 12, 13, 12);
@@ -544,6 +560,7 @@ typedef enum SoonSections {
 
 - (void)endUpdate {
     [LoadingView hideLoadingView];
+    self.isUpdating = NO;
 }
 
 @end

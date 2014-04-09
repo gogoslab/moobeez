@@ -35,7 +35,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="contentInset" minX="0.0" minY="44" maxX="0.0" maxY="0.0"/>
-                    <collectionViewLayout key="collectionViewLayout" id="jwj-cL-aMV" customClass="FloatingHeadersCollectionViewFlowLayout"/>
+                    <collectionViewLayout key="collectionViewLayout" id="Oln-Vz-12R" customClass="FloatingHeadersCollectionViewFlowLayout"/>
                     <cells/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="uuX-O1-eX8"/>

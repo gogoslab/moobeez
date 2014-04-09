@@ -10,6 +10,7 @@
                 <outlet property="blurView" destination="ISB-0P-UK4" id="uuW-nf-U5f"/>
                 <outlet property="buttonsView" destination="OYW-jI-50i" id="h2U-Lp-93y"/>
                 <outlet property="contentView" destination="2Pi-Xw-qOS" id="sLl-ek-5Qh"/>
+                <outlet property="notWatchedTeebeezLabel" destination="emO-Ni-C6W" id="l5y-uH-fbE"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="viewControllers" destination="nf8-CA-acM" id="Ga0-hT-Ac8"/>
                 <outletCollection property="viewControllers" destination="Taj-HT-eAz" id="njg-bq-Vmh"/>
@@ -81,6 +82,13 @@
                                 <action selector="menuButtonPressed:" destination="-1" eventType="touchUpInside" id="Pdq-yp-xmD"/>
                             </connections>
                         </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="emO-Ni-C6W">
+                            <rect key="frame" x="115" y="115" width="42" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>

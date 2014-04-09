@@ -21,6 +21,8 @@
 @property (readwrite, nonatomic) NSInteger selectedIndex;
 @property (readonly, nonatomic) UIViewController* selectedViewController;
 
+@property (weak, nonatomic) IBOutlet UILabel *notWatchedTeebeezLabel;
+@property (readwrite, nonatomic) NSInteger notWatchedTeebeezCount;
 @end
 
 @implementation SideTabViewController
@@ -43,6 +45,18 @@
         [self.selectedViewController.view removeFromSuperview];
         self.appDelegate.window.rootViewController = self.selectedViewController;
     }];
+    
+    UISwipeGestureRecognizer* swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(hideMenu)];
+    swipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeGesture];
+    
+    self.notWatchedTeebeezLabel.layer.cornerRadius = 5;
+    self.notWatchedTeebeezLabel.layer.borderColor = [[UIColor whiteColor] CGColor];
+    self.notWatchedTeebeezLabel.layer.borderWidth = 1;
+    
+    self.notWatchedTeebeezCount = [[Database sharedDatabase] notWatchedEpisodesCount];
+    
+
 }
 
 - (UIViewController*)selectedViewController {
@@ -70,6 +84,8 @@
 
 - (void)showMenu {
     
+    self.notWatchedTeebeezCount = [[Database sharedDatabase] notWatchedEpisodesCount];
+
     self.appDelegate.window.rootViewController = self.navigationController;
     [self.contentView addSubview:self.selectedViewController.view];
     
@@ -108,6 +124,23 @@
     
     self.selectedIndex = ((UIButton*) sender).tag;
     [self hideMenu];
+    
+}
+
+- (void)setNotWatchedTeebeezCount:(NSInteger)notWatchedTeebeezCount {
+    
+    _notWatchedTeebeezCount = notWatchedTeebeezCount;
+    
+    if (notWatchedTeebeezCount == 0) {
+        self.notWatchedTeebeezLabel.hidden = YES;
+        return;
+    }
+    
+    self.notWatchedTeebeezLabel.hidden = NO;
+    self.notWatchedTeebeezLabel.text = StringInteger(notWatchedTeebeezCount);
+    CGSize size = [self.notWatchedTeebeezLabel sizeThatFits:self.notWatchedTeebeezLabel.frame.size];
+    
+    self.notWatchedTeebeezLabel.width = size.width + 13;
     
 }
 

@@ -38,6 +38,8 @@
 
 @property (strong, nonatomic) NSMutableArray* cells;
 
+@property (strong, nonatomic) TeebeeEpisode* nextEpisodeToWatch;
+
 @end
 
 @implementation TvToolboxView
@@ -110,7 +112,19 @@
     }
     else {
         if (self.tmdbTv.inProduction) {
-            self.statusLabel.text = @"In progress";
+            self.nextEpisodeToWatch = [[Database sharedDatabase] nextEpisodeToWatchForTeebee:self.teebee];
+            
+            if (!self.nextEpisodeToWatch.airDate) {
+                self.statusLabel.text = @"In progress";
+            }
+            else {
+                NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+                [numberFormatter setMinimumIntegerDigits:2];
+                self.statusLabel.text = [NSString stringWithFormat:@"Next episode to watch: E%@/S%@", [numberFormatter stringFromNumber:@(self.nextEpisodeToWatch.episodeNumber)], [numberFormatter stringFromNumber:@(self.nextEpisodeToWatch.seasonNumber)]];
+                if ([self.nextEpisodeToWatch.airDate timeIntervalSinceNow] > 0){
+                    self.statusLabel.text = [self.statusLabel.text stringByAppendingFormat:@" on %@", [[NSDateFormatter dateFormatterWithFormat:@"dd MMM"] stringFromDate:self.nextEpisodeToWatch.airDate]];
+                }
+            }
         }
         else {
             self.statusLabel.text = @"Finished";
@@ -270,6 +284,8 @@
     
     BOOL showWatched = self.teebee.watchedEpisodesCount > 0;
     
+    [self refreshTeebeeInfo];
+    
     if (self.watchedButton.selected == showWatched) {
         return;
     }
@@ -300,8 +316,6 @@
         [self.tableView endUpdates];
 
     }
-    
-    [self refreshTeebeeInfo];
     
 }
 
