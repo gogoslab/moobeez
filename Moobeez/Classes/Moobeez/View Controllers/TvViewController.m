@@ -28,9 +28,11 @@
 @property (strong, nonatomic) CastViewController* castViewController;
 @property (strong, nonatomic) TvWatchedViewController* tvWatchedViewController;
 
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet BubbleUpsideDownPopupView *shareBubbleView;
 @property (weak, nonatomic) IBOutlet UIView *shareButtonsView;
 
+@property (weak, nonatomic) IBOutlet UIButton *imdbButton;
 @end
 
 @implementation TvViewController
@@ -74,6 +76,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didUpdateWatchedEpisodes) name:DidUpdateWatchedEpisodesNotification object:self.teebee];
 
+    self.imdbButton.hidden = self.tmdbTv.imdbId.length == 0;
+    
     /*
     [self.teebee getTvRageInfo:^(BOOL completed) {
         
@@ -122,6 +126,7 @@
 - (IBAction)hideToolbox:(id)sender {
     if (!self.shareBubbleView.hidden) {
         self.shareBubbleView.hidden = YES;
+        self.imdbButton.transform = CGAffineTransformIdentity;
     }
     else if (self.toolboxView.isFullyDisplayed) {
         [self.toolboxView hideFullToolbox];
@@ -280,9 +285,15 @@
             self.shareButtonsView.hidden = NO;
             self.shareBubbleView.sourceButton.hidden = YES;
         };
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            self.imdbButton.transform = CGAffineTransformMakeTranslation(0, self.shareBubbleView.bottom - self.shareButton.bottom);
+        }];
+
     }
     else {
         self.shareBubbleView.hidden = YES;
+        self.imdbButton.transform = CGAffineTransformIdentity;
     }
     
 }
@@ -416,6 +427,15 @@
     
 }
 
+- (IBAction)imdbButtonPressed:(id)sender {
+    
+    NSURL* imdbUrl = [NSURL URLWithString:[NSString stringWithFormat:@"imdb:///title/%@/", self.tmdbTv.imdbId]];
+    
+    if (![[UIApplication sharedApplication] canOpenURL:imdbUrl]) {
+        imdbUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://m.imdb.com/title/%@/", self.tmdbTv.imdbId]];
+    }
+    [[UIApplication sharedApplication] openURL:imdbUrl];
+}
 
 
 @end

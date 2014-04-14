@@ -27,8 +27,11 @@
 @property (strong, nonatomic) TextViewController* descriptionViewController;
 @property (strong, nonatomic) CastViewController* castViewController;
 
+@property (weak, nonatomic) IBOutlet UIButton *shareButton;
 @property (weak, nonatomic) IBOutlet BubbleUpsideDownPopupView *shareBubbleView;
 @property (weak, nonatomic) IBOutlet UIView *shareButtonsView;
+
+@property (weak, nonatomic) IBOutlet UIButton *imdbButton;
 
 @property (readwrite, nonatomic) BOOL lightInterface;
 
@@ -75,6 +78,8 @@
     
     self.lightInterface = ([self.posterImageView.image luminosityFrom:0.0 to:0.05] > 0.7);
     
+    self.imdbButton.hidden = self.tmdbMovie.imdbId.length == 0;
+    
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
@@ -115,6 +120,7 @@
 - (IBAction)hideToolbox:(id)sender {
     if (!self.shareBubbleView.hidden) {
         self.shareBubbleView.hidden = YES;
+        self.imdbButton.transform = CGAffineTransformIdentity;
     }
     else if (self.toolboxView.isFullyDisplayed) {
         [self.toolboxView hideFullToolbox];
@@ -286,9 +292,14 @@
             self.shareButtonsView.hidden = NO;
             self.shareBubbleView.sourceButton.hidden = YES;
         };
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            self.imdbButton.transform = CGAffineTransformMakeTranslation(0, self.shareBubbleView.bottom - self.shareButton.bottom);
+        }];
     }
     else {
         self.shareBubbleView.hidden = YES;
+        self.imdbButton.transform = CGAffineTransformIdentity;
     }
     
 }
@@ -429,6 +440,16 @@
     
 }
 
+- (IBAction)imdbButtonPressed:(id)sender {
+    
+    NSURL* imdbUrl = [NSURL URLWithString:[NSString stringWithFormat:@"imdb:///title/%@/", self.tmdbMovie.imdbId]];
+    
+    if (![[UIApplication sharedApplication] canOpenURL:imdbUrl]) {
+        imdbUrl = [NSURL URLWithString:[NSString stringWithFormat:@"http://m.imdb.com/title/%@/", self.tmdbMovie.imdbId]];
+    }
+    [[UIApplication sharedApplication] openURL:imdbUrl];
+
+}
 
 
 @end

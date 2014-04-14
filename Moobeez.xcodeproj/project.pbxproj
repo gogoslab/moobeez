@@ -350,6 +350,8 @@
 		64CA539A1823F8E1000699C5 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64CA53991823F8E1000699C5 /* SearchResultCell.xib */; };
 		64CA539D1824060C000699C5 /* add_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CA539B1824060C000699C5 /* add_button.png */; };
 		64CA539E1824060C000699C5 /* add_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CA539C1824060C000699C5 /* add_button@2x.png */; };
+		64D717B418FC38C00098B13E /* imdb_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64D717B218FC38C00098B13E /* imdb_button.png */; };
+		64D717B518FC38C00098B13E /* imdb_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64D717B318FC38C00098B13E /* imdb_button@2x.png */; };
 		64D7413D189D1FB10011C39A /* SearchNewTvViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D74132189D1FB10011C39A /* SearchNewTvViewController.m */; };
 		64D7413E189D1FB10011C39A /* SearchNewTvViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D74133189D1FB10011C39A /* SearchNewTvViewController.xib */; };
 		64D7413F189D1FB10011C39A /* TeebeezViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D74135189D1FB10011C39A /* TeebeezViewController.m */; };
@@ -1011,6 +1013,8 @@
 		64CA53991823F8E1000699C5 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		64CA539B1824060C000699C5 /* add_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_button.png; sourceTree = "<group>"; };
 		64CA539C1824060C000699C5 /* add_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_button@2x.png"; sourceTree = "<group>"; };
+		64D717B218FC38C00098B13E /* imdb_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imdb_button.png; sourceTree = "<group>"; };
+		64D717B318FC38C00098B13E /* imdb_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imdb_button@2x.png"; sourceTree = "<group>"; };
 		64D74131189D1FB10011C39A /* SearchNewTvViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchNewTvViewController.h; sourceTree = "<group>"; };
 		64D74132189D1FB10011C39A /* SearchNewTvViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchNewTvViewController.m; sourceTree = "<group>"; };
 		64D74133189D1FB10011C39A /* SearchNewTvViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchNewTvViewController.xib; sourceTree = "<group>"; };
@@ -1204,6 +1208,8 @@
 		64177865180C3B5A00CDFA25 /* Common Images */ = {
 			isa = PBXGroup;
 			children = (
+				64D717B218FC38C00098B13E /* imdb_button.png */,
+				64D717B318FC38C00098B13E /* imdb_button@2x.png */,
 				64B3E42618F3FCD000783B95 /* menu_button.png */,
 				64B3E42718F3FCD000783B95 /* menu_button@2x.png */,
 				64B3E41F18F3F28900783B95 /* background_blured.png */,
@@ -2876,6 +2882,7 @@
 				649C3A98181830240000A34C /* CharacterCellSmall.xib in Resources */,
 				64648ED11829303300365EC7 /* CastViewController.xib in Resources */,
 				6417786E180C8A7400CDFA25 /* empty_stars_small@2x.png in Resources */,
+				64D717B418FC38C00098B13E /* imdb_button.png in Resources */,
 				64B2AB941808486200E02E2F /* tab_bar_icon_moobeez.png in Resources */,
 				649C3A761818068F0000A34C /* empty_stars_big_black@2x.png in Resources */,
 				64F25A181827EC02005AB9F8 /* description_mask.png in Resources */,
@@ -2885,6 +2892,7 @@
 				64DC8C191817215E002C11D8 /* toolbox_down_arrow.png in Resources */,
 				64290E7518A46074009E6B04 /* EpisodesViewController.xib in Resources */,
 				64B2AB8F1808452700E02E2F /* MoviesViewController.xib in Resources */,
+				64D717B518FC38C00098B13E /* imdb_button@2x.png in Resources */,
 				6428B89818A39F2500E1A904 /* TvWatchedViewController.xib in Resources */,
 				64CA538A1823E6A9000699C5 /* empty_stars_big_white@2x.png in Resources */,
 				64A8AD68188EC3D800DBECD7 /* YouTubeViewController.xib in Resources */,

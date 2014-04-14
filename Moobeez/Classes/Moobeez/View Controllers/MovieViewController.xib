@@ -8,8 +8,10 @@
             <connections>
                 <outlet property="addButton" destination="hYj-cz-CBW" id="Z5u-WD-fcz"/>
                 <outlet property="hideToolboxRecognizer" destination="CDQ-ZO-lUv" id="QXc-oh-fpX"/>
+                <outlet property="imdbButton" destination="Nqz-WL-Q9Z" id="w5v-EW-FQb"/>
                 <outlet property="posterImageView" destination="Syz-af-7nb" id="4JW-yI-L8h"/>
                 <outlet property="shareBubbleView" destination="Rm8-7K-RxQ" id="WWi-zl-rXD"/>
+                <outlet property="shareButton" destination="ltn-h3-cW7" id="hZQ-a3-RZf"/>
                 <outlet property="shareButtonsView" destination="Wwd-bK-Rts" id="LEC-yc-TYP"/>
                 <outlet property="toolboxView" destination="xj6-Jc-xBi" id="Iey-i0-Y2X"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -70,7 +72,7 @@
                         <outlet property="sourceButton" destination="jRu-Iv-hhZ" id="e5e-JE-qmC"/>
                     </connections>
                 </view>
-                <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ltn-h3-cW7">
+                <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ltn-h3-cW7" userLabel="Share Button">
                     <rect key="frame" x="270" y="22" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -81,7 +83,7 @@
                         <action selector="shareButtonPressed:" destination="-1" eventType="touchUpInside" id="cdY-Dh-Ybp"/>
                     </connections>
                 </button>
-                <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5t5-KH-d1Q">
+                <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5t5-KH-d1Q" userLabel="Back Button">
                     <rect key="frame" x="10" y="20" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -92,7 +94,7 @@
                         <action selector="backButtonPressed:" destination="-1" eventType="touchUpInside" id="2bR-kd-GXJ"/>
                     </connections>
                 </button>
-                <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hYj-cz-CBW">
+                <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hYj-cz-CBW" userLabel="Add Delete Button">
                     <rect key="frame" x="55" y="20" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -102,6 +104,17 @@
                     <state key="selected" backgroundImage="delete_button.png"/>
                     <connections>
                         <action selector="addButtonPressed:" destination="-1" eventType="touchUpInside" id="ORY-O6-hxx"/>
+                    </connections>
+                </button>
+                <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Nqz-WL-Q9Z" userLabel="Imdb Button">
+                    <rect key="frame" x="270" y="62" width="40" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" backgroundImage="imdb_button.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="imdbButtonPressed:" destination="-1" eventType="touchUpInside" id="hWj-ed-xJb"/>
                     </connections>
                 </button>
             </subviews>
@@ -456,6 +469,7 @@
         <image name="empty_stars_big_black.png" width="200" height="40"/>
         <image name="empty_stars_big_white.png" width="200" height="40"/>
         <image name="full_stars_big.png" width="200" height="40"/>
+        <image name="imdb_button.png" width="40" height="40"/>
         <image name="share_button.png" width="40" height="40"/>
         <image name="share_facebook_button.png" width="40" height="40"/>
         <image name="share_twitter_button.png" width="40" height="40"/>
