@@ -256,7 +256,7 @@ typedef enum MoviesSection {
                     
                     self.view.userInteractionEnabled = YES;
                     
-                    Moobee* moobee = [Moobee moobeeWithTmdbMovie:posterView.movie];
+                    Moobee* moobee = [Moobee moobeeWithTmdbMovie:(TmdbMovie*)posterView.movie];
                     
                     if (moobee.id == -1) {
                         moobee.type = MoobeeNoneType;

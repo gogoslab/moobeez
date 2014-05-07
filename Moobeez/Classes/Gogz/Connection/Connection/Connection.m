@@ -7,7 +7,6 @@
 //
 
 #import "ConnectionLibrary.h"
-#import "SBJson.h"
 #import "URLParameters.h"
 
 @interface Connection ()
@@ -280,11 +279,13 @@
         responseString = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
     }
     
-	//xml that we need to parse
+	//json that we need to parse
     
-    SBJsonParser* parser = [[SBJsonParser alloc] init];
-    
-    id jsonResult = [parser objectWithString:responseString error:&error];
+    id jsonResult = [NSJSONSerialization
+                     JSONObjectWithData:data //1
+                     
+                     options:kNilOptions
+                     error:&error];
     
     NSLog(@"response: %@", responseString);
     

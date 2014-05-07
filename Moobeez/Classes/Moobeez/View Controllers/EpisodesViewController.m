@@ -49,7 +49,7 @@
     EpisodeCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EpisodeCell"];
     
     cell.episode = self.season.episodes[indexPath.row];
-    cell.teebeeEpisode = self.teebee.episodes[StringInteger(self.season.seasonNumber)][StringInteger(cell.episode.episodeNumber)];
+    cell.teebeeEpisode = self.teebee.episodes[StringInteger(self.season.seasonNumber)][StringInteger((long)cell.episode.episodeNumber)];
     cell.teebee = self.teebee;
     
     return cell;
@@ -58,7 +58,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     TmdbTvEpisode* tmdbEpisode = self.season.episodes[indexPath.row];
-    TeebeeEpisode* episode = self.teebee.episodes[StringInteger(self.season.seasonNumber)][StringInteger(tmdbEpisode.episodeNumber)];
+    TeebeeEpisode* episode = self.teebee.episodes[StringInteger(self.season.seasonNumber)][StringInteger((long)tmdbEpisode.episodeNumber)];
     
     if (!self.allEpisodes && episode.watched) {
         return 0.0;

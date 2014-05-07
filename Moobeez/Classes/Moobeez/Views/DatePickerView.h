@@ -12,7 +12,7 @@ typedef void (^DatePickerCompletionHandler) (NSDate* date);
 
 @interface DatePickerView : UIView
 
-@property (readonly, nonatomic) UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 + (id)showDatePickerWithDate:(NSDate*)date inView:(UIView*)view completionHandler:(DatePickerCompletionHandler)completionHandler;
 

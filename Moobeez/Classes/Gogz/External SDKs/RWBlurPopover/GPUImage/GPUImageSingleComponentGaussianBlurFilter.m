@@ -121,7 +121,7 @@
      uniform highp float texelWidthOffset;\n\
      uniform highp float texelHeightOffset;\n\
      \n\
-     varying highp vec2 blurCoordinates[%d];\n\
+     varying highp vec2 blurCoordinates[%lu];\n\
      \n\
      void main()\n\
      {\n\

@@ -364,7 +364,7 @@
                                           if(error) {
                                               // An error occurred, we need to handle the error
                                               // See: https://developers.facebook.com/docs/ios/errors
-                                              NSLog([NSString stringWithFormat:@"Error publishing story: %@", error.description]);
+                                              NSLog(@"%@", [NSString stringWithFormat:@"Error publishing story: %@", error.description]);
                                           } else {
                                               // Success
                                               NSLog(@"result %@", results);
@@ -389,7 +389,7 @@
                                                       if (error) {
                                                           // An error occurred, we need to handle the error
                                                           // See: https://developers.facebook.com/docs/ios/errors
-                                                          NSLog([NSString stringWithFormat:@"Error publishing story: %@", error.description]);
+                                                          NSLog(@"%@", [NSString stringWithFormat:@"Error publishing story: %@", error.description]);
                                                       } else {
                                                           if (result == FBWebDialogResultDialogNotCompleted) {
                                                               // User canceled.

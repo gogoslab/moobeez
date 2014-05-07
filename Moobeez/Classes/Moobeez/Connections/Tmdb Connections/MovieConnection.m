@@ -24,7 +24,7 @@
     
     self.customHandler = handler;
     
-    if ([Cache cachedMovies][StringInteger(self.tmdbId)]) {
+    if ([Cache cachedMovies][StringInteger((long)self.tmdbId)]) {
         [self performSelector:@selector(cachedResponse) withObject:nil afterDelay:0.01];
         return [self initFakeConnection];
     }
@@ -37,7 +37,7 @@
 
             TmdbMovie* tmdbMovie = [[TmdbMovie alloc] initWithTmdbDictionary:resultDictionary];
         
-            [Cache cachedMovies][StringInteger(tmdbId)] = tmdbMovie;
+            [Cache cachedMovies][StringInteger((long)tmdbId)] = tmdbMovie;
             
             self.customHandler(code, tmdbMovie);
         }
@@ -56,7 +56,7 @@
 - (void)cachedResponse {
     
     [self.activityIndicator stopAnimating];
-    self.customHandler(WebserviceResultOk, [Cache cachedMovies][StringInteger(self.tmdbId)]);
+    self.customHandler(WebserviceResultOk, [Cache cachedMovies][StringInteger((long)self.tmdbId)]);
     
 }
 

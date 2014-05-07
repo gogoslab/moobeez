@@ -24,7 +24,7 @@
     
     self.customHandler = handler;
     
-    if ([Cache cachedTvRageEpisodes][StringInteger(self.tvRageId)]) {
+    if ([Cache cachedTvRageEpisodes][StringInteger((long)self.tvRageId)]) {
         [self performSelector:@selector(cachedResponse) withObject:nil afterDelay:0.01];
         return [self initFakeConnection];
     }
@@ -71,7 +71,7 @@
             @finally {
             }
             
-            [Cache cachedTvRageEpisodes][StringInteger(self.tvRageId)] = seasons;
+            [Cache cachedTvRageEpisodes][StringInteger((long)self.tvRageId)] = seasons;
             
             self.customHandler(code, seasons);
         }
@@ -90,7 +90,7 @@
 - (void)cachedResponse {
     
     [self.activityIndicator stopAnimating];
-    self.customHandler(WebserviceResultOk, [Cache cachedTvRageEpisodes][StringInteger(self.tvRageId)]);
+    self.customHandler(WebserviceResultOk, [Cache cachedTvRageEpisodes][StringInteger((long)self.tvRageId)]);
     
 }
 

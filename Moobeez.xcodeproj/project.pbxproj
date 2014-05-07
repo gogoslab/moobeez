@@ -57,6 +57,8 @@
 		644121F7181C351400260497 /* share_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 644121F5181C351400260497 /* share_button.png */; };
 		644121F8181C351400260497 /* share_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644121F6181C351400260497 /* share_button@2x.png */; };
 		64412223181D3D7F00260497 /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64412222181D3D7F00260497 /* CharacterCell.xib */; };
+		6442857C191AF80D00A05B45 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6442857B191AF80D00A05B45 /* Settings.m */; };
+		6442857E191AFAD200A05B45 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6442857D191AFAD200A05B45 /* ImageLoader.m */; };
 		6459F35C18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F35B18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m */; };
 		6459F35F18F2E93500EBFBE0 /* TvImagesConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F35E18F2E93500EBFBE0 /* TvImagesConnection.m */; };
 		6459F36418F3391900EBFBE0 /* SideTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F36218F3391900EBFBE0 /* SideTabViewController.m */; };
@@ -102,7 +104,6 @@
 		649C3A9518182FD30000A34C /* CharacterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A9418182FD30000A34C /* CharacterCell.m */; };
 		649C3A98181830240000A34C /* CharacterCellSmall.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A97181830240000A34C /* CharacterCellSmall.xib */; };
 		649EF25C18999B7100FC796D /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 649EF25B18999B7100FC796D /* background@2x.png */; };
-		649EF2621899CEC000FC796D /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 649EF2611899CEC000FC796D /* Settings.m */; };
 		64A10D9618A8E69F00906081 /* TeebeezHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A10D9518A8E69F00906081 /* TeebeezHeaderView.m */; };
 		64A10D9918A8E6B500906081 /* TeebeezHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A10D9818A8E6B500906081 /* TeebeezHeaderView.xib */; };
 		64A10D9C18A98E8100906081 /* XMLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A10D9B18A98E8100906081 /* XMLConnection.m */; };
@@ -149,18 +150,6 @@
 		64B2AB6318083CBF00E02E2F /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB2418083CBF00E02E2F /* Connection.m */; };
 		64B2AB6418083CBF00E02E2F /* ConnectionsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB2818083CBF00E02E2F /* ConnectionsManager.m */; };
 		64B2AB6518083CBF00E02E2F /* URLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB2B18083CBF00E02E2F /* URLConnection.m */; };
-		64B2AB6618083CBF00E02E2F /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB2F18083CBF00E02E2F /* NSObject+SBJson.m */; };
-		64B2AB6718083CBF00E02E2F /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB3218083CBF00E02E2F /* SBJsonParser.m */; };
-		64B2AB6818083CBF00E02E2F /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB3418083CBF00E02E2F /* SBJsonStreamParser.m */; };
-		64B2AB6918083CBF00E02E2F /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB3618083CBF00E02E2F /* SBJsonStreamParserAccumulator.m */; };
-		64B2AB6A18083CBF00E02E2F /* SBJsonStreamParserState.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB3818083CBF00E02E2F /* SBJsonStreamParserState.m */; };
-		64B2AB6B18083CBF00E02E2F /* SBJsonStreamWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB3A18083CBF00E02E2F /* SBJsonStreamWriter.m */; };
-		64B2AB6C18083CBF00E02E2F /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB3C18083CBF00E02E2F /* SBJsonStreamWriterAccumulator.m */; };
-		64B2AB6D18083CBF00E02E2F /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB3E18083CBF00E02E2F /* SBJsonStreamWriterState.m */; };
-		64B2AB6E18083CBF00E02E2F /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB4018083CBF00E02E2F /* SBJsonTokeniser.m */; };
-		64B2AB6F18083CBF00E02E2F /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB4218083CBF00E02E2F /* SBJsonUTF8Stream.m */; };
-		64B2AB7018083CBF00E02E2F /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB4418083CBF00E02E2F /* SBJsonWriter.m */; };
-		64B2AB7118083CBF00E02E2F /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB4818083CBF00E02E2F /* ImageLoader.m */; };
 		64B2AB7218083CBF00E02E2F /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB4A18083CBF00E02E2F /* ImageView.m */; };
 		64B2AB7318083CBF00E02E2F /* ImageView+Tmdb.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB5118083CBF00E02E2F /* ImageView+Tmdb.m */; };
 		64B2AB7418083CBF00E02E2F /* UIColor+Moobeez.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB5318083CBF00E02E2F /* UIColor+Moobeez.m */; };
@@ -471,6 +460,9 @@
 		644121F5181C351400260497 /* share_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_button.png; sourceTree = "<group>"; };
 		644121F6181C351400260497 /* share_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_button@2x.png"; sourceTree = "<group>"; };
 		64412222181D3D7F00260497 /* CharacterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterCell.xib; sourceTree = "<group>"; };
+		6442857A191AF80D00A05B45 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		6442857B191AF80D00A05B45 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		6442857D191AFAD200A05B45 /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLoader.m; sourceTree = "<group>"; };
 		6459F35A18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingHeadersCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		6459F35B18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingHeadersCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		6459F35D18F2E93500EBFBE0 /* TvImagesConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvImagesConnection.h; sourceTree = "<group>"; };
@@ -540,8 +532,6 @@
 		649C3A9418182FD30000A34C /* CharacterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterCell.m; sourceTree = "<group>"; };
 		649C3A97181830240000A34C /* CharacterCellSmall.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CharacterCellSmall.xib; sourceTree = "<group>"; };
 		649EF25B18999B7100FC796D /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
-		649EF2601899CEC000FC796D /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Settings.h; path = "../../../../../Moobeez 1.0/Moobeez/Classes/Models/Settings.h"; sourceTree = "<group>"; };
-		649EF2611899CEC000FC796D /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Settings.m; path = "../../../../../Moobeez 1.0/Moobeez/Classes/Models/Settings.m"; sourceTree = "<group>"; };
 		64A10D9418A8E69F00906081 /* TeebeezHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeebeezHeaderView.h; sourceTree = "<group>"; };
 		64A10D9518A8E69F00906081 /* TeebeezHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeebeezHeaderView.m; sourceTree = "<group>"; };
 		64A10D9818A8E6B500906081 /* TeebeezHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TeebeezHeaderView.xib; sourceTree = "<group>"; };
@@ -622,32 +612,8 @@
 		64B2AB2818083CBF00E02E2F /* ConnectionsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectionsManager.m; sourceTree = "<group>"; };
 		64B2AB2A18083CBF00E02E2F /* URLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLConnection.h; sourceTree = "<group>"; };
 		64B2AB2B18083CBF00E02E2F /* URLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLConnection.m; sourceTree = "<group>"; };
-		64B2AB2E18083CBF00E02E2F /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
-		64B2AB2F18083CBF00E02E2F /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
-		64B2AB3018083CBF00E02E2F /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
-		64B2AB3118083CBF00E02E2F /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		64B2AB3218083CBF00E02E2F /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
-		64B2AB3318083CBF00E02E2F /* SBJsonStreamParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParser.h; sourceTree = "<group>"; };
-		64B2AB3418083CBF00E02E2F /* SBJsonStreamParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParser.m; sourceTree = "<group>"; };
-		64B2AB3518083CBF00E02E2F /* SBJsonStreamParserAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserAccumulator.h; sourceTree = "<group>"; };
-		64B2AB3618083CBF00E02E2F /* SBJsonStreamParserAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserAccumulator.m; sourceTree = "<group>"; };
-		64B2AB3718083CBF00E02E2F /* SBJsonStreamParserState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamParserState.h; sourceTree = "<group>"; };
-		64B2AB3818083CBF00E02E2F /* SBJsonStreamParserState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamParserState.m; sourceTree = "<group>"; };
-		64B2AB3918083CBF00E02E2F /* SBJsonStreamWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriter.h; sourceTree = "<group>"; };
-		64B2AB3A18083CBF00E02E2F /* SBJsonStreamWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriter.m; sourceTree = "<group>"; };
-		64B2AB3B18083CBF00E02E2F /* SBJsonStreamWriterAccumulator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterAccumulator.h; sourceTree = "<group>"; };
-		64B2AB3C18083CBF00E02E2F /* SBJsonStreamWriterAccumulator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterAccumulator.m; sourceTree = "<group>"; };
-		64B2AB3D18083CBF00E02E2F /* SBJsonStreamWriterState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonStreamWriterState.h; sourceTree = "<group>"; };
-		64B2AB3E18083CBF00E02E2F /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
-		64B2AB3F18083CBF00E02E2F /* SBJsonTokeniser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonTokeniser.h; sourceTree = "<group>"; };
-		64B2AB4018083CBF00E02E2F /* SBJsonTokeniser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonTokeniser.m; sourceTree = "<group>"; };
-		64B2AB4118083CBF00E02E2F /* SBJsonUTF8Stream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonUTF8Stream.h; sourceTree = "<group>"; };
-		64B2AB4218083CBF00E02E2F /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
-		64B2AB4318083CBF00E02E2F /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		64B2AB4418083CBF00E02E2F /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		64B2AB4518083CBF00E02E2F /* Gogz.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Gogz.h; sourceTree = "<group>"; };
 		64B2AB4718083CBF00E02E2F /* ImageLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLoader.h; sourceTree = "<group>"; };
-		64B2AB4818083CBF00E02E2F /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLoader.m; sourceTree = "<group>"; };
 		64B2AB4918083CBF00E02E2F /* ImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageView.h; sourceTree = "<group>"; };
 		64B2AB4A18083CBF00E02E2F /* ImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageView.m; sourceTree = "<group>"; };
 		64B2AB5018083CBF00E02E2F /* ImageView+Tmdb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ImageView+Tmdb.h"; sourceTree = "<group>"; };
@@ -1638,8 +1604,8 @@
 		649EF2631899CEC300FC796D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				649EF2601899CEC000FC796D /* Settings.h */,
-				649EF2611899CEC000FC796D /* Settings.m */,
+				6442857A191AF80D00A05B45 /* Settings.h */,
+				6442857B191AF80D00A05B45 /* Settings.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1953,47 +1919,16 @@
 			isa = PBXGroup;
 			children = (
 				64A10D9E18A992FA00906081 /* KissXML */,
-				64B2AB2D18083CBF00E02E2F /* SBJson */,
 				64B9F46E1822A3EF002E322F /* GPUImage */,
 			);
 			path = "External SDKs";
-			sourceTree = "<group>";
-		};
-		64B2AB2D18083CBF00E02E2F /* SBJson */ = {
-			isa = PBXGroup;
-			children = (
-				64B2AB2E18083CBF00E02E2F /* NSObject+SBJson.h */,
-				64B2AB2F18083CBF00E02E2F /* NSObject+SBJson.m */,
-				64B2AB3018083CBF00E02E2F /* SBJson.h */,
-				64B2AB3118083CBF00E02E2F /* SBJsonParser.h */,
-				64B2AB3218083CBF00E02E2F /* SBJsonParser.m */,
-				64B2AB3318083CBF00E02E2F /* SBJsonStreamParser.h */,
-				64B2AB3418083CBF00E02E2F /* SBJsonStreamParser.m */,
-				64B2AB3518083CBF00E02E2F /* SBJsonStreamParserAccumulator.h */,
-				64B2AB3618083CBF00E02E2F /* SBJsonStreamParserAccumulator.m */,
-				64B2AB3718083CBF00E02E2F /* SBJsonStreamParserState.h */,
-				64B2AB3818083CBF00E02E2F /* SBJsonStreamParserState.m */,
-				64B2AB3918083CBF00E02E2F /* SBJsonStreamWriter.h */,
-				64B2AB3A18083CBF00E02E2F /* SBJsonStreamWriter.m */,
-				64B2AB3B18083CBF00E02E2F /* SBJsonStreamWriterAccumulator.h */,
-				64B2AB3C18083CBF00E02E2F /* SBJsonStreamWriterAccumulator.m */,
-				64B2AB3D18083CBF00E02E2F /* SBJsonStreamWriterState.h */,
-				64B2AB3E18083CBF00E02E2F /* SBJsonStreamWriterState.m */,
-				64B2AB3F18083CBF00E02E2F /* SBJsonTokeniser.h */,
-				64B2AB4018083CBF00E02E2F /* SBJsonTokeniser.m */,
-				64B2AB4118083CBF00E02E2F /* SBJsonUTF8Stream.h */,
-				64B2AB4218083CBF00E02E2F /* SBJsonUTF8Stream.m */,
-				64B2AB4318083CBF00E02E2F /* SBJsonWriter.h */,
-				64B2AB4418083CBF00E02E2F /* SBJsonWriter.m */,
-			);
-			path = SBJson;
 			sourceTree = "<group>";
 		};
 		64B2AB4618083CBF00E02E2F /* Image Loader */ = {
 			isa = PBXGroup;
 			children = (
 				64B2AB4718083CBF00E02E2F /* ImageLoader.h */,
-				64B2AB4818083CBF00E02E2F /* ImageLoader.m */,
+				6442857D191AFAD200A05B45 /* ImageLoader.m */,
 				64B2AB4918083CBF00E02E2F /* ImageView.h */,
 				64B2AB4A18083CBF00E02E2F /* ImageView.m */,
 			);
@@ -2818,7 +2753,7 @@
 		64B2AAB818082AE600E02E2F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Goggzy;
 				TargetAttributes = {
 					64B2AABF18082AE600E02E2F = {
@@ -3021,14 +2956,12 @@
 				64B9F6231822A3F0002E322F /* GPUImageRGBOpeningFilter.m in Sources */,
 				64B9F5E11822A3F0002E322F /* GPUImageGaussianBlurPositionFilter.m in Sources */,
 				64B2AB801808412300E02E2F /* ConnectionViewController.m in Sources */,
-				64B2AB6618083CBF00E02E2F /* NSObject+SBJson.m in Sources */,
 				64177857180C21F200CDFA25 /* BeeCell.m in Sources */,
 				64B9F6321822A3F0002E322F /* GPUImageSphereRefractionFilter.m in Sources */,
 				64B9F5E21822A3F0002E322F /* GPUImageGaussianSelectiveBlurFilter.m in Sources */,
 				64B9F6381822A3F0002E322F /* GPUImageTextureOutput.m in Sources */,
 				64B9F5BC1822A3F0002E322F /* GPUImageBoxBlurFilter.m in Sources */,
 				64B9F6441822A3F0002E322F /* GPUImageTwoPassTextureSamplingFilter.m in Sources */,
-				64B2AB6F18083CBF00E02E2F /* SBJsonUTF8Stream.m in Sources */,
 				64B9F5B71822A3F0002E322F /* GPUImageAlphaBlendFilter.m in Sources */,
 				64B9F6401822A3F0002E322F /* GPUImageTransformFilter.m in Sources */,
 				64B2AB5D18083CBF00E02E2F /* NSObject+Mutable.m in Sources */,
@@ -3079,7 +3012,6 @@
 				64B9F5BB1822A3F0002E322F /* GPUImageBilateralFilter.m in Sources */,
 				64B9F6091822A3F0002E322F /* GPUImageMovie.m in Sources */,
 				64B9F5B61822A3F0002E322F /* GPUImageAddBlendFilter.m in Sources */,
-				64B2AB6B18083CBF00E02E2F /* SBJsonStreamWriter.m in Sources */,
 				64B9F5B51822A3F0002E322F /* GPUImageAdaptiveThresholdFilter.m in Sources */,
 				64646C5F189415B9007926FE /* MovieCell.m in Sources */,
 				64B9F5F41822A3F0002E322F /* GPUImageKuwaharaRadius3Filter.m in Sources */,
@@ -3088,9 +3020,7 @@
 				6428B89D18A3A36600E1A904 /* SeasonsViewController.m in Sources */,
 				649C3A9518182FD30000A34C /* CharacterCell.m in Sources */,
 				64B9F6061822A3F0002E322F /* GPUImageMosaicFilter.m in Sources */,
-				64B2AB6A18083CBF00E02E2F /* SBJsonStreamParserState.m in Sources */,
 				649C3A7F181820FF0000A34C /* TmdbMovie.m in Sources */,
-				64B2AB6818083CBF00E02E2F /* SBJsonStreamParser.m in Sources */,
 				64B9F6391822A3F0002E322F /* GPUImageThreeInputFilter.m in Sources */,
 				64B9F61A1822A3F0002E322F /* GPUImagePolkaDotFilter.m in Sources */,
 				64B9F64F1822A3F0002E322F /* GPUImageMovieWriter.m in Sources */,
@@ -3101,10 +3031,9 @@
 				649C3A83181822E60000A34C /* MovieConnection.m in Sources */,
 				64B9F63F1822A3F0002E322F /* GPUImageToonFilter.m in Sources */,
 				64648EE218299DD400365EC7 /* ActorToolboxView.m in Sources */,
+				6442857E191AFAD200A05B45 /* ImageLoader.m in Sources */,
 				64B9F5EB1822A3F0002E322F /* GPUImageHistogramFilter.m in Sources */,
-				64B2AB6918083CBF00E02E2F /* SBJsonStreamParserAccumulator.m in Sources */,
 				64B9F5BD1822A3F0002E322F /* GPUImageBrightnessFilter.m in Sources */,
-				64B2AB7118083CBF00E02E2F /* ImageLoader.m in Sources */,
 				64A8AD781890201400DBECD7 /* MoviePosterView.m in Sources */,
 				64A10DAE18A992FA00906081 /* DDXMLElementAdditions.m in Sources */,
 				640865FD180B6AF600725CE4 /* NSMutableDictionary+SQL.m in Sources */,
@@ -3119,10 +3048,8 @@
 				64B9F5E61822A3F0002E322F /* GPUImageHardLightBlendFilter.m in Sources */,
 				64B9F5C01822A3F0002E322F /* GPUImageCannyEdgeDetectionFilter.m in Sources */,
 				64B9F5E71822A3F0002E322F /* GPUImageHarrisCornerDetectionFilter.m in Sources */,
-				64B2AB6C18083CBF00E02E2F /* SBJsonStreamWriterAccumulator.m in Sources */,
 				64B9F5C11822A3F0002E322F /* GPUImageCGAColorspaceFilter.m in Sources */,
 				64B9F5F91822A3F0002E322F /* GPUImageLinearBurnBlendFilter.m in Sources */,
-				64B2AB6E18083CBF00E02E2F /* SBJsonTokeniser.m in Sources */,
 				64B9F5D81822A3F0002E322F /* GPUImageExclusionBlendFilter.m in Sources */,
 				645B75B718B255000070EA04 /* TraktConnection.m in Sources */,
 				64B2AB5A18083CBF00E02E2F /* NSDictionary+Extensions.m in Sources */,
@@ -3140,6 +3067,7 @@
 				64B2AB7218083CBF00E02E2F /* ImageView.m in Sources */,
 				64B9F5DC1822A3F0002E322F /* GPUImageFilter.m in Sources */,
 				64B9F6161822A3F0002E322F /* GPUImagePixellateFilter.m in Sources */,
+				6442857C191AF80D00A05B45 /* Settings.m in Sources */,
 				64B9F6251822A3F0002E322F /* GPUImageSaturationFilter.m in Sources */,
 				64B9F5F51822A3F0002E322F /* GPUImageLanczosResamplingFilter.m in Sources */,
 				64B9F5B41822A3F0002E322F /* GPUImage3x3TextureSamplingFilter.m in Sources */,
@@ -3166,7 +3094,6 @@
 				64897F1718988970001F9EDE /* BubbleUpsideDownPopupView.m in Sources */,
 				64B9F64B1822A3F0002E322F /* GPUImageWhiteBalanceFilter.m in Sources */,
 				64B9F6041822A3F0002E322F /* GPUImageMissEtikateFilter.m in Sources */,
-				649EF2621899CEC000FC796D /* Settings.m in Sources */,
 				64648ECB18292B1000365EC7 /* BubblePopupView.m in Sources */,
 				64B9F64A1822A3F0002E322F /* GPUImageWeakPixelInclusionFilter.m in Sources */,
 				6415831A182BD00600BB599C /* MovieTrailersConnection.m in Sources */,
@@ -3185,7 +3112,6 @@
 				64B9F5E81822A3F0002E322F /* GPUImageHazeFilter.m in Sources */,
 				64F1DECF189AA1E700F2F88D /* Teebee.m in Sources */,
 				64B9F5FE1822A3F0002E322F /* GPUImageLuminanceRangeFilter.m in Sources */,
-				64B2AB7018083CBF00E02E2F /* SBJsonWriter.m in Sources */,
 				64B9F62D1822A3F0002E322F /* GPUImageSobelEdgeDetectionFilter.m in Sources */,
 				64B9F5B91822A3F0002E322F /* GPUImageAverageColor.m in Sources */,
 				64B9F62C1822A3F0002E322F /* GPUImageSmoothToonFilter.m in Sources */,
@@ -3207,9 +3133,7 @@
 				64B9F6431822A3F0002E322F /* GPUImageTwoPassFilter.m in Sources */,
 				642CA8ED181542FA00A293E4 /* MovieViewController.m in Sources */,
 				64B9F5C81822A3F0002E322F /* GPUImageColorInvertFilter.m in Sources */,
-				64B2AB6718083CBF00E02E2F /* SBJsonParser.m in Sources */,
 				64B9F5FB1822A3F0002E322F /* GPUImageLocalBinaryPatternFilter.m in Sources */,
-				64B2AB6D18083CBF00E02E2F /* SBJsonStreamWriterState.m in Sources */,
 				64B9F6361822A3F0002E322F /* GPUImageSwirlFilter.m in Sources */,
 				64B9F5DA1822A3F0002E322F /* GPUImageFalseColorFilter.m in Sources */,
 				64F1DED6189AB94900F2F88D /* TmdbTvEpisode.m in Sources */,
@@ -3279,7 +3203,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -3324,7 +3247,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -3406,7 +3328,6 @@
 		64B2AAF918082AE600E02E2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Moobeez.app/Moobeez";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -3429,7 +3350,6 @@
 		64B2AAFA18082AE600E02E2F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Moobeez.app/Moobeez";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

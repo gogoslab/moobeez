@@ -182,11 +182,11 @@
         return;
     }
     
-    NSMutableDictionary* seasonDictionary = self.episodes[StringInteger(season.seasonNumber)];
+    NSMutableDictionary* seasonDictionary = self.episodes[StringInteger((long)season.seasonNumber)];
     
     if (!seasonDictionary) {
         seasonDictionary = [[NSMutableDictionary alloc] init];
-        self.episodes[StringInteger(season.seasonNumber)] = seasonDictionary;
+        self.episodes[StringInteger((long)season.seasonNumber)] = seasonDictionary;
     }
     
     TvSeasonConnection* connection = [[TvSeasonConnection alloc] initWithTmdbId:self.tmdbId seasonNumber:season.seasonNumber completionHandler:^(WebserviceResultCode code, TmdbTvSeason *season) {
@@ -197,12 +197,12 @@
             
             for (TmdbTvEpisode* episode in season.episodes) {
                 
-                TeebeeEpisode* teebeeEpisode = seasonDictionary[StringInteger(episode.episodeNumber)];
+                TeebeeEpisode* teebeeEpisode = seasonDictionary[StringInteger((long)episode.episodeNumber)];
                 
                 if (!teebeeEpisode) {
                     teebeeEpisode = [[TeebeeEpisode alloc] init];
                     
-                    seasonDictionary[StringInteger(episode.episodeNumber)] = teebeeEpisode;
+                    seasonDictionary[StringInteger((long)episode.episodeNumber)] = teebeeEpisode;
                     
                     teebeeEpisode.seasonNumber = season.seasonNumber;
                     teebeeEpisode.episodeNumber = episode.episodeNumber;
@@ -247,7 +247,7 @@
                 
                 NSMutableDictionary* episodeDictionary = episode.databaseDictionary;
                 
-                episodeDictionary[@"teebeeId"] = StringInteger(self.id);
+                episodeDictionary[@"teebeeId"] = StringInteger((long)self.id);
                 
                 [insertEpisodesDictionaries addObject:episodeDictionary];
                 [insertEpisodes addObject:episode];
@@ -256,7 +256,7 @@
                 
                 if (episode.airDate) {
                     [updatedEpisodesDates addObject:episode.databaseDictionary[@"airDate"]];
-                    [updatedEpisodesIds addObject:StringInteger(episode.id)];
+                    [updatedEpisodesIds addObject:StringInteger((long)episode.id)];
                     [updatedEpisodes addObject:episode];
                 }
             }

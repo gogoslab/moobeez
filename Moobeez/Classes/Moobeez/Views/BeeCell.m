@@ -61,7 +61,7 @@
     }
     
     if ([self.bee isKindOfClass:[Teebee class]]) {
-        self.notWatchedEpisodesLabel.text = StringInteger(((Teebee*) self.bee).notWatchedEpisodesCount);
+        self.notWatchedEpisodesLabel.text = StringInteger((long)((Teebee*) self.bee).notWatchedEpisodesCount);
         self.notWatchedEpisodesLabel.hidden = (((Teebee*) self.bee).notWatchedEpisodesCount <= 0);
     }
     
