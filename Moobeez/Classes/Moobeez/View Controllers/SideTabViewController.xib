@@ -36,7 +36,7 @@
                 </imageView>
                 <view contentMode="scaleToFill" id="OYW-jI-50i">
                     <rect key="frame" x="0.0" y="185" width="160" height="197"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1My-nO-iCe">
                             <rect key="frame" x="20" y="0.0" width="120" height="30"/>
