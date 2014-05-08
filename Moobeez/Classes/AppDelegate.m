@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "Moobeez.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "iRate.h"
 //#import <Crashlytics/Crashlytics.h>
 
 void uncaughtExceptionHandler(NSException *exception);
@@ -99,6 +100,20 @@ void uncaughtExceptionHandler(NSException *exception) {
     }
     return _sideTabController;
 }
+
+#pragma mark - iRate
+
++ (void)initialize
+{
+    //configure iRate
+    [iRate sharedInstance].daysUntilPrompt = 5;
+    [iRate sharedInstance].usesUntilPrompt = 15;
+    [iRate sharedInstance].remindPeriod = 3;
+    [iRate sharedInstance].previewMode = NO;
+    
+}
+
+
 @end
 
 @implementation NSObject (AppDelegate)
