@@ -59,6 +59,8 @@
 		64412223181D3D7F00260497 /* CharacterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64412222181D3D7F00260497 /* CharacterCell.xib */; };
 		6442857C191AF80D00A05B45 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 6442857B191AF80D00A05B45 /* Settings.m */; };
 		6442857E191AFAD200A05B45 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6442857D191AFAD200A05B45 /* ImageLoader.m */; };
+		64428583191B00CF00A05B45 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 64428580191B00CF00A05B45 /* iRate.bundle */; };
+		64428584191B00CF00A05B45 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64428582191B00CF00A05B45 /* iRate.m */; };
 		6459F35C18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F35B18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m */; };
 		6459F35F18F2E93500EBFBE0 /* TvImagesConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F35E18F2E93500EBFBE0 /* TvImagesConnection.m */; };
 		6459F36418F3391900EBFBE0 /* SideTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F36218F3391900EBFBE0 /* SideTabViewController.m */; };
@@ -463,6 +465,9 @@
 		6442857A191AF80D00A05B45 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		6442857B191AF80D00A05B45 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
 		6442857D191AFAD200A05B45 /* ImageLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLoader.m; sourceTree = "<group>"; };
+		64428580191B00CF00A05B45 /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
+		64428581191B00CF00A05B45 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
+		64428582191B00CF00A05B45 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
 		6459F35A18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingHeadersCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		6459F35B18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingHeadersCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		6459F35D18F2E93500EBFBE0 /* TvImagesConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvImagesConnection.h; sourceTree = "<group>"; };
@@ -1343,6 +1348,17 @@
 			path = "Movie Details";
 			sourceTree = "<group>";
 		};
+		6442857F191B00CF00A05B45 /* iRate */ = {
+			isa = PBXGroup;
+			children = (
+				64428580191B00CF00A05B45 /* iRate.bundle */,
+				64428581191B00CF00A05B45 /* iRate.h */,
+				64428582191B00CF00A05B45 /* iRate.m */,
+			);
+			name = iRate;
+			path = iRate/iRate/iRate;
+			sourceTree = "<group>";
+		};
 		6459F36018F2E93900EBFBE0 /* Tv Images Connection */ = {
 			isa = PBXGroup;
 			children = (
@@ -1918,6 +1934,7 @@
 		64B2AB2C18083CBF00E02E2F /* External SDKs */ = {
 			isa = PBXGroup;
 			children = (
+				6442857F191B00CF00A05B45 /* iRate */,
 				64A10D9E18A992FA00906081 /* KissXML */,
 				64B9F46E1822A3EF002E322F /* GPUImage */,
 			);
@@ -2829,6 +2846,7 @@
 				64B2AB8F1808452700E02E2F /* MoviesViewController.xib in Resources */,
 				64D717B518FC38C00098B13E /* imdb_button@2x.png in Resources */,
 				6428B89818A39F2500E1A904 /* TvWatchedViewController.xib in Resources */,
+				64428583191B00CF00A05B45 /* iRate.bundle in Resources */,
 				64CA538A1823E6A9000699C5 /* empty_stars_big_white@2x.png in Resources */,
 				64A8AD68188EC3D800DBECD7 /* YouTubeViewController.xib in Resources */,
 				649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */,
@@ -3014,6 +3032,7 @@
 				64B9F5B61822A3F0002E322F /* GPUImageAddBlendFilter.m in Sources */,
 				64B9F5B51822A3F0002E322F /* GPUImageAdaptiveThresholdFilter.m in Sources */,
 				64646C5F189415B9007926FE /* MovieCell.m in Sources */,
+				64428584191B00CF00A05B45 /* iRate.m in Sources */,
 				64B9F5F41822A3F0002E322F /* GPUImageKuwaharaRadius3Filter.m in Sources */,
 				64B9F5DF1822A3F0002E322F /* GPUImageGammaFilter.m in Sources */,
 				64D74166189FF7720011C39A /* Cache.m in Sources */,
