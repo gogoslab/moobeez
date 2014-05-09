@@ -9,7 +9,33 @@
 #import "SideTabViewController.h"
 #import "Moobeez.h"
 
-@interface SideTabViewController ()
+@interface SideTabSearchBar : UISearchBar
+
+@end
+
+@implementation SideTabSearchBar
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    
+    if (self) {
+        [[UITextField appearanceWhenContainedIn:[SideTabSearchBar class], nil] setTextColor:[UIColor whiteColor]];
+        
+        [[UIBarButtonItem appearanceWhenContainedIn:[SideTabSearchBar class], nil] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]} forState:UIControlStateNormal];
+        
+        [self setImage:[UIImage imageNamed:@"search_bar_icon.png"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
+        [self setImage:[UIImage imageNamed:@"search_bar_clear_icon.png"] forSearchBarIcon:UISearchBarIconClear state:UIControlStateNormal];
+        [self setImage:[UIImage imageNamed:@"search_bar_clear_icon_highlighted.png"] forSearchBarIcon:UISearchBarIconClear state:UIControlStateHighlighted];
+        
+    }
+    
+    
+    return self;
+}
+
+@end
+
+@interface SideTabViewController () <UISearchBarDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(UIViewController) NSArray *viewControllers;
 
@@ -21,8 +47,14 @@
 @property (readwrite, nonatomic) NSInteger selectedIndex;
 @property (readonly, nonatomic) UIViewController* selectedViewController;
 
+@property (strong, nonatomic) IBOutlet NavigationController *searchNavigationViewController;
+@property (weak, nonatomic) IBOutlet SearchViewController *searchViewController;
+
+@property (weak, nonatomic) IBOutlet SideTabSearchBar *searchBar;
+
 @property (weak, nonatomic) IBOutlet UILabel *notWatchedTeebeezLabel;
 @property (readwrite, nonatomic) NSInteger notWatchedTeebeezCount;
+
 @end
 
 @implementation SideTabViewController
@@ -56,6 +88,7 @@
     
     self.notWatchedTeebeezCount = [[Database sharedDatabase] notWatchedEpisodesCount];
     
+    self.searchBar.alpha = 0.0;
 
 }
 
@@ -95,19 +128,30 @@
     [UIView animateWithDuration:0.4 animations:^{
         self.contentView.transform = CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, self.view.width * 3 / 8, 0);
         self.blurView.alpha = 1.0;
-        self.buttonsView.alpha = 1.0;
     }];
-    
+
+    [UIView animateWithDuration:0.2 delay:0.2 options:UIViewAnimationOptionTransitionNone animations:^{
+        self.buttonsView.alpha = 1.0;
+        self.searchBar.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        
+    }];
+
     self.contentView.userInteractionEnabled = NO;
     
 }
 
 - (void)hideMenu {
 
+    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionTransitionNone animations:^{
+        self.buttonsView.alpha = 0.0;
+        self.searchBar.alpha = 0.0;
+    } completion:^(BOOL finished) {}];
+    
+
     [UIView animateWithDuration:0.4 animations:^{
         self.contentView.transform = CGAffineTransformIdentity;
         self.blurView.alpha = 0.0;
-        self.buttonsView.alpha = 0.0;
     } completion:^(BOOL finished) {
         self.contentView.userInteractionEnabled = YES;
         [self.selectedViewController.view removeFromSuperview];
@@ -144,4 +188,42 @@
     
 }
 
+#pragma mark - Search
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    
+    [searchBar resignFirstResponder];
+    
+    if (!self.searchNavigationViewController.presentingViewController) {
+        [self.appDelegate.window addSubview:searchBar];
+        [searchBar setShowsCancelButton:YES animated:YES];
+        [self presentViewController:self.searchNavigationViewController animated:YES completion:^{
+        }];
+        
+        [self.searchNavigationViewController removeSideAction];
+    }
+    else {
+        [self.searchViewController performSearch];
+    }
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+
+    self.searchBar.frame = [self.appDelegate.window convertRect:self.searchBar.frame fromView:self.searchBar.superview];
+    [self.appDelegate.window addSubview:self.searchBar];
+
+    [UIView animateWithDuration:0.3 animations:^{
+        searchBar.width = 320;
+    }];
+    
+    [searchBar resignFirstResponder];
+    
+    [searchBar setShowsCancelButton:NO animated:YES];
+
+    [self.searchNavigationViewController dismissViewControllerAnimated:YES completion:^{
+        [self.view insertSubview:searchBar belowSubview:self.contentView];
+    }];
+}
+
 @end
+

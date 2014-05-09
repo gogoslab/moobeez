@@ -22,7 +22,11 @@
 
 @property (strong, nonatomic) NSMutableArray* profileImages;
 
+@property (readwrite, nonatomic) CGFloat popularity;
+
 - (id)initWithTmdbDictionary:(NSDictionary *)tmdbDictionary;
 - (void)addEntriesFromTmdbDictionary:(NSDictionary *)tmdbDictionary;
+
+- (NSComparisonResult)compareByPopularity:(TmdbPerson*)person;
 
 @end

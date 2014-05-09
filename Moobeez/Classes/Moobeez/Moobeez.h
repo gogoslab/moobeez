@@ -36,6 +36,7 @@
 #import "SideTabViewController.h"
 
 #import "ViewController.h"
+#import "NavigationController.h"
 
 #import "MoobeezViewController.h"
 #import "SearchNewMovieViewController.h"
@@ -60,6 +61,10 @@
 #import "TvWatchedViewController.h"
 #import "SeasonsViewController.h"
 #import "EpisodesViewController.h"
+
+#import "SearchViewController.h"
+
+#import "DashboardViewController.h"
 
 #pragma mark - Cells
 

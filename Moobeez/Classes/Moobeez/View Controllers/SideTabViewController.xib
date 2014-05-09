@@ -11,6 +11,9 @@
                 <outlet property="buttonsView" destination="OYW-jI-50i" id="h2U-Lp-93y"/>
                 <outlet property="contentView" destination="2Pi-Xw-qOS" id="sLl-ek-5Qh"/>
                 <outlet property="notWatchedTeebeezLabel" destination="emO-Ni-C6W" id="l5y-uH-fbE"/>
+                <outlet property="searchBar" destination="stj-8A-5Lf" id="R7K-Z4-OQX"/>
+                <outlet property="searchNavigationViewController" destination="xtJ-VC-ba7" id="Of8-nB-4OY"/>
+                <outlet property="searchViewController" destination="EUl-W4-Q13" id="gFS-RW-dwA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="viewControllers" destination="nf8-CA-acM" id="Ga0-hT-Ac8"/>
                 <outletCollection property="viewControllers" destination="Taj-HT-eAz" id="njg-bq-Vmh"/>
@@ -35,11 +38,11 @@
                     </connections>
                 </imageView>
                 <view contentMode="scaleToFill" id="OYW-jI-50i">
-                    <rect key="frame" x="0.0" y="185" width="160" height="197"/>
+                    <rect key="frame" x="0.0" y="185" width="160" height="252"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="1My-nO-iCe">
-                            <rect key="frame" x="20" y="0.0" width="120" height="30"/>
+                            <rect key="frame" x="20" y="55" width="120" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                             <state key="normal" title="Moobeez">
@@ -49,8 +52,19 @@
                                 <action selector="menuButtonPressed:" destination="-1" eventType="touchUpInside" id="flb-GD-yRp"/>
                             </connections>
                         </button>
+                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t9y-xC-DhL">
+                            <rect key="frame" x="20" y="0.0" width="120" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                            <state key="normal" title="Dashboard">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="menuButtonPressed:" destination="-1" eventType="touchUpInside" id="s7R-R8-qky"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hlc-hz-27a">
-                            <rect key="frame" x="20" y="53" width="120" height="34"/>
+                            <rect key="frame" x="20" y="108" width="120" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                             <state key="normal" title="Top Movies">
@@ -61,7 +75,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="73F-mD-GtD">
-                            <rect key="frame" x="20" y="110" width="120" height="30"/>
+                            <rect key="frame" x="20" y="165" width="120" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                             <state key="normal" title="Teebeez">
@@ -72,7 +86,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ulD-bv-df4">
-                            <rect key="frame" x="20" y="163" width="120" height="34"/>
+                            <rect key="frame" x="20" y="218" width="120" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                             <state key="normal" title="Top TV Shows">
@@ -83,7 +97,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="emO-Ni-C6W">
-                            <rect key="frame" x="115" y="115" width="42" height="21"/>
+                            <rect key="frame" x="115" y="170" width="42" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -92,6 +106,17 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
+                <searchBar contentMode="redraw" searchBarStyle="minimal" id="stj-8A-5Lf" customClass="SideTabSearchBar">
+                    <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="sY2-dD-Um8"/>
+                    </connections>
+                </searchBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
@@ -195,6 +220,59 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <nil key="simulatedDestinationMetrics"/>
+                </viewController>
+            </viewControllers>
+        </navigationController>
+        <navigationController definesPresentationContext="YES" id="JlU-0a-Izy" customClass="NavigationController">
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <nil key="simulatedDestinationMetrics"/>
+            <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="G94-oQ-u31">
+                <autoresizingMask key="autoresizingMask"/>
+                <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="barTintColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                <textAttributes key="titleTextAttributes">
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </textAttributes>
+            </navigationBar>
+            <viewControllers>
+                <viewController title="Dashboard" nibName="DashboardViewController" id="UXK-r8-9My" customClass="DashboardViewController">
+                    <navigationItem key="navigationItem" title="Dashboard" id="BG3-f4-iSr"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <nil key="simulatedDestinationMetrics"/>
+                </viewController>
+            </viewControllers>
+        </navigationController>
+        <navigationController definesPresentationContext="YES" id="xtJ-VC-ba7" customClass="NavigationController">
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <nil key="simulatedDestinationMetrics"/>
+            <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="gck-qT-0oL">
+                <autoresizingMask key="autoresizingMask"/>
+                <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="barTintColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                <textAttributes key="titleTextAttributes">
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </textAttributes>
+            </navigationBar>
+            <viewControllers>
+                <viewController nibName="SearchViewController" id="EUl-W4-Q13" customClass="SearchViewController">
+                    <navigationItem key="navigationItem" id="5gw-38-1gr"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <nil key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="searchBar" destination="stj-8A-5Lf" id="CNy-Fj-bxM"/>
+                    </connections>
                 </viewController>
             </viewControllers>
         </navigationController>

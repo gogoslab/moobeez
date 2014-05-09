@@ -122,13 +122,20 @@
         self.seasonsCount = [tmdbDictionary[@"number_of_seasons"] integerValue];
     }
     
-    
+    if (tmdbDictionary[@"popularity"]) {
+        self.popularity = [tmdbDictionary[@"popularity"] floatValue];
+    }
+
 }
 
 #pragma mark - Comparison selectors
 
 - (NSComparisonResult)compareByDate:(TmdbTV*)tv {
     return [tv.releaseDate compare:self.releaseDate];
+}
+
+- (NSComparisonResult)compareByPopularity:(TmdbTV*)tv {
+    return [@(tv.popularity) compare:@(self.popularity)];
 }
 
 

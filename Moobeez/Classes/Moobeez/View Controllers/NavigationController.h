@@ -10,4 +10,6 @@
 
 @interface NavigationController : UINavigationController
 
+- (void)removeSideAction;
+
 @end

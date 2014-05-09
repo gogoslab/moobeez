@@ -11,6 +11,8 @@
 
 @interface NavigationController ()
 
+@property (strong, nonatomic) UISwipeGestureRecognizer* swipeGesture;
+
 @end
 
 @implementation NavigationController
@@ -32,9 +34,9 @@
     self.topViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu_button.png"] style:UIBarButtonItemStylePlain target:self.appDelegate.sideTabController action:@selector(showMenu)];
     self.topViewController.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
     
-    UISwipeGestureRecognizer* swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self.appDelegate.sideTabController action:@selector(showMenu)];
-    swipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.topViewController.view addGestureRecognizer:swipeGesture];
+    self.swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self.appDelegate.sideTabController action:@selector(showMenu)];
+    self.swipeGesture.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.topViewController.view addGestureRecognizer:self.swipeGesture];
 
 }
 
@@ -55,5 +57,12 @@
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
+
+- (void)removeSideAction {
+    self.topViewController.navigationItem.leftBarButtonItem = nil;
+    [self.topViewController.view removeGestureRecognizer:self.swipeGesture];
+}
+
+
 
 @end

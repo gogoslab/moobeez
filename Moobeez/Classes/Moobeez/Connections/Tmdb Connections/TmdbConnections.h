@@ -31,6 +31,8 @@
 #define UrlTvPopular @"tv/popular"
 #define UrlTvTopRated @"tv/top_rated"
 
+#define UrlSearch @"search"
+
 #import "ConfigurationConnection.h"
 
 #import "MovieConnection.h"
@@ -55,5 +57,7 @@
 #import "TvSeasonConnection.h"
 
 #import "TvImagesConnection.h"
+
+#import "SearchConnection.h"
 
 #endif

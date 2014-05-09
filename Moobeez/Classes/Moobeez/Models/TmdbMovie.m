@@ -111,12 +111,20 @@
         self.releaseDate = [[NSDateFormatter dateFormatterWithFormat:@"yyyy-MM-dd"] dateFromString:[tmdbDictionary stringForKey:@"release_date"]];
     }
     
+    if (tmdbDictionary[@"popularity"]) {
+        self.popularity = [tmdbDictionary[@"popularity"] floatValue];
+    }
+
 }
 
 #pragma mark - Comparison selectors
 
 - (NSComparisonResult)compareByDate:(TmdbMovie*)movie {
     return [movie.releaseDate compare:self.releaseDate];
+}
+
+- (NSComparisonResult)compareByPopularity:(TmdbMovie*)movie {
+    return [@(movie.popularity) compare:@(self.popularity)];
 }
 
 

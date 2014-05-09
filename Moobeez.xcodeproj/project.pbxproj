@@ -126,6 +126,15 @@
 		64A8AD75188F39D400DBECD7 /* FeatureMoviesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A8AD74188F39D400DBECD7 /* FeatureMoviesCell.xib */; };
 		64A8AD781890201400DBECD7 /* MoviePosterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64A8AD771890201400DBECD7 /* MoviePosterView.m */; };
 		64A8AD7B1890203200DBECD7 /* MoviePosterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64A8AD7A1890203200DBECD7 /* MoviePosterView.xib */; };
+		64ADAC9B191C091F002D1538 /* search_bar_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64ADAC9A191C091F002D1538 /* search_bar_icon@2x.png */; };
+		64ADAC9D191C0D16002D1538 /* search_bar_clear_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64ADAC9C191C0D16002D1538 /* search_bar_clear_icon@2x.png */; };
+		64ADAC9F191C0D5D002D1538 /* search_bar_clear_icon_highlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64ADAC9E191C0D5D002D1538 /* search_bar_clear_icon_highlighted@2x.png */; };
+		64ADACA3191C2E7D002D1538 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64ADACA1191C2E7D002D1538 /* SearchViewController.m */; };
+		64ADACA4191C2E7D002D1538 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64ADACA2191C2E7D002D1538 /* SearchViewController.xib */; };
+		64ADACA9191C2EAF002D1538 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64ADACA7191C2EAF002D1538 /* DashboardViewController.m */; };
+		64ADACAA191C2EAF002D1538 /* DashboardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64ADACA8191C2EAF002D1538 /* DashboardViewController.xib */; };
+		64ADACAE191C519D002D1538 /* SearchConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64ADACAD191C519D002D1538 /* SearchConnection.m */; };
+		64ADACB3191C5C52002D1538 /* SearchCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64ADACB2191C5C52002D1538 /* SearchCategoryController.m */; };
 		64B2AAC418082AE600E02E2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC318082AE600E02E2F /* Foundation.framework */; };
 		64B2AAC618082AE600E02E2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC518082AE600E02E2F /* CoreGraphics.framework */; };
 		64B2AAC818082AE600E02E2F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC718082AE600E02E2F /* UIKit.framework */; };
@@ -573,6 +582,19 @@
 		64A8AD761890201400DBECD7 /* MoviePosterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviePosterView.h; sourceTree = "<group>"; };
 		64A8AD771890201400DBECD7 /* MoviePosterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviePosterView.m; sourceTree = "<group>"; };
 		64A8AD7A1890203200DBECD7 /* MoviePosterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviePosterView.xib; sourceTree = "<group>"; };
+		64ADAC9A191C091F002D1538 /* search_bar_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_bar_icon@2x.png"; sourceTree = "<group>"; };
+		64ADAC9C191C0D16002D1538 /* search_bar_clear_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_bar_clear_icon@2x.png"; sourceTree = "<group>"; };
+		64ADAC9E191C0D5D002D1538 /* search_bar_clear_icon_highlighted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_bar_clear_icon_highlighted@2x.png"; sourceTree = "<group>"; };
+		64ADACA0191C2E7D002D1538 /* SearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		64ADACA1191C2E7D002D1538 /* SearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
+		64ADACA2191C2E7D002D1538 /* SearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		64ADACA6191C2EAF002D1538 /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
+		64ADACA7191C2EAF002D1538 /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
+		64ADACA8191C2EAF002D1538 /* DashboardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardViewController.xib; sourceTree = "<group>"; };
+		64ADACAC191C519D002D1538 /* SearchConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchConnection.h; sourceTree = "<group>"; };
+		64ADACAD191C519D002D1538 /* SearchConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchConnection.m; sourceTree = "<group>"; };
+		64ADACB1191C5C52002D1538 /* SearchCategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchCategoryController.h; sourceTree = "<group>"; };
+		64ADACB2191C5C52002D1538 /* SearchCategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchCategoryController.m; sourceTree = "<group>"; };
 		64B2AAC018082AE600E02E2F /* Moobeez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moobeez.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B2AAC318082AE600E02E2F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		64B2AAC518082AE600E02E2F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -1179,6 +1201,9 @@
 		64177865180C3B5A00CDFA25 /* Common Images */ = {
 			isa = PBXGroup;
 			children = (
+				64ADAC9E191C0D5D002D1538 /* search_bar_clear_icon_highlighted@2x.png */,
+				64ADAC9C191C0D16002D1538 /* search_bar_clear_icon@2x.png */,
+				64ADAC9A191C091F002D1538 /* search_bar_icon@2x.png */,
 				64D717B218FC38C00098B13E /* imdb_button.png */,
 				64D717B318FC38C00098B13E /* imdb_button@2x.png */,
 				64B3E42618F3FCD000783B95 /* menu_button.png */,
@@ -1324,6 +1349,7 @@
 				64D7415B189FAE570011C39A /* Tv Connection */,
 				64D74163189FF4690011C39A /* Tv Season Connection */,
 				6459F36018F2E93900EBFBE0 /* Tv Images Connection */,
+				64ADACAF191C51A9002D1538 /* Search Connection */,
 			);
 			path = "Tmdb Connections";
 			sourceTree = "<group>";
@@ -1756,6 +1782,53 @@
 			name = "Movie Poster View";
 			sourceTree = "<group>";
 		};
+		64ADACA5191C2E80002D1538 /* Search View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64ADACA0191C2E7D002D1538 /* SearchViewController.h */,
+				64ADACA1191C2E7D002D1538 /* SearchViewController.m */,
+				64ADACA2191C2E7D002D1538 /* SearchViewController.xib */,
+			);
+			name = "Search View Controller";
+			sourceTree = "<group>";
+		};
+		64ADACAB191C2EB2002D1538 /* Dashboard View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64ADACA6191C2EAF002D1538 /* DashboardViewController.h */,
+				64ADACA7191C2EAF002D1538 /* DashboardViewController.m */,
+				64ADACA8191C2EAF002D1538 /* DashboardViewController.xib */,
+			);
+			name = "Dashboard View Controller";
+			sourceTree = "<group>";
+		};
+		64ADACAF191C51A9002D1538 /* Search Connection */ = {
+			isa = PBXGroup;
+			children = (
+				64ADACAC191C519D002D1538 /* SearchConnection.h */,
+				64ADACAD191C519D002D1538 /* SearchConnection.m */,
+			);
+			name = "Search Connection";
+			sourceTree = "<group>";
+		};
+		64ADACB0191C5C2E002D1538 /* Search Screen */ = {
+			isa = PBXGroup;
+			children = (
+				64ADACA5191C2E80002D1538 /* Search View Controller */,
+				64ADACB4191C5C56002D1538 /* Search Category Controller */,
+			);
+			name = "Search Screen";
+			sourceTree = "<group>";
+		};
+		64ADACB4191C5C56002D1538 /* Search Category Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64ADACB1191C5C52002D1538 /* SearchCategoryController.h */,
+				64ADACB2191C5C52002D1538 /* SearchCategoryController.m */,
+			);
+			name = "Search Category Controller";
+			sourceTree = "<group>";
+		};
 		64B2AAB718082AE600E02E2F = {
 			isa = PBXGroup;
 			children = (
@@ -2023,6 +2096,8 @@
 				64D74147189D21E00011C39A /* Teebeez Screen */,
 				64D74148189D21FE0011C39A /* TVs Screen */,
 				64D7414B189D22400011C39A /* Tv Detail Screen */,
+				64ADACB0191C5C2E002D1538 /* Search Screen */,
+				64ADACAB191C2EB2002D1538 /* Dashboard View Controller */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -2810,6 +2885,7 @@
 				64B3E42818F3FCD000783B95 /* menu_button.png in Resources */,
 				64DC8C1E1817215E002C11D8 /* toolbox_up_arrow@2x.png in Resources */,
 				64B2AB991808496B00E02E2F /* tab_bar_icon_movies@2x.png in Resources */,
+				64ADAC9B191C091F002D1538 /* search_bar_icon@2x.png in Resources */,
 				64DC8C111817137F002C11D8 /* back_button.png in Resources */,
 				64B3E42118F3F28900783B95 /* background_blured.png in Resources */,
 				64B2AB951808486200E02E2F /* tab_bar_icon_moobeez@2x.png in Resources */,
@@ -2863,10 +2939,12 @@
 				64412223181D3D7F00260497 /* CharacterCell.xib in Resources */,
 				64DC8C1B1817215E002C11D8 /* toolbox_line.png in Resources */,
 				64177870180C8A7400CDFA25 /* full_stars_small@2x.png in Resources */,
+				64ADACAA191C2EAF002D1538 /* DashboardViewController.xib in Resources */,
 				64290E7B18A4627E009E6B04 /* EpisodeCell.xib in Resources */,
 				64648ED81829323F00365EC7 /* CharacterTableCell.xib in Resources */,
 				64CA538F1823ECDC000699C5 /* SearchNewMovieViewController.xib in Resources */,
 				64177867180C3B5A00CDFA25 /* default_image.png in Resources */,
+				64ADAC9D191C0D16002D1538 /* search_bar_clear_icon@2x.png in Resources */,
 				64CA53861823DD2C000699C5 /* MovieButtonsWhite.bundle in Resources */,
 				64DC8C121817137F002C11D8 /* back_button@2x.png in Resources */,
 				64290E7F18A516DA009E6B04 /* blue_circle.png in Resources */,
@@ -2878,6 +2956,7 @@
 				64290E9318A65AEB009E6B04 /* delete_button@2x.png in Resources */,
 				64DC8C1C1817215E002C11D8 /* toolbox_line@2x.png in Resources */,
 				64CA539D1824060C000699C5 /* add_button.png in Resources */,
+				64ADAC9F191C0D5D002D1538 /* search_bar_clear_icon_highlighted@2x.png in Resources */,
 				64897F1C189895C9001F9EDE /* share_twitter_button.png in Resources */,
 				642CA8EE181542FA00A293E4 /* MovieViewController.xib in Resources */,
 				64CA53891823E6A9000699C5 /* empty_stars_big_white.png in Resources */,
@@ -2888,6 +2967,7 @@
 				64646C62189415F8007926FE /* MovieCell.xib in Resources */,
 				64D74142189D1FB10011C39A /* TVsViewController.xib in Resources */,
 				64A8AD6B188EC42C00DBECD7 /* YouTubeTemplate.txt in Resources */,
+				64ADACA4191C2E7D002D1538 /* SearchViewController.xib in Resources */,
 				6414A3011821B90D009397FF /* DatePickerView.xib in Resources */,
 				64897F1D189895C9001F9EDE /* share_twitter_button@2x.png in Resources */,
 				640865F6180B62EC00725CE4 /* MoobeezDatabase in Resources */,
@@ -3016,6 +3096,7 @@
 				64290E7A18A4627E009E6B04 /* EpisodeCell.m in Sources */,
 				64A10D9618A8E69F00906081 /* TeebeezHeaderView.m in Sources */,
 				64B2AB7418083CBF00E02E2F /* UIColor+Moobeez.m in Sources */,
+				64ADACB3191C5C52002D1538 /* SearchCategoryController.m in Sources */,
 				64B9F5F01822A3F0002E322F /* GPUImageHueFilter.m in Sources */,
 				64086604180B6D2E00725CE4 /* Database.m in Sources */,
 				643FB23A18215FDC00B7CFF7 /* NSString+SQL.m in Sources */,
@@ -3090,6 +3171,7 @@
 				64B9F6251822A3F0002E322F /* GPUImageSaturationFilter.m in Sources */,
 				64B9F5F51822A3F0002E322F /* GPUImageLanczosResamplingFilter.m in Sources */,
 				64B9F5B41822A3F0002E322F /* GPUImage3x3TextureSamplingFilter.m in Sources */,
+				64ADACA9191C2EAF002D1538 /* DashboardViewController.m in Sources */,
 				64B9F5BA1822A3F0002E322F /* GPUImageAverageLuminanceThresholdFilter.m in Sources */,
 				64CA53931823F48A000699C5 /* SearchMovieConnection.m in Sources */,
 				649C3A7B181812790000A34C /* StarsView.m in Sources */,
@@ -3125,6 +3207,7 @@
 				64B9F5E91822A3F0002E322F /* GPUImageHighlightShadowFilter.m in Sources */,
 				64B9F6031822A3F0002E322F /* GPUImageMedianFilter.m in Sources */,
 				64B9F6261822A3F0002E322F /* GPUImageScreenBlendFilter.m in Sources */,
+				64ADACA3191C2E7D002D1538 /* SearchViewController.m in Sources */,
 				64B9F6191822A3F0002E322F /* GPUImagePolarPixellateFilter.m in Sources */,
 				64B2AB831808421700E02E2F /* ViewController.m in Sources */,
 				64A8AD6E188F33D500DBECD7 /* MoviesListConnection.m in Sources */,
@@ -3153,6 +3236,7 @@
 				642CA8ED181542FA00A293E4 /* MovieViewController.m in Sources */,
 				64B9F5C81822A3F0002E322F /* GPUImageColorInvertFilter.m in Sources */,
 				64B9F5FB1822A3F0002E322F /* GPUImageLocalBinaryPatternFilter.m in Sources */,
+				64ADACAE191C519D002D1538 /* SearchConnection.m in Sources */,
 				64B9F6361822A3F0002E322F /* GPUImageSwirlFilter.m in Sources */,
 				64B9F5DA1822A3F0002E322F /* GPUImageFalseColorFilter.m in Sources */,
 				64F1DED6189AB94900F2F88D /* TmdbTvEpisode.m in Sources */,
@@ -3234,7 +3318,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Radu Banea (TCZG753697)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Radu Banea (TCZG753697)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3258,6 +3343,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
+				PROVISIONING_PROFILE = "93201FAC-D2FD-4842-8CEF-F8E5A4584E89";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -3305,8 +3391,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Radu Banea (TCZG753697)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Radu Banea (TCZG753697)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Classes/Gogz/External\\ SDKs",

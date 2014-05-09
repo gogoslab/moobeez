@@ -85,7 +85,16 @@
         self.imdbId = tmdbDictionary[@"imdb_id"];
     }
 
-    
+    if (tmdbDictionary[@"popularity"]) {
+        self.popularity = [tmdbDictionary[@"popularity"] floatValue];
+    }
+
+}
+
+#pragma mark - Comparison selectors
+
+- (NSComparisonResult)compareByPopularity:(TmdbPerson*)person {
+    return [@(person.popularity) compare:@(self.popularity)];
 }
 
 @end

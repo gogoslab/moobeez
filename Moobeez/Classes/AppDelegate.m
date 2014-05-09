@@ -32,7 +32,9 @@ void uncaughtExceptionHandler(NSException *exception) {
 //    [Crashlytics startWithAPIKey:@"975fc7e2b44d8ca7ec8ff096827064b0c5c0facb"];
 
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor mainColor],NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
-    
+
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor whiteColor]];
+
     [self.window makeKeyAndVisible];
 
     //init facebook framework

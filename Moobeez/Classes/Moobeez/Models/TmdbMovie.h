@@ -33,7 +33,11 @@ typedef enum TmdbTrailerType {
 
 @property (strong, nonatomic) NSDate* releaseDate;
 
+@property (readwrite, nonatomic) CGFloat popularity;
+
 - (id)initWithTmdbDictionary:(NSDictionary *)tmdbDictionary;
 - (void)addEntriesFromTmdbDictionary:(NSDictionary *)tmdbDictionary;
+
+- (NSComparisonResult)compareByPopularity:(TmdbMovie*)movie;
 
 @end

@@ -37,8 +37,11 @@
 @property (readwrite, nonatomic) NSInteger episodesCount;
 @property (readwrite, nonatomic) NSInteger seasonsCount;
 
+@property (readwrite, nonatomic) CGFloat popularity;
 
 - (id)initWithTmdbDictionary:(NSDictionary *)tmdbDictionary;
 - (void)addEntriesFromTmdbDictionary:(NSDictionary *)tmdbDictionary;
+
+- (NSComparisonResult)compareByPopularity:(TmdbTV*)tv;
 
 @end
