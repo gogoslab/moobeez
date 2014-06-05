@@ -56,8 +56,8 @@
         self.posterImageView.layer.cornerRadius = 0;
         self.animatedView.frame = appDelegate.window.bounds;
     } completion:^(BOOL finished) {
-        self.animatedView.frame = self.bounds;
-        [self addSubview:self.animatedView];
+        
+        [self performSelector:@selector(returnToNormalState) withObject:nil afterDelay:0.1];
         
         completionHandler();
     }];
@@ -73,6 +73,11 @@
     else if (self.character.tv) {
         [self.posterImageView loadImageWithPath:self.character.tv.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
     }
+}
+
+- (void)returnToNormalState {
+    self.animatedView.frame = self.bounds;
+    [self addSubview:self.animatedView];
 }
 
 - (void)prepareForShrink {

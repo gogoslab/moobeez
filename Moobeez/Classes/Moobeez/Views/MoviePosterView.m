@@ -74,14 +74,19 @@
     [UIView animateWithDuration:0.5 animations:^{
         self.contentView.frame = appDelegate.window.bounds;
     } completion:^(BOOL finished) {
-        self.contentView.frame = self.bounds;
-        [self addSubview:self.contentView];
+        
+        [self performSelector:@selector(returnToNormalState) withObject:nil afterDelay:0.1];
         
         completionHandler();
     }];
     
     self.imageView.defaultImage = self.imageView.image;
     [self.imageView loadImageWithPath:self.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
+}
+
+- (void)returnToNormalState {
+    self.contentView.frame = self.bounds;
+    [self addSubview:self.contentView];
 }
 
 - (void)prepareForShrink {
@@ -100,8 +105,7 @@
     [UIView animateWithDuration:0.5 animations:^{
         self.contentView.frame = [appDelegate.window convertRect:self.frame fromView:self.superview];
     } completion:^(BOOL finished) {
-        self.contentView.frame = self.bounds;
-        [self addSubview:self.contentView];
+        [self returnToNormalState];
         
         completionHandler();
     }];
