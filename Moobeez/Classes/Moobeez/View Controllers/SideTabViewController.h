@@ -10,6 +10,8 @@
 
 @interface SideTabViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIView *contentView;
+
 - (void)showMenu;
 - (void)hideMenu;
 

@@ -105,6 +105,7 @@ typedef enum SoonSections {
         self.isUpdating = YES;
         
         self.teebeezToUpdate = [[Database sharedDatabase] teebeezToUpdate];
+
         if (self.teebeezToUpdate.count) {
             
             [Alert showAlertViewWithTitle:@"Teebeez outdated" message:@"Do you want to update the teebeez now?" buttonClickedCallback:^(NSInteger buttonIndex) {

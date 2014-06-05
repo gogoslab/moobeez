@@ -95,13 +95,14 @@
 - (IBAction)backButtonPressed:(id)sender {
     
     [self dismissViewControllerAnimated:NO completion:^{
-        if (self.moobee.id != -1) {
-            [self.moobee save];
-        }
-        if (self.closeHandler) {
-            self.closeHandler();
-        }
     }];
+
+    if (self.moobee.id != -1) {
+        [self.moobee save];
+    }
+    if (self.closeHandler) {
+        self.closeHandler();
+    }
 }
 
 - (IBAction)addButtonPressed:(id)sender {

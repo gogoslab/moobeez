@@ -82,20 +82,17 @@
     
     AppDelegate* appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
     
-    self.contentView.frame = self.bounds;
-    [self addSubview:self.contentView];
-    
-    self.contentView.center = [appDelegate.window convertPoint:self.contentView.center fromView:self.contentView.superview];
-    [appDelegate.window addSubview:self.contentView];
+    self.posterImageView.center = [appDelegate.window convertPoint:self.posterImageView.center fromView:self.posterImageView.superview];
+    [appDelegate.window addSubview:self.posterImageView];
 
     self.starsView.hidden = YES;
     self.notWatchedEpisodesLabel.hidden = YES;
 
     [UIView animateWithDuration:0.5 animations:^{
-        self.contentView.frame = appDelegate.window.bounds;
+        self.posterImageView.frame = appDelegate.window.bounds;
     } completion:^(BOOL finished) {
-        self.contentView.frame = self.bounds;
-        [self addSubview:self.contentView];
+
+        [self performSelector:@selector(returnToNormalState) withObject:nil afterDelay:0.01];
         
         completionHandler();
     }];
@@ -107,8 +104,8 @@
 - (void)prepareForShrink {
     AppDelegate* appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
     
-    self.contentView.frame = appDelegate.window.bounds;
-    [appDelegate.window addSubview:self.contentView];
+    self.posterImageView.frame = appDelegate.window.bounds;
+    [appDelegate.window addSubview:self.posterImageView];
     
     self.starsView.hidden = YES;
     self.notWatchedEpisodesLabel.hidden = YES;
@@ -121,10 +118,9 @@
     [self prepareForShrink];
     
     [UIView animateWithDuration:0.5 animations:^{
-        self.contentView.frame = [appDelegate.window convertRect:self.frame fromView:self.superview];
+        self.posterImageView.frame = [appDelegate.window convertRect:self.frame fromView:self.superview];
     } completion:^(BOOL finished) {
-        self.contentView.frame = self.bounds;
-        [self addSubview:self.contentView];
+        [self returnToNormalState];
         
         self.starsView.hidden = NO;
         
@@ -140,6 +136,11 @@
     }];
     
     [self.posterImageView loadImageWithPath:self.bee.posterPath andWidth:185 completion:^(BOOL didLoadImage) {}];
+}
+
+- (void)returnToNormalState {
+    self.posterImageView.frame = self.bounds;
+    [self.contentView insertSubview:self.posterImageView atIndex:0];
 }
 
 

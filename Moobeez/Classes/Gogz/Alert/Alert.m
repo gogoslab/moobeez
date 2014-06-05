@@ -67,7 +67,7 @@ static NSMutableArray* alerts;
     if (self.callbackBlock) {
         self.callbackBlock(buttonIndex);
     }
-    [[Alert alerts] removeObject:self];
+    [[Alert alerts] performSelector:@selector(removeObject:) withObject:self afterDelay:0.1];
 }
 
 @end

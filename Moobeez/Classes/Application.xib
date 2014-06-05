@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <development version="5100" identifier="xcode"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UIApplication">
@@ -20,10 +22,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <connections>
-                <outlet property="rootViewController" destination="Ay7-JO-b7H" id="80d-3V-ZlD"/>
+                <outlet property="rootViewController" destination="Ay7-JO-b7H" id="3T8-D9-0Mj"/>
             </connections>
         </window>
         <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="Ay7-JO-b7H" customClass="NavigationController">
@@ -38,11 +38,6 @@
             <viewControllers>
                 <viewController nibName="LoadingViewController" id="Db7-oh-AAB" customClass="LoadingViewController">
                     <navigationItem key="navigationItem" title="Item" id="HAG-7v-DOF"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
             </viewControllers>
         </navigationController>
@@ -61,11 +56,6 @@
             <viewControllers>
                 <navigationController definesPresentationContext="YES" id="rwR-FB-TtH" customClass="NavigationController">
                     <tabBarItem key="tabBarItem" title="Moobeez" image="tab_bar_icon_moobeez.png" id="6j7-L5-EBB"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="81H-qc-fTz">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -77,21 +67,11 @@
                     <viewControllers>
                         <viewController title="Moobeez" nibName="MoobeezViewController" id="z1R-cO-boU" customClass="MoobeezViewController">
                             <navigationItem key="navigationItem" title="Moobeez" id="YaQ-sc-SeH"/>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <nil key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                            <nil key="simulatedDestinationMetrics"/>
                         </viewController>
                     </viewControllers>
                 </navigationController>
                 <navigationController definesPresentationContext="YES" id="ZEc-is-EWj" customClass="NavigationController">
                     <tabBarItem key="tabBarItem" title="Movies" image="tab_bar_icon_movies.png" id="dFg-Tl-lH1"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="j4G-Ln-pNj">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -103,21 +83,11 @@
                     <viewControllers>
                         <viewController title="Movies" nibName="MoviesViewController" id="HCj-Q1-Y38" customClass="MoviesViewController">
                             <navigationItem key="navigationItem" title="Movies" id="70E-RU-B7G"/>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <nil key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                            <nil key="simulatedDestinationMetrics"/>
                         </viewController>
                     </viewControllers>
                 </navigationController>
                 <navigationController definesPresentationContext="YES" id="yaM-NS-S16" customClass="NavigationController">
                     <tabBarItem key="tabBarItem" title="Teebeez" image="tab_bar_icon_moobeez.png" id="SwR-cj-0mC"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pgk-YN-uDE">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -129,21 +99,11 @@
                     <viewControllers>
                         <viewController title="Teebeez" nibName="TeebeezViewController" id="Mlj-1u-6OE" customClass="TeebeezViewController">
                             <navigationItem key="navigationItem" title="Moobeez" id="9oy-tG-SG5"/>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <nil key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                            <nil key="simulatedDestinationMetrics"/>
                         </viewController>
                     </viewControllers>
                 </navigationController>
                 <navigationController definesPresentationContext="YES" id="Zp0-vq-IhH" customClass="NavigationController">
                     <tabBarItem key="tabBarItem" title="TVs" image="tab_bar_icon_movies.png" id="xoB-dm-Jtz"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <nil key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="LgQ-tz-aqT">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -155,11 +115,6 @@
                     <viewControllers>
                         <viewController title="TVs" nibName="TVsViewController" id="yV5-j8-3hG" customClass="TVsViewController">
                             <navigationItem key="navigationItem" title="Movies" id="6Zo-cH-Gdq"/>
-                            <nil key="simulatedStatusBarMetrics"/>
-                            <nil key="simulatedTopBarMetrics"/>
-                            <nil key="simulatedBottomBarMetrics"/>
-                            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                            <nil key="simulatedDestinationMetrics"/>
                         </viewController>
                     </viewControllers>
                 </navigationController>

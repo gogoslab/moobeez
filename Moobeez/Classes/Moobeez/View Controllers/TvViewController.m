@@ -99,10 +99,12 @@
     
     [self dismissViewControllerAnimated:NO completion:^{
         
-        if (self.closeHandler) {
-            self.closeHandler();
-        }
     }];
+    
+    if (self.closeHandler) {
+        self.closeHandler();
+    }
+
 }
 
 - (IBAction)addButtonPressed:(id)sender {

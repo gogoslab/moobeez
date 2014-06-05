@@ -41,7 +41,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *blurView;
-@property (strong, nonatomic) IBOutlet UIView *contentView;
 @property (weak, nonatomic) IBOutlet UIView *buttonsView;
 
 @property (readwrite, nonatomic) NSInteger selectedIndex;
