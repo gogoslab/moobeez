@@ -67,4 +67,6 @@
 
 - (void)clearTable:(NSString*)tableName;
 
+- (void)reloadTodayTeebeez;
+
 @end

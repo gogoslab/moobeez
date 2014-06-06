@@ -1166,4 +1166,40 @@ static Database* sharedDatabase;
     return episodesCount;
 }
 
+- (void)reloadTodayTeebeez {
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT * FROM (Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId) WHERE (airDate <> '(null)' AND airDate >= '%f' AND airDate <= '%f' AND watched = '0') ",[[[NSDate date] resetToMidnight] timeIntervalSince1970], [[[NSDate date] resetToLateMidnight] timeIntervalSince1970]];
+    
+    query = @"SELECT * FROM Teebeez";
+
+    sqlite3_stmt *statement;
+    
+    NSMutableArray* results = [[NSMutableArray alloc] init];
+    
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+    }
+    else {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            
+            NSMutableDictionary* item = [[NSMutableDictionary alloc] initWithSqlStatement:statement];
+            
+            item[@"posterPath"] = [ImageView imagePath:item[@"posterPath"] forWidth:92];
+            
+            [results addObject:item];
+        }
+        sqlite3_finalize(statement);
+    }
+    
+    [results writeToURL:[[[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.moobeez"] URLByAppendingPathComponent:@"TodayShows.plist"] atomically:YES];
+    
+    
+    
+}
+
 @end

@@ -48,6 +48,7 @@
     ConfigurationConnection* connection = [[ConfigurationConnection alloc] initWithCompletionHandler:^(WebserviceResultCode code) {
         if (code == WebserviceResultOk) {
             [self.navigationController pushViewController:self.appDelegate.sideTabController animated:NO];
+            [[Database sharedDatabase] reloadTodayTeebeez];
         }
     }];
     

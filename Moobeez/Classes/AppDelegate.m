@@ -11,6 +11,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "iRate.h"
 //#import <Crashlytics/Crashlytics.h>
+#import <NotificationCenter/NotificationCenter.h>
 
 void uncaughtExceptionHandler(NSException *exception);
 
@@ -41,7 +42,7 @@ void uncaughtExceptionHandler(NSException *exception) {
     [FBProfilePictureView class];
     
     [[NSFileManager defaultManager] removeItemAtPath:oldOfflineRootPath error:nil];
-    
+        
     return YES;
 }
 							

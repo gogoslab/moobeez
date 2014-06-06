@@ -61,6 +61,15 @@
 		6442857E191AFAD200A05B45 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6442857D191AFAD200A05B45 /* ImageLoader.m */; };
 		64428583191B00CF00A05B45 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 64428580191B00CF00A05B45 /* iRate.bundle */; };
 		64428584191B00CF00A05B45 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64428582191B00CF00A05B45 /* iRate.m */; };
+		6459BB9E1941D61F00D12DFF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6459BB9D1941D61F00D12DFF /* MapKit.framework */; };
+		6459BBA41941D65400D12DFF /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EB23E11941114300C289B8 /* NotificationCenter.framework */; };
+		6459BBAA1941D65400D12DFF /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459BBA91941D65400D12DFF /* TodayViewController.m */; };
+		6459BBAC1941D65400D12DFF /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6459BBAB1941D65400D12DFF /* MainInterface.storyboard */; };
+		6459BBAF1941D65400D12DFF /* com.goggzy.moobeez.Today-Shows.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6459BBA31941D65400D12DFF /* com.goggzy.moobeez.Today-Shows.appex */; };
+		6459BBB61941DC6D00D12DFF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6459BB9D1941D61F00D12DFF /* MapKit.framework */; };
+		6459BBB91941EDD000D12DFF /* TvShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6459BBB81941EDD000D12DFF /* TvShowCell.xib */; };
+		6459BBBC1941EE1500D12DFF /* TvShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459BBBB1941EE1500D12DFF /* TvShowCell.m */; };
+		6459BBBE1941F0FC00D12DFF /* MovieButtonsWhite.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 64CA53851823DD2C000699C5 /* MovieButtonsWhite.bundle */; };
 		6459F35C18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F35B18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m */; };
 		6459F35F18F2E93500EBFBE0 /* TvImagesConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F35E18F2E93500EBFBE0 /* TvImagesConnection.m */; };
 		6459F36418F3391900EBFBE0 /* SideTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F36218F3391900EBFBE0 /* SideTabViewController.m */; };
@@ -141,11 +150,6 @@
 		64B2AACE18082AE600E02E2F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AACC18082AE600E02E2F /* InfoPlist.strings */; };
 		64B2AAD018082AE600E02E2F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AACF18082AE600E02E2F /* main.m */; };
 		64B2AADF18082AE600E02E2F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AADE18082AE600E02E2F /* Images.xcassets */; };
-		64B2AAE618082AE600E02E2F /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAE518082AE600E02E2F /* XCTest.framework */; };
-		64B2AAE718082AE600E02E2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC318082AE600E02E2F /* Foundation.framework */; };
-		64B2AAE818082AE600E02E2F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64B2AAC718082AE600E02E2F /* UIKit.framework */; };
-		64B2AAF018082AE600E02E2F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AAEE18082AE600E02E2F /* InfoPlist.strings */; };
-		64B2AAF218082AE600E02E2F /* MoobeezTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AAF118082AE600E02E2F /* MoobeezTests.m */; };
 		64B2AB0618082C4A00E02E2F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AAFF18082C4A00E02E2F /* AppDelegate.m */; };
 		64B2AB0718082C4A00E02E2F /* Application.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64B2AB0018082C4A00E02E2F /* Application.xib */; };
 		64B2AB5818083CBF00E02E2F /* NSDate+Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB0B18083CBF00E02E2F /* NSDate+Calculator.m */; };
@@ -376,6 +380,7 @@
 		64DC8C1C1817215E002C11D8 /* toolbox_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C161817215E002C11D8 /* toolbox_line@2x.png */; };
 		64DC8C1D1817215E002C11D8 /* toolbox_up_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C171817215E002C11D8 /* toolbox_up_arrow.png */; };
 		64DC8C1E1817215E002C11D8 /* toolbox_up_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C181817215E002C11D8 /* toolbox_up_arrow@2x.png */; };
+		64EB23FA19411DEF00C289B8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EB23E11941114300C289B8 /* NotificationCenter.framework */; };
 		64F1DECE189AA1B600F2F88D /* TmdbTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1DECA189A9D1200F2F88D /* TmdbTV.m */; };
 		64F1DECF189AA1E700F2F88D /* Teebee.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1DEC6189A987D00F2F88D /* Teebee.m */; };
 		64F1DED2189AB68E00F2F88D /* TmdbTvSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1DED1189AB68E00F2F88D /* TmdbTvSeason.m */; };
@@ -387,14 +392,35 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		64B2AAE918082AE600E02E2F /* PBXContainerItemProxy */ = {
+		6459BBAD1941D65400D12DFF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 64B2AAB818082AE600E02E2F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 64B2AABF18082AE600E02E2F;
-			remoteInfo = Moobeez;
+			remoteGlobalIDString = 6459BBA21941D65400D12DFF;
+			remoteInfo = "Today Shows";
+		};
+		6459BBB01941D65400D12DFF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64B2AAB818082AE600E02E2F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6459BBA21941D65400D12DFF;
+			remoteInfo = "Today Shows";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		64EB23F31941114300C289B8 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				6459BBAF1941D65400D12DFF /* com.goggzy.moobeez.Today-Shows.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		640865E8180B4FC200725CE4 /* URLParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLParameters.h; sourceTree = "<group>"; };
@@ -477,6 +503,17 @@
 		64428580191B00CF00A05B45 /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		64428581191B00CF00A05B45 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		64428582191B00CF00A05B45 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
+		6459BB9B1941CF2200D12DFF /* Moobeez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Moobeez.entitlements; sourceTree = "<group>"; };
+		6459BB9D1941D61F00D12DFF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		6459BBA31941D65400D12DFF /* com.goggzy.moobeez.Today-Shows.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "com.goggzy.moobeez.Today-Shows.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6459BBA71941D65400D12DFF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6459BBA81941D65400D12DFF /* TodayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TodayViewController.h; sourceTree = "<group>"; };
+		6459BBA91941D65400D12DFF /* TodayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TodayViewController.m; sourceTree = "<group>"; };
+		6459BBAB1941D65400D12DFF /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		6459BBB51941D67B00D12DFF /* com.goggzy.moobeez.Today-Shows.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "com.goggzy.moobeez.Today-Shows.entitlements"; sourceTree = "<group>"; };
+		6459BBB81941EDD000D12DFF /* TvShowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TvShowCell.xib; sourceTree = "<group>"; };
+		6459BBBA1941EE1500D12DFF /* TvShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvShowCell.h; sourceTree = "<group>"; };
+		6459BBBB1941EE1500D12DFF /* TvShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TvShowCell.m; sourceTree = "<group>"; };
 		6459F35A18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingHeadersCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		6459F35B18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingHeadersCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		6459F35D18F2E93500EBFBE0 /* TvImagesConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvImagesConnection.h; sourceTree = "<group>"; };
@@ -604,11 +641,7 @@
 		64B2AACF18082AE600E02E2F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		64B2AAD118082AE600E02E2F /* Moobeez-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Moobeez-Prefix.pch"; sourceTree = "<group>"; };
 		64B2AADE18082AE600E02E2F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Moobeez/Images.xcassets; sourceTree = SOURCE_ROOT; };
-		64B2AAE418082AE600E02E2F /* MoobeezTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoobeezTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64B2AAE518082AE600E02E2F /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		64B2AAED18082AE600E02E2F /* MoobeezTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MoobeezTests-Info.plist"; sourceTree = "<group>"; };
-		64B2AAEF18082AE600E02E2F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		64B2AAF118082AE600E02E2F /* MoobeezTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoobeezTests.m; sourceTree = "<group>"; };
 		64B2AAFE18082C4A00E02E2F /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		64B2AAFF18082C4A00E02E2F /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		64B2AB0018082C4A00E02E2F /* Application.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Application.xib; sourceTree = "<group>"; };
@@ -1044,6 +1077,7 @@
 		64DC8C161817215E002C11D8 /* toolbox_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbox_line@2x.png"; sourceTree = "<group>"; };
 		64DC8C171817215E002C11D8 /* toolbox_up_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbox_up_arrow.png; sourceTree = "<group>"; };
 		64DC8C181817215E002C11D8 /* toolbox_up_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbox_up_arrow@2x.png"; sourceTree = "<group>"; };
+		64EB23E11941114300C289B8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		64F1DEC5189A987D00F2F88D /* Teebee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teebee.h; sourceTree = "<group>"; };
 		64F1DEC6189A987D00F2F88D /* Teebee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teebee.m; sourceTree = "<group>"; };
 		64F1DEC9189A9D1200F2F88D /* TmdbTV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbTV.h; sourceTree = "<group>"; };
@@ -1061,29 +1095,30 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6459BBA01941D65400D12DFF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6459BBB61941DC6D00D12DFF /* MapKit.framework in Frameworks */,
+				6459BBA41941D65400D12DFF /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		64B2AABD18082AE600E02E2F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64EB23FA19411DEF00C289B8 /* NotificationCenter.framework in Frameworks */,
 				64A10DB418A9931D00906081 /* libxml2.dylib in Frameworks */,
 				64897F2B1898AA7D001F9EDE /* FacebookSDK.framework in Frameworks */,
 				64897F271898A448001F9EDE /* Accounts.framework in Frameworks */,
+				6459BB9E1941D61F00D12DFF /* MapKit.framework in Frameworks */,
 				64897F251898A441001F9EDE /* Social.framework in Frameworks */,
 				64A8AD63188EC12300DBECD7 /* MediaPlayer.framework in Frameworks */,
 				640865F4180B5D3800725CE4 /* libsqlite3.dylib in Frameworks */,
 				64B2AAC618082AE600E02E2F /* CoreGraphics.framework in Frameworks */,
 				64B2AAC818082AE600E02E2F /* UIKit.framework in Frameworks */,
 				64B2AAC418082AE600E02E2F /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		64B2AAE118082AE600E02E2F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				64B2AAE618082AE600E02E2F /* XCTest.framework in Frameworks */,
-				64B2AAE818082AE600E02E2F /* UIKit.framework in Frameworks */,
-				64B2AAE718082AE600E02E2F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1383,6 +1418,37 @@
 			);
 			name = iRate;
 			path = iRate/iRate/iRate;
+			sourceTree = "<group>";
+		};
+		6459BBA51941D65400D12DFF /* Today Shows */ = {
+			isa = PBXGroup;
+			children = (
+				6459BBB71941EDD000D12DFF /* Views */,
+				6459BBB51941D67B00D12DFF /* com.goggzy.moobeez.Today-Shows.entitlements */,
+				6459BBA81941D65400D12DFF /* TodayViewController.h */,
+				6459BBA91941D65400D12DFF /* TodayViewController.m */,
+				6459BBAB1941D65400D12DFF /* MainInterface.storyboard */,
+				6459BBA61941D65400D12DFF /* Supporting Files */,
+			);
+			path = "Today Shows";
+			sourceTree = "<group>";
+		};
+		6459BBA61941D65400D12DFF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6459BBA71941D65400D12DFF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6459BBB71941EDD000D12DFF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6459BBBA1941EE1500D12DFF /* TvShowCell.h */,
+				6459BBBB1941EE1500D12DFF /* TvShowCell.m */,
+				6459BBB81941EDD000D12DFF /* TvShowCell.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		6459F36018F2E93900EBFBE0 /* Tv Images Connection */ = {
@@ -1833,7 +1899,7 @@
 			isa = PBXGroup;
 			children = (
 				64B2AAC918082AE600E02E2F /* Moobeez */,
-				64B2AAEB18082AE600E02E2F /* MoobeezTests */,
+				6459BBA51941D65400D12DFF /* Today Shows */,
 				64B2AAC218082AE600E02E2F /* Frameworks */,
 				64B2AAC118082AE600E02E2F /* Products */,
 			);
@@ -1843,7 +1909,7 @@
 			isa = PBXGroup;
 			children = (
 				64B2AAC018082AE600E02E2F /* Moobeez.app */,
-				64B2AAE418082AE600E02E2F /* MoobeezTests.xctest */,
+				6459BBA31941D65400D12DFF /* com.goggzy.moobeez.Today-Shows.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1851,6 +1917,7 @@
 		64B2AAC218082AE600E02E2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6459BB9D1941D61F00D12DFF /* MapKit.framework */,
 				64A10DB318A9931D00906081 /* libxml2.dylib */,
 				64897F2A1898AA7D001F9EDE /* FacebookSDK.framework */,
 				64897F261898A448001F9EDE /* Accounts.framework */,
@@ -1861,6 +1928,7 @@
 				64B2AAC518082AE600E02E2F /* CoreGraphics.framework */,
 				64B2AAC718082AE600E02E2F /* UIKit.framework */,
 				64B2AAE518082AE600E02E2F /* XCTest.framework */,
+				64EB23E11941114300C289B8 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1868,6 +1936,7 @@
 		64B2AAC918082AE600E02E2F /* Moobeez */ = {
 			isa = PBXGroup;
 			children = (
+				6459BB9B1941CF2200D12DFF /* Moobeez.entitlements */,
 				64B2AB0518082C4A00E02E2F /* Images */,
 				64B2AAFD18082C4A00E02E2F /* Classes */,
 				64B2AACA18082AE600E02E2F /* Supporting Files */,
@@ -1884,24 +1953,6 @@
 				64B2AACC18082AE600E02E2F /* InfoPlist.strings */,
 				64B2AACF18082AE600E02E2F /* main.m */,
 				64B2AAD118082AE600E02E2F /* Moobeez-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		64B2AAEB18082AE600E02E2F /* MoobeezTests */ = {
-			isa = PBXGroup;
-			children = (
-				64B2AAF118082AE600E02E2F /* MoobeezTests.m */,
-				64B2AAEC18082AE600E02E2F /* Supporting Files */,
-			);
-			path = MoobeezTests;
-			sourceTree = "<group>";
-		};
-		64B2AAEC18082AE600E02E2F /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				64B2AAED18082AE600E02E2F /* MoobeezTests-Info.plist */,
-				64B2AAEE18082AE600E02E2F /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -2804,6 +2855,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6459BBA21941D65400D12DFF /* Today Shows */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6459BBB21941D65400D12DFF /* Build configuration list for PBXNativeTarget "Today Shows" */;
+			buildPhases = (
+				6459BB9F1941D65400D12DFF /* Sources */,
+				6459BBA01941D65400D12DFF /* Frameworks */,
+				6459BBA11941D65400D12DFF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Today Shows";
+			productName = "Today Shows";
+			productReference = 6459BBA31941D65400D12DFF /* com.goggzy.moobeez.Today-Shows.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		64B2AABF18082AE600E02E2F /* Moobeez */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64B2AAF518082AE600E02E2F /* Build configuration list for PBXNativeTarget "Moobeez" */;
@@ -2811,33 +2879,18 @@
 				64B2AABC18082AE600E02E2F /* Sources */,
 				64B2AABD18082AE600E02E2F /* Frameworks */,
 				64B2AABE18082AE600E02E2F /* Resources */,
+				64EB23F31941114300C289B8 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				6459BBAE1941D65400D12DFF /* PBXTargetDependency */,
+				6459BBB11941D65400D12DFF /* PBXTargetDependency */,
 			);
 			name = Moobeez;
 			productName = Moobeez;
 			productReference = 64B2AAC018082AE600E02E2F /* Moobeez.app */;
 			productType = "com.apple.product-type.application";
-		};
-		64B2AAE318082AE600E02E2F /* MoobeezTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 64B2AAF818082AE600E02E2F /* Build configuration list for PBXNativeTarget "MoobeezTests" */;
-			buildPhases = (
-				64B2AAE018082AE600E02E2F /* Sources */,
-				64B2AAE118082AE600E02E2F /* Frameworks */,
-				64B2AAE218082AE600E02E2F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				64B2AAEA18082AE600E02E2F /* PBXTargetDependency */,
-			);
-			name = MoobeezTests;
-			productName = MoobeezTests;
-			productReference = 64B2AAE418082AE600E02E2F /* MoobeezTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -2848,11 +2901,22 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Goggzy;
 				TargetAttributes = {
+					6459BBA21941D65400D12DFF = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = Z4252ZWMEJ;
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					64B2AABF18082AE600E02E2F = {
 						DevelopmentTeam = Z4252ZWMEJ;
-					};
-					64B2AAE318082AE600E02E2F = {
-						TestTargetID = 64B2AABF18082AE600E02E2F;
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -2870,12 +2934,22 @@
 			projectRoot = "";
 			targets = (
 				64B2AABF18082AE600E02E2F /* Moobeez */,
-				64B2AAE318082AE600E02E2F /* MoobeezTests */,
+				6459BBA21941D65400D12DFF /* Today Shows */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6459BBA11941D65400D12DFF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6459BBBE1941F0FC00D12DFF /* MovieButtonsWhite.bundle in Resources */,
+				6459BBB91941EDD000D12DFF /* TvShowCell.xib in Resources */,
+				6459BBAC1941D65400D12DFF /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		64B2AABE18082AE600E02E2F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2976,17 +3050,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		64B2AAE218082AE600E02E2F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				64B2AAF018082AE600E02E2F /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6459BB9F1941D65400D12DFF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6459BBBC1941EE1500D12DFF /* TvShowCell.m in Sources */,
+				6459BBAA1941D65400D12DFF /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		64B2AABC18082AE600E02E2F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3264,21 +3339,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		64B2AAE018082AE600E02E2F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				64B2AAF218082AE600E02E2F /* MoobeezTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		64B2AAEA18082AE600E02E2F /* PBXTargetDependency */ = {
+		6459BBAE1941D65400D12DFF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 64B2AABF18082AE600E02E2F /* Moobeez */;
-			targetProxy = 64B2AAE918082AE600E02E2F /* PBXContainerItemProxy */;
+			target = 6459BBA21941D65400D12DFF /* Today Shows */;
+			targetProxy = 6459BBAD1941D65400D12DFF /* PBXContainerItemProxy */;
+		};
+		6459BBB11941D65400D12DFF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6459BBA21941D65400D12DFF /* Today Shows */;
+			targetProxy = 6459BBB01941D65400D12DFF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3291,17 +3363,51 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		64B2AAEE18082AE600E02E2F /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				64B2AAEF18082AE600E02E2F /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6459BBB31941D65400D12DFF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Today Shows/com.goggzy.moobeez.Today-Shows.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Radu Banea (TCZG753697)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Radu Banea (TCZG753697)";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Today Shows/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "com.goggzy.moobeez.$(TARGET_NAME:rfc1034identifier)";
+				PROVISIONING_PROFILE = "899A58A5-2F86-4FE1-8969-30F54319BFEE";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6459BBB41941D65400D12DFF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Today Shows/com.goggzy.moobeez.Today-Shows.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Radu Banea (Z4252ZWMEJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Radu Banea (Z4252ZWMEJ)";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Today Shows/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "com.goggzy.moobeez.$(TARGET_NAME:rfc1034identifier)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		64B2AAF318082AE600E02E2F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3391,8 +3497,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_ENTITLEMENTS = Moobeez/Moobeez.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Classes/Gogz/External\\ SDKs",
@@ -3403,7 +3510,7 @@
 				GCC_PREFIX_HEADER = "Moobeez/Moobeez-Prefix.pch";
 				INFOPLIST_FILE = "Moobeez/Moobeez-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "93201FAC-D2FD-4842-8CEF-F8E5A4584E89";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -3413,8 +3520,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Radu Banea (Z4252ZWMEJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Radu Banea (Z4252ZWMEJ)";
+				CODE_SIGN_ENTITLEMENTS = Moobeez/Moobeez.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Classes/Gogz/External\\ SDKs",
@@ -3425,54 +3533,22 @@
 				GCC_PREFIX_HEADER = "Moobeez/Moobeez-Prefix.pch";
 				INFOPLIST_FILE = "Moobeez/Moobeez-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "99CB65A5-FEBC-4BEF-AE4B-882A0B3ED050";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		64B2AAF918082AE600E02E2F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Moobeez.app/Moobeez";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Moobeez/Moobeez-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "MoobeezTests/MoobeezTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		64B2AAFA18082AE600E02E2F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Moobeez.app/Moobeez";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Moobeez/Moobeez-Prefix.pch";
-				INFOPLIST_FILE = "MoobeezTests/MoobeezTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6459BBB21941D65400D12DFF /* Build configuration list for PBXNativeTarget "Today Shows" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6459BBB31941D65400D12DFF /* Debug */,
+				6459BBB41941D65400D12DFF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		64B2AABB18082AE600E02E2F /* Build configuration list for PBXProject "Moobeez" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -3487,15 +3563,6 @@
 			buildConfigurations = (
 				64B2AAF618082AE600E02E2F /* Debug */,
 				64B2AAF718082AE600E02E2F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		64B2AAF818082AE600E02E2F /* Build configuration list for PBXNativeTarget "MoobeezTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				64B2AAF918082AE600E02E2F /* Debug */,
-				64B2AAFA18082AE600E02E2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
