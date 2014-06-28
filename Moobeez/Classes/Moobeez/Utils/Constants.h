@@ -10,9 +10,12 @@
 
 #define MY_MOVIES_PATH [DOCUMENTS_DIRECTORY stringByAppendingPathComponent:@"Movies.plist"]
 
+#define GROUP_PATH [[[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.moobeez"] path]
+
 #define DATABASE_NAME @"MoobeezDatabase"
 #define DATABASE_VERSION @"2.0.2"
-#define CURRENT_DATABASE_PATH [DOCUMENTS_DIRECTORY stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@", DATABASE_NAME, DATABASE_VERSION]]
+#define CURRENT_DATABASE_PATH [GROUP_PATH stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@", DATABASE_NAME, DATABASE_VERSION]]
+#define OLD_DATABASE_PATH [DOCUMENTS_DIRECTORY stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@", DATABASE_NAME, DATABASE_VERSION]]
 #define VERSION_OF_DATABASE(database) ([[[database lastPathComponent] componentsSeparatedByString:@"_"] count] > 1 ? [[database lastPathComponent] componentsSeparatedByString:@"_"][1] : @"")
 
 #define EndLoadingNotification @"endLoading"

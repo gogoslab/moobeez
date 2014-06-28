@@ -38,12 +38,17 @@ static Database* sharedDatabase;
     self = [super init];
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:CURRENT_DATABASE_PATH]) {
+        
         NSString *sqLiteDb = [[NSBundle mainBundle] pathForResource:@"MoobeezDatabase"
                                                              ofType:@""];
-    
+        
+        if ([[NSFileManager defaultManager] fileExistsAtPath:OLD_DATABASE_PATH]) {
+            sqLiteDb = OLD_DATABASE_PATH;
+        }
+        
         NSError* error = nil;
         
-        [[NSFileManager defaultManager] copyItemAtPath:sqLiteDb toPath:CURRENT_DATABASE_PATH error:&error];
+        [[NSFileManager defaultManager] moveItemAtPath:sqLiteDb toPath:CURRENT_DATABASE_PATH error:&error];
         
         if (error) {
             NSLog(@"error: %@", error);
@@ -70,6 +75,20 @@ static Database* sharedDatabase;
         
         if (oldDatabasePath) {
             oldDatabasePath = [[CURRENT_DATABASE_PATH stringByDeletingLastPathComponent] stringByAppendingPathComponent:oldDatabasePath];
+        }
+        else {
+            for (NSString* subpath in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[OLD_DATABASE_PATH stringByDeletingLastPathComponent] error:nil]) {
+                if ([[subpath lastPathComponent] rangeOfString:DATABASE_NAME].location != NSNotFound) {
+                    if (![VERSION_OF_DATABASE(subpath) isEqualToString:DATABASE_VERSION]) {
+                        oldDatabasePath = subpath;
+                        break;
+                    }
+                }
+            }
+            
+            if (oldDatabasePath) {
+                oldDatabasePath = [[OLD_DATABASE_PATH stringByDeletingLastPathComponent] stringByAppendingPathComponent:oldDatabasePath];
+            }
         }
 
         if ([[NSFileManager defaultManager] fileExistsAtPath:oldDatabasePath]) {
@@ -131,6 +150,31 @@ static Database* sharedDatabase;
                 }
             }
         }
+    }
+    
+    return self;
+}
+
+- (id)initWithPath:(NSString*)path placeholderPath:(NSString*)placeholderPath {
+    self = [super init];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:path] && placeholderPath) {
+        
+        NSError* error = nil;
+        
+        [[NSFileManager defaultManager] copyItemAtPath:placeholderPath toPath:path error:&error];
+        
+        if (error) {
+            NSLog(@"error: %@", error);
+        }
+    }
+    
+    
+    if (sqlite3_open([path UTF8String], &database) != SQLITE_OK) {
+        NSLog(@"Failed to open database!");
+    }
+    else {
+        NSLog(@"Yeeeey to open database!");
     }
     
     return self;
@@ -1195,6 +1239,8 @@ static Database* sharedDatabase;
         }
         sqlite3_finalize(statement);
     }
+    
+    NSLog(@"path = %@", [[[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.moobeez"] URLByAppendingPathComponent:@"TodayShows.plist"]);
     
     [results writeToURL:[[[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.moobeez"] URLByAppendingPathComponent:@"TodayShows.plist"] atomically:YES];
     

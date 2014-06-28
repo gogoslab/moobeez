@@ -9,22 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
-#import "DatabaseItem.h"
-
-#import "Bee.h"
-
-#import "Moobee.h"
-
-#import "Teebee.h"
-#import "TeebeeEpisode.h"
-
-#import "TmdbMovie.h"
-#import "TmdbTV.h"
-#import "TmdbPerson.h"
-#import "TmdbImage.h"
-#import "TmdbCharacter.h"
-#import "TmdbTvSeason.h"
-#import "TmdbTvEpisode.h"
+#import "DatabaseHeaders.h"
 
 #define DatabaseDidReloadNotification @"DidReloadDatabaseNotification"
 #define MoobeezDidReloadNotification @"MoobeezDidReloadNotification"
@@ -35,6 +20,9 @@
 }
 
 + (Database*)sharedDatabase;
+
+- (id)initWithPath:(NSString*)path placeholderPath:(NSString*)placeholderPath;
+
 - (void)populateWithOldDatabase;
 - (void)replaceOldDatabase;
 

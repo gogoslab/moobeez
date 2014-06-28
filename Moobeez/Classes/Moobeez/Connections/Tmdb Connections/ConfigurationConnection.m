@@ -23,7 +23,11 @@
         
         NSLog(@"result: %@", resultDictionary);
 
-        [ImageView setTmdbRootPath:resultDictionary[@"images"][@"secure_base_url"]];
+        NSDictionary* imagesSettings = resultDictionary[@"images"];
+        
+        [ImageView setTmdbRootPath:imagesSettings[@"secure_base_url"]];
+
+        [imagesSettings writeToFile:[GROUP_PATH stringByAppendingPathComponent:@"ImagesSettings.plist"] atomically:YES];
         
         self.customHandler(code);
     }];

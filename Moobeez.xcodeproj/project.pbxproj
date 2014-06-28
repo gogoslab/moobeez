@@ -70,6 +70,10 @@
 		6459BBB91941EDD000D12DFF /* TvShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6459BBB81941EDD000D12DFF /* TvShowCell.xib */; };
 		6459BBBC1941EE1500D12DFF /* TvShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459BBBB1941EE1500D12DFF /* TvShowCell.m */; };
 		6459BBBE1941F0FC00D12DFF /* MovieButtonsWhite.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 64CA53851823DD2C000699C5 /* MovieButtonsWhite.bundle */; };
+		6459BBC519420A8A00D12DFF /* BasicDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459BBC219420A8A00D12DFF /* BasicDatabase.m */; };
+		6459BBC619420A8A00D12DFF /* NSMutableDictionary+SQL.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459BBC419420A8A00D12DFF /* NSMutableDictionary+SQL.m */; };
+		6459BBC819420B8A00D12DFF /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6459BBC719420B8A00D12DFF /* libsqlite3.0.dylib */; };
+		6459BBC91942180A00D12DFF /* NSDate+Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB0B18083CBF00E02E2F /* NSDate+Calculator.m */; };
 		6459F35C18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F35B18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m */; };
 		6459F35F18F2E93500EBFBE0 /* TvImagesConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F35E18F2E93500EBFBE0 /* TvImagesConnection.m */; };
 		6459F36418F3391900EBFBE0 /* SideTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459F36218F3391900EBFBE0 /* SideTabViewController.m */; };
@@ -381,6 +385,18 @@
 		64DC8C1D1817215E002C11D8 /* toolbox_up_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C171817215E002C11D8 /* toolbox_up_arrow.png */; };
 		64DC8C1E1817215E002C11D8 /* toolbox_up_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C181817215E002C11D8 /* toolbox_up_arrow@2x.png */; };
 		64EB23FA19411DEF00C289B8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EB23E11941114300C289B8 /* NotificationCenter.framework */; };
+		64EEBE5719422324000C7ADD /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EB23E11941114300C289B8 /* NotificationCenter.framework */; };
+		64EEBE5D19422324000C7ADD /* MissedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EEBE5C19422324000C7ADD /* MissedViewController.m */; };
+		64EEBE5F19422324000C7ADD /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64EEBE5E19422324000C7ADD /* MainInterface.storyboard */; };
+		64EEBE6219422324000C7ADD /* com.goggzy.moobeez.Missed-Shows.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 64EEBE5619422324000C7ADD /* com.goggzy.moobeez.Missed-Shows.appex */; };
+		64EEBE691942237B000C7ADD /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6459BBC719420B8A00D12DFF /* libsqlite3.0.dylib */; };
+		64EEBE6A194223A6000C7ADD /* NSMutableDictionary+SQL.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459BBC419420A8A00D12DFF /* NSMutableDictionary+SQL.m */; };
+		64EEBE6B194223AE000C7ADD /* BasicDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459BBC219420A8A00D12DFF /* BasicDatabase.m */; };
+		64EEBE6C194223B4000C7ADD /* TvShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459BBBB1941EE1500D12DFF /* TvShowCell.m */; };
+		64EEBE6D194223B7000C7ADD /* TvShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6459BBB81941EDD000D12DFF /* TvShowCell.xib */; };
+		64EEBE6E194223BA000C7ADD /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459BBA91941D65400D12DFF /* TodayViewController.m */; };
+		64EEBE6F194225BA000C7ADD /* NSDate+Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB0B18083CBF00E02E2F /* NSDate+Calculator.m */; };
+		64EEBE701942264A000C7ADD /* MovieButtonsWhite.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 64CA53851823DD2C000699C5 /* MovieButtonsWhite.bundle */; };
 		64F1DECE189AA1B600F2F88D /* TmdbTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1DECA189A9D1200F2F88D /* TmdbTV.m */; };
 		64F1DECF189AA1E700F2F88D /* Teebee.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1DEC6189A987D00F2F88D /* Teebee.m */; };
 		64F1DED2189AB68E00F2F88D /* TmdbTvSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1DED1189AB68E00F2F88D /* TmdbTvSeason.m */; };
@@ -406,6 +422,20 @@
 			remoteGlobalIDString = 6459BBA21941D65400D12DFF;
 			remoteInfo = "Today Shows";
 		};
+		64EEBE6019422324000C7ADD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64B2AAB818082AE600E02E2F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64EEBE5519422324000C7ADD;
+			remoteInfo = "Missed Shows";
+		};
+		64EEBE6319422324000C7ADD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64B2AAB818082AE600E02E2F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64EEBE5519422324000C7ADD;
+			remoteInfo = "Missed Shows";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -415,6 +445,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				64EEBE6219422324000C7ADD /* com.goggzy.moobeez.Missed-Shows.appex in Embed App Extensions */,
 				6459BBAF1941D65400D12DFF /* com.goggzy.moobeez.Today-Shows.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -514,6 +545,12 @@
 		6459BBB81941EDD000D12DFF /* TvShowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TvShowCell.xib; sourceTree = "<group>"; };
 		6459BBBA1941EE1500D12DFF /* TvShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvShowCell.h; sourceTree = "<group>"; };
 		6459BBBB1941EE1500D12DFF /* TvShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TvShowCell.m; sourceTree = "<group>"; };
+		6459BBBF1942093000D12DFF /* DatabaseHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseHeaders.h; sourceTree = "<group>"; };
+		6459BBC119420A8A00D12DFF /* BasicDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicDatabase.h; sourceTree = "<group>"; };
+		6459BBC219420A8A00D12DFF /* BasicDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicDatabase.m; sourceTree = "<group>"; };
+		6459BBC319420A8A00D12DFF /* NSMutableDictionary+SQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+SQL.h"; sourceTree = "<group>"; };
+		6459BBC419420A8A00D12DFF /* NSMutableDictionary+SQL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+SQL.m"; sourceTree = "<group>"; };
+		6459BBC719420B8A00D12DFF /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		6459F35A18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingHeadersCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		6459F35B18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingHeadersCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		6459F35D18F2E93500EBFBE0 /* TvImagesConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TvImagesConnection.h; sourceTree = "<group>"; };
@@ -1078,6 +1115,13 @@
 		64DC8C171817215E002C11D8 /* toolbox_up_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbox_up_arrow.png; sourceTree = "<group>"; };
 		64DC8C181817215E002C11D8 /* toolbox_up_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbox_up_arrow@2x.png"; sourceTree = "<group>"; };
 		64EB23E11941114300C289B8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		64EEBE51194222FE000C7ADD /* Today Shows copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Today Shows copy-Info.plist"; path = "/Users/radubanea/Developer/Mine/Moobeez/Today Shows copy-Info.plist"; sourceTree = "<absolute>"; };
+		64EEBE5619422324000C7ADD /* com.goggzy.moobeez.Missed-Shows.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "com.goggzy.moobeez.Missed-Shows.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64EEBE5A19422324000C7ADD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64EEBE5B19422324000C7ADD /* MissedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MissedViewController.h; sourceTree = "<group>"; };
+		64EEBE5C19422324000C7ADD /* MissedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MissedViewController.m; sourceTree = "<group>"; };
+		64EEBE5E19422324000C7ADD /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		64EEBE681942234A000C7ADD /* com.goggzy.moobeez.Missed-Shows.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "com.goggzy.moobeez.Missed-Shows.entitlements"; sourceTree = "<group>"; };
 		64F1DEC5189A987D00F2F88D /* Teebee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teebee.h; sourceTree = "<group>"; };
 		64F1DEC6189A987D00F2F88D /* Teebee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teebee.m; sourceTree = "<group>"; };
 		64F1DEC9189A9D1200F2F88D /* TmdbTV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbTV.h; sourceTree = "<group>"; };
@@ -1099,6 +1143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6459BBC819420B8A00D12DFF /* libsqlite3.0.dylib in Frameworks */,
 				6459BBB61941DC6D00D12DFF /* MapKit.framework in Frameworks */,
 				6459BBA41941D65400D12DFF /* NotificationCenter.framework in Frameworks */,
 			);
@@ -1119,6 +1164,15 @@
 				64B2AAC618082AE600E02E2F /* CoreGraphics.framework in Frameworks */,
 				64B2AAC818082AE600E02E2F /* UIKit.framework in Frameworks */,
 				64B2AAC418082AE600E02E2F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64EEBE5319422324000C7ADD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64EEBE691942237B000C7ADD /* libsqlite3.0.dylib in Frameworks */,
+				64EEBE5719422324000C7ADD /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1146,6 +1200,7 @@
 		64086605180B6D3500725CE4 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				6459BBBF1942093000D12DFF /* DatabaseHeaders.h */,
 				64086602180B6D2E00725CE4 /* Database.h */,
 				64086603180B6D2E00725CE4 /* Database.m */,
 				640865FA180B64EB00725CE4 /* Database Item */,
@@ -1423,6 +1478,7 @@
 		6459BBA51941D65400D12DFF /* Today Shows */ = {
 			isa = PBXGroup;
 			children = (
+				6459BBC019420A8A00D12DFF /* Database */,
 				6459BBB71941EDD000D12DFF /* Views */,
 				6459BBB51941D67B00D12DFF /* com.goggzy.moobeez.Today-Shows.entitlements */,
 				6459BBA81941D65400D12DFF /* TodayViewController.h */,
@@ -1449,6 +1505,17 @@
 				6459BBB81941EDD000D12DFF /* TvShowCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		6459BBC019420A8A00D12DFF /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				6459BBC119420A8A00D12DFF /* BasicDatabase.h */,
+				6459BBC219420A8A00D12DFF /* BasicDatabase.m */,
+				6459BBC319420A8A00D12DFF /* NSMutableDictionary+SQL.h */,
+				6459BBC419420A8A00D12DFF /* NSMutableDictionary+SQL.m */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		6459F36018F2E93900EBFBE0 /* Tv Images Connection */ = {
@@ -1900,8 +1967,10 @@
 			children = (
 				64B2AAC918082AE600E02E2F /* Moobeez */,
 				6459BBA51941D65400D12DFF /* Today Shows */,
+				64EEBE5819422324000C7ADD /* Missed Shows */,
 				64B2AAC218082AE600E02E2F /* Frameworks */,
 				64B2AAC118082AE600E02E2F /* Products */,
+				64EEBE51194222FE000C7ADD /* Today Shows copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1910,6 +1979,7 @@
 			children = (
 				64B2AAC018082AE600E02E2F /* Moobeez.app */,
 				6459BBA31941D65400D12DFF /* com.goggzy.moobeez.Today-Shows.appex */,
+				64EEBE5619422324000C7ADD /* com.goggzy.moobeez.Missed-Shows.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1917,6 +1987,7 @@
 		64B2AAC218082AE600E02E2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6459BBC719420B8A00D12DFF /* libsqlite3.0.dylib */,
 				6459BB9D1941D61F00D12DFF /* MapKit.framework */,
 				64A10DB318A9931D00906081 /* libxml2.dylib */,
 				64897F2A1898AA7D001F9EDE /* FacebookSDK.framework */,
@@ -2767,6 +2838,26 @@
 			name = Cache;
 			sourceTree = "<group>";
 		};
+		64EEBE5819422324000C7ADD /* Missed Shows */ = {
+			isa = PBXGroup;
+			children = (
+				64EEBE681942234A000C7ADD /* com.goggzy.moobeez.Missed-Shows.entitlements */,
+				64EEBE5B19422324000C7ADD /* MissedViewController.h */,
+				64EEBE5C19422324000C7ADD /* MissedViewController.m */,
+				64EEBE5E19422324000C7ADD /* MainInterface.storyboard */,
+				64EEBE5919422324000C7ADD /* Supporting Files */,
+			);
+			path = "Missed Shows";
+			sourceTree = "<group>";
+		};
+		64EEBE5919422324000C7ADD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				64EEBE5A19422324000C7ADD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		64F1DEC8189A98B500F2F88D /* Teebee */ = {
 			isa = PBXGroup;
 			children = (
@@ -2886,11 +2977,30 @@
 			dependencies = (
 				6459BBAE1941D65400D12DFF /* PBXTargetDependency */,
 				6459BBB11941D65400D12DFF /* PBXTargetDependency */,
+				64EEBE6119422324000C7ADD /* PBXTargetDependency */,
+				64EEBE6419422324000C7ADD /* PBXTargetDependency */,
 			);
 			name = Moobeez;
 			productName = Moobeez;
 			productReference = 64B2AAC018082AE600E02E2F /* Moobeez.app */;
 			productType = "com.apple.product-type.application";
+		};
+		64EEBE5519422324000C7ADD /* Missed Shows */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64EEBE6519422324000C7ADD /* Build configuration list for PBXNativeTarget "Missed Shows" */;
+			buildPhases = (
+				64EEBE5219422324000C7ADD /* Sources */,
+				64EEBE5319422324000C7ADD /* Frameworks */,
+				64EEBE5419422324000C7ADD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Missed Shows";
+			productName = "Missed Shows";
+			productReference = 64EEBE5619422324000C7ADD /* com.goggzy.moobeez.Missed-Shows.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -2918,6 +3028,15 @@
 							};
 						};
 					};
+					64EEBE5519422324000C7ADD = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = Z4252ZWMEJ;
+						SystemCapabilities = {
+							com.apple.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 				};
 			};
 			buildConfigurationList = 64B2AABB18082AE600E02E2F /* Build configuration list for PBXProject "Moobeez" */;
@@ -2935,6 +3054,7 @@
 			targets = (
 				64B2AABF18082AE600E02E2F /* Moobeez */,
 				6459BBA21941D65400D12DFF /* Today Shows */,
+				64EEBE5519422324000C7ADD /* Missed Shows */,
 			);
 		};
 /* End PBXProject section */
@@ -3050,6 +3170,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		64EEBE5419422324000C7ADD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64EEBE6D194223B7000C7ADD /* TvShowCell.xib in Resources */,
+				64EEBE5F19422324000C7ADD /* MainInterface.storyboard in Resources */,
+				64EEBE701942264A000C7ADD /* MovieButtonsWhite.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -3057,7 +3187,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6459BBC619420A8A00D12DFF /* NSMutableDictionary+SQL.m in Sources */,
 				6459BBBC1941EE1500D12DFF /* TvShowCell.m in Sources */,
+				6459BBC91942180A00D12DFF /* NSDate+Calculator.m in Sources */,
+				6459BBC519420A8A00D12DFF /* BasicDatabase.m in Sources */,
 				6459BBAA1941D65400D12DFF /* TodayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3339,6 +3472,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		64EEBE5219422324000C7ADD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64EEBE6A194223A6000C7ADD /* NSMutableDictionary+SQL.m in Sources */,
+				64EEBE6B194223AE000C7ADD /* BasicDatabase.m in Sources */,
+				64EEBE6F194225BA000C7ADD /* NSDate+Calculator.m in Sources */,
+				64EEBE6C194223B4000C7ADD /* TvShowCell.m in Sources */,
+				64EEBE5D19422324000C7ADD /* MissedViewController.m in Sources */,
+				64EEBE6E194223BA000C7ADD /* TodayViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -3351,6 +3497,16 @@
 			isa = PBXTargetDependency;
 			target = 6459BBA21941D65400D12DFF /* Today Shows */;
 			targetProxy = 6459BBB01941D65400D12DFF /* PBXContainerItemProxy */;
+		};
+		64EEBE6119422324000C7ADD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64EEBE5519422324000C7ADD /* Missed Shows */;
+			targetProxy = 64EEBE6019422324000C7ADD /* PBXContainerItemProxy */;
+		};
+		64EEBE6419422324000C7ADD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64EEBE5519422324000C7ADD /* Missed Shows */;
+			targetProxy = 64EEBE6319422324000C7ADD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -3538,6 +3694,48 @@
 			};
 			name = Release;
 		};
+		64EEBE6619422324000C7ADD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Missed Shows/com.goggzy.moobeez.Missed-Shows.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Radu Banea (TCZG753697)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Radu Banea (TCZG753697)";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Missed Shows/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "com.goggzy.moobeez.$(TARGET_NAME:rfc1034identifier)";
+				PROVISIONING_PROFILE = "C4A91665-450A-4FA7-B003-94C0EC440FF5";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		64EEBE6719422324000C7ADD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CODE_SIGN_ENTITLEMENTS = "Missed Shows/com.goggzy.moobeez.Missed-Shows.entitlements";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "Missed Shows/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				METAL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "com.goggzy.moobeez.$(TARGET_NAME:rfc1034identifier)";
+				PROVISIONING_PROFILE = "";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -3548,6 +3746,7 @@
 				6459BBB41941D65400D12DFF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		64B2AABB18082AE600E02E2F /* Build configuration list for PBXProject "Moobeez" */ = {
 			isa = XCConfigurationList;
@@ -3566,6 +3765,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		64EEBE6519422324000C7ADD /* Build configuration list for PBXNativeTarget "Missed Shows" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64EEBE6619422324000C7ADD /* Debug */,
+				64EEBE6719422324000C7ADD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

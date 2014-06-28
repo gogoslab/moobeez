@@ -41,6 +41,8 @@
     
     self.nameLabel.text = tvShowDictionary[@"name"];
     
+    self.detailsLabel.text = [NSString stringWithFormat:@"Season %d Episode %d", [tvShowDictionary[@"seasonNumber"] intValue], [tvShowDictionary[@"episodeNumber"] intValue]];
+    
     NSURL *imageURL = [NSURL URLWithString:tvShowDictionary[@"posterPath"]];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
