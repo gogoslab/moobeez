@@ -269,12 +269,12 @@
     
     NSBundle* bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:(self.isLightInterface ? @"MovieButtonsWhite" : @"MovieButtonsBlack") ofType:@"bundle"]];
     
-    [self.descriptionButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_description" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.castButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_cast" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.photosButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_photos" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.episodesButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_episodes" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.watchedButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_watched_show" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.watchedButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_watched_show_selected" ofType:@"png"]] forState:UIControlStateSelected];
+    [self.descriptionButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_description") ofType:@"png"]] forState:UIControlStateNormal];
+    [self.castButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_cast") ofType:@"png"]] forState:UIControlStateNormal];
+    [self.photosButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_photos") ofType:@"png"]] forState:UIControlStateNormal];
+    [self.episodesButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_episodes") ofType:@"png"]] forState:UIControlStateNormal];
+    [self.watchedButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_watched_show") ofType:@"png"]] forState:UIControlStateNormal];
+    [self.watchedButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_watched_show_selected") ofType:@"png"]] forState:UIControlStateSelected];
     
     self.starsView.emptyStarsImageView.highlighted = self.isLightInterface;
 

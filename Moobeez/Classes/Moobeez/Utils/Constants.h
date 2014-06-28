@@ -35,6 +35,8 @@
 
 #define DidUpdateWatchedEpisodesNotification @"DidUpdateWatchedEpisodesNotification" 
 
+#define ResourceName(name) [NSString stringWithFormat:@"%@%@", name, ([UIScreen mainScreen].scale > 1.0 ? @"@2x" : @"")]
+
 typedef void (^EmptyHandler) ();
 typedef void (^CompleteHandler) (BOOL completed);
 

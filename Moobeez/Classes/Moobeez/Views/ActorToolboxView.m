@@ -133,8 +133,8 @@
     
     NSBundle* bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:(self.isLightInterface ? @"MovieButtonsWhite" : @"MovieButtonsBlack") ofType:@"bundle"]];
     
-    [self.descriptionButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_description" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.castButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_cast" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.photosButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_photos" ofType:@"png"]] forState:UIControlStateNormal];
+    [self.descriptionButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_description") ofType:@"png"]] forState:UIControlStateNormal];
+    [self.castButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_cast") ofType:@"png"]] forState:UIControlStateNormal];
+    [self.photosButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_photos") ofType:@"png"]] forState:UIControlStateNormal];
 }
 @end

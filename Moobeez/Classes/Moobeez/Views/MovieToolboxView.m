@@ -230,20 +230,22 @@
         label.textColor = textsColor;
     }
     
+    
     NSBundle* bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:(self.isLightInterface ? @"MovieButtonsWhite" : @"MovieButtonsBlack") ofType:@"bundle"]];
     
-    [self.descriptionButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_description" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.castButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_cast" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.photosButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_photos" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.trailerButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_trailer" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.favoritesButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_favorite" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.favoritesButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_favorite_selected" ofType:@"png"]] forState:UIControlStateSelected];
+    [self.descriptionButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_description") ofType:@"png"]] forState:UIControlStateNormal];
+    [self.castButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_cast") ofType:@"png"]] forState:UIControlStateNormal];
+    [self.photosButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_photos") ofType:@"png"]] forState:UIControlStateNormal];
+    [self.trailerButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_trailer") ofType:@"png"]] forState:UIControlStateNormal];
+    [self.favoritesButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_favorite") ofType:@"png"]] forState:UIControlStateNormal];
+    [self.favoritesButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_favorite_selected") ofType:@"png"]] forState:UIControlStateSelected];
 
-    [self.watchlistButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_wishlist_add" ofType:@"png"]] forState:UIControlStateNormal];
-    [self.watchlistButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_wishlist_remove" ofType:@"png"]] forState:UIControlStateSelected];
-    [self.sawButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_seen" ofType:@"png"]] forState:UIControlStateNormal];
+    [self.watchlistButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_wishlist_add") ofType:@"png"]] forState:UIControlStateNormal];
+    [self.watchlistButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_wishlist_remove") ofType:@"png"]] forState:UIControlStateSelected];
+    [self.sawButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:ResourceName(@"button_seen") ofType:@"png"]] forState:UIControlStateNormal];
     
     self.starsView.emptyStarsImageView.highlighted = self.isLightInterface;
 
 }
+
 @end
