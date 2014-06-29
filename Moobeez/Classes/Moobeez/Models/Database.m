@@ -34,6 +34,57 @@ static Database* sharedDatabase;
     return lastId;
 }
 
+- (BOOL)recalculateLastIdFromTable:(NSString*)table {
+    
+    NSString* query = [NSString stringWithFormat:@"SELECT ID FROM %@ ORDER BY ID DESC LIMIT 1", table];
+    
+    NSInteger lastId = [[[NSUserDefaults standardUserDefaults] objectForKey:@"lastId"] integerValue];
+    
+    sqlite3_stmt *statement;
+    
+    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
+        == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            
+             NSInteger ID = [[[NSMutableDictionary alloc] initWithSqlStatement:statement][@"ID"] integerValue];
+            
+            if (ID < lastId) {
+                sqlite3_finalize(statement);
+                return NO;
+            }
+            
+            lastId = ID;
+        }
+        
+    }
+
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:lastId] forKey:@"lastId"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    return YES;
+}
+
+- (NSInteger)lastIdFromTable:(NSString*)table {
+    
+    NSString* query = [NSString stringWithFormat:@"SELECT ID FROM %@ ORDER BY ID DESC LIMIT 1", table];
+    
+    sqlite3_stmt *statement;
+    
+    if (sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil)
+        == SQLITE_OK) {
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            
+            NSInteger ID = [[[NSMutableDictionary alloc] initWithSqlStatement:statement][@"ID"] integerValue];
+
+            sqlite3_finalize(statement);
+            return ID;
+        }
+        
+    }
+    
+    return 0;
+}
+
+
 - (id)init {
     self = [super init];
     
@@ -188,7 +239,7 @@ static Database* sharedDatabase;
 
 - (NSInteger)insertDictionary:(NSDictionary*)dictionary intoTable:(NSString*)table {
     
-    sqlite_int64 nextId = [self generateNewId];
+    sqlite_int64 nextId = [self lastIdFromTable:table] + 1;
 
     NSMutableDictionary* dictionaryWithId = [NSMutableDictionary dictionaryWithDictionary:dictionary];
     
@@ -236,6 +287,12 @@ static Database* sharedDatabase;
         case SQLITE_MISUSE:
             NSLog(@"missue");
             break;
+        case SQLITE_CONSTRAINT:
+            if ([self recalculateLastIdFromTable:table]) {
+                sqlite3_finalize(statement);
+                return [self insertDictionary:dictionary intoTable:table];
+            }
+            break;
         default:
             NSLog(@"NOOOOO!!!");
             break;
@@ -259,9 +316,9 @@ static Database* sharedDatabase;
     
     NSMutableArray* ids = [[NSMutableArray alloc] init];
     
+    sqlite_int64 nextId = [self lastIdFromTable:table] + 1;
+    
     for (NSDictionary* dictionary in objects) {
-
-        sqlite_int64 nextId = [self generateNewId];
 
         NSMutableDictionary* dictionaryWithId = [NSMutableDictionary dictionaryWithDictionary:dictionary];
         
@@ -287,6 +344,8 @@ static Database* sharedDatabase;
         [valuesArray addObject:values];
         
         [ids addObject:@(nextId)];
+        
+        nextId++;
     }
     
     NSString *query = [NSString stringWithFormat:@"INSERT INTO %@ (%@) VALUES %@", table, columns, [valuesArray componentsJoinedByString:@", "]];
