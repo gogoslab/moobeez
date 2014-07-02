@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define SideTabMenuWillAppearNotification @"SideTabMenuWillAppear"
+#define SideTabMenuWillDisappearNotification @"SideTabMenuWillDisappear"
+
 @interface SideTabViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;

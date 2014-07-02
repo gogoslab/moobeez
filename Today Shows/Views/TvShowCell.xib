@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6154.21" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,7 +14,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="aak-13-ZdE">
-                        <rect key="frame" x="5" y="6" width="44" height="46"/>
+                        <rect key="frame" x="5" y="11" width="44" height="47"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES"/>
                     </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Season 10 Episode 22" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fF4-j2-D9D">
@@ -32,20 +32,23 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view hidden="YES" contentMode="scaleToFill" id="Ipn-pm-aFa">
-                        <rect key="frame" x="50" y="55" width="220" height="1"/>
+                        <rect key="frame" x="50" y="35" width="220" height="1"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                     </view>
                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" id="ihj-PH-ZWx">
-                        <rect key="frame" x="286" y="16" width="20" height="20"/>
+                        <rect key="frame" x="286" y="10" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <color key="color" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                     </activityIndicatorView>
                     <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sLm-dY-Qj5">
-                        <rect key="frame" x="274" y="9" width="40" height="40"/>
+                        <rect key="frame" x="274" y="15" width="40" height="40"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <state key="normal" backgroundImage="button_watched_show.png"/>
                         <state key="selected" backgroundImage="button_watched_show_selected.png"/>
+                        <connections>
+                            <action selector="watchButtonPressed:" destination="WBB-QU-LEF" eventType="touchUpInside" id="3bQ-WK-PsJ"/>
+                        </connections>
                     </button>
                 </subviews>
             </tableViewCellContentView>
@@ -56,6 +59,7 @@
                 <outlet property="posterImageView" destination="aak-13-ZdE" id="K9O-hN-LhD"/>
                 <outlet property="watchedButton" destination="sLm-dY-Qj5" id="xLF-Do-XFD"/>
             </connections>
+            <point key="canvasLocation" x="82" y="303"/>
         </tableViewCell>
     </objects>
     <resources>

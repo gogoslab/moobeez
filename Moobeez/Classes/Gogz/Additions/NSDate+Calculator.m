@@ -102,7 +102,7 @@
         case EKRecurrenceFrequencyWeekly:
         {
             NSDateComponents* dateComponents = [calendar components:AllComponents fromDate:firstDate toDate:secondDate options:0];
-            return (sameWeekDay && (labs([dateComponents week]) % interval == 0));
+            return (sameWeekDay && (labs([dateComponents weekOfYear]) % interval == 0));
         }
             break;
 
@@ -165,32 +165,32 @@
 }
 
 - (NSInteger)weekday {
-    return [[[NSCalendar currentCalendar] components:NSWeekdayCalendarUnit fromDate:self] weekday];
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitWeekday fromDate:self] weekday];
 }
 
 - (NSInteger)day {
-    return [[[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:self] day];
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:self] day];
 }
 
 - (NSInteger)month {
-    return [[[NSCalendar currentCalendar] components:NSMonthCalendarUnit fromDate:self] month];
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitMonth fromDate:self] month];
 }
 
 - (NSInteger)year {
-    return [[[NSCalendar currentCalendar] components:NSYearCalendarUnit fromDate:self] year];
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:self] year];
 }
 
 - (NSInteger)hour {
-    return [[[NSCalendar currentCalendar] components:NSHourCalendarUnit fromDate:self] hour];
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitHour fromDate:self] hour];
 }
 
 - (NSInteger)minutes {
-    return [[[NSCalendar currentCalendar] components:NSMinuteCalendarUnit fromDate:self] minute];
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitMinute fromDate:self] minute];
 }
 
 - (NSInteger)numberOfDaysInMonth {
     return [[NSCalendar currentCalendar]
-            rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:self].length;
+            rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:self].length;
 }
 
 @end

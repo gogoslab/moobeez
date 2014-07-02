@@ -85,6 +85,11 @@
 #import "MoviesHeaderView.h"
 #import "TeebeezHeaderView.h"
 
+#import "DashboardTvShowCell.h"
+#import "DashboardMovieCell.h"
+#import "DashboardHeaderCell.h"
+#import "DashboardFooterCell.h"
+
 #pragma mark - Toolboxes
 
 #import "ToolboxView.h"

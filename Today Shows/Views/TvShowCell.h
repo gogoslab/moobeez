@@ -17,4 +17,6 @@
 
 @property (strong, nonatomic) NSMutableDictionary* tvShowDictionary;
 
+@property (weak, nonatomic) UITableView* parentTableView;
+
 @end

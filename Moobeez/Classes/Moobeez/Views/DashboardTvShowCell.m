@@ -1,23 +1,25 @@
 //
-//  TvShowCell.m
+//  DashboardTvShowCell.m
 //  Moobeez
 //
-//  Created by Radu Banea on 06/06/14.
+//  Created by Radu Banea on 01/07/14.
 //  Copyright (c) 2014 Goggzy. All rights reserved.
 //
 
-#import "TvShowCell.h"
+#import "DashboardTvShowCell.h"
+#import "Moobeez.h"
+#import "ImageView.h"
 
-@implementation TvShowCell
+@interface DashboardTvShowCell ()
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
+@property (weak, nonatomic) IBOutlet ImageView *posterImageView;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailsLabel;
+@property (weak, nonatomic) IBOutlet UIButton *watchedButton;
+
+@end
+
+@implementation DashboardTvShowCell
 
 - (void)awakeFromNib
 {
@@ -27,13 +29,7 @@
     
     [self.watchedButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_watched_show@2x" ofType:@"png"]] forState:UIControlStateNormal];
     [self.watchedButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_watched_show_selected@2x" ofType:@"png"]] forState:UIControlStateSelected];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+    
 }
 
 - (void)setTvShowDictionary:(NSMutableDictionary *)tvShowDictionary {
@@ -43,16 +39,21 @@
     
     self.detailsLabel.text = [NSString stringWithFormat:@"Season %d Episode %d", [tvShowDictionary[@"seasonNumber"] intValue], [tvShowDictionary[@"episodeNumber"] intValue]];
     
-    NSURL *imageURL = [NSURL URLWithString:tvShowDictionary[@"posterFullPath"]];
-    
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+    [self.posterImageView loadImageWithPath:tvShowDictionary[@"posterPath"] andWidth:92 completion:^(BOOL didLoadImage) {
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // Update the UI
-            self.posterImageView.image = [UIImage imageWithData:imageData];
-        });
-    });
+    }];
+    
+//    NSURL *imageURL = [NSURL URLWithString:tvShowDictionary[@"posterFullPath"]];
+//    
+//    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+//        NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+//        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            // Update the UI
+//            self.posterImageView.image = [UIImage imageWithData:imageData];
+//        });
+//    });
+    
 }
 
 - (IBAction)watchButtonPressed:(id)sender {
@@ -61,5 +62,4 @@
         [self.parentTableView.delegate tableView:self.parentTableView accessoryButtonTappedForRowWithIndexPath:[self.parentTableView indexPathForCell:self]];
     }
 }
-
 @end

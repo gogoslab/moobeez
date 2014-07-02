@@ -14,6 +14,8 @@
 		640865FD180B6AF600725CE4 /* NSMutableDictionary+SQL.m in Sources */ = {isa = PBXBuildFile; fileRef = 640865FC180B6AF600725CE4 /* NSMutableDictionary+SQL.m */; };
 		64086600180B6D0500725CE4 /* Moobee.m in Sources */ = {isa = PBXBuildFile; fileRef = 640865FF180B6D0500725CE4 /* Moobee.m */; };
 		64086604180B6D2E00725CE4 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 64086603180B6D2E00725CE4 /* Database.m */; };
+		6411F877196455BB0095BC7F /* DashboardMovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6411F875196455BB0095BC7F /* DashboardMovieCell.m */; };
+		6411F878196455BB0095BC7F /* DashboardMovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6411F876196455BB0095BC7F /* DashboardMovieCell.xib */; };
 		6414A3001821B90D009397FF /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414A2FE1821B90D009397FF /* DatePickerView.m */; };
 		6414A3011821B90D009397FF /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6414A2FF1821B90D009397FF /* DatePickerView.xib */; };
 		64158316182BCD7A00BB599C /* MovieImagesConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64158315182BCD7A00BB599C /* MovieImagesConnection.m */; };
@@ -104,6 +106,7 @@
 		64897F251898A441001F9EDE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64897F241898A441001F9EDE /* Social.framework */; };
 		64897F271898A448001F9EDE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64897F261898A448001F9EDE /* Accounts.framework */; };
 		64897F2B1898AA7D001F9EDE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64897F2A1898AA7D001F9EDE /* FacebookSDK.framework */; };
+		6497AF2B1964037D00813E6A /* background_light_blured@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6497AF2A1964037D00813E6A /* background_light_blured@2x.png */; };
 		649C3A661817FE7F0000A34C /* ToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A651817FE7F0000A34C /* ToolboxView.m */; };
 		649C3A6D1817FFEA0000A34C /* MovieToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A6C1817FFEA0000A34C /* MovieToolboxView.m */; };
 		649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A711818068F0000A34C /* empty_stars_big_black.png */; };
@@ -405,6 +408,16 @@
 		64F25A141827D32C005AB9F8 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F25A121827D32C005AB9F8 /* TextViewController.m */; };
 		64F25A151827D32C005AB9F8 /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F25A131827D32C005AB9F8 /* TextViewController.xib */; };
 		64F25A181827EC02005AB9F8 /* description_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F25A171827EC02005AB9F8 /* description_mask.png */; };
+		64FDCC3919632E7F002FE27C /* TvShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459BBBB1941EE1500D12DFF /* TvShowCell.m */; };
+		64FDCC4119634111002FE27C /* dashboard_bottom_cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64FDCC3E19634111002FE27C /* dashboard_bottom_cell@2x.png */; };
+		64FDCC4219634111002FE27C /* dashboard_middle_cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64FDCC3F19634111002FE27C /* dashboard_middle_cell@2x.png */; };
+		64FDCC4319634111002FE27C /* dashboard_top_cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64FDCC4019634111002FE27C /* dashboard_top_cell@2x.png */; };
+		64FDCC471963414E002FE27C /* DashboardTvShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FDCC451963414E002FE27C /* DashboardTvShowCell.m */; };
+		64FDCC481963414E002FE27C /* DashboardTvShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FDCC461963414E002FE27C /* DashboardTvShowCell.xib */; };
+		64FDCC4E196341D3002FE27C /* DashboardHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FDCC4C196341D3002FE27C /* DashboardHeaderCell.m */; };
+		64FDCC4F196341D3002FE27C /* DashboardHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FDCC4D196341D3002FE27C /* DashboardHeaderCell.xib */; };
+		64FDCC5419634924002FE27C /* DashboardFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FDCC5219634924002FE27C /* DashboardFooterCell.m */; };
+		64FDCC5519634924002FE27C /* DashboardFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FDCC5319634924002FE27C /* DashboardFooterCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -466,6 +479,9 @@
 		640865FF180B6D0500725CE4 /* Moobee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Moobee.m; sourceTree = "<group>"; };
 		64086602180B6D2E00725CE4 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		64086603180B6D2E00725CE4 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
+		6411F874196455BB0095BC7F /* DashboardMovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardMovieCell.h; sourceTree = "<group>"; };
+		6411F875196455BB0095BC7F /* DashboardMovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardMovieCell.m; sourceTree = "<group>"; };
+		6411F876196455BB0095BC7F /* DashboardMovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardMovieCell.xib; sourceTree = "<group>"; };
 		6414A2FD1821B90D009397FF /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
 		6414A2FE1821B90D009397FF /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
 		6414A2FF1821B90D009397FF /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
@@ -596,6 +612,7 @@
 		64897F241898A441001F9EDE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		64897F261898A448001F9EDE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		64897F2A1898AA7D001F9EDE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		6497AF2A1964037D00813E6A /* background_light_blured@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_light_blured@2x.png"; sourceTree = "<group>"; };
 		649C3A641817FE7F0000A34C /* ToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolboxView.h; sourceTree = "<group>"; };
 		649C3A651817FE7F0000A34C /* ToolboxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolboxView.m; sourceTree = "<group>"; };
 		649C3A6B1817FFEA0000A34C /* MovieToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieToolboxView.h; sourceTree = "<group>"; };
@@ -1136,6 +1153,18 @@
 		64F25A121827D32C005AB9F8 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
 		64F25A131827D32C005AB9F8 /* TextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
 		64F25A171827EC02005AB9F8 /* description_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = description_mask.png; sourceTree = "<group>"; };
+		64FDCC3E19634111002FE27C /* dashboard_bottom_cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dashboard_bottom_cell@2x.png"; sourceTree = "<group>"; };
+		64FDCC3F19634111002FE27C /* dashboard_middle_cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dashboard_middle_cell@2x.png"; sourceTree = "<group>"; };
+		64FDCC4019634111002FE27C /* dashboard_top_cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dashboard_top_cell@2x.png"; sourceTree = "<group>"; };
+		64FDCC441963414E002FE27C /* DashboardTvShowCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardTvShowCell.h; sourceTree = "<group>"; };
+		64FDCC451963414E002FE27C /* DashboardTvShowCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardTvShowCell.m; sourceTree = "<group>"; };
+		64FDCC461963414E002FE27C /* DashboardTvShowCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardTvShowCell.xib; sourceTree = "<group>"; };
+		64FDCC4B196341D3002FE27C /* DashboardHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardHeaderCell.h; sourceTree = "<group>"; };
+		64FDCC4C196341D3002FE27C /* DashboardHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardHeaderCell.m; sourceTree = "<group>"; };
+		64FDCC4D196341D3002FE27C /* DashboardHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardHeaderCell.xib; sourceTree = "<group>"; };
+		64FDCC5119634924002FE27C /* DashboardFooterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardFooterCell.h; sourceTree = "<group>"; };
+		64FDCC5219634924002FE27C /* DashboardFooterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardFooterCell.m; sourceTree = "<group>"; };
+		64FDCC5319634924002FE27C /* DashboardFooterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardFooterCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1210,6 +1239,16 @@
 				649C3A8E181825A50000A34C /* Tmdb models */,
 			);
 			name = Database;
+			sourceTree = "<group>";
+		};
+		6411F879196455BF0095BC7F /* Dashboard Movie Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6411F874196455BB0095BC7F /* DashboardMovieCell.h */,
+				6411F875196455BB0095BC7F /* DashboardMovieCell.m */,
+				6411F876196455BB0095BC7F /* DashboardMovieCell.xib */,
+			);
+			name = "Dashboard Movie Cell";
 			sourceTree = "<group>";
 		};
 		6414A2FC1821B8BE009397FF /* Date Picker View */ = {
@@ -1291,6 +1330,7 @@
 		64177865180C3B5A00CDFA25 /* Common Images */ = {
 			isa = PBXGroup;
 			children = (
+				6497AF2A1964037D00813E6A /* background_light_blured@2x.png */,
 				64ADAC9E191C0D5D002D1538 /* search_bar_clear_icon_highlighted@2x.png */,
 				64ADAC9C191C0D16002D1538 /* search_bar_clear_icon@2x.png */,
 				64ADAC9A191C091F002D1538 /* search_bar_icon@2x.png */,
@@ -1693,6 +1733,7 @@
 				64646C60189415CB007926FE /* Movie Cell */,
 				6428B8A518A3E75300E1A904 /* Season Cell */,
 				64290E7C18A46286009E6B04 /* Episode Cell */,
+				64FDCC4A1963415D002FE27C /* Dashboard Cells */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -2044,6 +2085,7 @@
 		64B2AB0518082C4A00E02E2F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				64FDCC3D19634111002FE27C /* Dashboard */,
 				64646C581892BF3C007926FE /* Movies */,
 				644121F9181C3B4F00260497 /* Movie Details */,
 				64177868180C8A7400CDFA25 /* Moobeez */,
@@ -2943,6 +2985,57 @@
 			name = "Text View Controller";
 			sourceTree = "<group>";
 		};
+		64FDCC3D19634111002FE27C /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				64FDCC3E19634111002FE27C /* dashboard_bottom_cell@2x.png */,
+				64FDCC3F19634111002FE27C /* dashboard_middle_cell@2x.png */,
+				64FDCC4019634111002FE27C /* dashboard_top_cell@2x.png */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		64FDCC4919634152002FE27C /* Dashboard Tv Show Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64FDCC441963414E002FE27C /* DashboardTvShowCell.h */,
+				64FDCC451963414E002FE27C /* DashboardTvShowCell.m */,
+				64FDCC461963414E002FE27C /* DashboardTvShowCell.xib */,
+			);
+			name = "Dashboard Tv Show Cell";
+			sourceTree = "<group>";
+		};
+		64FDCC4A1963415D002FE27C /* Dashboard Cells */ = {
+			isa = PBXGroup;
+			children = (
+				64FDCC50196341D7002FE27C /* Dashboard Header Cell */,
+				64FDCC4919634152002FE27C /* Dashboard Tv Show Cell */,
+				64FDCC561963492A002FE27C /* Dashboard Footer Cell */,
+				6411F879196455BF0095BC7F /* Dashboard Movie Cell */,
+			);
+			name = "Dashboard Cells";
+			sourceTree = "<group>";
+		};
+		64FDCC50196341D7002FE27C /* Dashboard Header Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64FDCC4B196341D3002FE27C /* DashboardHeaderCell.h */,
+				64FDCC4C196341D3002FE27C /* DashboardHeaderCell.m */,
+				64FDCC4D196341D3002FE27C /* DashboardHeaderCell.xib */,
+			);
+			name = "Dashboard Header Cell";
+			sourceTree = "<group>";
+		};
+		64FDCC561963492A002FE27C /* Dashboard Footer Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64FDCC5119634924002FE27C /* DashboardFooterCell.h */,
+				64FDCC5219634924002FE27C /* DashboardFooterCell.m */,
+				64FDCC5319634924002FE27C /* DashboardFooterCell.xib */,
+			);
+			name = "Dashboard Footer Cell";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3077,10 +3170,12 @@
 				64290E9218A65AEB009E6B04 /* delete_button.png in Resources */,
 				64B2AADF18082AE600E02E2F /* Images.xcassets in Resources */,
 				64B3E42818F3FCD000783B95 /* menu_button.png in Resources */,
+				6497AF2B1964037D00813E6A /* background_light_blured@2x.png in Resources */,
 				64DC8C1E1817215E002C11D8 /* toolbox_up_arrow@2x.png in Resources */,
 				64B2AB991808496B00E02E2F /* tab_bar_icon_movies@2x.png in Resources */,
 				64ADAC9B191C091F002D1538 /* search_bar_icon@2x.png in Resources */,
 				64DC8C111817137F002C11D8 /* back_button.png in Resources */,
+				64FDCC4119634111002FE27C /* dashboard_bottom_cell@2x.png in Resources */,
 				64B3E42118F3F28900783B95 /* background_blured.png in Resources */,
 				64B2AB951808486200E02E2F /* tab_bar_icon_moobeez@2x.png in Resources */,
 				64A8AD75188F39D400DBECD7 /* FeatureMoviesCell.xib in Resources */,
@@ -3098,6 +3193,7 @@
 				64897F1E189895C9001F9EDE /* share_facebook_button.png in Resources */,
 				649C3A771818068F0000A34C /* full_stars_big.png in Resources */,
 				64177876180CA5D900CDFA25 /* background.png in Resources */,
+				64FDCC4319634111002FE27C /* dashboard_top_cell@2x.png in Resources */,
 				64B2AB0718082C4A00E02E2F /* Application.xib in Resources */,
 				6417785A180C221800CDFA25 /* BeeCell.xib in Resources */,
 				64158320182BD28800BB599C /* ImagesViewController.xib in Resources */,
@@ -3116,8 +3212,11 @@
 				64B2AB8F1808452700E02E2F /* MoviesViewController.xib in Resources */,
 				64D717B518FC38C00098B13E /* imdb_button@2x.png in Resources */,
 				6428B89818A39F2500E1A904 /* TvWatchedViewController.xib in Resources */,
+				64FDCC481963414E002FE27C /* DashboardTvShowCell.xib in Resources */,
 				64428583191B00CF00A05B45 /* iRate.bundle in Resources */,
+				64FDCC5519634924002FE27C /* DashboardFooterCell.xib in Resources */,
 				64CA538A1823E6A9000699C5 /* empty_stars_big_white@2x.png in Resources */,
+				64FDCC4219634111002FE27C /* dashboard_middle_cell@2x.png in Resources */,
 				64A8AD68188EC3D800DBECD7 /* YouTubeViewController.xib in Resources */,
 				649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */,
 				644121F8181C351400260497 /* share_button@2x.png in Resources */,
@@ -3127,6 +3226,7 @@
 				64290E8918A5412A009E6B04 /* LoadingView.xib in Resources */,
 				64648EDD1829956200365EC7 /* ActorViewController.xib in Resources */,
 				649C3A781818068F0000A34C /* full_stars_big@2x.png in Resources */,
+				64FDCC4F196341D3002FE27C /* DashboardHeaderCell.xib in Resources */,
 				64290E8F18A6497C009E6B04 /* TeebeeLoadingView.xib in Resources */,
 				64CA53841823DC48000699C5 /* MovieButtonsBlack.bundle in Resources */,
 				64A8AD7B1890203200DBECD7 /* MoviePosterView.xib in Resources */,
@@ -3151,6 +3251,7 @@
 				64DC8C1C1817215E002C11D8 /* toolbox_line@2x.png in Resources */,
 				64CA539D1824060C000699C5 /* add_button.png in Resources */,
 				64ADAC9F191C0D5D002D1538 /* search_bar_clear_icon_highlighted@2x.png in Resources */,
+				6411F878196455BB0095BC7F /* DashboardMovieCell.xib in Resources */,
 				64897F1C189895C9001F9EDE /* share_twitter_button.png in Resources */,
 				642CA8EE181542FA00A293E4 /* MovieViewController.xib in Resources */,
 				64CA53891823E6A9000699C5 /* empty_stars_big_white.png in Resources */,
@@ -3203,6 +3304,7 @@
 				64B9F5F61822A3F0002E322F /* GPUImageLaplacianFilter.m in Sources */,
 				64648EDC1829956200365EC7 /* ActorViewController.m in Sources */,
 				64B9F63A1822A3F0002E322F /* GPUImageThresholdEdgeDetectionFilter.m in Sources */,
+				6411F877196455BB0095BC7F /* DashboardMovieCell.m in Sources */,
 				649C3A661817FE7F0000A34C /* ToolboxView.m in Sources */,
 				64B2AB6018083CBF00E02E2F /* UITableView+Extra.m in Sources */,
 				64B9F5C71822A3F0002E322F /* GPUImageColorDodgeBlendFilter.m in Sources */,
@@ -3218,6 +3320,7 @@
 				64B9F6201822A3F0002E322F /* GPUImageRGBDilationFilter.m in Sources */,
 				64B9F6001822A3F0002E322F /* GPUImageLuminosity.m in Sources */,
 				64B9F6481822A3F0002E322F /* GPUImageVignetteFilter.m in Sources */,
+				64FDCC471963414E002FE27C /* DashboardTvShowCell.m in Sources */,
 				64B9F5FD1822A3F0002E322F /* GPUImageLowPassFilter.m in Sources */,
 				64B9F6241822A3F0002E322F /* GPUImageSaturationBlendFilter.m in Sources */,
 				64B9F63E1822A3F0002E322F /* GPUImageToneCurveFilter.m in Sources */,
@@ -3266,6 +3369,7 @@
 				64B9F6321822A3F0002E322F /* GPUImageSphereRefractionFilter.m in Sources */,
 				64B9F5E21822A3F0002E322F /* GPUImageGaussianSelectiveBlurFilter.m in Sources */,
 				64B9F6381822A3F0002E322F /* GPUImageTextureOutput.m in Sources */,
+				64FDCC3919632E7F002FE27C /* TvShowCell.m in Sources */,
 				64B9F5BC1822A3F0002E322F /* GPUImageBoxBlurFilter.m in Sources */,
 				64B9F6441822A3F0002E322F /* GPUImageTwoPassTextureSamplingFilter.m in Sources */,
 				64B9F5B71822A3F0002E322F /* GPUImageAlphaBlendFilter.m in Sources */,
@@ -3274,6 +3378,7 @@
 				64158316182BCD7A00BB599C /* MovieImagesConnection.m in Sources */,
 				64B2AB5918083CBF00E02E2F /* NSDateFormatter+Extensions.m in Sources */,
 				64290E8318A53D41009E6B04 /* Alert+Moobeez.m in Sources */,
+				64FDCC4E196341D3002FE27C /* DashboardHeaderCell.m in Sources */,
 				64B9F5CA1822A3F0002E322F /* GPUImageColorPackingFilter.m in Sources */,
 				6417785D180C314500CDFA25 /* ConfigurationConnection.m in Sources */,
 				64B9F6301822A3F0002E322F /* GPUImageSolidColorGenerator.m in Sources */,
@@ -3411,6 +3516,7 @@
 				64A10DB718A999D400906081 /* TvRageConnection.m in Sources */,
 				64B9F6491822A3F0002E322F /* GPUImageVoronoiConsumerFilter.m in Sources */,
 				64B9F5CC1822A3F0002E322F /* GPUImageCropFilter.m in Sources */,
+				64FDCC5419634924002FE27C /* DashboardFooterCell.m in Sources */,
 				64B9F61F1822A3F0002E322F /* GPUImageRGBClosingFilter.m in Sources */,
 				64B9F5E91822A3F0002E322F /* GPUImageHighlightShadowFilter.m in Sources */,
 				64B9F6031822A3F0002E322F /* GPUImageMedianFilter.m in Sources */,
@@ -3525,6 +3631,8 @@
 		6459BBB31941D65400D12DFF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = "Today Shows/com.goggzy.moobeez.Today-Shows.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -3548,6 +3656,8 @@
 		6459BBB41941D65400D12DFF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = "Today Shows/com.goggzy.moobeez.Today-Shows.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -3697,6 +3807,8 @@
 		64EEBE6619422324000C7ADD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = "Missed Shows/com.goggzy.moobeez.Missed-Shows.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -3720,6 +3832,8 @@
 		64EEBE6719422324000C7ADD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_ENTITLEMENTS = "Missed Shows/com.goggzy.moobeez.Missed-Shows.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";

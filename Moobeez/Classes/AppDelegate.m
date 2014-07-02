@@ -42,7 +42,11 @@ void uncaughtExceptionHandler(NSException *exception) {
     [FBProfilePictureView class];
     
     [[NSFileManager defaultManager] removeItemAtPath:oldOfflineRootPath error:nil];
-        
+    
+    UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeBadge categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:notificationSettings];
+
+    
     return YES;
 }
 							
@@ -74,6 +78,11 @@ void uncaughtExceptionHandler(NSException *exception) {
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    application.applicationIconBadgeNumber = [[Database sharedDatabase] notWatchedEpisodesCount];
+
+}
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings {
 }
 
 

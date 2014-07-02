@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6154.17" systemVersion="14A238x" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6154.21" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SideTabViewController">
@@ -20,6 +20,7 @@
                 <outletCollection property="viewControllers" destination="Taj-HT-eAz" id="njg-bq-Vmh"/>
                 <outletCollection property="viewControllers" destination="T8A-YK-UwW" id="pMg-ip-dEI"/>
                 <outletCollection property="viewControllers" destination="UPG-u2-fu5" id="Td5-h2-vxN"/>
+                <outletCollection property="viewControllers" destination="JlU-0a-Izy" id="ZYi-nW-lLZ"/>
             </connections>
         </placeholder>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
@@ -53,7 +54,7 @@
                                 <action selector="menuButtonPressed:" destination="-1" eventType="touchUpInside" id="flb-GD-yRp"/>
                             </connections>
                         </button>
-                        <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t9y-xC-DhL">
+                        <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="t9y-xC-DhL">
                             <rect key="frame" x="20" y="0.0" width="120" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
@@ -130,6 +131,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <size key="freeformSize" width="0.0" height="0.0"/>
             <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dlT-lT-MBA">
                 <autoresizingMask key="autoresizingMask"/>
                 <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -150,6 +152,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <size key="freeformSize" width="0.0" height="0.0"/>
             <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="EqG-rF-bnM">
                 <autoresizingMask key="autoresizingMask"/>
                 <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -170,6 +173,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <size key="freeformSize" width="0.0" height="0.0"/>
             <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dtA-O6-jHI">
                 <autoresizingMask key="autoresizingMask"/>
                 <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -190,6 +194,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <size key="freeformSize" width="0.0" height="0.0"/>
             <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="b96-mw-3ZS">
                 <autoresizingMask key="autoresizingMask"/>
                 <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -210,6 +215,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <size key="freeformSize" width="0.0" height="0.0"/>
             <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="G94-oQ-u31">
                 <autoresizingMask key="autoresizingMask"/>
                 <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -230,6 +236,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <size key="freeformSize" width="0.0" height="0.0"/>
             <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="gck-qT-0oL">
                 <autoresizingMask key="autoresizingMask"/>
                 <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>

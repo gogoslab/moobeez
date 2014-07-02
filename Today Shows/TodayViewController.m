@@ -42,6 +42,8 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TvShowCell" bundle:nil] forCellReuseIdentifier:@"TvShowCell"];
     [self reloadData];
+    
+    NSLog(@"%s", __func__);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -69,7 +71,7 @@
     
     if (self.items.count) {
         for (NSMutableDictionary* item in self.items) {
-            item[@"posterPath"] = [self.imagesSettings[@"secure_base_url"] stringByAppendingString:[NSString stringWithFormat:@"w%ld%@", (long)92, item[@"posterPath"]]];
+            item[@"posterFullPath"] = [self.imagesSettings[@"secure_base_url"] stringByAppendingString:[NSString stringWithFormat:@"w%ld%@", (long)92, item[@"posterPath"]]];
         }
 
         self.tableView.hidden = NO;
@@ -103,8 +105,40 @@
     
     cell.tvShowDictionary = self.items[indexPath.row];
     
+    cell.parentTableView = tableView;
+    
     cell.backgroundColor = [UIColor clearColor];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+    
+    NSMutableDictionary* tvShowDictionary = self.items[indexPath.row];
+    
+    NSString* query = [NSString stringWithFormat:@"UPDATE Episodes SET watched = '1' WHERE teebeeId = '%@' AND seasonNumber = '%@' AND episodeNumber = '%@'", tvShowDictionary[@"teebeeId"], tvShowDictionary[@"seasonNumber"], tvShowDictionary[@"episodeNumber"]];
+    
+    NSLog(@"query: %@", query);
+    
+    if ([self.database executeQuery:query]) {
+        [self.items removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+        if (self.items.count) {
+            self.tableView.hidden = NO;
+            self.noTvShowsLabel.hidden = YES;
+            
+            self.preferredContentSize = self.tableView.contentSize;
+        }
+        else {
+            
+            self.tableView.hidden = YES;
+            self.noTvShowsLabel.hidden = NO;
+            
+            self.preferredContentSize = CGSizeMake(self.view.frame.size.width, 40);
+            
+        }
+    }
+    
 }
 
 - (NSString*)query {
@@ -112,7 +146,7 @@
     NSTimeInterval beginDate = [[[NSDate date] resetToMidnight] timeIntervalSince1970];
     NSTimeInterval endDate = [[[NSDate date] resetToLateMidnight] timeIntervalSince1970];
     
-   return [NSString stringWithFormat:@"SELECT Teebeez.name, Teebeez.posterPath, Episodes.seasonNumber, Episodes.episodeNumber FROM Teebeez JOIN Episodes ON (Teebeez.ID = Episodes.teebeeId) WHERE (Episodes.airDate <> '(null)' AND Episodes.airDate >= '%f' AND Episodes.airDate <= '%f' AND watched = '0') ORDER BY Episodes.airDate LIMIT 9", beginDate, endDate];
+   return [NSString stringWithFormat:@"SELECT Teebeez.name, Teebeez.posterPath, Episodes.teebeeId, Episodes.seasonNumber, Episodes.episodeNumber FROM Teebeez JOIN Episodes ON (Teebeez.ID = Episodes.teebeeId) WHERE (Episodes.airDate <> '(null)' AND Episodes.airDate >= '%f' AND Episodes.airDate <= '%f' AND watched = '0') ORDER BY Episodes.airDate LIMIT 9", beginDate, endDate];
 }
 
 @end

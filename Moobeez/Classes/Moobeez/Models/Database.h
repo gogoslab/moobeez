@@ -57,4 +57,5 @@
 
 - (void)reloadTodayTeebeez;
 
+- (NSMutableArray*)executeQuery:(NSString*)query;
 @end

@@ -49,6 +49,6 @@
     
     NSTimeInterval endDate = [[[NSDate date] resetToLateMidnight] timeIntervalSince1970];
     
-    return [NSString stringWithFormat:@"SELECT Teebeez.name, Teebeez.posterPath, Episodes.seasonNumber, Episodes.episodeNumber FROM Teebeez JOIN Episodes ON (Teebeez.ID = Episodes.teebeeId) WHERE (Episodes.airDate <> '(null)' AND Episodes.airDate <= '%f' AND watched = '0') ORDER BY Episodes.airDate LIMIT 9", endDate];
+    return [NSString stringWithFormat:@"SELECT Teebeez.name, Teebeez.posterPath,  Episodes.teebeeId, Episodes.seasonNumber, Episodes.episodeNumber FROM Teebeez JOIN Episodes ON (Teebeez.ID = Episodes.teebeeId) WHERE (Episodes.airDate <> '(null)' AND Episodes.airDate <= '%f' AND watched = '0') ORDER BY Episodes.airDate LIMIT 9", endDate];
 }
 @end

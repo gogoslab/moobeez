@@ -88,6 +88,8 @@ static Database* sharedDatabase;
 - (id)init {
     self = [super init];
     
+    NSLog(@"current path: %@", CURRENT_DATABASE_PATH);
+    
     if (![[NSFileManager defaultManager] fileExistsAtPath:CURRENT_DATABASE_PATH]) {
         
         NSString *sqLiteDb = [[NSBundle mainBundle] pathForResource:@"MoobeezDatabase"
@@ -1305,6 +1307,53 @@ static Database* sharedDatabase;
     
     
     
+}
+
+- (NSMutableArray*)executeQuery:(NSString*)query {
+    
+    NSLog(@"Execute query: %@", query);
+    
+    sqlite3_stmt *statement;
+    
+    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
+    
+    if (prepare != SQLITE_OK) {
+        NSLog(@"prepare: %d", prepare);
+        if (prepare == SQLITE_ERROR) {
+            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
+        }
+        return nil;
+    }
+    
+    int step = sqlite3_step(statement);
+    
+    NSMutableArray* results = [[NSMutableArray alloc] init];
+    
+    while (step == SQLITE_ROW) {
+        [results addObject:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
+        step = sqlite3_step(statement);
+    }
+    
+    BOOL isOk = (step == SQLITE_DONE);
+    
+    switch (step) {
+        case SQLITE_DONE:
+            NSLog(@"yey");
+            break;
+        case SQLITE_ERROR:
+            NSLog(@"error");
+            break;
+        case SQLITE_MISUSE:
+            NSLog(@"missue");
+            break;
+        default:
+            NSLog(@"NOOOOO!!!");
+            break;
+    }
+    
+    sqlite3_finalize(statement);
+    
+    return (isOk ? results : nil);
 }
 
 @end

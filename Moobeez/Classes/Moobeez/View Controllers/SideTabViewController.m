@@ -63,7 +63,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.selectedIndex = 0;
+    self.selectedIndex = 4;
     
     self.blurView.alpha = 0.0;
     self.buttonsView.alpha = 0.0;
@@ -116,6 +116,8 @@
 
 - (void)showMenu {
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:SideTabMenuWillAppearNotification object:nil];
+    
     self.notWatchedTeebeezCount = [[Database sharedDatabase] notWatchedEpisodesCount];
 
     self.appDelegate.window.rootViewController = self.navigationController;
@@ -141,6 +143,8 @@
 }
 
 - (void)hideMenu {
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:SideTabMenuWillDisappearNotification object:nil];
 
     [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionTransitionNone animations:^{
         self.buttonsView.alpha = 0.0;
