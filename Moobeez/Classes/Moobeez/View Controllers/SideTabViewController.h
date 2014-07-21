@@ -11,11 +11,17 @@
 #define SideTabMenuWillAppearNotification @"SideTabMenuWillAppear"
 #define SideTabMenuWillDisappearNotification @"SideTabMenuWillDisappear"
 
+@class NavigationController;
+
 @interface SideTabViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
+@property (strong, nonatomic) IBOutlet NavigationController *checkinNavigationViewController;
+
 - (void)showMenu;
 - (void)hideMenu;
+
+- (void)presentCheckInViewController;
 
 @end

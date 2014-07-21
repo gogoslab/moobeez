@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6154.21" systemVersion="14A261i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6185.7" systemVersion="14A283o" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.13"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SideTabViewController">
@@ -10,6 +9,8 @@
                 <outlet property="backgroundImageView" destination="JpH-CV-DBp" id="YS6-lz-gSH"/>
                 <outlet property="blurView" destination="ISB-0P-UK4" id="uuW-nf-U5f"/>
                 <outlet property="buttonsView" destination="OYW-jI-50i" id="h2U-Lp-93y"/>
+                <outlet property="checkinButton" destination="nMW-bn-ipz" id="vDq-J9-A7x"/>
+                <outlet property="checkinNavigationViewController" destination="iiE-Pm-iOz" id="2Fr-3u-BGX"/>
                 <outlet property="contentView" destination="2Pi-Xw-qOS" id="sLl-ek-5Qh"/>
                 <outlet property="notWatchedTeebeezLabel" destination="emO-Ni-C6W" id="l5y-uH-fbE"/>
                 <outlet property="searchBar" destination="stj-8A-5Lf" id="R7K-Z4-OQX"/>
@@ -119,17 +120,40 @@
                         <outlet property="delegate" destination="-1" id="sY2-dD-Um8"/>
                     </connections>
                 </searchBar>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nMW-bn-ipz">
+                    <rect key="frame" x="8" y="66" width="140" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                    <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Check-in to movie" image="check_in_icon.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="checkinButtonPressed:" destination="-1" eventType="touchUpInside" id="nKl-yw-6MX"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="510" y="298"/>
         </view>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <navigationController definesPresentationContext="YES" id="nf8-CA-acM" customClass="NavigationController">
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <nil key="simulatedTopBarMetrics"/>
-            <nil key="simulatedBottomBarMetrics"/>
-            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <size key="freeformSize" width="0.0" height="0.0"/>
             <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dlT-lT-MBA">
@@ -137,6 +161,7 @@
                 <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                 <color key="barTintColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                 <textAttributes key="titleTextAttributes">
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </textAttributes>
             </navigationBar>
@@ -147,10 +172,6 @@
             </viewControllers>
         </navigationController>
         <navigationController definesPresentationContext="YES" id="Taj-HT-eAz" customClass="NavigationController">
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <nil key="simulatedTopBarMetrics"/>
-            <nil key="simulatedBottomBarMetrics"/>
-            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <size key="freeformSize" width="0.0" height="0.0"/>
             <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="EqG-rF-bnM">
@@ -158,6 +179,7 @@
                 <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                 <color key="barTintColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                 <textAttributes key="titleTextAttributes">
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </textAttributes>
             </navigationBar>
@@ -168,10 +190,6 @@
             </viewControllers>
         </navigationController>
         <navigationController definesPresentationContext="YES" id="T8A-YK-UwW" customClass="NavigationController">
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <nil key="simulatedTopBarMetrics"/>
-            <nil key="simulatedBottomBarMetrics"/>
-            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <size key="freeformSize" width="0.0" height="0.0"/>
             <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dtA-O6-jHI">
@@ -179,6 +197,7 @@
                 <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                 <color key="barTintColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                 <textAttributes key="titleTextAttributes">
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </textAttributes>
             </navigationBar>
@@ -189,10 +208,6 @@
             </viewControllers>
         </navigationController>
         <navigationController definesPresentationContext="YES" id="UPG-u2-fu5" customClass="NavigationController">
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <nil key="simulatedTopBarMetrics"/>
-            <nil key="simulatedBottomBarMetrics"/>
-            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <size key="freeformSize" width="0.0" height="0.0"/>
             <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="b96-mw-3ZS">
@@ -200,6 +215,7 @@
                 <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                 <color key="barTintColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                 <textAttributes key="titleTextAttributes">
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </textAttributes>
             </navigationBar>
@@ -210,10 +226,6 @@
             </viewControllers>
         </navigationController>
         <navigationController definesPresentationContext="YES" id="JlU-0a-Izy" customClass="NavigationController">
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <nil key="simulatedTopBarMetrics"/>
-            <nil key="simulatedBottomBarMetrics"/>
-            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <size key="freeformSize" width="0.0" height="0.0"/>
             <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="G94-oQ-u31">
@@ -221,6 +233,7 @@
                 <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                 <color key="barTintColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                 <textAttributes key="titleTextAttributes">
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </textAttributes>
             </navigationBar>
@@ -232,9 +245,6 @@
         </navigationController>
         <navigationController definesPresentationContext="YES" id="xtJ-VC-ba7" customClass="NavigationController">
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-            <nil key="simulatedTopBarMetrics"/>
-            <nil key="simulatedBottomBarMetrics"/>
-            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <size key="freeformSize" width="0.0" height="0.0"/>
             <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="gck-qT-0oL">
@@ -242,6 +252,7 @@
                 <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
                 <color key="barTintColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                 <textAttributes key="titleTextAttributes">
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </textAttributes>
             </navigationBar>
@@ -254,6 +265,26 @@
                 </viewController>
             </viewControllers>
         </navigationController>
+        <navigationController definesPresentationContext="YES" id="iiE-Pm-iOz" customClass="NavigationController">
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <size key="freeformSize" width="0.0" height="0.0"/>
+            <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="HUW-Jh-EZZ">
+                <autoresizingMask key="autoresizingMask"/>
+                <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="barTintColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                <textAttributes key="titleTextAttributes">
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </textAttributes>
+            </navigationBar>
+            <viewControllers>
+                <viewController title="Check-in to movie" nibName="CheckinViewController" id="he5-oV-1qJ" customClass="CheckinViewController">
+                    <navigationItem key="navigationItem" id="7Gi-Md-JJT"/>
+                </viewController>
+            </viewControllers>
+            <point key="canvasLocation" x="208" y="-460"/>
+        </navigationController>
         <tapGestureRecognizer id="Fvf-4f-lSO">
             <connections>
                 <action selector="blurViewTapped:" destination="-1" id="gDA-HB-Hxv"/>
@@ -263,11 +294,21 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
     </objects>
     <resources>
         <image name="background.png" width="320" height="568"/>
         <image name="background_blured.png" width="320" height="568"/>
+        <image name="check_in_icon.png" width="13" height="20"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
 </document>

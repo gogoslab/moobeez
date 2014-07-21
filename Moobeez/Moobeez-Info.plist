@@ -110,5 +110,7 @@
 			</dict>
 		</dict>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allow the application to use your location when in use?</string>
 </dict>
 </plist>

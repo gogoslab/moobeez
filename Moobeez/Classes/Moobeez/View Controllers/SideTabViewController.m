@@ -54,6 +54,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *notWatchedTeebeezLabel;
 @property (readwrite, nonatomic) NSInteger notWatchedTeebeezCount;
 
+@property (weak, nonatomic) IBOutlet UIButton *checkinButton;
 @end
 
 @implementation SideTabViewController
@@ -67,6 +68,7 @@
     
     self.blurView.alpha = 0.0;
     self.buttonsView.alpha = 0.0;
+    self.checkinButton.alpha = 0.0;
     
     [self.view addSubview:self.contentView];
     self.contentView.transform = CGAffineTransformMakeTranslation(self.contentView.width, 0);
@@ -133,6 +135,7 @@
 
     [UIView animateWithDuration:0.2 delay:0.2 options:UIViewAnimationOptionTransitionNone animations:^{
         self.buttonsView.alpha = 1.0;
+        self.checkinButton.alpha = 1.0;
         self.searchBar.alpha = 1.0;
     } completion:^(BOOL finished) {
         
@@ -148,6 +151,7 @@
 
     [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionTransitionNone animations:^{
         self.buttonsView.alpha = 0.0;
+        self.checkinButton.alpha = 0.0;
         self.searchBar.alpha = 0.0;
     } completion:^(BOOL finished) {}];
     
@@ -172,6 +176,12 @@
     self.selectedIndex = ((UIButton*) sender).tag;
     [self hideMenu];
     
+}
+
+- (IBAction)checkinButtonPressed:(id)sender {
+    [self presentViewController:self.checkinNavigationViewController animated:YES completion:^{
+        
+    }];
 }
 
 - (void)setNotWatchedTeebeezCount:(NSInteger)notWatchedTeebeezCount {
@@ -216,7 +226,7 @@
     [self.appDelegate.window addSubview:self.searchBar];
 
     [UIView animateWithDuration:0.3 animations:^{
-        searchBar.width = 320;
+        searchBar.width = 304;
     }];
     
     [searchBar resignFirstResponder];
@@ -226,6 +236,16 @@
     [self.searchNavigationViewController dismissViewControllerAnimated:YES completion:^{
         [self.view insertSubview:searchBar belowSubview:self.contentView];
     }];
+}
+
+- (void)presentCheckInViewController {
+    
+    [self showMenu];
+    
+    [self presentViewController:self.checkinNavigationViewController animated:YES completion:^{
+        
+    }];
+    
 }
 
 @end

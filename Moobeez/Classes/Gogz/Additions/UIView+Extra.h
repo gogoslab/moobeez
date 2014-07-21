@@ -18,4 +18,10 @@
 @property (readwrite) CGFloat right;
 @property (readwrite) CGFloat bottom;
 
+@property (readwrite, nonatomic) UIColor* borderColor;
+@property (readwrite, nonatomic) NSInteger borderWidth;
+@property (readwrite, nonatomic) NSInteger cornerRadius;
+
+
+
 @end

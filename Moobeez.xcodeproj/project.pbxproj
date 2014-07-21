@@ -63,6 +63,7 @@
 		6442857E191AFAD200A05B45 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6442857D191AFAD200A05B45 /* ImageLoader.m */; };
 		64428583191B00CF00A05B45 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 64428580191B00CF00A05B45 /* iRate.bundle */; };
 		64428584191B00CF00A05B45 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64428582191B00CF00A05B45 /* iRate.m */; };
+		644486EA19780BD6004084E9 /* check_in_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644486E919780BD6004084E9 /* check_in_icon@2x.png */; };
 		6459BB9E1941D61F00D12DFF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6459BB9D1941D61F00D12DFF /* MapKit.framework */; };
 		6459BBA41941D65400D12DFF /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EB23E11941114300C289B8 /* NotificationCenter.framework */; };
 		6459BBAA1941D65400D12DFF /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459BBA91941D65400D12DFF /* TodayViewController.m */; };
@@ -387,6 +388,19 @@
 		64DC8C1C1817215E002C11D8 /* toolbox_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C161817215E002C11D8 /* toolbox_line@2x.png */; };
 		64DC8C1D1817215E002C11D8 /* toolbox_up_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C171817215E002C11D8 /* toolbox_up_arrow.png */; };
 		64DC8C1E1817215E002C11D8 /* toolbox_up_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DC8C181817215E002C11D8 /* toolbox_up_arrow@2x.png */; };
+		64DFA7C619781E4F008F4730 /* check_in_icon_big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64DFA7C519781E4F008F4730 /* check_in_icon_big@2x.png */; };
+		64DFA7CA1978209A008F4730 /* CheckinViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64DFA7C81978209A008F4730 /* CheckinViewController.m */; };
+		64DFA7CB1978209A008F4730 /* CheckinViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64DFA7C91978209A008F4730 /* CheckinViewController.xib */; };
+		64E69B91197D173C00352AFE /* search_bar_icon_big@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E69B90197D173C00352AFE /* search_bar_icon_big@2x.png */; };
+		64E69B94197D1A1F00352AFE /* CheckInMovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E69B93197D1A1F00352AFE /* CheckInMovieCell.m */; };
+		64E69B97197D1A3000352AFE /* CheckInMovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E69B96197D1A3000352AFE /* CheckInMovieCell.xib */; };
+		64E69B99197D1AD100352AFE /* checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E69B98197D1AD100352AFE /* checkmark@2x.png */; };
+		64E69B9B197D20C500352AFE /* close_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E69B9A197D20C500352AFE /* close_button@2x.png */; };
+		64E69B9E197D3FD800352AFE /* PlacePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E69B9D197D3FD800352AFE /* PlacePickerViewController.m */; };
+		64E69BA2197D5B0A00352AFE /* place_cell_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E69BA1197D5B0A00352AFE /* place_cell_background@2x.png */; };
+		64E69BA6197D5B3400352AFE /* CheckInPlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E69BA4197D5B3400352AFE /* CheckInPlaceCell.m */; };
+		64E69BA7197D5B3400352AFE /* CheckInPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64E69BA5197D5B3400352AFE /* CheckInPlaceCell.xib */; };
+		64E69BAB197D688000352AFE /* edit_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E69BAA197D688000352AFE /* edit_button@2x.png */; };
 		64EB23FA19411DEF00C289B8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EB23E11941114300C289B8 /* NotificationCenter.framework */; };
 		64EEBE5719422324000C7ADD /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EB23E11941114300C289B8 /* NotificationCenter.framework */; };
 		64EEBE5D19422324000C7ADD /* MissedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EEBE5C19422324000C7ADD /* MissedViewController.m */; };
@@ -550,6 +564,7 @@
 		64428580191B00CF00A05B45 /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		64428581191B00CF00A05B45 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		64428582191B00CF00A05B45 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
+		644486E919780BD6004084E9 /* check_in_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_in_icon@2x.png"; sourceTree = "<group>"; };
 		6459BB9B1941CF2200D12DFF /* Moobeez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Moobeez.entitlements; sourceTree = "<group>"; };
 		6459BB9D1941D61F00D12DFF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6459BBA31941D65400D12DFF /* com.goggzy.moobeez.Today-Shows.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "com.goggzy.moobeez.Today-Shows.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1131,6 +1146,23 @@
 		64DC8C161817215E002C11D8 /* toolbox_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbox_line@2x.png"; sourceTree = "<group>"; };
 		64DC8C171817215E002C11D8 /* toolbox_up_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbox_up_arrow.png; sourceTree = "<group>"; };
 		64DC8C181817215E002C11D8 /* toolbox_up_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbox_up_arrow@2x.png"; sourceTree = "<group>"; };
+		64DFA7C519781E4F008F4730 /* check_in_icon_big@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_in_icon_big@2x.png"; sourceTree = "<group>"; };
+		64DFA7C71978209A008F4730 /* CheckinViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinViewController.h; sourceTree = "<group>"; };
+		64DFA7C81978209A008F4730 /* CheckinViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinViewController.m; sourceTree = "<group>"; };
+		64DFA7C91978209A008F4730 /* CheckinViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckinViewController.xib; sourceTree = "<group>"; };
+		64E69B90197D173C00352AFE /* search_bar_icon_big@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_bar_icon_big@2x.png"; sourceTree = "<group>"; };
+		64E69B92197D1A1F00352AFE /* CheckInMovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInMovieCell.h; sourceTree = "<group>"; };
+		64E69B93197D1A1F00352AFE /* CheckInMovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInMovieCell.m; sourceTree = "<group>"; };
+		64E69B96197D1A3000352AFE /* CheckInMovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInMovieCell.xib; sourceTree = "<group>"; };
+		64E69B98197D1AD100352AFE /* checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark@2x.png"; sourceTree = "<group>"; };
+		64E69B9A197D20C500352AFE /* close_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close_button@2x.png"; sourceTree = "<group>"; };
+		64E69B9C197D3FD800352AFE /* PlacePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacePickerViewController.h; sourceTree = "<group>"; };
+		64E69B9D197D3FD800352AFE /* PlacePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacePickerViewController.m; sourceTree = "<group>"; };
+		64E69BA1197D5B0A00352AFE /* place_cell_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "place_cell_background@2x.png"; sourceTree = "<group>"; };
+		64E69BA3197D5B3400352AFE /* CheckInPlaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInPlaceCell.h; sourceTree = "<group>"; };
+		64E69BA4197D5B3400352AFE /* CheckInPlaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInPlaceCell.m; sourceTree = "<group>"; };
+		64E69BA5197D5B3400352AFE /* CheckInPlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInPlaceCell.xib; sourceTree = "<group>"; };
+		64E69BAA197D688000352AFE /* edit_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_button@2x.png"; sourceTree = "<group>"; };
 		64EB23E11941114300C289B8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		64EEBE51194222FE000C7ADD /* Today Shows copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Today Shows copy-Info.plist"; path = "/Users/radubanea/Developer/Mine/Moobeez/Today Shows copy-Info.plist"; sourceTree = "<absolute>"; };
 		64EEBE5619422324000C7ADD /* com.goggzy.moobeez.Missed-Shows.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "com.goggzy.moobeez.Missed-Shows.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1330,6 +1362,12 @@
 		64177865180C3B5A00CDFA25 /* Common Images */ = {
 			isa = PBXGroup;
 			children = (
+				64E69BAA197D688000352AFE /* edit_button@2x.png */,
+				64E69B9A197D20C500352AFE /* close_button@2x.png */,
+				64E69B98197D1AD100352AFE /* checkmark@2x.png */,
+				64E69B90197D173C00352AFE /* search_bar_icon_big@2x.png */,
+				64DFA7C519781E4F008F4730 /* check_in_icon_big@2x.png */,
+				644486E919780BD6004084E9 /* check_in_icon@2x.png */,
 				6497AF2A1964037D00813E6A /* background_light_blured@2x.png */,
 				64ADAC9E191C0D5D002D1538 /* search_bar_clear_icon_highlighted@2x.png */,
 				64ADAC9C191C0D16002D1538 /* search_bar_clear_icon@2x.png */,
@@ -1734,6 +1772,7 @@
 				6428B8A518A3E75300E1A904 /* Season Cell */,
 				64290E7C18A46286009E6B04 /* Episode Cell */,
 				64FDCC4A1963415D002FE27C /* Dashboard Cells */,
+				64E69BA9197D5C2F00352AFE /* Checkin Cells */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1815,6 +1854,16 @@
 				64412222181D3D7F00260497 /* CharacterCell.xib */,
 			);
 			name = "Character Cell";
+			sourceTree = "<group>";
+		};
+		649D42FF19782129000D16D1 /* Checkin View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64DFA7C71978209A008F4730 /* CheckinViewController.h */,
+				64DFA7C81978209A008F4730 /* CheckinViewController.m */,
+				64DFA7C91978209A008F4730 /* CheckinViewController.xib */,
+			);
+			name = "Checkin View Controller";
 			sourceTree = "<group>";
 		};
 		649EF2631899CEC300FC796D /* Settings */ = {
@@ -2085,6 +2134,7 @@
 		64B2AB0518082C4A00E02E2F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				64E69BA0197D5B0A00352AFE /* CheckIn */,
 				64FDCC3D19634111002FE27C /* Dashboard */,
 				64646C581892BF3C007926FE /* Movies */,
 				644121F9181C3B4F00260497 /* Movie Details */,
@@ -2262,6 +2312,8 @@
 				64D7414B189D22400011C39A /* Tv Detail Screen */,
 				64ADACB0191C5C2E002D1538 /* Search Screen */,
 				64ADACAB191C2EB2002D1538 /* Dashboard View Controller */,
+				649D42FF19782129000D16D1 /* Checkin View Controller */,
+				64E69B9F197D3FDB00352AFE /* Place Picker View Controller */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -2880,6 +2932,52 @@
 			name = Cache;
 			sourceTree = "<group>";
 		};
+		64E69B95197D1A2200352AFE /* Checkin Movie Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64E69B92197D1A1F00352AFE /* CheckInMovieCell.h */,
+				64E69B93197D1A1F00352AFE /* CheckInMovieCell.m */,
+				64E69B96197D1A3000352AFE /* CheckInMovieCell.xib */,
+			);
+			name = "Checkin Movie Cell";
+			sourceTree = "<group>";
+		};
+		64E69B9F197D3FDB00352AFE /* Place Picker View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64E69B9C197D3FD800352AFE /* PlacePickerViewController.h */,
+				64E69B9D197D3FD800352AFE /* PlacePickerViewController.m */,
+			);
+			name = "Place Picker View Controller";
+			sourceTree = "<group>";
+		};
+		64E69BA0197D5B0A00352AFE /* CheckIn */ = {
+			isa = PBXGroup;
+			children = (
+				64E69BA1197D5B0A00352AFE /* place_cell_background@2x.png */,
+			);
+			path = CheckIn;
+			sourceTree = "<group>";
+		};
+		64E69BA8197D5C1A00352AFE /* Checkin Place Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64E69BA3197D5B3400352AFE /* CheckInPlaceCell.h */,
+				64E69BA4197D5B3400352AFE /* CheckInPlaceCell.m */,
+				64E69BA5197D5B3400352AFE /* CheckInPlaceCell.xib */,
+			);
+			name = "Checkin Place Cell";
+			sourceTree = "<group>";
+		};
+		64E69BA9197D5C2F00352AFE /* Checkin Cells */ = {
+			isa = PBXGroup;
+			children = (
+				64E69B95197D1A2200352AFE /* Checkin Movie Cell */,
+				64E69BA8197D5C1A00352AFE /* Checkin Place Cell */,
+			);
+			name = "Checkin Cells";
+			sourceTree = "<group>";
+		};
 		64EEBE5819422324000C7ADD /* Missed Shows */ = {
 			isa = PBXGroup;
 			children = (
@@ -3216,13 +3314,16 @@
 				64428583191B00CF00A05B45 /* iRate.bundle in Resources */,
 				64FDCC5519634924002FE27C /* DashboardFooterCell.xib in Resources */,
 				64CA538A1823E6A9000699C5 /* empty_stars_big_white@2x.png in Resources */,
+				644486EA19780BD6004084E9 /* check_in_icon@2x.png in Resources */,
 				64FDCC4219634111002FE27C /* dashboard_middle_cell@2x.png in Resources */,
 				64A8AD68188EC3D800DBECD7 /* YouTubeViewController.xib in Resources */,
+				64E69B97197D1A3000352AFE /* CheckInMovieCell.xib in Resources */,
 				649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */,
 				644121F8181C351400260497 /* share_button@2x.png in Resources */,
 				64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */,
 				6428B89E18A3A36600E1A904 /* SeasonsViewController.xib in Resources */,
 				64646C5C1892BF3C007926FE /* featured_cells_header@2x.png in Resources */,
+				64E69B99197D1AD100352AFE /* checkmark@2x.png in Resources */,
 				64290E8918A5412A009E6B04 /* LoadingView.xib in Resources */,
 				64648EDD1829956200365EC7 /* ActorViewController.xib in Resources */,
 				649C3A781818068F0000A34C /* full_stars_big@2x.png in Resources */,
@@ -3231,6 +3332,7 @@
 				64CA53841823DC48000699C5 /* MovieButtonsBlack.bundle in Resources */,
 				64A8AD7B1890203200DBECD7 /* MoviePosterView.xib in Resources */,
 				64412223181D3D7F00260497 /* CharacterCell.xib in Resources */,
+				64DFA7C619781E4F008F4730 /* check_in_icon_big@2x.png in Resources */,
 				64DC8C1B1817215E002C11D8 /* toolbox_line.png in Resources */,
 				64177870180C8A7400CDFA25 /* full_stars_small@2x.png in Resources */,
 				64ADACAA191C2EAF002D1538 /* DashboardViewController.xib in Resources */,
@@ -3244,6 +3346,7 @@
 				64290E7F18A516DA009E6B04 /* blue_circle.png in Resources */,
 				64CA539A1823F8E1000699C5 /* SearchResultCell.xib in Resources */,
 				64F25A151827D32C005AB9F8 /* TextViewController.xib in Resources */,
+				64E69B9B197D20C500352AFE /* close_button@2x.png in Resources */,
 				64290E7018A43629009E6B04 /* SeasonCell.xib in Resources */,
 				6417786F180C8A7400CDFA25 /* full_stars_small.png in Resources */,
 				64646C5B1892BF3C007926FE /* featured_cells_header.png in Resources */,
@@ -3251,15 +3354,20 @@
 				64DC8C1C1817215E002C11D8 /* toolbox_line@2x.png in Resources */,
 				64CA539D1824060C000699C5 /* add_button.png in Resources */,
 				64ADAC9F191C0D5D002D1538 /* search_bar_clear_icon_highlighted@2x.png in Resources */,
+				64DFA7CB1978209A008F4730 /* CheckinViewController.xib in Resources */,
 				6411F878196455BB0095BC7F /* DashboardMovieCell.xib in Resources */,
 				64897F1C189895C9001F9EDE /* share_twitter_button.png in Resources */,
 				642CA8EE181542FA00A293E4 /* MovieViewController.xib in Resources */,
+				64E69BA2197D5B0A00352AFE /* place_cell_background@2x.png in Resources */,
+				64E69BAB197D688000352AFE /* edit_button@2x.png in Resources */,
 				64CA53891823E6A9000699C5 /* empty_stars_big_white.png in Resources */,
 				64D74144189D1FB10011C39A /* TvViewController.xib in Resources */,
 				64648EC81828502E00365EC7 /* description_mask@2x.png in Resources */,
+				64E69BA7197D5B3400352AFE /* CheckInPlaceCell.xib in Resources */,
 				644121F7181C351400260497 /* share_button.png in Resources */,
 				64B3E42918F3FCD000783B95 /* menu_button@2x.png in Resources */,
 				64646C62189415F8007926FE /* MovieCell.xib in Resources */,
+				64E69B91197D173C00352AFE /* search_bar_icon_big@2x.png in Resources */,
 				64D74142189D1FB10011C39A /* TVsViewController.xib in Resources */,
 				64A8AD6B188EC42C00DBECD7 /* YouTubeTemplate.txt in Resources */,
 				64ADACA4191C2E7D002D1538 /* SearchViewController.xib in Resources */,
@@ -3313,6 +3421,7 @@
 				64B9F6111822A3F0002E322F /* GPUImageOutput.m in Sources */,
 				64648ED51829320C00365EC7 /* CharacterTableCell.m in Sources */,
 				64B2AB6318083CBF00E02E2F /* Connection.m in Sources */,
+				64E69B94197D1A1F00352AFE /* CheckInMovieCell.m in Sources */,
 				64648EE61829A36900365EC7 /* PersonConnection.m in Sources */,
 				64B9F5FA1822A3F0002E322F /* GPUImageLineGenerator.m in Sources */,
 				64B9F6181822A3F0002E322F /* GPUImagePoissonBlendFilter.m in Sources */,
@@ -3322,6 +3431,7 @@
 				64B9F6481822A3F0002E322F /* GPUImageVignetteFilter.m in Sources */,
 				64FDCC471963414E002FE27C /* DashboardTvShowCell.m in Sources */,
 				64B9F5FD1822A3F0002E322F /* GPUImageLowPassFilter.m in Sources */,
+				64DFA7CA1978209A008F4730 /* CheckinViewController.m in Sources */,
 				64B9F6241822A3F0002E322F /* GPUImageSaturationBlendFilter.m in Sources */,
 				64B9F63E1822A3F0002E322F /* GPUImageToneCurveFilter.m in Sources */,
 				64B9F5D51822A3F0002E322F /* GPUImageDivideBlendFilter.m in Sources */,
@@ -3380,6 +3490,7 @@
 				64290E8318A53D41009E6B04 /* Alert+Moobeez.m in Sources */,
 				64FDCC4E196341D3002FE27C /* DashboardHeaderCell.m in Sources */,
 				64B9F5CA1822A3F0002E322F /* GPUImageColorPackingFilter.m in Sources */,
+				64E69B9E197D3FD800352AFE /* PlacePickerViewController.m in Sources */,
 				6417785D180C314500CDFA25 /* ConfigurationConnection.m in Sources */,
 				64B9F6301822A3F0002E322F /* GPUImageSolidColorGenerator.m in Sources */,
 				64B9F5D41822A3F0002E322F /* GPUImageDissolveBlendFilter.m in Sources */,
@@ -3407,6 +3518,7 @@
 				64B9F5D11822A3F0002E322F /* GPUImageDilationFilter.m in Sources */,
 				64B2AB7318083CBF00E02E2F /* ImageView+Tmdb.m in Sources */,
 				64290E7A18A4627E009E6B04 /* EpisodeCell.m in Sources */,
+				64E69BA6197D5B3400352AFE /* CheckInPlaceCell.m in Sources */,
 				64A10D9618A8E69F00906081 /* TeebeezHeaderView.m in Sources */,
 				64B2AB7418083CBF00E02E2F /* UIColor+Moobeez.m in Sources */,
 				64ADACB3191C5C52002D1538 /* SearchCategoryController.m in Sources */,
@@ -3712,7 +3824,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-lxml2";
 				PROVISIONING_PROFILE = "93201FAC-D2FD-4842-8CEF-F8E5A4584E89";
@@ -3751,7 +3863,7 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/usr/include/libxml2,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				OTHER_LDFLAGS = "-lxml2";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

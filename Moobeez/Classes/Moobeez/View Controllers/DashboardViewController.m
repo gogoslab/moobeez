@@ -49,6 +49,7 @@ typedef enum : NSUInteger {
     [self.tableView registerNib:[UINib nibWithNibName:@"DashboardTvShowCell" bundle:nil] forCellReuseIdentifier:@"DashboardTvShowCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"DashboardMovieCell" bundle:nil] forCellReuseIdentifier:@"DashboardMovieCell"];
 
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"check_in_icon_big.png"] style:UIBarButtonItemStylePlain target:self action:@selector(checkinButtonPressed:)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -57,6 +58,7 @@ typedef enum : NSUInteger {
     [self loadTodayShows];
     [self loadMissedShows];
     [self loadWatchlistMovies];
+    
 }
 
 #pragma mark - Load sections
@@ -267,6 +269,16 @@ typedef enum : NSUInteger {
             }
         }
     }
+    
+}
+
+- (IBAction)checkinButtonPressed:(id)sender {
+    
+    [self.appDelegate.sideTabController presentCheckInViewController];
+    
+//    [self presentViewController:self.appDelegate.sideTabController.checkinNavigationViewController animated:YES completion:^{
+//        
+//    }];
     
 }
 

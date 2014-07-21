@@ -70,4 +70,28 @@
     self.frame = frame;
 }
 
+- (UIColor*)borderColor {
+    return [UIColor colorWithCGColor:self.layer.borderColor];
+}
+
+- (void)setBorderColor:(UIColor *)borderColor {
+    self.layer.borderColor = [borderColor CGColor];
+}
+
+- (NSInteger)borderWidth {
+    return self.layer.borderWidth;
+}
+
+- (void)setBorderWidth:(NSInteger)borderWidth {
+    self.layer.borderWidth = borderWidth;
+}
+
+- (NSInteger)cornerRadius {
+    return self.layer.cornerRadius;
+}
+
+- (void)setCornerRadius:(NSInteger)cornerRadius {
+    self.layer.cornerRadius = cornerRadius;
+}
+
 @end

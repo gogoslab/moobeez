@@ -90,6 +90,9 @@
 #import "DashboardHeaderCell.h"
 #import "DashboardFooterCell.h"
 
+#import "CheckInMovieCell.h"
+#import "CheckInPlaceCell.h"
+
 #pragma mark - Toolboxes
 
 #import "ToolboxView.h"
