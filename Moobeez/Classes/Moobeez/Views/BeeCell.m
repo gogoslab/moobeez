@@ -11,7 +11,7 @@
 
 @interface BeeCell ()
 
-@property (weak, nonatomic) IBOutlet UIView* contentView;
+@property (weak, nonatomic) IBOutlet UIView* containerView;
 
 @property (weak, nonatomic) IBOutlet ImageView *posterImageView;
 @property (weak, nonatomic) IBOutlet StarsView *starsView;
@@ -140,7 +140,7 @@
 
 - (void)returnToNormalState {
     self.posterImageView.frame = self.bounds;
-    [self.contentView insertSubview:self.posterImageView atIndex:0];
+    [self.containerView insertSubview:self.posterImageView atIndex:0];
 }
 
 

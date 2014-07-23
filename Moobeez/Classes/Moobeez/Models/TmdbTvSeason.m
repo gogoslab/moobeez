@@ -40,7 +40,7 @@
     }
     
     if (tmdbDictionary[@"overview"]) {
-        self.description = tmdbDictionary[@"overview"];
+        self.overview = tmdbDictionary[@"overview"];
     }
 
     if (tmdbDictionary[@"episodes"]) {

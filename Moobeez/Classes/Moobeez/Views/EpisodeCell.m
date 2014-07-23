@@ -43,8 +43,8 @@
     self.titleLabel.text = episode.name;
     self.episodeLabel.text = StringInteger((long)episode.episodeNumber);
 
-    if (episode.description) {
-        self.detailsLabel.text = episode.description;
+    if (episode.overview) {
+        self.detailsLabel.text = episode.overview;
     }
     else {
         self.detailsLabel.text = @"";

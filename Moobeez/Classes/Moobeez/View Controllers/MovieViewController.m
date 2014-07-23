@@ -94,14 +94,15 @@
 
 - (IBAction)backButtonPressed:(id)sender {
     
+    if (self.closeHandler) {
+        self.closeHandler();
+    }
+    
     [self dismissViewControllerAnimated:NO completion:^{
     }];
 
     if (self.moobee.id != -1) {
         [self.moobee save];
-    }
-    if (self.closeHandler) {
-        self.closeHandler();
     }
 }
 
@@ -144,7 +145,7 @@
     
     [self.view addSubview:self.descriptionViewController.view];
     self.descriptionViewController.sourceButton = sender;
-    self.descriptionViewController.text = self.tmdbMovie.description;
+    self.descriptionViewController.text = self.tmdbMovie.overview;
     [self.descriptionViewController startAnimation];
 }
 

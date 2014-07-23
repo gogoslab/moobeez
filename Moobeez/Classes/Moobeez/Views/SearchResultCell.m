@@ -40,7 +40,7 @@
     
     [self.posterImageView loadImageWithPath:tmdbPerson.profilePath andWidth:185 completion:^(BOOL didLoadImage) {}];
     self.titleLabel.text = tmdbPerson.name;
-    self.detailsLabel.text = tmdbPerson.description;
+    self.detailsLabel.text = tmdbPerson.overview;
     
     self.detailsLabel.hidden = (self.detailsLabel.text.length == 0);
 }

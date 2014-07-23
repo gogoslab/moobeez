@@ -151,7 +151,7 @@
     
     [self.view addSubview:self.descriptionViewController.view];
     self.descriptionViewController.sourceButton = sender;
-    self.descriptionViewController.text = self.tmdbTv.description;
+    self.descriptionViewController.text = self.tmdbTv.overview;
     [self.descriptionViewController startAnimation];
 }
 

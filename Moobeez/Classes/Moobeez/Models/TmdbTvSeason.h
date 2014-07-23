@@ -11,7 +11,7 @@
 @interface TmdbTvSeason : NSObject
 
 @property (strong, nonatomic) NSString* name;
-@property (strong, nonatomic) NSString* description;
+@property (strong, nonatomic) NSString* overview;
 
 @property (strong, nonatomic) NSString* posterPath;
 @property (readwrite, nonatomic) NSInteger seasonNumber;

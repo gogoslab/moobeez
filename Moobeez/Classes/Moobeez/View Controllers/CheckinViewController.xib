@@ -95,9 +95,6 @@
                             <state key="normal" image="search_bar_icon_big.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <connections>
-                                <action selector="searchButtonPressed:" destination="-1" eventType="touchUpInside" id="nSZ-ie-S5k"/>
-                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -131,9 +128,6 @@
                             <state key="normal" image="edit_button.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
-                            <connections>
-                                <action selector="searchButtonPressed:" destination="-1" eventType="touchUpInside" id="E6F-t7-iwO"/>
-                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>

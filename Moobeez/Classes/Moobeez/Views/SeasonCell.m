@@ -60,8 +60,8 @@
 
     [self refreshEpisodesLabel];
     
-    if (season.description) {
-        self.detailsLabel.text = season.description;
+    if (season.overview) {
+        self.detailsLabel.text = season.overview;
     }
     else {
         self.detailsLabel.text = @"";

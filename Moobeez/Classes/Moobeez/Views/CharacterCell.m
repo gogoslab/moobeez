@@ -11,11 +11,14 @@
 
 @interface CharacterCell ()
 
+@property (weak, nonatomic) IBOutlet UIView *containerView;
+
 @property (weak, nonatomic) IBOutlet ImageView *posterImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIView* animatedView;
 
 @property (readwrite, nonatomic) CGRect initialAnimatedFrame;
+@property (readwrite, nonatomic) CGRect windowAnimatedFrame;
 
 @end
 
@@ -52,6 +55,8 @@
     self.animatedView.center = [appDelegate.window convertPoint:self.animatedView.center fromView:self.animatedView.superview];
     [appDelegate.window addSubview:self.animatedView];
     
+    self.windowAnimatedFrame = self.animatedView.frame;
+    
     [UIView animateWithDuration:0.5 animations:^{
         self.posterImageView.layer.cornerRadius = 0;
         self.animatedView.frame = appDelegate.window.bounds;
@@ -77,7 +82,7 @@
 
 - (void)returnToNormalState {
     self.animatedView.frame = self.bounds;
-    [self addSubview:self.animatedView];
+    [self.containerView addSubview:self.animatedView];
 }
 
 - (void)prepareForShrink {
@@ -89,12 +94,10 @@
 
 - (void)animateShrinkWithCompletion:(void (^)(void))completionHandler {
     
-    AppDelegate* appDelegate = (AppDelegate*) [UIApplication sharedApplication].delegate;
-    
     [self prepareForShrink];
     
     [UIView animateWithDuration:0.5 animations:^{
-        self.animatedView.frame = [appDelegate.window convertRect:self.initialAnimatedFrame fromView:self];
+        self.animatedView.frame = self.windowAnimatedFrame;
     } completion:^(BOOL finished) {
         self.animatedView.frame = self.initialAnimatedFrame;
         [self addSubview:self.animatedView];

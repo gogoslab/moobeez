@@ -64,10 +64,11 @@
 
 - (IBAction)backButtonPressed:(id)sender {
     
+    if (self.closeHandler) {
+        self.closeHandler();
+    }
+
     [self dismissViewControllerAnimated:NO completion:^{
-        if (self.closeHandler) {
-            self.closeHandler();
-        }
     }];
 }
 
@@ -90,7 +91,7 @@
     
     [self.view addSubview:self.descriptionViewController.view];
     self.descriptionViewController.sourceButton = sender;
-    self.descriptionViewController.text = self.tmdbActor.description;
+    self.descriptionViewController.text = self.tmdbActor.overview;
     [self.descriptionViewController startAnimation];
 }
 
@@ -144,7 +145,9 @@
                 viewController.tmdbMovie = movie;
                 
                 viewController.closeHandler = ^{
-                    [cell animateShrinkWithCompletion:^{}];
+                    [cell animateShrinkWithCompletion:^{
+                        self.view.userInteractionEnabled = YES;
+                    }];
                 };
                 
                 [self presentViewController:viewController animated:NO completion:^{}];
@@ -174,7 +177,9 @@
                 viewController.tmdbMovie = movie;
                 
                 viewController.closeHandler = ^{
-                    [cell animateShrinkWithCompletion:^{}];
+                    [cell animateShrinkWithCompletion:^{
+                        self.view.userInteractionEnabled = YES;
+                    }];
                 };
                 
                 [self presentViewController:viewController animated:NO completion:^{}];

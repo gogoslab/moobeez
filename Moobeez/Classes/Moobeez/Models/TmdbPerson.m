@@ -39,7 +39,7 @@
     }
     
     if ([[tmdbDictionary stringForKey:@"biography"] length]) {
-        self.description = [tmdbDictionary stringForKey:@"biography"];
+        self.overview = [tmdbDictionary stringForKey:@"biography"];
     }
     
     if ([[tmdbDictionary stringForKey:@"profile_path"] length]) {

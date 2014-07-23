@@ -40,7 +40,7 @@
     }
     
     if ([[tmdbDictionary stringForKey:@"overview"] length]) {
-        self.description = [tmdbDictionary stringForKey:@"overview"];
+        self.overview = [tmdbDictionary stringForKey:@"overview"];
     }
     
     if ([[tmdbDictionary stringForKey:@"poster_path"] length]) {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6185.11" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -65,11 +65,13 @@ dasd</string>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <nil key="simulatedStatusBarMetrics"/>
+                <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             </view>
             <size key="customSize" width="80" height="146"/>
             <connections>
                 <outlet property="activityIndicator" destination="tA3-bA-WFA" id="kRa-et-X2X"/>
-                <outlet property="contentView" destination="jT7-5l-NUZ" id="gDI-dn-DDS"/>
+                <outlet property="containerView" destination="jT7-5l-NUZ" id="dCG-RD-Vgn"/>
                 <outlet property="nameLabel" destination="ojh-aB-O9i" id="7Ea-OT-gNj"/>
                 <outlet property="notWatchedEpisodesLabel" destination="aBl-EU-u1L" id="bFI-Fc-dkj"/>
                 <outlet property="posterImageView" destination="Fj1-Kh-Th3" id="IHR-px-a7i"/>
@@ -81,4 +83,12 @@ dasd</string>
         <image name="empty_stars_small.png" width="80" height="16"/>
         <image name="full_stars_small.png" width="80" height="16"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
 </document>
