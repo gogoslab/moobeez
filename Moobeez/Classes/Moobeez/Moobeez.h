@@ -66,6 +66,10 @@
 
 #import "DashboardViewController.h"
 
+#import "CheckinViewController.h"
+#import "SearchNewPlaceViewController.h"
+#import "PlacePickerViewController.h"
+
 #pragma mark - Cells
 
 #import "BeeCell.h"

@@ -11,11 +11,10 @@
 
 @interface SearchNewTvViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *blurView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet SideTabSearchBar *searchBar;
 
 @property (strong, nonatomic) NSMutableArray* tvs;
 @end
@@ -123,33 +122,6 @@
     self.selectHandler(self.tvs[indexPath.row]);
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (void)prepareBlurInView:(UIView*)view {
-    
-    CGSize size = self.blurView.frame.size;
-    
-    CGFloat scale = 1;//[UIScreen mainScreen].scale;
-    size.width *= scale;
-    size.height *= scale;
-    
-    UIGraphicsBeginImageContextWithOptions(size, NO, [UIScreen mainScreen].scale);
-    
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    
-    CGContextScaleCTM(ctx, scale, scale);
-    
-    [view.layer renderInContext:ctx];
-    
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    GPUImageiOSBlurFilter *filter = [[GPUImageiOSBlurFilter alloc] init];
-    filter.blurRadiusInPixels = [UIScreen mainScreen].scale * 4;
-    self.blurView.image = [filter imageByFilteringImage:image];
-    
-    self.blurView.contentMode = UIViewContentModeBottom;
-    
 }
 
 @end

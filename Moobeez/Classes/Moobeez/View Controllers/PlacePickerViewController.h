@@ -11,10 +11,14 @@
 @interface PlacePickerViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *placesTableView;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *placesActivityIndicator;
+
 @property (strong, nonatomic) NSMutableArray* data;
 
 @property (strong, nonatomic) NSString* searchText;
 @property (readwrite, nonatomic) NSInteger radius;
 @property (readwrite, nonatomic) NSInteger resultsLimit;
+
+- (void)refresh;
 
 @end

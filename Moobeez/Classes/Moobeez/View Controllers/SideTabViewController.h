@@ -13,6 +13,10 @@
 
 @class NavigationController;
 
+@interface SideTabSearchBar : UISearchBar
+
+@end
+
 @interface SideTabViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIView *contentView;

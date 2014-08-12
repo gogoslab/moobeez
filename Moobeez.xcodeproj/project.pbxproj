@@ -107,6 +107,10 @@
 		64897F251898A441001F9EDE /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64897F241898A441001F9EDE /* Social.framework */; };
 		64897F271898A448001F9EDE /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64897F261898A448001F9EDE /* Accounts.framework */; };
 		64897F2B1898AA7D001F9EDE /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64897F2A1898AA7D001F9EDE /* FacebookSDK.framework */; };
+		649113771999337B009B10EE /* SearchNewPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649113751999337B009B10EE /* SearchNewPlaceViewController.m */; };
+		649113781999337B009B10EE /* SearchNewPlaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 649113761999337B009B10EE /* SearchNewPlaceViewController.xib */; };
+		6491137C1999384C009B10EE /* NewPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6491137B1999384C009B10EE /* NewPlaceCell.xib */; };
+		6492E9E31987E7F600EC8E0B /* done_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6492E9E21987E7F600EC8E0B /* done_button@2x.png */; };
 		6497AF2B1964037D00813E6A /* background_light_blured@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6497AF2A1964037D00813E6A /* background_light_blured@2x.png */; };
 		649C3A661817FE7F0000A34C /* ToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A651817FE7F0000A34C /* ToolboxView.m */; };
 		649C3A6D1817FFEA0000A34C /* MovieToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A6C1817FFEA0000A34C /* MovieToolboxView.m */; };
@@ -627,6 +631,11 @@
 		64897F241898A441001F9EDE /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		64897F261898A448001F9EDE /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		64897F2A1898AA7D001F9EDE /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		649113741999337B009B10EE /* SearchNewPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchNewPlaceViewController.h; sourceTree = "<group>"; };
+		649113751999337B009B10EE /* SearchNewPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchNewPlaceViewController.m; sourceTree = "<group>"; };
+		649113761999337B009B10EE /* SearchNewPlaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchNewPlaceViewController.xib; sourceTree = "<group>"; };
+		6491137B1999384C009B10EE /* NewPlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPlaceCell.xib; sourceTree = "<group>"; };
+		6492E9E21987E7F600EC8E0B /* done_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done_button@2x.png"; sourceTree = "<group>"; };
 		6497AF2A1964037D00813E6A /* background_light_blured@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_light_blured@2x.png"; sourceTree = "<group>"; };
 		649C3A641817FE7F0000A34C /* ToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolboxView.h; sourceTree = "<group>"; };
 		649C3A651817FE7F0000A34C /* ToolboxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolboxView.m; sourceTree = "<group>"; };
@@ -1362,6 +1371,7 @@
 		64177865180C3B5A00CDFA25 /* Common Images */ = {
 			isa = PBXGroup;
 			children = (
+				6492E9E21987E7F600EC8E0B /* done_button@2x.png */,
 				64E69BAA197D688000352AFE /* edit_button@2x.png */,
 				64E69B9A197D20C500352AFE /* close_button@2x.png */,
 				64E69B98197D1AD100352AFE /* checkmark@2x.png */,
@@ -1728,6 +1738,25 @@
 				64648EE51829A36900365EC7 /* PersonConnection.m */,
 			);
 			name = "Person Connection";
+			sourceTree = "<group>";
+		};
+		6491137919993388009B10EE /* Search New Place View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				649113741999337B009B10EE /* SearchNewPlaceViewController.h */,
+				649113751999337B009B10EE /* SearchNewPlaceViewController.m */,
+				649113761999337B009B10EE /* SearchNewPlaceViewController.xib */,
+			);
+			name = "Search New Place View Controller";
+			sourceTree = "<group>";
+		};
+		6491137A199933A5009B10EE /* Checkin Screen */ = {
+			isa = PBXGroup;
+			children = (
+				649D42FF19782129000D16D1 /* Checkin View Controller */,
+				6491137919993388009B10EE /* Search New Place View Controller */,
+			);
+			name = "Checkin Screen";
 			sourceTree = "<group>";
 		};
 		649C3A671817FE840000A34C /* Toolbox View */ = {
@@ -2312,7 +2341,7 @@
 				64D7414B189D22400011C39A /* Tv Detail Screen */,
 				64ADACB0191C5C2E002D1538 /* Search Screen */,
 				64ADACAB191C2EB2002D1538 /* Dashboard View Controller */,
-				649D42FF19782129000D16D1 /* Checkin View Controller */,
+				6491137A199933A5009B10EE /* Checkin Screen */,
 				64E69B9F197D3FDB00352AFE /* Place Picker View Controller */,
 			);
 			path = "View Controllers";
@@ -2965,6 +2994,7 @@
 				64E69BA3197D5B3400352AFE /* CheckInPlaceCell.h */,
 				64E69BA4197D5B3400352AFE /* CheckInPlaceCell.m */,
 				64E69BA5197D5B3400352AFE /* CheckInPlaceCell.xib */,
+				6491137B1999384C009B10EE /* NewPlaceCell.xib */,
 			);
 			name = "Checkin Place Cell";
 			sourceTree = "<group>";
@@ -3265,6 +3295,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6492E9E31987E7F600EC8E0B /* done_button@2x.png in Resources */,
 				64290E9218A65AEB009E6B04 /* delete_button.png in Resources */,
 				64B2AADF18082AE600E02E2F /* Images.xcassets in Resources */,
 				64B3E42818F3FCD000783B95 /* menu_button.png in Resources */,
@@ -3312,6 +3343,7 @@
 				6428B89818A39F2500E1A904 /* TvWatchedViewController.xib in Resources */,
 				64FDCC481963414E002FE27C /* DashboardTvShowCell.xib in Resources */,
 				64428583191B00CF00A05B45 /* iRate.bundle in Resources */,
+				649113781999337B009B10EE /* SearchNewPlaceViewController.xib in Resources */,
 				64FDCC5519634924002FE27C /* DashboardFooterCell.xib in Resources */,
 				64CA538A1823E6A9000699C5 /* empty_stars_big_white@2x.png in Resources */,
 				644486EA19780BD6004084E9 /* check_in_icon@2x.png in Resources */,
@@ -3329,6 +3361,7 @@
 				649C3A781818068F0000A34C /* full_stars_big@2x.png in Resources */,
 				64FDCC4F196341D3002FE27C /* DashboardHeaderCell.xib in Resources */,
 				64290E8F18A6497C009E6B04 /* TeebeeLoadingView.xib in Resources */,
+				6491137C1999384C009B10EE /* NewPlaceCell.xib in Resources */,
 				64CA53841823DC48000699C5 /* MovieButtonsBlack.bundle in Resources */,
 				64A8AD7B1890203200DBECD7 /* MoviePosterView.xib in Resources */,
 				64412223181D3D7F00260497 /* CharacterCell.xib in Resources */,
@@ -3589,6 +3622,7 @@
 				64B9F60D1822A3F0002E322F /* GPUImageNonMaximumSuppressionFilter.m in Sources */,
 				64B9F6121822A3F0002E322F /* GPUImageOverlayBlendFilter.m in Sources */,
 				64D7414E189D272A0011C39A /* Bee.m in Sources */,
+				649113771999337B009B10EE /* SearchNewPlaceViewController.m in Sources */,
 				64B2AB7218083CBF00E02E2F /* ImageView.m in Sources */,
 				64B9F5DC1822A3F0002E322F /* GPUImageFilter.m in Sources */,
 				64B9F6161822A3F0002E322F /* GPUImagePixellateFilter.m in Sources */,

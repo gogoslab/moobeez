@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6205" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActorViewController">
@@ -34,38 +34,43 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
         <view contentMode="redraw" id="xj6-Jc-xBi" customClass="ActorToolboxView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="nsf-Um-AH6">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                </imageView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fvm-Hd-gdb">
-                    <rect key="frame" x="0.0" y="10" width="320" height="231"/>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" id="yE6-NO-zFh">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="xj6-Jc-xBi" id="xtw-pU-14H"/>
-                        <outlet property="delegate" destination="xj6-Jc-xBi" id="YeN-td-pdr"/>
-                    </connections>
-                </tableView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="toolbox_up_arrow.png" id="svD-XX-fbC">
-                    <rect key="frame" x="140" y="4" width="40" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="TOT-lk-JPa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fvm-Hd-gdb">
+                                <rect key="frame" x="0.0" y="9" width="320" height="231"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="xj6-Jc-xBi" id="xtw-pU-14H"/>
+                                    <outlet property="delegate" destination="xj6-Jc-xBi" id="YeN-td-pdr"/>
+                                </connections>
+                            </tableView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="toolbox_up_arrow.png" id="svD-XX-fbC">
+                                <rect key="frame" x="140" y="3" width="40" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>
+            <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="actorNameCell" destination="lsP-zQ-PAU" id="T3H-1d-6So"/>
                 <outlet property="actorNameLabel" destination="Xrg-2I-oeF" id="m5K-4V-iRm"/>
-                <outlet property="blurImageView" destination="nsf-Um-AH6" id="PFN-DT-MyR"/>
                 <outlet property="buttonsCell" destination="hR4-dA-aZ2" id="Cnx-yD-3Kd"/>
                 <outlet property="castButton" destination="cxb-Am-tce" id="sFu-Ff-el5"/>
                 <outlet property="castCell" destination="YWb-MM-lk7" id="6ck-qJ-Blr"/>
@@ -77,6 +82,7 @@
                 <outlet property="toolboxHandlerImageView" destination="svD-XX-fbC" id="7RG-VO-6R8"/>
                 <outletCollection property="gestureRecognizers" destination="WBB-ci-F0y" appends="YES" id="bzW-PF-NbJ"/>
             </connections>
+            <point key="canvasLocation" x="271" y="156"/>
         </view>
         <panGestureRecognizer minimumNumberOfTouches="1" id="WBB-ci-F0y">
             <connections>
@@ -204,4 +210,12 @@
         <image name="button_photos.png" width="50" height="50"/>
         <image name="toolbox_up_arrow.png" width="50" height="15"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4">
+            <size key="portraitSize" width="320" height="568"/>
+            <size key="landscapeSize" width="568" height="320"/>
+        </simulatedScreenMetrics>
+    </simulatedMetricsContainer>
 </document>

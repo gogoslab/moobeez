@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6185.7" systemVersion="14A283o" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6205" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckinViewController">
             <connections>
                 <outlet property="collectionView" destination="YUS-Ou-KwT" id="Vxk-1D-pJV"/>
+                <outlet property="commentsButton" destination="ndO-7z-BnI" id="hFV-Le-QhU"/>
+                <outlet property="commentsTextView" destination="637-LZ-6YW" id="LbC-m3-wEZ"/>
+                <outlet property="commentsView" destination="1WN-hE-4k9" id="bXA-gI-paH"/>
+                <outlet property="moviesView" destination="Ht5-El-a7A" id="92R-TY-db1"/>
+                <outlet property="placesActivityIndicator" destination="s91-pm-hir" id="dTS-wB-EK0"/>
                 <outlet property="placesTableView" destination="qfv-HR-Jmp" id="gPW-sw-07Y"/>
+                <outlet property="placesView" destination="gF7-7Z-ONI" id="gmL-3F-YHk"/>
                 <outlet property="view" destination="F8t-N6-Hf5" id="cfo-OL-LGU"/>
             </connections>
         </placeholder>
@@ -95,7 +101,14 @@
                             <state key="normal" image="search_bar_icon_big.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="searchPlaceButtonPressed:" destination="-1" eventType="touchUpInside" id="KG3-jl-47m"/>
+                            </connections>
                         </button>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="white" id="s91-pm-hir">
+                            <rect key="frame" x="150" y="110" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -105,11 +118,14 @@
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Going to the movie!" id="637-LZ-6YW">
                             <rect key="frame" x="8" y="20" width="305" height="93"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="fUj-Mq-dmt"/>
+                            </connections>
                         </textView>
                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="featured_cells_header.png" id="LQk-Xq-QxM">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
@@ -128,6 +144,10 @@
                             <state key="normal" image="edit_button.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <state key="selected" image="done_button.png"/>
+                            <connections>
+                                <action selector="commentsButtonPressed:" destination="-1" eventType="touchUpInside" id="o4a-wc-i6h"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -141,11 +161,12 @@
                 <size key="portraitSize" width="320" height="568"/>
                 <size key="landscapeSize" width="568" height="320"/>
             </simulatedScreenMetrics>
-            <point key="canvasLocation" x="255" y="-185"/>
+            <point key="canvasLocation" x="84" y="-188"/>
         </view>
     </objects>
     <resources>
         <image name="background_light_blured.png" width="320" height="568"/>
+        <image name="done_button.png" width="25" height="25"/>
         <image name="edit_button.png" width="23" height="23"/>
         <image name="featured_cells_header.png" width="320" height="42"/>
         <image name="search_bar_icon_big.png" width="23" height="23"/>

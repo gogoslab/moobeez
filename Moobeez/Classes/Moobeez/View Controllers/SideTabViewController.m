@@ -9,10 +9,6 @@
 #import "SideTabViewController.h"
 #import "Moobeez.h"
 
-@interface SideTabSearchBar : UISearchBar
-
-@end
-
 @implementation SideTabSearchBar
 
 - (id)initWithCoder:(NSCoder *)aDecoder {

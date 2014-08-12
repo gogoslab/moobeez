@@ -16,6 +16,4 @@ typedef void (^SelectTvHandler) (TmdbTV* tv);
 
 @property (copy, nonatomic) SelectTvHandler selectHandler;
 
-- (void)prepareBlurInView:(UIView*)view;
-
 @end

@@ -20,6 +20,7 @@ typedef enum TmdbTrailerType {
 @property (strong, nonatomic) NSString* name;
 @property (strong, nonatomic) NSString* overview;
 @property (strong, nonatomic) NSString* imdbId;
+@property (strong, nonatomic) NSURL* imdbUrl;
 @property (strong, nonatomic) NSString* trailerPath;
 @property (readwrite, nonatomic) TmdbTrailerType trailerType;
 

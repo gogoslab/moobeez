@@ -21,6 +21,9 @@ const NSInteger defaultRadius = 10000; // 1km
 
 @property (copy, nonatomic) FBRequestHandler requestHandler;
 
+@property (readwrite, nonatomic) BOOL isLoading;
+
+
 @end
 
 @implementation PlacePickerViewController
@@ -38,6 +41,8 @@ const NSInteger defaultRadius = 10000; // 1km
     self.locationManager = [[CLLocationManager alloc] init];
 
     self.requestHandler = ^(FBRequestConnection *connection, id result, NSError *error) {
+        self.isLoading = NO;
+
         if (error) {
             NSLog(@"Error: %@", [error localizedDescription]);
         } else {
@@ -64,7 +69,10 @@ const NSInteger defaultRadius = 10000; // 1km
 
 - (void)loadData {
     
+    
     if (FBSession.activeSession.isOpen) {
+
+        self.isLoading = YES;
         
         if (!self.nextUrlRequest) {
             
@@ -97,6 +105,9 @@ const NSInteger defaultRadius = 10000; // 1km
     self.nextUrlRequest = result[@"paging"][@"next"];
     
     [self.placesTableView reloadData];
+    
+    [self.placesActivityIndicator stopAnimating];
+    
 }
 
 - (void)refresh {
@@ -173,6 +184,14 @@ const NSInteger defaultRadius = 10000; // 1km
     cell.textLabel.text = self.data[indexPath.row][@"name"];
     
     return cell;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if (!self.isLoading && scrollView.contentOffset.y > (scrollView.contentSize.height - scrollView.frame.size.height + 40)) {
+        [self loadData];
+    }
+    
 }
 
 @end

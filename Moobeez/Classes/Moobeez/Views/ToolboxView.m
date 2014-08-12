@@ -53,15 +53,15 @@
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    GPUImageiOSBlurFilter *filter = [[GPUImageiOSBlurFilter alloc] init];
-    filter.blurRadiusInPixels = [UIScreen mainScreen].scale * 4;
-    self.blurImageView.image = [filter imageByFilteringImage:image];
-    
-    self.blurImageView.contentMode = UIViewContentModeBottom;
+//    GPUImageiOSBlurFilter *filter = [[GPUImageiOSBlurFilter alloc] init];
+//    filter.blurRadiusInPixels = [UIScreen mainScreen].scale * 4;
+//    self.blurImageView.image = [filter imageByFilteringImage:image];
+//    
+//    self.blurImageView.contentMode = UIViewContentModeBottom;
     
     CGFloat luminosity = [image bottomHalfLuminosity];
  
-    self.isLightInterface = (luminosity <= 100);
+    self.isLightInterface = (luminosity <= 60);
 }
 
 - (IBAction)toolboxDidPan:(id)sender {

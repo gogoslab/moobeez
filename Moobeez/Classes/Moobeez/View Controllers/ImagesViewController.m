@@ -43,6 +43,13 @@
     
     [super viewWillAppear:animated];
     
+    
+
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+ 
     if (!self.didLoadImages) {
         
         self.imageViewsArray = [[NSMutableArray alloc] init];
@@ -67,12 +74,6 @@
         
         [self loadImageAtIndex:@0];
     }
-
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    
 }
 
 - (void)loadImageAtIndex:(NSNumber*)index {

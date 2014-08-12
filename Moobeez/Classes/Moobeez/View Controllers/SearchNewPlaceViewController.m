@@ -1,26 +1,23 @@
 //
-//  SearchNewMovieViewController.m
+//  SearchNewPlaceViewController.m
 //  Moobeez
 //
-//  Created by Radu Banea on 01/11/13.
-//  Copyright (c) 2013 Goggzy. All rights reserved.
+//  Created by Radu Banea on 11/08/14.
+//  Copyright (c) 2014 Goggzy. All rights reserved.
 //
 
-#import "SearchNewMovieViewController.h"
+#import "SearchNewPlaceViewController.h"
 #import "Moobeez.h"
 
-@interface SearchNewMovieViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface SearchNewPlaceViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *blurView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet SideTabSearchBar *searchBar;
 
-@property (strong, nonatomic) NSMutableArray* movies;
 @end
 
-@implementation SearchNewMovieViewController
+@implementation SearchNewPlaceViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,21 +34,15 @@
     // Do any additional setup after loading the view from its nib.
     
     self.contentView.layer.cornerRadius = 4;
-    [self.tableView registerNib:[UINib nibWithNibName:@"SearchResultCell" bundle:nil] forCellReuseIdentifier:@"SearchResultCell"];
-    
-//    [self.searchBar setImage:[UIImage imageNamed:@"search_bar_icon.png"] forSearchBarIcon:UISearchBarIconSearch state:UIControlStateNormal];
-//    [self.searchBar setImage:[UIImage imageNamed:@"search_bar_clear_icon.png"] forSearchBarIcon:UISearchBarIconClear state:UIControlStateNormal];
-//    [self.searchBar setImage:[UIImage imageNamed:@"search_bar_clear_icon_highlighted.png"] forSearchBarIcon:UISearchBarIconClear state:UIControlStateHighlighted];
-
+    [self.placesTableView registerNib:[UINib nibWithNibName:@"NewPlaceCell" bundle:nil] forCellReuseIdentifier:@"CheckInPlaceCell"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    if (self.movies.count == 0) {
+    if (self.data.count == 0) {
         [self.searchBar becomeFirstResponder];
     }
-    
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor],NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
 }
 
@@ -59,7 +50,7 @@
     [super viewWillDisappear:animated];
     
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor mainColor],NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
-
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -88,42 +79,55 @@
     
     [searchBar resignFirstResponder];
 
-    SearchMovieConnection* connection = [[SearchMovieConnection alloc] initWithQuery:searchBar.text completionHandler:^(WebserviceResultCode code, NSMutableArray *movies) {
-        if (code == WebserviceResultOk) {
-            self.movies = movies;
-            [self reloadData];
-        }
-    }];
+    self.searchText = searchBar.text;
     
-    [self startConnection:connection];
+    self.data = nil;
+    [self.placesTableView reloadData];
+    [self.placesActivityIndicator startAnimating];
     
-}
-
-- (void)reloadData {
-    [self.tableView reloadData];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.movies.count;
+    [self refresh];
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    SearchResultCell* cell = [tableView dequeueReusableCellWithIdentifier:@"SearchResultCell"];
     
-    cell.tmdbMovie = self.movies[indexPath.row];
+    CheckInPlaceCell* cell = [tableView dequeueReusableCellWithIdentifier:@"CheckInPlaceCell"];
+    
+    NSDictionary* place = self.data[indexPath.row];
+    
+    cell.nameLabel.text = place[@"name"];
+    
+    NSString *category = place[@"category"];
+    NSNumber *wereHereCount = place[@"were_here_count"];
+    
+    NSString* subtitle = @"";
+    
+    if (wereHereCount) {
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSString *wereHere = [numberFormatter stringFromNumber:wereHereCount];
+        
+        if (category) {
+            subtitle = [NSString stringWithFormat:@"%@ • %@ were here", [category capitalizedString], wereHere];
+        }
+        subtitle = [NSString stringWithFormat:@"%@ were here", wereHere];
+    }
+    if (category) {
+        subtitle = [category capitalizedString];
+    }
+    
+    cell.detailsLabel.text = subtitle;
+    
+    [cell.iconView loadImageWithPath:place[@"picture"][@"data"][@"url"] completion:^(BOOL didLoadImage) {}];
+    
+    cell.backgroundColor = [UIColor clearColor];
     
     return cell;
-    
 }
+
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    self.selectHandler(self.movies[indexPath.row]);
+    self.selectHandler(self.data[indexPath.row]);
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

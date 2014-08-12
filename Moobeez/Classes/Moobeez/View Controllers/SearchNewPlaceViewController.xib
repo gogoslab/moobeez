@@ -4,12 +4,12 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchNewTvViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchNewPlaceViewController">
             <connections>
-                <outlet property="activityIndicator" destination="klH-UV-ulo" id="dDK-Kt-6KD"/>
                 <outlet property="contentView" destination="39K-s3-3N2" id="gi4-PH-jcZ"/>
+                <outlet property="placesActivityIndicator" destination="klH-UV-ulo" id="FzU-gq-gH8"/>
+                <outlet property="placesTableView" destination="yQP-h9-L6B" id="Gla-mJ-ud3"/>
                 <outlet property="searchBar" destination="CD5-jd-5b5" id="K8z-Eb-rGb"/>
-                <outlet property="tableView" destination="yQP-h9-L6B" id="KhS-Cd-uF1"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -38,7 +38,7 @@
                                             <outlet property="delegate" destination="-1" id="MPV-na-EeZ"/>
                                         </connections>
                                     </searchBar>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" id="yQP-h9-L6B">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" id="yQP-h9-L6B">
                                         <rect key="frame" x="0.0" y="46" width="280" height="378"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -58,7 +58,7 @@
                             <blurEffect style="light"/>
                         </visualEffectView>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" alpha="0.80000001192092896" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="n9G-AL-ffI">
                     <rect key="frame" x="10" y="21" width="40" height="40"/>
