@@ -144,6 +144,11 @@
                 viewController.moobee = moobee;
                 viewController.tmdbMovie = movie;
                 
+                moobee.posterPath = movie.posterPath;
+                moobee.backdropPath = movie.backdropPath;
+                moobee.releaseDate = movie.releaseDate;
+
+                
                 viewController.closeHandler = ^{
                     [cell animateShrinkWithCompletion:^{
                         self.view.userInteractionEnabled = YES;
@@ -175,6 +180,10 @@
                 MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
                 viewController.moobee = moobee;
                 viewController.tmdbMovie = movie;
+                
+                moobee.posterPath = movie.posterPath;
+                moobee.backdropPath = movie.backdropPath;
+                moobee.releaseDate = movie.releaseDate;
                 
                 viewController.closeHandler = ^{
                     [cell animateShrinkWithCompletion:^{

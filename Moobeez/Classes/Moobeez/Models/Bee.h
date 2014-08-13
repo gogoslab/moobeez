@@ -10,12 +10,11 @@
 
 @interface Bee : DatabaseItem
 
-@property (readwrite, nonatomic) NSInteger id;
-
 @property (readwrite, nonatomic) NSInteger tmdbId;
 @property (strong, nonatomic) NSString* name;
 @property (strong, nonatomic) NSString* comments;
 @property (strong, nonatomic) NSString* posterPath;
+@property (strong, nonatomic) NSString* backdropPath;
 @property (readwrite, nonatomic) CGFloat rating;
 @property (strong, nonatomic) NSDate* date;
 

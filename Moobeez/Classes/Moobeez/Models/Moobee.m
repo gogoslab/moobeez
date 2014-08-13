@@ -39,6 +39,10 @@
     
     databaseDictionary[@"type"] = [NSString stringWithFormat:@"%d", self.type];
     databaseDictionary[@"isFavorite"] = [NSString stringWithFormat:@"%d", self.isFavorite];
+
+    if (self.releaseDate) {
+        databaseDictionary[@"releaseDate"] = [NSString stringWithFormat:@"%.0f", [self.releaseDate timeIntervalSinceReferenceDate]];
+    }
     
     return databaseDictionary;
 }
@@ -56,7 +60,9 @@
         moobee.name = movie.name;
         moobee.tmdbId = movie.id;
         moobee.posterPath = movie.posterPath;
+        moobee.backdropPath = movie.backdropPath;
         moobee.comments = @"";
+        moobee.releaseDate = movie.releaseDate;
         moobee.id = -1;
     }
     

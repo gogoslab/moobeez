@@ -427,6 +427,8 @@ typedef enum SoonSections {
 - (void)goToTvDetailsScreenForTeebee:(Teebee*)teebee andTv:(TmdbTV*)tv {
     
     teebee.tvRageId = tv.tvRageId;
+    teebee.backdropPath = tv.backdropPath;
+    teebee.posterPath = tv.posterPath;
     
     TvViewController* viewController = [[TvViewController alloc] initWithNibName:@"TvViewController" bundle:nil];
     viewController.teebee = teebee;

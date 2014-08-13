@@ -222,6 +222,11 @@ enum CollectionSections {
         MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
             
             if (code == WebserviceResultOk) {
+                
+                moobee.backdropPath = movie.backdropPath;
+                moobee.posterPath = movie.posterPath;
+                moobee.releaseDate = movie.releaseDate;
+                
                 [self.view addSubview:self.animationCell];
                 self.animationCell.frame = [self.view convertRect:cell.frame fromView:cell.superview];
                 
@@ -282,6 +287,11 @@ enum CollectionSections {
     MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
     viewController.moobee = moobee;
     viewController.tmdbMovie = movie;
+    
+    moobee.posterPath = movie.posterPath;
+    moobee.backdropPath = movie.backdropPath;
+    moobee.releaseDate = movie.releaseDate;
+
     [self presentViewController:viewController animated:NO completion:^{}];
     
     viewController.closeHandler = ^{

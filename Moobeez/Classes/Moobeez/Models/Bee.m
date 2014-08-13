@@ -25,6 +25,7 @@
         self.name = databaseDictionary[@"name"];
         self.comments = databaseDictionary[@"comments"];
         self.posterPath = databaseDictionary[@"posterPath"];
+        self.backdropPath = databaseDictionary[@"backdropPath"];
         self.rating = [databaseDictionary[@"rating"] floatValue];
         if (databaseDictionary[@"date"]) {
             self.date = [NSDate dateWithTimeIntervalSinceReferenceDate:[databaseDictionary[@"date"] doubleValue]];
@@ -42,6 +43,7 @@
     databaseDictionary[@"name"] = [self.name stringByResolvingSQLIssues];
     databaseDictionary[@"comments"] = [self.comments stringByResolvingSQLIssues];
     databaseDictionary[@"posterPath"] = [self.posterPath stringByResolvingSQLIssues];
+    databaseDictionary[@"backdropPath"] = [self.backdropPath stringByResolvingSQLIssues];
     databaseDictionary[@"rating"] = [NSString stringWithFormat:@"%.1f", self.rating];
     if (self.date) {
         databaseDictionary[@"date"] = [NSString stringWithFormat:@"%.0f", [self.date timeIntervalSinceReferenceDate]];

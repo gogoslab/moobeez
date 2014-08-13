@@ -17,6 +17,7 @@
 
 @interface Database : NSObject {
     sqlite3 *database;
+    sqlite3 *oldDatabase;
 }
 
 + (Database*)sharedDatabase;
@@ -58,4 +59,7 @@
 - (void)reloadTodayTeebeez;
 
 - (NSMutableArray*)executeQuery:(NSString*)query;
+
+- (NSMutableArray*)timelineItemsFromDate:(NSDate*)fromDate toDate:(NSDate*)toDate;
+
 @end

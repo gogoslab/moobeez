@@ -70,6 +70,8 @@
 #import "SearchNewPlaceViewController.h"
 #import "PlacePickerViewController.h"
 
+#import "TimelineViewController.h"
+
 #pragma mark - Cells
 
 #import "BeeCell.h"
@@ -96,6 +98,9 @@
 
 #import "CheckInMovieCell.h"
 #import "CheckInPlaceCell.h"
+
+#import "TimelineSectionCell.h"
+#import "TimelineItemCell.h"
 
 #pragma mark - Toolboxes
 

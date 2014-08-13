@@ -17,6 +17,8 @@
 #import "Teebee.h"
 #import "TeebeeEpisode.h"
 
+#import "TimelineItem.h"
+
 #import "TmdbMovie.h"
 #import "TmdbTV.h"
 #import "TmdbPerson.h"

@@ -11,7 +11,7 @@
 
 @interface DatabaseItem : NSObject
 
-@property (readonly, nonatomic) NSInteger id;
+@property (readwrite, nonatomic) NSInteger id;
 
 + (id)initWithId:(NSInteger)id;
 - (id)initWithDatabaseDictionary:(NSDictionary*)databaseDictionary;

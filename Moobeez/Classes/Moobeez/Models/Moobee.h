@@ -26,6 +26,7 @@ typedef enum MoobeeType {
 
 @property (readwrite, nonatomic) MoobeeType type;
 @property (readwrite, nonatomic) BOOL isFavorite;
+@property (strong, nonatomic) NSDate* releaseDate;
 
 + (id)moobeeWithTmdbMovie:(TmdbMovie*)movie;
 

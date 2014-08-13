@@ -98,6 +98,7 @@
             teebee.tvRageId = tv.tvRageId;
         }
         teebee.posterPath = tv.posterPath;
+        teebee.backdropPath = tv.backdropPath;
         teebee.id = -1;
         teebee.watchedEpisodesCount = 0;
         teebee.rating = -1;

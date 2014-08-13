@@ -10,8 +10,6 @@
 
 @interface DatabaseItem ()
 
-@property (readwrite, nonatomic) NSInteger id;
-
 @end
 
 @implementation DatabaseItem

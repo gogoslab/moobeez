@@ -14,6 +14,17 @@
 		640865FD180B6AF600725CE4 /* NSMutableDictionary+SQL.m in Sources */ = {isa = PBXBuildFile; fileRef = 640865FC180B6AF600725CE4 /* NSMutableDictionary+SQL.m */; };
 		64086600180B6D0500725CE4 /* Moobee.m in Sources */ = {isa = PBXBuildFile; fileRef = 640865FF180B6D0500725CE4 /* Moobee.m */; };
 		64086604180B6D2E00725CE4 /* Database.m in Sources */ = {isa = PBXBuildFile; fileRef = 64086603180B6D2E00725CE4 /* Database.m */; };
+		64087841199A12BC0047D380 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6408783F199A12BC0047D380 /* TimelineViewController.m */; };
+		64087842199A12BC0047D380 /* TimelineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64087840199A12BC0047D380 /* TimelineViewController.xib */; };
+		64087848199A17C40047D380 /* TimelineSectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64087846199A17C40047D380 /* TimelineSectionCell.m */; };
+		64087849199A17C40047D380 /* TimelineSectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64087847199A17C40047D380 /* TimelineSectionCell.xib */; };
+		64087851199A2BED0047D380 /* timeline_date@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6408784D199A2BED0047D380 /* timeline_date@2x.png */; };
+		64087852199A2BED0047D380 /* timeline_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6408784E199A2BED0047D380 /* timeline_line@2x.png */; };
+		64087853199A2BED0047D380 /* timeline_section_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6408784F199A2BED0047D380 /* timeline_section_mask@2x.png */; };
+		64087854199A2BED0047D380 /* timeline_tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64087850199A2BED0047D380 /* timeline_tag@2x.png */; };
+		64087858199A33810047D380 /* TimelineItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64087856199A33810047D380 /* TimelineItemCell.m */; };
+		64087859199A33810047D380 /* TimelineItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64087857199A33810047D380 /* TimelineItemCell.xib */; };
+		6408785D199A3EDF0047D380 /* TimelineItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6408785C199A3EDF0047D380 /* TimelineItem.m */; };
 		6411F877196455BB0095BC7F /* DashboardMovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6411F875196455BB0095BC7F /* DashboardMovieCell.m */; };
 		6411F878196455BB0095BC7F /* DashboardMovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6411F876196455BB0095BC7F /* DashboardMovieCell.xib */; };
 		6414A3001821B90D009397FF /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414A2FE1821B90D009397FF /* DatePickerView.m */; };
@@ -497,6 +508,21 @@
 		640865FF180B6D0500725CE4 /* Moobee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Moobee.m; sourceTree = "<group>"; };
 		64086602180B6D2E00725CE4 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		64086603180B6D2E00725CE4 /* Database.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Database.m; sourceTree = "<group>"; };
+		6408783E199A12BC0047D380 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
+		6408783F199A12BC0047D380 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
+		64087840199A12BC0047D380 /* TimelineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineViewController.xib; sourceTree = "<group>"; };
+		64087845199A17C40047D380 /* TimelineSectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineSectionCell.h; sourceTree = "<group>"; };
+		64087846199A17C40047D380 /* TimelineSectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineSectionCell.m; sourceTree = "<group>"; };
+		64087847199A17C40047D380 /* TimelineSectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineSectionCell.xib; sourceTree = "<group>"; };
+		6408784D199A2BED0047D380 /* timeline_date@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_date@2x.png"; sourceTree = "<group>"; };
+		6408784E199A2BED0047D380 /* timeline_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_line@2x.png"; sourceTree = "<group>"; };
+		6408784F199A2BED0047D380 /* timeline_section_mask@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_section_mask@2x.png"; sourceTree = "<group>"; };
+		64087850199A2BED0047D380 /* timeline_tag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_tag@2x.png"; sourceTree = "<group>"; };
+		64087855199A33810047D380 /* TimelineItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineItemCell.h; sourceTree = "<group>"; };
+		64087856199A33810047D380 /* TimelineItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineItemCell.m; sourceTree = "<group>"; };
+		64087857199A33810047D380 /* TimelineItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineItemCell.xib; sourceTree = "<group>"; };
+		6408785B199A3EDF0047D380 /* TimelineItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineItem.h; sourceTree = "<group>"; };
+		6408785C199A3EDF0047D380 /* TimelineItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineItem.m; sourceTree = "<group>"; };
 		6411F874196455BB0095BC7F /* DashboardMovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardMovieCell.h; sourceTree = "<group>"; };
 		6411F875196455BB0095BC7F /* DashboardMovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardMovieCell.m; sourceTree = "<group>"; };
 		6411F876196455BB0095BC7F /* DashboardMovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardMovieCell.xib; sourceTree = "<group>"; };
@@ -1278,8 +1304,105 @@
 				64086601180B6D0C00725CE4 /* Moobee */,
 				64F1DEC8189A98B500F2F88D /* Teebee */,
 				649C3A8E181825A50000A34C /* Tmdb models */,
+				6408785E199A3EE30047D380 /* Timeline Item */,
 			);
 			name = Database;
+			sourceTree = "<group>";
+		};
+		6408783B199A123E0047D380 /* 2. Dashboard Screen */ = {
+			isa = PBXGroup;
+			children = (
+				64ADACAB191C2EB2002D1538 /* Dashboard View Controller */,
+			);
+			name = "2. Dashboard Screen";
+			sourceTree = "<group>";
+		};
+		6408783C199A126E0047D380 /* 4. Movies Sections */ = {
+			isa = PBXGroup;
+			children = (
+				64F25A0E1827D2CF005AB9F8 /* Moobeez Screen */,
+				64F25A0F1827D2E2005AB9F8 /* Movies Screen */,
+				64F25A101827D2E9005AB9F8 /* Movie Details Screen */,
+				64648EDF1829957300365EC7 /* Actor Details Screen */,
+			);
+			name = "4. Movies Sections";
+			sourceTree = "<group>";
+		};
+		6408783D199A127F0047D380 /* 5. TV Sections */ = {
+			isa = PBXGroup;
+			children = (
+				64D74147189D21E00011C39A /* Teebeez Screen */,
+				64D74148189D21FE0011C39A /* TVs Screen */,
+				64D7414B189D22400011C39A /* Tv Detail Screen */,
+			);
+			name = "5. TV Sections";
+			sourceTree = "<group>";
+		};
+		64087843199A13550047D380 /* Timeline View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6408783E199A12BC0047D380 /* TimelineViewController.h */,
+				6408783F199A12BC0047D380 /* TimelineViewController.m */,
+				64087840199A12BC0047D380 /* TimelineViewController.xib */,
+			);
+			name = "Timeline View Controller";
+			sourceTree = "<group>";
+		};
+		64087844199A13610047D380 /* 3. Timeline Screen */ = {
+			isa = PBXGroup;
+			children = (
+				64087843199A13550047D380 /* Timeline View Controller */,
+			);
+			name = "3. Timeline Screen";
+			sourceTree = "<group>";
+		};
+		6408784A199A17C90047D380 /* Timeline Section Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64087845199A17C40047D380 /* TimelineSectionCell.h */,
+				64087846199A17C40047D380 /* TimelineSectionCell.m */,
+				64087847199A17C40047D380 /* TimelineSectionCell.xib */,
+			);
+			name = "Timeline Section Cell";
+			sourceTree = "<group>";
+		};
+		6408784B199A17D10047D380 /* Timeline Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6408784A199A17C90047D380 /* Timeline Section Cell */,
+				6408785A199A35070047D380 /* Timeline Item Cell */,
+			);
+			name = "Timeline Cells";
+			sourceTree = "<group>";
+		};
+		6408784C199A2BED0047D380 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				6408784D199A2BED0047D380 /* timeline_date@2x.png */,
+				6408784E199A2BED0047D380 /* timeline_line@2x.png */,
+				6408784F199A2BED0047D380 /* timeline_section_mask@2x.png */,
+				64087850199A2BED0047D380 /* timeline_tag@2x.png */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		6408785A199A35070047D380 /* Timeline Item Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64087855199A33810047D380 /* TimelineItemCell.h */,
+				64087856199A33810047D380 /* TimelineItemCell.m */,
+				64087857199A33810047D380 /* TimelineItemCell.xib */,
+			);
+			name = "Timeline Item Cell";
+			sourceTree = "<group>";
+		};
+		6408785E199A3EE30047D380 /* Timeline Item */ = {
+			isa = PBXGroup;
+			children = (
+				6408785B199A3EDF0047D380 /* TimelineItem.h */,
+				6408785C199A3EDF0047D380 /* TimelineItem.m */,
+			);
+			name = "Timeline Item";
 			sourceTree = "<group>";
 		};
 		6411F879196455BF0095BC7F /* Dashboard Movie Cell */ = {
@@ -1750,13 +1873,14 @@
 			name = "Search New Place View Controller";
 			sourceTree = "<group>";
 		};
-		6491137A199933A5009B10EE /* Checkin Screen */ = {
+		6491137A199933A5009B10EE /* 1. Checkin Screen */ = {
 			isa = PBXGroup;
 			children = (
 				649D42FF19782129000D16D1 /* Checkin View Controller */,
 				6491137919993388009B10EE /* Search New Place View Controller */,
+				64E69B9F197D3FDB00352AFE /* Place Picker View Controller */,
 			);
-			name = "Checkin Screen";
+			name = "1. Checkin Screen";
 			sourceTree = "<group>";
 		};
 		649C3A671817FE840000A34C /* Toolbox View */ = {
@@ -1802,6 +1926,7 @@
 				64290E7C18A46286009E6B04 /* Episode Cell */,
 				64FDCC4A1963415D002FE27C /* Dashboard Cells */,
 				64E69BA9197D5C2F00352AFE /* Checkin Cells */,
+				6408784B199A17D10047D380 /* Timeline Cells */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -2063,13 +2188,13 @@
 			name = "Search Connection";
 			sourceTree = "<group>";
 		};
-		64ADACB0191C5C2E002D1538 /* Search Screen */ = {
+		64ADACB0191C5C2E002D1538 /* 0. Search Screen */ = {
 			isa = PBXGroup;
 			children = (
 				64ADACA5191C2E80002D1538 /* Search View Controller */,
 				64ADACB4191C5C56002D1538 /* Search Category Controller */,
 			);
-			name = "Search Screen";
+			name = "0. Search Screen";
 			sourceTree = "<group>";
 		};
 		64ADACB4191C5C56002D1538 /* Search Category Controller */ = {
@@ -2163,6 +2288,7 @@
 		64B2AB0518082C4A00E02E2F /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6408784C199A2BED0047D380 /* Timeline */,
 				64E69BA0197D5B0A00352AFE /* CheckIn */,
 				64FDCC3D19634111002FE27C /* Dashboard */,
 				64646C581892BF3C007926FE /* Movies */,
@@ -2332,17 +2458,12 @@
 				64158329182BD79A00BB599C /* Navigation Controller */,
 				64B2AB84180844C300E02E2F /* View Controller */,
 				64177864180C336300CDFA25 /* Loading View Controller */,
-				64F25A0E1827D2CF005AB9F8 /* Moobeez Screen */,
-				64F25A0F1827D2E2005AB9F8 /* Movies Screen */,
-				64F25A101827D2E9005AB9F8 /* Movie Details Screen */,
-				64648EDF1829957300365EC7 /* Actor Details Screen */,
-				64D74147189D21E00011C39A /* Teebeez Screen */,
-				64D74148189D21FE0011C39A /* TVs Screen */,
-				64D7414B189D22400011C39A /* Tv Detail Screen */,
-				64ADACB0191C5C2E002D1538 /* Search Screen */,
-				64ADACAB191C2EB2002D1538 /* Dashboard View Controller */,
-				6491137A199933A5009B10EE /* Checkin Screen */,
-				64E69B9F197D3FDB00352AFE /* Place Picker View Controller */,
+				64ADACB0191C5C2E002D1538 /* 0. Search Screen */,
+				6491137A199933A5009B10EE /* 1. Checkin Screen */,
+				6408783B199A123E0047D380 /* 2. Dashboard Screen */,
+				64087844199A13610047D380 /* 3. Timeline Screen */,
+				6408783C199A126E0047D380 /* 4. Movies Sections */,
+				6408783D199A127F0047D380 /* 5. TV Sections */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -3299,6 +3420,7 @@
 				64290E9218A65AEB009E6B04 /* delete_button.png in Resources */,
 				64B2AADF18082AE600E02E2F /* Images.xcassets in Resources */,
 				64B3E42818F3FCD000783B95 /* menu_button.png in Resources */,
+				64087853199A2BED0047D380 /* timeline_section_mask@2x.png in Resources */,
 				6497AF2B1964037D00813E6A /* background_light_blured@2x.png in Resources */,
 				64DC8C1E1817215E002C11D8 /* toolbox_up_arrow@2x.png in Resources */,
 				64B2AB991808496B00E02E2F /* tab_bar_icon_movies@2x.png in Resources */,
@@ -3314,6 +3436,7 @@
 				64B2AACE18082AE600E02E2F /* InfoPlist.strings in Resources */,
 				6417786D180C8A7400CDFA25 /* empty_stars_small.png in Resources */,
 				64897F1F189895C9001F9EDE /* share_facebook_button@2x.png in Resources */,
+				64087851199A2BED0047D380 /* timeline_date@2x.png in Resources */,
 				64B2AB89180844F800E02E2F /* MoobeezViewController.xib in Resources */,
 				64CA539E1824060C000699C5 /* add_button@2x.png in Resources */,
 				64DC8C1A1817215E002C11D8 /* toolbox_down_arrow@2x.png in Resources */,
@@ -3322,6 +3445,7 @@
 				64897F1E189895C9001F9EDE /* share_facebook_button.png in Resources */,
 				649C3A771818068F0000A34C /* full_stars_big.png in Resources */,
 				64177876180CA5D900CDFA25 /* background.png in Resources */,
+				64087854199A2BED0047D380 /* timeline_tag@2x.png in Resources */,
 				64FDCC4319634111002FE27C /* dashboard_top_cell@2x.png in Resources */,
 				64B2AB0718082C4A00E02E2F /* Application.xib in Resources */,
 				6417785A180C221800CDFA25 /* BeeCell.xib in Resources */,
@@ -3353,6 +3477,7 @@
 				649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */,
 				644121F8181C351400260497 /* share_button@2x.png in Resources */,
 				64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */,
+				64087852199A2BED0047D380 /* timeline_line@2x.png in Resources */,
 				6428B89E18A3A36600E1A904 /* SeasonsViewController.xib in Resources */,
 				64646C5C1892BF3C007926FE /* featured_cells_header@2x.png in Resources */,
 				64E69B99197D1AD100352AFE /* checkmark@2x.png in Resources */,
@@ -3379,6 +3504,7 @@
 				64290E7F18A516DA009E6B04 /* blue_circle.png in Resources */,
 				64CA539A1823F8E1000699C5 /* SearchResultCell.xib in Resources */,
 				64F25A151827D32C005AB9F8 /* TextViewController.xib in Resources */,
+				64087849199A17C40047D380 /* TimelineSectionCell.xib in Resources */,
 				64E69B9B197D20C500352AFE /* close_button@2x.png in Resources */,
 				64290E7018A43629009E6B04 /* SeasonCell.xib in Resources */,
 				6417786F180C8A7400CDFA25 /* full_stars_small.png in Resources */,
@@ -3392,6 +3518,7 @@
 				64897F1C189895C9001F9EDE /* share_twitter_button.png in Resources */,
 				642CA8EE181542FA00A293E4 /* MovieViewController.xib in Resources */,
 				64E69BA2197D5B0A00352AFE /* place_cell_background@2x.png in Resources */,
+				64087842199A12BC0047D380 /* TimelineViewController.xib in Resources */,
 				64E69BAB197D688000352AFE /* edit_button@2x.png in Resources */,
 				64CA53891823E6A9000699C5 /* empty_stars_big_white.png in Resources */,
 				64D74144189D1FB10011C39A /* TvViewController.xib in Resources */,
@@ -3406,6 +3533,7 @@
 				64ADACA4191C2E7D002D1538 /* SearchViewController.xib in Resources */,
 				6414A3011821B90D009397FF /* DatePickerView.xib in Resources */,
 				64897F1D189895C9001F9EDE /* share_twitter_button@2x.png in Resources */,
+				64087859199A33810047D380 /* TimelineItemCell.xib in Resources */,
 				640865F6180B62EC00725CE4 /* MoobeezDatabase in Resources */,
 				64A10D9918A8E6B500906081 /* TeebeezHeaderView.xib in Resources */,
 				64D74140189D1FB10011C39A /* TeebeezViewController.xib in Resources */,
@@ -3456,6 +3584,7 @@
 				64B2AB6318083CBF00E02E2F /* Connection.m in Sources */,
 				64E69B94197D1A1F00352AFE /* CheckInMovieCell.m in Sources */,
 				64648EE61829A36900365EC7 /* PersonConnection.m in Sources */,
+				64087858199A33810047D380 /* TimelineItemCell.m in Sources */,
 				64B9F5FA1822A3F0002E322F /* GPUImageLineGenerator.m in Sources */,
 				64B9F6181822A3F0002E322F /* GPUImagePoissonBlendFilter.m in Sources */,
 				64B9F6101822A3F0002E322F /* GPUImageOpeningFilter.m in Sources */,
@@ -3591,6 +3720,7 @@
 				64648EE218299DD400365EC7 /* ActorToolboxView.m in Sources */,
 				6442857E191AFAD200A05B45 /* ImageLoader.m in Sources */,
 				64B9F5EB1822A3F0002E322F /* GPUImageHistogramFilter.m in Sources */,
+				6408785D199A3EDF0047D380 /* TimelineItem.m in Sources */,
 				64B9F5BD1822A3F0002E322F /* GPUImageBrightnessFilter.m in Sources */,
 				64A8AD781890201400DBECD7 /* MoviePosterView.m in Sources */,
 				64A10DAE18A992FA00906081 /* DDXMLElementAdditions.m in Sources */,
@@ -3662,6 +3792,7 @@
 				64A10DB718A999D400906081 /* TvRageConnection.m in Sources */,
 				64B9F6491822A3F0002E322F /* GPUImageVoronoiConsumerFilter.m in Sources */,
 				64B9F5CC1822A3F0002E322F /* GPUImageCropFilter.m in Sources */,
+				64087841199A12BC0047D380 /* TimelineViewController.m in Sources */,
 				64FDCC5419634924002FE27C /* DashboardFooterCell.m in Sources */,
 				64B9F61F1822A3F0002E322F /* GPUImageRGBClosingFilter.m in Sources */,
 				64B9F5E91822A3F0002E322F /* GPUImageHighlightShadowFilter.m in Sources */,
@@ -3710,6 +3841,7 @@
 				64B9F6411822A3F0002E322F /* GPUImageTwoInputCrossTextureSamplingFilter.m in Sources */,
 				64B2AB6218083CBF00E02E2F /* Alert.m in Sources */,
 				64B9F5EC1822A3F0002E322F /* GPUImageHistogramGenerator.m in Sources */,
+				64087848199A17C40047D380 /* TimelineSectionCell.m in Sources */,
 				64290E8618A540FC009E6B04 /* LoadingView.m in Sources */,
 				64B2AB6418083CBF00E02E2F /* ConnectionsManager.m in Sources */,
 				64B9F5FF1822A3F0002E322F /* GPUImageLuminanceThresholdFilter.m in Sources */,

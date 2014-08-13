@@ -278,6 +278,7 @@ typedef enum MoviesSection {
     MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
     viewController.moobee = moobee;
     viewController.tmdbMovie = movie;
+    
     [self presentViewController:viewController animated:NO completion:^{}];
     
     viewController.closeHandler = ^{

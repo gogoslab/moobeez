@@ -10,8 +10,6 @@
 
 @interface TeebeeEpisode : DatabaseItem
 
-@property (readwrite, nonatomic) NSInteger id;
-
 @property (readwrite, nonatomic) NSInteger seasonNumber;
 @property (readwrite, nonatomic) NSInteger episodeNumber;
 
