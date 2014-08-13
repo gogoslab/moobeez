@@ -15,7 +15,6 @@
 @property (weak, nonatomic) IBOutlet ImageView *posterImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *detailsLabel;
-@property (weak, nonatomic) IBOutlet UIButton *watchedButton;
 
 @end
 

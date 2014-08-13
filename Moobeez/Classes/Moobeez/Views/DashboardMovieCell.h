@@ -14,6 +14,9 @@
 
 @property (strong, nonatomic) Moobee* moobee;
 
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIButton *watchedButton;
+
 @property (weak, nonatomic) UITableView* parentTableView;
 
 @end

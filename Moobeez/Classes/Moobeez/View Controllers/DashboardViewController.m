@@ -59,6 +59,8 @@ typedef enum : NSUInteger {
     [self loadMissedShows];
     [self loadWatchlistMovies];
     
+    [self.tableView reloadData];
+    
 }
 
 #pragma mark - Load sections
@@ -72,8 +74,6 @@ typedef enum : NSUInteger {
     
     self.todayShows = [[Database sharedDatabase] executeQuery:query];
     
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SectionTodayShows] withRowAnimation:UITableViewRowAnimationNone];
-    
 }
 
 - (void)loadMissedShows {
@@ -84,14 +84,12 @@ typedef enum : NSUInteger {
     
     self.missedShows = [[Database sharedDatabase] executeQuery:query];
     
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SectionMissedShows] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)loadWatchlistMovies {
     
     self.wathclistMovies = [[Database sharedDatabase] moobeezWithType:MoobeeOnWatchlistType];
     
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:SectionMissedShows] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 
@@ -269,17 +267,46 @@ typedef enum : NSUInteger {
             }
         }
     }
+    else {
+        
+        Moobee* moobee = self.wathclistMovies[indexPath.row - 1];
+        
+        DashboardMovieCell* cell = (DashboardMovieCell*) [tableView cellForRowAtIndexPath:indexPath];
+        cell.watchedButton.hidden = YES;
+        [cell.activityIndicator startAnimating];
+        
+        MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+            
+            if (code == WebserviceResultOk) {
+                [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie];
+            }
+            
+            cell.watchedButton.hidden = NO;
+            [cell.activityIndicator stopAnimating];
+
+        }];
+        
+        [self startConnection:connection];
+    }
+    
+}
+
+- (void)goToMovieDetailsScreenForMoobee:(Moobee*)moobee andMovie:(TmdbMovie*)movie {
+    
+    MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
+    viewController.moobee = moobee;
+    viewController.tmdbMovie = movie;
+    
+    [self presentViewController:viewController animated:NO completion:^{}];
+    
+    viewController.closeHandler = ^{
+        
+    };
     
 }
 
 - (IBAction)checkinButtonPressed:(id)sender {
-    
     [self.appDelegate.sideTabController presentCheckInViewController];
-    
-//    [self presentViewController:self.appDelegate.sideTabController.checkinNavigationViewController animated:YES completion:^{
-//        
-//    }];
-    
 }
 
 @end

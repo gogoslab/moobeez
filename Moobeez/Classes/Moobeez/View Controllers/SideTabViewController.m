@@ -60,7 +60,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.selectedIndex = 4;
+    self.selectedIndex = 5;
     
     self.blurView.alpha = 0.0;
     self.buttonsView.alpha = 0.0;
