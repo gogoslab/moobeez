@@ -231,6 +231,13 @@ static Database* sharedDatabase;
         }
     }
     
+#ifdef DEBUG
+    
+    [[NSFileManager defaultManager] removeItemAtPath:BACKUP_DATABASE_PATH error:nil];
+    [[NSFileManager defaultManager] copyItemAtPath:CURRENT_DATABASE_PATH toPath:BACKUP_DATABASE_PATH error:nil];
+    
+#endif
+    
     return self;
 }
 
@@ -764,6 +771,7 @@ static Database* sharedDatabase;
     if (moobee.id != -1) {
         
         if ([self updateDictionary:moobee.databaseDictionary intoTable:@"Moobeez" where:@{@"ID" : [NSString stringWithFormat:@"%ld", (long)moobee.id]}]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:MoobeezDidReloadNotification object:nil userInfo:nil];
             return YES;
         }
         
@@ -1317,7 +1325,7 @@ static Database* sharedDatabase;
     
     NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
     
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM Episodes WHERE (airDate <> '(null)' AND airDate <= '%f' AND watched = '0')", now];
+    NSString *query = [NSString stringWithFormat:@"SELECT COUNT() AS c FROM Episodes WHERE (airDate <> '(null)' AND airDate <= '%f' AND watched = '0')", now];
 
 
     sqlite3_stmt *statement;
@@ -1338,53 +1346,13 @@ static Database* sharedDatabase;
         
         while (sqlite3_step(statement) == SQLITE_ROW) {
             
-            episodesCount++;
-            
-            NSLog(@"ep: %@", [[NSMutableDictionary alloc] initWithSqlStatement:statement]);
+            episodesCount = [[[NSMutableDictionary alloc] initWithSqlStatement:statement][@"c"] integerValue];
             
         }
         sqlite3_finalize(statement);
     }
     
     return episodesCount;
-}
-
-- (void)reloadTodayTeebeez {
-    
-    NSString *query = [NSString stringWithFormat:@"SELECT * FROM (Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId) WHERE (airDate <> '(null)' AND airDate >= '%f' AND airDate <= '%f' AND watched = '0') ",[[[NSDate date] resetToMidnight] timeIntervalSince1970], [[[NSDate date] resetToLateMidnight] timeIntervalSince1970]];
-    
-    query = @"SELECT * FROM Teebeez";
-
-    sqlite3_stmt *statement;
-    
-    NSMutableArray* results = [[NSMutableArray alloc] init];
-    
-    int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
-    
-    if (prepare != SQLITE_OK) {
-        NSLog(@"prepare: %d", prepare);
-        if (prepare == SQLITE_ERROR) {
-            NSLog(@"%s SQLITE_ERROR '%s' (%1d)", __FUNCTION__, sqlite3_errmsg(database), sqlite3_errcode(database));
-        }
-    }
-    else {
-        while (sqlite3_step(statement) == SQLITE_ROW) {
-            
-            NSMutableDictionary* item = [[NSMutableDictionary alloc] initWithSqlStatement:statement];
-            
-            item[@"posterPath"] = [ImageView imagePath:item[@"posterPath"] forWidth:92];
-            
-            [results addObject:item];
-        }
-        sqlite3_finalize(statement);
-    }
-    
-    NSLog(@"path = %@", [[[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.moobeez"] URLByAppendingPathComponent:@"TodayShows.plist"]);
-    
-    [results writeToURL:[[[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.moobeez"] URLByAppendingPathComponent:@"TodayShows.plist"] atomically:YES];
-    
-    
-    
 }
 
 - (NSMutableArray*)executeQuery:(NSString*)query {
@@ -1436,20 +1404,37 @@ static Database* sharedDatabase;
 
 - (NSMutableArray*)timelineItemsFromDate:(NSDate*)fromDate toDate:(NSDate*)toDate {
     
-    NSString *query = [NSString stringWithFormat:@"SELECT Teebeez.name, Teebeez.backdropPath, Episodes.seasonNumber, Episodes.episodeNumber, Episodes.airDate AS date FROM (Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId) WHERE (watched = '0' AND airDate <> (null)"];
+    NSString *query = [NSString stringWithFormat:@"SELECT Teebeez.name, Teebeez.backdropPath, Teebeez.tmdbId, Episodes.seasonNumber, Episodes.episodeNumber, Episodes.airDate AS date FROM (Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId) WHERE (watched = '0' AND airDate <> '(null)'"];
     
     if (fromDate) {
-        query = [query stringByAppendingFormat:@" airDate >= '%f'", [[fromDate resetToMidnight] timeIntervalSince1970]];
+        query = [query stringByAppendingFormat:@"AND airDate >= '%f'", [[fromDate resetToMidnight] timeIntervalSince1970]];
     }
     
     if (toDate) {
-        query = [query stringByAppendingFormat:@" airDate <= '%f'", [[toDate resetToLateMidnight] timeIntervalSince1970]];
+        query = [query stringByAppendingFormat:@"AND airDate <= '%f'", [[toDate resetToLateMidnight] timeIntervalSince1970]];
     }
     
     query = [query stringByAppendingString:@" )"];
     
     
-    NSMutableArray* timelineItems = [self timelineItemsWithQuery:query];
+    NSMutableArray* teebeez = [self timelineItemsWithQuery:query];
+    
+    query = [NSString stringWithFormat:@"SELECT Moobeez.name, Moobeez.backdropPath, Moobeez.tmdbId, Moobeez.releaseDate AS date FROM Moobeez WHERE (type = '%d' AND releaseDate <> '(null)'", MoobeeOnWatchlistType];
+    
+    if (fromDate) {
+        query = [query stringByAppendingFormat:@"AND releaseDate >= '%f'", [[fromDate resetToMidnight] timeIntervalSince1970]];
+    }
+    
+    if (toDate) {
+        query = [query stringByAppendingFormat:@"AND releaseDate <= '%f'", [[toDate resetToLateMidnight] timeIntervalSince1970]];
+    }
+    
+    query = [query stringByAppendingString:@" )"];
+    
+    NSMutableArray* moobeez = [self timelineItemsWithQuery:query];
+    
+    NSMutableArray* timelineItems = [[NSMutableArray alloc] initWithArray:teebeez];
+    [timelineItems addObjectsFromArray:moobeez];
     
     return timelineItems;
 }
@@ -1471,14 +1456,57 @@ static Database* sharedDatabase;
     else {
         while (sqlite3_step(statement) == SQLITE_ROW) {
             
-            TimelineItem* teebee = [[TimelineItem alloc] initWithDatabaseDictionary:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
+            TimelineItem* item = [[TimelineItem alloc] initWithDatabaseDictionary:[[NSMutableDictionary alloc] initWithSqlStatement:statement]];
             
-            [results addObject:teebee];
+            [results addObject:item];
         }
         sqlite3_finalize(statement);
     }
     
     return results;
+}
+
+- (NSMutableArray*)timelineMoviesFromDate:(NSDate*)fromDate toDate:(NSDate*)toDate lastDate:(NSDate**)lastDate limit:(NSInteger)limit {
+    
+    NSString* query = [NSString stringWithFormat:@"SELECT name, backdropPath, tmdbId, rating, date FROM Moobeez WHERE (type = '%d' AND date <> '(null)'", MoobeeSeenType];
+    
+    if (fromDate) {
+        query = [query stringByAppendingFormat:@"AND date >= '%f'", [[fromDate resetToMidnight] timeIntervalSince1970]];
+    }
+    
+    if (toDate) {
+        query = [query stringByAppendingFormat:@"AND date < '%f'", [toDate timeIntervalSince1970]];
+    }
+    
+    query = [query stringByAppendingString:@" )"];
+    
+    query = [query stringByAppendingString:@" ORDER BY date DESC"];
+    
+    if (limit > 0) {
+        query = [query stringByAppendingFormat:@" LIMIT %ld", (long)limit];
+    }
+    
+    NSMutableArray* moobeez = [self timelineItemsWithQuery:query];
+    
+    NSMutableArray* timelineItems = [[NSMutableArray alloc] initWithArray:moobeez];
+    
+    if (lastDate) {
+        *lastDate = ((TimelineItem*) moobeez.lastObject).date;
+    }
+    
+    return timelineItems;
+}
+
+- (NSMutableArray*)incompleteMoobeez {
+    
+    return [self moobeezWithQuery:[NSString stringWithFormat:@"SELECT * FROM Moobeez WHERE ((releaseDate IS NULL OR backdropPath IS NULL) AND type = '%d')", MoobeeOnWatchlistType]];
+    
+}
+
+- (NSMutableArray*)incompleteTeebeez {
+    
+    return [self teebeezWithQuery:[NSString stringWithFormat:@"SELECT * FROM Teebeez WHERE (backdropPath IS NULL)"]];
+    
 }
 
 @end

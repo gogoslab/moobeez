@@ -24,7 +24,7 @@
         self.name = databaseDictionary[@"name"];
         self.backdropPath = databaseDictionary[@"backdropPath"];
         if (databaseDictionary[@"date"]) {
-            self.date = [NSDate dateWithTimeIntervalSinceReferenceDate:[databaseDictionary[@"date"] doubleValue]];
+            self.date = [NSDate dateWithTimeIntervalSince1970:[databaseDictionary[@"date"] doubleValue]];
         }
         
         if (databaseDictionary[@"seasonNumber"]) {
@@ -37,6 +37,16 @@
         if (databaseDictionary[@"episodeNumber"]) {
             self.episode = [databaseDictionary[@"episodeNumber"] integerValue];
         }
+        
+        self.tmdbId = [databaseDictionary[@"tmdbId"] integerValue];
+        
+        if (databaseDictionary[@"rating"]) {
+            self.rating = [databaseDictionary[@"rating"] floatValue];
+        }
+        else {
+            self.rating = -1;
+        }
+
     }
 
     return self;
@@ -45,6 +55,10 @@
 #pragma mark - Comparison selectors
 
 - (NSComparisonResult)compareByDate:(TimelineItem*)timelineItem {
+    return [self.date compare:timelineItem.date];
+}
+
+- (NSComparisonResult)compareDescByDate:(TimelineItem*)timelineItem {
     return [timelineItem.date compare:self.date];
 }
 
@@ -62,5 +76,8 @@
     return NO;
 }
 
+- (BOOL)isMovie {
+    return self.season == -1;
+}
 
 @end

@@ -11,14 +11,20 @@
 @interface TimelineItem : DatabaseItem
 
 @property (strong, nonatomic) NSString* name;
+@property (readwrite, nonatomic) NSInteger tmdbId;
 @property (strong, nonatomic) NSString* backdropPath;
 @property (strong, nonatomic) NSDate* date;
 @property (readwrite, nonatomic) NSInteger season;
 @property (readwrite, nonatomic) NSInteger episode;
+@property (readwrite, nonatomic) CGFloat rating;
+
+@property (readonly, nonatomic) BOOL isMovie;
+
 
 @property (readonly, nonatomic) NSMutableDictionary* databaseDictionary;
 
 - (NSComparisonResult)compareByDate:(TimelineItem*)moobee;
+- (NSComparisonResult)compareDescByDate:(TimelineItem*)moobee;
 - (NSComparisonResult)compareById:(TimelineItem*)moobee;
 
 @end

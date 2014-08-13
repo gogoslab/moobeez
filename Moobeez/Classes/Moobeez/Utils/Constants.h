@@ -16,6 +16,7 @@
 #define DATABASE_VERSION @"2.1.0"
 #define CURRENT_DATABASE_PATH [GROUP_PATH stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@", DATABASE_NAME, DATABASE_VERSION]]
 #define OLD_DATABASE_PATH [DOCUMENTS_DIRECTORY stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@", DATABASE_NAME, DATABASE_VERSION]]
+#define BACKUP_DATABASE_PATH [DOCUMENTS_DIRECTORY stringByAppendingPathComponent:@"BackupDatabase"]
 #define VERSION_OF_DATABASE(database) ([[[database lastPathComponent] componentsSeparatedByString:@"_"] count] > 1 ? [[database lastPathComponent] componentsSeparatedByString:@"_"][1] : @"")
 
 #define EndLoadingNotification @"endLoading"

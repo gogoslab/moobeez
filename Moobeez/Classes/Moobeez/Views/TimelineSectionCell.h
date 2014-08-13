@@ -13,4 +13,8 @@
 @property (strong, nonatomic) NSMutableArray* items;
 @property (strong, nonatomic) NSDate* date;
 
+@property (weak, nonatomic) UITableView* parentTableView;
+
++ (CGFloat)heightForItems:(NSMutableArray*)items;
+
 @end

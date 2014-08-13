@@ -15,8 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *monthLabel;
 
-@property (strong, nonatomic) CALayer* maskLayer;
-
 @end
 
 @implementation TimelineSectionCell
@@ -24,14 +22,9 @@
 - (void)awakeFromNib {
     // Initialization code
     
-    UIImage* maskImage = [[UIImage imageNamed:@"timeline_section_mask.png"] imageWithAlignmentRectInsets:UIEdgeInsetsMake(0.5, 0.0, 0.3, 1.0)];
-    
-    self.maskLayer = [CALayer layer];
-    self.maskLayer.contents = (id) maskImage.CGImage;
-    self.maskLayer.frame = self.tableView.bounds;
-    self.tableView.layer.mask = self.maskLayer;
-    
-    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineItemCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineMovieCell" bundle:nil] forCellReuseIdentifier:@"MovieCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineWatchlistCell" bundle:nil] forCellReuseIdentifier:@"WatchlistCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"TimelineTVCell" bundle:nil] forCellReuseIdentifier:@"TVCell"];
 }
 
 - (void)setItems:(NSMutableArray *)items {
@@ -39,8 +32,13 @@
     _items = items;
     
     [self.tableView reloadData];
+    
     self.tableView.height = self.tableView.contentSize.height;
-    self.maskLayer.frame = self.tableView.bounds;
+    
+    UIImageView* imageView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"timeline_section_mask.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(40.0, 40.0, 40.0, 40.0) resizingMode:UIImageResizingModeStretch]];
+    imageView.frame = self.tableView.bounds;
+    
+    self.tableView.maskView = imageView;
 
     self.date = ((TimelineItem*) self.items.lastObject).date;
     
@@ -67,11 +65,21 @@
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    TimelineItemCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    TimelineItem* item = self.items[indexPath.row];
     
-    cell.item = self.items[indexPath.row];
+    TimelineItemCell* cell = [tableView dequeueReusableCellWithIdentifier:(item.isMovie ? (item.rating >= 0 ? @"MovieCell" : @"WatchlistCell") : @"TVCell")];
+    
+    cell.item = item;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.parentTableView.delegate tableView:self.parentTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:indexPath.row inSection:[self.parentTableView indexPathForCell:self].section]];
+}
+
++ (CGFloat)heightForItems:(NSMutableArray*)items {
+    return 140 * items.count + 20;
 }
 
 @end

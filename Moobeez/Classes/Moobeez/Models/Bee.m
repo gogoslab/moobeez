@@ -42,8 +42,15 @@
     databaseDictionary[@"tmdbId"] = [NSString stringWithFormat:@"%ld", (long)self.tmdbId];
     databaseDictionary[@"name"] = [self.name stringByResolvingSQLIssues];
     databaseDictionary[@"comments"] = [self.comments stringByResolvingSQLIssues];
-    databaseDictionary[@"posterPath"] = [self.posterPath stringByResolvingSQLIssues];
-    databaseDictionary[@"backdropPath"] = [self.backdropPath stringByResolvingSQLIssues];
+
+    if (self.posterPath) {
+        databaseDictionary[@"posterPath"] = [self.posterPath stringByResolvingSQLIssues];
+    }
+
+    if (self.backdropPath) {
+        databaseDictionary[@"backdropPath"] = [self.backdropPath stringByResolvingSQLIssues];
+    }
+    
     databaseDictionary[@"rating"] = [NSString stringWithFormat:@"%.1f", self.rating];
     if (self.date) {
         databaseDictionary[@"date"] = [NSString stringWithFormat:@"%.0f", [self.date timeIntervalSinceReferenceDate]];

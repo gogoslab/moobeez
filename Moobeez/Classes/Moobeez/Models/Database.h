@@ -56,10 +56,12 @@
 
 - (void)clearTable:(NSString*)tableName;
 
-- (void)reloadTodayTeebeez;
-
 - (NSMutableArray*)executeQuery:(NSString*)query;
 
 - (NSMutableArray*)timelineItemsFromDate:(NSDate*)fromDate toDate:(NSDate*)toDate;
+- (NSMutableArray*)timelineMoviesFromDate:(NSDate*)fromDate toDate:(NSDate*)toDate lastDate:(NSDate**)lastDate limit:(NSInteger)limit;
+
+- (NSMutableArray*)incompleteMoobeez;
+- (NSMutableArray*)incompleteTeebeez;
 
 @end

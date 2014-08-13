@@ -23,7 +23,6 @@
 		64087853199A2BED0047D380 /* timeline_section_mask@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6408784F199A2BED0047D380 /* timeline_section_mask@2x.png */; };
 		64087854199A2BED0047D380 /* timeline_tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64087850199A2BED0047D380 /* timeline_tag@2x.png */; };
 		64087858199A33810047D380 /* TimelineItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64087856199A33810047D380 /* TimelineItemCell.m */; };
-		64087859199A33810047D380 /* TimelineItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64087857199A33810047D380 /* TimelineItemCell.xib */; };
 		6408785D199A3EDF0047D380 /* TimelineItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6408785C199A3EDF0047D380 /* TimelineItem.m */; };
 		6411F877196455BB0095BC7F /* DashboardMovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6411F875196455BB0095BC7F /* DashboardMovieCell.m */; };
 		6411F878196455BB0095BC7F /* DashboardMovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6411F876196455BB0095BC7F /* DashboardMovieCell.xib */; };
@@ -377,6 +376,9 @@
 		64CA539A1823F8E1000699C5 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64CA53991823F8E1000699C5 /* SearchResultCell.xib */; };
 		64CA539D1824060C000699C5 /* add_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CA539B1824060C000699C5 /* add_button.png */; };
 		64CA539E1824060C000699C5 /* add_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64CA539C1824060C000699C5 /* add_button@2x.png */; };
+		64D1CC5B199B75940059994B /* timeline_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64D1CC5A199B75940059994B /* timeline_shadow@2x.png */; };
+		64D1CC5E199B78C70059994B /* TimelineMovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D1CC5C199B78C70059994B /* TimelineMovieCell.xib */; };
+		64D1CC5F199B78C70059994B /* TimelineTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D1CC5D199B78C70059994B /* TimelineTVCell.xib */; };
 		64D717B418FC38C00098B13E /* imdb_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64D717B218FC38C00098B13E /* imdb_button.png */; };
 		64D717B518FC38C00098B13E /* imdb_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64D717B318FC38C00098B13E /* imdb_button@2x.png */; };
 		64D7413D189D1FB10011C39A /* SearchNewTvViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D74132189D1FB10011C39A /* SearchNewTvViewController.m */; };
@@ -437,6 +439,7 @@
 		64F25A141827D32C005AB9F8 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F25A121827D32C005AB9F8 /* TextViewController.m */; };
 		64F25A151827D32C005AB9F8 /* TextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F25A131827D32C005AB9F8 /* TextViewController.xib */; };
 		64F25A181827EC02005AB9F8 /* description_mask.png in Resources */ = {isa = PBXBuildFile; fileRef = 64F25A171827EC02005AB9F8 /* description_mask.png */; };
+		64F322BF199BB45200D9010A /* TimelineWatchlistCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64F322BE199BB45200D9010A /* TimelineWatchlistCell.xib */; };
 		64FDCC3919632E7F002FE27C /* TvShowCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459BBBB1941EE1500D12DFF /* TvShowCell.m */; };
 		64FDCC4119634111002FE27C /* dashboard_bottom_cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64FDCC3E19634111002FE27C /* dashboard_bottom_cell@2x.png */; };
 		64FDCC4219634111002FE27C /* dashboard_middle_cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64FDCC3F19634111002FE27C /* dashboard_middle_cell@2x.png */; };
@@ -520,7 +523,6 @@
 		64087850199A2BED0047D380 /* timeline_tag@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_tag@2x.png"; sourceTree = "<group>"; };
 		64087855199A33810047D380 /* TimelineItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineItemCell.h; sourceTree = "<group>"; };
 		64087856199A33810047D380 /* TimelineItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineItemCell.m; sourceTree = "<group>"; };
-		64087857199A33810047D380 /* TimelineItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineItemCell.xib; sourceTree = "<group>"; };
 		6408785B199A3EDF0047D380 /* TimelineItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineItem.h; sourceTree = "<group>"; };
 		6408785C199A3EDF0047D380 /* TimelineItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineItem.m; sourceTree = "<group>"; };
 		6411F874196455BB0095BC7F /* DashboardMovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardMovieCell.h; sourceTree = "<group>"; };
@@ -1143,6 +1145,9 @@
 		64CA53991823F8E1000699C5 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		64CA539B1824060C000699C5 /* add_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add_button.png; sourceTree = "<group>"; };
 		64CA539C1824060C000699C5 /* add_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_button@2x.png"; sourceTree = "<group>"; };
+		64D1CC5A199B75940059994B /* timeline_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "timeline_shadow@2x.png"; sourceTree = "<group>"; };
+		64D1CC5C199B78C70059994B /* TimelineMovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineMovieCell.xib; sourceTree = "<group>"; };
+		64D1CC5D199B78C70059994B /* TimelineTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineTVCell.xib; sourceTree = "<group>"; };
 		64D717B218FC38C00098B13E /* imdb_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = imdb_button.png; sourceTree = "<group>"; };
 		64D717B318FC38C00098B13E /* imdb_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imdb_button@2x.png"; sourceTree = "<group>"; };
 		64D74131189D1FB10011C39A /* SearchNewTvViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchNewTvViewController.h; sourceTree = "<group>"; };
@@ -1220,6 +1225,7 @@
 		64F25A121827D32C005AB9F8 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextViewController.m; sourceTree = "<group>"; };
 		64F25A131827D32C005AB9F8 /* TextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextViewController.xib; sourceTree = "<group>"; };
 		64F25A171827EC02005AB9F8 /* description_mask.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = description_mask.png; sourceTree = "<group>"; };
+		64F322BE199BB45200D9010A /* TimelineWatchlistCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimelineWatchlistCell.xib; sourceTree = "<group>"; };
 		64FDCC3E19634111002FE27C /* dashboard_bottom_cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dashboard_bottom_cell@2x.png"; sourceTree = "<group>"; };
 		64FDCC3F19634111002FE27C /* dashboard_middle_cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dashboard_middle_cell@2x.png"; sourceTree = "<group>"; };
 		64FDCC4019634111002FE27C /* dashboard_top_cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dashboard_top_cell@2x.png"; sourceTree = "<group>"; };
@@ -1378,6 +1384,7 @@
 		6408784C199A2BED0047D380 /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				64D1CC5A199B75940059994B /* timeline_shadow@2x.png */,
 				6408784D199A2BED0047D380 /* timeline_date@2x.png */,
 				6408784E199A2BED0047D380 /* timeline_line@2x.png */,
 				6408784F199A2BED0047D380 /* timeline_section_mask@2x.png */,
@@ -1391,7 +1398,9 @@
 			children = (
 				64087855199A33810047D380 /* TimelineItemCell.h */,
 				64087856199A33810047D380 /* TimelineItemCell.m */,
-				64087857199A33810047D380 /* TimelineItemCell.xib */,
+				64F322BE199BB45200D9010A /* TimelineWatchlistCell.xib */,
+				64D1CC5C199B78C70059994B /* TimelineMovieCell.xib */,
+				64D1CC5D199B78C70059994B /* TimelineTVCell.xib */,
 			);
 			name = "Timeline Item Cell";
 			sourceTree = "<group>";
@@ -3423,6 +3432,7 @@
 				64087853199A2BED0047D380 /* timeline_section_mask@2x.png in Resources */,
 				6497AF2B1964037D00813E6A /* background_light_blured@2x.png in Resources */,
 				64DC8C1E1817215E002C11D8 /* toolbox_up_arrow@2x.png in Resources */,
+				64D1CC5E199B78C70059994B /* TimelineMovieCell.xib in Resources */,
 				64B2AB991808496B00E02E2F /* tab_bar_icon_movies@2x.png in Resources */,
 				64ADAC9B191C091F002D1538 /* search_bar_icon@2x.png in Resources */,
 				64DC8C111817137F002C11D8 /* back_button.png in Resources */,
@@ -3459,6 +3469,7 @@
 				64F25A181827EC02005AB9F8 /* description_mask.png in Resources */,
 				64646C6818942973007926FE /* MoviesHeaderView.xib in Resources */,
 				64290E8018A516DA009E6B04 /* blue_circle@2x.png in Resources */,
+				64D1CC5B199B75940059994B /* timeline_shadow@2x.png in Resources */,
 				6459F36518F3391900EBFBE0 /* SideTabViewController.xib in Resources */,
 				64DC8C191817215E002C11D8 /* toolbox_down_arrow.png in Resources */,
 				64290E7518A46074009E6B04 /* EpisodesViewController.xib in Resources */,
@@ -3483,6 +3494,7 @@
 				64E69B99197D1AD100352AFE /* checkmark@2x.png in Resources */,
 				64290E8918A5412A009E6B04 /* LoadingView.xib in Resources */,
 				64648EDD1829956200365EC7 /* ActorViewController.xib in Resources */,
+				64D1CC5F199B78C70059994B /* TimelineTVCell.xib in Resources */,
 				649C3A781818068F0000A34C /* full_stars_big@2x.png in Resources */,
 				64FDCC4F196341D3002FE27C /* DashboardHeaderCell.xib in Resources */,
 				64290E8F18A6497C009E6B04 /* TeebeeLoadingView.xib in Resources */,
@@ -3501,6 +3513,7 @@
 				64ADAC9D191C0D16002D1538 /* search_bar_clear_icon@2x.png in Resources */,
 				64CA53861823DD2C000699C5 /* MovieButtonsWhite.bundle in Resources */,
 				64DC8C121817137F002C11D8 /* back_button@2x.png in Resources */,
+				64F322BF199BB45200D9010A /* TimelineWatchlistCell.xib in Resources */,
 				64290E7F18A516DA009E6B04 /* blue_circle.png in Resources */,
 				64CA539A1823F8E1000699C5 /* SearchResultCell.xib in Resources */,
 				64F25A151827D32C005AB9F8 /* TextViewController.xib in Resources */,
@@ -3533,7 +3546,6 @@
 				64ADACA4191C2E7D002D1538 /* SearchViewController.xib in Resources */,
 				6414A3011821B90D009397FF /* DatePickerView.xib in Resources */,
 				64897F1D189895C9001F9EDE /* share_twitter_button@2x.png in Resources */,
-				64087859199A33810047D380 /* TimelineItemCell.xib in Resources */,
 				640865F6180B62EC00725CE4 /* MoobeezDatabase in Resources */,
 				64A10D9918A8E6B500906081 /* TeebeezHeaderView.xib in Resources */,
 				64D74140189D1FB10011C39A /* TeebeezViewController.xib in Resources */,

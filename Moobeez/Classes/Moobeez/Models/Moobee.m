@@ -27,6 +27,9 @@
 
         self.type = [databaseDictionary[@"type"] intValue];
         self.isFavorite = [databaseDictionary[@"isFavorite"] boolValue];
+        if (databaseDictionary[@"releaseDate"]) {
+            self.releaseDate = [NSDate dateWithTimeIntervalSince1970:[databaseDictionary[@"releaseDate"] doubleValue]];
+        }
 
     }
 
@@ -41,7 +44,7 @@
     databaseDictionary[@"isFavorite"] = [NSString stringWithFormat:@"%d", self.isFavorite];
 
     if (self.releaseDate) {
-        databaseDictionary[@"releaseDate"] = [NSString stringWithFormat:@"%.0f", [self.releaseDate timeIntervalSinceReferenceDate]];
+        databaseDictionary[@"releaseDate"] = [NSString stringWithFormat:@"%.0f", [self.releaseDate timeIntervalSince1970]];
     }
     
     return databaseDictionary;
