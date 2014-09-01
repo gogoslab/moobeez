@@ -83,7 +83,7 @@ typedef enum : NSUInteger {
 
 - (IBAction)checkinButtonPressed:(id)sender {
 
-    if (!self.selectedMovieIndexPath || !self.selectedPlaceIndexPath) {
+    if (!self.selectedMovieIndexPath) {
         return;
     }
     
@@ -140,12 +140,15 @@ typedef enum : NSUInteger {
             // create an Open Graph action
             id<FBOpenGraphAction> action = (id<FBOpenGraphAction>)[FBGraphObject graphObject];
             [action setObject:objectId forKey:@"moobee"];
-            action[@"place"] = self.data[self.selectedPlaceIndexPath.row];
+            if (self.selectedPlaceIndexPath) {
+                action[@"place"] = self.data[self.selectedPlaceIndexPath.row];
+            }
             action[@"message"] = self.commentsTextView.text;
             action[@"expires_in"] = @"7200";
+            action[@"fb:explicitly_shared"] = @"true";
             
             // create action referencing user owned object
-            [FBRequestConnection startForPostWithGraphPath:@"/me/moobeez:is_watching" graphObject:action completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            [FBRequestConnection startForPostWithGraphPath:@"/me/moobeez:is_watching?fb:explicitly_shared=true" graphObject:action completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
 
                 [LoadingView hideLoadingView];
                 
@@ -244,7 +247,7 @@ typedef enum : NSUInteger {
     self.selectedMovieIndexPath = indexPath;
     [collectionView reloadData];
     
-    if (!self.navigationItem.rightBarButtonItem && self.selectedMovieIndexPath && self.selectedPlaceIndexPath) {
+    if (!self.navigationItem.rightBarButtonItem && self.selectedMovieIndexPath) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"done_button.png"] style:UIBarButtonItemStylePlain target:self action:@selector(checkinButtonPressed:)];
     }
 
@@ -291,6 +294,10 @@ typedef enum : NSUInteger {
         [self.placesTableView setContentOffset:CGPointZero animated:YES];
         
         [self.searchNewPlaceController.view removeFromSuperview];
+        
+        if (!self.navigationItem.rightBarButtonItem && self.selectedMovieIndexPath && self.selectedPlaceIndexPath) {
+            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"done_button.png"] style:UIBarButtonItemStylePlain target:self action:@selector(checkinButtonPressed:)];
+        }
         
     };
     
