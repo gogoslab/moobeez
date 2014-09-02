@@ -346,10 +346,10 @@
 
 - (IBAction)facebookButtonPressed:(id)sender {
 
-    FBShareDialogParams *params = [[FBShareDialogParams alloc] init];
+    FBLinkShareParams *params = [[FBLinkShareParams alloc] init];
     params.link = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.imdb.com/title/%@/", self.tmdbMovie.imdbId]];
     params.name = self.tmdbMovie.name;
-    params.description = self.sharedText;
+    params.linkDescription = self.sharedText;
     
     
     // If the Facebook app is installed and we can present the share dialog

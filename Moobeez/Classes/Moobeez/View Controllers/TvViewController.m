@@ -333,10 +333,10 @@
 
 - (IBAction)facebookButtonPressed:(id)sender {
 
-    FBShareDialogParams *params = [[FBShareDialogParams alloc] init];
+    FBLinkShareParams *params = [[FBLinkShareParams alloc] init];
     params.link = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.imdb.com/title/%@/", self.tmdbTv.imdbId]];
     params.name = self.tmdbTv.name;
-    params.description = self.sharedText;
+    params.linkDescription = self.sharedText;
     
     
     // If the Facebook app is installed and we can present the share dialog
@@ -378,7 +378,7 @@
                                                       if (error) {
                                                           // An error occurred, we need to handle the error
                                                           // See: https://developers.facebook.com/docs/ios/errors
-                                                          NSLog([NSString stringWithFormat:@"Error publishing story: %@", error.description]);
+                                                          NSLog(@"Error publishing story: %@", error.description);
                                                       } else {
                                                           if (result == FBWebDialogResultDialogNotCompleted) {
                                                               // User canceled.

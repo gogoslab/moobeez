@@ -56,7 +56,7 @@ const NSInteger defaultRadius = 10000; // 1km
 
 - (void)loadFqlData {
 
-    NSString* query = [NSString stringWithFormat:@"SELECT name, display_subtext, page_id, pic, type FROM place WHERE distance(latitude, longitude, \"%.7f\", \"%.7f\") < %ld AND ", self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude, self.radius];
+    NSString* query = [NSString stringWithFormat:@"SELECT name, display_subtext, page_id, pic, type FROM place WHERE distance(latitude, longitude, \"%.7f\", \"%.7f\") < %ld AND ", self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude, (long)self.radius];
     
     NSDictionary *queryParam = @{ @"q": query };
     // Make the API request that uses FQL

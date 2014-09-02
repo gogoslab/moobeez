@@ -28,7 +28,7 @@
     
     self.customHandler = handler;
     
-    if ([Cache cachedSeasons][StringSeasonId((long)self.tmdbId, self.seasonNumber)]) {
+    if ([Cache cachedSeasons][StringSeasonId((long)self.tmdbId, (long)self.seasonNumber)]) {
         [self performSelector:@selector(cachedResponse) withObject:nil afterDelay:0.01];
         return [self initFakeConnection];
     }
@@ -41,7 +41,7 @@
 
             TmdbTvSeason* tmdbTvSeason = [[TmdbTvSeason alloc] initWithTmdbDictionary:resultDictionary];
         
-            [Cache cachedSeasons][StringSeasonId((long)self.tmdbId, self.seasonNumber)] = tmdbTvSeason;
+            [Cache cachedSeasons][StringSeasonId((long)self.tmdbId, (long)self.seasonNumber)] = tmdbTvSeason;
             
             self.customHandler(code, tmdbTvSeason);
         }
@@ -60,7 +60,7 @@
 - (void)cachedResponse {
     
     [self.activityIndicator stopAnimating];
-    self.customHandler(WebserviceResultOk, [Cache cachedSeasons][StringSeasonId((long)self.tmdbId, self.seasonNumber)]);
+    self.customHandler(WebserviceResultOk, [Cache cachedSeasons][StringSeasonId((long)self.tmdbId, (long)self.seasonNumber)]);
     
 }
 

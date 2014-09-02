@@ -41,7 +41,5 @@ enum CacheDurationType {
 
 - (void)deleteOldImages;
 
-- (BOOL)shouldUpdateTvShows;
-
 @end
 

@@ -32,7 +32,7 @@
 #define WillLoadMovieNotification @"willLoadMovie"
 #define DidLoadMoviesNotification @"didLoadMovies"
 
-#define StringInteger(Integer) [NSString stringWithFormat:@"%ld", Integer]
+#define StringInteger(Integer) [NSString stringWithFormat:@"%ld", (long) Integer]
 
 #define DidUpdateWatchedEpisodesNotification @"DidUpdateWatchedEpisodesNotification" 
 

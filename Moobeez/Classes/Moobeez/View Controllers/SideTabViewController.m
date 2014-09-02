@@ -190,7 +190,7 @@
     }
     
     self.notWatchedTeebeezLabel.hidden = NO;
-    self.notWatchedTeebeezLabel.text = StringInteger(notWatchedTeebeezCount);
+    self.notWatchedTeebeezLabel.text = StringInteger((long)notWatchedTeebeezCount);
     CGSize size = [self.notWatchedTeebeezLabel sizeThatFits:self.notWatchedTeebeezLabel.frame.size];
     
     self.notWatchedTeebeezLabel.width = size.width + 13;

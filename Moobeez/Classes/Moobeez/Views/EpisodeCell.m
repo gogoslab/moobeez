@@ -83,7 +83,7 @@
         if ([[Database sharedDatabase] watch:NO episode:self.teebeeEpisode forTeebee:self.teebee]) {
             self.teebee.watchedEpisodesCount--;
             self.teebee.notWatchedEpisodesCount++;
-            self.teebee.seasons[StringInteger(self.teebeeEpisode.seasonNumber)] = @([self.teebee.seasons[StringInteger((long)self.teebeeEpisode.seasonNumber)] integerValue] - 1);
+            self.teebee.seasons[StringInteger((long)self.teebeeEpisode.seasonNumber)] = @([self.teebee.seasons[StringInteger((long)self.teebeeEpisode.seasonNumber)] integerValue] - 1);
             
             self.watchButton.selected = NO;
             
@@ -101,7 +101,7 @@
     {
         self.teebee.watchedEpisodesCount++;
         self.teebee.notWatchedEpisodesCount--;
-        self.teebee.seasons[StringInteger(self.teebeeEpisode.seasonNumber)] = @([self.teebee.seasons[StringInteger((long)self.teebeeEpisode.seasonNumber)] integerValue] + 1);
+        self.teebee.seasons[StringInteger((long)self.teebeeEpisode.seasonNumber)] = @([self.teebee.seasons[StringInteger((long)self.teebeeEpisode.seasonNumber)] integerValue] + 1);
         
         self.watchButton.selected = YES;
         

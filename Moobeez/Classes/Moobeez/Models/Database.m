@@ -564,15 +564,15 @@ static Database* sharedDatabase;
 
 - (void)populateWithOldDatabase {
     
-    NSArray* oldDatabase = [[NSArray alloc] initWithContentsOfFile:MY_MOVIES_PATH];
+    NSArray* oldDatabaseList = [[NSArray alloc] initWithContentsOfFile:MY_MOVIES_PATH];
 
-    if (!oldDatabase.count) {
+    if (!oldDatabaseList.count) {
         return;
     }
     
     NSMutableArray* untransferredDatabase = [[NSMutableArray alloc] init];
     
-    for (NSDictionary* dictionary in oldDatabase) {
+    for (NSDictionary* dictionary in oldDatabaseList) {
         
         NSInteger tmdbId = [dictionary[@"id"] integerValue];
         
@@ -1036,7 +1036,7 @@ static Database* sharedDatabase;
 
 - (BOOL)watch:(BOOL)watch episode:(TeebeeEpisode*)episode forTeebee:(Teebee*)teebee {
     
-    NSString *query = [NSString stringWithFormat:@"UPDATE Episodes SET watched = '%d' WHERE teebeeId = %ld AND episodeNumber = '%ld' AND seasonNumber = '%ld'", watch, (long)teebee.id, episode.episodeNumber, (long)episode.seasonNumber];
+    NSString *query = [NSString stringWithFormat:@"UPDATE Episodes SET watched = '%d' WHERE teebeeId = %ld AND episodeNumber = '%ld' AND seasonNumber = '%ld'", watch, (long)teebee.id, (long)episode.episodeNumber, (long)episode.seasonNumber];
     sqlite3_stmt *statement;
     
     int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
