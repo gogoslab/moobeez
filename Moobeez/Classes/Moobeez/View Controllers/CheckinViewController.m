@@ -15,7 +15,7 @@ typedef enum : NSUInteger {
     SectionsCount,
 } Sections;
 
-@interface CheckinViewController () <UICollectionViewDataSource, UICollectionViewDelegate, CLLocationManagerDelegate, FBPlacePickerDelegate, UITextViewDelegate>
+@interface CheckinViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate, FBPlacePickerDelegate, UITextViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *moviesView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -87,19 +87,24 @@ typedef enum : NSUInteger {
         return;
     }
     
+    NSInteger tmdbId = -1;
+    
     if (self.selectedMovieIndexPath.section == 0) {
         TmdbMovie* movie = self.searchItems[self.selectedMovieIndexPath.row];
-        [self shareMovie:movie];
+        tmdbId = movie.id;
     }
     else {
         Moobee* moobee = self.watchlistMovies[self.selectedMovieIndexPath.row];
-        MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
-            if (code == WebserviceResultOk) {
-                [self shareMovie:movie];
-            }
-        }];
-        [self startConnection:connection];
+        tmdbId = moobee.tmdbId;
     }
+    
+    MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
+        if (code == WebserviceResultOk) {
+            [self shareMovie:movie];
+        }
+    }];
+    [self startConnection:connection];
+
 }
 
 - (void)shareMovie:(TmdbMovie*)movie {
@@ -250,8 +255,10 @@ typedef enum : NSUInteger {
     if (!self.navigationItem.rightBarButtonItem && self.selectedMovieIndexPath) {
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"done_button.png"] style:UIBarButtonItemStylePlain target:self action:@selector(checkinButtonPressed:)];
     }
+}
 
-    
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+    return CGSizeMake(102, collectionView.height);
 }
 
 #pragma mark - Search
