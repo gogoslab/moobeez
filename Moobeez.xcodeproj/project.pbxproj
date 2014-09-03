@@ -74,6 +74,7 @@
 		64428583191B00CF00A05B45 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 64428580191B00CF00A05B45 /* iRate.bundle */; };
 		64428584191B00CF00A05B45 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64428582191B00CF00A05B45 /* iRate.m */; };
 		644486EA19780BD6004084E9 /* check_in_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644486E919780BD6004084E9 /* check_in_icon@2x.png */; };
+		644C695319B73BD8003FF584 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C695219B73BD8003FF584 /* CloudKit.framework */; };
 		6459BB9E1941D61F00D12DFF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6459BB9D1941D61F00D12DFF /* MapKit.framework */; };
 		6459BBA41941D65400D12DFF /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EB23E11941114300C289B8 /* NotificationCenter.framework */; };
 		6459BBAA1941D65400D12DFF /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459BBA91941D65400D12DFF /* TodayViewController.m */; };
@@ -437,6 +438,7 @@
 		64428581191B00CF00A05B45 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		64428582191B00CF00A05B45 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
 		644486E919780BD6004084E9 /* check_in_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_in_icon@2x.png"; sourceTree = "<group>"; };
+		644C695219B73BD8003FF584 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		6459BB9B1941CF2200D12DFF /* Moobeez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Moobeez.entitlements; sourceTree = "<group>"; };
 		6459BB9D1941D61F00D12DFF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		6459BBA31941D65400D12DFF /* com.goggzy.moobeez.Today-Shows.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "com.goggzy.moobeez.Today-Shows.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -782,6 +784,7 @@
 				64A8AD63188EC12300DBECD7 /* MediaPlayer.framework in Frameworks */,
 				640865F4180B5D3800725CE4 /* libsqlite3.dylib in Frameworks */,
 				64B2AAC618082AE600E02E2F /* CoreGraphics.framework in Frameworks */,
+				644C695319B73BD8003FF584 /* CloudKit.framework in Frameworks */,
 				64B2AAC818082AE600E02E2F /* UIKit.framework in Frameworks */,
 				64B2AAC418082AE600E02E2F /* Foundation.framework in Frameworks */,
 			);
@@ -1758,6 +1761,7 @@
 		64B2AAC218082AE600E02E2F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				644C695219B73BD8003FF584 /* CloudKit.framework */,
 				6459BBC719420B8A00D12DFF /* libsqlite3.0.dylib */,
 				6459BB9D1941D61F00D12DFF /* MapKit.framework */,
 				64A10DB318A9931D00906081 /* libxml2.dylib */,
@@ -2553,6 +2557,9 @@
 					64B2AABF18082AE600E02E2F = {
 						DevelopmentTeam = Z4252ZWMEJ;
 						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
 							com.apple.iOS = {
 								enabled = 1;
 							};
@@ -3074,7 +3081,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Moobeez/Moobeez.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Radu Banea (TCZG753697)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Classes/Gogz/External\\ SDKs",
@@ -3098,7 +3105,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Moobeez/Moobeez.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Radu Banea (Z4252ZWMEJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Classes/Gogz/External\\ SDKs",
@@ -3110,7 +3117,7 @@
 				INFOPLIST_FILE = "Moobeez/Moobeez-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3c718ba7-2abd-45e7-b3c0-415594fd2f35";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

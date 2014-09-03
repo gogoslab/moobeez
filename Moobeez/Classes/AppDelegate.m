@@ -125,6 +125,38 @@ void uncaughtExceptionHandler(NSException *exception) {
     
 }
 
+#pragma mark - iCloud
+
+- (void)prepareICloud {
+    
+    NSFileManager* fileManager = [NSFileManager defaultManager];
+    id currentiCloudToken = fileManager.ubiquityIdentityToken;
+    
+    if (currentiCloudToken) {
+        NSData *newTokenData = [NSKeyedArchiver archivedDataWithRootObject: currentiCloudToken];
+        [[NSUserDefaults standardUserDefaults] setObject:newTokenData forKey:@"com.goggzy.moobeez.UbiquityIdentityToken"];
+    } else {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"com.goggzy.moobeez.UbiquityIdentityToken"];
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(iCloudAccountAvailabilityChanged:) name:NSUbiquityIdentityDidChangeNotification object:nil];
+    
+}
+
+- (void)iCloudAccountAvailabilityChanged:(NSNotification*)notification {
+    
+    NSFileManager* fileManager = [NSFileManager defaultManager];
+    id currentiCloudToken = fileManager.ubiquityIdentityToken;
+    
+    if (currentiCloudToken) {
+        NSData *newTokenData = [NSKeyedArchiver archivedDataWithRootObject: currentiCloudToken];
+        [[NSUserDefaults standardUserDefaults] setObject:newTokenData forKey:@"com.goggzy.moobeez.UbiquityIdentityToken"];
+    } else {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"com.goggzy.moobeez.UbiquityIdentityToken"];
+    }
+    
+}
+
 
 @end
 
