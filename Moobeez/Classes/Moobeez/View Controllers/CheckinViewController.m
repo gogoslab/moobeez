@@ -109,6 +109,100 @@ typedef enum : NSUInteger {
 
 - (void)shareMovie:(TmdbMovie*)movie {
     
+    if (!FBSession.activeSession.isOpen) {
+        // if the session isn't open, we open it here, which may cause UX to log in the user
+        [FBSession openActiveSessionWithReadPermissions:nil
+                                           allowLoginUI:YES
+                                      completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+                                          if (!error) {
+                                              [FBSession setActiveSession:session];
+                                              [self shareMovie:movie];
+                                          } else {
+                                              [[[UIAlertView alloc] initWithTitle:@"Error"
+                                                                          message:error.localizedDescription
+                                                                         delegate:nil
+                                                                cancelButtonTitle:@"OK"
+                                                                otherButtonTitles:nil]
+                                               show];
+                                          }
+                                      }];
+    }
+
+    
+    NSString* moviePosterPath = [ImageView imagePath:movie.posterPath forWidth:185];
+    
+    NSMutableDictionary<FBOpenGraphObject> *object =
+    [FBGraphObject openGraphObjectForPostWithType:@"video.movie"
+                                            title:movie.name
+                                            image:moviePosterPath
+                                              url:[movie.imdbUrl absoluteString]
+                                      description:movie.overview];
+    
+    [FBRequestConnection startForPostOpenGraphObject:object
+                                 completionHandler:^(FBRequestConnection *connection,
+                                                     id result,
+                                                     NSError *error) {
+                                     // handle the result
+                                     
+                                     if(!error) {
+                                         
+                                         NSString *objectId = [result objectForKey:@"id"];
+                                         NSLog(@"%@", [NSString stringWithFormat:@"object id: %@", objectId]);
+                                         
+                                         // Further code to post the OG story goes here
+                                         
+                                         // create an Open Graph action
+                                         id<FBOpenGraphAction> action = (id<FBOpenGraphAction>)[FBGraphObject graphObject];
+                                         [action setObject:objectId forKey:@"movie"];
+                                         if (self.selectedPlaceIndexPath) {
+                                             action[@"place"] = self.data[self.selectedPlaceIndexPath.row];
+                                         }
+                                         action[@"message"] = self.commentsTextView.text;
+                                         action[@"expires_in"] = @"7200";
+                                         action[@"fb:explicitly_shared"] = @"true";
+                                         
+                                         // create action referencing user owned object
+                                         [FBRequestConnection startForPostWithGraphPath:@"/me/video.watches?fb:explicitly_shared=true" graphObject:action completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                                             
+                                             [LoadingView hideLoadingView];
+                                             
+                                             if(!error) {
+                                                 NSLog(@"%@", [NSString stringWithFormat:@"OG story posted, story id: %@", [result objectForKey:@"id"]]);
+                                                 [self dismissViewControllerAnimated:YES completion:nil];
+                                                 
+                                                 [Alert showAlertViewWithTitle:@"Success" message:@"" buttonClickedCallback:^(NSInteger buttonIndex) {
+                                                     
+                                                 } cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                                 
+                                             } else {
+                                                 // An error occurred
+                                                 NSLog(@"Encountered an error posting to Open Graph: %@", error);
+                                                 
+                                                 [Alert showAlertViewWithTitle:@"Error" message:@"An error occured while trying to post on facebook. Please try again" buttonClickedCallback:^(NSInteger buttonIndex) {
+                                                     
+                                                 } cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                             }
+                                         }];
+
+                                         
+                                     } else {
+                                         // An error occurred
+                                         NSLog(@"Encountered an error posting to Open Graph: %@", error);
+                                         
+                                         [Alert showAlertViewWithTitle:@"Error" message:@"An error occured while trying to post on facebook. Please try again" buttonClickedCallback:^(NSInteger buttonIndex) {
+                                             
+                                             [LoadingView hideLoadingView];
+                                             
+                                         } cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                     }
+                                 }];
+    
+    
+    [LoadingView showLoadingViewWithContent:nil];
+}
+
+- (void)shareTmdbMovie:(TmdbMovie*)movie {
+    
     NSString* moviePosterPath = [ImageView imagePath:movie.posterPath forWidth:185];
     
     // instantiate a Facebook Open Graph object
