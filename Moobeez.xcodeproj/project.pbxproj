@@ -110,6 +110,12 @@
 		64648EDD1829956200365EC7 /* ActorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64648EDB1829956200365EC7 /* ActorViewController.xib */; };
 		64648EE218299DD400365EC7 /* ActorToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648EE118299DD400365EC7 /* ActorToolboxView.m */; };
 		64648EE61829A36900365EC7 /* PersonConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64648EE51829A36900365EC7 /* PersonConnection.m */; };
+		6480798A19B9204F00541AC1 /* SearchNewFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6480798819B9204F00541AC1 /* SearchNewFriendViewController.m */; };
+		6480798B19B9204F00541AC1 /* SearchNewFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6480798919B9204F00541AC1 /* SearchNewFriendViewController.xib */; };
+		6480799319B9210400541AC1 /* CheckInFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6480798E19B9210400541AC1 /* CheckInFriendCell.m */; };
+		6480799419B9210400541AC1 /* CheckInFriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6480798F19B9210400541AC1 /* CheckInFriendCell.xib */; };
+		6480799519B9210400541AC1 /* FriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6480799119B9210400541AC1 /* FriendCell.m */; };
+		6480799619B9210400541AC1 /* FriendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6480799219B9210400541AC1 /* FriendCell.xib */; };
 		64897F1718988970001F9EDE /* BubbleUpsideDownPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64897F1618988970001F9EDE /* BubbleUpsideDownPopupView.m */; };
 		64897F1C189895C9001F9EDE /* share_twitter_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64897F18189895C9001F9EDE /* share_twitter_button.png */; };
 		64897F1D189895C9001F9EDE /* share_twitter_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64897F19189895C9001F9EDE /* share_twitter_button@2x.png */; };
@@ -492,6 +498,15 @@
 		64648EE118299DD400365EC7 /* ActorToolboxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActorToolboxView.m; sourceTree = "<group>"; };
 		64648EE41829A36900365EC7 /* PersonConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonConnection.h; sourceTree = "<group>"; };
 		64648EE51829A36900365EC7 /* PersonConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonConnection.m; sourceTree = "<group>"; };
+		6480798719B9204F00541AC1 /* SearchNewFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchNewFriendViewController.h; sourceTree = "<group>"; };
+		6480798819B9204F00541AC1 /* SearchNewFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchNewFriendViewController.m; sourceTree = "<group>"; };
+		6480798919B9204F00541AC1 /* SearchNewFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchNewFriendViewController.xib; sourceTree = "<group>"; };
+		6480798D19B9210400541AC1 /* CheckInFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInFriendCell.h; sourceTree = "<group>"; };
+		6480798E19B9210400541AC1 /* CheckInFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInFriendCell.m; sourceTree = "<group>"; };
+		6480798F19B9210400541AC1 /* CheckInFriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckInFriendCell.xib; sourceTree = "<group>"; };
+		6480799019B9210400541AC1 /* FriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendCell.h; sourceTree = "<group>"; };
+		6480799119B9210400541AC1 /* FriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendCell.m; sourceTree = "<group>"; };
+		6480799219B9210400541AC1 /* FriendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendCell.xib; sourceTree = "<group>"; };
 		64897F1518988970001F9EDE /* BubbleUpsideDownPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleUpsideDownPopupView.h; sourceTree = "<group>"; };
 		64897F1618988970001F9EDE /* BubbleUpsideDownPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleUpsideDownPopupView.m; sourceTree = "<group>"; };
 		64897F18189895C9001F9EDE /* share_twitter_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_twitter_button.png; sourceTree = "<group>"; };
@@ -1393,6 +1408,36 @@
 			name = "Person Connection";
 			sourceTree = "<group>";
 		};
+		6480798C19B9205600541AC1 /* Search New Friend View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6480798719B9204F00541AC1 /* SearchNewFriendViewController.h */,
+				6480798819B9204F00541AC1 /* SearchNewFriendViewController.m */,
+				6480798919B9204F00541AC1 /* SearchNewFriendViewController.xib */,
+			);
+			name = "Search New Friend View Controller";
+			sourceTree = "<group>";
+		};
+		6480799719B9210A00541AC1 /* Check In Friend Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6480798D19B9210400541AC1 /* CheckInFriendCell.h */,
+				6480798E19B9210400541AC1 /* CheckInFriendCell.m */,
+				6480798F19B9210400541AC1 /* CheckInFriendCell.xib */,
+			);
+			name = "Check In Friend Cell";
+			sourceTree = "<group>";
+		};
+		6480799819B9212500541AC1 /* Friend Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6480799019B9210400541AC1 /* FriendCell.h */,
+				6480799119B9210400541AC1 /* FriendCell.m */,
+				6480799219B9210400541AC1 /* FriendCell.xib */,
+			);
+			name = "Friend Cell";
+			sourceTree = "<group>";
+		};
 		6491137919993388009B10EE /* Search New Place View Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1409,6 +1454,7 @@
 				649D42FF19782129000D16D1 /* Checkin View Controller */,
 				6491137919993388009B10EE /* Search New Place View Controller */,
 				64E69B9F197D3FDB00352AFE /* Place Picker View Controller */,
+				6480798C19B9205600541AC1 /* Search New Friend View Controller */,
 			);
 			name = "1. Checkin Screen";
 			sourceTree = "<group>";
@@ -1457,6 +1503,7 @@
 				64FDCC4A1963415D002FE27C /* Dashboard Cells */,
 				64E69BA9197D5C2F00352AFE /* Checkin Cells */,
 				6408784B199A17D10047D380 /* Timeline Cells */,
+				6480799819B9212500541AC1 /* Friend Cell */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -2315,6 +2362,7 @@
 		64E69BA9197D5C2F00352AFE /* Checkin Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6480799719B9210A00541AC1 /* Check In Friend Cell */,
 				64E69B95197D1A2200352AFE /* Checkin Movie Cell */,
 				64E69BA8197D5C1A00352AFE /* Checkin Place Cell */,
 			);
@@ -2636,6 +2684,7 @@
 				64B2AB89180844F800E02E2F /* MoobeezViewController.xib in Resources */,
 				64CA539E1824060C000699C5 /* add_button@2x.png in Resources */,
 				64DC8C1A1817215E002C11D8 /* toolbox_down_arrow@2x.png in Resources */,
+				6480798B19B9204F00541AC1 /* SearchNewFriendViewController.xib in Resources */,
 				64D7413E189D1FB10011C39A /* SearchNewTvViewController.xib in Resources */,
 				649EF25C18999B7100FC796D /* background@2x.png in Resources */,
 				64897F1E189895C9001F9EDE /* share_facebook_button.png in Resources */,
@@ -2678,11 +2727,13 @@
 				6428B89E18A3A36600E1A904 /* SeasonsViewController.xib in Resources */,
 				64646C5C1892BF3C007926FE /* featured_cells_header@2x.png in Resources */,
 				64E69B99197D1AD100352AFE /* checkmark@2x.png in Resources */,
+				6480799619B9210400541AC1 /* FriendCell.xib in Resources */,
 				64290E8918A5412A009E6B04 /* LoadingView.xib in Resources */,
 				64648EDD1829956200365EC7 /* ActorViewController.xib in Resources */,
 				64D1CC5F199B78C70059994B /* TimelineTVCell.xib in Resources */,
 				649C3A781818068F0000A34C /* full_stars_big@2x.png in Resources */,
 				64FDCC4F196341D3002FE27C /* DashboardHeaderCell.xib in Resources */,
+				6480799419B9210400541AC1 /* CheckInFriendCell.xib in Resources */,
 				64290E8F18A6497C009E6B04 /* TeebeeLoadingView.xib in Resources */,
 				6491137C1999384C009B10EE /* NewPlaceCell.xib in Resources */,
 				64CA53841823DC48000699C5 /* MovieButtonsBlack.bundle in Resources */,
@@ -2838,6 +2889,7 @@
 				6408785D199A3EDF0047D380 /* TimelineItem.m in Sources */,
 				64A8AD781890201400DBECD7 /* MoviePosterView.m in Sources */,
 				64A10DAE18A992FA00906081 /* DDXMLElementAdditions.m in Sources */,
+				6480798A19B9204F00541AC1 /* SearchNewFriendViewController.m in Sources */,
 				640865FD180B6AF600725CE4 /* NSMutableDictionary+SQL.m in Sources */,
 				64B2AB5B18083CBF00E02E2F /* NSFileManager+ExtraAtributtes.m in Sources */,
 				6428B8A318A3E74E00E1A904 /* SeasonCell.m in Sources */,
@@ -2875,6 +2927,7 @@
 				64F1DECF189AA1E700F2F88D /* Teebee.m in Sources */,
 				64A10DB018A992FA00906081 /* DDXMLDocument.m in Sources */,
 				64290E7418A46074009E6B04 /* EpisodesViewController.m in Sources */,
+				6480799319B9210400541AC1 /* CheckInFriendCell.m in Sources */,
 				64A10DB118A992FA00906081 /* DDXMLElement.m in Sources */,
 				64A10DBD18A99D3B00906081 /* TvRageEpisodesConnection.m in Sources */,
 				6459F35C18F2E41600EBFBE0 /* FloatingHeadersCollectionViewFlowLayout.m in Sources */,
@@ -2885,6 +2938,7 @@
 				64392EAF18084BA500504C78 /* TmdbConnection.m in Sources */,
 				64D7415A189FAE510011C39A /* TvConnection.m in Sources */,
 				64B2AB6218083CBF00E02E2F /* Alert.m in Sources */,
+				6480799519B9210400541AC1 /* FriendCell.m in Sources */,
 				64087848199A17C40047D380 /* TimelineSectionCell.m in Sources */,
 				64290E8618A540FC009E6B04 /* LoadingView.m in Sources */,
 				64B2AB6418083CBF00E02E2F /* ConnectionsManager.m in Sources */,

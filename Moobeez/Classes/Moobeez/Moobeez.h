@@ -69,6 +69,7 @@
 #import "CheckinViewController.h"
 #import "SearchNewPlaceViewController.h"
 #import "PlacePickerViewController.h"
+#import "SearchNewFriendViewController.h"
 
 #import "TimelineViewController.h"
 
@@ -98,9 +99,12 @@
 
 #import "CheckInMovieCell.h"
 #import "CheckInPlaceCell.h"
+#import "CheckInFriendCell.h"
 
 #import "TimelineSectionCell.h"
 #import "TimelineItemCell.h"
+
+#import "FriendCell.h"
 
 #pragma mark - Toolboxes
 

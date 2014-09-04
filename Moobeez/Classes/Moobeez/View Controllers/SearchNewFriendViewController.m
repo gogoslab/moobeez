@@ -123,6 +123,10 @@
     searchBar.showsCancelButton = YES;
 }
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self.tableView reloadData];
+}
+
 - (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
     searchBar.showsCancelButton = NO;
 }
@@ -137,7 +141,6 @@
     
     [searchBar resignFirstResponder];
 
-    [self.tableView reloadData];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
