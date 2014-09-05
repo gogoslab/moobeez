@@ -36,6 +36,7 @@
 
 - (NSMutableArray*)teebeezWithType:(TeebeeType)type;
 - (NSMutableArray*)teebeezToUpdate;
+- (NSMutableArray*)teebeezActive;
 - (Teebee*)teebeeWithId:(NSInteger)id;
 - (Teebee*)teebeeWithTmdbId:(NSInteger)tmdbId;
 - (BOOL)pullTeebeezEpisodesCount:(Teebee*)teebee;

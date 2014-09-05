@@ -128,6 +128,10 @@
 
 }
 
+- (NSURL*)imdbUrl {
+    return [NSURL URLWithString:[NSString stringWithFormat:@"http://www.imdb.com/title/%@/", self.imdbId]];
+}
+
 #pragma mark - Comparison selectors
 
 - (NSComparisonResult)compareByDate:(TmdbTV*)tv {

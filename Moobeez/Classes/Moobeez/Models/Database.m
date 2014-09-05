@@ -853,6 +853,15 @@ static Database* sharedDatabase;
 
 }
 
+- (NSMutableArray*)teebeezActive {
+    
+    NSString* query = [NSString stringWithFormat:@"SELECT * FROM Teebeez WHERE (ended = NULL OR ended = '0')"];
+    
+    return [self teebeezWithQuery:query];
+    
+}
+
+
 - (NSMutableArray*)teebeezWithQuery:(NSString*)query {
     
     sqlite3_stmt *statement;

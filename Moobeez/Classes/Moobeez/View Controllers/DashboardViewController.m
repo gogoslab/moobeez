@@ -20,7 +20,7 @@ typedef enum : NSUInteger {
     
 } SectionType;
 
-@interface DashboardViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate>
+@interface DashboardViewController () <UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -306,7 +306,25 @@ typedef enum : NSUInteger {
 }
 
 - (IBAction)checkinButtonPressed:(id)sender {
-    [self.appDelegate.sideTabController presentCheckInViewController];
+    
+    UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Movie", @"TV Show", nil];
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    switch (buttonIndex) {
+        case 0:
+            [self.appDelegate.sideTabController presentCheckInViewController];
+            break;
+        case 1:
+            [self.appDelegate.sideTabController presentCheckInTvShowViewController];
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
 @end

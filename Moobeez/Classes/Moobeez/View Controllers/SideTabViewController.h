@@ -22,10 +22,12 @@
 @property (strong, nonatomic) IBOutlet UIView *contentView;
 
 @property (strong, nonatomic) IBOutlet NavigationController *checkinNavigationViewController;
+@property (strong, nonatomic) IBOutlet NavigationController *checkinShowNavigationViewController;
 
 - (void)showMenu;
 - (void)hideMenu;
 
 - (void)presentCheckInViewController;
+- (void)presentCheckInTvShowViewController;
 
 @end

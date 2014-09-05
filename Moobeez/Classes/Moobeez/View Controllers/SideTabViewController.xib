@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6205" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6198"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SideTabViewController">
@@ -11,6 +11,8 @@
                 <outlet property="buttonsView" destination="OYW-jI-50i" id="h2U-Lp-93y"/>
                 <outlet property="checkinButton" destination="nMW-bn-ipz" id="vDq-J9-A7x"/>
                 <outlet property="checkinNavigationViewController" destination="iiE-Pm-iOz" id="2Fr-3u-BGX"/>
+                <outlet property="checkinShowButton" destination="Mds-tF-5QW" id="IbW-M8-Q3M"/>
+                <outlet property="checkinShowNavigationViewController" destination="Pau-4d-t0D" id="9tJ-Bl-2YE"/>
                 <outlet property="contentView" destination="2Pi-Xw-qOS" id="sLl-ek-5Qh"/>
                 <outlet property="notWatchedTeebeezLabel" destination="emO-Ni-C6W" id="l5y-uH-fbE"/>
                 <outlet property="searchBar" destination="stj-8A-5Lf" id="R7K-Z4-OQX"/>
@@ -133,7 +135,7 @@
                     </connections>
                 </searchBar>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nMW-bn-ipz">
-                    <rect key="frame" x="8" y="66" width="140" height="28"/>
+                    <rect key="frame" x="8" y="66" width="148" height="28"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
@@ -160,9 +162,37 @@
                         <action selector="checkinButtonPressed:" destination="-1" eventType="touchUpInside" id="nKl-yw-6MX"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Mds-tF-5QW">
+                    <rect key="frame" x="164" y="66" width="148" height="28"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="0.10000000000000001" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                    <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Check-in Tv show" image="check_in_icon.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <integer key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <integer key="value" value="5"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="checkinTvShowButtonPressed:" destination="-1" eventType="touchUpInside" id="Rd5-DI-sIk"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="510" y="298"/>
+            <point key="canvasLocation" x="-142" y="236"/>
         </view>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <navigationController definesPresentationContext="YES" id="nf8-CA-acM" customClass="NavigationController">
@@ -311,6 +341,26 @@
             <viewControllers>
                 <viewController title="Check-in to movie" nibName="CheckinViewController" id="he5-oV-1qJ" customClass="CheckinViewController">
                     <navigationItem key="navigationItem" id="7Gi-Md-JJT"/>
+                </viewController>
+            </viewControllers>
+            <point key="canvasLocation" x="208" y="-460"/>
+        </navigationController>
+        <navigationController definesPresentationContext="YES" id="Pau-4d-t0D" customClass="NavigationController">
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <size key="freeformSize" width="0.0" height="0.0"/>
+            <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="RE9-jp-Owv">
+                <autoresizingMask key="autoresizingMask"/>
+                <color key="tintColor" red="0.25882352939999997" green="0.63921568630000003" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
+                <color key="barTintColor" red="0.20392156859999999" green="0.66666666669999997" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                <textAttributes key="titleTextAttributes">
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </textAttributes>
+            </navigationBar>
+            <viewControllers>
+                <viewController title="Check-in to movie" nibName="CheckinViewController" id="YLh-pI-qfm" customClass="CheckinShowViewController">
+                    <navigationItem key="navigationItem" id="kol-M9-Sgm"/>
                 </viewController>
             </viewControllers>
             <point key="canvasLocation" x="208" y="-460"/>

@@ -6,43 +6,7 @@
 //  Copyright (c) 2014 Goggzy. All rights reserved.
 //
 
-#import "CheckinViewController.h"
-#import "Moobeez.h"
-
-typedef enum : NSUInteger {
-    SectionSearch,
-    SectionWatchlist,
-    SectionsCount,
-} Sections;
-
-@interface CheckinViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate, FBPlacePickerDelegate, UITextViewDelegate>
-
-@property (weak, nonatomic) IBOutlet UIView *moviesView;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
-@property (strong, nonatomic) NSMutableArray* searchItems;
-@property (strong, nonatomic) NSMutableArray* watchlistMovies;
-
-@property (strong, nonatomic) NSIndexPath* selectedMovieIndexPath;
-
-@property (weak, nonatomic) IBOutlet UIView *placesView;
-@property (strong, nonatomic) NSIndexPath* selectedPlaceIndexPath;
-
-@property (weak, nonatomic) IBOutlet UIView *friendsView;
-@property (weak, nonatomic) IBOutlet UICollectionView *friendsCollectionView;
-@property (strong, nonatomic) NSMutableArray* friends;
-
-@property (strong, nonatomic) SearchNewMovieViewController* searchNewMovieController;
-@property (strong, nonatomic) SearchNewPlaceViewController* searchNewPlaceController;
-@property (strong, nonatomic) SearchNewFriendViewController* searchNewFriendController;
-
-@property (strong, nonatomic) CLLocationManager *locationManager;
-
-@property (weak, nonatomic) IBOutlet UIView *commentsView;
-@property (weak, nonatomic) IBOutlet UIButton *commentsButton;
-@property (weak, nonatomic) IBOutlet UITextView *commentsTextView;
-
-@end
+#import "CheckinViewController_Protected.h"
 
 @implementation CheckinViewController
 
@@ -60,7 +24,7 @@ typedef enum : NSUInteger {
     [self.friendsCollectionView registerNib:[UINib nibWithNibName:@"CheckInFriendCell" bundle:nil] forCellWithReuseIdentifier:@"CheckInFriendCell"];
     
     self.searchItems = [[NSMutableArray alloc] init];
-    self.watchlistMovies = [[Database sharedDatabase] moobeezWithType:MoobeeOnWatchlistType];
+    self.watchlistMovies = self.userMovies;
     [self.collectionView reloadData];
     
     [self refresh];
@@ -89,6 +53,10 @@ typedef enum : NSUInteger {
     // Dispose of any resources that can be recreated.
 }
 
+- (NSMutableArray*)userMovies {
+    return [[Database sharedDatabase] moobeezWithType:MoobeeOnWatchlistType];
+}
+
 - (IBAction)checkinButtonPressed:(id)sender {
 
     if (!self.selectedMovieIndexPath) {
@@ -109,14 +77,16 @@ typedef enum : NSUInteger {
     
     MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
         if (code == WebserviceResultOk) {
-            [self shareMovie:movie];
+            [self shareItem:movie];
         }
     }];
     [self startConnection:connection];
 
 }
 
-- (void)shareMovie:(TmdbMovie*)movie {
+- (void)shareItem:(id)item {
+    
+    TmdbMovie* movie = (TmdbMovie*) item;
     
     if (!FBSession.activeSession.isOpen) {
         // if the session isn't open, we open it here, which may cause UX to log in the user
@@ -125,7 +95,7 @@ typedef enum : NSUInteger {
                                       completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
                                           if (!error) {
                                               [FBSession setActiveSession:session];
-                                              [self shareMovie:movie];
+                                              [self shareItem:movie];
                                           } else {
                                               [[[UIAlertView alloc] initWithTitle:@"Error"
                                                                           message:error.localizedDescription
@@ -207,89 +177,6 @@ typedef enum : NSUInteger {
                                        }
                                    }];
     
-    
-    [LoadingView showLoadingViewWithContent:nil];
-}
-
-- (void)shareTmdbMovie:(TmdbMovie*)movie {
-    
-    NSString* moviePosterPath = [ImageView imagePath:movie.posterPath forWidth:185];
-    
-    // instantiate a Facebook Open Graph object
-    NSMutableDictionary<FBOpenGraphObject> *object = [FBGraphObject openGraphObjectForPost];
-    
-    // specify that this Open Graph object will be posted to Facebook
-    object.provisionedForPost = YES;
-    
-    // for og:title
-    object[@"title"] = movie.name;
-    
-    // for og:type, this corresponds to the Namespace you've set for your app and the object type name
-    object[@"type"] = @"moobeez:moobee";
-    
-    // for og:description
-    object[@"description"] = movie.overview;
-    
-    // for og:url, we cover how this is used in the "Deep Linking" section below
-    object[@"url"] = [movie.imdbUrl absoluteString];
-    
-    // for og:image we assign the image that we just staged, using the uri we got as a response
-    // the image has to be packed in a dictionary like this:
-    object[@"image"] = @[@{@"url":moviePosterPath, @"user_generated" : @"false" }];
-    
-    // Post custom object
-    [FBRequestConnection startForPostOpenGraphObject:object completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-        if(!error) {
-            // get the object ID for the Open Graph object that is now stored in the Object API
-            NSString *objectId = [result objectForKey:@"id"];
-            NSLog(@"%@", [NSString stringWithFormat:@"object id: %@", objectId]);
-            
-            // Further code to post the OG story goes here
-            
-            // create an Open Graph action
-            id<FBOpenGraphAction> action = (id<FBOpenGraphAction>)[FBGraphObject graphObject];
-            [action setObject:objectId forKey:@"moobee"];
-            if (self.selectedPlaceIndexPath) {
-                action[@"place"] = self.data[self.selectedPlaceIndexPath.row];
-            }
-            action[@"message"] = self.commentsTextView.text;
-            action[@"expires_in"] = @"7200";
-            action[@"fb:explicitly_shared"] = @"true";
-            
-            // create action referencing user owned object
-            [FBRequestConnection startForPostWithGraphPath:@"/me/moobeez:is_watching?fb:explicitly_shared=true" graphObject:action completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                
-                [LoadingView hideLoadingView];
-                
-                if(!error) {
-                    NSLog(@"%@", [NSString stringWithFormat:@"OG story posted, story id: %@", [result objectForKey:@"id"]]);
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                    
-                    [Alert showAlertViewWithTitle:@"Success" message:@"" buttonClickedCallback:^(NSInteger buttonIndex) {
-                        
-                    } cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    
-                } else {
-                    // An error occurred
-                    NSLog(@"Encountered an error posting to Open Graph: %@", error);
-                    
-                    [Alert showAlertViewWithTitle:@"Error" message:@"An error occured while trying to post on facebook. Please try again" buttonClickedCallback:^(NSInteger buttonIndex) {
-                        
-                    } cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                }
-            }];
-            
-            
-        } else {
-            // An error occurred
-            NSLog(@"Error posting the Open Graph object to the Object API: %@", error);
-            [LoadingView hideLoadingView];
-            [Alert showAlertViewWithTitle:@"Error" message:@"An error occured while trying to post on facebook. Please try again" buttonClickedCallback:^(NSInteger buttonIndex) {
-                
-            } cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            
-        }
-    }];
     
     [LoadingView showLoadingViewWithContent:nil];
 }

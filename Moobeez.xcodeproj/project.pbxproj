@@ -28,6 +28,7 @@
 		6411F878196455BB0095BC7F /* DashboardMovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6411F876196455BB0095BC7F /* DashboardMovieCell.xib */; };
 		6414A3001821B90D009397FF /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414A2FE1821B90D009397FF /* DatePickerView.m */; };
 		6414A3011821B90D009397FF /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6414A2FF1821B90D009397FF /* DatePickerView.xib */; };
+		6414E7E919BA074200463B92 /* CheckinShowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414E7E819BA074200463B92 /* CheckinShowViewController.m */; };
 		64158316182BCD7A00BB599C /* MovieImagesConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64158315182BCD7A00BB599C /* MovieImagesConnection.m */; };
 		6415831A182BD00600BB599C /* MovieTrailersConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64158319182BD00600BB599C /* MovieTrailersConnection.m */; };
 		6415831F182BD28800BB599C /* ImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6415831D182BD28800BB599C /* ImagesViewController.m */; };
@@ -378,6 +379,9 @@
 		6414A2FD1821B90D009397FF /* DatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerView.h; sourceTree = "<group>"; };
 		6414A2FE1821B90D009397FF /* DatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerView.m; sourceTree = "<group>"; };
 		6414A2FF1821B90D009397FF /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
+		6414E7E619BA06A000463B92 /* CheckinViewController_Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CheckinViewController_Protected.h; sourceTree = "<group>"; };
+		6414E7E719BA074200463B92 /* CheckinShowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckinShowViewController.h; sourceTree = "<group>"; };
+		6414E7E819BA074200463B92 /* CheckinShowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckinShowViewController.m; sourceTree = "<group>"; };
 		64158314182BCD7A00BB599C /* MovieImagesConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieImagesConnection.h; sourceTree = "<group>"; };
 		64158315182BCD7A00BB599C /* MovieImagesConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieImagesConnection.m; sourceTree = "<group>"; };
 		64158318182BD00600BB599C /* MovieTrailersConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieTrailersConnection.h; sourceTree = "<group>"; };
@@ -970,6 +974,15 @@
 			name = "Date Picker View";
 			sourceTree = "<group>";
 		};
+		6414E7EA19BA074500463B92 /* Checkin Show View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6414E7E719BA074200463B92 /* CheckinShowViewController.h */,
+				6414E7E819BA074200463B92 /* CheckinShowViewController.m */,
+			);
+			name = "Checkin Show View Controller";
+			sourceTree = "<group>";
+		};
 		64158317182BCD7D00BB599C /* Movie Images Connection */ = {
 			isa = PBXGroup;
 			children = (
@@ -1455,6 +1468,7 @@
 				6491137919993388009B10EE /* Search New Place View Controller */,
 				64E69B9F197D3FDB00352AFE /* Place Picker View Controller */,
 				6480798C19B9205600541AC1 /* Search New Friend View Controller */,
+				6414E7EA19BA074500463B92 /* Checkin Show View Controller */,
 			);
 			name = "1. Checkin Screen";
 			sourceTree = "<group>";
@@ -1591,6 +1605,7 @@
 			isa = PBXGroup;
 			children = (
 				64DFA7C71978209A008F4730 /* CheckinViewController.h */,
+				6414E7E619BA06A000463B92 /* CheckinViewController_Protected.h */,
 				64DFA7C81978209A008F4730 /* CheckinViewController.m */,
 				64DFA7C91978209A008F4730 /* CheckinViewController.xib */,
 			);
@@ -2893,6 +2908,7 @@
 				640865FD180B6AF600725CE4 /* NSMutableDictionary+SQL.m in Sources */,
 				64B2AB5B18083CBF00E02E2F /* NSFileManager+ExtraAtributtes.m in Sources */,
 				6428B8A318A3E74E00E1A904 /* SeasonCell.m in Sources */,
+				6414E7E919BA074200463B92 /* CheckinShowViewController.m in Sources */,
 				64F1DED2189AB68E00F2F88D /* TmdbTvSeason.m in Sources */,
 				64B2AAD018082AE600E02E2F /* main.m in Sources */,
 				645B75B718B255000070EA04 /* TraktConnection.m in Sources */,

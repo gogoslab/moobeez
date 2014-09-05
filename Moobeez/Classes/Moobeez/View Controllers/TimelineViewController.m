@@ -11,7 +11,7 @@
 
 #define DELAY_BETWEEN_LOADING 0.1
 
-@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface TimelineViewController () <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -40,6 +40,9 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(databaseDidChanged) name:MoobeezDidReloadNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(databaseDidChanged) name:TeebeezDidReloadNotification object:nil];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"check_in_icon_big.png"] style:UIBarButtonItemStylePlain target:self action:@selector(checkinButtonPressed:)];
+
 }
 
 - (void)databaseDidChanged {
@@ -325,6 +328,28 @@
     viewController.closeHandler = ^{
         
     };
+}
+
+- (IBAction)checkinButtonPressed:(id)sender {
+    
+    UIActionSheet* actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Movie", @"TV Show", nil];
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    switch (buttonIndex) {
+        case 0:
+            [self.appDelegate.sideTabController presentCheckInViewController];
+            break;
+        case 1:
+            [self.appDelegate.sideTabController presentCheckInTvShowViewController];
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
 @end
