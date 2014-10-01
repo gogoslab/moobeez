@@ -35,6 +35,8 @@
         else {
             self.handler(WebserviceResultOk, result, error);
         }
+        
+        self.handler = nil;
     }];
     
     if (self) {

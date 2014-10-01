@@ -267,6 +267,8 @@
     [self.activityIndicator stopAnimating];
     
     [self.connectionManager.connections removeObject:self];
+    
+    self.rawHandler = nil;
 }
 
 - (id)jsonForData:(NSData*)data {

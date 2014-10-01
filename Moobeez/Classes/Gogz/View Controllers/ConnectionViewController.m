@@ -52,4 +52,8 @@
     [self.connectionsManager startConnection:connection];
 }
 
+- (void)dealloc {
+    NSLog(@"dealloc view controller: %@", [self class]);
+}
+
 @end

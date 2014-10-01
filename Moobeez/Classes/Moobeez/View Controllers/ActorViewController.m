@@ -70,6 +70,11 @@
 
     [self dismissViewControllerAnimated:NO completion:^{
     }];
+    
+    self.closeHandler = nil;
+    self.toolboxView.characterSelectionHandler = nil;
+    self.castViewController.characterSelectionHandler = nil;
+
 }
 
 - (IBAction)hideToolbox:(id)sender {

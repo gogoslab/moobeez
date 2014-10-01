@@ -104,6 +104,10 @@
     if (self.moobee.id != -1) {
         [self.moobee save];
     }
+    
+    self.closeHandler = nil;
+    self.toolboxView.characterSelectionHandler = nil;
+    self.castViewController.characterSelectionHandler = nil;
 }
 
 - (IBAction)addButtonPressed:(id)sender {
