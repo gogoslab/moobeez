@@ -24,7 +24,12 @@
         self.name = databaseDictionary[@"name"];
         self.backdropPath = databaseDictionary[@"backdropPath"];
         if (databaseDictionary[@"date"]) {
-            self.date = [NSDate dateWithTimeIntervalSince1970:[databaseDictionary[@"date"] doubleValue]];
+            if (databaseDictionary[@"episodeNumber"]) {
+                self.date = [[NSDate dateWithTimeIntervalSince1970:[databaseDictionary[@"date"] doubleValue]] teebeeDisplayDate];
+            }
+            else {
+                self.date = [NSDate dateWithTimeIntervalSince1970:[databaseDictionary[@"date"] doubleValue]];
+            }
         }
         
         if (databaseDictionary[@"seasonNumber"]) {

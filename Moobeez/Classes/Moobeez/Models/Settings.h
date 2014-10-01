@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <EventKit/EventKit.h>
+#import "NSDate+Settings.h"
 
 enum CacheDurationType {
     CacheDurationTypeOneHour = 0,
@@ -34,12 +35,22 @@ enum CacheDurationType {
 
 @property (readwrite, nonatomic) NSInteger updateShowsInterval;
 
+@property (readwrite, nonatomic) NSTimeInterval teebeeInterval;
+
+@property (readonly, nonatomic) NSDate* teebeezToday;
+
 + (Settings*)sharedSettings;
 
 - (BOOL)loadSettings;
 - (void)saveSettings;
 
 - (void)deleteOldImages;
+
+@end
+
+@interface NSObject (Settings)
+
+@property (readonly, nonatomic) Settings* sharedSettings;
 
 @end
 

@@ -37,6 +37,11 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willShowKeyboard:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideKeyboard:) name:UIKeyboardWillHideNotification object:nil];
+    
+    if (!FBSession.activeSession.isOpen) {
+        [self.view addSubview:self.facebookView];
+    }
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -476,6 +481,30 @@
     }];
 }
 
+#pragma mark - Facebook
+
+- (IBAction)facebookButtonPressed:(id)sender {
+    
+    if (!FBSession.activeSession.isOpen) {
+        // if the session isn't open, we open it here, which may cause UX to log in the user
+        [FBSession openActiveSessionWithReadPermissions:nil
+                                           allowLoginUI:YES
+                                      completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+                                          if (!error) {
+                                              [FBSession setActiveSession:session];
+                                              [self.facebookView removeFromSuperview];
+                                              [self refresh];
+                                          } else {
+                                              [[[UIAlertView alloc] initWithTitle:@"Error"
+                                                                          message:error.localizedDescription
+                                                                         delegate:nil
+                                                                cancelButtonTitle:@"OK"
+                                                                otherButtonTitles:nil]
+                                               show];
+                                          }
+                                      }];
+    }
+}
 
 
 @end

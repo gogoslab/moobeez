@@ -13,7 +13,7 @@
 #define GROUP_PATH [[[NSFileManager defaultManager] containerURLForSecurityApplicationGroupIdentifier:@"group.moobeez"] path]
 
 #define DATABASE_NAME @"MoobeezDatabase"
-#define DATABASE_VERSION @"2.1.0"
+#define DATABASE_VERSION @"3.0.0"
 #define CURRENT_DATABASE_PATH [GROUP_PATH stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@", DATABASE_NAME, DATABASE_VERSION]]
 #define OLD_DATABASE_PATH [DOCUMENTS_DIRECTORY stringByAppendingPathComponent:[NSString stringWithFormat:@"%@_%@", DATABASE_NAME, DATABASE_VERSION]]
 #define BACKUP_DATABASE_PATH [DOCUMENTS_DIRECTORY stringByAppendingPathComponent:@"BackupDatabase"]

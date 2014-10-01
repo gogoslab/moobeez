@@ -124,24 +124,6 @@ const NSInteger defaultRadius = 10000; // 1km
             [self.locationManager requestWhenInUseAuthorization];
         }
 
-        
-    } else {
-        // if the session isn't open, we open it here, which may cause UX to log in the user
-        [FBSession openActiveSessionWithReadPermissions:nil
-                                           allowLoginUI:YES
-                                      completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
-                                          if (!error) {
-                                              [FBSession setActiveSession:session];
-                                              [self refresh];
-                                          } else {
-                                              [[[UIAlertView alloc] initWithTitle:@"Error"
-                                                                          message:error.localizedDescription
-                                                                         delegate:nil
-                                                                cancelButtonTitle:@"OK"
-                                                                otherButtonTitles:nil]
-                                               show];
-                                          }
-                                      }];
     }
 }
 

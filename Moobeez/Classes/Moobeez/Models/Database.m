@@ -824,7 +824,7 @@ static Database* sharedDatabase;
 
 - (NSMutableArray*)teebeezWithType:(TeebeeType)type {
     
-    NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
+    NSTimeInterval now = [self.sharedSettings.teebeezToday timeIntervalSince1970];
     
     NSString* query = @"";
     
@@ -891,7 +891,9 @@ static Database* sharedDatabase;
 
 - (Teebee*)teebeeWithId:(NSInteger)id {
     
-    NSString *query = [NSString stringWithFormat:@"SELECT Teebeez.* ,SUM(CASE WHEN Episodes.watched = '0' AND Episodes.airDate < %f THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId WHERE Teebeez.ID = %ld", [[NSDate date] timeIntervalSince1970], (long)id];
+    NSTimeInterval timeInterval = [self.sharedSettings.teebeezToday timeIntervalSince1970];
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT Teebeez.* ,SUM(CASE WHEN Episodes.watched = '0' AND Episodes.airDate < %f THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId WHERE Teebeez.ID = %ld", timeInterval, (long)id];
     sqlite3_stmt *statement;
     
     int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
@@ -923,7 +925,9 @@ static Database* sharedDatabase;
 
 - (Teebee*)teebeeWithTmdbId:(NSInteger)tmdbId {
     
-    NSString *query = [NSString stringWithFormat:@"SELECT Teebeez.* , SUM(CASE WHEN Episodes.watched = '0' AND Episodes.airDate < %f THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId WHERE Teebeez.tmdbId = %ld", [[NSDate date] timeIntervalSince1970], (long)tmdbId];
+    NSTimeInterval timeInterval = [self.sharedSettings.teebeezToday timeIntervalSince1970];
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT Teebeez.* , SUM(CASE WHEN Episodes.watched = '0' AND Episodes.airDate < %f THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId WHERE Teebeez.tmdbId = %ld", timeInterval, (long)tmdbId];
     sqlite3_stmt *statement;
     
     int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
@@ -961,7 +965,9 @@ static Database* sharedDatabase;
 
 - (BOOL)pullTeebeezEpisodesCount:(Teebee*)teebee {
     
-    NSString *query = [NSString stringWithFormat:@"SELECT SUM(CASE WHEN Episodes.watched = '0' AND Episodes.airDate < %f THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM (Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId) WHERE Teebeez.ID = '%@'",[[NSDate date] timeIntervalSince1970], StringInteger((long)teebee.id)];
+    NSTimeInterval timeInterval = [self.sharedSettings.teebeezToday timeIntervalSince1970];
+    
+    NSString *query = [NSString stringWithFormat:@"SELECT SUM(CASE WHEN Episodes.watched = '0' AND Episodes.airDate < %f THEN 1 ELSE 0 END) AS notWatchedEpisodesCount, SUM(CASE WHEN Episodes.watched = '1' THEN 1 ELSE 0 END) AS watchedEpisodesCount FROM (Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId) WHERE Teebeez.ID = '%@'", timeInterval, StringInteger((long)teebee.id)];
     sqlite3_stmt *statement;
     
     int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
@@ -991,7 +997,9 @@ static Database* sharedDatabase;
 
 - (BOOL)watchAllEpisodes:(BOOL)watch forTeebee:(Teebee*)teebee {
     
-    NSString *query = [NSString stringWithFormat:@"UPDATE Episodes SET watched = '%d' WHERE teebeeId = %ld AND airDate < %f", watch, (long)teebee.id, [[NSDate date] timeIntervalSince1970]];
+    NSTimeInterval timeInterval = [self.sharedSettings.teebeezToday timeIntervalSince1970];
+    
+    NSString *query = [NSString stringWithFormat:@"UPDATE Episodes SET watched = '%d' WHERE teebeeId = %ld AND airDate < %f", watch, (long)teebee.id, timeInterval];
     sqlite3_stmt *statement;
     
     int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
@@ -1018,7 +1026,9 @@ static Database* sharedDatabase;
 
 - (BOOL)watchAllEpisodes:(BOOL)watch forTeebee:(Teebee*)teebee inSeason:(NSInteger)seasonNumber {
     
-    NSString *query = [NSString stringWithFormat:@"UPDATE Episodes SET watched = '%d' WHERE teebeeId = %ld AND airDate < %f AND seasonNumber = '%ld'", watch, (long)teebee.id, [[NSDate date] timeIntervalSince1970], (long)seasonNumber];
+    NSTimeInterval timeInterval = [self.sharedSettings.teebeezToday timeIntervalSince1970];
+    
+    NSString *query = [NSString stringWithFormat:@"UPDATE Episodes SET watched = '%d' WHERE teebeeId = %ld AND airDate < %f AND seasonNumber = '%ld'", watch, (long)teebee.id, timeInterval, (long)seasonNumber];
     sqlite3_stmt *statement;
     
     int prepare = sqlite3_prepare_v2(database, [query UTF8String], -1, &statement, nil);
@@ -1332,9 +1342,9 @@ static Database* sharedDatabase;
 
 //    [self deleteUselessEpisodes];
     
-    NSTimeInterval now = [[NSDate date] timeIntervalSince1970];
+    NSTimeInterval timeInterval = [self.sharedSettings.teebeezToday timeIntervalSince1970];
     
-    NSString *query = [NSString stringWithFormat:@"SELECT COUNT() AS c FROM Episodes WHERE (airDate <> '(null)' AND airDate <= '%f' AND watched = '0')", now];
+    NSString *query = [NSString stringWithFormat:@"SELECT COUNT() AS c FROM Episodes WHERE (airDate <> '(null)' AND airDate <= '%f' AND watched = '0')", timeInterval];
 
 
     sqlite3_stmt *statement;
@@ -1416,11 +1426,11 @@ static Database* sharedDatabase;
     NSString *query = [NSString stringWithFormat:@"SELECT Teebeez.name, Teebeez.backdropPath, Teebeez.tmdbId, Episodes.seasonNumber, Episodes.episodeNumber, Episodes.airDate AS date FROM (Teebeez JOIN Episodes ON Teebeez.ID = Episodes.teebeeId) WHERE (watched = '0' AND airDate <> '(null)'"];
     
     if (fromDate) {
-        query = [query stringByAppendingFormat:@"AND airDate >= '%f'", [[fromDate resetToMidnight] timeIntervalSince1970]];
+        query = [query stringByAppendingFormat:@"AND airDate >= '%f'", [[[fromDate teebeeDate] resetToMidnight] timeIntervalSince1970]];
     }
     
     if (toDate) {
-        query = [query stringByAppendingFormat:@"AND airDate <= '%f'", [[toDate resetToLateMidnight] timeIntervalSince1970]];
+        query = [query stringByAppendingFormat:@"AND airDate <= '%f'", [[[toDate teebeeDate] resetToLateMidnight] timeIntervalSince1970]];
     }
     
     query = [query stringByAppendingString:@" )"];

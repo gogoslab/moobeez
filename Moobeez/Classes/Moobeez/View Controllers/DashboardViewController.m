@@ -67,8 +67,8 @@ typedef enum : NSUInteger {
 
 - (void)loadTodayShows {
     
-    NSTimeInterval beginDate = [[[NSDate date] resetToMidnight] timeIntervalSince1970];
-    NSTimeInterval endDate = [[[NSDate date] resetToLateMidnight] timeIntervalSince1970];
+    NSTimeInterval beginDate = [[[NSDate dateWithTimeIntervalSinceNow:- 24 * 3600] resetToMidnight] timeIntervalSince1970];
+    NSTimeInterval endDate = [[[NSDate dateWithTimeIntervalSinceNow:- 24 * 3600] resetToLateMidnight] timeIntervalSince1970];
     
     NSString* query = [NSString stringWithFormat:@"SELECT Teebeez.name, Teebeez.posterPath, Episodes.teebeeId, Episodes.seasonNumber, Episodes.episodeNumber FROM Teebeez JOIN Episodes ON (Teebeez.ID = Episodes.teebeeId) WHERE (Episodes.airDate <> '(null)' AND Episodes.airDate >= '%f' AND Episodes.airDate <= '%f' AND watched = '0') ORDER BY Episodes.airDate", beginDate, endDate];
     
@@ -78,7 +78,7 @@ typedef enum : NSUInteger {
 
 - (void)loadMissedShows {
     
-    NSTimeInterval endDate = [[[NSDate date] resetToLateMidnight] timeIntervalSince1970];
+    NSTimeInterval endDate = [[[NSDate dateWithTimeIntervalSinceNow:- 24 * 3600] resetToLateMidnight] timeIntervalSince1970];
     
     NSString* query = [NSString stringWithFormat:@"SELECT Teebeez.name, Teebeez.posterPath, Episodes.teebeeId, Episodes.seasonNumber, Episodes.episodeNumber FROM Teebeez JOIN Episodes ON (Teebeez.ID = Episodes.teebeeId) WHERE (Episodes.airDate <> '(null)' AND Episodes.airDate <= '%f' AND watched = '0') ORDER BY Episodes.airDate", endDate];
     

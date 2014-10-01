@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Goggzy. All rights reserved.
 //
 
+#import "Settings.h"
 #import "Moobeez.h"
 
 @implementation Settings
@@ -28,7 +29,7 @@ static Settings* _sharedSettings;
 }
 
 - (BOOL)loadSettings {
-    NSDictionary* settingsDictionary = [[NSUserDefaults standardUserDefaults] objectForKey:@"Settings"];
+    NSDictionary* settingsDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:[GROUP_PATH stringByAppendingPathComponent:@"Settings.plist"]];
     
     if (!settingsDictionary) {
         
@@ -37,7 +38,10 @@ static Settings* _sharedSettings;
         self.cacheImages = YES;
         self.cacheDuration = CacheDurationTypeOneDay;
         self.updateShowsInterval = 1;
-
+        self.teebeeInterval = - 24 * 3600;
+        
+        [self saveSettings];
+        
         return NO;
     }
     
@@ -50,7 +54,9 @@ static Settings* _sharedSettings;
     if (self.updateShowsInterval == 0) {
         self.updateShowsInterval = 1;
     }
-    
+
+    self.teebeeInterval = [settingsDictionary floatForKey:@"teebeeInterval"];
+
     return YES;
 }
 
@@ -65,9 +71,9 @@ static Settings* _sharedSettings;
     
     [settingsDictionary setInteger:self.updateShowsInterval forKey:@"updateShowsInterval"];
     
-    [[NSUserDefaults standardUserDefaults] setObject:settingsDictionary forKey:@"Settings"];
+    [settingsDictionary setFloat:self.teebeeInterval forKey:@"teebeeInterval"];
 
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    [settingsDictionary writeToFile:[GROUP_PATH stringByAppendingPathComponent:@"Settings.plist"] atomically:YES];
 }
 
 - (NSString*)cacheDurationString {
@@ -126,4 +132,17 @@ static Settings* _sharedSettings;
     
 }
 
+- (NSDate*)teebeezToday {
+    return [[NSDate date] teebeeDate];
+}
+
 @end
+
+@implementation NSObject (Settings)
+
+- (Settings*)sharedSettings {
+    return [Settings sharedSettings];
+}
+
+@end
+

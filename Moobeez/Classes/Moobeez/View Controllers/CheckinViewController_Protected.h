@@ -43,6 +43,8 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet UIButton *commentsButton;
 @property (weak, nonatomic) IBOutlet UITextView *commentsTextView;
 
+@property (strong, nonatomic) IBOutlet UIView *facebookView;
+
 @end
 
 

@@ -51,7 +51,7 @@
     }
     self.detailsLabel.hidden = (self.detailsLabel.text.length == 0);
     
-    self.dateLabel.text = [[NSDateFormatter dateFormatterWithFormat:@"dd MMMM yyyy"] stringFromDate:self.episode.date];
+    self.dateLabel.text = [[NSDateFormatter dateFormatterWithFormat:@"dd MMMM yyyy"] stringFromDate:[self.episode.date teebeeDisplayDate]];
 }
 
 - (void)setTeebeeEpisode:(TeebeeEpisode *)teebeeEpisode {

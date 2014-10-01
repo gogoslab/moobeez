@@ -184,7 +184,7 @@ typedef enum SoonSections {
         
         for (Teebee* teebee in sortedTeebeez) {
             
-            NSInteger numberOfDays = [[teebee.nextEpisode.airDate resetToMidnight] timeIntervalSinceDate:[[NSDate date] resetToMidnight]] / (24 * 3600);
+            NSInteger numberOfDays = [[[teebee.nextEpisode.airDate teebeeDisplayDate] resetToMidnight] timeIntervalSinceDate:[[NSDate date] resetToMidnight]] / (24 * 3600);
 
             if (numberOfDays == 0) {
                 [self.displayedTeebeez[TodaySection] addObject:teebee];

@@ -24,6 +24,10 @@
 		64087854199A2BED0047D380 /* timeline_tag@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64087850199A2BED0047D380 /* timeline_tag@2x.png */; };
 		64087858199A33810047D380 /* TimelineItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64087856199A33810047D380 /* TimelineItemCell.m */; };
 		6408785D199A3EDF0047D380 /* TimelineItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 6408785C199A3EDF0047D380 /* TimelineItem.m */; };
+		640B8C6119BF69C3000E2781 /* facebook_connect_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 640B8C6019BF69C3000E2781 /* facebook_connect_button@2x.png */; };
+		640C933F19DC02270073C87B /* NSDate+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 640C933E19DC02270073C87B /* NSDate+Settings.m */; };
+		640C934019DC04A00073C87B /* NSDate+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 640C933E19DC02270073C87B /* NSDate+Settings.m */; };
+		640C934119DC04A00073C87B /* NSDate+Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 640C933E19DC02270073C87B /* NSDate+Settings.m */; };
 		6411F877196455BB0095BC7F /* DashboardMovieCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6411F875196455BB0095BC7F /* DashboardMovieCell.m */; };
 		6411F878196455BB0095BC7F /* DashboardMovieCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6411F876196455BB0095BC7F /* DashboardMovieCell.xib */; };
 		6414A3001821B90D009397FF /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6414A2FE1821B90D009397FF /* DatePickerView.m */; };
@@ -373,6 +377,9 @@
 		64087856199A33810047D380 /* TimelineItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineItemCell.m; sourceTree = "<group>"; };
 		6408785B199A3EDF0047D380 /* TimelineItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineItem.h; sourceTree = "<group>"; };
 		6408785C199A3EDF0047D380 /* TimelineItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineItem.m; sourceTree = "<group>"; };
+		640B8C6019BF69C3000E2781 /* facebook_connect_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_connect_button@2x.png"; sourceTree = "<group>"; };
+		640C933D19DC02270073C87B /* NSDate+Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Settings.h"; sourceTree = "<group>"; };
+		640C933E19DC02270073C87B /* NSDate+Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Settings.m"; sourceTree = "<group>"; };
 		6411F874196455BB0095BC7F /* DashboardMovieCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardMovieCell.h; sourceTree = "<group>"; };
 		6411F875196455BB0095BC7F /* DashboardMovieCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardMovieCell.m; sourceTree = "<group>"; };
 		6411F876196455BB0095BC7F /* DashboardMovieCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DashboardMovieCell.xib; sourceTree = "<group>"; };
@@ -1052,6 +1059,7 @@
 		64177865180C3B5A00CDFA25 /* Common Images */ = {
 			isa = PBXGroup;
 			children = (
+				640B8C6019BF69C3000E2781 /* facebook_connect_button@2x.png */,
 				6492E9E21987E7F600EC8E0B /* done_button@2x.png */,
 				64E69BAA197D688000352AFE /* edit_button@2x.png */,
 				64E69B9A197D20C500352AFE /* close_button@2x.png */,
@@ -1617,6 +1625,8 @@
 			children = (
 				6442857A191AF80D00A05B45 /* Settings.h */,
 				6442857B191AF80D00A05B45 /* Settings.m */,
+				640C933D19DC02270073C87B /* NSDate+Settings.h */,
+				640C933E19DC02270073C87B /* NSDate+Settings.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -2795,6 +2805,7 @@
 				64E69B91197D173C00352AFE /* search_bar_icon_big@2x.png in Resources */,
 				64D74142189D1FB10011C39A /* TVsViewController.xib in Resources */,
 				64A8AD6B188EC42C00DBECD7 /* YouTubeTemplate.txt in Resources */,
+				640B8C6119BF69C3000E2781 /* facebook_connect_button@2x.png in Resources */,
 				64ADACA4191C2E7D002D1538 /* SearchViewController.xib in Resources */,
 				6414A3011821B90D009397FF /* DatePickerView.xib in Resources */,
 				64897F1D189895C9001F9EDE /* share_twitter_button@2x.png in Resources */,
@@ -2824,6 +2835,7 @@
 				6459BBC619420A8A00D12DFF /* NSMutableDictionary+SQL.m in Sources */,
 				6459BBBC1941EE1500D12DFF /* TvShowCell.m in Sources */,
 				6459BBC91942180A00D12DFF /* NSDate+Calculator.m in Sources */,
+				640C934019DC04A00073C87B /* NSDate+Settings.m in Sources */,
 				6459BBC519420A8A00D12DFF /* BasicDatabase.m in Sources */,
 				6459BBAA1941D65400D12DFF /* TodayViewController.m in Sources */,
 			);
@@ -2896,6 +2908,7 @@
 				64428584191B00CF00A05B45 /* iRate.m in Sources */,
 				64D74166189FF7720011C39A /* Cache.m in Sources */,
 				6428B89D18A3A36600E1A904 /* SeasonsViewController.m in Sources */,
+				640C933F19DC02270073C87B /* NSDate+Settings.m in Sources */,
 				649C3A9518182FD30000A34C /* CharacterCell.m in Sources */,
 				649C3A7F181820FF0000A34C /* TmdbMovie.m in Sources */,
 				649C3A83181822E60000A34C /* MovieConnection.m in Sources */,
@@ -2971,6 +2984,7 @@
 				64EEBE6A194223A6000C7ADD /* NSMutableDictionary+SQL.m in Sources */,
 				64EEBE6B194223AE000C7ADD /* BasicDatabase.m in Sources */,
 				64EEBE6F194225BA000C7ADD /* NSDate+Calculator.m in Sources */,
+				640C934119DC04A00073C87B /* NSDate+Settings.m in Sources */,
 				64EEBE6C194223B4000C7ADD /* TvShowCell.m in Sources */,
 				64EEBE5D19422324000C7ADD /* MissedViewController.m in Sources */,
 				64EEBE6E194223BA000C7ADD /* TodayViewController.m in Sources */,
@@ -3174,8 +3188,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = Moobeez/Moobeez.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Radu Banea (Z4252ZWMEJ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Radu Banea (Z4252ZWMEJ)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Classes/Gogz/External\\ SDKs",
@@ -3187,7 +3201,7 @@
 				INFOPLIST_FILE = "Moobeez/Moobeez-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "685e37ea-1ccd-4a5d-8541-259f1d8b5873";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
