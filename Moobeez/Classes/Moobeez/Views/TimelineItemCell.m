@@ -12,6 +12,7 @@
 @interface TimelineItemCell ()
 
 @property (weak, nonatomic) IBOutlet ImageView *backdropImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *shadowImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *subtitleLabel;
 @property (weak, nonatomic) IBOutlet StarsView *starsView;
@@ -52,6 +53,22 @@
             self.starsView.hidden = YES;
         }
     }
+    
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+
+}
+
+- (void)layoutSubviews {
+    
+    self.backdropImageView.frame = self.bounds;
+    self.shadowImageView.width = self.width;
+    self.shadowImageView.y = self.height - self.shadowImageView.height;
+    
+    self.titleLabel.center = CGPointMake(self.width / 2, self.titleLabel.center.y);
+    self.subtitleLabel.center = CGPointMake(self.width / 2, self.subtitleLabel.center.y);
+    self.starsView.center = CGPointMake(self.width / 2, self.starsView.center.y);
+
 }
 
 @end

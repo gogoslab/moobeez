@@ -37,12 +37,17 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"TimelineSectionCell" bundle:nil] forCellReuseIdentifier:@"Cell"];
     
     [self startCleanLoading];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(databaseDidChanged) name:MoobeezDidReloadNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(databaseDidChanged) name:TeebeezDidReloadNotification object:nil];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"check_in_icon_big.png"] style:UIBarButtonItemStylePlain target:self action:@selector(checkinButtonPressed:)];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (void)databaseDidChanged {
@@ -227,6 +232,8 @@
     
     TimelineSectionCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
+    cell.width = tableView.width;
+
     cell.items = self.sections[self.dates[section]];
     cell.backgroundColor = [UIColor clearColor];
     cell.parentTableView = tableView;

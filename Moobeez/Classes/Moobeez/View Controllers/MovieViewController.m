@@ -55,6 +55,7 @@
     
     [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:185 completion:^(BOOL didLoadImage) {
         
+        self.toolboxView.width = self.view.width;
         [self.toolboxView addToSuperview:self.view];
         self.toolboxView.moobee = self.moobee;
         self.toolboxView.tmdbMovie = self.tmdbMovie;

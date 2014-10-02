@@ -158,7 +158,6 @@ typedef enum : NSUInteger {
     if (indexPath.row == numberOfRows - 1) {
         
         DashboardFooterCell* cell = [tableView dequeueReusableCellWithIdentifier:@"DashboardFooterCell"];
-        cell.titleLabel.text = @"";
         cell.backgroundColor = [UIColor clearColor];
 
         return cell;

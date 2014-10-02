@@ -30,6 +30,7 @@
 - (void)setItems:(NSMutableArray *)items {
     
     _items = items;
+
     
     [self.tableView reloadData];
     
@@ -69,6 +70,7 @@
     
     TimelineItemCell* cell = [tableView dequeueReusableCellWithIdentifier:(item.isMovie ? (item.rating >= 0 ? @"MovieCell" : @"WatchlistCell") : @"TVCell")];
     
+    cell.width = tableView.width;
     cell.item = item;
     
     return cell;

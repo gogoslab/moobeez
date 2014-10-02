@@ -175,6 +175,8 @@ enum CollectionSections {
         if (!self.searchBar.superview) {
             self.searchCell.frame = self.searchBar.frame;
             [self.searchCell addSubview:self.searchBar];
+            self.searchCell.width = collectionView.width - 24;
+            self.searchBar.width = collectionView.width - 24;
         }
         
         return self.searchCell;
@@ -198,7 +200,7 @@ enum CollectionSections {
     
     if (indexPath.section == SearchSection) {
         
-        return CGSizeMake(296, 10);
+        return CGSizeMake(collectionView.width - 24, 10);
         
     }
     
