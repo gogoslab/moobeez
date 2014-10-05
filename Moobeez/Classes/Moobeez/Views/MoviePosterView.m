@@ -38,7 +38,7 @@
     
     _movie = movie;
     
-    [self.imageView loadImageWithPath:self.posterPath andWidth:185 completion:^(BOOL didLoadImage) {
+    [self.imageView loadPosterWithPath:self.posterPath completion:^(BOOL didLoadImage) {
         
     }];
     
@@ -81,7 +81,7 @@
     }];
     
     self.imageView.defaultImage = self.imageView.image;
-    [self.imageView loadImageWithPath:self.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
+    [self.imageView loadPosterWithPath:self.posterPath completion:^(BOOL didLoadImage) {}];
 }
 
 - (void)returnToNormalState {
@@ -110,7 +110,7 @@
         completionHandler();
     }];
     
-    [self.imageView loadImageWithPath:self.posterPath andWidth:185 completion:^(BOOL didLoadImage) {}];
+    [self.imageView loadPosterWithPath:self.posterPath completion:^(BOOL didLoadImage) {}];
 }
 
 @end

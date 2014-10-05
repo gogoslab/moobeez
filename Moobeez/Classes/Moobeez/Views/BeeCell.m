@@ -43,7 +43,8 @@
 
     self.posterImageView.defaultImage = [UIImage imageNamed:@"default_image.png"];
     self.posterImageView.loadSyncronized = YES;
-    [self.posterImageView loadImageWithPath:self.bee.posterPath andWidth:185 completion:^(BOOL didLoadImage) {
+    self.nameLabel.hidden = NO;
+    [self.posterImageView loadPosterWithPath:self.bee.posterPath completion:^(BOOL didLoadImage) {
         self.nameLabel.hidden = didLoadImage;
     }];
     
@@ -98,7 +99,7 @@
     }];
     
     self.posterImageView.defaultImage = self.posterImageView.image;
-    [self.posterImageView loadImageWithPath:self.bee.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
+    [self.posterImageView loadPosterWithPath:self.bee.posterPath completion:^(BOOL didLoadImage) {}];
 }
 
 - (void)prepareForShrink {
@@ -135,7 +136,7 @@
         completionHandler();
     }];
     
-    [self.posterImageView loadImageWithPath:self.bee.posterPath andWidth:185 completion:^(BOOL didLoadImage) {}];
+    [self.posterImageView loadPosterWithPath:self.bee.posterPath completion:^(BOOL didLoadImage) {}];
 }
 
 - (void)returnToNormalState {

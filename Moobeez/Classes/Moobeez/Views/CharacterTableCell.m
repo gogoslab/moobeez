@@ -34,15 +34,15 @@
     
     if (character.person) {
         self.posterImageView.layer.cornerRadius = self.posterImageView.width / 2;
-        [self.posterImageView loadImageWithPath:character.person.profilePath andWidth:185 completion:^(BOOL didLoadImage) {}];
+        [self.posterImageView loadProfileWithPath:character.person.profilePath completion:^(BOOL didLoadImage) {}];
         self.titleLabel.text = character.person.name;
     }
     else if (character.movie) {
-        [self.posterImageView loadImageWithPath:character.movie.posterPath andWidth:154 completion:^(BOOL didLoadImage) {}];
+        [self.posterImageView loadPosterWithPath:character.movie.posterPath completion:^(BOOL didLoadImage) {}];
         self.titleLabel.text = character.movie.name;
     }
     else if (character.tv) {
-        [self.posterImageView loadImageWithPath:character.tv.posterPath andWidth:154 completion:^(BOOL didLoadImage) {}];
+        [self.posterImageView loadPosterWithPath:character.tv.posterPath completion:^(BOOL didLoadImage) {}];
         self.titleLabel.text = character.tv.name;
     }
  
@@ -72,13 +72,13 @@
     
     if (self.character.person) {
         self.posterImageView.layer.cornerRadius = 0;
-        [self.posterImageView loadImageWithPath:self.character.person.profilePath andHeight:632 completion:^(BOOL didLoadImage) {}];
+        [self.posterImageView loadProfileWithPath:self.character.person.profilePath completion:^(BOOL didLoadImage) {}];
     }
     else if (self.character.movie) {
-        [self.posterImageView loadImageWithPath:self.character.movie.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
+        [self.posterImageView loadPosterWithPath:self.character.movie.posterPath completion:^(BOOL didLoadImage) {}];
     }
     else if (self.character.tv) {
-        [self.posterImageView loadImageWithPath:self.character.tv.posterPath andWidth:500 completion:^(BOOL didLoadImage) {}];
+        [self.posterImageView loadPosterWithPath:self.character.tv.posterPath completion:^(BOOL didLoadImage) {}];
     }
 }
 
@@ -111,13 +111,13 @@
     
     if (self.character.person) {
         self.posterImageView.layer.cornerRadius = self.posterImageView.width / 2;
-        [self.posterImageView loadImageWithPath:self.character.person.profilePath andWidth:185 completion:^(BOOL didLoadImage) {}];
+        [self.posterImageView loadProfileWithPath:self.character.person.profilePath completion:^(BOOL didLoadImage) {}];
     }
     else if (self.character.movie) {
-        [self.posterImageView loadImageWithPath:self.character.movie.posterPath andWidth:154 completion:^(BOOL didLoadImage) {}];
+        [self.posterImageView loadPosterWithPath:self.character.movie.posterPath completion:^(BOOL didLoadImage) {}];
     }
     else if (self.character.tv) {
-        [self.posterImageView loadImageWithPath:self.character.tv.posterPath andWidth:154 completion:^(BOOL didLoadImage) {}];
+        [self.posterImageView loadPosterWithPath:self.character.tv.posterPath completion:^(BOOL didLoadImage) {}];
     }
 }
 @end

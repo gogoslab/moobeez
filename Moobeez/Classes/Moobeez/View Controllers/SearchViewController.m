@@ -61,7 +61,7 @@
     self.navigationItem.rightBarButtonItem = cancelButton;
     
     self.searchBar.showsCancelButton = NO;
-    self.searchBar.width = 239;
+    self.searchBar.width = self.view.width - 81;
     self.searchBar.x = 8;
     
     self.searchBar.frame = [self.navigationController.navigationBar convertRect:self.searchBar.frame fromView:self.searchBar.superview];

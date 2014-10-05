@@ -32,51 +32,53 @@
         NSLog(@"result: %@", resultDictionary);
 
         NSMutableArray* results = [[NSMutableArray alloc] init];
+        NSInteger numberOfPages = 0;
         
-        for (NSDictionary* dictionary in resultDictionary[@"results"]) {
-            if (![dictionary isKindOfClass:[NSDictionary class]]) {
-                continue;
-            }
-            
-            if (type == SearchTypeMovie) {
-                if ([[dictionary stringForKey:@"title"] rangeOfString:self.query options:NSCaseInsensitiveSearch].location == NSNotFound) {
+        if ([resultDictionary isKindOfClass:[NSDictionary class]]) {
+            for (NSDictionary* dictionary in resultDictionary[@"results"]) {
+                if (![dictionary isKindOfClass:[NSDictionary class]]) {
                     continue;
                 }
-            }
-            else {
-                if ([[dictionary stringForKey:@"name"] rangeOfString:self.query options:NSCaseInsensitiveSearch].location == NSNotFound) {
-                    continue;
+                
+                if (type == SearchTypeMovie) {
+                    if ([[dictionary stringForKey:@"title"] rangeOfString:self.query options:NSCaseInsensitiveSearch].location == NSNotFound) {
+                        continue;
+                    }
+                }
+                else {
+                    if ([[dictionary stringForKey:@"name"] rangeOfString:self.query options:NSCaseInsensitiveSearch].location == NSNotFound) {
+                        continue;
+                    }
+                }
+                
+                switch (type) {
+                    case SearchTypeMovie:
+                    {
+                        TmdbMovie* tmdbMovie = [[TmdbMovie alloc] initWithTmdbDictionary:dictionary];
+                        [results addObject:tmdbMovie];
+                    }
+                        break;
+                    case SearchTypeTvShow:
+                    {
+                        TmdbTV* tmdbTv = [[TmdbTV alloc] initWithTmdbDictionary:dictionary];
+                        [results addObject:tmdbTv];
+                    }
+                        break;
+                    case SearchTypePeople:
+                    {
+                        TmdbPerson* tmdbPerson = [[TmdbPerson alloc] initWithTmdbDictionary:dictionary];
+                        [results addObject:tmdbPerson];
+                    }
+                        break;
+                        
+                    default:
+                        break;
                 }
             }
-            
-            switch (type) {
-                case SearchTypeMovie:
-                {
-                    TmdbMovie* tmdbMovie = [[TmdbMovie alloc] initWithTmdbDictionary:dictionary];
-                    [results addObject:tmdbMovie];
-                }
-                    break;
-                case SearchTypeTvShow:
-                {
-                    TmdbTV* tmdbTv = [[TmdbTV alloc] initWithTmdbDictionary:dictionary];
-                    [results addObject:tmdbTv];
-                }
-                    break;
-                case SearchTypePeople:
-                {
-                    TmdbPerson* tmdbPerson = [[TmdbPerson alloc] initWithTmdbDictionary:dictionary];
-                    [results addObject:tmdbPerson];
-                }
-                    break;
-                    
-                default:
-                    break;
-            }
+            [results sortUsingSelector:@selector(compareByPopularity:)];
+        
+            numberOfPages = [resultDictionary[@"total_pages"] integerValue];
         }
-        
-        [results sortUsingSelector:@selector(compareByPopularity:)];
-        
-        NSInteger numberOfPages = [resultDictionary[@"total_pages"] integerValue];
         
         self.customHandler(code, results, numberOfPages);
     }];

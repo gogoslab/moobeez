@@ -55,7 +55,7 @@
 
     _season = season;
     
-    [self.posterImageView loadImageWithPath:season.posterPath andWidth:92 completion:^(BOOL didLoadImage) {}];
+    [self.posterImageView loadPosterWithPath:season.posterPath completion:^(BOOL didLoadImage) {}];
     self.titleLabel.text = season.name;
 
     [self refreshEpisodesLabel];

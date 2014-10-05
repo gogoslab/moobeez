@@ -51,7 +51,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.posterImageView loadImageWithPath:self.teebee.posterPath andWidth:185 completion:^(BOOL didLoadImage) {
+    [self.posterImageView loadPosterWithPath:self.teebee.posterPath completion:^(BOOL didLoadImage) {
         
         [self.toolboxView addToSuperview:self.view];
         self.toolboxView.teebee = self.teebee;
@@ -65,7 +65,7 @@
 
         self.posterImageView.defaultImage = self.posterImageView.image;
         
-        [self.posterImageView loadImageWithPath:self.teebee.posterPath andWidth:500 completion:^(BOOL didLoadImage) {
+        [self.posterImageView loadPosterWithPath:self.teebee.posterPath completion:^(BOOL didLoadImage) {
           
         }];
         

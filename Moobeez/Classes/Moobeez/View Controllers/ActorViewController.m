@@ -38,7 +38,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.posterImageView loadImageWithPath:self.tmdbActor.profilePath andWidth:185 completion:^(BOOL didLoadImage) {
+    [self.posterImageView loadProfileWithPath:self.tmdbActor.profilePath completion:^(BOOL didLoadImage) {
         [self.toolboxView addToSuperview:self.view];
         self.toolboxView.tmdbPerson = self.tmdbActor;
         self.toolboxView.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterCell* cell) {
@@ -48,7 +48,7 @@
         };
 
         self.posterImageView.defaultImage = self.posterImageView.image;
-        [self.posterImageView loadImageWithPath:self.tmdbActor.profilePath andHeight:632 completion:^(BOOL didLoadImage) {
+        [self.posterImageView loadProfileWithPath:self.tmdbActor.profilePath completion:^(BOOL didLoadImage) {
         }];
         
         [self.toolboxView performSelector:@selector(showFullToolbox) withObject:nil afterDelay:0.5];

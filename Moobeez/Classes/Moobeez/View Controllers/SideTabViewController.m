@@ -232,7 +232,7 @@
     [self.appDelegate.window addSubview:self.searchBar];
 
     [UIView animateWithDuration:0.3 animations:^{
-        searchBar.width = 304;
+        searchBar.width = self.view.width - 16;
     }];
     
     [searchBar resignFirstResponder];

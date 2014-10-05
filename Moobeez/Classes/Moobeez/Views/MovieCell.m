@@ -44,7 +44,7 @@
     
     self.dateLabel.text = [[NSDateFormatter dateFormatterWithFormat:@"dd MMMM yyyy"] stringFromDate:self.movie.releaseDate];
 
-    [self.backdropImageView loadImageWithPath:self.movie.backdropPath andWidth:300 completion:^(BOOL didLoadImage) {
+    [self.backdropImageView loadBackdropWithPath:self.movie.backdropPath completion:^(BOOL didLoadImage) {
         
     }];
 }

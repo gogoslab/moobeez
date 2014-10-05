@@ -37,7 +37,7 @@
     
     self.nameLabel.text = moobee.name;
     
-    [self.posterImageView loadImageWithPath:moobee.posterPath andWidth:92 completion:^(BOOL didLoadImage) {
+    [self.posterImageView loadPosterWithPath:moobee.posterPath completion:^(BOOL didLoadImage) {
         
     }];    
 }

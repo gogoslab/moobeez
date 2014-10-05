@@ -39,7 +39,7 @@
 
     _episode = episode;
     
-    [self.posterImageView loadImageWithPath:episode.posterPath andWidth:92 completion:^(BOOL didLoadImage) {}];
+    [self.posterImageView loadPosterWithPath:episode.posterPath completion:^(BOOL didLoadImage) {}];
     self.titleLabel.text = episode.name;
     self.episodeLabel.text = StringInteger((long)episode.episodeNumber);
 

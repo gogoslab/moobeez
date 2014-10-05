@@ -243,6 +243,9 @@ enum CollectionSections {
                     [self.animationCell removeFromSuperview];
                 }];
             }
+            else {
+                self.view.userInteractionEnabled = YES;
+            }
         }];
         
         connection.activityIndicator = cell.activityIndicator;

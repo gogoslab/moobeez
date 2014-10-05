@@ -53,7 +53,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:185 completion:^(BOOL didLoadImage) {
+    [self.posterImageView loadPosterWithPath:self.moobee.posterPath completion:^(BOOL didLoadImage) {
         
         self.toolboxView.width = self.view.width;
         [self.toolboxView addToSuperview:self.view];
@@ -68,7 +68,7 @@
 
         self.posterImageView.defaultImage = self.posterImageView.image;
         
-        [self.posterImageView loadImageWithPath:self.moobee.posterPath andWidth:500 completion:^(BOOL didLoadImage) {
+        [self.posterImageView loadPosterWithPath:self.moobee.posterPath completion:^(BOOL didLoadImage) {
           
         }];
         

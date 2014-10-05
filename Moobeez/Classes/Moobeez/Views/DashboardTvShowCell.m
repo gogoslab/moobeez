@@ -39,7 +39,7 @@
     
     self.detailsLabel.text = [NSString stringWithFormat:@"Season %d Episode %d", [tvShowDictionary[@"seasonNumber"] intValue], [tvShowDictionary[@"episodeNumber"] intValue]];
     
-    [self.posterImageView loadImageWithPath:tvShowDictionary[@"posterPath"] andWidth:92 completion:^(BOOL didLoadImage) {
+    [self.posterImageView loadPosterWithPath:tvShowDictionary[@"posterPath"] completion:^(BOOL didLoadImage) {
         
     }];
     

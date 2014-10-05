@@ -28,7 +28,7 @@
 - (void)setTmdbMovie:(TmdbMovie *)tmdbMovie {
     _tmdbMovie = tmdbMovie;
     
-    [self.posterImageView loadImageWithPath:tmdbMovie.posterPath andWidth:92 completion:^(BOOL didLoadImage) {}];
+    [self.posterImageView loadPosterWithPath:tmdbMovie.posterPath completion:^(BOOL didLoadImage) {}];
     self.titleLabel.text = tmdbMovie.name;
     self.detailsLabel.text = [[NSDateFormatter dateFormatterWithFormat:@"dd MMM yyyy"] stringFromDate:tmdbMovie.releaseDate];
     
@@ -38,7 +38,7 @@
 - (void)setTmdbPerson:(TmdbPerson *)tmdbPerson {
     _tmdbPerson = tmdbPerson;
     
-    [self.posterImageView loadImageWithPath:tmdbPerson.profilePath andWidth:185 completion:^(BOOL didLoadImage) {}];
+    [self.posterImageView loadProfileWithPath:tmdbPerson.profilePath completion:^(BOOL didLoadImage) {}];
     self.titleLabel.text = tmdbPerson.name;
     self.detailsLabel.text = tmdbPerson.overview;
     
@@ -48,7 +48,7 @@
 - (void)setTmdbTv:(TmdbTV *)tmdbTv {
     _tmdbTv = tmdbTv;
     
-    [self.posterImageView loadImageWithPath:tmdbTv.posterPath andWidth:92 completion:^(BOOL didLoadImage) {}];
+    [self.posterImageView loadPosterWithPath:tmdbTv.posterPath completion:^(BOOL didLoadImage) {}];
     self.titleLabel.text = tmdbTv.name;
     self.detailsLabel.text = [[NSDateFormatter dateFormatterWithFormat:@"dd MMM yyyy"] stringFromDate:tmdbTv.releaseDate];
     

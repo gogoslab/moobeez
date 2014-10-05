@@ -234,6 +234,8 @@ typedef enum SoonSections {
         if (!self.searchBar.superview) {
             self.searchCell.frame = self.searchBar.frame;
             [self.searchCell addSubview:self.searchBar];
+            self.searchCell.width = collectionView.width - 24;
+            self.searchBar.width = collectionView.width - 24;
         }
         
         return self.searchCell;
@@ -259,7 +261,7 @@ typedef enum SoonSections {
     
     if (indexPath.section == SearchSection) {
         
-        return CGSizeMake(296, 10);
+        return CGSizeMake(collectionView.width - 24, 10);
         
     }
     
@@ -308,6 +310,9 @@ typedef enum SoonSections {
                     
                     [self goToTvDetailsScreenForTeebee:teebee andTv:tv];
                 }];
+            }
+            else {
+                self.view.userInteractionEnabled = YES;
             }
         }];
         
@@ -533,6 +538,7 @@ typedef enum SoonSections {
     
     self.numberOfTeebeezToUpdate = self.teebeezToUpdate.count;
 
+    self.updatingView.frame = self.view.bounds;
     [LoadingView showLoadingViewWithContent:self.updatingView];
 
     [self updateNextTeebee];

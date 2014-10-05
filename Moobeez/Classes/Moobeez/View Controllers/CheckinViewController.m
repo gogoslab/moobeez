@@ -39,6 +39,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(willHideKeyboard:) name:UIKeyboardWillHideNotification object:nil];
     
     if (!FBSession.activeSession.isOpen) {
+        self.facebookView.frame = self.view.bounds;
         [self.view addSubview:self.facebookView];
     }
 
@@ -241,14 +242,14 @@
         switch (indexPath.section) {
             case SectionSearch:
             {
-                [cell.posterImageView loadImageWithPath:[self.searchItems[indexPath.row] posterPath] andWidth:185 completion:^(BOOL didLoadImage) {
+                [cell.posterImageView loadPosterWithPath:[self.searchItems[indexPath.row] posterPath] completion:^(BOOL didLoadImage) {
                     
                 }];
             }
                 break;
             case SectionWatchlist:
             {
-                [cell.posterImageView loadImageWithPath:[self.watchlistMovies[indexPath.row] posterPath] andWidth:185 completion:^(BOOL didLoadImage) {
+                [cell.posterImageView loadPosterWithPath:[self.watchlistMovies[indexPath.row] posterPath] completion:^(BOOL didLoadImage) {
                     
                 }];
             }

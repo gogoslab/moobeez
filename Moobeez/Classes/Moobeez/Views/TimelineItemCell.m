@@ -29,7 +29,7 @@
     _item = item;
     
     if (item.backdropPath) {
-        [self.backdropImageView loadImageWithPath:item.backdropPath andWidth:780 completion:^(BOOL didLoadImage) {
+        [self.backdropImageView loadBackdropWithPath:item.backdropPath completion:^(BOOL didLoadImage) {
             
         }];
     }
