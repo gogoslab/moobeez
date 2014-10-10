@@ -59,6 +59,16 @@
     }];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -71,8 +81,7 @@
         self.closeHandler();
     }
 
-    [self dismissViewControllerAnimated:NO completion:^{
-    }];
+    [self.navigationController popViewControllerAnimated:NO];
     
     self.closeHandler = nil;
     self.toolboxView.characterSelectionHandler = nil;
@@ -163,7 +172,7 @@
                     }];
                 };
                 
-                [self presentViewController:viewController animated:NO completion:^{}];
+                [self.navigationController pushViewController:viewController animated:NO];
             }];
         }
     }];
@@ -199,7 +208,7 @@
                     }];
                 };
                 
-                [self presentViewController:viewController animated:NO completion:^{}];
+                [self.navigationController pushViewController:viewController animated:NO];
             }];
         }
     }];

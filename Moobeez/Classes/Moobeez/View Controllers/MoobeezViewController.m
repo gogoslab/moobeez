@@ -297,7 +297,7 @@ enum CollectionSections {
     moobee.backdropPath = movie.backdropPath;
     moobee.releaseDate = movie.releaseDate;
 
-    [self presentViewController:viewController animated:NO completion:^{}];
+    [self.navigationController pushViewController:viewController animated:NO];
     
     viewController.closeHandler = ^{
         

@@ -316,7 +316,7 @@
     viewController.moobee = moobee;
     viewController.tmdbMovie = movie;
     
-    [self presentViewController:viewController animated:NO completion:^{}];
+    [self.navigationController pushViewController:viewController animated:NO];
     
     viewController.closeHandler = ^{
         
@@ -330,7 +330,7 @@
     viewController.teebee = teebee;
     viewController.tmdbTv = tv;
     
-    [self presentViewController:viewController animated:NO completion:^{}];
+    [self.navigationController pushViewController:viewController animated:NO];
     
     viewController.closeHandler = ^{
         

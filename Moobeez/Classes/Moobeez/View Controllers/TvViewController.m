@@ -86,6 +86,16 @@
     }];*/
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -99,9 +109,7 @@
         [[Database sharedDatabase] pullNextExpisodeForTeebee:self.teebee];
     }
     
-    [self dismissViewControllerAnimated:NO completion:^{
-        
-    }];
+    [self.navigationController popViewControllerAnimated:NO];
     
     if (self.closeHandler) {
         self.closeHandler();
@@ -201,7 +209,7 @@
                 viewController.closeHandler = ^{
                     [cell animateShrinkWithCompletion:^{}];
                 };
-                [self presentViewController:viewController animated:NO completion:^{}];
+                [self.navigationController pushViewController:viewController animated:NO];
             }];
         }
     }];
@@ -219,7 +227,7 @@
                 viewController.closeHandler = ^{
                     [cell animateShrinkWithCompletion:^{}];
                 };
-                [self presentViewController:viewController animated:NO completion:^{}];
+                [self.navigationController pushViewController:viewController animated:NO];
             }];
         }
     }];

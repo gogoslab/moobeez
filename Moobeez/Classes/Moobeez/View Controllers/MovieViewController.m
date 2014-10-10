@@ -73,6 +73,18 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
+
+
+
 - (void)configureToolbox {
     self.toolboxView.width = self.view.width;
     [self.toolboxView addToSuperview:self.view];
@@ -108,8 +120,7 @@
         self.closeHandler();
     }
     
-    [self dismissViewControllerAnimated:NO completion:^{
-    }];
+    [self.navigationController popViewControllerAnimated:NO];
 
     if (self.moobee.id != -1) {
         [self.moobee save];
@@ -203,7 +214,7 @@
                 viewController.closeHandler = ^{
                     [cell animateShrinkWithCompletion:^{}];
                 };
-                [self presentViewController:viewController animated:NO completion:^{}];
+                [self.navigationController pushViewController:viewController animated:NO];
             }];
         }
     }];
@@ -221,7 +232,7 @@
                 viewController.closeHandler = ^{
                     [cell animateShrinkWithCompletion:^{}];
                 };
-                [self presentViewController:viewController animated:NO completion:^{}];
+                [self.navigationController pushViewController:viewController animated:NO];
             }];
         }
     }];

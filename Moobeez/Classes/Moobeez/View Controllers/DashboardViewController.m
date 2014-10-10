@@ -296,7 +296,7 @@ typedef enum : NSUInteger {
     viewController.moobee = moobee;
     viewController.tmdbMovie = movie;
     
-    [self presentViewController:viewController animated:NO completion:^{}];
+    [self.navigationController pushViewController:viewController animated:NO];
     
     viewController.closeHandler = ^{
         

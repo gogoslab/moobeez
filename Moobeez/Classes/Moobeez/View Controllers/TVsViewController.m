@@ -273,7 +273,7 @@ typedef enum TVsSection {
     TvViewController* viewController = [[TvViewController alloc] initWithNibName:@"TvViewController" bundle:nil];
     viewController.teebee = teebee;
     viewController.tmdbTv = tv;
-    [self presentViewController:viewController animated:NO completion:^{}];
+    [self.navigationController pushViewController:viewController animated:NO];
     
     viewController.closeHandler = ^{
         

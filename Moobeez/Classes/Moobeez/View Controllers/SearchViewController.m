@@ -173,7 +173,7 @@
                     viewController.moobee = moobee;
                     viewController.tmdbMovie = movie;
                     
-                    [self presentViewController:viewController animated:NO completion:^{}];
+                    [self.navigationController pushViewController:viewController animated:NO];
                 }
                 self.view.userInteractionEnabled = YES;
             }];
@@ -192,7 +192,7 @@
                     TvViewController* viewController = [[TvViewController alloc] initWithNibName:@"TvViewController" bundle:nil];
                     viewController.teebee = teebee;
                     viewController.tmdbTv = tv;
-                    [self presentViewController:viewController animated:NO completion:^{}];
+                    [self.navigationController pushViewController:viewController animated:NO];
                 }
                 self.view.userInteractionEnabled = YES;
             }];
@@ -207,7 +207,7 @@
                 if (code == WebserviceResultOk) {
                     ActorViewController* viewController = [[ActorViewController alloc] initWithNibName:@"ActorViewController" bundle:nil];
                     viewController.tmdbActor = person;
-                    [self presentViewController:viewController animated:NO completion:^{}];
+                    [self.navigationController pushViewController:viewController animated:NO];
                 }
             }];
             
