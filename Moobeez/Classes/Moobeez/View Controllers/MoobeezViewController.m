@@ -238,7 +238,7 @@ enum CollectionSections {
                     
                     self.view.userInteractionEnabled = YES;
                     
-                    [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie];
+                    [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie posterImage:self.animationCell.posterImageView.image];
                     
                     [self.animationCell removeFromSuperview];
                 }];
@@ -287,7 +287,7 @@ enum CollectionSections {
 
 }
 
-- (void)goToMovieDetailsScreenForMoobee:(Moobee*)moobee andMovie:(TmdbMovie*)movie {
+- (void)goToMovieDetailsScreenForMoobee:(Moobee*)moobee andMovie:(TmdbMovie*)movie posterImage:(UIImage*)image {
     
     MovieViewController* viewController = [[MovieViewController alloc] initWithNibName:@"MovieViewController" bundle:nil];
     viewController.moobee = moobee;
@@ -397,7 +397,7 @@ enum CollectionSections {
             if (code == WebserviceResultOk) {
                 self.view.userInteractionEnabled = YES;
                 [self.searchNewMovieController.view removeFromSuperview];
-                [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie];
+                [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie posterImage:nil];
             }
         }];
         [self startConnection:connection];

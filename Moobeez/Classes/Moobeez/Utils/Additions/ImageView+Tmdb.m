@@ -73,7 +73,7 @@ static NSDictionary* _imagesSettings = nil;
     [self loadImageWithPath:[_tmdbRootPath stringByAppendingFormat:@"original%@", path] completion:completionHandler];
 }
 
-- (void)loadImageWithPath:(NSString*)path type:(NSString*)type completion:(ImageViewCompletionHandler)completionHandler {
+- (void)loadImageWithPath:(NSString*)path type:(NSString*)type size:(CGSize)imageSize completion:(ImageViewCompletionHandler)completionHandler {
     
     NSArray* sizes = [ImageView imagesSettings][[NSString stringWithFormat:@"%@_sizes", type]];
     
@@ -81,13 +81,13 @@ static NSDictionary* _imagesSettings = nil;
         if (![size isEqualToString:@"original"]) {
             NSInteger value = [size sizeValue];
             if ([[size sizeType] isEqualToString:@"w"]) {
-                if (value >= self.frame.size.width * [UIScreen mainScreen].scale * 0.8) {
+                if (value >= imageSize.width * [UIScreen mainScreen].scale * 0.8) {
                     [self loadImageWithPath:path andWidth:value completion:completionHandler];
                     return;
                 }
             }
             else if ([[size sizeType] isEqualToString:@"h"]) {
-                if (value >= self.frame.size.height * [UIScreen mainScreen].scale * 0.8) {
+                if (value >= imageSize.height * [UIScreen mainScreen].scale * 0.8) {
                     [self loadImageWithPath:path andHeight:value completion:completionHandler];
                     return;
                 }
@@ -101,15 +101,28 @@ static NSDictionary* _imagesSettings = nil;
 }
 
 - (void)loadPosterWithPath:(NSString*)path completion:(ImageViewCompletionHandler)completionHandler  {
-    [self loadImageWithPath:path type:@"poster" completion:completionHandler];
+    [self loadPosterWithPath:path size:self.frame.size completion:completionHandler];
+}
+
+- (void)loadPosterWithPath:(NSString*)path size:(CGSize)size completion:(ImageViewCompletionHandler)completionHandler  {
+    [self loadImageWithPath:path type:@"poster" size:size completion:completionHandler];
 }
 
 - (void)loadProfileWithPath:(NSString*)path completion:(ImageViewCompletionHandler)completionHandler  {
-    [self loadImageWithPath:path type:@"profile" completion:completionHandler];
+    [self loadProfileWithPath:path size:self.frame.size completion:completionHandler];
+}
+
+- (void)loadProfileWithPath:(NSString*)path size:(CGSize)size completion:(ImageViewCompletionHandler)completionHandler  {
+    [self loadImageWithPath:path type:@"profile" size:size completion:completionHandler];
 }
 
 - (void)loadBackdropWithPath:(NSString*)path completion:(ImageViewCompletionHandler)completionHandler  {
-    [self loadImageWithPath:path type:@"backdrop" completion:completionHandler];
+    [self loadBackdropWithPath:path size:self.frame.size completion:completionHandler];
 }
+
+- (void)loadBackdropWithPath:(NSString*)path size:(CGSize)size completion:(ImageViewCompletionHandler)completionHandler  {
+    [self loadImageWithPath:path type:@"backdrop" size:size completion:completionHandler];
+}
+
 
 @end

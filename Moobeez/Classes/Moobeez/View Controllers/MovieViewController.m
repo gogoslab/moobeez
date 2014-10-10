@@ -53,27 +53,17 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.posterImageView loadPosterWithPath:self.moobee.posterPath completion:^(BOOL didLoadImage) {
-        
-        self.toolboxView.width = self.view.width;
-        [self.toolboxView addToSuperview:self.view];
-        self.toolboxView.moobee = self.moobee;
-        self.toolboxView.tmdbMovie = self.tmdbMovie;
-
-        self.toolboxView.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterCell* cell) {
-            if (tmdbCharacter.person) {
-                [self openPerson:tmdbCharacter.person fromCharacterCell:cell];
-            }
-        };
-
-        self.posterImageView.defaultImage = self.posterImageView.image;
-        
-        [self.posterImageView loadPosterWithPath:self.moobee.posterPath completion:^(BOOL didLoadImage) {
-          
+    if (self.defaultImage) {
+        self.posterImageView.image = self.defaultImage;
+        [self configureToolbox];
+    }
+    else {
+        CGSize size = [MoviePosterView size];
+        [self.posterImageView loadPosterWithPath:self.moobee.posterPath size:size completion:^(BOOL didLoadImage) {
+            self.posterImageView.defaultImage = self.posterImageView.image;
+            [self configureToolbox];
         }];
-        
-        [self.toolboxView performSelector:@selector(showFullToolbox) withObject:nil afterDelay:0.5];
-    }];
+    }
     
     self.addButton.selected = (self.moobee.id != -1);
     
@@ -81,6 +71,25 @@
     
     self.imdbButton.hidden = self.tmdbMovie.imdbId.length == 0;
     
+}
+
+- (void)configureToolbox {
+    self.toolboxView.width = self.view.width;
+    [self.toolboxView addToSuperview:self.view];
+    self.toolboxView.moobee = self.moobee;
+    self.toolboxView.tmdbMovie = self.tmdbMovie;
+    
+    self.toolboxView.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterCell* cell) {
+        if (tmdbCharacter.person) {
+            [self openPerson:tmdbCharacter.person fromCharacterCell:cell];
+        }
+    };
+    
+    [self.posterImageView loadPosterWithPath:self.moobee.posterPath completion:^(BOOL didLoadImage) {
+        
+    }];
+    
+    [self.toolboxView performSelector:@selector(showFullToolbox) withObject:nil afterDelay:0.5];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

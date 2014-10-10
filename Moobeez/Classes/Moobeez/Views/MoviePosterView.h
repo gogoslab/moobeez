@@ -17,9 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
 + (CGFloat)height;
++ (CGSize)size;
 
 - (void)animateGrowWithCompletion:(void (^)(void))completionHandler;
 - (void)prepareForShrink;
 - (void)animateShrinkWithCompletion:(void (^)(void))completionHandler;
-
 @end

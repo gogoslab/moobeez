@@ -38,7 +38,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.posterImageView loadProfileWithPath:self.tmdbActor.profilePath completion:^(BOOL didLoadImage) {
+    CGSize size = [MoviePosterView size];
+    
+    [self.posterImageView loadProfileWithPath:self.tmdbActor.profilePath size:size completion:^(BOOL didLoadImage) {
+        self.toolboxView.width = self.view.width;
         [self.toolboxView addToSuperview:self.view];
         self.toolboxView.tmdbPerson = self.tmdbActor;
         self.toolboxView.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterCell* cell) {

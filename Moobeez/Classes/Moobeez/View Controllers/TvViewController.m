@@ -51,7 +51,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.posterImageView loadPosterWithPath:self.teebee.posterPath completion:^(BOOL didLoadImage) {
+    CGSize size = [MoviePosterView size];
+    
+    [self.posterImageView loadPosterWithPath:self.teebee.posterPath size:size completion:^(BOOL didLoadImage) {
         
         [self.toolboxView addToSuperview:self.view];
         self.toolboxView.teebee = self.teebee;

@@ -45,20 +45,24 @@
 }
 
 + (CGFloat)height {
+    return [self size].height;
+}
+
++ (CGSize)size {
+
+    static CGSize size;
     
-    static CGFloat height = -1;
-    
-    if (height == -1) {
+    if (size.height == 0 && size.width == 0) {
         
         MoviePosterView* cell = [[NSBundle mainBundle] loadNibNamed:@"MoviePosterView" owner:self options:nil][0];
         
         UIWindow* window = ((AppDelegate*) [UIApplication sharedApplication].delegate).window;
         
-        height = cell.width * window.height / window.width;
-        
+        size.height = cell.width * window.height / window.width;
+        size.width = cell.width;
     }
     
-    return height;
+    return size;
 }
 
 - (void)animateGrowWithCompletion:(void (^)(void))completionHandler {

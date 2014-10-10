@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 
 @class Bee;
+@class ImageView;
 
 @interface BeeCell : UICollectionViewCell
 
 @property (weak, nonatomic) Bee* bee;
+
+@property (weak, nonatomic) IBOutlet ImageView *posterImageView;
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (weak, nonatomic) IBOutlet UILabel *notWatchedEpisodesLabel;

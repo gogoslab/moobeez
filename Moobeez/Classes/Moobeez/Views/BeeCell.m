@@ -13,7 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView* containerView;
 
-@property (weak, nonatomic) IBOutlet ImageView *posterImageView;
 @property (weak, nonatomic) IBOutlet StarsView *starsView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 

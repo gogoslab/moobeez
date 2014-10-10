@@ -79,6 +79,22 @@
 		64428583191B00CF00A05B45 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 64428580191B00CF00A05B45 /* iRate.bundle */; };
 		64428584191B00CF00A05B45 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64428582191B00CF00A05B45 /* iRate.m */; };
 		644486EA19780BD6004084E9 /* check_in_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644486E919780BD6004084E9 /* check_in_icon@2x.png */; };
+		644B936019E6CF9E0000E4FF /* empty_stars_small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B935E19E6CF9E0000E4FF /* empty_stars_small@3x.png */; };
+		644B936119E6CF9E0000E4FF /* full_stars_small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B935F19E6CF9E0000E4FF /* full_stars_small@3x.png */; };
+		644B936A19E6DAF70000E4FF /* add_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B936219E6DAF70000E4FF /* add_button@3x.png */; };
+		644B936B19E6DAF70000E4FF /* back_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B936319E6DAF70000E4FF /* back_button@3x.png */; };
+		644B936C19E6DAF70000E4FF /* default_image@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B936419E6DAF70000E4FF /* default_image@3x.png */; };
+		644B936D19E6DAF70000E4FF /* delete_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B936519E6DAF70000E4FF /* delete_button@3x.png */; };
+		644B936E19E6DAF70000E4FF /* imdb_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B936619E6DAF70000E4FF /* imdb_button@3x.png */; };
+		644B936F19E6DAF70000E4FF /* share_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B936719E6DAF70000E4FF /* share_button@3x.png */; };
+		644B937019E6DAF70000E4FF /* share_facebook_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B936819E6DAF70000E4FF /* share_facebook_button@3x.png */; };
+		644B937119E6DAF70000E4FF /* share_twitter_button@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B936919E6DAF70000E4FF /* share_twitter_button@3x.png */; };
+		644B937519E7299B0000E4FF /* full_stars_big@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B937219E7299B0000E4FF /* full_stars_big@3x.png */; };
+		644B937619E7299B0000E4FF /* empty_stars_big_black@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B937319E7299B0000E4FF /* empty_stars_big_black@3x.png */; };
+		644B937719E7299B0000E4FF /* empty_stars_big_white@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B937419E7299B0000E4FF /* empty_stars_big_white@3x.png */; };
+		644B937B19E72C6C0000E4FF /* toolbox_up_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B937819E72C6C0000E4FF /* toolbox_up_arrow@3x.png */; };
+		644B937C19E72C6C0000E4FF /* toolbox_down_arrow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B937919E72C6C0000E4FF /* toolbox_down_arrow@3x.png */; };
+		644B937D19E72C6C0000E4FF /* toolbox_line@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B937A19E72C6C0000E4FF /* toolbox_line@3x.png */; };
 		644C695319B73BD8003FF584 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 644C695219B73BD8003FF584 /* CloudKit.framework */; };
 		6459BB9E1941D61F00D12DFF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6459BB9D1941D61F00D12DFF /* MapKit.framework */; };
 		6459BBA41941D65400D12DFF /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64EB23E11941114300C289B8 /* NotificationCenter.framework */; };
@@ -455,6 +471,22 @@
 		64428581191B00CF00A05B45 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		64428582191B00CF00A05B45 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
 		644486E919780BD6004084E9 /* check_in_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_in_icon@2x.png"; sourceTree = "<group>"; };
+		644B935E19E6CF9E0000E4FF /* empty_stars_small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty_stars_small@3x.png"; sourceTree = "<group>"; };
+		644B935F19E6CF9E0000E4FF /* full_stars_small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full_stars_small@3x.png"; sourceTree = "<group>"; };
+		644B936219E6DAF70000E4FF /* add_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_button@3x.png"; sourceTree = "<group>"; };
+		644B936319E6DAF70000E4FF /* back_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_button@3x.png"; sourceTree = "<group>"; };
+		644B936419E6DAF70000E4FF /* default_image@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_image@3x.png"; sourceTree = "<group>"; };
+		644B936519E6DAF70000E4FF /* delete_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_button@3x.png"; sourceTree = "<group>"; };
+		644B936619E6DAF70000E4FF /* imdb_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "imdb_button@3x.png"; sourceTree = "<group>"; };
+		644B936719E6DAF70000E4FF /* share_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_button@3x.png"; sourceTree = "<group>"; };
+		644B936819E6DAF70000E4FF /* share_facebook_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_facebook_button@3x.png"; sourceTree = "<group>"; };
+		644B936919E6DAF70000E4FF /* share_twitter_button@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share_twitter_button@3x.png"; sourceTree = "<group>"; };
+		644B937219E7299B0000E4FF /* full_stars_big@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full_stars_big@3x.png"; sourceTree = "<group>"; };
+		644B937319E7299B0000E4FF /* empty_stars_big_black@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty_stars_big_black@3x.png"; sourceTree = "<group>"; };
+		644B937419E7299B0000E4FF /* empty_stars_big_white@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty_stars_big_white@3x.png"; sourceTree = "<group>"; };
+		644B937819E72C6C0000E4FF /* toolbox_up_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbox_up_arrow@3x.png"; sourceTree = "<group>"; };
+		644B937919E72C6C0000E4FF /* toolbox_down_arrow@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbox_down_arrow@3x.png"; sourceTree = "<group>"; };
+		644B937A19E72C6C0000E4FF /* toolbox_line@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbox_line@3x.png"; sourceTree = "<group>"; };
 		644C695219B73BD8003FF584 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		6459BB9B1941CF2200D12DFF /* Moobeez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Moobeez.entitlements; sourceTree = "<group>"; };
 		6459BB9D1941D61F00D12DFF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -1059,6 +1091,17 @@
 		64177865180C3B5A00CDFA25 /* Common Images */ = {
 			isa = PBXGroup;
 			children = (
+				644B937819E72C6C0000E4FF /* toolbox_up_arrow@3x.png */,
+				644B937919E72C6C0000E4FF /* toolbox_down_arrow@3x.png */,
+				644B937A19E72C6C0000E4FF /* toolbox_line@3x.png */,
+				644B936219E6DAF70000E4FF /* add_button@3x.png */,
+				644B936319E6DAF70000E4FF /* back_button@3x.png */,
+				644B936419E6DAF70000E4FF /* default_image@3x.png */,
+				644B936519E6DAF70000E4FF /* delete_button@3x.png */,
+				644B936619E6DAF70000E4FF /* imdb_button@3x.png */,
+				644B936719E6DAF70000E4FF /* share_button@3x.png */,
+				644B936819E6DAF70000E4FF /* share_facebook_button@3x.png */,
+				644B936919E6DAF70000E4FF /* share_twitter_button@3x.png */,
 				640B8C6019BF69C3000E2781 /* facebook_connect_button@2x.png */,
 				6492E9E21987E7F600EC8E0B /* done_button@2x.png */,
 				64E69BAA197D688000352AFE /* edit_button@2x.png */,
@@ -1107,6 +1150,11 @@
 		64177868180C8A7400CDFA25 /* Moobeez */ = {
 			isa = PBXGroup;
 			children = (
+				644B937219E7299B0000E4FF /* full_stars_big@3x.png */,
+				644B937319E7299B0000E4FF /* empty_stars_big_black@3x.png */,
+				644B937419E7299B0000E4FF /* empty_stars_big_white@3x.png */,
+				644B935E19E6CF9E0000E4FF /* empty_stars_small@3x.png */,
+				644B935F19E6CF9E0000E4FF /* full_stars_small@3x.png */,
 				64CA53871823E6A9000699C5 /* empty_stars_big_white.png */,
 				64CA53881823E6A9000699C5 /* empty_stars_big_white@2x.png */,
 				649C3A711818068F0000A34C /* empty_stars_big_black.png */,
@@ -2686,6 +2734,7 @@
 			files = (
 				6492E9E31987E7F600EC8E0B /* done_button@2x.png in Resources */,
 				64290E9218A65AEB009E6B04 /* delete_button.png in Resources */,
+				644B936119E6CF9E0000E4FF /* full_stars_small@3x.png in Resources */,
 				64B2AADF18082AE600E02E2F /* Images.xcassets in Resources */,
 				64B3E42818F3FCD000783B95 /* menu_button.png in Resources */,
 				64087853199A2BED0047D380 /* timeline_section_mask@2x.png in Resources */,
@@ -2694,11 +2743,13 @@
 				64D1CC5E199B78C70059994B /* TimelineMovieCell.xib in Resources */,
 				64B2AB991808496B00E02E2F /* tab_bar_icon_movies@2x.png in Resources */,
 				64ADAC9B191C091F002D1538 /* search_bar_icon@2x.png in Resources */,
+				644B937019E6DAF70000E4FF /* share_facebook_button@3x.png in Resources */,
 				64DC8C111817137F002C11D8 /* back_button.png in Resources */,
 				64FDCC4119634111002FE27C /* dashboard_bottom_cell@2x.png in Resources */,
 				64B3E42118F3F28900783B95 /* background_blured.png in Resources */,
 				64B2AB951808486200E02E2F /* tab_bar_icon_moobeez@2x.png in Resources */,
 				64A8AD75188F39D400DBECD7 /* FeatureMoviesCell.xib in Resources */,
+				644B936C19E6DAF70000E4FF /* default_image@3x.png in Resources */,
 				64B3E42218F3F28900783B95 /* background_blured@2x.png in Resources */,
 				64DC8C1D1817215E002C11D8 /* toolbox_up_arrow.png in Resources */,
 				64177863180C336000CDFA25 /* LoadingViewController.xib in Resources */,
@@ -2711,7 +2762,9 @@
 				64DC8C1A1817215E002C11D8 /* toolbox_down_arrow@2x.png in Resources */,
 				6480798B19B9204F00541AC1 /* SearchNewFriendViewController.xib in Resources */,
 				64D7413E189D1FB10011C39A /* SearchNewTvViewController.xib in Resources */,
+				644B937B19E72C6C0000E4FF /* toolbox_up_arrow@3x.png in Resources */,
 				649EF25C18999B7100FC796D /* background@2x.png in Resources */,
+				644B936A19E6DAF70000E4FF /* add_button@3x.png in Resources */,
 				64897F1E189895C9001F9EDE /* share_facebook_button.png in Resources */,
 				649C3A771818068F0000A34C /* full_stars_big.png in Resources */,
 				64177876180CA5D900CDFA25 /* background.png in Resources */,
@@ -2735,6 +2788,8 @@
 				64290E7518A46074009E6B04 /* EpisodesViewController.xib in Resources */,
 				64B2AB8F1808452700E02E2F /* MoviesViewController.xib in Resources */,
 				64D717B518FC38C00098B13E /* imdb_button@2x.png in Resources */,
+				644B936D19E6DAF70000E4FF /* delete_button@3x.png in Resources */,
+				644B936F19E6DAF70000E4FF /* share_button@3x.png in Resources */,
 				6428B89818A39F2500E1A904 /* TvWatchedViewController.xib in Resources */,
 				64FDCC481963414E002FE27C /* DashboardTvShowCell.xib in Resources */,
 				64428583191B00CF00A05B45 /* iRate.bundle in Resources */,
@@ -2742,20 +2797,26 @@
 				64FDCC5519634924002FE27C /* DashboardFooterCell.xib in Resources */,
 				64CA538A1823E6A9000699C5 /* empty_stars_big_white@2x.png in Resources */,
 				644486EA19780BD6004084E9 /* check_in_icon@2x.png in Resources */,
+				644B936B19E6DAF70000E4FF /* back_button@3x.png in Resources */,
 				64FDCC4219634111002FE27C /* dashboard_middle_cell@2x.png in Resources */,
+				644B937619E7299B0000E4FF /* empty_stars_big_black@3x.png in Resources */,
 				64A8AD68188EC3D800DBECD7 /* YouTubeViewController.xib in Resources */,
 				64E69B97197D1A3000352AFE /* CheckInMovieCell.xib in Resources */,
 				649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */,
+				644B936E19E6DAF70000E4FF /* imdb_button@3x.png in Resources */,
 				644121F8181C351400260497 /* share_button@2x.png in Resources */,
 				64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */,
+				644B937C19E72C6C0000E4FF /* toolbox_down_arrow@3x.png in Resources */,
 				64087852199A2BED0047D380 /* timeline_line@2x.png in Resources */,
 				6428B89E18A3A36600E1A904 /* SeasonsViewController.xib in Resources */,
 				64646C5C1892BF3C007926FE /* featured_cells_header@2x.png in Resources */,
 				64E69B99197D1AD100352AFE /* checkmark@2x.png in Resources */,
+				644B937D19E72C6C0000E4FF /* toolbox_line@3x.png in Resources */,
 				6480799619B9210400541AC1 /* FriendCell.xib in Resources */,
 				64290E8918A5412A009E6B04 /* LoadingView.xib in Resources */,
 				64648EDD1829956200365EC7 /* ActorViewController.xib in Resources */,
 				64D1CC5F199B78C70059994B /* TimelineTVCell.xib in Resources */,
+				644B936019E6CF9E0000E4FF /* empty_stars_small@3x.png in Resources */,
 				649C3A781818068F0000A34C /* full_stars_big@2x.png in Resources */,
 				64FDCC4F196341D3002FE27C /* DashboardHeaderCell.xib in Resources */,
 				6480799419B9210400541AC1 /* CheckInFriendCell.xib in Resources */,
@@ -2774,6 +2835,7 @@
 				64177867180C3B5A00CDFA25 /* default_image.png in Resources */,
 				64ADAC9D191C0D16002D1538 /* search_bar_clear_icon@2x.png in Resources */,
 				64CA53861823DD2C000699C5 /* MovieButtonsWhite.bundle in Resources */,
+				644B937119E6DAF70000E4FF /* share_twitter_button@3x.png in Resources */,
 				64DC8C121817137F002C11D8 /* back_button@2x.png in Resources */,
 				64F322BF199BB45200D9010A /* TimelineWatchlistCell.xib in Resources */,
 				64290E7F18A516DA009E6B04 /* blue_circle.png in Resources */,
@@ -2800,6 +2862,7 @@
 				64648EC81828502E00365EC7 /* description_mask@2x.png in Resources */,
 				64E69BA7197D5B3400352AFE /* CheckInPlaceCell.xib in Resources */,
 				644121F7181C351400260497 /* share_button.png in Resources */,
+				644B937519E7299B0000E4FF /* full_stars_big@3x.png in Resources */,
 				64B3E42918F3FCD000783B95 /* menu_button@2x.png in Resources */,
 				64646C62189415F8007926FE /* MovieCell.xib in Resources */,
 				64E69B91197D173C00352AFE /* search_bar_icon_big@2x.png in Resources */,
@@ -2808,6 +2871,7 @@
 				640B8C6119BF69C3000E2781 /* facebook_connect_button@2x.png in Resources */,
 				64ADACA4191C2E7D002D1538 /* SearchViewController.xib in Resources */,
 				6414A3011821B90D009397FF /* DatePickerView.xib in Resources */,
+				644B937719E7299B0000E4FF /* empty_stars_big_white@3x.png in Resources */,
 				64897F1D189895C9001F9EDE /* share_twitter_button@2x.png in Resources */,
 				640865F6180B62EC00725CE4 /* MoobeezDatabase in Resources */,
 				64A10D9918A8E6B500906081 /* TeebeezHeaderView.xib in Resources */,

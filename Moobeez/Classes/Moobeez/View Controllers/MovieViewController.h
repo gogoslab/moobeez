@@ -17,6 +17,8 @@
 @property (strong, nonatomic) Moobee* moobee;
 @property (strong, nonatomic) TmdbMovie* tmdbMovie;
 
+@property (weak, nonatomic) UIImage* defaultImage;
+
 @property (copy, nonatomic) EmptyHandler closeHandler;
 
 @end
