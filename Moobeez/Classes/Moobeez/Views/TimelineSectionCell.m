@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet UILabel *monthLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dayNameLabel;
 
 @end
 
@@ -49,8 +50,19 @@
     
     _date = date;
     
-    self.dayLabel.text = [[NSDateFormatter dateFormatterWithFormat:@"d"] stringFromDate:date];
-    self.monthLabel.text = [[NSDateFormatter dateFormatterWithFormat:@"MMM"] stringFromDate:date];
+    if (date.isToday) {
+        self.dayNameLabel.text = @"Today";
+        self.dayNameLabel.hidden = NO;
+        self.dayLabel.hidden = YES;
+        self.monthLabel.hidden = YES;
+    }
+    else {
+        self.dayLabel.text = [[NSDateFormatter dateFormatterWithFormat:@"d"] stringFromDate:date];
+        self.monthLabel.text = [[NSDateFormatter dateFormatterWithFormat:@"MMM"] stringFromDate:date];
+        self.dayNameLabel.hidden = YES;
+        self.dayLabel.hidden = NO;
+        self.monthLabel.hidden = NO;
+    }
     
 }
 

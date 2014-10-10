@@ -36,4 +36,7 @@
 
 @property (readonly) NSInteger numberOfDaysInMonth;
 
+- (BOOL)isToday;
+- (BOOL)isTomorrow;
+
 @end

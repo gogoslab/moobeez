@@ -193,4 +193,13 @@
             rangeOfUnit:NSCalendarUnitDay inUnit:NSCalendarUnitMonth forDate:self].length;
 }
 
+
+- (BOOL)isToday {
+    return ([self isEqualWithDate:[NSDate date]]);
+}
+
+- (BOOL)isTomorrow {
+    return ([self isEqualWithDate:[[NSDate date] dateByAddingDays:1]]);
+}
+
 @end

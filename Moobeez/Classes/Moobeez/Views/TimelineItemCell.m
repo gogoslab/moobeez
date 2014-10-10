@@ -59,16 +59,16 @@
 
 }
 
-- (void)layoutSubviews {
-    
-    self.backdropImageView.frame = self.bounds;
-    self.shadowImageView.width = self.width;
-    self.shadowImageView.y = self.height - self.shadowImageView.height;
-    
-    self.titleLabel.center = CGPointMake(self.width / 2, self.titleLabel.center.y);
-    self.subtitleLabel.center = CGPointMake(self.width / 2, self.subtitleLabel.center.y);
-    self.starsView.center = CGPointMake(self.width / 2, self.starsView.center.y);
-
-}
+//- (void)layoutSubviews {
+//    
+//    self.backdropImageView.frame = self.bounds;
+//    self.shadowImageView.width = self.width;
+//    self.shadowImageView.y = self.height - self.shadowImageView.height;
+//    
+//    self.titleLabel.center = CGPointMake(self.width / 2, self.titleLabel.center.y);
+//    self.subtitleLabel.center = CGPointMake(self.width / 2, self.subtitleLabel.center.y);
+//    self.starsView.center = CGPointMake(self.width / 2, self.starsView.center.y);
+//
+//}
 
 @end

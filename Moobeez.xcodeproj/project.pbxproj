@@ -299,6 +299,7 @@
 		64EEBE6E194223BA000C7ADD /* TodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6459BBA91941D65400D12DFF /* TodayViewController.m */; };
 		64EEBE6F194225BA000C7ADD /* NSDate+Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 64B2AB0B18083CBF00E02E2F /* NSDate+Calculator.m */; };
 		64EEBE701942264A000C7ADD /* MovieButtonsWhite.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 64CA53851823DD2C000699C5 /* MovieButtonsWhite.bundle */; };
+		64EFA15E19E7E049006C4CB9 /* background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64EFA15D19E7E049006C4CB9 /* background@3x.png */; };
 		64F1DECE189AA1B600F2F88D /* TmdbTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1DECA189A9D1200F2F88D /* TmdbTV.m */; };
 		64F1DECF189AA1E700F2F88D /* Teebee.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1DEC6189A987D00F2F88D /* Teebee.m */; };
 		64F1DED2189AB68E00F2F88D /* TmdbTvSeason.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1DED1189AB68E00F2F88D /* TmdbTvSeason.m */; };
@@ -789,6 +790,7 @@
 		64EEBE5C19422324000C7ADD /* MissedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MissedViewController.m; sourceTree = "<group>"; };
 		64EEBE5E19422324000C7ADD /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		64EEBE681942234A000C7ADD /* com.goggzy.moobeez.Missed-Shows.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "com.goggzy.moobeez.Missed-Shows.entitlements"; sourceTree = "<group>"; };
+		64EFA15D19E7E049006C4CB9 /* background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@3x.png"; sourceTree = "<group>"; };
 		64F1DEC5189A987D00F2F88D /* Teebee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teebee.h; sourceTree = "<group>"; };
 		64F1DEC6189A987D00F2F88D /* Teebee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teebee.m; sourceTree = "<group>"; };
 		64F1DEC9189A9D1200F2F88D /* TmdbTV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbTV.h; sourceTree = "<group>"; };
@@ -1142,6 +1144,7 @@
 				64DC8C0F1817137F002C11D8 /* back_button.png */,
 				64DC8C101817137F002C11D8 /* back_button@2x.png */,
 				64177866180C3B5A00CDFA25 /* default_image.png */,
+				64EFA15D19E7E049006C4CB9 /* background@3x.png */,
 				64177875180CA5D900CDFA25 /* background.png */,
 			);
 			path = "Common Images";
@@ -2874,6 +2877,7 @@
 				644B937719E7299B0000E4FF /* empty_stars_big_white@3x.png in Resources */,
 				64897F1D189895C9001F9EDE /* share_twitter_button@2x.png in Resources */,
 				640865F6180B62EC00725CE4 /* MoobeezDatabase in Resources */,
+				64EFA15E19E7E049006C4CB9 /* background@3x.png in Resources */,
 				64A10D9918A8E6B500906081 /* TeebeezHeaderView.xib in Resources */,
 				64D74140189D1FB10011C39A /* TeebeezViewController.xib in Resources */,
 			);
