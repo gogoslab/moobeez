@@ -106,6 +106,8 @@
 
 #import "FriendCell.h"
 
+#import "MovieCardView.h"
+
 #pragma mark - Toolboxes
 
 #import "ToolboxView.h"

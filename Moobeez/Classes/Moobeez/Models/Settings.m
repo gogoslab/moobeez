@@ -38,6 +38,7 @@ static Settings* _sharedSettings;
         self.cacheImages = YES;
         self.cacheDuration = CacheDurationTypeOneDay;
         self.updateShowsInterval = 1;
+//        self.teebeeInterval = 0;
         self.teebeeInterval = - 24 * 3600;
         
         [self saveSettings];
@@ -55,7 +56,8 @@ static Settings* _sharedSettings;
         self.updateShowsInterval = 1;
     }
 
-    self.teebeeInterval = [settingsDictionary floatForKey:@"teebeeInterval"];
+    self.teebeeInterval = 0;//[settingsDictionary floatForKey:@"teebeeInterval"];
+    self.teebeeInterval = - 24 * 3600;
 
     return YES;
 }

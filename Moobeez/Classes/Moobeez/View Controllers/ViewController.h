@@ -7,6 +7,7 @@
 //
 
 #import "ConnectionViewController.h"
+#import "Flurry.h"
 
 @class AppDelegate;
 

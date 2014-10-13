@@ -32,7 +32,9 @@
 
             for (NSDictionary* movieDictionary in resultDictionary[@"results"]) {
                 TmdbMovie* tmdbMovie = [[TmdbMovie alloc] initWithTmdbDictionary:movieDictionary];
-                [movies addObject:tmdbMovie];
+                if (tmdbMovie.posterPath.length) {
+                    [movies addObject:tmdbMovie];
+                }
             }
         
             self.customHandler(code, movies);

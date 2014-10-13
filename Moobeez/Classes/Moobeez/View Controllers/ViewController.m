@@ -35,6 +35,8 @@
     [super viewWillAppear:animated];
     
     [self.appDelegate.sideTabController setNeedsStatusBarAppearanceUpdate];
+    
+    [Flurry logEvent:@"Visit Page" withParameters:@{@"Page" : [NSString stringWithFormat:@"%@",[self class]]}];
 }
 
 - (void)didReceiveMemoryWarning

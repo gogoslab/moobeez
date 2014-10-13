@@ -126,6 +126,7 @@
     if (!self.addButton.selected) {
         [self.teebee addTeebeeToDatabaseWithCompletion:^{
             self.addButton.selected = (self.teebee.id != -1);
+            [Flurry logEvent:@"Add TV show"];
         }];
     }
     else {
@@ -133,6 +134,7 @@
             
             if ([[Database sharedDatabase] deleteTeebee:self.teebee]) {
                 self.addButton.selected = NO;
+                [Flurry logEvent:@"Delete TV show"];
             }
             
         } cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];

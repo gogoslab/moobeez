@@ -12,6 +12,7 @@
 #import "iRate.h"
 //#import <Crashlytics/Crashlytics.h>
 #import <NotificationCenter/NotificationCenter.h>
+#import "Flurry.h"
 
 void uncaughtExceptionHandler(NSException *exception);
 
@@ -31,6 +32,12 @@ void uncaughtExceptionHandler(NSException *exception) {
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     
 //    [Crashlytics startWithAPIKey:@"975fc7e2b44d8ca7ec8ff096827064b0c5c0facb"];
+    
+#ifndef DEBUG
+    [Flurry setCrashReportingEnabled:YES];
+#endif
+
+    [Flurry startSession:@"2MBW3HYFRFKFBT8D9NQK"];
 
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor mainColor],NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
 

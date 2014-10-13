@@ -25,6 +25,8 @@
 #import "UIMaskView.h"
 #import "FloatingHeadersCollectionViewFlowLayout.h"
 
+#import "SortingView.h"
+
 #pragma mark - Alert
 
 #import "Alert.h"
