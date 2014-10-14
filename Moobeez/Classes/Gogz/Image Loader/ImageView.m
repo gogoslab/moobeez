@@ -126,7 +126,9 @@
     
     [self.activityIndicator stopAnimating];
     
-    self.completionHandler(image != nil);
+    if (self.completionHandler) {
+        self.completionHandler(image != nil);
+    }
     
 }
 
@@ -156,7 +158,9 @@
     
     [self.activityIndicator stopAnimating];
     
-    self.completionHandler(NO);
+    if (self.completionHandler) {
+        self.completionHandler(NO);
+    }
 }
 
 - (void)setLoadSyncronized:(BOOL)loadSyncronized {

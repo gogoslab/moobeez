@@ -237,12 +237,12 @@
 {
 	NSLog(@"eror connection:%@",error);
 	
+    [self.activityIndicator stopAnimating];
+    
     self.rawHandler(self.response, connection.data, error);
     
 	connection.data = nil;
 	self.urlConnection = nil;
-    
-    [self.activityIndicator stopAnimating];
     
     [self.connectionManager.connections removeObject:self];
 }
@@ -258,13 +258,13 @@
     
 	id jsonResult = [self jsonForData:connection.data];
     
+    [self.activityIndicator stopAnimating];
+    
     self.rawHandler(self.response, jsonResult, nil);
     
 	connection.data = nil;
 	
     self.urlConnection = nil;
-    
-    [self.activityIndicator stopAnimating];
     
     [self.connectionManager.connections removeObject:self];
     

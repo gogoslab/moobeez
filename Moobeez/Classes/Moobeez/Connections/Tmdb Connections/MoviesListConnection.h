@@ -19,6 +19,6 @@ typedef void (^ConnectionMoviesListHandler) (WebserviceResultCode code, NSMutabl
 
 @interface MoviesListConnection : TmdbConnection
 
-- (id)initWithType:(MoviesListType)moviesType completionHandler:(ConnectionMoviesListHandler)handler;
+- (id)initWithType:(MoviesListType)moviesType page:(NSInteger)page completionHandler:(ConnectionMoviesListHandler)handler;
 
 @end

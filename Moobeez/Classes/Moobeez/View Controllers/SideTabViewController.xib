@@ -328,8 +328,8 @@
                 </textAttributes>
             </navigationBar>
             <viewControllers>
-                <viewController title="Sorting" nibName="SortingMoviesViewController" id="eCe-NO-mUS" customClass="SortingMoviesViewController">
-                    <navigationItem key="navigationItem" title="Suggested Movies" id="C0P-P9-hsS"/>
+                <viewController title="Sorting" nibName="MoviesSuggestionsViewController" id="eCe-NO-mUS" customClass="MoviesSuggestionsViewController">
+                    <navigationItem key="navigationItem" title="Movies suggestions" id="C0P-P9-hsS"/>
                 </viewController>
             </viewControllers>
         </navigationController>

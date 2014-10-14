@@ -1,5 +1,5 @@
 //
-//  SortingMoviesViewController.h
+//  MoviesSuggestionsViewController.h
 //  Moobeez
 //
 //  Created by Radu Banea on 13/10/14.
@@ -8,6 +8,6 @@
 
 #import "ViewController.h"
 
-@interface SortingMoviesViewController : ViewController
+@interface MoviesSuggestionsViewController : ViewController
 
 @end

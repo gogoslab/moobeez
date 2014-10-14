@@ -28,7 +28,8 @@ typedef enum : NSUInteger {
 @protocol SortingViewDelegate <NSObject>
 
 @optional
-- (void)sortingView:(SortingView*)sortingView didSortCardAtIndex:(NSInteger)cardInde direction:(SortingDirection)direction;
+- (void)sortingView:(SortingView*)sortingView didSortCardAtIndex:(NSInteger)cardIndex direction:(SortingDirection)direction;
+- (void)sortingView:(SortingView*)sortingView didSelectCardAtIndex:(NSInteger)cardIndex;
 
 @end
 
@@ -38,8 +39,14 @@ typedef enum : NSUInteger {
 @property (weak, nonatomic) IBOutlet id<SortingViewDelegate> delegate;
 
 @property (readwrite, nonatomic) CGSize cardSize;
+@property (readonly, nonatomic) CGRect cardFrame;
+
 @property (readwrite, nonatomic) CGFloat numberOfVisibleCards;
 
+@property (readonly, nonatomic) UIView* topCardView;
+
 - (void)reloadData;
+
+- (UIView*)dequeueReusableCard;
 
 @end

@@ -18,11 +18,11 @@
 
 @implementation MoviesListConnection
 
-- (id)initWithType:(MoviesListType)moviesType completionHandler:(ConnectionMoviesListHandler)handler {
+- (id)initWithType:(MoviesListType)moviesType page:(NSInteger)page completionHandler:(ConnectionMoviesListHandler)handler {
     
     self.moviesType = moviesType;
     
-    self = [super initWithParameters:@{@"page" : @1} completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
+    self = [super initWithParameters:@{@"page" : @(page)} completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
         
         NSLog(@"result: %@", resultDictionary);
         

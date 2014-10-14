@@ -15,9 +15,9 @@
 @property (readwrite, nonatomic) CGPoint cardLastPosition;
 @property (readwrite, nonatomic) NSInteger firstVisibleCardIndex;
 
-@property (readonly, nonatomic) CGRect cardFrame;
-
 @property (weak, nonatomic) UIView* coverView;
+
+@property (strong, nonatomic) NSMutableArray* reusableCards;
 
 @end
 
@@ -32,6 +32,7 @@
         self.cardSize = CGSizeMake(self.width * 0.8, self.height * 0.8);
         
         self.visibleCards = [[NSMutableArray alloc] init];
+        self.reusableCards = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -46,9 +47,8 @@
     for (UIView* cardView in self.visibleCards) {
         [cardView removeFromSuperview];
     }
+    [self.reusableCards addObjectsFromArray:self.visibleCards];
     [self.visibleCards removeAllObjects];
-    
-    
     
     self.firstVisibleCardIndex = [self.dataSource numberOfCardsInSortingView:self] - 1;
     
@@ -61,6 +61,7 @@
 
 - (void)addCardForIndex:(NSInteger)cardIndex {
     UIView* cardView = [self.dataSource sortingView:self viewForCardIndex:cardIndex];
+    cardView.transform = CGAffineTransformIdentity;
     cardView.frame = self.cardFrame;
     
     if (self.visibleCards.count) {
@@ -103,6 +104,10 @@
     
     UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(didMoveCardView:)];
     [cardView addGestureRecognizer:panGesture];
+    
+    UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTapCardView:)];
+    tapGesture.numberOfTapsRequired = 1;
+    [cardView addGestureRecognizer:tapGesture];
     
 }
 
@@ -163,6 +168,12 @@
     
 }
 
+- (IBAction)didTapCardView:(UIGestureRecognizer*)gestureRecognizer {
+    if ([self.delegate respondsToSelector:@selector(sortingView:didSelectCardAtIndex:)]) {
+        [self.delegate sortingView:self didSelectCardAtIndex:self.firstVisibleCardIndex];
+    }
+}
+
 - (void)discardCardToDirection:(SortingDirection)direction {
 
     UIView* cardView = self.visibleCards[0];
@@ -171,9 +182,8 @@
     
     self.firstVisibleCardIndex--;
     
-    if (self.firstVisibleCardIndex - self.numberOfVisibleCards + 1 >= 0) {
-        [self addCardForIndex:self.firstVisibleCardIndex - self.numberOfVisibleCards + 1];
-    }
+    [self performSelector:@selector(addNextCard) withObject:nil afterDelay:0.01];
+
     
     [UIView animateWithDuration:0.3 animations:^{
         
@@ -199,8 +209,35 @@
         if ([self.delegate respondsToSelector:@selector(sortingView:didSortCardAtIndex:direction:)]) {
             [self.delegate sortingView:self didSortCardAtIndex:self.firstVisibleCardIndex + 1 direction:direction];
         }
+        [self.reusableCards addObject:cardView];
+        [self.coverView removeFromSuperview];
         [cardView removeFromSuperview];
     }];
+}
+
+- (void)addNextCard {
+    
+    if (self.firstVisibleCardIndex - self.numberOfVisibleCards + 1 >= 0) {
+        [self addCardForIndex:self.firstVisibleCardIndex - self.numberOfVisibleCards + 1];
+    }
+}
+
+- (UIView*)topCardView {
+    if (self.visibleCards.count) {
+        return self.visibleCards[0];
+    }
+    
+    return nil;
+}
+
+- (UIView*)dequeueReusableCard {
+    if (self.reusableCards.count > 0) {
+        UIView* cardView = self.reusableCards[0];
+        [self.reusableCards removeObjectAtIndex:0];
+        return cardView;
+    }
+    
+    return nil;
 }
 
 @end

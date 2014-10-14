@@ -16,7 +16,10 @@ typedef enum MoobeeType {
 
     MoobeeAllType,
     
-    MoobeeFavoriteType = 0
+    MoobeeFavoriteType = 0,
+
+    MoobeeNewType = 4,
+    MoobeeDiscardedType = 5
     
 } MoobeeType;
 

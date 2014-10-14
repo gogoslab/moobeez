@@ -79,6 +79,7 @@
 		6442857E191AFAD200A05B45 /* ImageLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6442857D191AFAD200A05B45 /* ImageLoader.m */; };
 		64428583191B00CF00A05B45 /* iRate.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 64428580191B00CF00A05B45 /* iRate.bundle */; };
 		64428584191B00CF00A05B45 /* iRate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64428582191B00CF00A05B45 /* iRate.m */; };
+		6443862A19ED2FB700ABB621 /* reload_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6443862919ED2FB700ABB621 /* reload_button@2x.png */; };
 		644486EA19780BD6004084E9 /* check_in_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644486E919780BD6004084E9 /* check_in_icon@2x.png */; };
 		644B936019E6CF9E0000E4FF /* empty_stars_small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B935E19E6CF9E0000E4FF /* empty_stars_small@3x.png */; };
 		644B936119E6CF9E0000E4FF /* full_stars_small@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644B935F19E6CF9E0000E4FF /* full_stars_small@3x.png */; };
@@ -235,8 +236,8 @@
 		64B3E42818F3FCD000783B95 /* menu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B3E42618F3FCD000783B95 /* menu_button.png */; };
 		64B3E42918F3FCD000783B95 /* menu_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64B3E42718F3FCD000783B95 /* menu_button@2x.png */; };
 		64BC38C119EC153900782F8E /* SortingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BC38C019EC153900782F8E /* SortingView.m */; };
-		64BC38C619EC1DA000782F8E /* SortingMoviesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BC38C419EC1DA000782F8E /* SortingMoviesViewController.m */; };
-		64BC38C719EC1DA000782F8E /* SortingMoviesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64BC38C519EC1DA000782F8E /* SortingMoviesViewController.xib */; };
+		64BC38C619EC1DA000782F8E /* MoviesSuggestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BC38C419EC1DA000782F8E /* MoviesSuggestionsViewController.m */; };
+		64BC38C719EC1DA000782F8E /* MoviesSuggestionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64BC38C519EC1DA000782F8E /* MoviesSuggestionsViewController.xib */; };
 		64BC38CB19EC1E2B00782F8E /* MovieCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64BC38CA19EC1E2B00782F8E /* MovieCardView.m */; };
 		64BC38CE19EC1E4900782F8E /* MovieCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64BC38CD19EC1E4900782F8E /* MovieCardView.xib */; };
 		64BC38D119EC329B00782F8E /* info_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 64BC38CF19EC329B00782F8E /* info_button@2x.png */; };
@@ -486,6 +487,7 @@
 		64428580191B00CF00A05B45 /* iRate.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = iRate.bundle; sourceTree = "<group>"; };
 		64428581191B00CF00A05B45 /* iRate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iRate.h; sourceTree = "<group>"; };
 		64428582191B00CF00A05B45 /* iRate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iRate.m; sourceTree = "<group>"; };
+		6443862919ED2FB700ABB621 /* reload_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reload_button@2x.png"; sourceTree = "<group>"; };
 		644486E919780BD6004084E9 /* check_in_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_in_icon@2x.png"; sourceTree = "<group>"; };
 		644B935E19E6CF9E0000E4FF /* empty_stars_small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty_stars_small@3x.png"; sourceTree = "<group>"; };
 		644B935F19E6CF9E0000E4FF /* full_stars_small@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full_stars_small@3x.png"; sourceTree = "<group>"; };
@@ -727,9 +729,9 @@
 		64B3E42718F3FCD000783B95 /* menu_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "menu_button@2x.png"; sourceTree = "<group>"; };
 		64BC38BF19EC153900782F8E /* SortingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortingView.h; sourceTree = "<group>"; };
 		64BC38C019EC153900782F8E /* SortingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortingView.m; sourceTree = "<group>"; };
-		64BC38C319EC1DA000782F8E /* SortingMoviesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SortingMoviesViewController.h; sourceTree = "<group>"; };
-		64BC38C419EC1DA000782F8E /* SortingMoviesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SortingMoviesViewController.m; sourceTree = "<group>"; };
-		64BC38C519EC1DA000782F8E /* SortingMoviesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SortingMoviesViewController.xib; sourceTree = "<group>"; };
+		64BC38C319EC1DA000782F8E /* MoviesSuggestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoviesSuggestionsViewController.h; sourceTree = "<group>"; };
+		64BC38C419EC1DA000782F8E /* MoviesSuggestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoviesSuggestionsViewController.m; sourceTree = "<group>"; };
+		64BC38C519EC1DA000782F8E /* MoviesSuggestionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MoviesSuggestionsViewController.xib; sourceTree = "<group>"; };
 		64BC38C919EC1E2B00782F8E /* MovieCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieCardView.h; sourceTree = "<group>"; };
 		64BC38CA19EC1E2B00782F8E /* MovieCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieCardView.m; sourceTree = "<group>"; };
 		64BC38CD19EC1E4900782F8E /* MovieCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MovieCardView.xib; sourceTree = "<group>"; };
@@ -1125,6 +1127,7 @@
 		64177865180C3B5A00CDFA25 /* Common Images */ = {
 			isa = PBXGroup;
 			children = (
+				6443862919ED2FB700ABB621 /* reload_button@2x.png */,
 				64BC38D319EC34BB00782F8E /* garbage_icon_white@2x.png */,
 				64BC38D419EC34BB00782F8E /* garbage_icon_white@3x.png */,
 				64BC38D519EC34BB00782F8E /* garbage_icon_black@2x.png */,
@@ -2167,7 +2170,7 @@
 				64087844199A13610047D380 /* 3. Timeline Screen */,
 				6408783C199A126E0047D380 /* 4. Movies Sections */,
 				6408783D199A127F0047D380 /* 5. TV Sections */,
-				64BC38C819EC1DA500782F8E /* 6. Sorting Movies */,
+				64BC38C819EC1DA500782F8E /* 6. Movies Suggestions */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -2298,14 +2301,14 @@
 			name = "Sorting View";
 			sourceTree = "<group>";
 		};
-		64BC38C819EC1DA500782F8E /* 6. Sorting Movies */ = {
+		64BC38C819EC1DA500782F8E /* 6. Movies Suggestions */ = {
 			isa = PBXGroup;
 			children = (
-				64BC38C319EC1DA000782F8E /* SortingMoviesViewController.h */,
-				64BC38C419EC1DA000782F8E /* SortingMoviesViewController.m */,
-				64BC38C519EC1DA000782F8E /* SortingMoviesViewController.xib */,
+				64BC38C319EC1DA000782F8E /* MoviesSuggestionsViewController.h */,
+				64BC38C419EC1DA000782F8E /* MoviesSuggestionsViewController.m */,
+				64BC38C519EC1DA000782F8E /* MoviesSuggestionsViewController.xib */,
 			);
-			name = "6. Sorting Movies";
+			name = "6. Movies Suggestions";
 			sourceTree = "<group>";
 		};
 		64BC38CC19EC1E2E00782F8E /* Movie Card View */ = {
@@ -2885,7 +2888,7 @@
 				644B936B19E6DAF70000E4FF /* back_button@3x.png in Resources */,
 				64FDCC4219634111002FE27C /* dashboard_middle_cell@2x.png in Resources */,
 				644B937619E7299B0000E4FF /* empty_stars_big_black@3x.png in Resources */,
-				64BC38C719EC1DA000782F8E /* SortingMoviesViewController.xib in Resources */,
+				64BC38C719EC1DA000782F8E /* MoviesSuggestionsViewController.xib in Resources */,
 				64A8AD68188EC3D800DBECD7 /* YouTubeViewController.xib in Resources */,
 				64E69B97197D1A3000352AFE /* CheckInMovieCell.xib in Resources */,
 				649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */,
@@ -2893,6 +2896,7 @@
 				644121F8181C351400260497 /* share_button@2x.png in Resources */,
 				64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */,
 				644B937C19E72C6C0000E4FF /* toolbox_down_arrow@3x.png in Resources */,
+				6443862A19ED2FB700ABB621 /* reload_button@2x.png in Resources */,
 				64087852199A2BED0047D380 /* timeline_line@2x.png in Resources */,
 				6428B89E18A3A36600E1A904 /* SeasonsViewController.xib in Resources */,
 				64646C5C1892BF3C007926FE /* featured_cells_header@2x.png in Resources */,
@@ -3062,7 +3066,7 @@
 				6459F35F18F2E93500EBFBE0 /* TvImagesConnection.m in Sources */,
 				64B2AB7A18083ED600E02E2F /* UIColor+Hex.m in Sources */,
 				6459F36418F3391900EBFBE0 /* SideTabViewController.m in Sources */,
-				64BC38C619EC1DA000782F8E /* SortingMoviesViewController.m in Sources */,
+				64BC38C619EC1DA000782F8E /* MoviesSuggestionsViewController.m in Sources */,
 				64646C5F189415B9007926FE /* MovieCell.m in Sources */,
 				64428584191B00CF00A05B45 /* iRate.m in Sources */,
 				64D74166189FF7720011C39A /* Cache.m in Sources */,

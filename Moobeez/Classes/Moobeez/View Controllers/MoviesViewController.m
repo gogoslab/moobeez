@@ -102,7 +102,7 @@ typedef enum MoviesSection {
 
 - (void)loadMoviesWithType:(MoviesListType)moviesType inSection:(MoviesSection)section {
     
-    MoviesListConnection* connection = [[MoviesListConnection alloc] initWithType:moviesType completionHandler:^(WebserviceResultCode code, NSMutableArray *movies) {
+    MoviesListConnection* connection = [[MoviesListConnection alloc] initWithType:moviesType page:1 completionHandler:^(WebserviceResultCode code, NSMutableArray *movies) {
         if (code == WebserviceResultOk) {
             [self.featuredCells[section] setMovies:movies];
             if ([self.tableView indexPathForCell:self.featuredCells[section]]) {

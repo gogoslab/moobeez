@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class TmdbMovie;
+@class Moobee;
 
 @interface MovieCardView : UIView
 
-@property (weak, nonatomic) TmdbMovie* movie;
+@property (weak, nonatomic) Moobee* movie;
 
 @property (strong, nonatomic) IBOutlet UIVisualEffectView *rightCoverView;
 @property (strong, nonatomic) IBOutlet UIVisualEffectView *leftCoverView;

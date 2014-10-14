@@ -681,6 +681,9 @@ static Database* sharedDatabase;
         case MoobeeOnWatchlistType:
             query = [NSString stringWithFormat:@"SELECT * FROM Moobeez WHERE type = %d ORDER BY ID DESC", type];
             break;
+        case MoobeeNewType:
+            query = [NSString stringWithFormat:@"SELECT * FROM Moobeez WHERE type = %d ORDER BY releaseDate ASC", type];
+            break;
         default:
             query = [NSString stringWithFormat:@"SELECT * FROM Moobeez ORDER BY date DESC, ID DESC"];
             break;

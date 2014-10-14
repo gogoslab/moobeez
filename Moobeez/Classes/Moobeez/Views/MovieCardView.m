@@ -32,9 +32,11 @@
     self.layer.shadowOpacity = 0.3;
 }
 
-- (void)setMovie:(TmdbMovie *)movie {
+- (void)setMovie:(Moobee *)movie {
 
     _movie = movie;
+    
+    self.posterImageView.defaultImage = [UIImage imageNamed:@"default_image.png"];
     
     [self.posterImageView loadPosterWithPath:movie.posterPath completion:^(BOOL didLoadImage) {
         
@@ -56,6 +58,10 @@
     
     self.leftCoverLabel.textColor = textsColor;
     self.leftCoverIcon.image = [UIImage imageNamed:[NSString stringWithFormat:@"garbage_icon_%@.png", (self.isLightInterface ? @"white" : @"black")]];
+}
+
+- (void)dealloc {
+    NSLog(@"dealloc: %@", [self class]);
 }
 
 @end
