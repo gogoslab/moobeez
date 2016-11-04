@@ -27,7 +27,9 @@
 - (void)showMenu;
 - (void)hideMenu;
 
-- (void)presentCheckInViewController;
-- (void)presentCheckInTvShowViewController;
+- (void)presentCheckInViewControllerAnimated:(BOOL)animated;
+- (void)presentCheckInTvShowViewControllerAnimated:(BOOL)animated;
+
+- (void)performShortcut:(NSString *)shortcut;
 
 @end

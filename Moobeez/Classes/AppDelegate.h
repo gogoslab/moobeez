@@ -13,7 +13,6 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) IBOutlet UIWindow *window;
-@property (weak, nonatomic) IBOutlet UITabBarController *tabBarController;
 
 @property (strong, nonatomic) SideTabViewController *sideTabController;
 

@@ -40,15 +40,17 @@ const NSInteger defaultRadius = 10000; // 1km
     
     self.locationManager = [[CLLocationManager alloc] init];
 
+    __block PlacePickerViewController *weakSelf = self;
+
     self.requestHandler = ^(FBRequestConnection *connection, id result, NSError *error) {
-        self.isLoading = NO;
+        weakSelf.isLoading = NO;
 
         if (error) {
             NSLog(@"Error: %@", [error localizedDescription]);
         } else {
-            NSLog(@"Result: %@", result);
+            //NSLog(@"Result: %@", result);
             
-            [self processResult:result];
+            [weakSelf processResult:result];
             
         }};
 

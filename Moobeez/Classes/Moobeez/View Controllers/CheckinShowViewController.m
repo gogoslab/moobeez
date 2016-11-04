@@ -159,13 +159,15 @@
     
     [self.appDelegate.window addSubview:self.searchNewTvShowController.view];
     
+    __block CheckinShowViewController *weakSelf = self;
+
     self.searchNewTvShowController.selectHandler = ^ (TmdbTV* tv) {
         
-        [self.searchItems insertObject:tv atIndex:0];
-        [self.collectionView reloadData];
-        [self.collectionView setContentOffset:CGPointZero animated:YES];
+        [weakSelf.searchItems insertObject:tv atIndex:0];
+        [weakSelf.collectionView reloadData];
+        [weakSelf.collectionView setContentOffset:CGPointZero animated:YES];
         
-        [self.searchNewMovieController.view removeFromSuperview];
+        [weakSelf.searchNewMovieController.view removeFromSuperview];
         
     };
     

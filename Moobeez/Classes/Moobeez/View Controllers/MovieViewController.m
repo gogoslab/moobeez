@@ -35,6 +35,8 @@
 
 @property (readwrite, nonatomic) BOOL lightInterface;
 
+@property (readwrite, nonatomic) BOOL shouldConfigureView;
+
 @end
 
 @implementation MovieViewController
@@ -52,6 +54,21 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
+
+- (void)viewWillFirstTimeAppear:(BOOL)animated
+{
+    [super viewWillFirstTimeAppear:animated];
     
     if (self.defaultImage) {
         self.posterImageView.image = self.defaultImage;
@@ -70,22 +87,12 @@
     self.lightInterface = ([self.posterImageView.image luminosityFrom:0.0 to:0.05] > 0.7);
     
     self.imdbButton.hidden = self.tmdbMovie.imdbId.length == 0;
-    
 }
-
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    self.navigationController.navigationBarHidden = NO;
-}
-
-
 
 - (void)configureToolbox {
+    
+    __block MovieViewController *weakSelf = self;
+
     self.toolboxView.width = self.view.width;
     [self.toolboxView addToSuperview:self.view];
     self.toolboxView.moobee = self.moobee;
@@ -93,7 +100,7 @@
     
     self.toolboxView.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterCell* cell) {
         if (tmdbCharacter.person) {
-            [self openPerson:tmdbCharacter.person fromCharacterCell:cell];
+            [weakSelf openPerson:tmdbCharacter.person fromCharacterCell:cell];
         }
     };
     
@@ -192,9 +199,11 @@
     self.castViewController.castArray = self.tmdbMovie.characters;
     [self.castViewController startAnimation];
     
+    __block MovieViewController *weakSelf = self;
+
     self.castViewController.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterTableCell* cell) {
         if (tmdbCharacter.person) {
-            [self openPerson:tmdbCharacter.person fromCharacterTableCell:cell];
+            [weakSelf openPerson:tmdbCharacter.person fromCharacterTableCell:cell];
         }
     };
 }

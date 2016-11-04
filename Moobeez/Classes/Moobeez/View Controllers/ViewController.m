@@ -11,6 +11,8 @@
 
 @interface ViewController ()
 
+@property (readwrite, nonatomic) BOOL didCallFirstAppear;
+
 @end
 
 @implementation ViewController
@@ -31,12 +33,22 @@
     
 }
 
+- (void)viewWillFirstTimeAppear:(BOOL)animated
+{
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [self.appDelegate.sideTabController setNeedsStatusBarAppearanceUpdate];
     
     [Flurry logEvent:@"Visit Page" withParameters:@{@"Page" : [NSString stringWithFormat:@"%@",[self class]]}];
+    
+    if (self.didCallFirstAppear == NO)
+    {
+        [self viewWillFirstTimeAppear:animated];
+        self.didCallFirstAppear = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,7 +72,7 @@
     return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return UIInterfaceOrientationMaskPortrait;
 }
 

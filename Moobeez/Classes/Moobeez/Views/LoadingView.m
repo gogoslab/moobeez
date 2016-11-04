@@ -39,6 +39,7 @@ static LoadingView* loadingView;
     loadingView.contentView = contentView;
     if (contentView) {
         [loadingView addSubview:loadingView.contentView];
+        contentView.frame = loadingView.bounds;
         [loadingView.activityIndicatorView removeFromSuperview];
     }
 }

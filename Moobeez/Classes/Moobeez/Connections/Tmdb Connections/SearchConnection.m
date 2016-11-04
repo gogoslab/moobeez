@@ -29,7 +29,7 @@
     
     self = [super initWithParameters:@{@"query" : query, @"page" : @(self.page)} completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
         
-        NSLog(@"result: %@", resultDictionary);
+        //NSLog(@"result: %@", resultDictionary);
 
         NSMutableArray* results = [[NSMutableArray alloc] init];
         NSInteger numberOfPages = 0;

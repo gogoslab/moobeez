@@ -489,22 +489,29 @@ typedef enum SoonSections {
 
 - (void)addButtonPressed:(id)sender {
     
+    if (self.searchNewTvViewController.view.superview != nil)
+    {
+        return;
+    }
+    
     [self.appDelegate.window addSubview:self.searchNewTvViewController.view];
     
+    __block TeebeezViewController *weakSelf = self;
+
     self.searchNewTvViewController.selectHandler = ^ (TmdbTV* tv) {
         
         Teebee* teebee = [Teebee teebeeWithTmdbTV:tv];
         
-        self.view.userInteractionEnabled = NO;
+        weakSelf.view.userInteractionEnabled = NO;
 
         TvConnection* connection = [[TvConnection alloc] initWithTmdbId:teebee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbTV *tv) {
             if (code == WebserviceResultOk) {
-                self.view.userInteractionEnabled = YES;
-                [self.searchNewTvViewController.view removeFromSuperview];
-                [self goToTvDetailsScreenForTeebee:teebee andTv:tv];
+                weakSelf.view.userInteractionEnabled = YES;
+                [weakSelf.searchNewTvViewController.view removeFromSuperview];
+                [weakSelf goToTvDetailsScreenForTeebee:teebee andTv:tv];
             }
         }];
-        [self startConnection:connection];
+        [weakSelf startConnection:connection];
     };
 }
 

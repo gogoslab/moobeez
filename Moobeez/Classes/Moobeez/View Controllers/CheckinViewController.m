@@ -309,13 +309,15 @@
     
     [self.appDelegate.window addSubview:self.searchNewMovieController.view];
     
+    __block CheckinViewController *weakSelf = self;
+    
     self.searchNewMovieController.selectHandler = ^ (TmdbMovie* movie) {
         
-        [self.searchItems insertObject:movie atIndex:0];
-        [self.collectionView reloadData];
-        [self.collectionView setContentOffset:CGPointZero animated:YES];
+        [weakSelf.searchItems insertObject:movie atIndex:0];
+        [weakSelf.collectionView reloadData];
+        [weakSelf.collectionView setContentOffset:CGPointZero animated:YES];
         
-        [self.searchNewMovieController.view removeFromSuperview];
+        [weakSelf.searchNewMovieController.view removeFromSuperview];
 
     };
     
@@ -335,17 +337,19 @@
     
     [self.appDelegate.window addSubview:self.searchNewPlaceController.view];
     
+    __block CheckinViewController *weakSelf = self;
+    
     self.searchNewPlaceController.selectHandler = ^ (id place) {
         
-        [self.data insertObject:place atIndex:0];
-        self.selectedPlaceIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-        [self.placesTableView reloadData];
-        [self.placesTableView setContentOffset:CGPointZero animated:YES];
+        [weakSelf.data insertObject:place atIndex:0];
+        weakSelf.selectedPlaceIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+        [weakSelf.placesTableView reloadData];
+        [weakSelf.placesTableView setContentOffset:CGPointZero animated:YES];
         
-        [self.searchNewPlaceController.view removeFromSuperview];
+        [weakSelf.searchNewPlaceController.view removeFromSuperview];
         
-        if (!self.navigationItem.rightBarButtonItem && self.selectedMovieIndexPath && self.selectedPlaceIndexPath) {
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"done_button.png"] style:UIBarButtonItemStylePlain target:self action:@selector(checkinButtonPressed:)];
+        if (!weakSelf.navigationItem.rightBarButtonItem && weakSelf.selectedMovieIndexPath && weakSelf.selectedPlaceIndexPath) {
+            weakSelf.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"done_button.png"] style:UIBarButtonItemStylePlain target:weakSelf action:@selector(checkinButtonPressed:)];
         }
         
     };
@@ -364,8 +368,10 @@
     
     [self.appDelegate.window addSubview:self.searchNewFriendController.view];
     
+    __block CheckinViewController *weakSelf = self;
+
     self.searchNewFriendController.selectHandler = ^ (id friend) {
-        [self.friendsCollectionView reloadData];
+        [weakSelf.friendsCollectionView reloadData];
     };
     
 }

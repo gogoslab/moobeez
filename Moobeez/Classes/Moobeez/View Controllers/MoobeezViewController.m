@@ -367,14 +367,21 @@ enum CollectionSections {
 
 - (void)addButtonPressed:(id)sender {
     
+    if (self.searchNewMovieController.view.superview)
+    {
+        return;
+    }
+    
     [self.appDelegate.window addSubview:self.searchNewMovieController.view];
     
+    __block MoobeezViewController *weakSelf = self;
+
     self.searchNewMovieController.selectHandler = ^ (TmdbMovie* movie) {
         
         Moobee* moobee = [Moobee moobeeWithTmdbMovie:movie];
         
         if (moobee.id == -1) {
-            switch (self.selectedType) {
+            switch (weakSelf.selectedType) {
                 case MoobeeSeenType:
                     moobee.type = MoobeeSeenType;
                     moobee.date = [NSDate date];
@@ -392,15 +399,15 @@ enum CollectionSections {
             }
         }
         
-        self.view.userInteractionEnabled = NO;
+        weakSelf.view.userInteractionEnabled = NO;
         MovieConnection* connection = [[MovieConnection alloc] initWithTmdbId:moobee.tmdbId completionHandler:^(WebserviceResultCode code, TmdbMovie *movie) {
             if (code == WebserviceResultOk) {
-                self.view.userInteractionEnabled = YES;
-                [self.searchNewMovieController.view removeFromSuperview];
-                [self goToMovieDetailsScreenForMoobee:moobee andMovie:movie posterImage:nil];
+                weakSelf.view.userInteractionEnabled = YES;
+                [weakSelf.searchNewMovieController.view removeFromSuperview];
+                [weakSelf goToMovieDetailsScreenForMoobee:moobee andMovie:movie posterImage:nil];
             }
         }];
-        [self startConnection:connection];
+        [weakSelf startConnection:connection];
     };
 }
 

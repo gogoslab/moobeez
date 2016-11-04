@@ -50,8 +50,15 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+}
+
+- (void)viewWillFirstTimeAppear:(BOOL)animated
+{
+    [super viewWillFirstTimeAppear:animated];
+
     CGSize size = [MoviePosterView size];
+    
+    __block TvViewController * weakSelf = self;
     
     [self.posterImageView loadPosterWithPath:self.teebee.posterPath size:size completion:^(BOOL didLoadImage) {
         
@@ -61,7 +68,7 @@
 
         self.toolboxView.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterCell* cell) {
             if (tmdbCharacter.person) {
-                [self openPerson:tmdbCharacter.person fromCharacterCell:cell];
+                [weakSelf openPerson:tmdbCharacter.person fromCharacterCell:cell];
             }
         };
 
@@ -124,8 +131,11 @@
 - (IBAction)addButtonPressed:(id)sender {
     
     if (!self.addButton.selected) {
+        
+        __block TvViewController *weakSelf = self;
+
         [self.teebee addTeebeeToDatabaseWithCompletion:^{
-            self.addButton.selected = (self.teebee.id != -1);
+            weakSelf.addButton.selected = (weakSelf.teebee.id != -1);
             [Flurry logEvent:@"Add TV show"];
         }];
     }
@@ -187,9 +197,11 @@
     self.castViewController.castArray = self.tmdbTv.characters;
     [self.castViewController startAnimation];
     
+    __block TvViewController *weakSelf = self;
+
     self.castViewController.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterTableCell* cell) {
         if (tmdbCharacter.person) {
-            [self openPerson:tmdbCharacter.person fromCharacterTableCell:cell];
+            [weakSelf openPerson:tmdbCharacter.person fromCharacterTableCell:cell];
         }
     };
 }

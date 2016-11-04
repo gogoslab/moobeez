@@ -314,10 +314,10 @@ typedef enum : NSUInteger {
     
     switch (buttonIndex) {
         case 0:
-            [self.appDelegate.sideTabController presentCheckInViewController];
+            [self.appDelegate.sideTabController presentCheckInViewControllerAnimated:YES];
             break;
         case 1:
-            [self.appDelegate.sideTabController presentCheckInTvShowViewController];
+            [self.appDelegate.sideTabController presentCheckInTvShowViewControllerAnimated:YES];
             break;
             
         default:

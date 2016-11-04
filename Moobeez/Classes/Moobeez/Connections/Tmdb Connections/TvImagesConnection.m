@@ -24,7 +24,7 @@
     
     self = [super initWithParameters:@{} completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
         
-        NSLog(@"result: %@", resultDictionary);
+        //NSLog(@"result: %@", resultDictionary);
         
         [self.tv addEntriesFromTmdbDictionary:@{@"images" : resultDictionary}];
 

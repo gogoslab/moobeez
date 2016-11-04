@@ -15,4 +15,6 @@
 
 @property (readonly, nonatomic) ViewController* previousViewController;
 
+- (void)viewWillFirstTimeAppear:(BOOL)animated;
+
 @end

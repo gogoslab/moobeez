@@ -52,6 +52,9 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *checkinButton;
 @property (weak, nonatomic) IBOutlet UIButton *checkinShowButton;
+
+@property (nonatomic) NSString *shortcutToPerform;
+
 @end
 
 @implementation SideTabViewController
@@ -69,13 +72,17 @@
     self.checkinShowButton.alpha = 0.0;
     
     [self.view addSubview:self.contentView];
-    self.contentView.transform = CGAffineTransformMakeTranslation(self.contentView.width, 0);
-    [UIView animateWithDuration:0.4 animations:^{
-        self.contentView.transform = CGAffineTransformIdentity;
-    } completion:^(BOOL finished) {
-        [self.selectedViewController.view removeFromSuperview];
-        self.appDelegate.window.rootViewController = self.selectedViewController;
-    }];
+    
+    if (self.shortcutToPerform == nil)
+    {
+        self.contentView.transform = CGAffineTransformMakeTranslation(self.contentView.width, 0);
+        [UIView animateWithDuration:0.4 animations:^{
+            self.contentView.transform = CGAffineTransformIdentity;
+        } completion:^(BOOL finished) {
+            [self.selectedViewController.view removeFromSuperview];
+            self.appDelegate.window.rootViewController = self.selectedViewController;
+        }];
+    }
     
     UISwipeGestureRecognizer* swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(hideMenu)];
     swipeGesture.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -89,6 +96,17 @@
     
     self.searchBar.alpha = 0.0;
 
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.shortcutToPerform != nil)
+    {
+        [self performShortcut:self.shortcutToPerform];
+        self.shortcutToPerform = nil;
+    }
 }
 
 - (UIViewController*)selectedViewController {
@@ -114,8 +132,13 @@
     return self.selectedViewController.preferredStatusBarStyle;
 }
 
-- (void)showMenu {
-    
+- (void)showMenu
+{
+    [self showMenuAnimated:YES];
+}
+
+- (void)showMenuAnimated:(BOOL)animated
+{
     [[NSNotificationCenter defaultCenter] postNotificationName:SideTabMenuWillAppearNotification object:nil];
     
     self.notWatchedTeebeezCount = [[Database sharedDatabase] notWatchedEpisodesCount];
@@ -126,12 +149,12 @@
     self.blurView.alpha = 0.0;
     self.buttonsView.alpha = 0.0;
     
-    [UIView animateWithDuration:0.4 animations:^{
-        self.contentView.transform = CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, self.view.width * 3 / 8, 0);
+    [UIView animateWithDuration:(animated ? 0.4 : 0.0) animations:^{
+        self.contentView.transform = CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, self.view.width * 3 / 8, self.buttonsView.center.y - self.view.height / 2);
         self.blurView.alpha = 1.0;
     }];
 
-    [UIView animateWithDuration:0.2 delay:0.2 options:UIViewAnimationOptionTransitionNone animations:^{
+    [UIView animateWithDuration:(animated ? 0.2 : 0.0) delay:(animated ? 0.2 : 0.0) options:UIViewAnimationOptionTransitionNone animations:^{
         self.buttonsView.alpha = 1.0;
         self.checkinButton.alpha = 1.0;
         self.checkinShowButton.alpha = 1.0;
@@ -144,11 +167,16 @@
     
 }
 
-- (void)hideMenu {
+- (void)hideMenu
+{
+    [self hideMenuAnimated:YES];
+}
+
+- (void)hideMenuAnimated:(BOOL)animated {
 
     [[NSNotificationCenter defaultCenter] postNotificationName:SideTabMenuWillDisappearNotification object:nil];
 
-    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionTransitionNone animations:^{
+    [UIView animateWithDuration:(animated ? 0.2 : 0.0) delay:0.0 options:UIViewAnimationOptionTransitionNone animations:^{
         self.buttonsView.alpha = 0.0;
         self.checkinButton.alpha = 0.0;
         self.checkinShowButton.alpha = 0.0;
@@ -156,12 +184,15 @@
     } completion:^(BOOL finished) {}];
     
 
-    [UIView animateWithDuration:0.4 animations:^{
+    [UIView animateWithDuration:(animated ? 0.4 : 0.0)  animations:^{
         self.contentView.transform = CGAffineTransformIdentity;
         self.blurView.alpha = 0.0;
     } completion:^(BOOL finished) {
         self.contentView.userInteractionEnabled = YES;
-        [self.selectedViewController.view removeFromSuperview];
+        if (self.selectedViewController.view.superview == self.contentView)
+        {
+            [self.selectedViewController.view removeFromSuperview];
+        }
         self.appDelegate.window.rootViewController = self.selectedViewController;
     }];
 
@@ -244,24 +275,94 @@
     }];
 }
 
-- (void)presentCheckInViewController {
+- (void)presentCheckInViewControllerAnimated:(BOOL)animated {
     
-    [self showMenu];
+    [self showMenuAnimated:animated];
     
-    [self presentViewController:self.checkinNavigationViewController animated:YES completion:^{
+    [self presentViewController:self.checkinNavigationViewController animated:animated completion:^{
         
     }];
     
 }
 
-- (void)presentCheckInTvShowViewController {
+- (void)presentCheckInTvShowViewControllerAnimated:(BOOL)animated {
     
-    [self showMenu];
+    [self showMenuAnimated:animated];
     
-    [self presentViewController:self.checkinShowNavigationViewController animated:YES completion:^{
+    [self presentViewController:self.checkinShowNavigationViewController animated:animated completion:^{
         
     }];
     
+}
+
+- (void)performShortcut:(NSString *)shortcut
+{
+    if (self.navigationController == nil)
+    {
+        self.shortcutToPerform = shortcut;
+        return;
+    }
+    
+    NSArray *components = [shortcut componentsSeparatedByString:@"."];
+    
+    NSString *action = components[0];
+    NSString *type = components[1];
+    
+    if ([action isEqualToString:@"add"])
+    {
+        NSInteger goToIndex = -1;
+        
+        if ([type isEqualToString:@"movie"])
+        {
+            goToIndex = 0;
+        }
+        else if ([type isEqualToString:@"tvshow"])
+        {
+            goToIndex = 2;
+        }
+        
+        if (goToIndex >= 0)
+        {
+            if (self.presentedViewController != nil)
+            {
+                [self.presentedViewController dismissViewControllerAnimated:NO completion:nil];
+            }
+            
+            if (self.selectedIndex != goToIndex)
+            {
+                self.selectedIndex = goToIndex;
+            }
+            [self hideMenuAnimated:NO];
+            
+            UINavigationController* navigationController = (UINavigationController*) self.selectedViewController;
+            
+            navigationController.viewControllers = @[navigationController.viewControllers.firstObject];
+            
+            [navigationController.viewControllers.firstObject performSelector:@selector(addButtonPressed:) withObject:nil afterDelay:0.2];
+            
+        }
+    }
+    else if ([action isEqualToString:@"checkin"])
+    {
+        if ([type isEqualToString:@"movie"])
+        {
+            if (self.presentedViewController != nil)
+            {
+                [self.presentedViewController dismissViewControllerAnimated:NO completion:nil];
+            }
+            [self presentCheckInViewControllerAnimated:NO];
+        }
+        else if ([type isEqualToString:@"tvshow"])
+        {
+            if (self.presentedViewController != nil)
+            {
+                [self.presentedViewController dismissViewControllerAnimated:NO completion:nil];
+            }
+            
+            [self presentCheckInTvShowViewControllerAnimated:NO];
+        }
+    }
+
 }
 
 

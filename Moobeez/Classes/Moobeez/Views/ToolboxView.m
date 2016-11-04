@@ -26,6 +26,8 @@
     
     [self prepareBlurInView:view];
     
+    self.width = view.width;
+    
     [view addSubview:self];
     self.y = self.maxToolboxY;
     
@@ -99,7 +101,7 @@
         case UIGestureRecognizerStateEnded:
         case UIGestureRecognizerStateCancelled:
         {
-            if (abs(self.delta) > 1) {
+            if (fabs(self.delta) > 1) {
                 if (self.delta > 0) {
                     [self hideFullToolbox];
                 }

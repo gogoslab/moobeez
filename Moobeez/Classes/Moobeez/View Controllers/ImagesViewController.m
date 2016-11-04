@@ -100,7 +100,7 @@
     return YES;
 }
 
-- (NSUInteger)supportedInterfaceOrientations {
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return (self.isLandscape ? UIInterfaceOrientationMaskLandscape : UIInterfaceOrientationMaskPortrait);
 }
 

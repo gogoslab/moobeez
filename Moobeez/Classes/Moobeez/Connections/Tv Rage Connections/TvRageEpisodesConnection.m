@@ -31,7 +31,7 @@
     
     self = [super initWithParameters:[NSDictionary dictionaryWithObject:@(tvRageId) forKey:@"sid"] completionHandler:^(WebserviceResultCode code, DDXMLDocument* xmlDocument, NSError *error) {
         
-        NSLog(@"result: %@", xmlDocument);
+        //NSLog(@"result: %@", xmlDocument);
         
         if (code == WebserviceResultOk) {
 

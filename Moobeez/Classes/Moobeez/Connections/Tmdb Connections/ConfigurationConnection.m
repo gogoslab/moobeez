@@ -21,14 +21,16 @@
     
     self = [super initWithParameters:nil completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
         
-        NSLog(@"result: %@", resultDictionary);
-
-        NSDictionary* imagesSettings = resultDictionary[@"images"];
-        
-        [ImageView setTmdbRootPath:imagesSettings[@"secure_base_url"]];
-
-        [imagesSettings writeToFile:[GROUP_PATH stringByAppendingPathComponent:@"ImagesSettings.plist"] atomically:YES];
-        
+        if (!error)
+        {
+            //NSLog(@"result: %@", resultDictionary);
+            
+            NSDictionary* imagesSettings = resultDictionary[@"images"];
+            
+            [ImageView setTmdbRootPath:imagesSettings[@"secure_base_url"]];
+            
+            [imagesSettings writeToFile:[GROUP_PATH stringByAppendingPathComponent:@"ImagesSettings.plist"] atomically:YES];
+        }
         self.customHandler(code);
     }];
     

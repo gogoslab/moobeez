@@ -12,4 +12,6 @@
 
 - (void)reloadMoobeez;
 
+- (void)addButtonPressed:(id)sender;
+
 @end

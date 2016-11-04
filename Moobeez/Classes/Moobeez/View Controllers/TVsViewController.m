@@ -328,7 +328,7 @@ typedef enum TVsSection {
     // Leave the vertical pans for scrolling the content.
     if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]) {
         CGPoint translation = [gestureRecognizer translationInView:self.tableView];
-        BOOL isHorizontalPan = (fabsf(translation.x) > fabsf(translation.y));
+        BOOL isHorizontalPan = (fabs(translation.x) > fabs(translation.y));
         return  isHorizontalPan;
     }
 

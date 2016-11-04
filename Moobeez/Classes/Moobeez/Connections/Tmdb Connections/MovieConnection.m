@@ -31,7 +31,7 @@
     
     self = [super initWithParameters:[NSDictionary dictionaryWithObject:@"casts" forKey:@"append_to_response"] completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
         
-        NSLog(@"result: %@", resultDictionary);
+        //NSLog(@"result: %@", resultDictionary);
         
         if (code == WebserviceResultOk) {
 

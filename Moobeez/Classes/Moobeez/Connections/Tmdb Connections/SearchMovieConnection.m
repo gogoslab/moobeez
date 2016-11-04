@@ -24,7 +24,7 @@
     
     self = [super initWithParameters:@{@"query" : query} completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
         
-        NSLog(@"result: %@", resultDictionary);
+        //NSLog(@"result: %@", resultDictionary);
 
         NSMutableArray* movies = [[NSMutableArray alloc] init];
         

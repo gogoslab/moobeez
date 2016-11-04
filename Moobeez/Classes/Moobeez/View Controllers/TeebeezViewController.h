@@ -12,4 +12,6 @@
 
 - (void)reloadTeebeez;
 
+- (void)addButtonPressed:(id)sender;
+
 @end

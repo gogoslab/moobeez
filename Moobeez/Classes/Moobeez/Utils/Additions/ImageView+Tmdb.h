@@ -20,8 +20,6 @@
 
 - (void)loadOriginalImageWithPath:(NSString*)path completion:(ImageViewCompletionHandler)completionHandler;
 
-- (void)loadImageWithPath:(NSString*)path type:(NSString*)type completion:(ImageViewCompletionHandler)completionHandler;
-
 - (void)loadPosterWithPath:(NSString*)path completion:(ImageViewCompletionHandler)completionHandler;
 - (void)loadPosterWithPath:(NSString*)path size:(CGSize)size completion:(ImageViewCompletionHandler)completionHandler;
 

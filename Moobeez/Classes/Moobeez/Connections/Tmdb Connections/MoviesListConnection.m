@@ -24,7 +24,7 @@
     
     self = [super initWithParameters:@{@"page" : @(page)} completionHandler:^(WebserviceResultCode code, NSMutableDictionary *resultDictionary, NSError *error) {
         
-        NSLog(@"result: %@", resultDictionary);
+        //NSLog(@"result: %@", resultDictionary);
         
         if (code == WebserviceResultOk) {
             

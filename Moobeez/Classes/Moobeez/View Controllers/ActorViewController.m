@@ -37,26 +37,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    CGSize size = [MoviePosterView size];
-    
-    [self.posterImageView loadProfileWithPath:self.tmdbActor.profilePath size:size completion:^(BOOL didLoadImage) {
-        self.toolboxView.width = self.view.width;
-        [self.toolboxView addToSuperview:self.view];
-        self.toolboxView.tmdbPerson = self.tmdbActor;
-        self.toolboxView.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterCell* cell) {
-            if (tmdbCharacter.movie) {
-                [self openMovie:tmdbCharacter.movie fromCharacterCell:cell];
-            }
-        };
+}
 
-        self.posterImageView.defaultImage = self.posterImageView.image;
-        [self.posterImageView loadProfileWithPath:self.tmdbActor.profilePath completion:^(BOOL didLoadImage) {
-        }];
-        
-        [self.toolboxView performSelector:@selector(showFullToolbox) withObject:nil afterDelay:0.5];
-
-    }];
+- (void)viewWillFirstTimeAppear:(BOOL)animated
+{
+    [super viewWillFirstTimeAppear:animated];
+    [self loadProfile];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -73,6 +59,31 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)loadProfile
+{
+    CGSize size = [MoviePosterView size];
+    
+    __block ActorViewController *weakSelf = self;
+    
+    [self.posterImageView loadProfileWithPath:self.tmdbActor.profilePath size:size completion:^(BOOL didLoadImage) {
+        self.toolboxView.width = self.view.width;
+        [self.toolboxView addToSuperview:self.view];
+        self.toolboxView.tmdbPerson = self.tmdbActor;
+        self.toolboxView.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterCell* cell) {
+            if (tmdbCharacter.movie) {
+                [weakSelf openMovie:tmdbCharacter.movie fromCharacterCell:cell];
+            }
+        };
+        
+        self.posterImageView.defaultImage = self.posterImageView.image;
+        [self.posterImageView loadProfileWithPath:self.tmdbActor.profilePath completion:^(BOOL didLoadImage) {
+        }];
+        
+        [self.toolboxView performSelector:@selector(showFullToolbox) withObject:nil afterDelay:0.5];
+        
+    }];
 }
 
 - (IBAction)backButtonPressed:(id)sender {
@@ -123,6 +134,8 @@
 #pragma mark - Cast
 
 - (IBAction)castButtonPressed:(id)sender {
+    
+    __block ActorViewController *weakSelf = self;
     [self.view addSubview:self.castViewController.view];
     self.castViewController.sourceButton = sender;
     self.castViewController.castArray = self.tmdbActor.characters;
@@ -130,7 +143,7 @@
     
     self.castViewController.characterSelectionHandler = ^(TmdbCharacter* tmdbCharacter, CharacterTableCell* cell) {
         if (tmdbCharacter.movie) {
-            [self openMovie:tmdbCharacter.movie fromCharacterTableCell:cell];
+            [weakSelf openMovie:tmdbCharacter.movie fromCharacterTableCell:cell];
         }
     };
 }

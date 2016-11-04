@@ -93,7 +93,7 @@
     
     DDXMLDocument* document = [[DDXMLDocument alloc] initWithXMLString:responseString options:DDXMLDocumentXHTMLKind error:&error];
     
-    NSLog(@"response: %@", responseString);
+    //NSLog(@"response: %@", responseString);
     
     if (error)
 	{
