@@ -18,6 +18,8 @@
 @implementation StarsView
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
+    
     _rating = MAX_RATING;
 }
 

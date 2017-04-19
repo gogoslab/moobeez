@@ -28,6 +28,8 @@
 @implementation FeatureMoviesCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
+
     self.height = [MoviePosterView height];
     self.postersContentView.height = [MoviePosterView height] + 1;
 }

@@ -142,13 +142,13 @@
     if (self.addButton.selected) {
         if ([[Database sharedDatabase] deleteMoobee:self.moobee]) {
             self.addButton.selected = NO;
-            [Flurry logEvent:@"Delete movie"];
+            //[Flurry logEvent:@"Delete movie"];
         }
     }
     else {
         if([self.moobee save]) {
             self.addButton.selected = YES;
-            [Flurry logEvent:@"Add movie"];
+            //[Flurry logEvent:@"Add movie"];
         }
     }
 }

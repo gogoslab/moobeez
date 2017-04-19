@@ -10,8 +10,4 @@
 
 @implementation FriendCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
-
 @end

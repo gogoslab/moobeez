@@ -183,7 +183,7 @@
     self.moobee.type = (!self.watchlistButton.selected ? MoobeeOnWatchlistType : MoobeeNoneType);
     
     if (self.moobee.type == MoobeeOnWatchlistType) {
-        [Flurry logEvent:@"Add movie to watchlist"];
+        //[Flurry logEvent:@"Add movie to watchlist"];
     }
     
     [self refreshWatchlistButton];
@@ -214,7 +214,7 @@
     [self.tableView insertSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
     
-    [Flurry logEvent:@"Rate movie"];
+    //[Flurry logEvent:@"Rate movie"];
 }
 
 - (IBAction)favoritesButtonPressed:(id)sender {

@@ -80,6 +80,7 @@
         
         [self.tableView reloadData];
         self.preferredContentSize = self.tableView.contentSize;
+        self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeExpanded;
     }
     else {
 
@@ -89,6 +90,20 @@
         [self.tableView reloadData];
         self.preferredContentSize = CGSizeMake(self.view.frame.size.width, 40);
 
+    }
+}
+
+- (void)widgetActiveDisplayModeDidChange:(NCWidgetDisplayMode)activeDisplayMode withMaximumSize:(CGSize)maxSize
+{
+    switch (activeDisplayMode)
+    {
+        case NCWidgetDisplayModeCompact:
+            self.preferredContentSize = maxSize;
+            break;
+        case NCWidgetDisplayModeExpanded:
+            self.preferredContentSize = CGSizeMake(maxSize.width, self.items.count * self.tableView.rowHeight);
+        default:
+            break;
     }
 }
 

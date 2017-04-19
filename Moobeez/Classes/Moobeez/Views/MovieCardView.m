@@ -26,6 +26,8 @@
 @implementation MovieCardView
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
+
     self.layer.cornerRadius = 6;
     self.layer.shadowOffset = CGSizeMake(0, 2);
     self.layer.shadowColor = [[UIColor blackColor] CGColor];

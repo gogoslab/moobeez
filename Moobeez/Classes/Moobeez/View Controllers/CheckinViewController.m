@@ -157,7 +157,7 @@
                                                    [self dismissViewControllerAnimated:YES completion:nil];
                                                    
                                                    [Alert showAlertViewWithTitle:@"Success" message:@"" buttonClickedCallback:^(NSInteger buttonIndex) {
-                                                       [Flurry logEvent:@"Checkin"];
+                                                       //[Flurry logEvent:@"Checkin"];
                                                    } cancelButtonTitle:@"OK" otherButtonTitles:nil];
                                                    
                                                } else {

@@ -42,7 +42,7 @@
     
     [self.appDelegate.sideTabController setNeedsStatusBarAppearanceUpdate];
     
-    [Flurry logEvent:@"Visit Page" withParameters:@{@"Page" : [NSString stringWithFormat:@"%@",[self class]]}];
+    //[Flurry logEvent:@"Visit Page" withParameters:@{@"Page" : [NSString stringWithFormat:@"%@",[self class]]}];
     
     if (self.didCallFirstAppear == NO)
     {

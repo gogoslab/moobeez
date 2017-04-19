@@ -25,6 +25,7 @@
 @implementation CharacterTableCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     self.posterImageView.loadSyncronized = YES;
 }
 

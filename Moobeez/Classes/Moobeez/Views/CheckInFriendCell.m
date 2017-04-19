@@ -11,10 +11,6 @@
 
 @implementation CheckInFriendCell
 
-- (void)awakeFromNib {
-    // Initialization code
-}
-
 - (void)layoutSubviews {
     
     [super layoutSubviews];

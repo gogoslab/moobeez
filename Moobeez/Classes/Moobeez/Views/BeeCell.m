@@ -22,6 +22,8 @@
 
 - (void)awakeFromNib {
     
+    [super awakeFromNib];
+
     self.layer.masksToBounds = NO;
     self.layer.shadowOffset = CGSizeMake(2, 3);
     self.layer.shadowRadius = 4;

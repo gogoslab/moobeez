@@ -21,6 +21,7 @@
 @implementation TimelineSectionCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
     // Initialization code
     
     [self.tableView registerNib:[UINib nibWithNibName:@"TimelineMovieCell" bundle:nil] forCellReuseIdentifier:@"MovieCell"];

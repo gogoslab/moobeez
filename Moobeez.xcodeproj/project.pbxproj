@@ -38,6 +38,8 @@
 		6415831F182BD28800BB599C /* ImagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6415831D182BD28800BB599C /* ImagesViewController.m */; };
 		64158320182BD28800BB599C /* ImagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6415831E182BD28800BB599C /* ImagesViewController.xib */; };
 		64158328182BD71A00BB599C /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64158327182BD71A00BB599C /* NavigationController.m */; };
+		641737571DCCE47200D628B9 /* MovieButtonsBlack.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 64CA53831823DC48000699C5 /* MovieButtonsBlack.bundle */; };
+		641737581DCCE47300D628B9 /* MovieButtonsBlack.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 64CA53831823DC48000699C5 /* MovieButtonsBlack.bundle */; };
 		64177857180C21F200CDFA25 /* BeeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 64177856180C21F200CDFA25 /* BeeCell.m */; };
 		6417785A180C221800CDFA25 /* BeeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64177859180C221700CDFA25 /* BeeCell.xib */; };
 		6417785D180C314500CDFA25 /* ConfigurationConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 6417785C180C314500CDFA25 /* ConfigurationConnection.m */; };
@@ -70,7 +72,6 @@
 		642CA8ED181542FA00A293E4 /* MovieViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 642CA8EB181542FA00A293E4 /* MovieViewController.m */; };
 		642CA8EE181542FA00A293E4 /* MovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 642CA8EC181542FA00A293E4 /* MovieViewController.xib */; };
 		64392EAF18084BA500504C78 /* TmdbConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64392EAE18084BA500504C78 /* TmdbConnection.m */; };
-		643A08EC19E8136500060C01 /* libFlurry_5.4.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 643A08EB19E8136500060C01 /* libFlurry_5.4.0.a */; };
 		643FB23A18215FDC00B7CFF7 /* NSString+SQL.m in Sources */ = {isa = PBXBuildFile; fileRef = 643FB23918215FDC00B7CFF7 /* NSString+SQL.m */; };
 		644121F7181C351400260497 /* share_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 644121F5181C351400260497 /* share_button.png */; };
 		644121F8181C351400260497 /* share_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 644121F6181C351400260497 /* share_button@2x.png */; };
@@ -152,6 +153,9 @@
 		6491137C1999384C009B10EE /* NewPlaceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6491137B1999384C009B10EE /* NewPlaceCell.xib */; };
 		6492E9E31987E7F600EC8E0B /* done_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6492E9E21987E7F600EC8E0B /* done_button@2x.png */; };
 		6497AF2B1964037D00813E6A /* background_light_blured@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6497AF2A1964037D00813E6A /* background_light_blured@2x.png */; };
+		649BCB4C1EA7A1AF00DF4FE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 649BCB4B1EA7A1AF00DF4FE9 /* GoogleService-Info.plist */; };
+		649BCB4D1EA7A1AF00DF4FE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 649BCB4B1EA7A1AF00DF4FE9 /* GoogleService-Info.plist */; };
+		649BCB4E1EA7A1AF00DF4FE9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 649BCB4B1EA7A1AF00DF4FE9 /* GoogleService-Info.plist */; };
 		649C3A661817FE7F0000A34C /* ToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A651817FE7F0000A34C /* ToolboxView.m */; };
 		649C3A6D1817FFEA0000A34C /* MovieToolboxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 649C3A6C1817FFEA0000A34C /* MovieToolboxView.m */; };
 		649C3A751818068F0000A34C /* empty_stars_big_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 649C3A711818068F0000A34C /* empty_stars_big_black.png */; };
@@ -474,8 +478,6 @@
 		64392EAD18084BA500504C78 /* TmdbConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TmdbConnection.h; sourceTree = "<group>"; };
 		64392EAE18084BA500504C78 /* TmdbConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TmdbConnection.m; sourceTree = "<group>"; };
 		64392EB218084D9200504C78 /* TmdbConnections.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TmdbConnections.h; sourceTree = "<group>"; };
-		643A08EA19E8136500060C01 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		643A08EB19E8136500060C01 /* libFlurry_5.4.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_5.4.0.a; sourceTree = "<group>"; };
 		643FB23818215FDC00B7CFF7 /* NSString+SQL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SQL.h"; sourceTree = "<group>"; };
 		643FB23918215FDC00B7CFF7 /* NSString+SQL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SQL.m"; sourceTree = "<group>"; };
 		644121F5181C351400260497 /* share_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share_button.png; sourceTree = "<group>"; };
@@ -583,6 +585,7 @@
 		6491137B1999384C009B10EE /* NewPlaceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewPlaceCell.xib; sourceTree = "<group>"; };
 		6492E9E21987E7F600EC8E0B /* done_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done_button@2x.png"; sourceTree = "<group>"; };
 		6497AF2A1964037D00813E6A /* background_light_blured@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_light_blured@2x.png"; sourceTree = "<group>"; };
+		649BCB4B1EA7A1AF00DF4FE9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		649C3A641817FE7F0000A34C /* ToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolboxView.h; sourceTree = "<group>"; };
 		649C3A651817FE7F0000A34C /* ToolboxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolboxView.m; sourceTree = "<group>"; };
 		649C3A6B1817FFEA0000A34C /* MovieToolboxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieToolboxView.h; sourceTree = "<group>"; };
@@ -880,7 +883,6 @@
 				644C695319B73BD8003FF584 /* CloudKit.framework in Frameworks */,
 				64B2AAC818082AE600E02E2F /* UIKit.framework in Frameworks */,
 				64B2AAC418082AE600E02E2F /* Foundation.framework in Frameworks */,
-				643A08EC19E8136500060C01 /* libFlurry_5.4.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1320,15 +1322,6 @@
 				64392EAE18084BA500504C78 /* TmdbConnection.m */,
 			);
 			name = "Tmdb Connection";
-			sourceTree = "<group>";
-		};
-		643A08E919E8136500060C01 /* Flurry */ = {
-			isa = PBXGroup;
-			children = (
-				643A08EA19E8136500060C01 /* Flurry.h */,
-				643A08EB19E8136500060C01 /* libFlurry_5.4.0.a */,
-			);
-			path = Flurry;
 			sourceTree = "<group>";
 		};
 		644121F9181C3B4F00260497 /* Movie Details */ = {
@@ -1917,6 +1910,7 @@
 				64EEBE5819422324000C7ADD /* Missed Shows */,
 				64B2AAC218082AE600E02E2F /* Frameworks */,
 				64B2AAC118082AE600E02E2F /* Products */,
+				649BCB4B1EA7A1AF00DF4FE9 /* GoogleService-Info.plist */,
 				64EEBE51194222FE000C7ADD /* Today Shows copy-Info.plist */,
 			);
 			sourceTree = "<group>";
@@ -1980,7 +1974,6 @@
 		64B2AAFD18082C4A00E02E2F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				643A08E919E8136500060C01 /* Flurry */,
 				64B2AB0818083CBF00E02E2F /* Gogz */,
 				64B2AB4B18083CBF00E02E2F /* Moobeez */,
 				64B2AAFE18082C4A00E02E2F /* AppDelegate.h */,
@@ -2809,7 +2802,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				641737571DCCE47200D628B9 /* MovieButtonsBlack.bundle in Resources */,
 				6459BBBE1941F0FC00D12DFF /* MovieButtonsWhite.bundle in Resources */,
+				649BCB4D1EA7A1AF00DF4FE9 /* GoogleService-Info.plist in Resources */,
 				6459BBB91941EDD000D12DFF /* TvShowCell.xib in Resources */,
 				6459BBAC1941D65400D12DFF /* MainInterface.storyboard in Resources */,
 			);
@@ -2896,6 +2891,7 @@
 				644121F8181C351400260497 /* share_button@2x.png in Resources */,
 				64B2AB981808496B00E02E2F /* tab_bar_icon_movies.png in Resources */,
 				644B937C19E72C6C0000E4FF /* toolbox_down_arrow@3x.png in Resources */,
+				649BCB4C1EA7A1AF00DF4FE9 /* GoogleService-Info.plist in Resources */,
 				6443862A19ED2FB700ABB621 /* reload_button@2x.png in Resources */,
 				64087852199A2BED0047D380 /* timeline_line@2x.png in Resources */,
 				6428B89E18A3A36600E1A904 /* SeasonsViewController.xib in Resources */,
@@ -2980,7 +2976,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				641737581DCCE47300D628B9 /* MovieButtonsBlack.bundle in Resources */,
 				64EEBE6D194223B7000C7ADD /* TvShowCell.xib in Resources */,
+				649BCB4E1EA7A1AF00DF4FE9 /* GoogleService-Info.plist in Resources */,
 				64EEBE5F19422324000C7ADD /* MainInterface.storyboard in Resources */,
 				64EEBE701942264A000C7ADD /* MovieButtonsWhite.bundle in Resources */,
 			);
@@ -3347,7 +3345,7 @@
 				GCC_PREFIX_HEADER = "Moobeez/Moobeez-Prefix.pch";
 				INFOPLIST_FILE = "Moobeez/Moobeez-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Moobeez/Classes/Flurry";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.goggzy.moobeez;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3375,7 +3373,7 @@
 				GCC_PREFIX_HEADER = "Moobeez/Moobeez-Prefix.pch";
 				INFOPLIST_FILE = "Moobeez/Moobeez-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/Moobeez/Classes/Flurry";
+				LIBRARY_SEARCH_PATHS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.goggzy.moobeez;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

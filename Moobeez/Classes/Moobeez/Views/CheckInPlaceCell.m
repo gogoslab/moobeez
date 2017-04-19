@@ -11,6 +11,8 @@
 @implementation CheckInPlaceCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
+
     // Initialization code
 }
 

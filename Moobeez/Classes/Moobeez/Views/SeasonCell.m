@@ -26,6 +26,8 @@
 @implementation SeasonCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
+
     self.posterImageView.loadSyncronized = YES;
     
     NSBundle* bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"MovieButtonsBlack" ofType:@"bundle"]];

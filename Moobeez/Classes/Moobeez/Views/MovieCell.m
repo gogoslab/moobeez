@@ -25,6 +25,8 @@
 
 - (void)awakeFromNib {
     
+    [super awakeFromNib];
+
     self.initialFrame = self.detailsLabel.frame;
     
     UITapGestureRecognizer* tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(didTap:)];

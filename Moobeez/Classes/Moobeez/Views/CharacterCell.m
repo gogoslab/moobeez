@@ -25,6 +25,7 @@
 @implementation CharacterCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
 }
 
 - (void)setCharacter:(TmdbCharacter *)character {

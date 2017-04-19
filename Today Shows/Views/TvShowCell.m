@@ -23,10 +23,13 @@
 {
     // Initialization code
     
-    NSBundle* bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"MovieButtonsWhite" ofType:@"bundle"]];
+    [super awakeFromNib];
+    
+    NSBundle* bundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"MovieButtonsBlack" ofType:@"bundle"]];
     
     [self.watchedButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_watched_show@2x" ofType:@"png"]] forState:UIControlStateNormal];
     [self.watchedButton setBackgroundImage:[UIImage imageWithContentsOfFile:[bundle pathForResource:@"button_watched_show_selected@2x" ofType:@"png"]] forState:UIControlStateSelected];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -41,7 +44,8 @@
     
     self.nameLabel.text = tvShowDictionary[@"name"];
     
-    self.detailsLabel.text = [NSString stringWithFormat:@"Season %d Episode %d", [tvShowDictionary[@"seasonNumber"] intValue], [tvShowDictionary[@"episodeNumber"] intValue]];
+    self.seasonLabel.text = [NSString stringWithFormat:@"Season %d", [tvShowDictionary[@"seasonNumber"] intValue]];
+    self.episodeLabel.text = [NSString stringWithFormat:@"Episode %d", [tvShowDictionary[@"episodeNumber"] intValue]];
     
     NSURL *imageURL = [NSURL URLWithString:tvShowDictionary[@"posterFullPath"]];
     

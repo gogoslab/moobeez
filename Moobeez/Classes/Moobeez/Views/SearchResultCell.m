@@ -22,6 +22,8 @@
 @implementation SearchResultCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
+    
     self.posterImageView.loadSyncronized = YES;
 }
 

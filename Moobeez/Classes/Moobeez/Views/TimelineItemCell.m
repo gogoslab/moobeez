@@ -22,6 +22,8 @@
 @implementation TimelineItemCell
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
+
     // Initialization code
 }
 

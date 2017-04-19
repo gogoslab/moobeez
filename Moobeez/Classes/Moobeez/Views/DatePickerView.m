@@ -37,6 +37,8 @@
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
+
     self.blurView.tintColor = [UIColor colorWithRed:145.0/255 green:180.0/255 blue:192.0/255 alpha:1.0];
 
 }

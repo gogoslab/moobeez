@@ -42,6 +42,8 @@ static NSDictionary* _imagesSettings = nil;
 }
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
+
     self.defaultImage = [UIImage imageNamed:@"default_image.png"];
 }
 

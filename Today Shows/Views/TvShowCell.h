@@ -12,7 +12,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *posterImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *detailsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *seasonLabel;
+@property (weak, nonatomic) IBOutlet UILabel *episodeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *watchedButton;
 
 @property (strong, nonatomic) NSMutableDictionary* tvShowDictionary;

@@ -22,6 +22,7 @@
 @implementation BubblePopupView
 
 - (void)awakeFromNib {
+    [super awakeFromNib];
 }
 
 - (void)startAnimation {
