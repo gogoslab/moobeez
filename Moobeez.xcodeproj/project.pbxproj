@@ -9,23 +9,33 @@
 /* Begin PBXBuildFile section */
 		64445C8A1F5A215D007EB5A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64445C891F5A215D007EB5A8 /* AppDelegate.swift */; };
 		64445C8D1F5A215D007EB5A8 /* Moobeez.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64445C8B1F5A215D007EB5A8 /* Moobeez.xcdatamodeld */; };
-		64445C8F1F5A215D007EB5A8 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64445C8E1F5A215D007EB5A8 /* MasterViewController.swift */; };
-		64445C911F5A215D007EB5A8 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64445C901F5A215D007EB5A8 /* DetailViewController.swift */; };
 		64445C941F5A215D007EB5A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64445C921F5A215D007EB5A8 /* Main.storyboard */; };
 		64445C961F5A215D007EB5A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64445C951F5A215D007EB5A8 /* Assets.xcassets */; };
 		64445C991F5A215D007EB5A8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64445C971F5A215D007EB5A8 /* LaunchScreen.storyboard */; };
+		64445CA71F5A2B72007EB5A8 /* MBNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64445CA61F5A2B72007EB5A8 /* MBNavigationController.swift */; };
+		64445CA91F5A2B86007EB5A8 /* MBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64445CA81F5A2B86007EB5A8 /* MBViewController.swift */; };
+		64445CAD1F5A2BFD007EB5A8 /* MBSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64445CAC1F5A2BFD007EB5A8 /* MBSideMenuController.swift */; };
+		64445CAF1F5A2DAE007EB5A8 /* MBSideMenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64445CAE1F5A2DAE007EB5A8 /* MBSideMenuSegue.swift */; };
+		64445CBA1F5A3194007EB5A8 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64445CB91F5A3194007EB5A8 /* TimelineViewController.swift */; };
+		64445CBC1F5A3540007EB5A8 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64445CBB1F5A3540007EB5A8 /* DashboardViewController.swift */; };
+		64E76BA71F5A3E6E007F9727 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E76BA61F5A3E6E007F9727 /* Notifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		64445C861F5A215D007EB5A8 /* Moobeez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moobeez.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64445C891F5A215D007EB5A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64445C8C1F5A215D007EB5A8 /* Moobeez.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moobeez.xcdatamodel; sourceTree = "<group>"; };
-		64445C8E1F5A215D007EB5A8 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		64445C901F5A215D007EB5A8 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		64445C931F5A215D007EB5A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		64445C951F5A215D007EB5A8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		64445C981F5A215D007EB5A8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		64445C9A1F5A215D007EB5A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64445CA61F5A2B72007EB5A8 /* MBNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBNavigationController.swift; sourceTree = "<group>"; };
+		64445CA81F5A2B86007EB5A8 /* MBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBViewController.swift; sourceTree = "<group>"; };
+		64445CAC1F5A2BFD007EB5A8 /* MBSideMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBSideMenuController.swift; sourceTree = "<group>"; };
+		64445CAE1F5A2DAE007EB5A8 /* MBSideMenuSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBSideMenuSegue.swift; sourceTree = "<group>"; };
+		64445CB91F5A3194007EB5A8 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		64445CBB1F5A3540007EB5A8 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		64E76BA61F5A3E6E007F9727 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +68,157 @@
 		64445C881F5A215D007EB5A8 /* Moobeez */ = {
 			isa = PBXGroup;
 			children = (
-				64445C891F5A215D007EB5A8 /* AppDelegate.swift */,
-				64445C8E1F5A215D007EB5A8 /* MasterViewController.swift */,
-				64445C901F5A215D007EB5A8 /* DetailViewController.swift */,
-				64445C921F5A215D007EB5A8 /* Main.storyboard */,
-				64445C951F5A215D007EB5A8 /* Assets.xcassets */,
-				64445C971F5A215D007EB5A8 /* LaunchScreen.storyboard */,
+				64445CA11F5A2256007EB5A8 /* Classes */,
+				64445CA01F5A224D007EB5A8 /* Resources */,
 				64445C9A1F5A215D007EB5A8 /* Info.plist */,
-				64445C8B1F5A215D007EB5A8 /* Moobeez.xcdatamodeld */,
 			);
 			path = Moobeez;
+			sourceTree = "<group>";
+		};
+		64445CA01F5A224D007EB5A8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				64445C951F5A215D007EB5A8 /* Assets.xcassets */,
+				64445C971F5A215D007EB5A8 /* LaunchScreen.storyboard */,
+				64445C921F5A215D007EB5A8 /* Main.storyboard */,
+				64445C8B1F5A215D007EB5A8 /* Moobeez.xcdatamodeld */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		64445CA11F5A2256007EB5A8 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				64E76BA41F5A3E32007F9727 /* Utils */,
+				64445CA21F5A227C007EB5A8 /* UI */,
+				64445C891F5A215D007EB5A8 /* AppDelegate.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		64445CA21F5A227C007EB5A8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				64445CAA1F5A2BC2007EB5A8 /* General */,
+				64445CB01F5A30AB007EB5A8 /* Loading */,
+				64445CB11F5A30B9007EB5A8 /* Sections */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		64445CA31F5A2AF5007EB5A8 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64445CA81F5A2B86007EB5A8 /* MBViewController.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		64445CA51F5A2B10007EB5A8 /* Navigation Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64445CA61F5A2B72007EB5A8 /* MBNavigationController.swift */,
+			);
+			path = "Navigation Controller";
+			sourceTree = "<group>";
+		};
+		64445CAA1F5A2BC2007EB5A8 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				64445CAB1F5A2BD1007EB5A8 /* Side Menu Controller */,
+				64445CA51F5A2B10007EB5A8 /* Navigation Controller */,
+				64445CA31F5A2AF5007EB5A8 /* View Controller */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		64445CAB1F5A2BD1007EB5A8 /* Side Menu Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64445CAC1F5A2BFD007EB5A8 /* MBSideMenuController.swift */,
+				64445CAE1F5A2DAE007EB5A8 /* MBSideMenuSegue.swift */,
+			);
+			path = "Side Menu Controller";
+			sourceTree = "<group>";
+		};
+		64445CB01F5A30AB007EB5A8 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
+		64445CB11F5A30B9007EB5A8 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				64445CB21F5A30D8007EB5A8 /* 0. Search */,
+				64445CB31F5A30EB007EB5A8 /* 1. Check in */,
+				64445CB41F5A30F6007EB5A8 /* 2. Dashboard */,
+				64445CB51F5A3103007EB5A8 /* 3. Timeline */,
+				64445CB61F5A3110007EB5A8 /* 4. Movies */,
+				64445CB71F5A3152007EB5A8 /* 5. TV Shows */,
+				64445CB81F5A315E007EB5A8 /* 6. Suggestions */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		64445CB21F5A30D8007EB5A8 /* 0. Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "0. Search";
+			sourceTree = "<group>";
+		};
+		64445CB31F5A30EB007EB5A8 /* 1. Check in */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "1. Check in";
+			sourceTree = "<group>";
+		};
+		64445CB41F5A30F6007EB5A8 /* 2. Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				64445CBB1F5A3540007EB5A8 /* DashboardViewController.swift */,
+			);
+			path = "2. Dashboard";
+			sourceTree = "<group>";
+		};
+		64445CB51F5A3103007EB5A8 /* 3. Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				64445CB91F5A3194007EB5A8 /* TimelineViewController.swift */,
+			);
+			path = "3. Timeline";
+			sourceTree = "<group>";
+		};
+		64445CB61F5A3110007EB5A8 /* 4. Movies */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "4. Movies";
+			sourceTree = "<group>";
+		};
+		64445CB71F5A3152007EB5A8 /* 5. TV Shows */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "5. TV Shows";
+			sourceTree = "<group>";
+		};
+		64445CB81F5A315E007EB5A8 /* 6. Suggestions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "6. Suggestions";
+			sourceTree = "<group>";
+		};
+		64E76BA41F5A3E32007F9727 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				64E76BA61F5A3E6E007F9727 /* Notifications.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +292,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64445CAF1F5A2DAE007EB5A8 /* MBSideMenuSegue.swift in Sources */,
+				64445CA71F5A2B72007EB5A8 /* MBNavigationController.swift in Sources */,
 				64445C8A1F5A215D007EB5A8 /* AppDelegate.swift in Sources */,
 				64445C8D1F5A215D007EB5A8 /* Moobeez.xcdatamodeld in Sources */,
-				64445C8F1F5A215D007EB5A8 /* MasterViewController.swift in Sources */,
-				64445C911F5A215D007EB5A8 /* DetailViewController.swift in Sources */,
+				64445CBA1F5A3194007EB5A8 /* TimelineViewController.swift in Sources */,
+				64445CA91F5A2B86007EB5A8 /* MBViewController.swift in Sources */,
+				64445CAD1F5A2BFD007EB5A8 /* MBSideMenuController.swift in Sources */,
+				64445CBC1F5A3540007EB5A8 /* DashboardViewController.swift in Sources */,
+				64E76BA71F5A3E6E007F9727 /* Notifications.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +440,7 @@
 				DEVELOPMENT_TEAM = Z4252ZWMEJ;
 				INFOPLIST_FILE = Moobeez/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.goggzy.Moobeez;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goggzy.moobeez;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -298,7 +454,7 @@
 				DEVELOPMENT_TEAM = Z4252ZWMEJ;
 				INFOPLIST_FILE = Moobeez/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.goggzy.Moobeez;
+				PRODUCT_BUNDLE_IDENTIFIER = com.goggzy.moobeez;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

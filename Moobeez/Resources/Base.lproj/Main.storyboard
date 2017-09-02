@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2aJ-cY-P2B">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="Lms-0a-RBd">
+            <objects>
+                <navigationController navigationBarHidden="YES" id="2aJ-cY-P2B" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S8d-mg-olQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="LTh-SE-3Xm" kind="relationship" relationship="rootViewController" id="SZx-ba-mRP"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5HB-wF-e55" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-628" y="-496"/>
+        </scene>
+        <!--Side Menu Controller-->
+        <scene sceneID="tFU-LB-csa">
+            <objects>
+                <viewController id="LTh-SE-3Xm" customClass="MBSideMenuController" customModule="Moobeez" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pKa-od-iEw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Jxu-ID-3CW">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="background_blured" translatesAutoresizingMaskIntoConstraints="NO" id="ezM-dX-Viu">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Spd-c8-JvX" appends="YES" id="Ah8-mk-SVt"/>
+                                </connections>
+                            </imageView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0NP-Uf-EIY">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <segue destination="zjZ-yS-4yI" kind="embed" id="CwA-bl-RYO"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LIM-Zi-TuP" userLabel="Menu View">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="cXl-sn-Jx1" customClass="SideTabSearchBar">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="barTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="U7U-4E-9dr">
+                                        <rect key="frame" x="10" y="56" width="355" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v3M-JD-6NT">
+                                                <rect key="frame" x="0.0" y="0.0" width="172.5" height="30"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Check-in to movie" image="check_in_icon">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6h3-ge-zmA">
+                                                <rect key="frame" x="182.5" y="0.0" width="172.5" height="30"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                                <inset key="contentEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                <state key="normal" title="Check-in Tv show" image="check_in_icon">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" red="1" green="1" blue="1" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <integer key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="ulF-ST-14M"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="flF-ge-VDc">
+                                        <rect key="frame" x="20" y="106" width="200" height="388"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xz7-3x-Mqx">
+                                                <rect key="frame" x="0.0" y="0.0" width="86" height="34"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                <state key="normal" title="Dashboard">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="mBW-vm-MD8" kind="custom" customClass="MBSideMenuSegue" customModule="Moobeez" customModuleProvider="target" id="8dS-qs-qT5"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TnN-fe-4z0">
+                                                <rect key="frame" x="0.0" y="59" width="64" height="34"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                <state key="normal" title="Timeline">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="OWH-qo-O1t" kind="custom" customClass="MBSideMenuSegue" customModule="Moobeez" customModuleProvider="target" id="eI1-Ps-Sz8"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XlS-on-rBe">
+                                                <rect key="frame" x="0.0" y="118" width="73" height="34"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                <state key="normal" title="Moobeez">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUq-rs-d4c">
+                                                <rect key="frame" x="0.0" y="177" width="88" height="34"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                <state key="normal" title="Top Movies">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="deF-vJ-EOG">
+                                                <rect key="frame" x="0.0" y="236" width="83" height="34"/>
+                                                <subviews>
+                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6gE-V7-YME">
+                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="34"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                        <state key="normal" title="Teebeez">
+                                                            <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                    </button>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="by1-ks-s4F">
+                                                        <rect key="frame" x="75" y="0.0" width="8" height="34"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l4I-4v-NVA">
+                                                <rect key="frame" x="0.0" y="295" width="113" height="34"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                <state key="normal" title="Top TV Shows">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Muq-XF-4qJ">
+                                                <rect key="frame" x="0.0" y="354" width="97" height="34"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                                                <state key="normal" title="Suggestions">
+                                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="AfP-9w-r7E"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="flF-ge-VDc" firstAttribute="leading" secondItem="LIM-Zi-TuP" secondAttribute="leading" constant="20" id="1JY-EH-Vdz"/>
+                                    <constraint firstItem="flF-ge-VDc" firstAttribute="top" secondItem="U7U-4E-9dr" secondAttribute="bottom" constant="20" id="73N-9a-Jm1"/>
+                                    <constraint firstItem="cXl-sn-Jx1" firstAttribute="leading" secondItem="LIM-Zi-TuP" secondAttribute="leading" id="8yO-UT-0Ko"/>
+                                    <constraint firstAttribute="trailing" secondItem="U7U-4E-9dr" secondAttribute="trailing" constant="10" id="C9g-9O-Aqh"/>
+                                    <constraint firstItem="U7U-4E-9dr" firstAttribute="top" secondItem="cXl-sn-Jx1" secondAttribute="bottom" id="Tyd-fA-j0f"/>
+                                    <constraint firstAttribute="trailing" secondItem="cXl-sn-Jx1" secondAttribute="trailing" id="dd7-wg-l7i"/>
+                                    <constraint firstItem="U7U-4E-9dr" firstAttribute="leading" secondItem="LIM-Zi-TuP" secondAttribute="leading" constant="10" id="egb-Ha-eHk"/>
+                                    <constraint firstItem="cXl-sn-Jx1" firstAttribute="top" secondItem="LIM-Zi-TuP" secondAttribute="top" id="vKA-f3-q9I"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0NP-Uf-EIY" firstAttribute="width" secondItem="pKa-od-iEw" secondAttribute="width" id="3ti-32-sMB"/>
+                            <constraint firstItem="0NP-Uf-EIY" firstAttribute="centerY" secondItem="pKa-od-iEw" secondAttribute="centerY" id="3wC-8c-qbQ"/>
+                            <constraint firstItem="Jxu-ID-3CW" firstAttribute="bottom" secondItem="2Kk-IH-qfa" secondAttribute="bottom" id="4Mf-Ip-5q9"/>
+                            <constraint firstItem="ezM-dX-Viu" firstAttribute="trailing" secondItem="2Kk-IH-qfa" secondAttribute="trailing" id="Cw3-LJ-JpG"/>
+                            <constraint firstItem="0NP-Uf-EIY" firstAttribute="height" secondItem="pKa-od-iEw" secondAttribute="height" id="DrO-F2-Pdx"/>
+                            <constraint firstItem="0NP-Uf-EIY" firstAttribute="centerX" secondItem="pKa-od-iEw" secondAttribute="centerX" id="GhO-BK-2Fr"/>
+                            <constraint firstItem="ezM-dX-Viu" firstAttribute="bottom" secondItem="2Kk-IH-qfa" secondAttribute="bottom" id="T8L-EK-XrC"/>
+                            <constraint firstItem="LIM-Zi-TuP" firstAttribute="top" secondItem="pKa-od-iEw" secondAttribute="top" constant="20" id="Tll-48-J7j"/>
+                            <constraint firstItem="LIM-Zi-TuP" firstAttribute="leading" secondItem="2Kk-IH-qfa" secondAttribute="leading" id="Vqc-BC-xYt"/>
+                            <constraint firstItem="LIM-Zi-TuP" firstAttribute="trailing" secondItem="2Kk-IH-qfa" secondAttribute="trailing" id="YHO-pp-o3V"/>
+                            <constraint firstItem="ezM-dX-Viu" firstAttribute="top" secondItem="pKa-od-iEw" secondAttribute="top" id="gQN-hA-D1Y"/>
+                            <constraint firstItem="Jxu-ID-3CW" firstAttribute="top" secondItem="pKa-od-iEw" secondAttribute="top" id="i7J-1P-Ul9"/>
+                            <constraint firstItem="LIM-Zi-TuP" firstAttribute="bottom" secondItem="2Kk-IH-qfa" secondAttribute="bottom" id="quk-Cp-x2m"/>
+                            <constraint firstItem="Jxu-ID-3CW" firstAttribute="trailing" secondItem="2Kk-IH-qfa" secondAttribute="trailing" id="snO-yY-zUu"/>
+                            <constraint firstItem="Jxu-ID-3CW" firstAttribute="leading" secondItem="2Kk-IH-qfa" secondAttribute="leading" id="wdF-FO-1Ob"/>
+                            <constraint firstItem="ezM-dX-Viu" firstAttribute="leading" secondItem="2Kk-IH-qfa" secondAttribute="leading" id="z0m-ph-c6G"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2Kk-IH-qfa"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hj3-Fo-4B0"/>
+                    <connections>
+                        <outlet property="backgroundBluredImageView" destination="ezM-dX-Viu" id="Miq-TA-OhZ"/>
+                        <outlet property="backgroundImageView" destination="Jxu-ID-3CW" id="YwT-5M-dag"/>
+                        <outlet property="checkInMovieButton" destination="v3M-JD-6NT" id="5Xc-0C-5dL"/>
+                        <outlet property="checkInTvShowButton" destination="6h3-ge-zmA" id="QVQ-SY-BNc"/>
+                        <outlet property="containerView" destination="0NP-Uf-EIY" id="0vQ-sm-weQ"/>
+                        <outlet property="menuView" destination="LIM-Zi-TuP" id="yf2-ua-EMU"/>
+                        <outlet property="notWatchedTvShowsLabel" destination="by1-ks-s4F" id="baZ-5B-H4U"/>
+                        <outlet property="searchBar" destination="cXl-sn-Jx1" id="lML-N8-M7s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c1X-Sv-Q92" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Spd-c8-JvX"/>
+            </objects>
+            <point key="canvasLocation" x="378" y="-496"/>
+        </scene>
+        <!--Dashboard View Controller-->
+        <scene sceneID="yAF-20-5Jd">
+            <objects>
+                <viewController id="mBW-vm-MD8" customClass="DashboardViewController" customModule="Moobeez" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QHd-uw-p7F">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DASHBOARD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcA-m8-4wL">
+                                <rect key="frame" x="87" y="313" width="201" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KcA-m8-4wL" firstAttribute="centerY" secondItem="QHd-uw-p7F" secondAttribute="centerY" id="4Yl-1y-so7"/>
+                            <constraint firstItem="KcA-m8-4wL" firstAttribute="centerX" secondItem="QHd-uw-p7F" secondAttribute="centerX" id="PxT-pJ-37h"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZM2-Os-6dZ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jVe-rh-JIy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1428" y="-1391"/>
+        </scene>
+        <!--Timeline View Controller-->
+        <scene sceneID="kAi-2N-c7Q">
+            <objects>
+                <viewController id="OWH-qo-O1t" customClass="TimelineViewController" customModule="Moobeez" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7FR-f5-1wB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIMELINE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJ5-lu-hXb">
+                                <rect key="frame" x="115" y="313" width="145.5" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aJ5-lu-hXb" firstAttribute="centerX" secondItem="7FR-f5-1wB" secondAttribute="centerX" id="WzS-Mh-MIx"/>
+                            <constraint firstItem="aJ5-lu-hXb" firstAttribute="centerY" secondItem="7FR-f5-1wB" secondAttribute="centerY" id="a9c-mD-m4X"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uCP-t6-hAn"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iAm-rV-cNu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1426" y="-699"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="HQl-TG-ezL">
+            <objects>
+                <navigationController id="zjZ-yS-4yI" customClass="MBNavigationController" customModule="Moobeez" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="jR0-YV-kU6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" name="Light Blue"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" name="Light Blue"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Vv-jW-hcQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="383" y="286"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="background" width="320" height="568"/>
+        <image name="background_blured" width="320" height="568"/>
+        <image name="check_in_icon" width="13" height="20"/>
+        <namedColor name="Light Blue">
+            <color red="0.20392157137393951" green="0.66666668653488159" blue="0.86274510622024536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
