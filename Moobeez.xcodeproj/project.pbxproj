@@ -18,10 +18,34 @@
 		64445CAF1F5A2DAE007EB5A8 /* MBSideMenuSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64445CAE1F5A2DAE007EB5A8 /* MBSideMenuSegue.swift */; };
 		64445CBA1F5A3194007EB5A8 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64445CB91F5A3194007EB5A8 /* TimelineViewController.swift */; };
 		64445CBC1F5A3540007EB5A8 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64445CBB1F5A3540007EB5A8 /* DashboardViewController.swift */; };
+		64527EE61F633BD7003828E3 /* MoobeezManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EE51F633BD7003828E3 /* MoobeezManager.swift */; };
+		64527EEC1F63529E003828E3 /* TmdbTvShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EEB1F63529E003828E3 /* TmdbTvShow.swift */; };
+		64527EEE1F635571003828E3 /* TmdbTvSeason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EED1F635571003828E3 /* TmdbTvSeason.swift */; };
+		64527EF11F65C1EF003828E3 /* MoobeezViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EF01F65C1EF003828E3 /* MoobeezViewController.swift */; };
+		64527EF41F65DFAE003828E3 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EF31F65DFAE003828E3 /* SearchBar.swift */; };
+		64527EF71F65EB73003828E3 /* StarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EF61F65EB73003828E3 /* StarsView.swift */; };
+		64527EF91F65F0B1003828E3 /* BeeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EF81F65F0B1003828E3 /* BeeCell.swift */; };
+		64527EFB1F65FF34003828E3 /* UIImageView+Tmdb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EFA1F65FF34003828E3 /* UIImageView+Tmdb.swift */; };
+		64794D361F72A6F200488683 /* MoobeeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64794D351F72A6F200488683 /* MoobeeDetailsViewController.swift */; };
+		64794D3B1F72B33A00488683 /* EmptySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64794D3A1F72B33A00488683 /* EmptySegue.swift */; };
+		64794D401F72BEFB00488683 /* MBShowDetailSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64794D3F1F72BEFB00488683 /* MBShowDetailSegue.swift */; };
+		64B63E261F66CA8A00710A4E /* TmdbConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B63E251F66CA8A00710A4E /* TmdbConnection.swift */; };
+		64B63E271F66CAC100710A4E /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B63E241F66B71E00710A4E /* Connection.swift */; };
+		64B63E2A1F66D42F00710A4E /* TmdbService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B63E291F66D42F00710A4E /* TmdbService.swift */; };
+		64B63E2C1F66E0AE00710A4E /* TmdbService+Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B63E2B1F66E0AE00710A4E /* TmdbService+Movies.swift */; };
+		64B63E2E1F66E0DB00710A4E /* TmdbService+TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B63E2D1F66E0DB00710A4E /* TmdbService+TV.swift */; };
+		64B63E301F66E30F00710A4E /* TmdbTvMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B63E2F1F66E30F00710A4E /* TmdbTvMovie.swift */; };
+		64CAAE421F62EA6A008FEF01 /* SQLiteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CAAE401F62EA6A008FEF01 /* SQLiteDB.swift */; };
+		64CAAE431F62EA6A008FEF01 /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CAAE411F62EA6A008FEF01 /* SQLTable.swift */; };
+		64CAAE471F62EA84008FEF01 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CAAE451F62EA84008FEF01 /* libsqlite3.tbd */; };
+		64CAAE481F62EA84008FEF01 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CAAE461F62EA84008FEF01 /* libsqlite3.0.tbd */; };
 		64E76BA71F5A3E6E007F9727 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E76BA61F5A3E6E007F9727 /* Notifications.swift */; };
+		AFB4C4B0C199546DDD569603 /* Pods_Moobeez.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E83B5F42BE95F8674D687FE5 /* Pods_Moobeez.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F3C25900C20806C3BCFD6BF /* Pods-Moobeez.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moobeez.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moobeez/Pods-Moobeez.release.xcconfig"; sourceTree = "<group>"; };
+		5AAD5D17A378B9F6FE0F5D84 /* Pods-Moobeez.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moobeez.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moobeez/Pods-Moobeez.debug.xcconfig"; sourceTree = "<group>"; };
 		64445C861F5A215D007EB5A8 /* Moobeez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moobeez.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64445C891F5A215D007EB5A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64445C8C1F5A215D007EB5A8 /* Moobeez.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moobeez.xcdatamodel; sourceTree = "<group>"; };
@@ -35,7 +59,31 @@
 		64445CAE1F5A2DAE007EB5A8 /* MBSideMenuSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBSideMenuSegue.swift; sourceTree = "<group>"; };
 		64445CB91F5A3194007EB5A8 /* TimelineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		64445CBB1F5A3540007EB5A8 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		64527EE51F633BD7003828E3 /* MoobeezManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoobeezManager.swift; sourceTree = "<group>"; };
+		64527EEB1F63529E003828E3 /* TmdbTvShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbTvShow.swift; sourceTree = "<group>"; };
+		64527EED1F635571003828E3 /* TmdbTvSeason.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbTvSeason.swift; sourceTree = "<group>"; };
+		64527EF01F65C1EF003828E3 /* MoobeezViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoobeezViewController.swift; sourceTree = "<group>"; };
+		64527EF31F65DFAE003828E3 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		64527EF61F65EB73003828E3 /* StarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsView.swift; sourceTree = "<group>"; };
+		64527EF81F65F0B1003828E3 /* BeeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeeCell.swift; sourceTree = "<group>"; };
+		64527EFA1F65FF34003828E3 /* UIImageView+Tmdb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Tmdb.swift"; sourceTree = "<group>"; };
+		64794D351F72A6F200488683 /* MoobeeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoobeeDetailsViewController.swift; sourceTree = "<group>"; };
+		64794D3A1F72B33A00488683 /* EmptySegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySegue.swift; sourceTree = "<group>"; };
+		64794D3F1F72BEFB00488683 /* MBShowDetailSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBShowDetailSegue.swift; sourceTree = "<group>"; };
+		64B63E241F66B71E00710A4E /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		64B63E251F66CA8A00710A4E /* TmdbConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbConnection.swift; sourceTree = "<group>"; };
+		64B63E291F66D42F00710A4E /* TmdbService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbService.swift; sourceTree = "<group>"; };
+		64B63E2B1F66E0AE00710A4E /* TmdbService+Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TmdbService+Movies.swift"; sourceTree = "<group>"; };
+		64B63E2D1F66E0DB00710A4E /* TmdbService+TV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TmdbService+TV.swift"; sourceTree = "<group>"; };
+		64B63E2F1F66E30F00710A4E /* TmdbTvMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbTvMovie.swift; sourceTree = "<group>"; };
+		64CAAE321F62DF51008FEF01 /* Moobeez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moobeez.entitlements; sourceTree = "<group>"; };
+		64CAAE401F62EA6A008FEF01 /* SQLiteDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDB.swift; sourceTree = "<group>"; };
+		64CAAE411F62EA6A008FEF01 /* SQLTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLTable.swift; sourceTree = "<group>"; };
+		64CAAE441F62EA78008FEF01 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		64CAAE451F62EA84008FEF01 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		64CAAE461F62EA84008FEF01 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		64E76BA61F5A3E6E007F9727 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		E83B5F42BE95F8674D687FE5 /* Pods_Moobeez.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moobeez.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +91,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64CAAE471F62EA84008FEF01 /* libsqlite3.tbd in Frameworks */,
+				64CAAE481F62EA84008FEF01 /* libsqlite3.0.tbd in Frameworks */,
+				AFB4C4B0C199546DDD569603 /* Pods_Moobeez.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +105,8 @@
 			children = (
 				64445C881F5A215D007EB5A8 /* Moobeez */,
 				64445C871F5A215D007EB5A8 /* Products */,
+				CE8162FEE8A8060B74E33617 /* Pods */,
+				E985BF051946DF91780C689B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +121,8 @@
 		64445C881F5A215D007EB5A8 /* Moobeez */ = {
 			isa = PBXGroup;
 			children = (
+				64CAAE321F62DF51008FEF01 /* Moobeez.entitlements */,
+				64CAAE441F62EA78008FEF01 /* Bridging-Header.h */,
 				64445CA11F5A2256007EB5A8 /* Classes */,
 				64445CA01F5A224D007EB5A8 /* Resources */,
 				64445C9A1F5A215D007EB5A8 /* Info.plist */,
@@ -89,9 +144,13 @@
 		64445CA11F5A2256007EB5A8 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				64E76BA41F5A3E32007F9727 /* Utils */,
-				64445CA21F5A227C007EB5A8 /* UI */,
 				64445C891F5A215D007EB5A8 /* AppDelegate.swift */,
+				64B63E231F66B70000710A4E /* Connections */,
+				64527EE41F633B8C003828E3 /* Managers */,
+				64CAAE4A1F62FBD5008FEF01 /* Models */,
+				64B63E281F66D3ED00710A4E /* Services */,
+				64445CA21F5A227C007EB5A8 /* UI */,
+				64E76BA41F5A3E32007F9727 /* Utils */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -125,6 +184,8 @@
 		64445CAA1F5A2BC2007EB5A8 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				64794D3E1F72BED200488683 /* Segues */,
+				64527EF51F65EB5E003828E3 /* Stars View */,
 				64445CAB1F5A2BD1007EB5A8 /* Side Menu Controller */,
 				64445CA51F5A2B10007EB5A8 /* Navigation Controller */,
 				64445CA31F5A2AF5007EB5A8 /* View Controller */,
@@ -195,6 +256,8 @@
 		64445CB61F5A3110007EB5A8 /* 4. Movies */ = {
 			isa = PBXGroup;
 			children = (
+				64527EEF1F65C1CC003828E3 /* Moobeez Screen */,
+				64794D371F72A6F900488683 /* Moobee Details */,
 			);
 			path = "4. Movies";
 			sourceTree = "<group>";
@@ -213,12 +276,130 @@
 			path = "6. Suggestions";
 			sourceTree = "<group>";
 		};
+		64527EE41F633B8C003828E3 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				64527EE51F633BD7003828E3 /* MoobeezManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		64527EEF1F65C1CC003828E3 /* Moobeez Screen */ = {
+			isa = PBXGroup;
+			children = (
+				64527EF01F65C1EF003828E3 /* MoobeezViewController.swift */,
+				64527EF81F65F0B1003828E3 /* BeeCell.swift */,
+			);
+			path = "Moobeez Screen";
+			sourceTree = "<group>";
+		};
+		64527EF21F65DF88003828E3 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				64527EF31F65DFAE003828E3 /* SearchBar.swift */,
+				64794D3A1F72B33A00488683 /* EmptySegue.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		64527EF51F65EB5E003828E3 /* Stars View */ = {
+			isa = PBXGroup;
+			children = (
+				64527EF61F65EB73003828E3 /* StarsView.swift */,
+			);
+			path = "Stars View";
+			sourceTree = "<group>";
+		};
+		64527EFC1F65FF3E003828E3 /* Tmdb */ = {
+			isa = PBXGroup;
+			children = (
+				64527EFA1F65FF34003828E3 /* UIImageView+Tmdb.swift */,
+			);
+			path = Tmdb;
+			sourceTree = "<group>";
+		};
+		64794D371F72A6F900488683 /* Moobee Details */ = {
+			isa = PBXGroup;
+			children = (
+				64794D351F72A6F200488683 /* MoobeeDetailsViewController.swift */,
+			);
+			path = "Moobee Details";
+			sourceTree = "<group>";
+		};
+		64794D3E1F72BED200488683 /* Segues */ = {
+			isa = PBXGroup;
+			children = (
+				64794D3F1F72BEFB00488683 /* MBShowDetailSegue.swift */,
+			);
+			path = Segues;
+			sourceTree = "<group>";
+		};
+		64B63E231F66B70000710A4E /* Connections */ = {
+			isa = PBXGroup;
+			children = (
+				64B63E241F66B71E00710A4E /* Connection.swift */,
+				64B63E251F66CA8A00710A4E /* TmdbConnection.swift */,
+			);
+			path = Connections;
+			sourceTree = "<group>";
+		};
+		64B63E281F66D3ED00710A4E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				64B63E291F66D42F00710A4E /* TmdbService.swift */,
+				64B63E2B1F66E0AE00710A4E /* TmdbService+Movies.swift */,
+				64B63E2D1F66E0DB00710A4E /* TmdbService+TV.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		64CAAE3F1F62EA4B008FEF01 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				64CAAE401F62EA6A008FEF01 /* SQLiteDB.swift */,
+				64CAAE411F62EA6A008FEF01 /* SQLTable.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		64CAAE4A1F62FBD5008FEF01 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				64B63E2F1F66E30F00710A4E /* TmdbTvMovie.swift */,
+				64527EEB1F63529E003828E3 /* TmdbTvShow.swift */,
+				64527EED1F635571003828E3 /* TmdbTvSeason.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		64E76BA41F5A3E32007F9727 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				64E76BA61F5A3E6E007F9727 /* Notifications.swift */,
+				64CAAE3F1F62EA4B008FEF01 /* Database */,
+				64527EFC1F65FF3E003828E3 /* Tmdb */,
+				64527EF21F65DF88003828E3 /* UI */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		CE8162FEE8A8060B74E33617 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5AAD5D17A378B9F6FE0F5D84 /* Pods-Moobeez.debug.xcconfig */,
+				3F3C25900C20806C3BCFD6BF /* Pods-Moobeez.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E985BF051946DF91780C689B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64CAAE461F62EA84008FEF01 /* libsqlite3.0.tbd */,
+				64CAAE451F62EA84008FEF01 /* libsqlite3.tbd */,
+				E83B5F42BE95F8674D687FE5 /* Pods_Moobeez.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,9 +409,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64445C9D1F5A215D007EB5A8 /* Build configuration list for PBXNativeTarget "Moobeez" */;
 			buildPhases = (
+				EDB9993CDC0205EC73A4F3D8 /* [CP] Check Pods Manifest.lock */,
 				64445C821F5A215D007EB5A8 /* Sources */,
 				64445C831F5A215D007EB5A8 /* Frameworks */,
 				64445C841F5A215D007EB5A8 /* Resources */,
+				C03DD3EFC5BF073CB38F09C7 /* [CP] Embed Pods Frameworks */,
+				664E9D4A0113D82700CC5A19 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,6 +437,11 @@
 				TargetAttributes = {
 					64445C851F5A215D007EB5A8 = {
 						CreatedOnToolsVersion = 9.0;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -287,19 +476,86 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		664E9D4A0113D82700CC5A19 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Moobeez/Pods-Moobeez-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C03DD3EFC5BF073CB38F09C7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Moobeez/Pods-Moobeez-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EDB9993CDC0205EC73A4F3D8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		64445C821F5A215D007EB5A8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64527EF91F65F0B1003828E3 /* BeeCell.swift in Sources */,
+				64527EF71F65EB73003828E3 /* StarsView.swift in Sources */,
+				64B63E301F66E30F00710A4E /* TmdbTvMovie.swift in Sources */,
 				64445CAF1F5A2DAE007EB5A8 /* MBSideMenuSegue.swift in Sources */,
 				64445CA71F5A2B72007EB5A8 /* MBNavigationController.swift in Sources */,
+				64527EEC1F63529E003828E3 /* TmdbTvShow.swift in Sources */,
 				64445C8A1F5A215D007EB5A8 /* AppDelegate.swift in Sources */,
+				64527EE61F633BD7003828E3 /* MoobeezManager.swift in Sources */,
+				64B63E2C1F66E0AE00710A4E /* TmdbService+Movies.swift in Sources */,
+				64527EF41F65DFAE003828E3 /* SearchBar.swift in Sources */,
+				64527EEE1F635571003828E3 /* TmdbTvSeason.swift in Sources */,
+				64794D361F72A6F200488683 /* MoobeeDetailsViewController.swift in Sources */,
 				64445C8D1F5A215D007EB5A8 /* Moobeez.xcdatamodeld in Sources */,
+				64CAAE431F62EA6A008FEF01 /* SQLTable.swift in Sources */,
+				64527EFB1F65FF34003828E3 /* UIImageView+Tmdb.swift in Sources */,
 				64445CBA1F5A3194007EB5A8 /* TimelineViewController.swift in Sources */,
+				64B63E271F66CAC100710A4E /* Connection.swift in Sources */,
 				64445CA91F5A2B86007EB5A8 /* MBViewController.swift in Sources */,
+				64794D401F72BEFB00488683 /* MBShowDetailSegue.swift in Sources */,
+				64B63E261F66CA8A00710A4E /* TmdbConnection.swift in Sources */,
+				64B63E2A1F66D42F00710A4E /* TmdbService.swift in Sources */,
+				64527EF11F65C1EF003828E3 /* MoobeezViewController.swift in Sources */,
 				64445CAD1F5A2BFD007EB5A8 /* MBSideMenuController.swift in Sources */,
+				64B63E2E1F66E0DB00710A4E /* TmdbService+TV.swift in Sources */,
 				64445CBC1F5A3540007EB5A8 /* DashboardViewController.swift in Sources */,
+				64CAAE421F62EA6A008FEF01 /* SQLiteDB.swift in Sources */,
+				64794D3B1F72B33A00488683 /* EmptySegue.swift in Sources */,
 				64E76BA71F5A3E6E007F9727 /* Notifications.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -435,13 +691,16 @@
 		};
 		64445C9E1F5A215D007EB5A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AAD5D17A378B9F6FE0F5D84 /* Pods-Moobeez.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Moobeez/Moobeez.entitlements;
 				DEVELOPMENT_TEAM = Z4252ZWMEJ;
 				INFOPLIST_FILE = Moobeez/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.goggzy.moobeez;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -449,13 +708,16 @@
 		};
 		64445C9F1F5A215D007EB5A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F3C25900C20806C3BCFD6BF /* Pods-Moobeez.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Moobeez/Moobeez.entitlements;
 				DEVELOPMENT_TEAM = Z4252ZWMEJ;
 				INFOPLIST_FILE = Moobeez/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.goggzy.moobeez;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/radubanea/Developer/Mine/Moobeez/Moobeez/Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
