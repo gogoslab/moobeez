@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13209.6" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13528" systemVersion="" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Bee" representedClassName="Bee" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
@@ -7,6 +7,7 @@
         <attribute name="tmdbId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <entity name="Moobee" representedClassName="Moobee" parentEntity="Bee" syncable="YES" codeGenerationType="class">
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TmdbMovie" inverseName="moobee" inverseEntity="TmdbMovie" syncable="YES"/>
     </entity>
@@ -21,12 +22,12 @@
         <relationship name="tvEpisode" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TmdbTvEpisode" inverseName="teebeeEpisode" inverseEntity="TmdbTvEpisode" syncable="YES"/>
     </entity>
     <entity name="TmdbCharacter" representedClassName="TmdbCharacter" syncable="YES" codeGenerationType="class">
-        <attribute name="characterId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="characterId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="personId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="tmdbId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TmdbItem" inverseName="character" inverseEntity="TmdbItem" syncable="YES"/>
-        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TmdbPerson" inverseName="character" inverseEntity="TmdbPerson" syncable="YES"/>
+        <attribute name="personId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tmdbId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TmdbItem" inverseName="characters" inverseEntity="TmdbItem" syncable="YES"/>
+        <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TmdbPerson" inverseName="characters" inverseEntity="TmdbPerson" syncable="YES"/>
     </entity>
     <entity name="TmdbImage" representedClassName="TmdbImage" syncable="YES" codeGenerationType="class">
         <attribute name="aspectRatio" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -34,12 +35,11 @@
         <attribute name="path" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="poster" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="tmdbId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TmdbItem" inverseName="images" inverseEntity="TmdbItem" syncable="YES"/>
     </entity>
     <entity name="TmdbItem" representedClassName="TmdbItem" codeGenerationType="class">
         <attribute name="backdropPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="comments" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="imdbId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="imdbId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imdbUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="overview" optional="YES" attributeType="String" syncable="YES"/>
@@ -49,8 +49,9 @@
         <attribute name="tmdbId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES">
             <userInfo/>
         </attribute>
-        <relationship name="character" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TmdbCharacter" inverseName="movie" inverseEntity="TmdbCharacter" syncable="YES"/>
-        <relationship name="images" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TmdbImage" inverseName="movie" inverseEntity="TmdbImage" syncable="YES"/>
+        <relationship name="backdropImages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TmdbImage" syncable="YES"/>
+        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TmdbCharacter" inverseName="movie" inverseEntity="TmdbCharacter" syncable="YES"/>
+        <relationship name="posters" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TmdbImage" syncable="YES"/>
         <userInfo/>
     </entity>
     <entity name="TmdbMovie" representedClassName="TmdbMovie" parentEntity="TmdbItem" syncable="YES" codeGenerationType="class">
@@ -62,14 +63,15 @@
         <attribute name="imdbId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="overview" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="personId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="personId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="popularity" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="profilePath" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="character" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TmdbCharacter" inverseName="person" inverseEntity="TmdbCharacter" syncable="YES"/>
+        <relationship name="characters" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TmdbCharacter" inverseName="person" inverseEntity="TmdbCharacter" syncable="YES"/>
+        <relationship name="profileImages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TmdbImage" syncable="YES"/>
     </entity>
     <entity name="TmdbTvEpisode" representedClassName="TmdbTvEpisode" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="episodeId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="episodeId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="episodeNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="overview" optional="YES" attributeType="String" syncable="YES"/>
@@ -82,9 +84,9 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="overview" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="posterPath" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="seasonId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="seasonId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="seasonNumber" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="tmdbId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="tmdbId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="episodes" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TmdbTvEpisode" inverseName="season" inverseEntity="TmdbTvEpisode" syncable="YES"/>
         <relationship name="tvShow" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TmdbTvShow" inverseName="seasons" inverseEntity="TmdbTvShow" syncable="YES"/>
     </entity>
@@ -103,16 +105,16 @@
     <fetchRequest name="MoobeezGetWatchlist" entity="Moobee" predicateString="type == 1"/>
     <elements>
         <element name="Bee" positionX="448" positionY="308" width="128" height="105"/>
-        <element name="Moobee" positionX="178" positionY="308" width="128" height="73"/>
+        <element name="Moobee" positionX="178" positionY="308" width="128" height="90"/>
         <element name="Teebee" positionX="702" positionY="243" width="128" height="90"/>
         <element name="TeebeeEpisode" positionX="1051" positionY="279" width="128" height="90"/>
-        <element name="TmdbCharacter" positionX="466" positionY="801" width="128" height="133"/>
-        <element name="TmdbImage" positionX="243" positionY="776" width="128" height="133"/>
-        <element name="TmdbItem" positionX="457" positionY="495" width="128" height="223"/>
+        <element name="TmdbCharacter" positionX="466" positionY="801" width="128" height="135"/>
+        <element name="TmdbImage" positionX="243" positionY="776" width="128" height="120"/>
+        <element name="TmdbItem" positionX="457" positionY="495" width="128" height="240"/>
         <element name="TmdbMovie" positionX="171" positionY="549" width="128" height="88"/>
-        <element name="TmdbPerson" positionX="468" positionY="1029" width="128" height="148"/>
+        <element name="TmdbPerson" positionX="468" positionY="1029" width="128" height="165"/>
         <element name="TmdbTvEpisode" positionX="1114" positionY="531" width="128" height="165"/>
-        <element name="TmdbTvSeason" positionX="907" positionY="531" width="128" height="178"/>
+        <element name="TmdbTvSeason" positionX="907" positionY="531" width="128" height="180"/>
         <element name="TmdbTvShow" positionX="720" positionY="531" width="128" height="165"/>
     </elements>
 </model>

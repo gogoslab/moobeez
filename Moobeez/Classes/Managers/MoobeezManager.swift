@@ -29,6 +29,10 @@ class MoobeezManager: NSObject {
         
         let db = SQLiteDB.shared
         
+        let dateFormatter = DateFormatter.init()
+        dateFormatter.dateFormat = "d M yyyy"
+        let referenceDate:Date = dateFormatter.date(from: "1 1 2001")!
+        
         if (db.openDB())
         {
             let moobeez = db.query(sql: "SELECT * FROM Moobeez")
@@ -39,9 +43,10 @@ class MoobeezManager: NSObject {
                 
                 moobee.name = row["name"] as? String
                 moobee.rating = (row["rating"] as! NSNumber).floatValue
-                moobee.date = Date.init(timeIntervalSince1970: (row["date"] as! NSNumber).doubleValue)
+                moobee.date = Date.init(timeInterval: (row["date"] as! NSNumber).doubleValue, since:referenceDate)
                 moobee.tmdbId = (row["tmdbId"] as! NSNumber).int64Value
                 moobee.type = (row["type"] as! NSNumber).int16Value
+                moobee.isFavorite = (row["isFavorite"] as! NSNumber).boolValue
                 
                 let tmdbMovie:TmdbMovie = NSEntityDescription.insertNewObject(forEntityName: "TmdbMovie", into: persistentContainer.viewContext) as! TmdbMovie
                 
@@ -53,6 +58,8 @@ class MoobeezManager: NSObject {
                 
                 moobee.movie = tmdbMovie
                 tmdbMovie.moobee = moobee
+                
+                TmdbMovie.links[tmdbMovie.tmdbId] = tmdbMovie.objectID.uriRepresentation()
                 
             }
             
@@ -124,7 +131,8 @@ class MoobeezManager: NSObject {
         do {
             try persistentContainer.viewContext.execute(batchDeleteRequest)
             
-        } catch {
+        } catch let error {
+            print(error.localizedDescription)
             // Error Handling
         }
     }

@@ -101,8 +101,12 @@ class Connection: NSObject {
             guard completionHandler != nil else {
                 return
             }
+
+            var statusCode = -1
             
-            let statusCode = (response as! HTTPURLResponse).statusCode
+            if response != nil && response is HTTPURLResponse {
+                statusCode = (response as! HTTPURLResponse).statusCode
+            }
             
             if error == nil {
                 

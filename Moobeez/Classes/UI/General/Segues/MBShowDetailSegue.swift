@@ -16,7 +16,11 @@ class MBShowDetailSegue: UIStoryboardSegue {
             return
         }
         
-        (source as! MBViewController).showDetailsViewController(destination)
+        guard destination is MBViewController else {
+            return
+        }
+        
+        (source as! MBViewController).showDetailsViewController(destination as! MBViewController)
     }
     
 }

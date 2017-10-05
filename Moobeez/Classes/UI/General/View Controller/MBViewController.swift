@@ -10,6 +10,8 @@ import UIKit
 
 class MBViewController: UIViewController {
 
+    var presenting:MBViewController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,15 +34,19 @@ class MBViewController: UIViewController {
     }
     */
     
-    func showDetailsViewController(_ viewController: UIViewController)
+    func showDetailsViewController(_ viewController: MBViewController)
     {
-        self.view.window?.addSubview(viewController.view)
+        let parentView = (MBSideMenuController.instance?.view)!
         
-        let windowBounds:CGRect = (self.view.window?.bounds)!
+        parentView.addSubview(viewController.view)
+        
+        let windowBounds:CGRect = parentView.bounds
         
         viewController.view.frame = windowBounds
         
-        self.addChildViewController(viewController)
+        MBSideMenuController.instance?.addChildViewController(viewController)
+        
+        viewController.presenting = self
         
         let summaryView:UIView? = summaryViewForViewController(viewController)
         
@@ -70,17 +76,11 @@ class MBViewController: UIViewController {
     
     func hideDetailsViewController()
     {
-        guard parent != nil else {
+        guard presenting != nil else {
             return
         }
         
-        guard parent is MBViewController else {
-            return
-        }
-        
-        let parentViewController:MBViewController = parent as! MBViewController
-        
-        let summaryView:UIView? =  parentViewController.summaryViewForViewController(self)
+        let summaryView:UIView? = presenting!.summaryViewForViewController(self)
         
         guard summaryView != nil else {
             didMove(toParentViewController: nil)
@@ -89,7 +89,7 @@ class MBViewController: UIViewController {
             return;
         }
         
-        let windowBounds:CGRect = (self.view.window?.bounds)!
+        let windowBounds:CGRect = ((MBSideMenuController.instance?.view)!.bounds)
         
         UIView.animate(withDuration: 0.3, animations: {
             

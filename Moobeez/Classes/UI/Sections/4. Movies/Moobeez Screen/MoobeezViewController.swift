@@ -26,6 +26,9 @@ class MoobeezViewController: MBViewController {
         
         let context = MoobeezManager.shared.persistentContainer.viewContext;
         let fetchRequest = NSFetchRequest<Moobee> (entityName: "Moobee")
+
+        fetchRequest.predicate = NSPredicate(format: "type == %ld", 2)
+        
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         
         fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
@@ -50,7 +53,7 @@ class MoobeezViewController: MBViewController {
             
             let cell:BeeCell? = sender as? BeeCell
             
-            moobeeViewController.bee = cell?.bee
+            moobeeViewController.movie = (cell?.bee as? Moobee)?.movie
         }
         
      }
@@ -62,7 +65,7 @@ class MoobeezViewController: MBViewController {
         }
         
         for beeCell:UICollectionViewCell in collectionView.visibleCells {
-            if (beeCell as! BeeCell).bee?.tmdbId == (viewController as! MoobeeDetailsViewController).bee?.tmdbId {
+            if (beeCell as! BeeCell).bee?.tmdbId == (viewController as! MoobeeDetailsViewController).moobee?.tmdbId {
                 return beeCell
             }
         }
@@ -70,6 +73,29 @@ class MoobeezViewController: MBViewController {
         return nil
     }
  
+    @IBAction func segmentedControlValueChanged(_ sender: Any) {
+        
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            fetchedResultsController?.fetchRequest.predicate = NSPredicate(format: "type == %ld", MoobeeType.seen.rawValue)
+            break
+        case 1:
+            fetchedResultsController?.fetchRequest.predicate = NSPredicate(format: "type == %ld", MoobeeType.watchlist.rawValue)
+            break
+        case 2:
+            fetchedResultsController?.fetchRequest.predicate = NSPredicate(format: "type == %ld AND isFavorite == 1", MoobeeType.seen.rawValue)
+
+        default:
+            break
+        }
+        
+        do {
+            try fetchedResultsController?.performFetch()
+            collectionView.reloadData()
+        } catch {
+            fatalError("Failed to fetch entities: \(error)")
+        }
+    }
 }
 
 extension MoobeezViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

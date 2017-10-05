@@ -11,6 +11,7 @@ import SDWebImage
 
 class BeeCell: UICollectionViewCell {
 
+    @IBOutlet var headerView:UIView!
     @IBOutlet var starsView:StarsView!
     @IBOutlet var posterImageView:UIImageView!
     @IBOutlet var nameLabel:UILabel!
@@ -30,6 +31,12 @@ class BeeCell: UICollectionViewCell {
             guard tmdbItem != nil else {
                 return
             }
+            
+            if bee is Moobee {
+                headerView.isHidden = (bee as! Moobee).moobeeType != MoobeeType.seen
+            }
+            
+            starsView.rating = CGFloat(bee?.rating ?? 0.0)
             
             nameLabel.text = bee?.name
             

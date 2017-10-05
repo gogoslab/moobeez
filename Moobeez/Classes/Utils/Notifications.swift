@@ -15,3 +15,6 @@ extension Notification.Name {
 
 }
 
+typealias EmptyHandler = () -> ()
+typealias CompleteHandler = (_ complete: Bool) -> ()
+
