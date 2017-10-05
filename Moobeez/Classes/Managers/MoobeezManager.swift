@@ -86,6 +86,8 @@ class MoobeezManager: NSObject {
                 teebee.tvShow = tmdbTvShow
                 tmdbTvShow.teebee = teebee
                 
+                TmdbMovie.links[tmdbTvShow.tmdbId] = tmdbTvShow.objectID.uriRepresentation()
+                
                 let oldTeebeeId = (row["ID"] as! NSNumber).int64Value
                 
                 let episodes = db.query(sql: "SELECT * FROM Episodes WHERE teebeeId = \(oldTeebeeId)")
