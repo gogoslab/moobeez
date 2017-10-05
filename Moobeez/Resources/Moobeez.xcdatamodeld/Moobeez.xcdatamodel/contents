@@ -22,10 +22,8 @@
         <relationship name="tvEpisode" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TmdbTvEpisode" inverseName="teebeeEpisode" inverseEntity="TmdbTvEpisode" syncable="YES"/>
     </entity>
     <entity name="TmdbCharacter" representedClassName="TmdbCharacter" syncable="YES" codeGenerationType="class">
-        <attribute name="characterId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="characterId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="personId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="tmdbId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="movie" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TmdbItem" inverseName="characters" inverseEntity="TmdbItem" syncable="YES"/>
         <relationship name="person" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TmdbPerson" inverseName="characters" inverseEntity="TmdbPerson" syncable="YES"/>
     </entity>
@@ -108,7 +106,7 @@
         <element name="Moobee" positionX="178" positionY="308" width="128" height="90"/>
         <element name="Teebee" positionX="702" positionY="243" width="128" height="90"/>
         <element name="TeebeeEpisode" positionX="1051" positionY="279" width="128" height="90"/>
-        <element name="TmdbCharacter" positionX="466" positionY="801" width="128" height="135"/>
+        <element name="TmdbCharacter" positionX="466" positionY="801" width="128" height="105"/>
         <element name="TmdbImage" positionX="243" positionY="776" width="128" height="120"/>
         <element name="TmdbItem" positionX="457" positionY="495" width="128" height="240"/>
         <element name="TmdbMovie" positionX="171" positionY="549" width="128" height="88"/>

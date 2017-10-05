@@ -105,7 +105,7 @@ extension UIImageView {
     }
     
     func loadTmdbProfileWithPath(path:String, completion: ((Bool) -> Swift.Void)? = nil) {
-        loadTmdbPosterWithPath(path: path, size: frame.size, completion: completion)
+        loadTmdbProfileWithPath(path: path, size: frame.size, completion: completion)
     }
     
     func loadTmdbProfileWithPath(path:String, size:CGSize, completion: ((Bool) -> Swift.Void)? = nil) {

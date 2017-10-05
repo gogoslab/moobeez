@@ -11,14 +11,14 @@ import CoreData
 
 extension TmdbCharacter {
     
-    static var links:[Int64 : URL] = [Int64 : URL]()
+    static var links:[String : URL] = [String : URL]()
     
     static func create(tmdbDictionary: [String : Any], insert:Bool = true) -> TmdbCharacter {
         
         var character:TmdbCharacter? = nil
         
-        if let value = tmdbDictionary["cast_id"] {
-            let characterId = (value as! NSNumber).int64Value
+        if let value = tmdbDictionary["credit_id"] {
+            let characterId = value as! String
             character = characterWithId(characterId)
         }
         
@@ -29,13 +29,13 @@ extension TmdbCharacter {
         character!.addEntriesFrom(tmdbDictionary: tmdbDictionary)
         
         if (insert) {
-            links[character!.characterId] = character?.objectID.uriRepresentation()
+            links[character!.characterId!] = character?.objectID.uriRepresentation()
         }
         
         return character!
     }
     
-    static func characterWithId(_ tmdbId:Int64) -> TmdbCharacter? {
+    static func characterWithId(_ tmdbId:String) -> TmdbCharacter? {
         
         guard links[tmdbId] != nil else {
             return nil
@@ -46,10 +46,10 @@ extension TmdbCharacter {
         return character
     }
     
-    static func fetchCharacterWithId(_ tmdbId:Int64) -> TmdbCharacter? {
+    static func fetchCharacterWithId(_ tmdbId:String) -> TmdbCharacter? {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TmdbCharacter")
-        fetchRequest.predicate = NSPredicate(format: "characterId == %ld", tmdbId)
+        fetchRequest.predicate = NSPredicate(format: "characterId == %@", tmdbId)
         
         do {
             let fetchedItems:[TmdbCharacter] = try MoobeezManager.coreDataContex!.fetch(fetchRequest) as! [TmdbCharacter]
@@ -67,8 +67,10 @@ extension TmdbCharacter {
     
     func addEntriesFrom(tmdbDictionary: [String : Any]) {
         
-        if let value = tmdbDictionary["cast_id"] {
-            characterId = (value as! NSNumber).int64Value
+        if let value = tmdbDictionary["credit_id"] {
+            if value is String {
+                characterId = value as? String
+            }
         }
         
         if let value = tmdbDictionary["character"] {
