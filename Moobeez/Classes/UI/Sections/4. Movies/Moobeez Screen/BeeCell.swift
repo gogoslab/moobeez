@@ -39,6 +39,7 @@ class BeeCell: UICollectionViewCell {
             starsView.rating = CGFloat(bee?.rating ?? 0.0)
             
             nameLabel.text = bee?.name
+            nameLabel.isHidden = false
             
             posterImageView.loadTmdbPosterWithPath(path: tmdbItem!.posterPath!) { (didLoadImage) in
                 self.nameLabel.isHidden = didLoadImage

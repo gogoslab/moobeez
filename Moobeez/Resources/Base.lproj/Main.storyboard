@@ -336,65 +336,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzE-zb-Ai9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ahL-SY-Q4B">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="I2x-NW-B9E">
-                                            <rect key="frame" x="10" y="11" width="311" height="29"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="100" id="gf3-f6-ptC"/>
-                                                <constraint firstAttribute="height" constant="28" id="see-dl-GJh"/>
-                                            </constraints>
-                                            <segments>
-                                                <segment title="Seen"/>
-                                                <segment title="Watchlist"/>
-                                                <segment title="Favorites"/>
-                                            </segments>
-                                            <color key="tintColor" name="Light Blue"/>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="gf3-f6-ptC"/>
-                                                </mask>
-                                            </variation>
-                                            <connections>
-                                                <action selector="segmentedControlValueChanged:" destination="i1B-db-MWf" eventType="valueChanged" id="Tql-lx-lsp"/>
-                                            </connections>
-                                        </segmentedControl>
-                                        <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="aJj-76-Ing" customClass="SearchBar" customModule="Moobeez" customModuleProvider="target">
-                                            <rect key="frame" x="324" y="-3" width="48" height="56"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" priority="999" constant="48" id="vs1-Ks-aXa"/>
-                                            </constraints>
-                                            <color key="tintColor" name="Light Blue"/>
-                                            <color key="barTintColor" name="Light Blue"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="magnifyingGlassColor">
-                                                    <color key="value" name="Light Blue"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <outlet property="delegate" destination="i1B-db-MWf" id="A2y-5y-p9n"/>
-                                            </connections>
-                                        </searchBar>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="I2x-NW-B9E" firstAttribute="leading" secondItem="ahL-SY-Q4B" secondAttribute="leading" constant="10" id="8kl-Z5-3z8"/>
-                                        <constraint firstItem="aJj-76-Ing" firstAttribute="leading" secondItem="I2x-NW-B9E" secondAttribute="trailing" constant="3" id="fne-Uh-jkm"/>
-                                        <constraint firstAttribute="trailing" secondItem="aJj-76-Ing" secondAttribute="trailing" constant="3" id="jzq-K5-alk"/>
-                                        <constraint firstItem="I2x-NW-B9E" firstAttribute="centerY" secondItem="ahL-SY-Q4B" secondAttribute="centerY" id="or5-EP-Gog"/>
-                                        <constraint firstItem="aJj-76-Ing" firstAttribute="centerY" secondItem="ahL-SY-Q4B" secondAttribute="centerY" id="vmc-Pc-YY8"/>
-                                    </constraints>
-                                </view>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="C7T-Q4-Swn"/>
-                                </constraints>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HsN-n3-L5O">
+                            <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HsN-n3-L5O">
                                 <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uTG-Pp-Vkj">
@@ -494,6 +436,65 @@ dasd</string>
                                     <outlet property="delegate" destination="i1B-db-MWf" id="ay1-Dh-zGF"/>
                                 </connections>
                             </collectionView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzE-zb-Ai9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ahL-SY-Q4B">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="I2x-NW-B9E">
+                                            <rect key="frame" x="10" y="11" width="311" height="29"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="100" id="gf3-f6-ptC"/>
+                                                <constraint firstAttribute="height" constant="28" id="see-dl-GJh"/>
+                                            </constraints>
+                                            <segments>
+                                                <segment title="Seen"/>
+                                                <segment title="Watchlist"/>
+                                                <segment title="Favorites"/>
+                                            </segments>
+                                            <color key="tintColor" name="Light Blue"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="gf3-f6-ptC"/>
+                                                </mask>
+                                            </variation>
+                                            <connections>
+                                                <action selector="segmentedControlValueChanged:" destination="i1B-db-MWf" eventType="valueChanged" id="Tql-lx-lsp"/>
+                                            </connections>
+                                        </segmentedControl>
+                                        <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="aJj-76-Ing" customClass="SearchBar" customModule="Moobeez" customModuleProvider="target">
+                                            <rect key="frame" x="324" y="-3" width="48" height="56"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" priority="999" constant="48" id="vs1-Ks-aXa"/>
+                                            </constraints>
+                                            <color key="tintColor" name="Light Blue"/>
+                                            <color key="barTintColor" name="Light Blue"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="magnifyingGlassColor">
+                                                    <color key="value" name="Light Blue"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="delegate" destination="i1B-db-MWf" id="A2y-5y-p9n"/>
+                                            </connections>
+                                        </searchBar>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="0.49965218321917809" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="I2x-NW-B9E" firstAttribute="leading" secondItem="ahL-SY-Q4B" secondAttribute="leading" constant="10" id="8kl-Z5-3z8"/>
+                                        <constraint firstItem="aJj-76-Ing" firstAttribute="leading" secondItem="I2x-NW-B9E" secondAttribute="trailing" constant="3" id="fne-Uh-jkm"/>
+                                        <constraint firstAttribute="trailing" secondItem="aJj-76-Ing" secondAttribute="trailing" constant="3" id="jzq-K5-alk"/>
+                                        <constraint firstItem="I2x-NW-B9E" firstAttribute="centerY" secondItem="ahL-SY-Q4B" secondAttribute="centerY" id="or5-EP-Gog"/>
+                                        <constraint firstItem="aJj-76-Ing" firstAttribute="centerY" secondItem="ahL-SY-Q4B" secondAttribute="centerY" id="vmc-Pc-YY8"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="C7T-Q4-Swn"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1342,6 +1343,6 @@ dasd</string>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="d8d-J4-40n"/>
+        <segue reference="rU5-6x-Xg8"/>
     </inferredMetricsTieBreakers>
 </document>
