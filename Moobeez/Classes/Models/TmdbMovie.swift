@@ -28,7 +28,7 @@ extension TmdbMovie {
         }
         
         if movie == nil {
-            movie = TmdbMovie.init(entity: NSEntityDescription.entity(forEntityName: "TmdbMovie", in: MoobeezManager.coreDataContex!)!, insertInto: insert ? MoobeezManager.coreDataContex : nil)
+            movie = TmdbMovie.init(entity: NSEntityDescription.entity(forEntityName: "TmdbMovie", in: MoobeezManager.tempDataContex!)!, insertInto: insert ? MoobeezManager.tempDataContex : nil)
         }
         
         movie!.addEntriesFrom(tmdbDictionary: tmdbDictionary)
@@ -46,10 +46,26 @@ extension TmdbMovie {
             return nil
         }
         
-        let movie = MoobeezManager.coreDataContex!.object(with: (MoobeezManager.coreDataContex!.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbMovie
+        let movie = MoobeezManager.tempDataContex!.object(with: (MoobeezManager.tempDataContex!.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbMovie
         
         return movie
         
+    }
+    
+    static func updateLinks() {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TmdbMovie")
+        
+        do {
+            let fetchedItems:[TmdbMovie] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbMovie]
+            
+            for item in fetchedItems {
+                links[item.tmdbId] = item.objectID.uriRepresentation()
+            }
+            
+        } catch {
+            fatalError("Failed to fetch movies: \(error)")
+        }
     }
     
     static func fetchMovieWithId(_ tmdbId:Int64) -> TmdbMovie? {
@@ -58,7 +74,7 @@ extension TmdbMovie {
         fetchRequest.predicate = NSPredicate(format: "tmdbId == %ld", tmdbId)
         
         do {
-            let fetchedItems:[TmdbMovie] = try MoobeezManager.coreDataContex!.fetch(fetchRequest) as! [TmdbMovie]
+            let fetchedItems:[TmdbMovie] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbMovie]
             
             if fetchedItems.count > 0 {
                 return fetchedItems[0]
@@ -205,6 +221,14 @@ extension TmdbMovie {
                     
                 }
                 
+            }
+        }
+        
+        if let value = tmdbDictionary["release_date"] {
+            if value is String {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                releaseDate = dateFormatter.date(from: value as! String)
             }
         }
         

@@ -65,6 +65,16 @@ class MoobeeToolboxView : ToolboxView {
         for cell:UIView in didntSawMovieViews {
             cell.isHidden = (moobee?.moobeeType == MoobeeType.seen)
         }
+        
+        watchlistButton.isSelected = moobee?.moobeeType == MoobeeType.watchlist
+        
+        let title:String = (watchlistButton.isSelected ? "remove from watchlist" : "add to watchlist")
+        
+        let titles = title.components(separatedBy: " ")
+        
+        for watchlistButtonTileLabel in watchlistButtonTileLabels {
+            watchlistButtonTileLabel.text = titles[watchlistButtonTileLabels.index(of: watchlistButtonTileLabel)!]
+        }
     }
 }
 
@@ -73,10 +83,14 @@ class MoobeeDetailsViewController: MBViewController {
     var movie:TmdbMovie?
     var moobee:Moobee?
     
+    var posterImage:UIImage?
+    
     @IBOutlet var posterImageView:UIImageView!
     @IBOutlet var contentView:UIView!
     
     @IBOutlet var toolboxView: MoobeeToolboxView!
+    
+    @IBOutlet var addRemoveButton:UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,24 +99,52 @@ class MoobeeDetailsViewController: MBViewController {
         
         contentView.isHidden = true
     
-        if movie?.moobee == nil {
-            moobee = Moobee(tmdbMovie: movie!)
+        assert(moobee != nil || movie != nil, "Moobee and movie can't both be nil")
+        
+        if moobee != nil {
+            movie = moobee?.movie
+        }
+        else if movie != nil {
+            moobee = Moobee.fetchMoobeeWithTmdbId((movie?.tmdbId)!)
+            
+            if moobee == nil {
+                moobee = Moobee(tmdbMovie: movie!)
+            }
         }
         else {
-            moobee = movie?.moobee
+            return
         }
         
         loadPoster()
         
-        toolboxView.moobee = moobee
-        
-        if moobee?.tmdbId != nil {
+        if movie != nil {
             TmdbService.startMovieConnection(movie: movie!) { (error: Error?, movie: TmdbMovie?) in
                 DispatchQueue.main.async {
+                    self.moobee?.movie = movie
                     self.toolboxView.castCollectionView.reloadData()
+                    self.loadPoster()
                 }
             }
         }
+        else {
+            TmdbService.startMovieConnection(tmdbId: (moobee?.tmdbId)!) { (error: Error?, movie: TmdbMovie?) in
+                DispatchQueue.main.async {
+                    self.movie = movie
+                    self.moobee?.movie = movie
+                    self.toolboxView.castCollectionView.reloadData()
+                    self.loadPoster()
+                }
+            }
+        }
+        
+        reloadMoobee()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadMoobee), name: .BeeDidChangeNotification, object:moobee?.tmdbId)
+    }
+    
+    @objc func reloadMoobee () {
+        toolboxView.moobee = moobee
+        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControlState.normal)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -144,7 +186,7 @@ class MoobeeDetailsViewController: MBViewController {
     
     func loadPoster() {
         
-        posterImageView.loadTmdbPosterWithPath(path: movie!.posterPath!) { (didLoadImage) in
+        posterImageView.loadTmdbPosterWithPath(path: moobee!.posterPath!, placeholder:posterImage) { (didLoadImage) in
             if didLoadImage {
                 let bottomHalfLuminosity: CGFloat = self.posterImageView.image?.bottomHalfLuminosity() ?? 0.0
                 self.toolboxView.applyTheme(lightTheme: bottomHalfLuminosity <= 0.60);
@@ -154,14 +196,32 @@ class MoobeeDetailsViewController: MBViewController {
     
 
     @IBAction func backButtonPressed(_ sender: UIButton) {
+        NotificationCenter.default.post(name: .BeeDidChangeNotification, object: moobee?.tmdbId)
         contentView.isHidden = true
         hideDetailsViewController()
     }
     
     @IBAction func watchlistButtonPressed(_ sender: UIButton) {
+        if moobee?.moobeeType != MoobeeType.watchlist {
+            moobee?.moobeeType = MoobeeType.watchlist
+        }
+        else {
+            moobee?.moobeeType = MoobeeType.none
+        }
+        toolboxView.reloadTypeCells()
+        
+        MoobeezManager.shared.addMoobee(moobee!)
+        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControlState.normal)
+        MoobeezManager.shared.save()
     }
     
     @IBAction func sawMovieButtonPressed(_ sender: UIButton) {
+        moobee?.moobeeType = MoobeeType.seen
+        toolboxView.reloadTypeCells()
+        
+        MoobeezManager.shared.addMoobee(moobee!)
+        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControlState.normal)
+        MoobeezManager.shared.save()
     }
     
     @IBAction func descriptionButtonPressed(_ sender: UIButton) {
@@ -177,6 +237,18 @@ class MoobeeDetailsViewController: MBViewController {
     }
 
     @IBAction func favoriteButtonPressed(_ sender: UIButton) {
+    }
+    
+    @IBAction func addRemoveButtonPressed(_ sender: UIButton) {
+        
+        if moobee?.managedObjectContext == nil {
+            MoobeezManager.shared.addMoobee(moobee!)
+        }
+        else {
+           MoobeezManager.shared.removeMoobee(moobee!)
+        }
+        
+        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControlState.normal)
     }
 
     @IBAction func posterTapped(_ sender: UITapGestureRecognizer) {

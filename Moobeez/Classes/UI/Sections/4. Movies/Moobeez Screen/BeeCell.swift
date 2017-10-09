@@ -18,19 +18,10 @@ class BeeCell: UICollectionViewCell {
     
     
     var bee:Bee? {
+        willSet {
+            NotificationCenter.default.removeObserver(self, name: .BeeDidChangeNotification, object: bee?.tmdbId)
+        }
         didSet {
-            
-            var tmdbItem:TmdbItem? = nil
-                
-            if bee is Moobee {
-                tmdbItem = (bee as! Moobee).movie!
-            } else if bee is Teebee {
-                tmdbItem = (bee as! Teebee).tvShow!
-            }
-            
-            guard tmdbItem != nil else {
-                return
-            }
             
             if bee is Moobee {
                 headerView.isHidden = (bee as! Moobee).moobeeType != MoobeeType.seen
@@ -41,9 +32,24 @@ class BeeCell: UICollectionViewCell {
             nameLabel.text = bee?.name
             nameLabel.isHidden = false
             
-            posterImageView.loadTmdbPosterWithPath(path: tmdbItem!.posterPath!) { (didLoadImage) in
+            posterImageView.loadTmdbPosterWithPath(path: (bee?.posterPath)!, placeholder:nil) { (didLoadImage) in
                 self.nameLabel.isHidden = didLoadImage
             }
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(self.beeChanged), name: .BeeDidChangeNotification, object: bee?.tmdbId)
+            
+        }
+    }
+    
+    @objc func beeChanged(notification: NSNotification){
+        posterImageView.loadTmdbPosterWithPath(path: (bee?.posterPath)!, placeholder:nil) { (didLoadImage) in
+            self.nameLabel.isHidden = didLoadImage
+        }
+        starsView.rating = CGFloat(bee?.rating ?? 0.0)
+        nameLabel.text = bee?.name
+        
+        if bee is Moobee {
+            headerView.isHidden = (bee as! Moobee).moobeeType != MoobeeType.seen
         }
     }
 }

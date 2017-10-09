@@ -23,7 +23,7 @@ extension TmdbTvSeason {
             }
         }
         
-        let episode:TmdbTvEpisode = NSEntityDescription.insertNewObject(forEntityName: "TmdbTvEpisode", into: MoobeezManager.shared.persistentContainer.viewContext) as! TmdbTvEpisode
+        let episode:TmdbTvEpisode = NSEntityDescription.insertNewObject(forEntityName: "TmdbTvEpisode", into: MoobeezManager.shared.tempContainer.viewContext) as! TmdbTvEpisode
         
         episode.episodeNumber = number
         episode.season = self

@@ -18,15 +18,16 @@ class MoobeezManager: NSObject {
         super.init()
     }
     
-    func loadFromSqlIfNeeded () {
+    func loadFromSqlIfNeeded () -> Bool {
         
         if UserDefaults.standard.bool(forKey: "didTransferSqlDatabase") {
-            return
+            return false
         }
         
         deleteTable(name: "Moobee")
-        deleteTable(name: "TmdbMovie")
-        
+        deleteTable(name: "Teebee")
+        deleteTable(name: "TeebeeEpisode")
+
         let db = SQLiteDB.shared
         
         let dateFormatter = DateFormatter.init()
@@ -44,23 +45,14 @@ class MoobeezManager: NSObject {
                 moobee.name = row["name"] as? String
                 moobee.rating = (row["rating"] as! NSNumber).floatValue
                 moobee.date = Date.init(timeInterval: (row["date"] as! NSNumber).doubleValue, since:referenceDate)
-                moobee.tmdbId = (row["tmdbId"] as! NSNumber).int64Value
                 moobee.type = (row["type"] as! NSNumber).int16Value
                 moobee.isFavorite = (row["isFavorite"] as! NSNumber).boolValue
-                
-                let tmdbMovie:TmdbMovie = NSEntityDescription.insertNewObject(forEntityName: "TmdbMovie", into: persistentContainer.viewContext) as! TmdbMovie
-                
-                tmdbMovie.name = row["name"] as? String
-                tmdbMovie.posterPath = row["posterPath"] as? String
-                tmdbMovie.backdropPath = row["backdropPath"] as? String
-                tmdbMovie.releaseDate = Date.init(timeIntervalSince1970: (row["releaseDate"] as! NSNumber).doubleValue)
-                tmdbMovie.tmdbId = moobee.tmdbId
-                
-                moobee.movie = tmdbMovie
-                tmdbMovie.moobee = moobee
-                
-                TmdbMovie.links[tmdbMovie.tmdbId] = tmdbMovie.objectID.uriRepresentation()
-                
+
+                moobee.tmdbId = (row["tmdbId"] as! NSNumber).int64Value
+                moobee.posterPath = row["posterPath"] as? String
+                moobee.backdropPath = row["backdropPath"] as? String
+                moobee.releaseDate = Date.init(timeIntervalSince1970: (row["releaseDate"] as! NSNumber).doubleValue)
+
             }
             
             let teebeez = db.query(sql: "SELECT * FROM Teebeez")
@@ -72,71 +64,48 @@ class MoobeezManager: NSObject {
                 teebee.name = row["name"] as? String
                 teebee.rating = (row["rating"] as! NSNumber).floatValue
                 teebee.date = Date.init(timeIntervalSince1970: (row["date"] as! NSNumber).doubleValue)
+
                 teebee.tmdbId = (row["tmdbId"] as! NSNumber).int64Value
+                teebee.posterPath = row["posterPath"] as? String
+                teebee.backdropPath = row["backdropPath"] as? String
+                
                 teebee.lastUpdate = Date.init(timeIntervalSince1970: (row["lastUpdate"] as! NSNumber).doubleValue)
 
-                let tmdbTvShow:TmdbTvShow = NSEntityDescription.insertNewObject(forEntityName: "TmdbTvShow", into: persistentContainer.viewContext) as! TmdbTvShow
-                
-                tmdbTvShow.name = row["name"] as? String
-                tmdbTvShow.posterPath = row["posterPath"] as? String
-                tmdbTvShow.backdropPath = row["backdropPath"] as? String
-                tmdbTvShow.ended = (row["ended"] as! NSNumber).boolValue
-                tmdbTvShow.tmdbId = teebee.tmdbId
-                
-                teebee.tvShow = tmdbTvShow
-                tmdbTvShow.teebee = teebee
-                
-                TmdbMovie.links[tmdbTvShow.tmdbId] = tmdbTvShow.objectID.uriRepresentation()
-                
                 let oldTeebeeId = (row["ID"] as! NSNumber).int64Value
                 
                 let episodes = db.query(sql: "SELECT * FROM Episodes WHERE teebeeId = \(oldTeebeeId)")
                 
                 for rowEpisode in episodes {
+                    let teebeeSeason:TeebeeSeason = teebee.seasonWithNumber(number: (rowEpisode["seasonNumber"] as! NSNumber).int16Value)
+                    let teebeeEpisode:TeebeeEpisode = teebeeSeason.episodeWithNumber(number: (rowEpisode["episodeNumber"] as! NSNumber).int16Value)
                     
-                    let teebeeEpisode:TeebeeEpisode = NSEntityDescription.insertNewObject(forEntityName: "TeebeeEpisode", into: persistentContainer.viewContext) as! TeebeeEpisode
-                    
-                    teebeeEpisode.teebee = teebee;
                     teebeeEpisode.watched = (rowEpisode["watched"] as! NSNumber).boolValue
-                    
-                    let tmdbTvSeason:TmdbTvSeason = tmdbTvShow.seasonWithNumber(number: (rowEpisode["seasonNumber"] as! NSNumber).int16Value)
-
-                    let tmdbTvEpisode:TmdbTvEpisode = tmdbTvSeason.episodeWithNumber(number: (rowEpisode["episodeNumber"] as! NSNumber).int16Value)
-
-                    tmdbTvEpisode.date = Date.init(timeIntervalSince1970: (rowEpisode["airDate"] as! NSNumber).doubleValue)
-
-                    tmdbTvEpisode.teebeeEpisode = teebeeEpisode
-                    teebeeEpisode.tvEpisode = tmdbTvEpisode
+                    teebeeEpisode.releaseDate = Date.init(timeIntervalSince1970: (rowEpisode["airDate"] as! NSNumber).doubleValue)
                 }
             }
             
             save()
         }
         
-//        UserDefaults.standard.set(true, forKey: "didTransferSqlDatabase")
-//        UserDefaults.standard.synchronize()
+        UserDefaults.standard.set(true, forKey: "didTransferSqlDatabase")
+        UserDefaults.standard.synchronize()
 
+        return true
     }
     
     public func save () {
         saveContext()
     }
     
-    private func deleteTable(name:String)
-    {
-        // Create Fetch Request
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: name)
+    public func load () {
         
-        // Create Batch Delete Request
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try persistentContainer.viewContext.execute(batchDeleteRequest)
-            
-        } catch let error {
-            print(error.localizedDescription)
-            // Error Handling
+        guard loadFromSqlIfNeeded() == false else {
+            return
         }
+        
+        deleteTempData()
+        TmdbMovie.updateLinks()
+        TmdbTvShow.updateLinks()
     }
     
     // MARK: - Core Data stack
@@ -150,6 +119,34 @@ class MoobeezManager: NSObject {
          */
         
         let container = NSPersistentContainer(name: "Moobeez")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                
+                /*
+                 Typical reasons for an error here include:
+                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                 * The device is out of space.
+                 * The store could not be migrated to the current model version.
+                 Check the error message to determine what the actual problem was.
+                 */
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    lazy var tempContainer: NSPersistentContainer = {
+        /*
+         The persistent container for the application. This implementation
+         creates and returns a container, having loaded the store for the
+         application to it. This property is optional since there are legitimate
+         error conditions that could cause the creation of the store to fail.
+         */
+        
+        let container = NSPersistentContainer(name: "Tmdb")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -190,6 +187,58 @@ class MoobeezManager: NSObject {
             return MoobeezManager.shared.persistentContainer.viewContext
         }
     }
+    
+    static var tempDataContex:NSManagedObjectContext? {
+        get {
+            return MoobeezManager.shared.tempContainer.viewContext
+        }
+    }
+    
+    // MARK: - Delete temp data
+    
+    func deleteTempData () {
+        
+        save()
+    }
+    
+    private func deleteTable(name:String, predicate:NSPredicate? = nil)
+    {
+        // Create Fetch Request
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: name)
+        fetchRequest.predicate = predicate
+        
+        // Create Batch Delete Request
+        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try persistentContainer.viewContext.execute(batchDeleteRequest)
+            
+        } catch let error {
+            print(error.localizedDescription)
+            // Error Handling
+        }
+    }
 }
 
+extension MoobeezManager {
+    
+    func addMoobee(_ moobee:Moobee) {
+        if moobee.managedObjectContext == nil {
+            persistentContainer.viewContext.insert(moobee)
+            save()
+            NotificationCenter.default.post(name: .MoobeezDidChangeNotification, object: moobee.tmdbId)
+            NotificationCenter.default.post(name: .BeeDidChangeNotification, object: moobee.tmdbId)
+        }
+    }
+    
+    func removeMoobee(_ moobee:Moobee) {
+        if moobee.managedObjectContext != nil {
+            persistentContainer.viewContext.delete(moobee)
+            save()
+            NotificationCenter.default.post(name: .MoobeezDidChangeNotification, object: moobee.tmdbId)
+            NotificationCenter.default.post(name: .BeeDidChangeNotification, object: moobee.tmdbId)
+        }
+    }
+    
+}
 

@@ -12,6 +12,10 @@ extension Notification.Name {
     
     static let SideMenuWillAppearNotification = Notification.Name("SideMenuWillAppearNotification")
     static let SideMenuWillDissappearNotification = Notification.Name("SideMenuWillDissappearNotification")
+    
+    static let BeeDidChangeNotification = Notification.Name("BeeDidChangeNotification")
+    
+    static let MoobeezDidChangeNotification = Notification.Name("MoobeezDidChangeNotification")
 
 }
 

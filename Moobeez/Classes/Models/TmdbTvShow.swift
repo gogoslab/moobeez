@@ -23,7 +23,7 @@ extension TmdbTvShow {
         }
         
         if tvShow == nil {
-            tvShow = TmdbTvShow.init(entity: NSEntityDescription.entity(forEntityName: "TmdbTvShow", in: MoobeezManager.coreDataContex!)!, insertInto: insert ? MoobeezManager.coreDataContex : nil)
+            tvShow = TmdbTvShow.init(entity: NSEntityDescription.entity(forEntityName: "TmdbTvShow", in: MoobeezManager.tempDataContex!)!, insertInto: insert ? MoobeezManager.tempDataContex : nil)
         }
         
         tvShow!.addEntriesFrom(tmdbDictionary: tmdbDictionary)
@@ -41,10 +41,26 @@ extension TmdbTvShow {
             return nil
         }
         
-        let tvShow = MoobeezManager.coreDataContex!.object(with: (MoobeezManager.coreDataContex!.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbTvShow
+        let tvShow = MoobeezManager.tempDataContex!.object(with: (MoobeezManager.tempDataContex!.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbTvShow
         
         return tvShow
         
+    }
+    
+    static func updateLinks() {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TmdbTvShow")
+        
+        do {
+            let fetchedItems:[TmdbTvShow] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbTvShow]
+            
+            for item in fetchedItems {
+                links[item.tmdbId] = item.objectID.uriRepresentation()
+            }
+            
+        } catch {
+            fatalError("Failed to fetch tv shows: \(error)")
+        }
     }
     
     static func fetchTvShowWithId(_ tmdbId:Int64) -> TmdbTvShow? {
@@ -53,7 +69,7 @@ extension TmdbTvShow {
         fetchRequest.predicate = NSPredicate(format: "tmdbId == %ld", tmdbId)
         
         do {
-            let fetchedItems:[TmdbTvShow] = try MoobeezManager.coreDataContex!.fetch(fetchRequest) as! [TmdbTvShow]
+            let fetchedItems:[TmdbTvShow] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbTvShow]
             
             if fetchedItems.count > 0 {
                 return fetchedItems[0]
@@ -109,7 +125,7 @@ extension TmdbTvShow {
             }
         }
         
-        let season:TmdbTvSeason = NSEntityDescription.insertNewObject(forEntityName: "TmdbTvSeason", into: MoobeezManager.shared.persistentContainer.viewContext) as! TmdbTvSeason
+        let season:TmdbTvSeason = NSEntityDescription.insertNewObject(forEntityName: "TmdbTvSeason", into: MoobeezManager.shared.tempContainer.viewContext) as! TmdbTvSeason
         
         season.seasonNumber = number
         season.tvShow = self

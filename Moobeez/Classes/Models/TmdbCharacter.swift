@@ -23,7 +23,7 @@ extension TmdbCharacter {
         }
         
         if character == nil {
-            character = TmdbCharacter.init(entity: NSEntityDescription.entity(forEntityName: "TmdbCharacter", in: MoobeezManager.coreDataContex!)!, insertInto: insert ? MoobeezManager.coreDataContex : nil)
+            character = TmdbCharacter.init(entity: NSEntityDescription.entity(forEntityName: "TmdbCharacter", in: MoobeezManager.tempDataContex!)!, insertInto: insert ? MoobeezManager.tempDataContex : nil)
         }
         
         character!.addEntriesFrom(tmdbDictionary: tmdbDictionary)
@@ -41,9 +41,27 @@ extension TmdbCharacter {
             return nil
         }
         
-        let character = MoobeezManager.coreDataContex!.object(with: (MoobeezManager.coreDataContex!.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbCharacter
+        let character = MoobeezManager.tempDataContex!.object(with: (MoobeezManager.tempDataContex!.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbCharacter
         
         return character
+    }
+    
+    static func updateLinks() {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TmdbCharacter")
+        
+        do {
+            let fetchedItems:[TmdbCharacter] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbCharacter]
+            
+            for item in fetchedItems {
+                if item.characterId != nil {
+                    links[(item.characterId)!] = item.objectID.uriRepresentation()
+                }
+            }
+            
+        } catch {
+            fatalError("Failed to fetch characters: \(error)")
+        }
     }
     
     static func fetchCharacterWithId(_ tmdbId:String) -> TmdbCharacter? {
@@ -52,7 +70,7 @@ extension TmdbCharacter {
         fetchRequest.predicate = NSPredicate(format: "characterId == %@", tmdbId)
         
         do {
-            let fetchedItems:[TmdbCharacter] = try MoobeezManager.coreDataContex!.fetch(fetchRequest) as! [TmdbCharacter]
+            let fetchedItems:[TmdbCharacter] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbCharacter]
             
             if fetchedItems.count > 0 {
                 return fetchedItems[0]

@@ -27,7 +27,7 @@ class MoobeezViewController: MBViewController {
         let context = MoobeezManager.shared.persistentContainer.viewContext;
         let fetchRequest = NSFetchRequest<Moobee> (entityName: "Moobee")
 
-        fetchRequest.predicate = NSPredicate(format: "type == %ld", 2)
+        fetchRequest.predicate = NSPredicate(format: "type == %ld", MoobeeType.seen.rawValue)
         
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
         
@@ -37,6 +37,10 @@ class MoobeezViewController: MBViewController {
         } catch {
             fatalError("Failed to fetch entities: \(error)")
         }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(showMovieSearch))
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadItems), name: .MoobeezDidChangeNotification, object: nil)
     }
 
     
@@ -53,7 +57,8 @@ class MoobeezViewController: MBViewController {
             
             let cell:BeeCell? = sender as? BeeCell
             
-            moobeeViewController.movie = (cell?.bee as? Moobee)?.movie
+            moobeeViewController.moobee = cell?.bee as? Moobee
+            moobeeViewController.posterImage = cell?.posterImageView.image
         }
         
      }
@@ -74,20 +79,37 @@ class MoobeezViewController: MBViewController {
     }
  
     @IBAction func segmentedControlValueChanged(_ sender: Any) {
+        reloadItems()
+    }
+    
+    @objc func showMovieSearch() {
+        performSegue(withIdentifier: "MovieSearchSegue", sender: nil)
+    }
+    
+    @objc func reloadItems () {
+        
+        var predicateFormat:String = ""
         
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            fetchedResultsController?.fetchRequest.predicate = NSPredicate(format: "type == %ld", MoobeeType.seen.rawValue)
+            predicateFormat = "type == \(MoobeeType.seen.rawValue)"
             break
         case 1:
-            fetchedResultsController?.fetchRequest.predicate = NSPredicate(format: "type == %ld", MoobeeType.watchlist.rawValue)
+            predicateFormat = "type == \(MoobeeType.watchlist.rawValue)"
             break
         case 2:
-            fetchedResultsController?.fetchRequest.predicate = NSPredicate(format: "type == %ld AND isFavorite == 1", MoobeeType.seen.rawValue)
-
+            predicateFormat = "type == \(MoobeeType.seen.rawValue) AND isFavorite == 1"
+            
         default:
             break
         }
+        
+        if searchBar.text != nil && (searchBar.text)!.count > 0 {
+            predicateFormat = predicateFormat + " AND name CONTAINS[cd] '\(searchBar.text!)'"
+        }
+        
+        fetchedResultsController?.fetchRequest.predicate = NSPredicate(format: predicateFormat)
+
         
         do {
             try fetchedResultsController?.performFetch()
@@ -144,6 +166,10 @@ extension MoobeezViewController : UICollectionViewDelegate, UICollectionViewData
 
 extension MoobeezViewController : UISearchBarDelegate {
  
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        reloadItems()
+    }
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         
         UIView.animate(withDuration: 0.3) {
@@ -187,6 +213,7 @@ extension MoobeezViewController : UISearchBarDelegate {
         
         searchBar.text = ""
         searchBar.resignFirstResponder()
+        reloadItems()
     }
     
 }

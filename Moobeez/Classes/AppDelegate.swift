@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        MoobeezManager.shared.loadFromSqlIfNeeded()
+        MoobeezManager.shared.load()
         TmdbService.startConfigurationConnection()
         
         return true

@@ -9,6 +9,7 @@
 import Foundation
 
 typealias ConnectionMovieHandler = (_ error: Error?, _ responseContent: TmdbMovie?) -> ()
+typealias ConnectionSearchMoviesHandler = (_ error: Error?, _ responseContent: [TmdbMovie]) -> ()
 
 extension TmdbService {
     
@@ -49,4 +50,41 @@ extension TmdbService {
         
     }
     
+    static func startSearchMoviesConnection(query:String, completionHandler:ConnectionSearchMoviesHandler? = nil) {
+        
+        _ = TmdbConnection.startConnection(urlString: "search/movie", parameters: ["query" : query], contentType: ContentType.json) { (error, responseContent, code) in
+            
+            var movies:[TmdbMovie] = [TmdbMovie]()
+            
+            if error == nil {
+                
+                if responseContent is Dictionary<String, Any> {
+                    
+                    let response = responseContent as! Dictionary<String, Any>
+                    
+                    let results = response["results"] as! Array<Dictionary<String, Any>>
+                    
+                    for movieDictionary in results {
+                        
+                        if let title:String = movieDictionary["title"] as? String {
+                        
+                            if title.lowercased().range(of: query.lowercased()) != nil {
+                                
+                                let movie:TmdbMovie = TmdbMovie.create(tmdbDictionary: movieDictionary)
+                                movies.append(movie)
+                                
+                            }
+                        }
+                    }
+                    
+                }
+            }
+            
+            if completionHandler != nil {
+                completionHandler!(error, movies)
+            }
+            
+        }
+        
+    }
 }

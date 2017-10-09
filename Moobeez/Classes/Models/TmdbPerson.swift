@@ -23,7 +23,7 @@ extension TmdbPerson {
         }
         
         if person == nil {
-            person = TmdbPerson.init(entity: NSEntityDescription.entity(forEntityName: "TmdbPerson", in: MoobeezManager.coreDataContex!)!, insertInto: insert ? MoobeezManager.coreDataContex : nil)
+            person = TmdbPerson.init(entity: NSEntityDescription.entity(forEntityName: "TmdbPerson", in: MoobeezManager.tempDataContex!)!, insertInto: insert ? MoobeezManager.tempDataContex : nil)
         }
         
         person!.addEntriesFrom(tmdbDictionary: tmdbDictionary)
@@ -41,18 +41,34 @@ extension TmdbPerson {
             return nil
         }
         
-        let person = MoobeezManager.coreDataContex!.object(with: (MoobeezManager.coreDataContex!.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbPerson
+        let person = MoobeezManager.tempDataContex!.object(with: (MoobeezManager.tempDataContex!.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbPerson
         
         return person
     }
-
+    
+    static func updateLinks() {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TmdbPerson")
+        
+        do {
+            let fetchedItems:[TmdbPerson] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbPerson]
+            
+            for item in fetchedItems {
+                links[item.personId] = item.objectID.uriRepresentation()
+            }
+            
+        } catch {
+            fatalError("Failed to fetch persons: \(error)")
+        }
+    }
+    
     static func fetchPersonWithId(_ tmdbId:Int64) -> TmdbPerson? {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TmdbPerson")
         fetchRequest.predicate = NSPredicate(format: "personId == %ld", tmdbId)
         
         do {
-            let fetchedItems:[TmdbPerson] = try MoobeezManager.coreDataContex!.fetch(fetchRequest) as! [TmdbPerson]
+            let fetchedItems:[TmdbPerson] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbPerson]
             
             if fetchedItems.count > 0 {
                 return fetchedItems[0]

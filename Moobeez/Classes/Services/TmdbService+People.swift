@@ -37,7 +37,6 @@ extension TmdbService {
         _ = TmdbConnection.startConnection(urlString: "person/\(person.personId)", parameters: ["append_to_response" : "combined_credits,images"], contentType: ContentType.json) { (error, responseContent, code) in
             
             if error == nil {
-                
                 person.addEntriesFrom(tmdbDictionary: responseContent as! [String : Any])
             }
             
