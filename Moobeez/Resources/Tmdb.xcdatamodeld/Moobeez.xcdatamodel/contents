@@ -17,7 +17,6 @@
         <attribute name="backdropPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="comments" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imdbId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="imdbUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="overview" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="popularity" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
@@ -77,7 +76,7 @@
     <elements>
         <element name="TmdbCharacter" positionX="466" positionY="801" width="128" height="105"/>
         <element name="TmdbImage" positionX="243" positionY="776" width="128" height="120"/>
-        <element name="TmdbItem" positionX="457" positionY="495" width="128" height="240"/>
+        <element name="TmdbItem" positionX="457" positionY="495" width="128" height="225"/>
         <element name="TmdbMovie" positionX="171" positionY="549" width="128" height="75"/>
         <element name="TmdbPerson" positionX="468" positionY="1029" width="128" height="165"/>
         <element name="TmdbTvEpisode" positionX="1114" positionY="531" width="128" height="150"/>

@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 enum TrailerType: Int16 {
     case quicktime = 0;
@@ -236,6 +237,22 @@ extension TmdbMovie {
             if value is NSNumber {
                 popularity = ((value as? NSNumber)?.floatValue)!
             }
+        }
+    }
+    
+    var imdbUrl:URL? {
+        get {
+            guard imdbId != nil else {
+                return nil
+            }
+            
+            var url:URL = URL(string: "imdb:///title/\((imdbId)!)/")!
+            
+            if UIApplication.shared.canOpenURL(url) == false {
+                url = URL(string: "http://m.imdb.com/title/\((imdbId)!)/")!
+            }
+            
+            return url
         }
     }
     

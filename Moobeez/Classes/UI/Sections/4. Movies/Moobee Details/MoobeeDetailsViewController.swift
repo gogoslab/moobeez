@@ -8,26 +8,47 @@
 
 import UIKit
 
+enum MoobeeSection:Int {
+    case general = 0;
+    case description = 1;
+    case cast = 2;
+    case trailers = 3;
+    case photos = 4;
+}
+
 class MoobeeToolboxView : ToolboxView {
     
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var starsView: StarsView!
     @IBOutlet var seenDateLabel: UILabel!
-
+    
+    @IBOutlet var datePicker: UIDatePicker!
+    @IBOutlet var datePickerView: UIView!
+    
     @IBOutlet var watchlistButtonTileLabels: [UILabel]!
     @IBOutlet var watchlistButton: UIButton!
     
     @IBOutlet var castCollectionView: UICollectionView!
+    @IBOutlet var castDetailsCollectionView: UICollectionView!
     
     @IBOutlet var descriptionButton: UIButton!
     @IBOutlet var castButton: UIButton!
     @IBOutlet var photosButton: UIButton!
     @IBOutlet var trailersButton: UIButton!
-    @IBOutlet var favoriteButton: UIButton!
+    @IBOutlet var generalButton: UIButton!
 
     @IBOutlet var sawMovieViews: [UIView]!
     @IBOutlet var didntSawMovieViews: [UIView]!
     
+    @IBOutlet var descriptionViews: [UIView]!
+    @IBOutlet var castViews: [UIView]!
+    @IBOutlet var trailersViews: [UIView]!
+    @IBOutlet var photosViews: [UIView]!
+
+    @IBOutlet var descriptionTextView: UITextView!
+    
+    @IBOutlet var pickerViewConstraint: NSLayoutConstraint!
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -42,12 +63,7 @@ class MoobeeToolboxView : ToolboxView {
             starsView.updateHandler = {
                 self.moobee?.rating = Float(self.starsView.rating)
                 
-                do {
-                    try self.moobee?.managedObjectContext?.save()
-                } catch let error as NSError {
-                    print("Could not save. \(error), \(error.userInfo)")
-                }
-                
+                MoobeezManager.shared.save()
             }
             
             let dateFormatter = DateFormatter()
@@ -58,6 +74,11 @@ class MoobeeToolboxView : ToolboxView {
     }
     
     func reloadTypeCells() {
+        
+        guard section == .general else {
+            return
+        }
+        
         for cell:UIView in sawMovieViews {
             cell.isHidden = (moobee?.moobeeType != MoobeeType.seen)
         }
@@ -76,6 +97,45 @@ class MoobeeToolboxView : ToolboxView {
             watchlistButtonTileLabel.text = titles[watchlistButtonTileLabels.index(of: watchlistButtonTileLabel)!]
         }
     }
+    
+    var section:MoobeeSection = .general {
+        willSet {
+            self.tabButtons[section.rawValue].isSelected = false
+        }
+        didSet {
+            self.tabButtons[section.rawValue].isSelected = true
+            switch section {
+            case .general:
+                self.cells = self.generalViews
+                reloadTypeCells()
+            case .description:
+                self.cells = self.descriptionViews
+            case .cast:
+                self.cells = self.castViews
+            case .trailers:
+                self.cells = self.trailersViews
+            case .photos:
+                self.cells = self.photosViews
+            }
+        }
+    }    
+    
+    @IBAction func showHideDatePicker(_ sender: Any) {
+        pickerViewConstraint.constant = (pickerViewConstraint.constant > 0 ? 0 : 150)
+        if pickerViewConstraint.constant > 0 {
+            datePicker.date = (moobee?.date)!
+        }
+    }
+    
+    @IBAction func datePickerValueChanged(_ sender: Any) {
+        moobee?.date = datePicker.date
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        seenDateLabel.text = dateFormatter.string(from: (moobee?.date)!)
+        
+        NotificationCenter.default.post(name: .MoobeezDidChangeNotification, object: moobee?.tmdbId)
+    }
 }
 
 class MoobeeDetailsViewController: MBViewController {
@@ -86,11 +146,17 @@ class MoobeeDetailsViewController: MBViewController {
     var posterImage:UIImage?
     
     @IBOutlet var posterImageView:UIImageView!
+
     @IBOutlet var contentView:UIView!
     
     @IBOutlet var toolboxView: MoobeeToolboxView!
     
     @IBOutlet var addRemoveButton:UIButton!
+    
+    @IBOutlet var favoriteButton: UIButton!
+    
+    @IBOutlet var descriptionTextViewConstraint: NSLayoutConstraint!
+    @IBOutlet var castCollectionViewConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,6 +164,8 @@ class MoobeeDetailsViewController: MBViewController {
         // Do any additional setup after loading the view.
         
         contentView.isHidden = true
+        
+        toolboxView.section = .general
     
         assert(moobee != nil || movie != nil, "Moobee and movie can't both be nil")
         
@@ -115,14 +183,15 @@ class MoobeeDetailsViewController: MBViewController {
             return
         }
         
+        favoriteButton.isSelected = (moobee?.isFavorite)!
+        
         loadPoster()
         
         if movie != nil {
             TmdbService.startMovieConnection(movie: movie!) { (error: Error?, movie: TmdbMovie?) in
                 DispatchQueue.main.async {
                     self.moobee?.movie = movie
-                    self.toolboxView.castCollectionView.reloadData()
-                    self.loadPoster()
+                    self.reloadMovie()
                 }
             }
         }
@@ -130,9 +199,7 @@ class MoobeeDetailsViewController: MBViewController {
             TmdbService.startMovieConnection(tmdbId: (moobee?.tmdbId)!) { (error: Error?, movie: TmdbMovie?) in
                 DispatchQueue.main.async {
                     self.movie = movie
-                    self.moobee?.movie = movie
-                    self.toolboxView.castCollectionView.reloadData()
-                    self.loadPoster()
+                    self.reloadMovie()
                 }
             }
         }
@@ -145,6 +212,14 @@ class MoobeeDetailsViewController: MBViewController {
     @objc func reloadMoobee () {
         toolboxView.moobee = moobee
         addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControlState.normal)
+    }
+    
+    func reloadMovie() {
+        self.toolboxView.castCollectionView.reloadData()
+        self.toolboxView.castDetailsCollectionView.reloadData()
+        self.castCollectionViewConstraint.constant = self.toolboxView.castDetailsCollectionView.contentSize.height
+        self.loadPoster()
+        self.toolboxView.descriptionTextView.text = movie?.overview
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -174,9 +249,15 @@ class MoobeeDetailsViewController: MBViewController {
     override func summaryViewForViewController(_ viewController: UIViewController) -> UIView? {
         
         if viewController is PersonDetailsViewController {
-            for castCell:UICollectionViewCell in toolboxView.castCollectionView.visibleCells {
+            var collectionView = toolboxView.castCollectionView
+            
+            if toolboxView.section == .cast {
+                collectionView = toolboxView.castDetailsCollectionView
+            }
+            
+            for castCell:UICollectionViewCell in collectionView!.visibleCells {
                 if (castCell as! CastThumbnailCell).person?.personId == (viewController as! PersonDetailsViewController).person?.personId {
-                    return castCell
+                    return (castCell as! CastThumbnailCell).imageView
                 }
             }
         }
@@ -196,6 +277,7 @@ class MoobeeDetailsViewController: MBViewController {
     
 
     @IBAction func backButtonPressed(_ sender: UIButton) {
+        MoobeezManager.shared.save()
         NotificationCenter.default.post(name: .BeeDidChangeNotification, object: moobee?.tmdbId)
         contentView.isHidden = true
         hideDetailsViewController()
@@ -225,9 +307,13 @@ class MoobeeDetailsViewController: MBViewController {
     }
     
     @IBAction func descriptionButtonPressed(_ sender: UIButton) {
+        toolboxView.section = .description
+        self.descriptionTextViewConstraint.constant = self.toolboxView.descriptionTextView.contentSize.height
     }
     
     @IBAction func castButtonPressed(_ sender: UIButton) {
+        toolboxView.section = .cast
+        self.castCollectionViewConstraint.constant = self.toolboxView.castDetailsCollectionView.contentSize.height
     }
     
     @IBAction func photosButtonPressed(_ sender: UIButton) {
@@ -236,7 +322,16 @@ class MoobeeDetailsViewController: MBViewController {
     @IBAction func trailersButtonPressed(_ sender: UIButton) {
     }
 
+    @IBAction func generalButtonPressed(_ sender: UIButton) {
+        toolboxView.section = .general
+    }
+    
     @IBAction func favoriteButtonPressed(_ sender: UIButton) {
+        moobee?.isFavorite = !(moobee?.isFavorite)!
+
+        sender.isSelected = (moobee?.isFavorite)!
+
+        NotificationCenter.default.post(name: .MoobeezDidChangeNotification, object: moobee?.tmdbId)
     }
     
     @IBAction func addRemoveButtonPressed(_ sender: UIButton) {
@@ -251,8 +346,33 @@ class MoobeeDetailsViewController: MBViewController {
         addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControlState.normal)
     }
 
-    @IBAction func posterTapped(_ sender: UITapGestureRecognizer) {
-        toolboxView.hideFullToolbox()
+    @IBAction func closeToolboxButtonPressed(_ sender: Any) {
+        if toolboxView.isVisible {
+            toolboxView.hideFullToolbox()
+        }
+        else {
+            toolboxView.showFullToolbox()
+        }
+    }
+    
+    @IBAction func shareButtonPressed(_ sender: UIButton) {
+        
+        guard movie != nil && movie?.imdbUrl != nil else {
+            return
+        }
+        
+        let controller:UIActivityViewController = UIActivityViewController(activityItems: [(movie?.imdbUrl)!], applicationActivities: nil)
+        controller.modalPresentationStyle = .popover
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func imdbButtonPressed(_ sender: UIButton) {
+        
+        guard movie != nil && movie?.imdbUrl != nil else {
+            return
+        }
+        
+        UIApplication.shared.open((movie?.imdbUrl)!, options: [:], completionHandler: nil)
     }
     
 }
@@ -281,8 +401,11 @@ extension MoobeeDetailsViewController : UICollectionViewDelegate, UICollectionVi
         
         let character:TmdbCharacter = movie?.characters?[indexPath.row] as! TmdbCharacter
         cell.person = character.person
+        cell.character = character
+        cell.applyTheme(lightTheme: toolboxView.lightTheme)
         
         return cell
     }
     
 }
+

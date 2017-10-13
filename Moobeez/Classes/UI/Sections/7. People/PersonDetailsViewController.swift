@@ -8,15 +8,29 @@
 
 import UIKit
 
+enum PersonSection:Int {
+    case general = 0;
+    case description = 1;
+    case cast = 2;
+    case photos = 4;
+}
+
 class PersonToolboxView : ToolboxView {
     
     @IBOutlet var nameTextField: UITextField!
     
     @IBOutlet var moviesCollectionView: UICollectionView!
+    @IBOutlet var moviesDetailsCollectionView: UICollectionView!
     
     @IBOutlet var descriptionButton: UIButton!
     @IBOutlet var moviesButton: UIButton!
     @IBOutlet var photosButton: UIButton!
+    
+    @IBOutlet var descriptionViews: [UIView]!
+    @IBOutlet var castViews: [UIView]!
+    @IBOutlet var photosViews: [UIView]!
+    
+    @IBOutlet var descriptionTextView: UITextView!
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -26,8 +40,29 @@ class PersonToolboxView : ToolboxView {
         
         didSet {
             nameTextField.text = person?.name
+            descriptionTextView.text = person?.overview
         }
-    }    
+    }
+    
+    var section:PersonSection = .general {
+        willSet {
+            self.tabButtons[section.rawValue].isSelected = false
+        }
+        didSet {
+            self.tabButtons[section.rawValue].isSelected = true
+            switch section {
+            case .general:
+                self.cells = self.generalViews
+            case .description:
+                self.cells = self.descriptionViews
+            case .cast:
+                self.cells = self.castViews
+            case .photos:
+                self.cells = self.photosViews
+            }
+        }
+    }
+    
 }
 
 class PersonDetailsViewController: MBViewController {
@@ -39,12 +74,17 @@ class PersonDetailsViewController: MBViewController {
     
     @IBOutlet var toolboxView: PersonToolboxView!
 
+    @IBOutlet var descriptionLabelViewConstraint: NSLayoutConstraint!
+    @IBOutlet var moviesCollectionViewConstraint: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
         contentView.isHidden = true
+        
+        toolboxView.section = .general
         
         loadProfilePicture()
         
@@ -53,6 +93,7 @@ class PersonDetailsViewController: MBViewController {
         TmdbService.startPersonConnection(person: person!) { (error: Error?, person: TmdbPerson?) in
             DispatchQueue.main.async {
                 self.reloadCharacters()
+                self.toolboxView.person = person
             }
         }
     }
@@ -85,9 +126,16 @@ class PersonDetailsViewController: MBViewController {
     override func summaryViewForViewController(_ viewController: UIViewController) -> UIView? {
         
         if viewController is MoobeeDetailsViewController {
-            for castCell:UICollectionViewCell in toolboxView.moviesCollectionView.visibleCells {
+            
+            var collectionView = toolboxView.moviesCollectionView
+            
+            if toolboxView.section == .cast {
+                collectionView = toolboxView.moviesDetailsCollectionView
+            }
+            
+            for castCell:UICollectionViewCell in collectionView!.visibleCells {
                 if (castCell as! CastThumbnailCell).movie?.tmdbId == (viewController as! MoobeeDetailsViewController).movie?.tmdbId {
-                    return castCell
+                    return (castCell as! CastThumbnailCell).imageView
                 }
             }
         }
@@ -123,6 +171,8 @@ class PersonDetailsViewController: MBViewController {
             return (c2 as! TmdbCharacter).date?.compare(((c1 as! TmdbCharacter).date)!) ?? ComparisonResult.orderedAscending
         }) as? [TmdbCharacter]
         self.toolboxView.moviesCollectionView.reloadData()
+        self.toolboxView.moviesDetailsCollectionView.reloadData()
+        self.moviesCollectionViewConstraint.constant = self.toolboxView.moviesDetailsCollectionView.contentSize.height
     }
     
     @IBAction func backButtonPressed(_ sender: UIButton) {
@@ -130,23 +180,32 @@ class PersonDetailsViewController: MBViewController {
         hideDetailsViewController()
     }
     
-    @IBAction func watchlistButtonPressed(_ sender: UIButton) {
-    }
-    
-    @IBAction func sawMovieButtonPressed(_ sender: UIButton) {
-    }
-    
     @IBAction func descriptionButtonPressed(_ sender: UIButton) {
+        toolboxView.section = .description
+        self.descriptionLabelViewConstraint.constant = self.toolboxView.descriptionTextView.contentSize.height
     }
     
     @IBAction func moviesButtonPressed(_ sender: UIButton) {
+        toolboxView.section = .cast
+        self.moviesCollectionViewConstraint.constant = self.toolboxView.moviesDetailsCollectionView.contentSize.height
     }
     
     @IBAction func photosButtonPressed(_ sender: UIButton) {
+        toolboxView.section = .photos
     }
     
-    @IBAction func posterTapped(_ sender: UITapGestureRecognizer) {
-        toolboxView.hideFullToolbox()
+    @IBAction func generalButtonPressed(_ sender: UIButton) {
+        toolboxView.section = .general
+    }
+
+    
+    @IBAction func closeToolboxButtonPressed(_ sender: Any) {
+        if toolboxView.isVisible {
+            toolboxView.hideFullToolbox()
+        }
+        else {
+            toolboxView.showFullToolbox()
+        }
     }
     
 }
@@ -168,15 +227,17 @@ extension PersonDetailsViewController : UICollectionViewDelegate, UICollectionVi
         
         let cell:CastThumbnailCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CastCell", for: indexPath) as! CastThumbnailCell
         
-        let character:TmdbCharacter = characters?[indexPath.row] as! TmdbCharacter
+        let character:TmdbCharacter = (characters?[indexPath.row])!
         cell.movie = character.movie
+        cell.character = character
+        cell.applyTheme(lightTheme: toolboxView.lightTheme)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let character:TmdbCharacter = characters?[indexPath.row] as! TmdbCharacter
+        let character:TmdbCharacter = (characters?[indexPath.row])!
         
         if character.movie is TmdbMovie {
             performSegue(withIdentifier: "MovieDetailsSegue", sender: collectionView.cellForItem(at: indexPath))

@@ -27,7 +27,13 @@ class ToolboxView: UIVisualEffectView {
 
     @IBOutlet var themedItems: [NSObject]!
     
+    @IBOutlet var generalViews: [UIView]!
+    
+    @IBOutlet var tabButtons: [UIButton]!
+    
     var delegate:ToolboxViewDelegate?
+    
+    var lightTheme:Bool = false
     
     private var toolboxStartPoint:CGFloat = 0
     private var delta:CGFloat = 0
@@ -39,7 +45,7 @@ class ToolboxView: UIVisualEffectView {
         
         panGesture = UIPanGestureRecognizer(target: self, action: #selector(self.handlePan(recognizer:)))
         addGestureRecognizer(panGesture!)
-        
+        cells = generalViews
     }
     
     override func awakeFromNib() {
@@ -48,6 +54,8 @@ class ToolboxView: UIVisualEffectView {
     }
     
     func applyTheme(lightTheme: Bool) {
+        
+        self.lightTheme = lightTheme
         
         for item in themedItems {
             
@@ -85,8 +93,19 @@ class ToolboxView: UIVisualEffectView {
                     button.setImage(UIImage.init(named: lightTheme ? imageName : imageName + "_dark"), for: UIControlState.selected)
                 }
             }
+            
+            if item is UIDatePicker {
+                let datePicker: UIDatePicker = item as! UIDatePicker
+                
+                datePicker.setValue(lightTheme ? UIColor.white : UIColor.black, forKeyPath: "textColor")
+            }
         }
-        
+    }
+    
+    var isVisible:Bool {
+        get {
+            return self.showToolboxConstraint.isActive
+        }
     }
     
     func showFullToolbox(animated:Bool = true) {
@@ -172,6 +191,22 @@ class ToolboxView: UIVisualEffectView {
         }
     }
     
-    
+    var cells:[UIView]? {
+        
+        willSet {
+            if cells != nil {
+                for cell:UIView in cells! {
+                    cell.isHidden = true
+                }
+            }
+        }
+        didSet {
+            if cells != nil {
+                for cell:UIView in cells! {
+                    cell.isHidden = false
+                }
+            }
+        }
+    }
     
 }
