@@ -32,7 +32,7 @@ class BeeCell: UICollectionViewCell {
             nameLabel.text = bee?.name
             nameLabel.isHidden = false
             
-            posterImageView.loadTmdbPosterWithPath(path: (bee?.posterPath)!, placeholder:nil) { (didLoadImage) in
+            posterImageView.loadTmdbPosterWithPath(path: (bee?.posterPath)!, placeholder:#imageLiteral(resourceName: "default_image")) { (didLoadImage) in
                 self.nameLabel.isHidden = didLoadImage
             }
             
@@ -42,7 +42,7 @@ class BeeCell: UICollectionViewCell {
     }
     
     @objc func beeChanged(notification: NSNotification){
-        posterImageView.loadTmdbPosterWithPath(path: (bee?.posterPath)!, placeholder:nil) { (didLoadImage) in
+        posterImageView.loadTmdbPosterWithPath(path: (bee?.posterPath)!, placeholder:#imageLiteral(resourceName: "default_image")) { (didLoadImage) in
             self.nameLabel.isHidden = didLoadImage
         }
         starsView.rating = CGFloat(bee?.rating ?? 0.0)

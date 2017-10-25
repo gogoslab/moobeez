@@ -52,27 +52,27 @@ extension UIImageView {
         return tmdbRootPath.appending("original\(path)")
     }
     
-    func loadImageWithUrl(url:URL, completion: ((Bool) -> Swift.Void)? = nil, placeholder:UIImage? = nil) {
-        sd_setImage(with: url, placeholderImage: placeholder == nil ? #imageLiteral(resourceName: "default_image") : placeholder! ) { (image, error, cacheType, url) in
+    func loadImageWithUrl(url:URL, placeholder:UIImage? = nil, completion: ((Bool) -> Swift.Void)? = nil) {
+        sd_setImage(with: url, placeholderImage: placeholder) { (image, error, cacheType, url) in
             if completion != nil {
                 completion!(error == nil)
             }
         }
     }
     
-    func loadTmdbImageWithPath(path:String, width:Int, completion: ((Bool) -> Swift.Void)? = nil, placeholder:UIImage? = nil) {
-        loadImageWithUrl(url: URL(string: UIImageView.tmdbImagePath(path: path, forWidth: width))!, completion:completion, placeholder: placeholder)
+    func loadTmdbImageWithPath(path:String, width:Int, placeholder:UIImage? = nil, completion: ((Bool) -> Swift.Void)? = nil) {
+        loadImageWithUrl(url: URL(string: UIImageView.tmdbImagePath(path: path, forWidth: width))!, placeholder: placeholder, completion:completion)
     }
     
-    func loadTmdbImageWithPath(path:String, height:Int, completion: ((Bool) -> Swift.Void)? = nil, placeholder:UIImage? = nil) {
-        loadImageWithUrl(url: URL(string: UIImageView.tmdbImagePath(path: path, forHeight: height))!, completion:completion, placeholder: placeholder)
+    func loadTmdbImageWithPath(path:String, height:Int, placeholder:UIImage? = nil, completion: ((Bool) -> Swift.Void)? = nil) {
+        loadImageWithUrl(url: URL(string: UIImageView.tmdbImagePath(path: path, forHeight: height))!, placeholder: placeholder, completion:completion)
     }
     
-    func loadTmdbOriginalImageWithPath(path:String, completion: ((Bool) -> Swift.Void)? = nil, placeholder:UIImage? = nil) {
-        loadImageWithUrl(url: URL(string: UIImageView.tmdbOriginalImagePath(path: path))!, completion:completion, placeholder: placeholder)
+    func loadTmdbOriginalImageWithPath(path:String, placeholder:UIImage? = nil, completion: ((Bool) -> Swift.Void)? = nil) {
+        loadImageWithUrl(url: URL(string: UIImageView.tmdbOriginalImagePath(path: path))!, placeholder: placeholder, completion:completion)
     }
     
-    func loadTmdbImageWithPath(path:String, type:String, size imageSize:CGSize, completion: ((Bool) -> Swift.Void)? = nil, placeholder:UIImage? = nil) {
+    func loadTmdbImageWithPath(path:String, type:String, size imageSize:CGSize, placeholder:UIImage? = nil, completion: ((Bool) -> Swift.Void)? = nil) {
         
         let sizes:NSArray = UIImageView.imageSettings.object(forKey: "\(type)_sizes") as! NSArray
         
@@ -81,43 +81,52 @@ extension UIImageView {
                 let value:Int = size.sizeValue
                 if size.sizeType == "w" {
                     if (Float(value) >= Float(imageSize.width * UIScreen.main.scale * 0.8)) {
-                        loadTmdbImageWithPath(path: path, width: value, completion:completion, placeholder: placeholder)
+                        loadTmdbImageWithPath(path: path, width: value, placeholder: placeholder, completion:completion)
                     }
                 }
                 else if size.sizeType == "h" {
                     if (Float(value) >= Float(imageSize.height * UIScreen.main.scale * 0.8)) {
-                        loadTmdbImageWithPath(path: path, height: value, completion:completion, placeholder: placeholder)
+                        loadTmdbImageWithPath(path: path, height: value, placeholder: placeholder, completion:completion)
                     }
                 }
             } else {
-                loadTmdbOriginalImageWithPath(path: path, completion:completion, placeholder: placeholder)
+                loadTmdbOriginalImageWithPath(path: path, placeholder: placeholder, completion:completion)
             }
         }
         
     }
     
-    func loadTmdbPosterWithPath(path:String, placeholder:UIImage? = nil, completion: ((Bool) -> Swift.Void)? = nil) {
+    func loadTmdbPosterWithPath(path:String, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
         loadTmdbPosterWithPath(path: path, size: frame.size, placeholder: placeholder, completion: completion)
     }
     
-    func loadTmdbPosterWithPath(path:String, size:CGSize, placeholder:UIImage? = nil, completion: ((Bool) -> Swift.Void)? = nil) {
-        loadTmdbImageWithPath(path: path, type: "poster", size: size, completion: completion, placeholder: placeholder)
+    func loadTmdbPosterWithPath(path:String, size:CGSize, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
+        loadTmdbImageWithPath(path: path, type: "poster", size: size, placeholder: placeholder, completion: completion)
     }
     
-    func loadTmdbProfileWithPath(path:String, completion: ((Bool) -> Swift.Void)? = nil) {
-        loadTmdbProfileWithPath(path: path, size: frame.size, completion: completion)
+    func loadTmdbProfileWithPath(path:String, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
+        loadTmdbProfileWithPath(path: path, size: frame.size, placeholder: placeholder, completion: completion)
     }
     
-    func loadTmdbProfileWithPath(path:String, size:CGSize, completion: ((Bool) -> Swift.Void)? = nil) {
-        loadTmdbImageWithPath(path: path, type: "profile", size: size, completion: completion)
+    func loadTmdbProfileWithPath(path:String, size:CGSize, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
+        loadTmdbImageWithPath(path: path, type: "profile", size: size, placeholder: placeholder, completion: completion)
     }
     
-    func loadTmdbBackdropWithPath(path:String, completion: ((Bool) -> Swift.Void)? = nil) {
-        loadTmdbPosterWithPath(path: path, size: frame.size, completion: completion)
+    func loadTmdbBackdropWithPath(path:String, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
+        loadTmdbPosterWithPath(path: path, size: frame.size, placeholder: placeholder, completion: completion)
     }
     
-    func loadTmdbBackdropWithPath(path:String, size:CGSize, completion: ((Bool) -> Swift.Void)? = nil) {
-        loadTmdbImageWithPath(path: path, type: "backdrop", size: size, completion: completion)
+    func loadTmdbBackdropWithPath(path:String, size:CGSize, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
+        loadTmdbImageWithPath(path: path, type: "backdrop", size: size, placeholder: placeholder, completion: completion)
+    }
+    
+    func loadTmdbImage(image:TmdbImage, completion: ((Bool) -> Swift.Void)? = nil) {
+        if image.poster {
+            loadTmdbPosterWithPath(path: image.path!, placeholder:nil, completion: completion)
+        }
+        else {
+            loadTmdbBackdropWithPath(path: image.path!, placeholder:nil, completion: completion)
+        }
     }
     
 }

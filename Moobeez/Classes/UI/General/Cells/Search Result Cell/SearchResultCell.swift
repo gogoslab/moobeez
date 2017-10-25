@@ -25,7 +25,7 @@ class SearchResultCell: UITableViewCell {
     {
         didSet {
             if movie?.posterPath != nil {
-                posterImageView.loadTmdbPosterWithPath(path: (movie?.posterPath)!)
+                posterImageView.loadTmdbPosterWithPath(path: (movie?.posterPath)!, placeholder:#imageLiteral(resourceName: "default_image"))
             }
             else {
                 posterImageView.image = #imageLiteral(resourceName: "default_image")
@@ -60,7 +60,7 @@ class SearchResultCell: UITableViewCell {
     var tvShow:TmdbTvShow?
     {
         didSet {
-            posterImageView.loadTmdbPosterWithPath(path: (tvShow?.posterPath)!)
+            posterImageView.loadTmdbPosterWithPath(path: (tvShow?.posterPath)!, placeholder:#imageLiteral(resourceName: "default_image"))
             titleLabel.text = tvShow?.name
             
             if tvShow?.releaseDate != nil {

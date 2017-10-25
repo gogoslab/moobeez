@@ -15,7 +15,7 @@ extension TmdbService {
     
     static func startMovieConnection(tmdbId:Int64, completionHandler:ConnectionMovieHandler? = nil) {
         
-        _ = TmdbConnection.startConnection(urlString: "movie/\(tmdbId)", parameters: ["append_to_response" : "casts"], contentType: ContentType.json) { (error, responseContent, code) in
+        _ = TmdbConnection.startConnection(urlString: "movie/\(tmdbId)", parameters: ["append_to_response" : "casts,images,trailers"], contentType: ContentType.json) { (error, responseContent, code) in
             
             var movie: TmdbMovie? = nil
             

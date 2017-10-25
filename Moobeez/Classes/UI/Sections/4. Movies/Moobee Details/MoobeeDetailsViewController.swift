@@ -244,6 +244,26 @@ class MoobeeDetailsViewController: MBViewController {
             
             personViewController.person = cell?.person
         }
+        
+        if segue.destination is ImageGalleryViewController {
+            
+            let imageGalleryViewController:ImageGalleryViewController = segue.destination as! ImageGalleryViewController
+            
+            imageGalleryViewController.images = movie?.backdropImages?.allObjects as? [TmdbImage]
+            
+            (UIApplication.shared.delegate as! AppDelegate).isPortrait = false
+            
+        }
+        
+        if segue.destination is YoutubeVideoViewController {
+            
+            let youtubeVideoViewController:YoutubeVideoViewController = segue.destination as! YoutubeVideoViewController
+            
+            youtubeVideoViewController.trailerPath = movie?.trailerPath
+            
+            (UIApplication.shared.delegate as! AppDelegate).isLandscape = true
+            
+        }
     }
     
     override func summaryViewForViewController(_ viewController: UIViewController) -> UIView? {
@@ -267,7 +287,7 @@ class MoobeeDetailsViewController: MBViewController {
     
     func loadPoster() {
         
-        posterImageView.loadTmdbPosterWithPath(path: moobee!.posterPath!, placeholder:posterImage) { (didLoadImage) in
+        posterImageView.loadTmdbPosterWithPath(path: moobee!.posterPath!, placeholder:posterImage != nil ? posterImage : #imageLiteral(resourceName: "default_image")) { (didLoadImage) in
             if didLoadImage {
                 let bottomHalfLuminosity: CGFloat = self.posterImageView.image?.bottomHalfLuminosity() ?? 0.0
                 self.toolboxView.applyTheme(lightTheme: bottomHalfLuminosity <= 0.60);
@@ -317,9 +337,13 @@ class MoobeeDetailsViewController: MBViewController {
     }
     
     @IBAction func photosButtonPressed(_ sender: UIButton) {
+        
     }
     
     @IBAction func trailersButtonPressed(_ sender: UIButton) {
+        if movie?.trailerType == TrailerType.youtube.rawValue {
+            performSegue(withIdentifier: "YoutubeViewSegue", sender: nil)
+        }
     }
 
     @IBAction func generalButtonPressed(_ sender: UIButton) {

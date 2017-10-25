@@ -1249,6 +1249,7 @@ dasd</string>
                                                                             </userDefinedRuntimeAttributes>
                                                                             <connections>
                                                                                 <action selector="photosButtonPressed:" destination="Hij-ac-bQx" eventType="touchUpInside" id="ArC-fU-rDo"/>
+                                                                                <segue destination="Dw2-sb-8j1" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="Nnp-9k-zR7"/>
                                                                             </connections>
                                                                         </button>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Oj-vc-6na" customClass="ThemedButton" customModule="Moobeez" customModuleProvider="target">
@@ -1461,6 +1462,7 @@ dasd</string>
                         <outlet property="favoriteButton" destination="fbt-a3-rYT" id="Zy1-u4-fbT"/>
                         <outlet property="posterImageView" destination="kGt-Ak-89z" id="Ndr-8N-of6"/>
                         <outlet property="toolboxView" destination="DtN-Of-Zzs" id="exT-qV-OL6"/>
+                        <segue destination="T3h-Kn-gl8" kind="presentation" identifier="YoutubeViewSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="cl2-2w-doE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zwF-4h-hP3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1804,6 +1806,7 @@ dasd</string>
                                                                             </userDefinedRuntimeAttributes>
                                                                             <connections>
                                                                                 <action selector="photosButtonPressed:" destination="wem-tp-7nf" eventType="touchUpInside" id="3J0-vt-nRg"/>
+                                                                                <segue destination="Dw2-sb-8j1" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="gTm-NF-nda"/>
                                                                             </connections>
                                                                         </button>
                                                                     </subviews>
@@ -1929,18 +1932,17 @@ dasd</string>
             </objects>
             <point key="canvasLocation" x="1665" y="919"/>
         </scene>
-        <!--View Controller-->
+        <!--Image Gallery View Controller-->
         <scene sceneID="Eef-Li-uIe">
             <objects>
-                <viewController id="Dw2-sb-8j1" sceneMemberID="viewController">
+                <viewController id="Dw2-sb-8j1" customClass="ImageGalleryViewController" customModule="Moobeez" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xVL-vX-e2v">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" directionalLockEnabled="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uTb-fr-s1A">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uTb-fr-s1A">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Pgo-Ht-Kcs">
                                     <size key="itemSize" width="375" height="667"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1948,14 +1950,14 @@ dasd</string>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1W8-rN-MDh">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="1W8-rN-MDh" customClass="ImageCell" customModule="Moobeez" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default_image" translatesAutoresizingMaskIntoConstraints="NO" id="o7P-Ic-u3H">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o7P-Ic-u3H">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                                 </imageView>
                                             </subviews>
@@ -1967,17 +1969,89 @@ dasd</string>
                                             <constraint firstItem="o7P-Ic-u3H" firstAttribute="leading" secondItem="1W8-rN-MDh" secondAttribute="leading" id="j7T-7O-dtS"/>
                                             <constraint firstAttribute="trailing" secondItem="o7P-Ic-u3H" secondAttribute="trailing" id="mPO-mV-9Yz"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="o7P-Ic-u3H" id="9kI-6o-Onf"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Dw2-sb-8j1" id="Hxb-uU-odY"/>
+                                    <outlet property="delegate" destination="Dw2-sb-8j1" id="dcG-WK-nVt"/>
+                                </connections>
                             </collectionView>
+                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a8i-yC-C1n" userLabel="Back Button">
+                                <rect key="frame" x="10" y="20" width="50" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Gup-3b-IsF"/>
+                                    <constraint firstAttribute="width" constant="50" id="h87-39-Qt9"/>
+                                </constraints>
+                                <state key="normal" image="back_button"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="Dw2-sb-8j1" eventType="touchUpInside" id="cd2-D2-jhM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="a8i-yC-C1n" firstAttribute="top" secondItem="xVL-vX-e2v" secondAttribute="top" constant="20" id="4LH-YM-9VZ"/>
+                            <constraint firstItem="a8i-yC-C1n" firstAttribute="leading" secondItem="NO8-pK-N6p" secondAttribute="leading" constant="10" id="7pD-jA-4XZ"/>
+                            <constraint firstItem="uTb-fr-s1A" firstAttribute="top" secondItem="xVL-vX-e2v" secondAttribute="top" id="BeB-aK-rzm"/>
+                            <constraint firstItem="uTb-fr-s1A" firstAttribute="trailing" secondItem="NO8-pK-N6p" secondAttribute="trailing" id="c0L-Pf-0qn"/>
+                            <constraint firstItem="uTb-fr-s1A" firstAttribute="bottom" secondItem="NO8-pK-N6p" secondAttribute="bottom" id="qpt-XW-FzE"/>
+                            <constraint firstItem="uTb-fr-s1A" firstAttribute="leading" secondItem="NO8-pK-N6p" secondAttribute="leading" id="xG9-j7-GAe"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="NO8-pK-N6p"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="uTb-fr-s1A" id="82K-bk-8FW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uRI-UZ-fcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2790" y="1040"/>
+        </scene>
+        <!--Youtube Video View Controller-->
+        <scene sceneID="fRt-rJ-CG6">
+            <objects>
+                <viewController id="T3h-Kn-gl8" customClass="YoutubeVideoViewController" customModule="Moobeez" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pGf-gw-B3e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CMb-kB-RBp" customClass="YTPlayerView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sbd-Vx-B5P" userLabel="Back Button">
+                                <rect key="frame" x="10" y="20" width="50" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="J9h-NF-dWi"/>
+                                    <constraint firstAttribute="height" constant="60" id="MTZ-G6-EGZ"/>
+                                </constraints>
+                                <state key="normal" image="back_button"/>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="T3h-Kn-gl8" eventType="touchUpInside" id="UiS-E0-kca"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sbd-Vx-B5P" firstAttribute="top" secondItem="pGf-gw-B3e" secondAttribute="top" constant="20" id="CPo-3f-3cQ"/>
+                            <constraint firstItem="CMb-kB-RBp" firstAttribute="trailing" secondItem="WKN-lV-4fO" secondAttribute="trailing" id="H6J-Pb-eDd"/>
+                            <constraint firstItem="CMb-kB-RBp" firstAttribute="leading" secondItem="WKN-lV-4fO" secondAttribute="leading" id="MAh-OC-1iN"/>
+                            <constraint firstItem="CMb-kB-RBp" firstAttribute="top" secondItem="pGf-gw-B3e" secondAttribute="top" id="Nh2-i8-LtU"/>
+                            <constraint firstItem="sbd-Vx-B5P" firstAttribute="leading" secondItem="WKN-lV-4fO" secondAttribute="leading" constant="10" id="SZY-Bf-sOr"/>
+                            <constraint firstItem="CMb-kB-RBp" firstAttribute="bottom" secondItem="WKN-lV-4fO" secondAttribute="bottom" id="l0H-SS-4V4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WKN-lV-4fO"/>
+                    </view>
+                    <connections>
+                        <outlet property="youtubePlayerView" destination="CMb-kB-RBp" id="3G3-sb-vmq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ycv-Td-jQ0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3537" y="1033"/>
         </scene>
     </scenes>
     <resources>
@@ -2012,20 +2086,9 @@ dasd</string>
         <namedColor name="Light Blue">
             <color red="0.2039215714" green="0.66666668650000005" blue="0.8627451062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Light Blue">
-            <color red="0.2039215714" green="0.66666668650000005" blue="0.8627451062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Light Blue">
-            <color red="0.2039215714" green="0.66666668650000005" blue="0.8627451062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Light Blue">
-            <color red="0.20392157137393951" green="0.66666668653488159" blue="0.86274510622024536" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Light Blue">
-            <color red="0.2039215714" green="0.66666668650000005" blue="0.8627451062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Nnp-9k-zR7"/>
         <segue reference="GwI-Wr-g4P"/>
         <segue reference="d8d-J4-40n"/>
     </inferredMetricsTieBreakers>

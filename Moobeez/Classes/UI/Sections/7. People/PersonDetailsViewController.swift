@@ -121,6 +121,16 @@ class PersonDetailsViewController: MBViewController {
             
             moobeeViewController.movie = cell?.movie as? TmdbMovie
         }
+        
+        if segue.destination is ImageGalleryViewController {
+            
+            let imageGalleryViewController:ImageGalleryViewController = segue.destination as! ImageGalleryViewController
+            
+            imageGalleryViewController.images = person?.profileImages?.allObjects as? [TmdbImage]
+            
+            (UIApplication.shared.delegate as! AppDelegate).isPortrait = false
+            
+        }
     }
     
     override func summaryViewForViewController(_ viewController: UIViewController) -> UIView? {
@@ -147,7 +157,7 @@ class PersonDetailsViewController: MBViewController {
 
     func loadProfilePicture() {
         
-        profileImageView.loadTmdbProfileWithPath(path: person!.profilePath!) { (didLoadImage) in
+        profileImageView.loadTmdbProfileWithPath(path: person!.profilePath!, placeholder: #imageLiteral(resourceName: "default_image")) { (didLoadImage) in
             if didLoadImage {
                 let bottomHalfLuminosity: CGFloat = self.profileImageView.image?.bottomHalfLuminosity() ?? 0.0
                 self.toolboxView.applyTheme(lightTheme: bottomHalfLuminosity <= 0.60);

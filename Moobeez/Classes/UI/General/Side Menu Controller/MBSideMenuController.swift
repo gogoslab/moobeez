@@ -40,7 +40,6 @@ class MBSideMenuController: UIViewController {
                 break;
             }
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,7 +47,6 @@ class MBSideMenuController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

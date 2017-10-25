@@ -178,32 +178,6 @@ extension TmdbMovie {
         if let trailers = tmdbDictionary["trailers"] {
             if trailers is Dictionary<String, Any> {
                 
-                if let quicktime = (trailers as! Dictionary<String, Any>)["quicktime"] {
-                    if quicktime is Array<Dictionary<String, Any>> {
-                        
-                        for trailerDictionary:Dictionary<String, Any> in (quicktime as! Array) {
-                            if let sources = trailerDictionary["sources"] {
-                                if sources is Array<Dictionary<String, Any>> {
-                                    
-                                    for source:Dictionary<String, Any> in (sources as! Array) {
-                                        
-                                        if source["size"] as! String == "720p" {
-                                            trailerPath = source["source"] as? String
-                                            trailerType = TrailerType.quicktime.rawValue
-                                        }
-                                        
-                                        if trailerPath == nil && source["size"] as! String == "480p" {
-                                            trailerPath = source["source"] as? String
-                                            trailerType = TrailerType.quicktime.rawValue
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        
-                    }
-                }
-                
                 if trailerPath == nil {
                     
                     if let youtube = (trailers as! Dictionary<String, Any>)["youtube"] {
@@ -216,10 +190,36 @@ extension TmdbMovie {
                                 
                                 break
                             }
+                        }
+                    }
+                }
+                
+                if trailerPath == nil {
+                    if let quicktime = (trailers as! Dictionary<String, Any>)["quicktime"] {
+                        if quicktime is Array<Dictionary<String, Any>> {
+                            
+                            for trailerDictionary:Dictionary<String, Any> in (quicktime as! Array) {
+                                if let sources = trailerDictionary["sources"] {
+                                    if sources is Array<Dictionary<String, Any>> {
+                                        
+                                        for source:Dictionary<String, Any> in (sources as! Array) {
+                                            
+                                            if source["size"] as! String == "720p" {
+                                                trailerPath = source["source"] as? String
+                                                trailerType = TrailerType.quicktime.rawValue
+                                            }
+                                            
+                                            if trailerPath == nil && source["size"] as! String == "480p" {
+                                                trailerPath = source["source"] as? String
+                                                trailerType = TrailerType.quicktime.rawValue
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                             
                         }
                     }
-                    
                 }
                 
             }

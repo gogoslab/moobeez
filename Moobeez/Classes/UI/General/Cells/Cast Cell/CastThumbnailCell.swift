@@ -61,7 +61,7 @@ class CastThumbnailCell: UICollectionViewCell {
             }
             
             if movie!.posterPath != nil {
-                imageView.loadTmdbPosterWithPath(path: (movie!.posterPath)!)
+                imageView.loadTmdbPosterWithPath(path: (movie!.posterPath)!, placeholder:#imageLiteral(resourceName: "default_image"))
             }
             else
             {

@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         MoobeezManager.shared.load()
         TmdbService.startConfigurationConnection()
         
+        isPortrait = true
+        
         return true
     }
 
@@ -56,7 +58,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         MoobeezManager.shared.save()
     }
 
-
+    var interfaceOrientation:UIInterfaceOrientationMask = UIInterfaceOrientationMask.portrait
+    
+    var isPortrait:Bool = true {
+        didSet {
+            if (isPortrait) {
+                interfaceOrientation = .portrait
+            }
+            else {
+                interfaceOrientation = .allButUpsideDown
+            }
+        }
+    }
+    
+    var isLandscape:Bool = false {
+        didSet {
+            if (isLandscape) {
+                interfaceOrientation = .landscape
+            }
+            else {
+                interfaceOrientation = .allButUpsideDown
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return interfaceOrientation
+    }
 
 }
 
