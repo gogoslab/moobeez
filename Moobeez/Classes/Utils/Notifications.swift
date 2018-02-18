@@ -16,6 +16,7 @@ extension Notification.Name {
     static let BeeDidChangeNotification = Notification.Name("BeeDidChangeNotification")
     
     static let MoobeezDidChangeNotification = Notification.Name("MoobeezDidChangeNotification")
+    static let TeebeezDidChangeNotification = Notification.Name("TeebeezDidChangeNotification")
 
 }
 

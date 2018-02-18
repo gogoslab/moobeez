@@ -21,6 +21,9 @@ class ToolboxView: UIVisualEffectView {
 
     @IBOutlet var toolboxIndicatorView: UIImageView!
     
+    @IBOutlet var maskContentView: UIView!
+    @IBOutlet var fixedContentView: UIView!
+    
     @IBOutlet var showToolboxConstraint: NSLayoutConstraint!
     @IBOutlet var hideToolboxConstraint: NSLayoutConstraint!
     @IBOutlet var moveToolboxConstraint: NSLayoutConstraint!
@@ -104,7 +107,7 @@ class ToolboxView: UIVisualEffectView {
     
     var isVisible:Bool {
         get {
-            return self.showToolboxConstraint.isActive
+            return self.hideToolboxConstraint.isActive == false
         }
     }
     
@@ -116,6 +119,7 @@ class ToolboxView: UIVisualEffectView {
         
         if animated {
             UIView.animate(withDuration: 0.33, animations: {
+//               self.maskContentView.layoutIfNeeded()
             }, completion: { (_) in
                 self.toolboxIndicatorView.image = #imageLiteral(resourceName: "toolbox_down_arrow")
             })
@@ -136,6 +140,7 @@ class ToolboxView: UIVisualEffectView {
         
         if animated {
             UIView.animate(withDuration: 0.33, animations: {
+//                self.maskContentView.layoutIfNeeded()
             }, completion: { (_) in
                 self.toolboxIndicatorView.image = #imageLiteral(resourceName: "toolbox_up_arrow")
             })
@@ -151,7 +156,7 @@ class ToolboxView: UIVisualEffectView {
         if recognizer.state == .began {
             toolboxStartPoint = recognizer.translation(in: self.superview).y
             
-            self.moveToolboxConstraint.constant = y
+            self.moveToolboxConstraint.constant = maskContentView.frame.height
             self.moveToolboxConstraint.isActive = true
         }
         else if recognizer.state == .changed {
@@ -162,12 +167,12 @@ class ToolboxView: UIVisualEffectView {
             
             delta = point - toolboxStartPoint
             
-            self.moveToolboxConstraint.constant += delta
+            self.moveToolboxConstraint.constant = self.moveToolboxConstraint.constant - delta
             
             toolboxStartPoint = point
             
             UIView.animate(withDuration: 0.05, animations: {
-                self.layoutIfNeeded()
+                self.maskContentView.layoutIfNeeded()
             })
         }
         else if recognizer.state == .ended || recognizer.state == .cancelled {
@@ -181,7 +186,7 @@ class ToolboxView: UIVisualEffectView {
                 }
             }
             else {
-                if ((superview?.height)! - y > height / 2) {
+                if (maskContentView.frame.height > fixedContentView.frame.height / 2) {
                     showFullToolbox()
                 }
                 else {

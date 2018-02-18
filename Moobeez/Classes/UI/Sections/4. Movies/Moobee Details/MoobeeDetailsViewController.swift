@@ -117,6 +117,9 @@ class MoobeeToolboxView : ToolboxView {
             case .photos:
                 self.cells = self.photosViews
             }
+            if isVisible == false {
+                showFullToolbox(animated: false)
+            }
         }
     }    
     
@@ -222,11 +225,15 @@ class MoobeeDetailsViewController: MBViewController {
         self.toolboxView.descriptionTextView.text = movie?.overview
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadTheme()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.33) {
-            
             if self.contentView.isHidden {
                 self.contentView.isHidden = false
                 self.toolboxView.showFullToolbox()
@@ -243,6 +250,8 @@ class MoobeeDetailsViewController: MBViewController {
             let cell:CastThumbnailCell? = sender as? CastThumbnailCell
             
             personViewController.person = cell?.person
+            
+            personViewController.profileImage = cell?.imageView.image
         }
         
         if segue.destination is ImageGalleryViewController {
@@ -260,6 +269,16 @@ class MoobeeDetailsViewController: MBViewController {
             let youtubeVideoViewController:YoutubeVideoViewController = segue.destination as! YoutubeVideoViewController
             
             youtubeVideoViewController.trailerPath = movie?.trailerPath
+            
+            (UIApplication.shared.delegate as! AppDelegate).isLandscape = true
+            
+        }
+        
+        if segue.destination is VideoViewController {
+            
+            let videoViewController:VideoViewController = segue.destination as! VideoViewController
+            
+            videoViewController.trailerPath = movie?.trailerPath
             
             (UIApplication.shared.delegate as! AppDelegate).isLandscape = true
             
@@ -287,12 +306,23 @@ class MoobeeDetailsViewController: MBViewController {
     
     func loadPoster() {
         
+        if posterImage != nil {
+            reloadTheme()
+        }
+        
         posterImageView.loadTmdbPosterWithPath(path: moobee!.posterPath!, placeholder:posterImage != nil ? posterImage : #imageLiteral(resourceName: "default_image")) { (didLoadImage) in
             if didLoadImage {
-                let bottomHalfLuminosity: CGFloat = self.posterImageView.image?.bottomHalfLuminosity() ?? 0.0
-                self.toolboxView.applyTheme(lightTheme: bottomHalfLuminosity <= 0.60);
+                self.reloadTheme()
             }
         }
+    }
+    
+    func reloadTheme() {
+        let bottomHalfLuminosity: CGFloat = self.posterImageView.image?.bottomHalfLuminosity() ?? 0.0
+        self.toolboxView.applyTheme(lightTheme: bottomHalfLuminosity <= 0.60);
+        
+        let topBarLuminosity: CGFloat = self.posterImageView.image?.topBarLuminosity() ?? 0.0
+        UIApplication.shared.statusBarStyle = topBarLuminosity <= 0.60 ? .lightContent : .default;
     }
     
 
@@ -343,6 +373,10 @@ class MoobeeDetailsViewController: MBViewController {
     @IBAction func trailersButtonPressed(_ sender: UIButton) {
         if movie?.trailerType == TrailerType.youtube.rawValue {
             performSegue(withIdentifier: "YoutubeViewSegue", sender: nil)
+        }
+        
+        if movie?.trailerType == TrailerType.quicktime.rawValue {
+            performSegue(withIdentifier: "VideoViewSegue", sender: nil)
         }
     }
 
@@ -408,6 +442,11 @@ extension MoobeeDetailsViewController {
 }
 
 extension MoobeeDetailsViewController : UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
 }
 

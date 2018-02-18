@@ -17,6 +17,13 @@ class MBViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -83,11 +90,15 @@ class MBViewController: UIViewController {
         let summaryView:UIView? = presenting!.summaryViewForViewController(self)
         
         guard summaryView != nil else {
+            presenting!.viewWillAppear(false)
             didMove(toParentViewController: nil)
             removeFromParentViewController()
             view.removeFromSuperview()
+            presenting!.viewDidAppear(false)
             return;
         }
+        
+        presenting!.viewWillAppear(true)
         
         let windowBounds:CGRect = ((MBSideMenuController.instance?.view)!.bounds)
         
@@ -100,10 +111,10 @@ class MBViewController: UIViewController {
             
             
         }, completion: { (_) in
-            
             self.didMove(toParentViewController: nil)
             self.removeFromParentViewController()
             self.view.removeFromSuperview()
+            self.presenting!.viewDidAppear(true)
         })
     }
 

@@ -15,6 +15,8 @@ class BeeCell: UICollectionViewCell {
     @IBOutlet var starsView:StarsView!
     @IBOutlet var posterImageView:UIImageView!
     @IBOutlet var nameLabel:UILabel!
+    @IBOutlet var notificationView:UIView!
+    @IBOutlet var notificationLabel:UILabel!
     
     
     var bee:Bee? {
@@ -50,6 +52,13 @@ class BeeCell: UICollectionViewCell {
         
         if bee is Moobee {
             headerView.isHidden = (bee as! Moobee).moobeeType != MoobeeType.seen
+        }
+    }
+    
+    var notifications:Int16 = 0 {
+        didSet {
+            notificationView.isHidden = notifications <= 1
+            notificationLabel.text = "\(notifications)"
         }
     }
 }

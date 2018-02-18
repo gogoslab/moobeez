@@ -60,6 +60,10 @@ class PersonToolboxView : ToolboxView {
             case .photos:
                 self.cells = self.photosViews
             }
+            
+            if isVisible == false {
+                showFullToolbox(animated: false)
+            }
         }
     }
     
@@ -71,6 +75,8 @@ class PersonDetailsViewController: MBViewController {
     
     @IBOutlet var profileImageView:UIImageView!
     @IBOutlet var contentView:UIView!
+    
+    var profileImage:UIImage?
     
     @IBOutlet var toolboxView: PersonToolboxView!
 
@@ -98,6 +104,11 @@ class PersonDetailsViewController: MBViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadTheme()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -120,6 +131,19 @@ class PersonDetailsViewController: MBViewController {
             let cell:CastThumbnailCell? = sender as? CastThumbnailCell
             
             moobeeViewController.movie = cell?.movie as? TmdbMovie
+            
+            moobeeViewController.posterImage = cell?.imageView.image
+        }
+        
+        if segue.destination is TeebeeDetailsViewController {
+            
+            let teebeeViewController:TeebeeDetailsViewController = segue.destination as! TeebeeDetailsViewController
+            
+            let cell:CastThumbnailCell? = sender as? CastThumbnailCell
+            
+            teebeeViewController.tvShow = cell?.movie as? TmdbTvShow
+            
+            teebeeViewController.posterImage = cell?.imageView.image
         }
         
         if segue.destination is ImageGalleryViewController {
@@ -150,6 +174,21 @@ class PersonDetailsViewController: MBViewController {
             }
         }
         
+        if viewController is TeebeeDetailsViewController {
+            
+            var collectionView = toolboxView.moviesCollectionView
+            
+            if toolboxView.section == .cast {
+                collectionView = toolboxView.moviesDetailsCollectionView
+            }
+            
+            for castCell:UICollectionViewCell in collectionView!.visibleCells {
+                if (castCell as! CastThumbnailCell).movie?.tmdbId == (viewController as! TeebeeDetailsViewController).tvShow?.tmdbId {
+                    return (castCell as! CastThumbnailCell).imageView
+                }
+            }
+        }
+        
         return nil
     }
     
@@ -157,12 +196,24 @@ class PersonDetailsViewController: MBViewController {
 
     func loadProfilePicture() {
         
-        profileImageView.loadTmdbProfileWithPath(path: person!.profilePath!, placeholder: #imageLiteral(resourceName: "default_image")) { (didLoadImage) in
+        profileImageView.loadTmdbProfileWithPath(path: person!.profilePath!, placeholder:profileImage != nil ? profileImage : #imageLiteral(resourceName: "default_image")) { (didLoadImage) in
             if didLoadImage {
-                let bottomHalfLuminosity: CGFloat = self.profileImageView.image?.bottomHalfLuminosity() ?? 0.0
-                self.toolboxView.applyTheme(lightTheme: bottomHalfLuminosity <= 0.60);
+                self.reloadTheme()
             }
         }
+        
+        if profileImage != nil {
+            reloadTheme()
+        }
+        
+    }
+    
+    func reloadTheme() {
+        let bottomHalfLuminosity: CGFloat = self.profileImageView.image?.bottomHalfLuminosity() ?? 0.0
+        self.toolboxView.applyTheme(lightTheme: bottomHalfLuminosity <= 0.60);
+
+        let topBarLuminosity: CGFloat = self.profileImageView.image?.topBarLuminosity() ?? 0.0
+        UIApplication.shared.statusBarStyle = topBarLuminosity <= 0.60 ? .lightContent : .default;
     }
     
     var characters:[TmdbCharacter]?
@@ -251,6 +302,10 @@ extension PersonDetailsViewController : UICollectionViewDelegate, UICollectionVi
         
         if character.movie is TmdbMovie {
             performSegue(withIdentifier: "MovieDetailsSegue", sender: collectionView.cellForItem(at: indexPath))
+        }
+        
+        if character.movie is TmdbTvShow {
+            performSegue(withIdentifier: "TvShowDetailsSegue", sender: collectionView.cellForItem(at: indexPath))
         }
         
     }

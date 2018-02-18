@@ -27,10 +27,51 @@ extension TeebeeSeason {
         
         episode.number = number
         episode.season = self
+        episode.teebee = teebee
+        episode.watched = false
+        
+        if teebee?.tmdbId != nil {
+            episode.tmdbId = (teebee?.tmdbId)!
+        }
         
         addToEpisodes(episode)
         
         return episode
+    }
+    
+    func setTmdbSeason(tmdbSeason:TmdbTvSeason)
+    {
+        posterPath = tmdbSeason.posterPath
+        number = tmdbSeason.seasonNumber
+        
+        for tmdbEpisode:TmdbTvEpisode in tmdbSeason.episodes?.array as! [TmdbTvEpisode]
+        {
+            let episode = episodeWithNumber(number: tmdbEpisode.episodeNumber)
+            episode.releaseDate = tmdbEpisode.date
+            episode.name = tmdbEpisode.name
+        }
+    }
+    
+    var watchedEpisodesCount: NSInteger
+    {
+        get {
+            guard episodes != nil else {
+                return 0
+            }
+            
+            return (episodes?.filtered(using: NSPredicate(format: "watched == 1")).count)!
+        }
+    }
+
+    var notWatchedEpisodesCount: NSInteger
+    {
+        get {
+            guard episodes != nil else {
+                return 0
+            }
+            
+            return (episodes?.filtered(using: NSPredicate(format: "watched == 0")).count)!
+        }
     }
     
 }

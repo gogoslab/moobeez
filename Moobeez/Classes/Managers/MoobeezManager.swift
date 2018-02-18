@@ -20,9 +20,9 @@ class MoobeezManager: NSObject {
     
     func loadFromSqlIfNeeded () -> Bool {
         
-        if UserDefaults.standard.bool(forKey: "didTransferSqlDatabase") {
-            return false
-        }
+//        if UserDefaults.standard.bool(forKey: "didTransferSqlDatabase") {
+//            return false
+//        }
         
         deleteTable(name: "Moobee")
         deleteTable(name: "Teebee")
@@ -77,6 +77,7 @@ class MoobeezManager: NSObject {
                 
                 for rowEpisode in episodes {
                     let teebeeSeason:TeebeeSeason = teebee.seasonWithNumber(number: (rowEpisode["seasonNumber"] as! NSNumber).int16Value)
+                    teebeeSeason.posterPath = ""
                     let teebeeEpisode:TeebeeEpisode = teebeeSeason.episodeWithNumber(number: (rowEpisode["episodeNumber"] as! NSNumber).int16Value)
                     
                     teebeeEpisode.watched = (rowEpisode["watched"] as! NSNumber).boolValue
@@ -237,6 +238,24 @@ extension MoobeezManager {
             save()
             NotificationCenter.default.post(name: .MoobeezDidChangeNotification, object: moobee.tmdbId)
             NotificationCenter.default.post(name: .BeeDidChangeNotification, object: moobee.tmdbId)
+        }
+    }
+    
+    func addTeebee(_ teebee:Teebee) {
+        if teebee.managedObjectContext == nil {
+            persistentContainer.viewContext.insert(teebee)
+            save()
+            NotificationCenter.default.post(name: .TeebeezDidChangeNotification, object: teebee.tmdbId)
+            NotificationCenter.default.post(name: .BeeDidChangeNotification, object: teebee.tmdbId)
+        }
+    }
+    
+    func removeTeebee(_ teebee:Teebee) {
+        if teebee.managedObjectContext != nil {
+            persistentContainer.viewContext.delete(teebee)
+            save()
+            NotificationCenter.default.post(name: .TeebeezDidChangeNotification, object: teebee.tmdbId)
+            NotificationCenter.default.post(name: .BeeDidChangeNotification, object: teebee.tmdbId)
         }
     }
     

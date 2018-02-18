@@ -11,6 +11,25 @@ import CoreData
 
 extension Teebee {
     
+    static func fetchTeebeeWithTmdbId(_ tmdbId:Int64) -> Teebee? {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Teebee")
+        fetchRequest.predicate = NSPredicate(format: "tmdbId == %ld", tmdbId)
+        
+        do {
+            let fetchedItems:[Teebee] = try MoobeezManager.coreDataContex!.fetch(fetchRequest) as! [Teebee]
+            
+            if fetchedItems.count > 0 {
+                return fetchedItems[0]
+            }
+            
+        } catch {
+            fatalError("Failed to fetch moobeez: \(error)")
+        }
+        
+        return nil
+    }
+    
     convenience init(tmdbTvShow tvShow:TmdbTvShow) {
         
         self.init(entity: NSEntityDescription.entity(forEntityName: "Teebee", in: MoobeezManager.coreDataContex!)!, insertInto: nil)
@@ -21,6 +40,11 @@ extension Teebee {
         self.date = Date()
         self.posterPath = tvShow.posterPath
         self.backdropPath = tvShow.backdropPath
+        
+        for tmdbSeason:TmdbTvSeason in Array(tvShow.seasons!) as! [TmdbTvSeason] {
+            let season = seasonWithNumber(number: tmdbSeason.seasonNumber)
+            season.posterPath = tmdbSeason.posterPath
+        }
     }
     
     var tvShow:TmdbTvShow? {
@@ -29,6 +53,17 @@ extension Teebee {
         }
         set (tvShow) {
             tmdbId = (tvShow != nil ? tvShow!.tmdbId : nil)!
+            
+            if tvShow != nil
+            {
+                self.posterPath = tvShow!.posterPath
+                self.backdropPath = tvShow!.backdropPath
+                
+                for tmdbSeason:TmdbTvSeason in Array(tvShow!.seasons!) as! [TmdbTvSeason] {
+                    let season = seasonWithNumber(number: tmdbSeason.seasonNumber)
+                    season.setTmdbSeason(tmdbSeason: tmdbSeason)
+                }
+            }
         }
     }
     
@@ -52,5 +87,72 @@ extension Teebee {
         addToSeasons(season)
         
         return season
+    }
+    
+    var watchedEpisodesCount: NSInteger
+    {
+        get {
+            var episodesCount = 0
+            
+            guard seasons != nil else {
+                return 0
+            }
+            
+            for season in seasons! {
+                
+                guard season is TeebeeSeason else {
+                    continue
+                }
+                
+                episodesCount += (season as! TeebeeSeason).watchedEpisodesCount
+            }
+            
+            return episodesCount
+        }
+    }
+    
+    var notWatchedEpisodesCount: NSInteger
+    {
+        get {
+            var episodesCount = 0
+            
+            guard seasons != nil else {
+                return 0
+            }
+            
+            for season in seasons! {
+                
+                guard season is TeebeeSeason else {
+                    continue
+                }
+                
+                episodesCount += (season as! TeebeeSeason).notWatchedEpisodesCount
+            }
+            
+            return episodesCount
+        }
+    }
+    
+    var nextEpisode: TeebeeEpisode?
+    {
+        get {
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult> (entityName: "TeebeeEpisode")
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: true)]
+            fetchRequest.predicate = NSPredicate(format: "watched == 0 AND teebee == %@", self)
+            
+            do {
+                let fetchedItems:[TeebeeEpisode] = try MoobeezManager.coreDataContex!.fetch(fetchRequest) as! [TeebeeEpisode]
+                
+                if fetchedItems.count > 0 {
+                    return fetchedItems[0]
+                }
+                
+            } catch {
+                fatalError("Failed to fetch moobeez: \(error)")
+            }
+            
+            return nil
+        }
     }
 }

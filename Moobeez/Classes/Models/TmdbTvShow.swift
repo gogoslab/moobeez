@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 extension TmdbTvShow {
     
@@ -111,7 +112,48 @@ extension TmdbTvShow {
                 backdropPath = value as? String
             }
         }
+        
+        if let credits = tmdbDictionary["credits"] {
+            if let cast = (credits as! Dictionary<String, Any>)["cast"] {
+                if cast is Array<Dictionary<String, Any>> {
+                    
+                    for characterDictionary:Dictionary<String, Any> in (cast as! Array) {
+                        
+                        let character:TmdbCharacter = TmdbCharacter.create(tmdbDictionary: characterDictionary)
+                        
+                        if character.movie == nil {
+                            character.movie = self
+                            addToCharacters(character)
+                        }
+                        
+                        if character.person == nil {
+                            let person:TmdbPerson = TmdbPerson.create(tmdbDictionary: characterDictionary)
+                            person.addToCharacters(character)
+                            character.person = person
+                        }
+                    }
+                }
+            }
+        }
+        
+        if let seasonsList = tmdbDictionary["seasons"] {
+            if seasonsList is Array<Dictionary<String, Any>> {
+                for seasonDictionary:Dictionary<String, Any> in (seasonsList as! Array) {
+                    let season:TmdbTvSeason = TmdbTvSeason.create(tmdbDictionary: seasonDictionary)
+                    
+                    if (seasons?.contains(season))! == false {
+                        addToSeasons(season)
+                    }
+                }
+            }
+        }
+        
+        if let value = tmdbDictionary["number_of_seasons"] {
+            seasonsCount = (value as! NSNumber).int16Value
+        }
     }
+    
+    
     
     func seasonWithNumber(number:Int16) -> TmdbTvSeason
     {
@@ -133,6 +175,22 @@ extension TmdbTvShow {
         addToSeasons(season)
         
         return season
+    }
+    
+    var imdbUrl:URL? {
+        get {
+            guard imdbId != nil else {
+                return nil
+            }
+            
+            var url:URL = URL(string: "imdb:///title/\((imdbId)!)/")!
+            
+            if UIApplication.shared.canOpenURL(url) == false {
+                url = URL(string: "http://m.imdb.com/title/\((imdbId)!)/")!
+            }
+            
+            return url
+        }
     }
     
 }

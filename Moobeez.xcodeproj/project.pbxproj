@@ -34,9 +34,13 @@
 		6468F86A1F73EE990023D72B /* UIView+Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6468F8691F73EE990023D72B /* UIView+Shortcuts.swift */; };
 		6468F86C1F73FA040023D72B /* Moobee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6468F86B1F73FA040023D72B /* Moobee.swift */; };
 		6468F86E1F7404430023D72B /* ToolboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6468F86D1F7404430023D72B /* ToolboxView.swift */; };
+		647451D81FC734ED0082CB4B /* TmdbTvEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647451D71FC734ED0082CB4B /* TmdbTvEpisode.swift */; };
 		64794D361F72A6F200488683 /* MoobeeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64794D351F72A6F200488683 /* MoobeeDetailsViewController.swift */; };
 		64794D3B1F72B33A00488683 /* EmptySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64794D3A1F72B33A00488683 /* EmptySegue.swift */; };
 		64794D401F72BEFB00488683 /* MBShowDetailSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64794D3F1F72BEFB00488683 /* MBShowDetailSegue.swift */; };
+		64A82BE11FAB5DB100268DA8 /* TeebeeEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A82BE01FAB5DB100268DA8 /* TeebeeEpisode.swift */; };
+		64A82BE41FAB724600268DA8 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A82BE31FAB724600268DA8 /* HeaderView.swift */; };
+		64A82BE61FAB7CD100268DA8 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A82BE51FAB7CD100268DA8 /* SettingsManager.swift */; };
 		64ACB0261F8B5B1D00D9883D /* Tmdb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64ACB0241F8B5B1C00D9883D /* Tmdb.xcdatamodeld */; };
 		64ACB0281F8B5EB800D9883D /* Teebee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ACB0271F8B5EB700D9883D /* Teebee.swift */; };
 		64ACB02A1F8B617600D9883D /* TeebeeSeason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ACB0291F8B617600D9883D /* TeebeeSeason.swift */; };
@@ -53,11 +57,18 @@
 		64BB2C641F83E17700B672D8 /* TmdbCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB2C631F83E17700B672D8 /* TmdbCharacter.swift */; };
 		64BB2C661F83E19100B672D8 /* TmdbPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB2C651F83E19100B672D8 /* TmdbPerson.swift */; };
 		64BB2C681F84E25900B672D8 /* TmdbImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB2C671F84E25900B672D8 /* TmdbImage.swift */; };
+		64BF29311FACBEFD0056299B /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BF29301FACBEFD0056299B /* Date+Helpers.swift */; };
 		64CAAE421F62EA6A008FEF01 /* SQLiteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CAAE401F62EA6A008FEF01 /* SQLiteDB.swift */; };
 		64CAAE431F62EA6A008FEF01 /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CAAE411F62EA6A008FEF01 /* SQLTable.swift */; };
 		64CAAE471F62EA84008FEF01 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CAAE451F62EA84008FEF01 /* libsqlite3.tbd */; };
 		64CAAE481F62EA84008FEF01 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CAAE461F62EA84008FEF01 /* libsqlite3.0.tbd */; };
 		64E76BA71F5A3E6E007F9727 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E76BA61F5A3E6E007F9727 /* Notifications.swift */; };
+		64EA92231FB1FA7600793F52 /* SeasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EA92221FB1FA7600793F52 /* SeasonCell.swift */; };
+		64EA92271FB1FAE000793F52 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EA92261FB1FAE000793F52 /* EpisodeCell.swift */; };
+		64ECC0351FA2180D00824076 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ECC0341FA2180D00824076 /* VideoViewController.swift */; };
+		64ECC03E1FA2229500824076 /* TeebeeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ECC0371FA2229300824076 /* TeebeeDetailsViewController.swift */; };
+		64ECC0411FA2229500824076 /* TeebeezViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ECC03B1FA2229400824076 /* TeebeezViewController.swift */; };
+		64ECC0421FA2229500824076 /* SearchTVsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ECC03D1FA2229400824076 /* SearchTVsViewController.swift */; };
 		AFB4C4B0C199546DDD569603 /* Pods_Moobeez.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E83B5F42BE95F8674D687FE5 /* Pods_Moobeez.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,9 +104,13 @@
 		6468F8691F73EE990023D72B /* UIView+Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shortcuts.swift"; sourceTree = "<group>"; };
 		6468F86B1F73FA040023D72B /* Moobee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moobee.swift; sourceTree = "<group>"; };
 		6468F86D1F7404430023D72B /* ToolboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolboxView.swift; sourceTree = "<group>"; };
+		647451D71FC734ED0082CB4B /* TmdbTvEpisode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TmdbTvEpisode.swift; sourceTree = "<group>"; };
 		64794D351F72A6F200488683 /* MoobeeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoobeeDetailsViewController.swift; sourceTree = "<group>"; };
 		64794D3A1F72B33A00488683 /* EmptySegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySegue.swift; sourceTree = "<group>"; };
 		64794D3F1F72BEFB00488683 /* MBShowDetailSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBShowDetailSegue.swift; sourceTree = "<group>"; };
+		64A82BE01FAB5DB100268DA8 /* TeebeeEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeebeeEpisode.swift; sourceTree = "<group>"; };
+		64A82BE31FAB724600268DA8 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		64A82BE51FAB7CD100268DA8 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		64ACB0251F8B5B1C00D9883D /* Moobeez.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moobeez.xcdatamodel; sourceTree = "<group>"; };
 		64ACB0271F8B5EB700D9883D /* Teebee.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teebee.swift; sourceTree = "<group>"; };
 		64ACB0291F8B617600D9883D /* TeebeeSeason.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeebeeSeason.swift; sourceTree = "<group>"; };
@@ -112,6 +127,7 @@
 		64BB2C631F83E17700B672D8 /* TmdbCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbCharacter.swift; sourceTree = "<group>"; };
 		64BB2C651F83E19100B672D8 /* TmdbPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbPerson.swift; sourceTree = "<group>"; };
 		64BB2C671F84E25900B672D8 /* TmdbImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbImage.swift; sourceTree = "<group>"; };
+		64BF29301FACBEFD0056299B /* Date+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helpers.swift"; sourceTree = "<group>"; };
 		64CAAE321F62DF51008FEF01 /* Moobeez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moobeez.entitlements; sourceTree = "<group>"; };
 		64CAAE401F62EA6A008FEF01 /* SQLiteDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDB.swift; sourceTree = "<group>"; };
 		64CAAE411F62EA6A008FEF01 /* SQLTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLTable.swift; sourceTree = "<group>"; };
@@ -119,6 +135,12 @@
 		64CAAE451F62EA84008FEF01 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		64CAAE461F62EA84008FEF01 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		64E76BA61F5A3E6E007F9727 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		64EA92221FB1FA7600793F52 /* SeasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCell.swift; sourceTree = "<group>"; };
+		64EA92261FB1FAE000793F52 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
+		64ECC0341FA2180D00824076 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		64ECC0371FA2229300824076 /* TeebeeDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeebeeDetailsViewController.swift; sourceTree = "<group>"; };
+		64ECC03B1FA2229400824076 /* TeebeezViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeebeezViewController.swift; sourceTree = "<group>"; };
+		64ECC03D1FA2229400824076 /* SearchTVsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTVsViewController.swift; sourceTree = "<group>"; };
 		E83B5F42BE95F8674D687FE5 /* Pods_Moobeez.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moobeez.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -139,8 +161,10 @@
 		641454E91F852D9C00569DE9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				64A82BE21FAB722E00268DA8 /* Header View */,
 				64ACB02E1F8B926A00D9883D /* Search Result Cell */,
 				641454EA1F852DA400569DE9 /* Cast Cell */,
+				64EA92241FB1FA9500793F52 /* Season Cell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -324,6 +348,9 @@
 		64445CB71F5A3152007EB5A8 /* 5. TV Shows */ = {
 			isa = PBXGroup;
 			children = (
+				64ECC0381FA2229400824076 /* Teebeez Screen */,
+				64ECC0361FA2229300824076 /* Teebee Details */,
+				64ECC03C1FA2229400824076 /* Search TVs */,
 			);
 			path = "5. TV Shows";
 			sourceTree = "<group>";
@@ -347,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				64527EE51F633BD7003828E3 /* MoobeezManager.swift */,
+				64A82BE51FAB7CD100268DA8 /* SettingsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -405,6 +433,14 @@
 			path = Segues;
 			sourceTree = "<group>";
 		};
+		64A82BE21FAB722E00268DA8 /* Header View */ = {
+			isa = PBXGroup;
+			children = (
+				64A82BE31FAB724600268DA8 /* HeaderView.swift */,
+			);
+			path = "Header View";
+			sourceTree = "<group>";
+		};
 		64ACB02B1F8B8F5700D9883D /* Search Movies */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,8 +489,17 @@
 			isa = PBXGroup;
 			children = (
 				64BAA69D1FA0D8FB00BC2E58 /* YoutubeVideoViewController.swift */,
+				64ECC0341FA2180D00824076 /* VideoViewController.swift */,
 			);
 			path = "Video View Controllers";
+			sourceTree = "<group>";
+		};
+		64BF292F1FACBEB60056299B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				64BF29301FACBEFD0056299B /* Date+Helpers.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		64CAAE3F1F62EA4B008FEF01 /* Database */ = {
@@ -471,11 +516,13 @@
 			children = (
 				6468F86B1F73FA040023D72B /* Moobee.swift */,
 				64ACB0271F8B5EB700D9883D /* Teebee.swift */,
+				64A82BE01FAB5DB100268DA8 /* TeebeeEpisode.swift */,
 				64ACB0291F8B617600D9883D /* TeebeeSeason.swift */,
 				64BB2C631F83E17700B672D8 /* TmdbCharacter.swift */,
 				64BB2C671F84E25900B672D8 /* TmdbImage.swift */,
 				64B63E2F1F66E30F00710A4E /* TmdbMovie.swift */,
 				64BB2C651F83E19100B672D8 /* TmdbPerson.swift */,
+				647451D71FC734ED0082CB4B /* TmdbTvEpisode.swift */,
 				64527EED1F635571003828E3 /* TmdbTvSeason.swift */,
 				64527EEB1F63529E003828E3 /* TmdbTvShow.swift */,
 			);
@@ -487,10 +534,44 @@
 			children = (
 				64E76BA61F5A3E6E007F9727 /* Notifications.swift */,
 				64CAAE3F1F62EA4B008FEF01 /* Database */,
+				64BF292F1FACBEB60056299B /* Extensions */,
 				64527EFC1F65FF3E003828E3 /* Tmdb */,
 				64527EF21F65DF88003828E3 /* UI */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		64EA92241FB1FA9500793F52 /* Season Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64EA92221FB1FA7600793F52 /* SeasonCell.swift */,
+				64EA92261FB1FAE000793F52 /* EpisodeCell.swift */,
+			);
+			path = "Season Cell";
+			sourceTree = "<group>";
+		};
+		64ECC0361FA2229300824076 /* Teebee Details */ = {
+			isa = PBXGroup;
+			children = (
+				64ECC0371FA2229300824076 /* TeebeeDetailsViewController.swift */,
+			);
+			path = "Teebee Details";
+			sourceTree = "<group>";
+		};
+		64ECC0381FA2229400824076 /* Teebeez Screen */ = {
+			isa = PBXGroup;
+			children = (
+				64ECC03B1FA2229400824076 /* TeebeezViewController.swift */,
+			);
+			path = "Teebeez Screen";
+			sourceTree = "<group>";
+		};
+		64ECC03C1FA2229400824076 /* Search TVs */ = {
+			isa = PBXGroup;
+			children = (
+				64ECC03D1FA2229400824076 /* SearchTVsViewController.swift */,
+			);
+			path = "Search TVs";
 			sourceTree = "<group>";
 		};
 		CE8162FEE8A8060B74E33617 /* Pods */ = {
@@ -648,16 +729,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				64ACB02A1F8B617600D9883D /* TeebeeSeason.swift in Sources */,
+				64ECC03E1FA2229500824076 /* TeebeeDetailsViewController.swift in Sources */,
 				64479A6A1F86D5AD009CAA7B /* TmdbService+People.swift in Sources */,
 				64BB2C661F83E19100B672D8 /* TmdbPerson.swift in Sources */,
 				64479A681F86CDD7009CAA7B /* PersonDetailsViewController.swift in Sources */,
 				64ACB0281F8B5EB800D9883D /* Teebee.swift in Sources */,
 				64527EF91F65F0B1003828E3 /* BeeCell.swift in Sources */,
+				64ECC0411FA2229500824076 /* TeebeezViewController.swift in Sources */,
 				64527EF71F65EB73003828E3 /* StarsView.swift in Sources */,
 				64BB2C641F83E17700B672D8 /* TmdbCharacter.swift in Sources */,
 				64B63E301F66E30F00710A4E /* TmdbMovie.swift in Sources */,
+				64A82BE11FAB5DB100268DA8 /* TeebeeEpisode.swift in Sources */,
 				64445CAF1F5A2DAE007EB5A8 /* MBSideMenuSegue.swift in Sources */,
 				64ACB0261F8B5B1D00D9883D /* Tmdb.xcdatamodeld in Sources */,
+				64A82BE61FAB7CD100268DA8 /* SettingsManager.swift in Sources */,
 				64445CA71F5A2B72007EB5A8 /* MBNavigationController.swift in Sources */,
 				64527EEC1F63529E003828E3 /* TmdbTvShow.swift in Sources */,
 				64BB2C681F84E25900B672D8 /* TmdbImage.swift in Sources */,
@@ -665,6 +750,7 @@
 				64527EE61F633BD7003828E3 /* MoobeezManager.swift in Sources */,
 				64ACB02D1F8B8F8800D9883D /* SearchMoviesViewController.swift in Sources */,
 				64B63E2C1F66E0AE00710A4E /* TmdbService+Movies.swift in Sources */,
+				64ECC0351FA2180D00824076 /* VideoViewController.swift in Sources */,
 				64BAA69E1FA0D8FB00BC2E58 /* YoutubeVideoViewController.swift in Sources */,
 				6468F86E1F7404430023D72B /* ToolboxView.swift in Sources */,
 				64339FA21F824AB2007C59CB /* ThemedItems.swift in Sources */,
@@ -677,7 +763,10 @@
 				64445CBA1F5A3194007EB5A8 /* TimelineViewController.swift in Sources */,
 				64B63E271F66CAC100710A4E /* Connection.swift in Sources */,
 				64445CA91F5A2B86007EB5A8 /* MBViewController.swift in Sources */,
+				64ECC0421FA2229500824076 /* SearchTVsViewController.swift in Sources */,
 				6468F86C1F73FA040023D72B /* Moobee.swift in Sources */,
+				64EA92231FB1FA7600793F52 /* SeasonCell.swift in Sources */,
+				64BF29311FACBEFD0056299B /* Date+Helpers.swift in Sources */,
 				64794D401F72BEFB00488683 /* MBShowDetailSegue.swift in Sources */,
 				64B63E261F66CA8A00710A4E /* TmdbConnection.swift in Sources */,
 				64BAA69B1FA0BD8200BC2E58 /* ImageGalleryViewController.swift in Sources */,
@@ -686,13 +775,16 @@
 				64527EF11F65C1EF003828E3 /* MoobeezViewController.swift in Sources */,
 				64445CAD1F5A2BFD007EB5A8 /* MBSideMenuController.swift in Sources */,
 				64B63E2E1F66E0DB00710A4E /* TmdbService+TV.swift in Sources */,
+				647451D81FC734ED0082CB4B /* TmdbTvEpisode.swift in Sources */,
 				64445CBC1F5A3540007EB5A8 /* DashboardViewController.swift in Sources */,
 				6456DB2E1F7417FA00C50192 /* UIImage+Luminosity.swift in Sources */,
 				64CAAE421F62EA6A008FEF01 /* SQLiteDB.swift in Sources */,
 				64794D3B1F72B33A00488683 /* EmptySegue.swift in Sources */,
 				64E76BA71F5A3E6E007F9727 /* Notifications.swift in Sources */,
 				64ACB0301F8B928600D9883D /* SearchResultCell.swift in Sources */,
+				64EA92271FB1FAE000793F52 /* EpisodeCell.swift in Sources */,
 				641454EC1F852DCC00569DE9 /* CastThumbnailCell.swift in Sources */,
+				64A82BE41FAB724600268DA8 /* HeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

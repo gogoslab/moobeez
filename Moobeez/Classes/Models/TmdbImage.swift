@@ -11,6 +11,8 @@ import CoreData
 
 extension TmdbImage {
     
+    static var links:[String : URL] = [String : URL]()
+    
     static func create(tmdbDictionary: [String : Any], insert:Bool = true) -> TmdbImage {
         
         var image:TmdbImage? = nil
@@ -26,10 +28,23 @@ extension TmdbImage {
         
         image!.addEntriesFrom(tmdbDictionary: tmdbDictionary)
         
+        if (insert) {
+            links[image!.path!] = image?.objectID.uriRepresentation()
+        }
         return image!
     }
     
     static func imageWithPath(_ path:String) -> TmdbImage? {
+        guard links[path] != nil else {
+            return nil
+        }
+        
+        let image = MoobeezManager.tempDataContex!.object(with: (MoobeezManager.tempDataContex!.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[path]!))!) as! TmdbImage
+        
+        return image
+    }
+    
+    static func fetchImageWithPath(_ path:String) -> TmdbImage? {
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TmdbImage")
         fetchRequest.predicate = NSPredicate(format: "path == %@", path)

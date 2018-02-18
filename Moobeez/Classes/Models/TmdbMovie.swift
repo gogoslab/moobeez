@@ -179,22 +179,6 @@ extension TmdbMovie {
             if trailers is Dictionary<String, Any> {
                 
                 if trailerPath == nil {
-                    
-                    if let youtube = (trailers as! Dictionary<String, Any>)["youtube"] {
-                        if youtube is Array<Dictionary<String, Any>> {
-                            
-                            for trailerDictionary:Dictionary<String, Any> in (youtube as! Array) {
-                                
-                                trailerPath = trailerDictionary["source"] as? String
-                                trailerType = TrailerType.youtube.rawValue
-                                
-                                break
-                            }
-                        }
-                    }
-                }
-                
-                if trailerPath == nil {
                     if let quicktime = (trailers as! Dictionary<String, Any>)["quicktime"] {
                         if quicktime is Array<Dictionary<String, Any>> {
                             
@@ -221,6 +205,23 @@ extension TmdbMovie {
                         }
                     }
                 }
+                
+                if trailerPath == nil {
+                    
+                    if let youtube = (trailers as! Dictionary<String, Any>)["youtube"] {
+                        if youtube is Array<Dictionary<String, Any>> {
+                            
+                            for trailerDictionary:Dictionary<String, Any> in (youtube as! Array) {
+                                
+                                trailerPath = trailerDictionary["source"] as? String
+                                trailerType = TrailerType.youtube.rawValue
+                                
+                                break
+                            }
+                        }
+                    }
+                }
+                
                 
             }
         }

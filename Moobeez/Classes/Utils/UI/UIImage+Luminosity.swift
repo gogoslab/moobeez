@@ -21,6 +21,11 @@ extension UIImage {
         return luminosity(from: Int(self.size.width * self.size.height) / 2, to: Int(self.size.width * self.size.height))
     }
     
+    func topBarLuminosity() -> CGFloat {
+        
+        return luminosity(from: 0, to: Int(self.size.width * self.size.height) / 10)
+    }
+    
     func luminosity(from:Int, to:Int) -> CGFloat {
         
         var luminosity:CGFloat = 0.0
