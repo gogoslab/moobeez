@@ -1,0 +1,156 @@
+
+/* Class = "UILabel"; text = "Label\ndasd"; ObjectID = "429-pB-nMJ"; */
+"429-pB-nMJ.text" = "Label\ndasd";
+
+/* Class = "UILabel"; text = "15 Apr 1986"; ObjectID = "4fE-x1-RoF"; */
+"4fE-x1-RoF.text" = "15 Apr 1986";
+
+/* Class = "UITextField"; text = "Movie name"; ObjectID = "69Z-Rf-EWy"; */
+"69Z-Rf-EWy.text" = "Movie name";
+
+/* Class = "UIButton"; normalTitle = "Teebeez"; ObjectID = "6gE-V7-YME"; */
+"6gE-V7-YME.normalTitle" = "Teebeez";
+
+/* Class = "UIButton"; normalTitle = "Check-in Tv show"; ObjectID = "6h3-ge-zmA"; */
+"6h3-ge-zmA.normalTitle" = "Check-in Tv show";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "8IE-mG-nve"; */
+"8IE-mG-nve.text" = "Label";
+
+/* Class = "UILabel"; text = "remove"; ObjectID = "8xS-Ck-UZ1"; */
+"8xS-Ck-UZ1.text" = "remove";
+
+/* Class = "UISegmentedControl"; CHf-fn-ErK.segmentTitles[0] = "Too see"; ObjectID = "CHf-fn-ErK"; */
+"CHf-fn-ErK.segmentTitles[0]" = "Too see";
+
+/* Class = "UISegmentedControl"; CHf-fn-ErK.segmentTitles[1] = "Soon"; ObjectID = "CHf-fn-ErK"; */
+"CHf-fn-ErK.segmentTitles[1]" = "Soon";
+
+/* Class = "UISegmentedControl"; CHf-fn-ErK.segmentTitles[2] = "All"; ObjectID = "CHf-fn-ErK"; */
+"CHf-fn-ErK.segmentTitles[2]" = "All";
+
+/* Class = "UITextField"; text = "TV Show name"; ObjectID = "Crz-zG-JLI"; */
+"Crz-zG-JLI.text" = "TV Show name";
+
+/* Class = "UILabel"; text = "tv show"; ObjectID = "EJz-bF-BSE"; */
+"EJz-bF-BSE.text" = "tv show";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Eij-On-ZNa"; */
+"Eij-On-ZNa.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "FKX-6s-SbC"; */
+"FKX-6s-SbC.text" = "Label";
+
+/* Class = "UILabel"; text = "movie"; ObjectID = "GPo-ch-MTm"; */
+"GPo-ch-MTm.text" = "movie";
+
+/* Class = "UISegmentedControl"; I2x-NW-B9E.segmentTitles[0] = "Seen"; ObjectID = "I2x-NW-B9E"; */
+"I2x-NW-B9E.segmentTitles[0]" = "Seen";
+
+/* Class = "UISegmentedControl"; I2x-NW-B9E.segmentTitles[1] = "Watchlist"; ObjectID = "I2x-NW-B9E"; */
+"I2x-NW-B9E.segmentTitles[1]" = "Watchlist";
+
+/* Class = "UISegmentedControl"; I2x-NW-B9E.segmentTitles[2] = "Favorites"; ObjectID = "I2x-NW-B9E"; */
+"I2x-NW-B9E.segmentTitles[2]" = "Favorites";
+
+/* Class = "UILabel"; text = "from"; ObjectID = "IED-Eq-eHA"; */
+"IED-Eq-eHA.text" = "from";
+
+/* Class = "UILabel"; text = "2 seasons"; ObjectID = "IjR-ff-Nkd"; */
+"IjR-ff-Nkd.text" = "2 seasons";
+
+/* Class = "UILabel"; text = "DASHBOARD"; ObjectID = "KcA-m8-4wL"; */
+"KcA-m8-4wL.text" = "DASHBOARD";
+
+/* Class = "UIButton"; normalTitle = "Suggestions"; ObjectID = "Muq-XF-4qJ"; */
+"Muq-XF-4qJ.normalTitle" = "Suggestions";
+
+/* Class = "UILabel"; text = "Label\ndasd"; ObjectID = "NCw-zv-egu"; */
+"NCw-zv-egu.text" = "Label\ndasd";
+
+/* Class = "UITextField"; text = "Person name"; ObjectID = "NOI-XK-cu1"; */
+"NOI-XK-cu1.text" = "Person name";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "RiS-Cs-apQ"; */
+"RiS-Cs-apQ.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Timeline"; ObjectID = "TnN-fe-4z0"; */
+"TnN-fe-4z0.normalTitle" = "Timeline";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "Uss-y3-syW"; */
+"Uss-y3-syW.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "VnG-2S-h7D"; */
+"VnG-2S-h7D.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UIButton"; normalTitle = "Moobeez"; ObjectID = "XlS-on-rBe"; */
+"XlS-on-rBe.normalTitle" = "Moobeez";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Zxe-Cm-vET"; */
+"Zxe-Cm-vET.text" = "Label";
+
+/* Class = "UILabel"; text = "TIMELINE"; ObjectID = "aJ5-lu-hXb"; */
+"aJ5-lu-hXb.text" = "TIMELINE";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "by1-ks-s4F"; */
+"by1-ks-s4F.text" = "0";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "dd7-Yb-wWA"; */
+"dd7-Yb-wWA.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "eqK-2r-tAO"; */
+"eqK-2r-tAO.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "fKm-YD-OEG"; */
+"fKm-YD-OEG.text" = "Label";
+
+/* Class = "UILabel"; text = "20 episodes"; ObjectID = "hsM-oF-11F"; */
+"hsM-oF-11F.text" = "20 episodes";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "i2x-rG-jak"; */
+"i2x-rG-jak.text" = "Label";
+
+/* Class = "UILabel"; text = "10"; ObjectID = "ibW-yx-U7e"; */
+"ibW-yx-U7e.text" = "10";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "j0x-BE-bPY"; */
+"j0x-BE-bPY.text" = "Label";
+
+/* Class = "UILabel"; text = "saw"; ObjectID = "kKp-Iq-rys"; */
+"kKp-Iq-rys.text" = "saw";
+
+/* Class = "UIButton"; normalTitle = "Top TV Shows"; ObjectID = "l4I-4v-NVA"; */
+"l4I-4v-NVA.normalTitle" = "Top TV Shows";
+
+/* Class = "UILabel"; text = "watchlist"; ObjectID = "mXy-ql-Qkh"; */
+"mXy-ql-Qkh.text" = "watchlist";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "nVw-FI-Ayf"; */
+"nVw-FI-Ayf.text" = "Label";
+
+/* Class = "UILabel"; text = "23"; ObjectID = "nyh-ye-Tuw"; */
+"nyh-ye-Tuw.text" = "23";
+
+/* Class = "UILabel"; text = "NOW PLAYING"; ObjectID = "pfb-69-A3f"; */
+"pfb-69-A3f.text" = "NOW PLAYING";
+
+/* Class = "UIButton"; normalTitle = "Top Movies"; ObjectID = "qUq-rs-d4c"; */
+"qUq-rs-d4c.normalTitle" = "Top Movies";
+
+/* Class = "UILabel"; text = "saw"; ObjectID = "rT3-PM-SZp"; */
+"rT3-PM-SZp.text" = "saw";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "sKH-20-kzW"; */
+"sKH-20-kzW.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ujc-Cn-pRE"; */
+"ujc-Cn-pRE.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Check-in to movie"; ObjectID = "v3M-JD-6NT"; */
+"v3M-JD-6NT.normalTitle" = "Check-in to movie";
+
+/* Class = "UIButton"; normalTitle = "Dashboard"; ObjectID = "xz7-3x-Mqx"; */
+"xz7-3x-Mqx.normalTitle" = "Dashboard";
+
+/* Class = "UILabel"; text = "15 Apr 1986"; ObjectID = "yuy-IG-KC5"; */
+"yuy-IG-KC5.text" = "15 Apr 1986";
