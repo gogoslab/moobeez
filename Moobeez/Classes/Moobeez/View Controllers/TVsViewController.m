@@ -173,7 +173,7 @@ typedef enum TVsSection {
         
     }
     else {
-        return [self.featuredCells[indexPath.section] height];
+        return [(UITableViewCell *) self.featuredCells[indexPath.section] height];
     }
 }
 

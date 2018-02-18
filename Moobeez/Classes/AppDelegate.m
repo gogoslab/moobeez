@@ -37,7 +37,7 @@ void uncaughtExceptionHandler(NSException *exception) {
 #endif
 
     //[Flurry startSession:@"2MBW3HYFRFKFBT8D9NQK"];
-
+    
     [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIColor mainColor],NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
 
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor whiteColor]];

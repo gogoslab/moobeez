@@ -76,7 +76,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self.cells[indexPath.section][indexPath.row] height];
+    return [(UITableViewCell *) self.cells[indexPath.section][indexPath.row] height];
 }
 
 #pragma mark - Text Field delegate
