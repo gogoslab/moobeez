@@ -8,14 +8,22 @@
 
 import UIKit
 
-class SeasonCell: UICollectionViewCell {
+class SeasonCell: UITableViewCell {
     
     @IBOutlet var posterImageView: UIImageView!
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var detailsLabel: UILabel!
     @IBOutlet var watchButton: ThemedButton!
     
+    var tapGesture:UITapGestureRecognizer?
+    
     @IBAction func watchButtonPressed(_ sender: Any) {
+        season?.episodes?.enumerateObjects({ (episode, _, _) in
+            (episode as! TeebeeEpisode).watched = !watchButton.isSelected
+            NotificationCenter.default.post(name: .TeebeeEpisodeDidChangeNotification , object: (episode as! TeebeeEpisode).tmdbId)
+        })
+        watchButton.isSelected = !watchButton.isSelected
+        MoobeezManager.shared.save()
     }
     
     func applyTheme(lightTheme: Bool) {
@@ -27,23 +35,43 @@ class SeasonCell: UICollectionViewCell {
     var season:TeebeeSeason? {
         didSet
         {
-            nameLabel.text = "Season \(season?.number ?? 0)"
-            if season?.posterPath != nil
+            NotificationCenter.default.removeObserver(self, name: Notification.Name.TeebeeSeasonDidChangeNotification, object: oldValue)
+            
+            guard season != nil else {
+                return
+            }
+            
+            nameLabel.text = "Season \(season!.number)"
+            if season!.posterPath != nil
             {
-                posterImageView.loadTmdbPosterWithPath(path: (season?.posterPath)!)
+                posterImageView.loadTmdbPosterWithPath(path: (season!.posterPath)!)
             }
             else
             {
                 posterImageView.image = #imageLiteral(resourceName: "default_image")
             }
             
-            let details:NSMutableAttributedString = NSMutableAttributedString()
-            details.append(NSAttributedString(string: "\(season?.notWatchedEpisodesCount ?? 0)", attributes: [NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.2039215714, green: 0.6666666865, blue: 0.8627451062, alpha: 1)]))
-            details.append(NSAttributedString(string: " / "))
-            details.append(NSAttributedString(string: "\(season?.episodes?.count ?? 0)", attributes: [NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.2039215714, green: 0.6666666865, blue: 0.8627451062, alpha: 1)]))
-            details.append(NSAttributedString(string: " episodes watched"))
-
-            detailsLabel.attributedText = details
+            reloadData()
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: Notification.Name.TeebeeSeasonDidChangeNotification, object: season)
         }
+    }
+    
+    @objc func reloadData() {
+        guard season != nil else {
+            return
+        }
+        
+        watchButton.isSelected = season!.notWatchedEpisodesCount == 0
+        
+        let details:NSMutableAttributedString = NSMutableAttributedString()
+        details.append(NSAttributedString(string: "\(season!.watchedEpisodesCount)", attributes: [NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.2039215714, green: 0.6666666865, blue: 0.8627451062, alpha: 1)]))
+        details.append(NSAttributedString(string: " / "))
+        details.append(NSAttributedString(string: "\(season!.episodes!.count)", attributes: [NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.2039215714, green: 0.6666666865, blue: 0.8627451062, alpha: 1)]))
+        details.append(NSAttributedString(string: " episodes watched"))
+        
+        detailsLabel.attributedText = details
+        
+
     }
 }

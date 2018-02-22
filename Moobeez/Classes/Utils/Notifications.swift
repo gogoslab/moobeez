@@ -18,6 +18,9 @@ extension Notification.Name {
     static let MoobeezDidChangeNotification = Notification.Name("MoobeezDidChangeNotification")
     static let TeebeezDidChangeNotification = Notification.Name("TeebeezDidChangeNotification")
 
+    static let TeebeeEpisodeDidChangeNotification = Notification.Name("TeebeeEpisodeDidChangeNotification")
+    static let TeebeeSeasonDidChangeNotification = Notification.Name("TeebeeSeasonDidChangeNotification")
+
 }
 
 typealias EmptyHandler = () -> ()

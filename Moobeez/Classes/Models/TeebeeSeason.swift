@@ -74,4 +74,10 @@ extension TeebeeSeason {
         }
     }
     
+    var tmdbId:String
+    {
+        get {
+            return "\(teebee!.tmdbId)_\(number)"
+        }
+    }
 }

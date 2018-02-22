@@ -27,7 +27,7 @@ class TeebeeToolboxView : ToolboxView {
     
     @IBOutlet var castCollectionView: UICollectionView!
     @IBOutlet var castDetailsCollectionView: UICollectionView!
-    @IBOutlet var episodesCollectionView: UICollectionView!
+    @IBOutlet var episodesTableView: UITableView!
     
     @IBOutlet var descriptionButton: UIButton!
     @IBOutlet var castButton: UIButton!
@@ -149,7 +149,7 @@ class TeebeeDetailsViewController: MBViewController {
     
     @IBOutlet var descriptionTextViewConstraint: NSLayoutConstraint!
     @IBOutlet var castCollectionViewConstraint: NSLayoutConstraint!
-    @IBOutlet var episodesCollectionViewConstraint: NSLayoutConstraint!
+    @IBOutlet var episodesTableViewConstraint: NSLayoutConstraint!
     
     var episodesManager:EpisodesList?
     
@@ -204,8 +204,8 @@ class TeebeeDetailsViewController: MBViewController {
         
         episodesManager = EpisodesList()
         episodesManager?.parent = self
-        toolboxView.episodesCollectionView.dataSource = episodesManager
-        toolboxView.episodesCollectionView.delegate = episodesManager
+        toolboxView.episodesTableView.dataSource = episodesManager
+        toolboxView.episodesTableView.delegate = episodesManager
     }
     
     @objc func reloadTeebee () {
@@ -217,12 +217,12 @@ class TeebeeDetailsViewController: MBViewController {
         self.toolboxView.castCollectionView.reloadData()
         self.toolboxView.castDetailsCollectionView.reloadData()
         self.castCollectionViewConstraint.constant = self.toolboxView.castDetailsCollectionView.contentSize.height
-        self.episodesCollectionViewConstraint.constant = self.toolboxView.episodesCollectionView.contentSize.height
+        self.episodesTableViewConstraint.constant = self.toolboxView.episodesTableView.contentSize.height
         self.loadPoster()
         self.toolboxView.descriptionTextView.text = tvShow?.overview
         
         episodesManager?.parent = self
-        self.toolboxView.episodesCollectionView.reloadData()
+        self.toolboxView.episodesTableView.reloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -330,8 +330,10 @@ class TeebeeDetailsViewController: MBViewController {
     
     @IBAction func episodesButtonPressed(_ sender: UIButton) {
         toolboxView.section = .episodes
-        self.toolboxView.episodesCollectionView.reloadData()
-        self.episodesCollectionViewConstraint.constant = self.toolboxView.episodesCollectionView.contentSize.height
+        self.toolboxView.episodesTableView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.episodesTableViewConstraint.constant = self.toolboxView.episodesTableView.contentSize.height
+        }
     }
     
     @IBAction func generalButtonPressed(_ sender: UIButton) {
@@ -416,7 +418,7 @@ extension TeebeeDetailsViewController : UICollectionViewDelegate, UICollectionVi
     
 }
 
-class EpisodesList : NSObject, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class EpisodesList : NSObject, UITableViewDelegate, UITableViewDataSource {
     
     var parent:TeebeeDetailsViewController?
     {
@@ -424,7 +426,7 @@ class EpisodesList : NSObject, UICollectionViewDelegate, UICollectionViewDataSou
         {
             seasons = parent?.teebee?.seasons?.filtered(using: NSPredicate(block: { (season, key) -> Bool in
                 return ((season as! TeebeeSeason).episodes?.count)! > 0
-            })).array as? [TeebeeSeason]
+            })).sortedArray(using: [NSSortDescriptor(key: "number", ascending: true)]) as? [TeebeeSeason]
         }
     }
     
@@ -450,77 +452,85 @@ class EpisodesList : NSObject, UICollectionViewDelegate, UICollectionViewDataSou
         }
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        guard teebee != nil else {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        guard seasons != nil else {
             return 0
         }
+        
+        return seasons!.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         guard seasons != nil else {
             return 0
         }
         
-        switch section {
-        case 0:
-            return selectedSeason != nil ? 1 : (seasons?.count ?? 0)
-        case 1:
-            return selectedSeason != nil ? (episodes?.count)! : 0
-        default:
+        guard selectedSeason != nil else {
+            return 1
+        }
+        
+        guard selectedSeason == seasons![section] else {
             return 0
         }
+        
+        return selectedSeason!.episodes!.count + 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.section {
-        case 0:
-            let cell:SeasonCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SeasonCell", for: indexPath) as! SeasonCell
+        guard indexPath.row > 0 else {
             
-            let season:TeebeeSeason = selectedSeason != nil ? selectedSeason! : (seasons?[indexPath.row])!
+            let cell:SeasonCell = tableView.dequeueReusableCell(withIdentifier: "SeasonCell") as! SeasonCell
+            
+            let season:TeebeeSeason = seasons![indexPath.section]
+            
             cell.applyTheme(lightTheme: (parent?.toolboxView.lightTheme)!)
             
             cell.season = season
             
             return cell
-        case 1:
-            let cell:EpisodeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EpisodeCell", for: indexPath) as! EpisodeCell
             
-            let episode:TeebeeEpisode = (episodes)![indexPath.row]
-            cell.applyTheme(lightTheme: (parent?.toolboxView.lightTheme)!)
-            
-            cell.episode = episode
-            
-            return cell
-        default:
-            return UICollectionViewCell()
         }
+        
+        let cell:EpisodeCell = tableView.dequeueReusableCell(withIdentifier: "EpisodeCell") as! EpisodeCell
+        
+        let episode:TeebeeEpisode = (episodes)![indexPath.row - 1]
+        cell.applyTheme(lightTheme: (parent?.toolboxView.lightTheme)!)
+        
+        cell.episode = episode
+        
+        return cell
+        
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == 0 {
-            
-            if selectedSeason == nil {
-                selectedSeason = seasons?[indexPath.row]
-            }
-            else {
-                selectedSeason = nil
-            }
-            
-            collectionView.reloadData()
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
-                self.parent?.episodesCollectionViewConstraint.constant = (self.parent?.toolboxView.episodesCollectionView.contentSize.height)!
-                UIView.animate(withDuration: 0.1, animations: {
-                    self.parent?.toolboxView.maskContentView.layoutIfNeeded()
-                })
-            })
+        guard indexPath.row == 0 else {
+            return
         }
         
+        let season = seasons![indexPath.section]
+        
+        if selectedSeason != season {
+            selectedSeason = season
+        }
+        else {
+            selectedSeason = nil
+        }
+        
+        parent?.toolboxView.episodesTableView.reloadData()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
+            self.parent?.episodesTableViewConstraint.constant = (self.parent?.toolboxView.episodesTableView.contentSize.height)!
+            UIView.animate(withDuration: 0.1, animations: {
+                self.parent?.toolboxView.maskContentView.layoutIfNeeded()
+                if self.selectedSeason != nil {
+                    tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+                }
+            })
+        })
     }
+    
 }
 
