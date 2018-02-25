@@ -151,6 +151,8 @@ class TeebeeDetailsViewController: MBViewController {
     @IBOutlet var castCollectionViewConstraint: NSLayoutConstraint!
     @IBOutlet var episodesTableViewConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var episodesSegmentedControl: UISegmentedControl!
+    
     var episodesManager:EpisodesList?
     
     override func viewDidLoad() {
@@ -206,6 +208,8 @@ class TeebeeDetailsViewController: MBViewController {
         episodesManager?.parent = self
         toolboxView.episodesTableView.dataSource = episodesManager
         toolboxView.episodesTableView.delegate = episodesManager
+        
+        
     }
     
     @objc func reloadTeebee () {
@@ -217,7 +221,6 @@ class TeebeeDetailsViewController: MBViewController {
         self.toolboxView.castCollectionView.reloadData()
         self.toolboxView.castDetailsCollectionView.reloadData()
         self.castCollectionViewConstraint.constant = self.toolboxView.castDetailsCollectionView.contentSize.height
-        self.episodesTableViewConstraint.constant = self.toolboxView.episodesTableView.contentSize.height
         self.loadPoster()
         self.toolboxView.descriptionTextView.text = tvShow?.overview
         
@@ -299,9 +302,6 @@ class TeebeeDetailsViewController: MBViewController {
     }
     
     func reloadTheme() {
-        let bottomHalfLuminosity: CGFloat = self.posterImageView.image?.bottomHalfLuminosity() ?? 0.0
-        self.toolboxView.applyTheme(lightTheme: bottomHalfLuminosity <= 0.60);
-        
         let topBarLuminosity: CGFloat = self.posterImageView.image?.topBarLuminosity() ?? 0.0
         UIApplication.shared.statusBarStyle = topBarLuminosity <= 0.60 ? .lightContent : .default;
     }
@@ -331,9 +331,6 @@ class TeebeeDetailsViewController: MBViewController {
     @IBAction func episodesButtonPressed(_ sender: UIButton) {
         toolboxView.section = .episodes
         self.toolboxView.episodesTableView.reloadData()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.episodesTableViewConstraint.constant = self.toolboxView.episodesTableView.contentSize.height
-        }
     }
     
     @IBAction func generalButtonPressed(_ sender: UIButton) {
@@ -384,6 +381,14 @@ class TeebeeDetailsViewController: MBViewController {
         UIApplication.shared.open((tvShow?.imdbUrl)!, options: [:], completionHandler: nil)
     }
     
+    @IBAction func episodesSegmentedControlValueChanged(_ sender: Any) {
+        if episodesSegmentedControl.selectedSegmentIndex == 0 && episodesManager?.selectedSeason != nil && episodesManager!.selectedSeason!.watched {
+            episodesManager?.selectedSeason = nil
+        }
+        
+        toolboxView.episodesTableView.reloadData()
+    }
+    
 }
 
 extension TeebeeDetailsViewController {
@@ -427,6 +432,17 @@ class EpisodesList : NSObject, UITableViewDelegate, UITableViewDataSource {
             seasons = parent?.teebee?.seasons?.filtered(using: NSPredicate(block: { (season, key) -> Bool in
                 return ((season as! TeebeeSeason).episodes?.count)! > 0
             })).sortedArray(using: [NSSortDescriptor(key: "number", ascending: true)]) as? [TeebeeSeason]
+            
+            let unwatchedSeasons = seasons?.filter({ (season) -> Bool in
+                return !season.watched
+            })
+            
+            if unwatchedSeasons?.count == 1 {
+                selectedSeason = unwatchedSeasons?.first
+            }
+            else if unwatchedSeasons?.count == 0 {
+                parent?.episodesSegmentedControl.selectedSegmentIndex = 1
+            }
         }
     }
     
@@ -504,6 +520,24 @@ class EpisodesList : NSObject, UITableViewDelegate, UITableViewDataSource {
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        guard parent?.episodesSegmentedControl.selectedSegmentIndex == 0 else {
+            return tableView.rowHeight
+        }
+        
+        guard indexPath.row > 0 else {
+            
+            let season:TeebeeSeason = seasons![indexPath.section]
+            
+            return season.watched ? 0 : tableView.rowHeight
+        }
+        
+        let episode:TeebeeEpisode = (episodes)![indexPath.row - 1]
+        
+        return episode.watched ? 0 : tableView.rowHeight
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         guard indexPath.row == 0 else {
@@ -521,15 +555,9 @@ class EpisodesList : NSObject, UITableViewDelegate, UITableViewDataSource {
         
         parent?.toolboxView.episodesTableView.reloadData()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01, execute: {
-            self.parent?.episodesTableViewConstraint.constant = (self.parent?.toolboxView.episodesTableView.contentSize.height)!
-            UIView.animate(withDuration: 0.1, animations: {
-                self.parent?.toolboxView.maskContentView.layoutIfNeeded()
-                if self.selectedSeason != nil {
-                    tableView.scrollToRow(at: indexPath, at: .top, animated: false)
-                }
-            })
-        })
+        if selectedSeason != nil {
+            tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+        }
     }
     
 }

@@ -40,38 +40,20 @@ class MBSideMenuController: UIViewController {
                 break;
             }
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    public func showMenu() {
         
-        showMenu(true);
+        performSegue(withIdentifier: "ShowTimelineSegue", sender: nil)
     }
-    
-    public func showMenu(_ animated:Bool)
+
+    public func showMenu(_ animated:Bool = true)
     {
         NotificationCenter.default.post(name: .SideMenuWillAppearNotification, object: nil)
         
-        backgroundBluredImageView.alpha = 0.0;
-        menuView.alpha = 0.0;
+        backgroundBluredImageView.alpha = 0.0
+        menuView.alpha = 0.0
 
         UIView.animate(withDuration: (animated ? 0.4 : 0.0)) {
             self.containerView.transform = __CGAffineTransformMake(0.5, 0.0, 0.0, 0.5, self.view.frame.size.width * 1 / 5, 0.0)
-            self.backgroundBluredImageView.alpha = 1.0;
+            self.backgroundBluredImageView.alpha = 1.0
         }
         
         UIView.animate(withDuration: (animated ? 0.2 : 0.0), delay: (animated ? 0.2 : 0.0), options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
@@ -80,7 +62,7 @@ class MBSideMenuController: UIViewController {
             
         })
         
-        containerView.isUserInteractionEnabled = false;
+        containerView.isUserInteractionEnabled = false
         
     }
     
@@ -108,16 +90,25 @@ class MBSideMenuController: UIViewController {
             
         })
         
-        containerView.isUserInteractionEnabled = true;
+        containerView.isUserInteractionEnabled = true
         
     }
 
+    @IBAction func backgroundTapped(_ sender: Any) {
+        hideMenu()
+    }
 
     public func showViewController(_ vc: UIViewController) {
         
-        self.childNavigationController.showViewController(vc)
+        self.childNavigationController.showViewController(vc as! MBViewController)
         
         hideMenu()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ShowDashboardSegue" {
+            (segue.destination as! TimelineViewController).future = false
+        }
+    }
 }

@@ -18,4 +18,6 @@ class SettingsManager: NSObject {
     
     var addExtraDay:Bool = true
     
+    var lightTheme:Bool = false
+    
 }

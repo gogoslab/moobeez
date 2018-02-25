@@ -149,7 +149,7 @@ extension MoobeezViewController : UICollectionViewDelegate, UICollectionViewData
         
         let rowInfo = sectionInfo.objects![indexPath.row]
         
-        cell.bee = rowInfo as! Bee
+        cell.bee = rowInfo as? Bee
         
         return cell
     }

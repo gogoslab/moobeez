@@ -261,3 +261,106 @@ extension MoobeezManager {
     
 }
 
+extension MoobeezManager {
+    
+    func loadTimelineItems() -> [(Date, [TimelineItem])] {
+    
+        let today = Calendar.current.startOfDay(for: Date(timeIntervalSinceNow: (SettingsManager.shared.addExtraDay ? -24 * 3600 : 0)))
+//        let tommorow = today.addingTimeInterval(24 * 3600)
+        
+        var items = [TimelineItem]()
+        
+        let moobeezFetchRequest = NSFetchRequest<Moobee> (entityName: "Moobee")
+        
+        moobeezFetchRequest.predicate = NSPredicate(format: "type == %ld OR (type == %ld AND releaseDate >= %@)", MoobeeType.seen.rawValue, MoobeeType.watchlist.rawValue, today as CVarArg)
+        
+        moobeezFetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        
+        do {
+            let moobeez = try MoobeezManager.coreDataContex!.fetch(moobeezFetchRequest)
+            
+            for moobee in moobeez {
+                items.append(TimelineItem(moobee:moobee))
+            }
+        }
+        catch (_) {
+            
+        }
+        
+        let episodesFetchRequest = NSFetchRequest<TeebeeEpisode> (entityName: "TeebeeEpisode")
+        episodesFetchRequest.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: true)]
+        episodesFetchRequest.predicate = NSPredicate(format: "watched == 0 AND releaseDate >= %@", today as CVarArg)
+        
+        do {
+            let episodes = try MoobeezManager.coreDataContex!.fetch(episodesFetchRequest)
+            
+            for episode in episodes {
+                items.append(TimelineItem(episode:episode))
+            }
+        }
+        catch (_) {
+            
+        }
+        
+        let dictionary: [Date : [TimelineItem]] = Dictionary(grouping: items, by: { $0.date!})
+        
+        var grouppedItems = dictionary.sorted(by: { $0.0 < $1.0 })
+        
+        grouppedItems.sort { (group1, group2) -> Bool in
+            return group1.key < group2.key
+        }
+        
+        return grouppedItems
+    }
+    
+    func loadDashboardItems() -> [(Date, [TimelineItem])] {
+        
+        let today = Calendar.current.startOfDay(for: Date(timeIntervalSinceNow: (SettingsManager.shared.addExtraDay ? -24 * 3600 : 0)))
+        //        let tommorow = today.addingTimeInterval(24 * 3600)
+        
+        var items = [TimelineItem]()
+        
+        let moobeezFetchRequest = NSFetchRequest<Moobee> (entityName: "Moobee")
+        
+        moobeezFetchRequest.predicate = NSPredicate(format: "type == %ld AND releaseDate < %@", MoobeeType.watchlist.rawValue, today as CVarArg)
+        
+        moobeezFetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+        
+        do {
+            let moobeez = try MoobeezManager.coreDataContex!.fetch(moobeezFetchRequest)
+            
+            for moobee in moobeez {
+                items.append(TimelineItem(moobee:moobee))
+            }
+        }
+        catch (_) {
+            
+        }
+        
+        let episodesFetchRequest = NSFetchRequest<TeebeeEpisode> (entityName: "TeebeeEpisode")
+        episodesFetchRequest.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: true)]
+        episodesFetchRequest.predicate = NSPredicate(format: "watched == 0 AND releaseDate < %@", today as CVarArg)
+        
+        do {
+            let episodes = try MoobeezManager.coreDataContex!.fetch(episodesFetchRequest)
+            
+            for episode in episodes {
+                items.append(TimelineItem(episode:episode))
+            }
+        }
+        catch (_) {
+            
+        }
+        
+        let dictionary: [Date : [TimelineItem]] = Dictionary(grouping: items, by: { $0.date!})
+        
+        var grouppedItems = dictionary.sorted(by: { $0.0 < $1.0 })
+        
+        grouppedItems.sort { (group1, group2) -> Bool in
+            return group1.key < group2.key
+        }
+        
+        return grouppedItems
+    }
+    
+}

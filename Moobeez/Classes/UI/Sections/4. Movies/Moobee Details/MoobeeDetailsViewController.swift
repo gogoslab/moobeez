@@ -318,9 +318,6 @@ class MoobeeDetailsViewController: MBViewController {
     }
     
     func reloadTheme() {
-        let bottomHalfLuminosity: CGFloat = self.posterImageView.image?.bottomHalfLuminosity() ?? 0.0
-        self.toolboxView.applyTheme(lightTheme: bottomHalfLuminosity <= 0.60);
-        
         let topBarLuminosity: CGFloat = self.posterImageView.image?.topBarLuminosity() ?? 0.0
         UIApplication.shared.statusBarStyle = topBarLuminosity <= 0.60 ? .lightContent : .default;
     }
@@ -349,7 +346,9 @@ class MoobeeDetailsViewController: MBViewController {
     
     @IBAction func sawMovieButtonPressed(_ sender: UIButton) {
         moobee?.moobeeType = MoobeeType.seen
-        toolboxView.reloadTypeCells()
+        moobee?.rating = 2.5
+        moobee?.date = Date()
+        toolboxView.moobee = moobee
         
         MoobeezManager.shared.addMoobee(moobee!)
         addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControlState.normal)

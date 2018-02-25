@@ -117,5 +117,9 @@ class MBViewController: UIViewController {
             self.presenting!.viewDidAppear(true)
         })
     }
+    
+    func isSame(with viewController:MBViewController) -> Bool {
+        return object_getClassName(self) == object_getClassName(viewController)
+    }
 
 }

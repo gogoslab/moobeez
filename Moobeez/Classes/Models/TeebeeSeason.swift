@@ -74,6 +74,13 @@ extension TeebeeSeason {
         }
     }
     
+    var watched: Bool
+    {
+        get {
+            return notWatchedEpisodesCount == 0
+        }
+    }
+    
     var tmdbId:String
     {
         get {

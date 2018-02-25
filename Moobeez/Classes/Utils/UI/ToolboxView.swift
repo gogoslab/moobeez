@@ -54,6 +54,9 @@ class ToolboxView: UIVisualEffectView {
     override func awakeFromNib() {
         super.awakeFromNib()
         hideFullToolbox(animated: false)
+        
+        effect = UIBlurEffect(style: SettingsManager.shared.lightTheme ? .extraLight : .dark)
+        applyTheme(lightTheme: !SettingsManager.shared.lightTheme)
     }
     
     func applyTheme(lightTheme: Bool) {
@@ -119,13 +122,13 @@ class ToolboxView: UIVisualEffectView {
         
         if animated {
             UIView.animate(withDuration: 0.33, animations: {
-//               self.maskContentView.layoutIfNeeded()
+               self.superview!.layoutIfNeeded()
             }, completion: { (_) in
-                self.toolboxIndicatorView.image = #imageLiteral(resourceName: "toolbox_down_arrow")
+                self.toolboxIndicatorView.image = !self.lightTheme ? #imageLiteral(resourceName: "toolbox_down_arrow") : #imageLiteral(resourceName: "toolbox_down_arrow_light")
             })
         }
         else {
-            toolboxIndicatorView.image = #imageLiteral(resourceName: "toolbox_down_arrow")
+            toolboxIndicatorView.image = !lightTheme ? #imageLiteral(resourceName: "toolbox_down_arrow") : #imageLiteral(resourceName: "toolbox_down_arrow_light")
         }
         
     }
@@ -136,17 +139,17 @@ class ToolboxView: UIVisualEffectView {
         self.hideToolboxConstraint.isActive = true
         self.moveToolboxConstraint.isActive = false
         
-        toolboxIndicatorView.image = #imageLiteral(resourceName: "toolbox_line")
+        toolboxIndicatorView.image = !lightTheme ? #imageLiteral(resourceName: "toolbox_line") : #imageLiteral(resourceName: "toolbox_line_light")
         
         if animated {
             UIView.animate(withDuration: 0.33, animations: {
-//                self.maskContentView.layoutIfNeeded()
+                self.superview!.layoutIfNeeded()
             }, completion: { (_) in
-                self.toolboxIndicatorView.image = #imageLiteral(resourceName: "toolbox_up_arrow")
+                self.toolboxIndicatorView.image = !self.lightTheme ? #imageLiteral(resourceName: "toolbox_up_arrow") : #imageLiteral(resourceName: "toolbox_up_arrow_light")
             })
         }
         else {
-            toolboxIndicatorView.image = #imageLiteral(resourceName: "toolbox_up_arrow")
+            toolboxIndicatorView.image = !self.lightTheme ? #imageLiteral(resourceName: "toolbox_up_arrow") : #imageLiteral(resourceName: "toolbox_up_arrow_light")
         }
 
     }
@@ -161,7 +164,7 @@ class ToolboxView: UIVisualEffectView {
         }
         else if recognizer.state == .changed {
             
-            toolboxIndicatorView.image = #imageLiteral(resourceName: "toolbox_line")
+            toolboxIndicatorView.image = !lightTheme ? #imageLiteral(resourceName: "toolbox_line") : #imageLiteral(resourceName: "toolbox_line_light")
             
             let point:CGFloat = recognizer.translation(in: self.superview).y
             
@@ -172,7 +175,7 @@ class ToolboxView: UIVisualEffectView {
             toolboxStartPoint = point
             
             UIView.animate(withDuration: 0.05, animations: {
-                self.maskContentView.layoutIfNeeded()
+                self.superview!.layoutIfNeeded()
             })
         }
         else if recognizer.state == .ended || recognizer.state == .cancelled {
@@ -209,6 +212,13 @@ class ToolboxView: UIVisualEffectView {
             if cells != nil {
                 for cell:UIView in cells! {
                     cell.isHidden = false
+                    cell.backgroundColor = UIColor.clear
+                    
+                    if cell.superview == nil {
+                        if let stackView = self.fixedContentView as? UIStackView {
+                            stackView.addArrangedSubview(cell)
+                        }
+                    }
                 }
             }
         }

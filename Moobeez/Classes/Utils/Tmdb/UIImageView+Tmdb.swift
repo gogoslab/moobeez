@@ -14,13 +14,13 @@ extension String {
     
     var sizeValue:Int {
         get {
-            return Int(substring(from: index(after: startIndex)))!
+            return Int("\(self[index(after: startIndex)...])")!
         }
     }
     
     var sizeType:String {
         get {
-            return substring(to: index(after: startIndex))
+            return "\(self[..<index(after: startIndex)])"
         }
     }
 }
@@ -53,7 +53,7 @@ extension UIImageView {
     }
     
     func loadImageWithUrl(url:URL, placeholder:UIImage? = nil, completion: ((Bool) -> Swift.Void)? = nil) {
-        sd_setImage(with: url, placeholderImage: placeholder) { (image, error, cacheType, url) in
+        sd_setImage(with: url, placeholderImage: placeholder, options: []) { (image, error, cacheType, url) in
             if completion != nil {
                 completion!(error == nil)
             }

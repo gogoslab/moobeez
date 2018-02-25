@@ -11,7 +11,7 @@ import UIKit
 class MBNavigationController: UINavigationController {
 
     var swipeGesture: UISwipeGestureRecognizer?
-    var rootViewController: UIViewController?
+    var rootViewController: MBViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,11 @@ class MBNavigationController: UINavigationController {
         topViewController?.view.removeGestureRecognizer(swipeGesture!)
     }
     
-    public func showViewController(_ vc: UIViewController) {
+    public func showViewController(_ vc: MBViewController) {
+        
+        guard rootViewController == nil || rootViewController!.isSame(with: vc) == false else {
+            return
+        }
         
         if rootViewController != nil {
             rootViewController?.view.removeGestureRecognizer(swipeGesture!)
