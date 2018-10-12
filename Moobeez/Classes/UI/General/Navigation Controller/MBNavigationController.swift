@@ -43,7 +43,7 @@ class MBNavigationController: UINavigationController {
     
     public func showViewController(_ vc: MBViewController) {
         
-        guard rootViewController == nil || rootViewController!.isSame(with: vc) == false else {
+        guard rootViewController == nil ||  rootViewController!.isSame(with: vc) == false else {
             return
         }
         

@@ -8,28 +8,25 @@
 
 import UIKit
 
-class DashboardViewController: MBViewController {
+class DashboardViewController: TimelineViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func loadItems() {
+        items = MoobeezManager.shared.loadDashboardItems()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func scrollToFirstItem() {
+        
+        guard items != nil && items!.count > 0 else {
+            return
+        }
+        
+        tableView.scrollToRow(at: IndexPath(row:items!.last!.1.count - 1, section: items!.count - 1), at: UITableViewScrollPosition.middle , animated: false)
     }
-    */
 
 }
