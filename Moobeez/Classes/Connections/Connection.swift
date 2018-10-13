@@ -76,7 +76,7 @@ class Connection: NSObject {
                 
                 for (key, value) in parameters! {
                     
-                    if parametersString.characters.count == 0 {
+                    if parametersString.count == 0 {
                         parametersString += "?"
                     } else {
                         parametersString += "&"
