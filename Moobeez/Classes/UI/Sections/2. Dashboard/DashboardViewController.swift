@@ -26,7 +26,7 @@ class DashboardViewController: TimelineViewController {
             return
         }
         
-        tableView.scrollToRow(at: IndexPath(row:items!.last!.1.count - 1, section: items!.count - 1), at: UITableViewScrollPosition.middle , animated: false)
+        tableView.scrollToRow(at: IndexPath(row:items!.last!.1.count - 1, section: items!.count - 1), at: UITableView.ScrollPosition.middle , animated: false)
     }
 
 }

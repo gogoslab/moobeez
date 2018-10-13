@@ -31,22 +31,22 @@ class ThemedButton: UIButton {
     @IBInspectable var imageName: String? {
         didSet {
             guard imageName != nil else {
-                setImage(nil, for: UIControlState.normal)
+                setImage(nil, for: UIControl.State.normal)
                 return
             }
             
-            setImage(UIImage.init(named: imageName!), for: UIControlState.normal)
+            setImage(UIImage.init(named: imageName!), for: UIControl.State.normal)
         }
     }
     
     @IBInspectable var selectedImageName: String? {
         didSet {
             guard selectedImageName != nil else {
-                setImage(nil, for: UIControlState.normal)
+                setImage(nil, for: UIControl.State.normal)
                 return
             }
             
-            setImage(UIImage.init(named: selectedImageName!), for: UIControlState.selected)
+            setImage(UIImage.init(named: selectedImageName!), for: UIControl.State.selected)
         }
     }
 

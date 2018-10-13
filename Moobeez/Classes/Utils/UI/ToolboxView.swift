@@ -91,12 +91,12 @@ class ToolboxView: UIVisualEffectView {
                 
                 if button.imageName != nil {
                     let imageName: String = button.imageName!
-                    button.setImage(UIImage.init(named: lightTheme ? imageName : imageName + "_dark"), for: UIControlState.normal)
+                    button.setImage(UIImage.init(named: lightTheme ? imageName : imageName + "_dark"), for: UIControl.State.normal)
                 }
                 
                 if button.selectedImageName != nil {
                     let imageName: String = button.selectedImageName!
-                    button.setImage(UIImage.init(named: lightTheme ? imageName : imageName + "_dark"), for: UIControlState.selected)
+                    button.setImage(UIImage.init(named: lightTheme ? imageName : imageName + "_dark"), for: UIControl.State.selected)
                 }
             }
             

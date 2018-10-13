@@ -34,7 +34,7 @@ class SearchBar: UISearchBar {
                 let glassIconView = textFieldInsideSearchBar.leftView as? UIImageView {
                 
                 //Magnifying glass
-                glassIconView.image = glassIconView.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+                glassIconView.image = glassIconView.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
                 glassIconView.tintColor = magnifyingGlassColor
                 
             }

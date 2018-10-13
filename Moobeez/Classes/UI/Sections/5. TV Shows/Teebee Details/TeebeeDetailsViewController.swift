@@ -214,7 +214,7 @@ class TeebeeDetailsViewController: MBViewController {
     
     @objc func reloadTeebee () {
         toolboxView.teebee = teebee
-        addRemoveButton.setImage(teebee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControlState.normal)
+        addRemoveButton.setImage(teebee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
     }
     
     func reloadTvShow() {
@@ -346,7 +346,7 @@ class TeebeeDetailsViewController: MBViewController {
            MoobeezManager.shared.removeTeebee(teebee!)
         }
         
-        addRemoveButton.setImage(teebee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControlState.normal)
+        addRemoveButton.setImage(teebee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
     }
     
     @IBAction func sawTvShowButtonPressed(_ sender: UIButton) {
@@ -378,7 +378,7 @@ class TeebeeDetailsViewController: MBViewController {
             return
         }
         
-        UIApplication.shared.open((tvShow?.imdbUrl)!, options: [:], completionHandler: nil)
+        UIApplication.shared.open((tvShow?.imdbUrl)!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
     
     @IBAction func episodesSegmentedControlValueChanged(_ sender: Any) {
@@ -562,3 +562,8 @@ class EpisodesList : NSObject, UITableViewDelegate, UITableViewDataSource {
     
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+}

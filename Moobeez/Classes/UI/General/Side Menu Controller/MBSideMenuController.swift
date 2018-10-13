@@ -34,7 +34,7 @@ class MBSideMenuController: UIViewController {
         MBSideMenuController.instance = self
         
         // Do any additional setup after loading the view.
-        for vc in self.childViewControllers {
+        for vc in self.children {
             if vc is MBNavigationController {
                 childNavigationController = vc as! MBNavigationController
                 break;
@@ -56,7 +56,7 @@ class MBSideMenuController: UIViewController {
             self.backgroundBluredImageView.alpha = 1.0
         }
         
-        UIView.animate(withDuration: (animated ? 0.2 : 0.0), delay: (animated ? 0.2 : 0.0), options: UIViewAnimationOptions.transitionCrossDissolve, animations: {
+        UIView.animate(withDuration: (animated ? 0.2 : 0.0), delay: (animated ? 0.2 : 0.0), options: UIView.AnimationOptions.transitionCrossDissolve, animations: {
             self.menuView.alpha = 1.0
         }, completion: { (_) in
             
@@ -68,7 +68,7 @@ class MBSideMenuController: UIViewController {
     
     public func hideMenu() {
 
-        view.bringSubview(toFront: containerView)
+        view.bringSubviewToFront(containerView)
         containerView.isHidden = false
 
         hideMenu(true)

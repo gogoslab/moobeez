@@ -51,14 +51,14 @@ class MBViewController: UIViewController {
         
         viewController.view.frame = windowBounds
         
-        MBSideMenuController.instance?.addChildViewController(viewController)
+        MBSideMenuController.instance?.addChild(viewController)
         
         viewController.presenting = self
         
         let summaryView:UIView? = summaryViewForViewController(viewController)
         
         guard summaryView != nil else {
-            viewController.didMove(toParentViewController: self)
+            viewController.didMove(toParent: self)
             return;
         }
         
@@ -73,7 +73,7 @@ class MBViewController: UIViewController {
             viewController.view.transform = CGAffineTransform.identity
             
         }, completion: { (_) in
-            viewController.didMove(toParentViewController: self)
+            viewController.didMove(toParent: self)
         })
     }
     
@@ -91,8 +91,8 @@ class MBViewController: UIViewController {
         
         guard summaryView != nil else {
             presenting!.viewWillAppear(false)
-            didMove(toParentViewController: nil)
-            removeFromParentViewController()
+            didMove(toParent: nil)
+            removeFromParent()
             view.removeFromSuperview()
             presenting!.viewDidAppear(false)
             return;
@@ -111,8 +111,8 @@ class MBViewController: UIViewController {
             
             
         }, completion: { (_) in
-            self.didMove(toParentViewController: nil)
-            self.removeFromParentViewController()
+            self.didMove(toParent: nil)
+            self.removeFromParent()
             self.view.removeFromSuperview()
             self.presenting!.viewDidAppear(true)
         })

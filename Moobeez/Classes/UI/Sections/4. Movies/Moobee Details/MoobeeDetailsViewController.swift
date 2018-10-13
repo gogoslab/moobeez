@@ -214,7 +214,7 @@ class MoobeeDetailsViewController: MBViewController {
     
     @objc func reloadMoobee () {
         toolboxView.moobee = moobee
-        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControlState.normal)
+        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
     }
     
     func reloadMovie() {
@@ -340,7 +340,7 @@ class MoobeeDetailsViewController: MBViewController {
         toolboxView.reloadTypeCells()
         
         MoobeezManager.shared.addMoobee(moobee!)
-        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControlState.normal)
+        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
         MoobeezManager.shared.save()
     }
     
@@ -351,7 +351,7 @@ class MoobeeDetailsViewController: MBViewController {
         toolboxView.moobee = moobee
         
         MoobeezManager.shared.addMoobee(moobee!)
-        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControlState.normal)
+        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
         MoobeezManager.shared.save()
     }
     
@@ -400,7 +400,7 @@ class MoobeeDetailsViewController: MBViewController {
            MoobeezManager.shared.removeMoobee(moobee!)
         }
         
-        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControlState.normal)
+        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
     }
 
     @IBAction func closeToolboxButtonPressed(_ sender: Any) {
@@ -429,7 +429,7 @@ class MoobeeDetailsViewController: MBViewController {
             return
         }
         
-        UIApplication.shared.open((movie?.imdbUrl)!, options: [:], completionHandler: nil)
+        UIApplication.shared.open((movie?.imdbUrl)!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
     }
     
 }
@@ -471,3 +471,8 @@ extension MoobeeDetailsViewController : UICollectionViewDelegate, UICollectionVi
     
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+}

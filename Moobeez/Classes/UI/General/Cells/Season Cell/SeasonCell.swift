@@ -65,9 +65,9 @@ class SeasonCell: UITableViewCell {
         watchButton.isSelected = season!.watched
         
         let details:NSMutableAttributedString = NSMutableAttributedString()
-        details.append(NSAttributedString(string: "\(season!.watchedEpisodesCount)", attributes: [NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.2039215714, green: 0.6666666865, blue: 0.8627451062, alpha: 1)]))
+        details.append(NSAttributedString(string: "\(season!.watchedEpisodesCount)", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.2039215714, green: 0.6666666865, blue: 0.8627451062, alpha: 1)]))
         details.append(NSAttributedString(string: " / "))
-        details.append(NSAttributedString(string: "\(season!.episodes!.count)", attributes: [NSAttributedStringKey.foregroundColor : #colorLiteral(red: 0.2039215714, green: 0.6666666865, blue: 0.8627451062, alpha: 1)]))
+        details.append(NSAttributedString(string: "\(season!.episodes!.count)", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.2039215714, green: 0.6666666865, blue: 0.8627451062, alpha: 1)]))
         details.append(NSAttributedString(string: " episodes watched"))
         
         detailsLabel.attributedText = details
