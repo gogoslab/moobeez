@@ -11,6 +11,7 @@ import CoreData
 
 class TeebeezViewController: MBViewController {
 
+    @IBOutlet var progressBar: UIProgressView!
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var searchBarWidthConstraint: NSLayoutConstraint!
@@ -35,6 +36,8 @@ class TeebeezViewController: MBViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addTitleLogo()
+        
         let context = MoobeezManager.shared.persistentContainer.viewContext;
         
         var fetchRequest = NSFetchRequest<NSFetchRequestResult> (entityName: "TeebeeEpisode")
@@ -50,7 +53,15 @@ class TeebeezViewController: MBViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(showTvShowSearch))
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadItems), name: .MoobeezDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadItems), name: .TeebeezDidChangeNotification, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let teebeezToUpdate:[Teebee] = MoobeezManager.shared.fetch(predicate: NSPredicate(format: "lastUpdate < %@", NSDate(timeIntervalSinceNow:-24 * 3600)))
+        
+        updateTeebeez(teebeezToUpdate)
     }
 
     
@@ -108,7 +119,7 @@ class TeebeezViewController: MBViewController {
         
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            predicateFormat = "watched == 0 AND releaseDate < %@ AND releaseDate.timeIntervalSince1970 > 100"
+            predicateFormat = "watched == 0 AND releaseDate < %@ AND releaseDate.timeIntervalSince1970 > 100 AND season.teebee.temporary == false"
             args = [tommorow]
             
             let keypathExp = NSExpression(forKeyPath: "tmdbId") // can be any column
@@ -126,11 +137,11 @@ class TeebeezViewController: MBViewController {
             
             break
         case 1:
-            predicateFormat = "watched == 0 AND releaseDate >= %@ AND releaseDate <= %@"
+            predicateFormat = "watched == 0 AND releaseDate >= %@ AND releaseDate <= %@ AND season.teebee.temporary == false"
             args = [tommorow, nextWeek]
             break
         case 2:
-            predicateFormat = ""
+            predicateFormat = "season.teebee.temporary == false"
             fetchedResultsController?.fetchRequest.propertiesToFetch = ["season.teebee"]
             fetchedResultsController?.fetchRequest.propertiesToGroupBy = ["season.teebee"]
 
@@ -166,6 +177,37 @@ class TeebeezViewController: MBViewController {
         } catch {
             fatalError("Failed to fetch entities: \(error)")
         }
+    }
+    
+    func updateTeebeez(_ teebeez:[Teebee], index: Int = 0) {
+        
+        self.progressBar.progress = Float(index) / Float(teebeez.count)
+        
+        guard index < teebeez.count else {
+            progressBar.isHidden = true
+            return
+        }
+        
+        progressBar.isHidden = false
+        
+        let nextTeebee = teebeez[index]
+        
+        TmdbService.startTvShowConnection(tmdbId: nextTeebee.tmdbId) { (error, _) in
+            if error == nil {
+                nextTeebee.lastUpdate = Date()
+                MoobeezManager.shared.save()
+            }
+            else {
+                print("error updating \(nextTeebee.name ?? "unknown")")
+            }
+            
+            DispatchQueue.main.async {
+                self.updateTeebeez(teebeez, index: index + 1)
+            }
+        }
+        
+        
+        
     }
 }
 

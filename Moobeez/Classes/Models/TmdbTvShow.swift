@@ -89,61 +89,52 @@ extension TmdbTvShow {
             tmdbId = (value as! NSNumber).int64Value
         }
         
-        if let value = tmdbDictionary["title"] {
-            if value is String {
-                name = value as? String
-            }
+        if let value = tmdbDictionary["title"] as? String {
+            name = value
+        }
+
+        if let value = tmdbDictionary["name"] as? String {
+            name = value
+        }
+
+        if let value = tmdbDictionary["overview"] as? String {
+            overview = value
         }
         
-        if let value = tmdbDictionary["overview"] {
-            if value is String {
-                overview = value as? String
-            }
+        if let value = tmdbDictionary["poster_path"] as? String {
+            posterPath = value
         }
         
-        if let value = tmdbDictionary["poster_path"] {
-            if value is String {
-                posterPath = value as? String
-            }
+        if let value = tmdbDictionary["backdrop_path"] as? String {
+            backdropPath = value
         }
         
-        if let value = tmdbDictionary["backdrop_path"] {
-            if value is String {
-                backdropPath = value as? String
-            }
-        }
-        
-        if let credits = tmdbDictionary["credits"] {
-            if let cast = (credits as! Dictionary<String, Any>)["cast"] {
-                if cast is Array<Dictionary<String, Any>> {
+        if let credits = tmdbDictionary["credits"] as? Dictionary<String, Any> {
+            if let cast = credits["cast"] as? Array<Dictionary<String, Any>> {
+                for characterDictionary:Dictionary<String, Any> in cast {
                     
-                    for characterDictionary:Dictionary<String, Any> in (cast as! Array) {
-                        
-                        let character:TmdbCharacter = TmdbCharacter.create(tmdbDictionary: characterDictionary)
-                        
-                        if character.movie == nil {
-                            character.movie = self
-                            addToCharacters(character)
-                        }
-                        
-                        if character.person == nil {
-                            let person:TmdbPerson = TmdbPerson.create(tmdbDictionary: characterDictionary)
-                            person.addToCharacters(character)
-                            character.person = person
-                        }
+                    let character:TmdbCharacter = TmdbCharacter.create(tmdbDictionary: characterDictionary)
+                    
+                    if character.movie == nil {
+                        character.movie = self
+                        addToCharacters(character)
+                    }
+                    
+                    if character.person == nil {
+                        let person:TmdbPerson = TmdbPerson.create(tmdbDictionary: characterDictionary)
+                        person.addToCharacters(character)
+                        character.person = person
                     }
                 }
             }
         }
         
-        if let seasonsList = tmdbDictionary["seasons"] {
-            if seasonsList is Array<Dictionary<String, Any>> {
-                for seasonDictionary:Dictionary<String, Any> in (seasonsList as! Array) {
-                    let season:TmdbTvSeason = TmdbTvSeason.create(tmdbDictionary: seasonDictionary)
-                    
-                    if (seasons?.contains(season))! == false {
-                        addToSeasons(season)
-                    }
+        if let seasonsList = tmdbDictionary["seasons"] as? Array<Dictionary<String, Any>>{
+            for seasonDictionary:Dictionary<String, Any> in seasonsList {
+                let season:TmdbTvSeason = TmdbTvSeason.create(tmdbDictionary: seasonDictionary)
+                
+                if (seasons?.contains(season))! == false {
+                    addToSeasons(season)
                 }
             }
         }

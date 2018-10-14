@@ -23,8 +23,8 @@ extension TeebeeSeason {
             }
         }
         
-        let episode:TeebeeEpisode = NSEntityDescription.insertNewObject(forEntityName: "TeebeeEpisode", into: MoobeezManager.coreDataContex!) as! TeebeeEpisode
-        
+        let episode:TeebeeEpisode = NSManagedObject(entity: NSEntityDescription.entity(forEntityName: "TeebeeEpisode", in: MoobeezManager.coreDataContex!)!, insertInto: self.managedObjectContext) as! TeebeeEpisode
+
         episode.number = number
         episode.season = self
         episode.watched = false
@@ -48,6 +48,14 @@ extension TeebeeSeason {
             let episode = episodeWithNumber(number: tmdbEpisode.episodeNumber)
             episode.releaseDate = tmdbEpisode.date
             episode.name = tmdbEpisode.name
+        }
+    }
+    
+    var pastEpisodes:[TeebeeEpisode] {
+        get {
+            return (episodes?.array as! [TeebeeEpisode]).filter { $0.watched == false
+                && $0.releaseDate?.timeIntervalSince1970 ?? 0 > 100
+                && $0.releaseDate?.timeIntervalSinceNow ?? 0 < 0 }
         }
     }
     
@@ -77,6 +85,12 @@ extension TeebeeSeason {
     {
         get {
             return notWatchedEpisodesCount == 0
+        }
+        set {
+            let pastEpisodes = self.pastEpisodes
+            for episode in pastEpisodes {
+                episode.watched = newValue
+            }
         }
     }
     

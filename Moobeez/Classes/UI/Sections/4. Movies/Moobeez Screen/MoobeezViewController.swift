@@ -24,6 +24,8 @@ class MoobeezViewController: MBViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addTitleLogo()
+        
         let context = MoobeezManager.shared.persistentContainer.viewContext;
         let fetchRequest = NSFetchRequest<Moobee> (entityName: "Moobee")
 

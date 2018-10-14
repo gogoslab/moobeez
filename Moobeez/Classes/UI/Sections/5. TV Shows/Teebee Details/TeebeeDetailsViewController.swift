@@ -223,7 +223,7 @@ class TeebeeDetailsViewController: MBViewController {
     
     @objc func reloadTeebee () {
         toolboxView.teebee = teebee
-        addRemoveButton.setImage(teebee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
+        addRemoveButton.setImage(teebee?.managedObjectContext != nil && teebee?.temporary ?? true == false ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
     }
     
     func reloadTvShow() {
@@ -299,7 +299,7 @@ class TeebeeDetailsViewController: MBViewController {
     
     func loadPoster() {
         
-        posterImageView.loadTmdbPosterWithPath(path: teebee!.posterPath!, placeholder:posterImage != nil ? posterImage : #imageLiteral(resourceName: "default_image")) { (didLoadImage) in
+        posterImageView.loadTmdbPosterWithPath(path: teebee!.posterPath, placeholder:posterImage != nil ? posterImage : #imageLiteral(resourceName: "default_image")) { (didLoadImage) in
             if didLoadImage {
                 self.reloadTheme()
             }
@@ -348,17 +348,30 @@ class TeebeeDetailsViewController: MBViewController {
     
     @IBAction func addRemoveButtonPressed(_ sender: UIButton) {
         
-        if teebee?.managedObjectContext == nil {
+        if teebee?.managedObjectContext == nil || teebee?.temporary ?? true {
             MoobeezManager.shared.addTeebee(teebee!)
         }
         else {
            MoobeezManager.shared.removeTeebee(teebee!)
         }
         
-        addRemoveButton.setImage(teebee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
+        addRemoveButton.setImage(teebee?.managedObjectContext != nil && teebee?.temporary ?? true == false ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
+        
+        if let searchViewController = presenting as? SearchTVsViewController {
+            presenting = searchViewController.presenting
+            searchViewController.hideDetailsViewController()
+        }
     }
     
     @IBAction func sawTvShowButtonPressed(_ sender: UIButton) {
+        teebee?.markAsWatched()
+        MoobeezManager.shared.addTeebee(teebee!)
+        toolboxView.reloadTypeCells()
+        
+        if let searchViewController = presenting as? SearchTVsViewController {
+            presenting = searchViewController.presenting
+            searchViewController.hideDetailsViewController()
+        }
     }
 
     @IBAction func closeToolboxButtonPressed(_ sender: Any) {

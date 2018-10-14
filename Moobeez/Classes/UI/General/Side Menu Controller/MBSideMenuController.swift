@@ -64,6 +64,8 @@ class MBSideMenuController: UIViewController {
         
         containerView.isUserInteractionEnabled = false
         
+        notWatchedTvShowsLabel.text = "\(MoobeezManager.shared.episodesNotWatched)"
+        
     }
     
     public func hideMenu() {

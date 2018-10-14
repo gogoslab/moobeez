@@ -70,7 +70,7 @@ extension TmdbService {
                     
                     for tvShowDictionary in results {
                         
-                        if let title:String = tvShowDictionary["title"] as? String {
+                        if let title:String = tvShowDictionary["name"] as? String {
                             
                             if title.lowercased().range(of: query.lowercased()) != nil {
                                 
@@ -83,6 +83,8 @@ extension TmdbService {
                     
                 }
             }
+            
+            completionHandler?(error, tvShows)
         }
     }
     

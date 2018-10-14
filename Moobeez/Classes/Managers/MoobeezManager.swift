@@ -107,6 +107,10 @@ class MoobeezManager: NSObject {
         deleteTempData()
         TmdbMovie.updateLinks()
         TmdbTvShow.updateLinks()
+        
+        NotificationCenter.default.addObserver(forName: .TeebeezDidChangeNotification, object: nil, queue: nil) { (_) in
+            UIApplication.shared.applicationIconBadgeNumber = self.showsNotWatched
+        }
     }
     
     // MARK: - Core Data stack
@@ -195,25 +199,55 @@ class MoobeezManager: NSObject {
         }
     }
     
+    public func fetch<T : NSManagedObject>(predicate:NSPredicate? = nil, sort sortDescriptors:[NSSortDescriptor]? = nil) -> [T] {
+        
+        let className = String(describing: T.self)
+        
+        let fetchRequest = NSFetchRequest<T> (entityName: className)
+        
+        fetchRequest.predicate = predicate
+        
+        fetchRequest.sortDescriptors = sortDescriptors
+        
+        do {
+            let result = try MoobeezManager.coreDataContex?.fetch(fetchRequest)
+            
+            return result ?? [T]()
+        }
+        catch let error {
+           print("Get offline \(String(describing: T.self)): \(error)")
+        }
+        
+        return [T]()
+        
+    }
+    
     // MARK: - Delete temp data
     
     func deleteTempData () {
         
-        let moobeezFetchRequest = NSFetchRequest<Moobee> (entityName: "Moobee")
+        let moobeez:[Moobee] = fetch(predicate: NSPredicate(format: "type == %ld", MoobeeType.new.rawValue))
         
-        moobeezFetchRequest.predicate = NSPredicate(format: "type == %ld", MoobeeType.new.rawValue)
+        for moobee in moobeez {
+            moobee.managedObjectContext?.delete(moobee)
+        }
         
-        do {
-            let moobeez = try MoobeezManager.coreDataContex!.fetch(moobeezFetchRequest)
-            
-            for moobee in moobeez {
-                moobee.managedObjectContext?.delete(moobee)
+        let teebeez:[Teebee] = fetch(predicate: NSPredicate(format: "temporary == true"))
+        
+        for teebee in teebeez {
+            teebee.managedObjectContext?.delete(teebee)
+            if let seasons = teebee.seasons?.array as? [TeebeeSeason] {
+                for season in seasons {
+                    season.managedObjectContext?.delete(season)
+                    if let episodes = season.episodes?.array as? [TeebeeEpisode] {
+                        for episode in episodes {
+                            episode.managedObjectContext?.delete(episode)
+                        }
+                    }
+                }
             }
         }
-        catch (_) {
-            
-        }
-        
+
         save()
     }
     
@@ -259,19 +293,18 @@ extension MoobeezManager {
     func addTeebee(_ teebee:Teebee) {
         if teebee.managedObjectContext == nil {
             persistentContainer.viewContext.insert(teebee)
-            save()
-            NotificationCenter.default.post(name: .TeebeezDidChangeNotification, object: teebee.tmdbId)
-            NotificationCenter.default.post(name: .BeeDidChangeNotification, object: teebee.tmdbId)
         }
+        teebee.temporary = false
+        save()
+        NotificationCenter.default.post(name: .TeebeezDidChangeNotification, object: teebee.tmdbId)
+        NotificationCenter.default.post(name: .BeeDidChangeNotification, object: teebee.tmdbId)
     }
     
     func removeTeebee(_ teebee:Teebee) {
-        if teebee.managedObjectContext != nil {
-            persistentContainer.viewContext.delete(teebee)
-            save()
-            NotificationCenter.default.post(name: .TeebeezDidChangeNotification, object: teebee.tmdbId)
-            NotificationCenter.default.post(name: .BeeDidChangeNotification, object: teebee.tmdbId)
-        }
+        teebee.temporary = true
+        save()
+        NotificationCenter.default.post(name: .TeebeezDidChangeNotification, object: teebee.tmdbId)
+        NotificationCenter.default.post(name: .BeeDidChangeNotification, object: teebee.tmdbId)
     }
     
 }
@@ -285,21 +318,11 @@ extension MoobeezManager {
         
         var items = [TimelineItem]()
         
-        let moobeezFetchRequest = NSFetchRequest<Moobee> (entityName: "Moobee")
+        let moobeez:[Moobee] = fetch(predicate: NSPredicate(format: "type == %ld OR (type == %ld AND releaseDate >= %@)", MoobeeType.seen.rawValue, MoobeeType.watchlist.rawValue, today as CVarArg),
+                                     sort:[NSSortDescriptor(key: "date", ascending: false)])
         
-        moobeezFetchRequest.predicate = NSPredicate(format: "type == %ld OR (type == %ld AND releaseDate >= %@)", MoobeeType.seen.rawValue, MoobeeType.watchlist.rawValue, today as CVarArg)
-        
-        moobeezFetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-        
-        do {
-            let moobeez = try MoobeezManager.coreDataContex!.fetch(moobeezFetchRequest)
-            
-            for moobee in moobeez {
-                items.append(TimelineItem(moobee:moobee))
-            }
-        }
-        catch (_) {
-            
+        for moobee in moobeez {
+            items.append(TimelineItem(moobee:moobee))
         }
         
         let episodesFetchRequest = NSFetchRequest<TeebeeEpisode> (entityName: "TeebeeEpisode")
@@ -376,6 +399,40 @@ extension MoobeezManager {
         }
         
         return grouppedItems
+    }
+    
+}
+
+extension MoobeezManager {
+    
+    var episodesNotWatched:Int {
+        get {
+            
+            let today = Calendar.current.startOfDay(for: Date(timeIntervalSinceNow: (SettingsManager.shared.addExtraDay ? -24 * 3600 : 0)))
+            let tommorow = today.addingTimeInterval(24 * 3600)
+        
+            let predicate = NSPredicate(format: "watched == 0 AND releaseDate < %@ AND releaseDate.timeIntervalSince1970 > 100 AND season.teebee.temporary == false", argumentArray: [tommorow])
+
+            let episodes: [TeebeeEpisode] = fetch(predicate: predicate)
+            
+            return episodes.count
+        }
+    }
+    
+    var showsNotWatched:Int {
+        get {
+            
+            let today = Calendar.current.startOfDay(for: Date(timeIntervalSinceNow: (SettingsManager.shared.addExtraDay ? -24 * 3600 : 0)))
+            let tommorow = today.addingTimeInterval(24 * 3600)
+            
+            let predicate = NSPredicate(format: "temporary == false")
+            
+            var teebeez: [Teebee] = fetch(predicate: predicate)
+            
+            teebeez = teebeez.filter { $0.nextEpisode?.releaseDate != nil && ($0.nextEpisode?.releaseDate)! < tommorow && ($0.nextEpisode?.releaseDate)!.timeIntervalSince1970 > 100 }
+            
+            return teebeez.count
+        }
     }
     
 }

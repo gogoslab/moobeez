@@ -310,7 +310,7 @@ class MoobeeDetailsViewController: MBViewController {
             reloadTheme()
         }
         
-        posterImageView.loadTmdbPosterWithPath(path: moobee!.posterPath!, placeholder:posterImage != nil ? posterImage : #imageLiteral(resourceName: "default_image")) { (didLoadImage) in
+        posterImageView.loadTmdbPosterWithPath(path: moobee!.posterPath, placeholder:posterImage != nil ? posterImage : #imageLiteral(resourceName: "default_image")) { (didLoadImage) in
             if didLoadImage {
                 self.reloadTheme()
             }

@@ -72,7 +72,12 @@ extension UIImageView {
         loadImageWithUrl(url: URL(string: UIImageView.tmdbOriginalImagePath(path: path))!, placeholder: placeholder, completion:completion)
     }
     
-    func loadTmdbImageWithPath(path:String, type:String, size imageSize:CGSize, placeholder:UIImage? = nil, completion: ((Bool) -> Swift.Void)? = nil) {
+    func loadTmdbImageWithPath(path:String?, type:String, size imageSize:CGSize, placeholder:UIImage? = nil, completion: ((Bool) -> Swift.Void)? = nil) {
+        
+        guard let path = path else {
+            image = placeholder
+            return
+        }
         
         let sizes:NSArray = UIImageView.imageSettings.object(forKey: "\(type)_sizes") as! NSArray
         
@@ -96,36 +101,36 @@ extension UIImageView {
         
     }
     
-    func loadTmdbPosterWithPath(path:String, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
+    func loadTmdbPosterWithPath(path:String?, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
         loadTmdbPosterWithPath(path: path, size: frame.size, placeholder: placeholder, completion: completion)
     }
     
-    func loadTmdbPosterWithPath(path:String, size:CGSize, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
+    func loadTmdbPosterWithPath(path:String?, size:CGSize, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
         loadTmdbImageWithPath(path: path, type: "poster", size: size, placeholder: placeholder, completion: completion)
     }
     
-    func loadTmdbProfileWithPath(path:String, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
+    func loadTmdbProfileWithPath(path:String?, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
         loadTmdbProfileWithPath(path: path, size: frame.size, placeholder: placeholder, completion: completion)
     }
     
-    func loadTmdbProfileWithPath(path:String, size:CGSize, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
+    func loadTmdbProfileWithPath(path:String?, size:CGSize, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
         loadTmdbImageWithPath(path: path, type: "profile", size: size, placeholder: placeholder, completion: completion)
     }
     
-    func loadTmdbBackdropWithPath(path:String, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
+    func loadTmdbBackdropWithPath(path:String?, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
         loadTmdbPosterWithPath(path: path, size: frame.size, placeholder: placeholder, completion: completion)
     }
     
-    func loadTmdbBackdropWithPath(path:String, size:CGSize, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
+    func loadTmdbBackdropWithPath(path:String?, size:CGSize, placeholder:UIImage? = #imageLiteral(resourceName: "default_image"), completion: ((Bool) -> Swift.Void)? = nil) {
         loadTmdbImageWithPath(path: path, type: "backdrop", size: size, placeholder: placeholder, completion: completion)
     }
     
     func loadTmdbImage(image:TmdbImage, completion: ((Bool) -> Swift.Void)? = nil) {
         if image.poster {
-            loadTmdbPosterWithPath(path: image.path!, placeholder:nil, completion: completion)
+            loadTmdbPosterWithPath(path: image.path, placeholder:nil, completion: completion)
         }
         else {
-            loadTmdbBackdropWithPath(path: image.path!, placeholder:nil, completion: completion)
+            loadTmdbBackdropWithPath(path: image.path, placeholder:nil, completion: completion)
         }
     }
     

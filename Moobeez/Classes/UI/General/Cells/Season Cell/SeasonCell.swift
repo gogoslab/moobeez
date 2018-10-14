@@ -25,6 +25,7 @@ class SeasonCell: UITableViewCell {
         watchButton.isSelected = !watchButton.isSelected
         MoobeezManager.shared.save()
         reloadData()
+        NotificationCenter.default.post(name: .TeebeezDidChangeNotification , object: nil)
     }
     
     func applyTheme(lightTheme: Bool) {
@@ -43,14 +44,7 @@ class SeasonCell: UITableViewCell {
             }
             
             nameLabel.text = "Season \(season!.number)"
-            if season!.posterPath != nil
-            {
-                posterImageView.loadTmdbPosterWithPath(path: (season!.posterPath)!)
-            }
-            else
-            {
-                posterImageView.image = #imageLiteral(resourceName: "default_image")
-            }
+            posterImageView.loadTmdbPosterWithPath(path: season!.posterPath)
             
             reloadData()
             

@@ -65,7 +65,7 @@ extension UIView {
         }
     }
     
-    
+    @IBInspectable
     var borderColor:UIColor? {
         get {
             return layer.borderColor != nil ? UIColor(cgColor: layer.borderColor!) : nil
@@ -75,6 +75,7 @@ extension UIView {
         }
     }
     
+    @IBInspectable
     var borderWidth:CGFloat {
         get {
             return layer.borderWidth
@@ -84,6 +85,7 @@ extension UIView {
         }
     }
     
+    @IBInspectable
     var cornerRadius:CGFloat {
         get {
             return layer.cornerRadius

@@ -92,12 +92,7 @@ class TimelineItemCell : UITableViewCell {
                 return
             }
             
-            if item?.backdropPath != nil {
-                backdropImageView.loadTmdbBackdropWithPath(path: item!.backdropPath!)
-            }
-            else {
-                backdropImageView.image = #imageLiteral(resourceName: "default_image")
-            }
+            backdropImageView.loadTmdbBackdropWithPath(path: item!.backdropPath)
             
             titleLabel.text = item!.name
             

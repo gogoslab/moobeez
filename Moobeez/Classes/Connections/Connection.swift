@@ -85,7 +85,9 @@ class Connection: NSObject {
                     parametersString += key + "=" + (value as! String)
                 }
                 
-                request.url = URL(string:urlString + parametersString)
+                if let string = (urlString + parametersString).addingPercentEncoding( withAllowedCharacters: .urlQueryAllowed) {
+                    request.url = URL(string:string)
+                }
             }
             else
             {

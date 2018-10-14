@@ -24,6 +24,10 @@ class MBViewController: UIViewController {
         }
     }
     
+    func addTitleLogo() {
+        self.navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "header_logo.png"))
+    }
+    
     func showDetailsViewController(_ viewController: MBViewController)
     {
         let parentView = (MBSideMenuController.instance?.view)!

@@ -196,7 +196,7 @@ class PersonDetailsViewController: MBViewController {
 
     func loadProfilePicture() {
         
-        profileImageView.loadTmdbProfileWithPath(path: person!.profilePath!, placeholder:profileImage != nil ? profileImage : #imageLiteral(resourceName: "default_image")) { (didLoadImage) in
+        profileImageView.loadTmdbProfileWithPath(path: person!.profilePath, placeholder:profileImage != nil ? profileImage : #imageLiteral(resourceName: "default_image")) { (didLoadImage) in
             if didLoadImage {
                 self.reloadTheme()
             }

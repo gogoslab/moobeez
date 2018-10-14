@@ -24,12 +24,7 @@ class SearchResultCell: UITableViewCell {
     var movie:TmdbMovie?
     {
         didSet {
-            if movie?.posterPath != nil {
-                posterImageView.loadTmdbPosterWithPath(path: (movie?.posterPath)!, placeholder:#imageLiteral(resourceName: "default_image"))
-            }
-            else {
-                posterImageView.image = #imageLiteral(resourceName: "default_image")
-            }
+            posterImageView.loadTmdbPosterWithPath(path: movie?.posterPath, placeholder:#imageLiteral(resourceName: "default_image"))
             titleLabel.text = movie?.name
             
             if movie?.releaseDate != nil {
@@ -48,7 +43,7 @@ class SearchResultCell: UITableViewCell {
     var person:TmdbPerson?
     {
         didSet {
-            posterImageView.loadTmdbProfileWithPath(path: (person?.profilePath)!)
+            posterImageView.loadTmdbProfileWithPath(path: person?.profilePath)
             titleLabel.text = person?.name
             
             detailsLabel.text = person?.overview ?? ""
@@ -60,7 +55,7 @@ class SearchResultCell: UITableViewCell {
     var tvShow:TmdbTvShow?
     {
         didSet {
-            posterImageView.loadTmdbPosterWithPath(path: (tvShow?.posterPath)!, placeholder:#imageLiteral(resourceName: "default_image"))
+            posterImageView.loadTmdbPosterWithPath(path: tvShow?.posterPath, placeholder:#imageLiteral(resourceName: "default_image"))
             titleLabel.text = tvShow?.name
             
             if tvShow?.releaseDate != nil {

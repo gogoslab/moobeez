@@ -27,7 +27,7 @@ class CastThumbnailCell: UICollectionViewCell {
             }
             
             if person!.profilePath != nil {
-                imageView.loadTmdbProfileWithPath(path: (person!.profilePath)!)
+                imageView.loadTmdbProfileWithPath(path: person!.profilePath)
             }
             else
             {
@@ -60,13 +60,7 @@ class CastThumbnailCell: UICollectionViewCell {
                 return
             }
             
-            if movie!.posterPath != nil {
-                imageView.loadTmdbPosterWithPath(path: (movie!.posterPath)!, placeholder:#imageLiteral(resourceName: "default_image"))
-            }
-            else
-            {
-                imageView.image = #imageLiteral(resourceName: "default_image")
-            }
+            imageView.loadTmdbPosterWithPath(path: movie!.posterPath, placeholder:#imageLiteral(resourceName: "default_image"))
             imageView.layer.cornerRadius = 0
             
             if nameLabel != nil {

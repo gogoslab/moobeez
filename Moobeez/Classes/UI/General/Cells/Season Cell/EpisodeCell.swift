@@ -57,5 +57,6 @@ class EpisodeCell: UITableViewCell {
         MoobeezManager.shared.save()
         
         NotificationCenter.default.post(name: .TeebeeSeasonDidChangeNotification , object: episode?.season)
+        NotificationCenter.default.post(name: .TeebeezDidChangeNotification , object: nil)
     }
 }

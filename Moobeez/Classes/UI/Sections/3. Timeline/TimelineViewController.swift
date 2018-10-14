@@ -23,6 +23,8 @@ class TimelineViewController: MBViewController {
 
         // Do any additional setup after loading the view.
         
+        addTitleLogo()
+        
         tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         
         loadItems()

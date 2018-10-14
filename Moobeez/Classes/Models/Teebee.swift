@@ -32,7 +32,7 @@ extension Teebee {
     
     convenience init(tmdbTvShow tvShow:TmdbTvShow) {
         
-        self.init(entity: NSEntityDescription.entity(forEntityName: "Teebee", in: MoobeezManager.coreDataContex!)!, insertInto: nil)
+        self.init(entity: NSEntityDescription.entity(forEntityName: "Teebee", in: MoobeezManager.coreDataContex!)!, insertInto: MoobeezManager.coreDataContex)
         
         self.tmdbId = tvShow.tmdbId
         self.name = tvShow.name
@@ -40,6 +40,7 @@ extension Teebee {
         self.date = Date()
         self.posterPath = tvShow.posterPath
         self.backdropPath = tvShow.backdropPath
+        self.temporary = true
         
         for tmdbSeason:TmdbTvSeason in Array(tvShow.seasons!) as! [TmdbTvSeason] {
             let season = seasonWithNumber(number: tmdbSeason.seasonNumber)
@@ -79,7 +80,7 @@ extension Teebee {
             }
         }
         
-        let season:TeebeeSeason = NSEntityDescription.insertNewObject(forEntityName: "TeebeeSeason", into: MoobeezManager.coreDataContex!) as! TeebeeSeason
+        let season:TeebeeSeason = NSManagedObject(entity: NSEntityDescription.entity(forEntityName: "TeebeeSeason", in: MoobeezManager.coreDataContex!)!, insertInto: self.managedObjectContext) as! TeebeeSeason
         
         season.number = number
         season.teebee = self
@@ -138,8 +139,8 @@ extension Teebee {
         get {
             
             let fetchRequest = NSFetchRequest<NSFetchRequestResult> (entityName: "TeebeeEpisode")
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: true)]
-            fetchRequest.predicate = NSPredicate(format: "watched == 0 AND season.teebee == %@", self)
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: true), NSSortDescriptor(key: "number", ascending: true)]
+            fetchRequest.predicate = NSPredicate(format: "watched == 0 AND season.teebee == %@ AND releaseDate != nil", self)
             
             do {
                 let fetchedItems:[TeebeeEpisode] = try MoobeezManager.coreDataContex!.fetch(fetchRequest) as! [TeebeeEpisode]
@@ -154,5 +155,14 @@ extension Teebee {
             
             return nil
         }
+    }
+    
+    func markAsWatched() {
+        if let seasons = seasons?.array as? [TeebeeSeason] {
+            for season in seasons {
+                season.watched = true
+            }
+        }
+        
     }
 }
