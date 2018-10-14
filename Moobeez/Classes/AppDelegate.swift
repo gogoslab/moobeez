@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
@@ -28,6 +29,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         TmdbService.startConfigurationConnection()
         
         isPortrait = true
+        
+        let authOptions: UNAuthorizationOptions = [.badge]
+        UNUserNotificationCenter.current().requestAuthorization(
+            options: authOptions,
+            completionHandler: {(granted, error) in
+                if granted {
+//                    DispatchQueue.main.async {
+//                        UIApplication.shared.registerForRemoteNotifications()
+//                    }
+                }
+        })
         
         return true
     }
