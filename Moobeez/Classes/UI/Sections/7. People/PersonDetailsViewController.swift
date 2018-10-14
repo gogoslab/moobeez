@@ -210,7 +210,7 @@ class PersonDetailsViewController: MBViewController {
     
     func reloadTheme() {
         let topBarLuminosity: CGFloat = self.profileImageView.image?.topBarLuminosity() ?? 0.0
-        UIApplication.shared.statusBarStyle = topBarLuminosity <= 0.60 ? .lightContent : .default;
+        statusBarStyle = topBarLuminosity <= 0.60 ? .lightContent : .default;
     }
     
     var characters:[TmdbCharacter]?

@@ -20,9 +20,9 @@ class MoobeezManager: NSObject {
     
     func loadFromSqlIfNeeded () -> Bool {
         
-//        if UserDefaults.standard.bool(forKey: "didTransferSqlDatabase") {
-//            return false
-//        }
+        if UserDefaults.standard.bool(forKey: "didTransferSqlDatabase") {
+            return false
+        }
         
         deleteTable(name: "Moobee")
         deleteTable(name: "Teebee")
@@ -198,6 +198,21 @@ class MoobeezManager: NSObject {
     // MARK: - Delete temp data
     
     func deleteTempData () {
+        
+        let moobeezFetchRequest = NSFetchRequest<Moobee> (entityName: "Moobee")
+        
+        moobeezFetchRequest.predicate = NSPredicate(format: "type == %ld", MoobeeType.new.rawValue)
+        
+        do {
+            let moobeez = try MoobeezManager.coreDataContex!.fetch(moobeezFetchRequest)
+            
+            for moobee in moobeez {
+                moobee.managedObjectContext?.delete(moobee)
+            }
+        }
+        catch (_) {
+            
+        }
         
         save()
     }

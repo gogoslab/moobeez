@@ -36,7 +36,7 @@ class MBSideMenuController: UIViewController {
         // Do any additional setup after loading the view.
         for vc in self.children {
             if vc is MBNavigationController {
-                childNavigationController = vc as! MBNavigationController
+                childNavigationController = vc as? MBNavigationController
                 break;
             }
         }

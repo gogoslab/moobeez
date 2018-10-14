@@ -51,16 +51,13 @@ class MoobeezViewController: MBViewController {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
         
-        if segue.destination is MoobeeDetailsViewController {
-            
-            let moobeeViewController:MoobeeDetailsViewController = segue.destination as! MoobeeDetailsViewController
+        if let moobeeViewController = segue.destination as? MoobeeDetailsViewController {
             
             let cell:BeeCell? = sender as? BeeCell
             
             moobeeViewController.moobee = cell?.bee as? Moobee
             moobeeViewController.posterImage = cell?.posterImageView.image
         }
-        
      }
     
     override func summaryViewForViewController(_ viewController: UIViewController) -> UIView? {
@@ -89,16 +86,20 @@ class MoobeezViewController: MBViewController {
     @objc func reloadItems () {
         
         var predicateFormat:String = ""
+        var sortDescriptors:[NSSortDescriptor]?
         
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             predicateFormat = "type == \(MoobeeType.seen.rawValue)"
+            sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
             break
         case 1:
             predicateFormat = "type == \(MoobeeType.watchlist.rawValue)"
+            sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: false)]
             break
         case 2:
             predicateFormat = "type == \(MoobeeType.seen.rawValue) AND isFavorite == 1"
+            sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
             
         default:
             break
@@ -109,7 +110,7 @@ class MoobeezViewController: MBViewController {
         }
         
         fetchedResultsController?.fetchRequest.predicate = NSPredicate(format: predicateFormat)
-
+        fetchedResultsController?.fetchRequest.sortDescriptors = sortDescriptors
         
         do {
             try fetchedResultsController?.performFetch()
@@ -178,7 +179,7 @@ extension MoobeezViewController : UISearchBarDelegate {
             
             for i in 0...self.segmentedControl.numberOfSegments-1 {
                 let title = self.segmentedTitles[i]
-                self.segmentedControl.setTitle(title.substring(to: title.index(after: title.startIndex)), forSegmentAt: i);
+                self.segmentedControl.setTitle(String(title.prefix(1)), forSegmentAt: i)
             }
             
             searchBar.showsCancelButton = true

@@ -55,7 +55,7 @@ class TeebeeToolboxView : ToolboxView {
             
             nameTextField.text = teebee?.name
             
-            starsView.rating = CGFloat(teebee?.rating ?? 0.0)
+            starsView.rating = CGFloat(teebee?.rating ?? 2.5)
             starsView.updateHandler = {
                 self.teebee?.rating = Float(self.starsView.rating)
                 
@@ -92,7 +92,11 @@ class TeebeeToolboxView : ToolboxView {
             return
         }
         
-        let watchedEpisodesCount:NSInteger = teebee?.watchedEpisodesCount ?? 0
+        guard let teebee = teebee else {
+            return
+        }
+        
+        let watchedEpisodesCount:NSInteger = teebee.watchedEpisodesCount
         
         for cell:UIView in sawTvShowViews {
             cell.isHidden = (watchedEpisodesCount == 0)
@@ -100,6 +104,11 @@ class TeebeeToolboxView : ToolboxView {
         
         for cell:UIView in didntTvShowViews {
             cell.isHidden = (watchedEpisodesCount > 0)
+        }
+        
+        if watchedEpisodesCount > 0 && teebee.rating < 0 {
+            teebee.rating = 2.5
+            starsView.rating = CGFloat(teebee.rating)
         }
     }
     
@@ -303,7 +312,7 @@ class TeebeeDetailsViewController: MBViewController {
     
     func reloadTheme() {
         let topBarLuminosity: CGFloat = self.posterImageView.image?.topBarLuminosity() ?? 0.0
-        UIApplication.shared.statusBarStyle = topBarLuminosity <= 0.60 ? .lightContent : .default;
+        statusBarStyle = topBarLuminosity <= 0.60 ? .lightContent : .default;
     }
     
 
@@ -455,7 +464,7 @@ class EpisodesList : NSObject, UITableViewDelegate, UITableViewDataSource {
                 return
             }
             
-            episodes = selectedSeason?.episodes?.sortedArray(using: [NSSortDescriptor(key: "releaseDate", ascending: true)]) as? [TeebeeEpisode]
+            episodes = (selectedSeason?.episodes?.sortedArray(using: [NSSortDescriptor(key: "releaseDate", ascending: true), NSSortDescriptor(key:"number", ascending:true)]) as? [TeebeeEpisode])?.filter { $0.releaseDate?.timeIntervalSince1970 ?? 0 > 100}
         }
     }
     
@@ -490,7 +499,7 @@ class EpisodesList : NSObject, UITableViewDelegate, UITableViewDataSource {
             return 0
         }
         
-        return selectedSeason!.episodes!.count + 1
+        return episodes!.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

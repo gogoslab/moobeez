@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17D47" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14315.18" systemVersion="18A389" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Bee" representedClassName="Bee" isAbstract="YES" syncable="YES" codeGenerationType="class">
         <attribute name="backdropPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
@@ -24,7 +24,6 @@
         <attribute name="tmdbId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="watched" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="season" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TeebeeSeason" inverseName="episodes" inverseEntity="TeebeeSeason" syncable="YES"/>
-        <relationship name="teebee" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teebee" syncable="YES"/>
     </entity>
     <entity name="TeebeeSeason" representedClassName="TeebeeSeason" syncable="YES" codeGenerationType="class">
         <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -36,7 +35,7 @@
         <element name="Bee" positionX="448" positionY="308" width="128" height="150"/>
         <element name="Moobee" positionX="178" positionY="308" width="128" height="75"/>
         <element name="Teebee" positionX="702" positionY="243" width="128" height="75"/>
-        <element name="TeebeeEpisode" positionX="1051" positionY="279" width="128" height="150"/>
+        <element name="TeebeeEpisode" positionX="1051" positionY="279" width="128" height="135"/>
         <element name="TeebeeSeason" positionX="396" positionY="333" width="128" height="105"/>
     </elements>
 </model>

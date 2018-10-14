@@ -48,7 +48,7 @@ class TimelineItem: NSObject {
             }
             
             if teebeeEpisode != nil {
-                return teebeeEpisode!.teebee!.name
+                return teebeeEpisode!.season!.teebee!.name
             }
             
             return nil
@@ -75,7 +75,7 @@ class TimelineItem: NSObject {
             }
             
             if teebeeEpisode != nil {
-                return teebeeEpisode!.teebee!.backdropPath
+                return teebeeEpisode!.season!.teebee!.backdropPath
             }
             
             return nil

@@ -180,7 +180,7 @@ class ToolboxView: UIVisualEffectView {
         }
         else if recognizer.state == .ended || recognizer.state == .cancelled {
             
-            if fabs(delta) > 1 {
+            if abs(delta) > 1 {
                 if delta < 0 {
                     showFullToolbox()
                 }

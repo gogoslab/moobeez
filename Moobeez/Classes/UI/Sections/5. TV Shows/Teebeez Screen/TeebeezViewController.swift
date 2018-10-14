@@ -108,7 +108,7 @@ class TeebeezViewController: MBViewController {
         
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            predicateFormat = "watched == 0 AND releaseDate < %@"
+            predicateFormat = "watched == 0 AND releaseDate < %@ AND releaseDate.timeIntervalSince1970 > 100"
             args = [tommorow]
             
             let keypathExp = NSExpression(forKeyPath: "tmdbId") // can be any column
@@ -119,8 +119,8 @@ class TeebeezViewController: MBViewController {
             countExpressionDescription.name = "count"
             countExpressionDescription.expressionResultType = .integer16AttributeType
 
-            fetchedResultsController?.fetchRequest.propertiesToFetch = ["teebee", countExpressionDescription]
-            fetchedResultsController?.fetchRequest.propertiesToGroupBy = ["teebee"]
+            fetchedResultsController?.fetchRequest.propertiesToFetch = ["season.teebee", countExpressionDescription]
+            fetchedResultsController?.fetchRequest.propertiesToGroupBy = ["season.teebee"]
 
             fetchedResultsController?.fetchRequest.resultType = .dictionaryResultType
             
@@ -131,8 +131,8 @@ class TeebeezViewController: MBViewController {
             break
         case 2:
             predicateFormat = ""
-            fetchedResultsController?.fetchRequest.propertiesToFetch = ["teebee"]
-            fetchedResultsController?.fetchRequest.propertiesToGroupBy = ["teebee"]
+            fetchedResultsController?.fetchRequest.propertiesToFetch = ["season.teebee"]
+            fetchedResultsController?.fetchRequest.propertiesToGroupBy = ["season.teebee"]
 
             fetchedResultsController?.fetchRequest.resultType = .dictionaryResultType
             
@@ -144,7 +144,7 @@ class TeebeezViewController: MBViewController {
             if predicateFormat.count > 0 {
                 predicateFormat = predicateFormat + " AND "
             }
-            predicateFormat = predicateFormat + "teebee.name CONTAINS[cd] '\(searchBar.text!)'"
+            predicateFormat = predicateFormat + "season.teebee.name CONTAINS[cd] '\(searchBar.text!)'"
         }
         
         if predicateFormat.count > 0 {
@@ -202,7 +202,7 @@ extension TeebeezViewController : UICollectionViewDelegate, UICollectionViewData
             let dictionary = rowInfo as! Dictionary<String, Any>
             
             do {
-                let teebee:Teebee? = try MoobeezManager.coreDataContex!.existingObject(with: dictionary["teebee"]! as! NSManagedObjectID) as? Teebee
+                let teebee:Teebee? = try MoobeezManager.coreDataContex!.existingObject(with: dictionary["season.teebee"]! as! NSManagedObjectID) as? Teebee
                 cell.bee = teebee
                 if dictionary["count"] != nil {
                     cell.notifications = dictionary["count"] as! Int16
@@ -216,7 +216,7 @@ extension TeebeezViewController : UICollectionViewDelegate, UICollectionViewData
             }
         }
         else if rowInfo is TeebeeEpisode {
-            cell.bee = (rowInfo as! TeebeeEpisode).teebee
+            cell.bee = (rowInfo as! TeebeeEpisode).season?.teebee
             cell.notifications = 0;
         }
         
@@ -271,7 +271,7 @@ extension TeebeezViewController : UISearchBarDelegate {
             
             for i in 0...self.segmentedControl.numberOfSegments-1 {
                 let title = self.segmentedTitles[i]
-                self.segmentedControl.setTitle(title.substring(to: title.index(after: title.startIndex)), forSegmentAt: i);
+                self.segmentedControl.setTitle(String(title.prefix(1)), forSegmentAt: i)
             }
             
             searchBar.showsCancelButton = true

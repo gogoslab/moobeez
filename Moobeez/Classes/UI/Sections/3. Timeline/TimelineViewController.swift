@@ -131,7 +131,7 @@ extension TimelineViewController : UITableViewDataSource, UITableViewDelegate {
         if item.teebeeEpisode != nil {
             
             let viewController = storyboard?.instantiateViewController(withIdentifier: "TeebeeDetailsViewController") as! TeebeeDetailsViewController
-            viewController.teebee = item.teebeeEpisode?.teebee
+            viewController.teebee = item.teebeeEpisode?.season?.teebee
             
             showDetailsViewController(viewController)
             

@@ -139,7 +139,7 @@ extension Teebee {
             
             let fetchRequest = NSFetchRequest<NSFetchRequestResult> (entityName: "TeebeeEpisode")
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: true)]
-            fetchRequest.predicate = NSPredicate(format: "watched == 0 AND teebee == %@", self)
+            fetchRequest.predicate = NSPredicate(format: "watched == 0 AND season.teebee == %@", self)
             
             do {
                 let fetchedItems:[TeebeeEpisode] = try MoobeezManager.coreDataContex!.fetch(fetchRequest) as! [TeebeeEpisode]

@@ -24,6 +24,7 @@ class SeasonCell: UITableViewCell {
         })
         watchButton.isSelected = !watchButton.isSelected
         MoobeezManager.shared.save()
+        reloadData()
     }
     
     func applyTheme(lightTheme: Bool) {

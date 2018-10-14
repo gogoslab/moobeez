@@ -214,7 +214,7 @@ class MoobeeDetailsViewController: MBViewController {
     
     @objc func reloadMoobee () {
         toolboxView.moobee = moobee
-        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
+        addRemoveButton.isHidden = moobee?.moobeeType == MoobeeType.new
     }
     
     func reloadMovie() {
@@ -319,7 +319,7 @@ class MoobeeDetailsViewController: MBViewController {
     
     func reloadTheme() {
         let topBarLuminosity: CGFloat = self.posterImageView.image?.topBarLuminosity() ?? 0.0
-        UIApplication.shared.statusBarStyle = topBarLuminosity <= 0.60 ? .lightContent : .default;
+        statusBarStyle = topBarLuminosity <= 0.60 ? .lightContent : .default;
     }
     
 
@@ -335,13 +335,23 @@ class MoobeeDetailsViewController: MBViewController {
             moobee?.moobeeType = MoobeeType.watchlist
         }
         else {
-            moobee?.moobeeType = MoobeeType.none
+            moobee?.moobeeType = MoobeeType.new
         }
         toolboxView.reloadTypeCells()
         
         MoobeezManager.shared.addMoobee(moobee!)
-        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
         MoobeezManager.shared.save()
+        addRemoveButton.isHidden = moobee?.moobeeType == MoobeeType.new
+
+        if let searchViewController = presenting as? SearchMoviesViewController {
+            presenting = searchViewController.presenting
+            searchViewController.hideDetailsViewController()
+            
+            if let moobeezViewController = presenting as? MoobeezViewController {
+                moobeezViewController.segmentedControl.selectedSegmentIndex = 1
+                moobeezViewController.reloadItems()
+            }
+        }
     }
     
     @IBAction func sawMovieButtonPressed(_ sender: UIButton) {
@@ -351,8 +361,19 @@ class MoobeeDetailsViewController: MBViewController {
         toolboxView.moobee = moobee
         
         MoobeezManager.shared.addMoobee(moobee!)
-        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
         MoobeezManager.shared.save()
+        addRemoveButton.isHidden = moobee?.moobeeType == MoobeeType.new
+
+        if let searchViewController = presenting as? SearchMoviesViewController {
+            presenting = searchViewController.presenting
+            searchViewController.hideDetailsViewController()
+            
+            if let moobeezViewController = presenting as? MoobeezViewController {
+                moobeezViewController.segmentedControl.selectedSegmentIndex = 0
+                moobeezViewController.reloadItems()
+            }
+        }
+
     }
     
     @IBAction func descriptionButtonPressed(_ sender: UIButton) {
@@ -392,15 +413,9 @@ class MoobeeDetailsViewController: MBViewController {
     }
     
     @IBAction func addRemoveButtonPressed(_ sender: UIButton) {
-        
-        if moobee?.managedObjectContext == nil {
-            MoobeezManager.shared.addMoobee(moobee!)
-        }
-        else {
-           MoobeezManager.shared.removeMoobee(moobee!)
-        }
-        
-        addRemoveButton.setImage(moobee?.managedObjectContext != nil ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
+        moobee?.moobeeType = MoobeeType.new
+        NotificationCenter.default.post(name: .MoobeezDidChangeNotification, object: moobee?.tmdbId)
+        reloadMoobee()
     }
 
     @IBAction func closeToolboxButtonPressed(_ sender: Any) {

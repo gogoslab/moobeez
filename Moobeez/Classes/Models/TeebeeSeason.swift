@@ -27,7 +27,6 @@ extension TeebeeSeason {
         
         episode.number = number
         episode.season = self
-        episode.teebee = teebee
         episode.watched = false
         
         if teebee?.tmdbId != nil {
@@ -59,7 +58,7 @@ extension TeebeeSeason {
                 return 0
             }
             
-            return (episodes?.filtered(using: NSPredicate(format: "watched == 1")).count)!
+            return (episodes?.array as! [TeebeeEpisode]).filter { $0.watched == true && $0.releaseDate?.timeIntervalSince1970 ?? 0 > 100 }.count
         }
     }
 
@@ -70,7 +69,7 @@ extension TeebeeSeason {
                 return 0
             }
             
-            return (episodes?.filtered(using: NSPredicate(format: "watched == 0")).count)!
+            return (episodes?.array as! [TeebeeEpisode]).filter { $0.watched == false && $0.releaseDate?.timeIntervalSince1970 ?? 0 > 100 }.count
         }
     }
     
