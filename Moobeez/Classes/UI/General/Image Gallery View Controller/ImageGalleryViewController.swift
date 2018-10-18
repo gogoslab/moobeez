@@ -17,6 +17,8 @@ class ImageGalleryViewController: MBViewController {
     @IBOutlet var collectionView: UICollectionView!
     public var images:[TmdbImage]?
     
+    @IBOutlet weak var transitionImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +30,27 @@ class ImageGalleryViewController: MBViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        let currentPage = Int(collectionView.contentOffset.x / collectionView.frame.width)
+
+        if let image = images?[currentPage] {
+            transitionImageView.isHidden = false
+            transitionImageView.loadTmdbImage(image: image)
+            collectionView.isHidden = true
+        }
+        
+        guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else {
+            return
+        }
+        flowLayout.invalidateLayout()
+        
+        coordinator.animate(alongsideTransition: { (_) in
+        }) { (_) in
+            self.collectionView.contentOffset.x = CGFloat(currentPage) * self.collectionView.frame.width
+            self.transitionImageView.isHidden = true
+            self.collectionView.isHidden = false
+        }
+    }
 }
 
 extension ImageGalleryViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

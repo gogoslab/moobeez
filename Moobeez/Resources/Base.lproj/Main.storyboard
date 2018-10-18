@@ -972,16 +972,16 @@ dasd</string>
                                                                         </constraints>
                                                                     </imageView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DCL-xd-3Qc">
-                                                                        <rect key="frame" x="60" y="5" width="260" height="70"/>
+                                                                        <rect key="frame" x="60" y="5" width="256" height="70"/>
                                                                         <subviews>
                                                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eij-On-ZNa">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="260" height="52"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="256" height="52"/>
                                                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zxe-Cm-vET">
-                                                                                <rect key="frame" x="0.0" y="52" width="260" height="18"/>
+                                                                                <rect key="frame" x="0.0" y="52" width="256" height="18"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="18" id="Sdy-Qh-psp"/>
                                                                                 </constraints>
@@ -992,7 +992,7 @@ dasd</string>
                                                                         </subviews>
                                                                     </stackView>
                                                                     <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RQQ-kT-7DR">
-                                                                        <rect key="frame" x="50" y="78" width="235" height="1"/>
+                                                                        <rect key="frame" x="50" y="78" width="231" height="1"/>
                                                                         <color key="backgroundColor" red="0.33333334329999997" green="0.33333334329999997" blue="0.33333334329999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="1" id="r96-zp-yk3"/>
@@ -2393,6 +2393,10 @@ dasd</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="run-AJ-XtN">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uTb-fr-s1A">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2444,19 +2448,24 @@ dasd</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="a8i-yC-C1n" firstAttribute="top" secondItem="xVL-vX-e2v" secondAttribute="top" constant="20" id="4LH-YM-9VZ"/>
                             <constraint firstItem="a8i-yC-C1n" firstAttribute="leading" secondItem="NO8-pK-N6p" secondAttribute="leading" constant="10" id="7pD-jA-4XZ"/>
                             <constraint firstItem="uTb-fr-s1A" firstAttribute="top" secondItem="xVL-vX-e2v" secondAttribute="top" id="BeB-aK-rzm"/>
-                            <constraint firstItem="uTb-fr-s1A" firstAttribute="trailing" secondItem="NO8-pK-N6p" secondAttribute="trailing" id="c0L-Pf-0qn"/>
+                            <constraint firstItem="run-AJ-XtN" firstAttribute="top" secondItem="uTb-fr-s1A" secondAttribute="top" id="MTY-8L-XN2"/>
+                            <constraint firstItem="run-AJ-XtN" firstAttribute="bottom" secondItem="uTb-fr-s1A" secondAttribute="bottom" id="NkX-6h-z5V"/>
+                            <constraint firstItem="uTb-fr-s1A" firstAttribute="trailing" secondItem="xVL-vX-e2v" secondAttribute="trailing" id="c0L-Pf-0qn"/>
+                            <constraint firstItem="run-AJ-XtN" firstAttribute="leading" secondItem="uTb-fr-s1A" secondAttribute="leading" id="can-UY-NWL"/>
+                            <constraint firstItem="run-AJ-XtN" firstAttribute="trailing" secondItem="uTb-fr-s1A" secondAttribute="trailing" id="cqA-ih-tgp"/>
                             <constraint firstItem="uTb-fr-s1A" firstAttribute="bottom" secondItem="xVL-vX-e2v" secondAttribute="bottom" id="qpt-XW-FzE"/>
-                            <constraint firstItem="uTb-fr-s1A" firstAttribute="leading" secondItem="NO8-pK-N6p" secondAttribute="leading" id="xG9-j7-GAe"/>
+                            <constraint firstItem="uTb-fr-s1A" firstAttribute="leading" secondItem="xVL-vX-e2v" secondAttribute="leading" id="xG9-j7-GAe"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NO8-pK-N6p"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="uTb-fr-s1A" id="82K-bk-8FW"/>
+                        <outlet property="transitionImageView" destination="run-AJ-XtN" id="cwn-aJ-UQS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uRI-UZ-fcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
