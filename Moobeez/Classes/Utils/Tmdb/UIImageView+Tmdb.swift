@@ -53,7 +53,8 @@ extension UIImageView {
     }
     
     func loadImageWithUrl(url:URL, placeholder:UIImage? = nil, completion: ((Bool) -> Swift.Void)? = nil) {
-        sd_setImage(with: url, placeholderImage: placeholder, options: []) { (image, error, cacheType, url) in
+        
+        sd_setImageWithPreviousCachedImage(with: url, placeholderImage: placeholder, options: [], progress: nil) { (image, error, cacheType, url) in
             if completion != nil {
                 completion!(error == nil)
             }

@@ -112,7 +112,7 @@ class PersonDetailsViewController: MBViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.33) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             
             if self.contentView.isHidden {
                 self.contentView.isHidden = false

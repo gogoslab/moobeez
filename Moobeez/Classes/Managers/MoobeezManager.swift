@@ -376,7 +376,7 @@ extension MoobeezManager {
         }
         
         let episodesFetchRequest = NSFetchRequest<TeebeeEpisode> (entityName: "TeebeeEpisode")
-        episodesFetchRequest.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: true)]
+        episodesFetchRequest.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: true), NSSortDescriptor(key: "number", ascending: true)]
         episodesFetchRequest.predicate = NSPredicate(format: "watched == 0 AND releaseDate < %@", today as CVarArg)
         
         do {

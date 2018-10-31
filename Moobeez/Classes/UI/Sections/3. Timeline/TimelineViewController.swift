@@ -29,6 +29,15 @@ class TimelineViewController: MBViewController {
         
         loadItems()
         
+        NotificationCenter.default.addObserver(forName: .TeebeezDidChangeNotification, object: nil, queue: nil) { (_) in
+            self.tableView.reloadData()
+            self.scrollToFirstItem()
+        }
+        NotificationCenter.default.addObserver(forName: .MoobeezDidChangeNotification, object: nil, queue: nil) { (_) in
+            self.tableView.reloadData()
+            self.scrollToFirstItem()
+        }
+
         tableView.reloadData()
         
     }
@@ -65,7 +74,7 @@ class TimelineViewController: MBViewController {
             }
         }
         else {
-            tableView.scrollToRow(at: IndexPath(row:items!.last!.1.count - 1, section: items!.count - 1), at: UITableView.ScrollPosition.middle , animated: false)
+            tableView.scrollToRow(at: IndexPath(row:0, section: items!.count - 1), at: UITableView.ScrollPosition.bottom , animated: false)
         }
     }
     

@@ -14,6 +14,7 @@ class MBViewController: UIViewController {
 
     var statusBarStyle: UIStatusBarStyle = .default {
         didSet {
+            UIApplication.shared.statusBarStyle = statusBarStyle
             setNeedsStatusBarAppearanceUpdate()
         }
     }
@@ -42,22 +43,24 @@ class MBViewController: UIViewController {
         
         viewController.presenting = self
         
-        let summaryView:UIView? = summaryViewForViewController(viewController)
         
-        guard summaryView != nil else {
+        
+        guard let summaryView:UIView = summaryViewForViewController(viewController) else {
             viewController.didMove(toParent: self)
             return;
         }
         
-        viewController.view.center = (self.view.window?.convert((summaryView?.center)!, from: summaryView?.superview))!
+        viewController.view.center = (self.view.window?.convert(summaryView.center, from: summaryView.superview))!
         
-        viewController.view.transform = CGAffineTransform.init(scaleX: (summaryView?.frame.size.width)! / windowBounds.size.width,
-                                                               y: (summaryView?.frame.size.height)! / windowBounds.size.height)
+        viewController.view.bounds = summaryView.bounds
         
-        UIView.animate(withDuration: 0.3, animations: {
+        viewController.view.layoutIfNeeded()
+        
+        UIView.animate(withDuration: 0.5, animations: {
             
             viewController.view.center = CGPoint.init(x: windowBounds.size.width / 2, y: windowBounds.size.height / 2)
-            viewController.view.transform = CGAffineTransform.identity
+            viewController.view.frame = windowBounds
+            viewController.view.layoutIfNeeded()
             
         }, completion: { (_) in
             viewController.didMove(toParent: self)
@@ -74,9 +77,7 @@ class MBViewController: UIViewController {
             return
         }
         
-        let summaryView:UIView? = presenting!.summaryViewForViewController(self)
-        
-        guard summaryView != nil else {
+        guard let summaryView:UIView = presenting!.summaryViewForViewController(self) else {
             presenting!.viewWillAppear(false)
             didMove(toParent: nil)
             removeFromParent()
@@ -87,15 +88,17 @@ class MBViewController: UIViewController {
         
         presenting!.viewWillAppear(true)
         
-        let windowBounds:CGRect = ((MBSideMenuController.instance?.view)!.bounds)
-        
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.5, animations: {
             
-            self.view.center = (self.view.window?.convert((summaryView?.center)!, from: summaryView?.superview))!
+            self.view.center = self.view.window?.convert(summaryView.center, from: summaryView.superview) ?? .zero
             
-            self.view.transform = CGAffineTransform.init(scaleX: (summaryView?.frame.size.width)! / windowBounds.size.width,
-                                                                   y: (summaryView?.frame.size.height)! / windowBounds.size.height)
+            self.view.bounds = summaryView.bounds
             
+            self.view.cornerRadius = summaryView.cornerRadius
+            
+            self.view.clipsToBounds = summaryView.clipsToBounds
+            
+            self.view.layoutIfNeeded()
             
         }, completion: { (_) in
             self.didMove(toParent: nil)

@@ -233,7 +233,7 @@ class MoobeeDetailsViewController: MBViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.33) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if self.contentView.isHidden {
                 self.contentView.isHidden = false
                 self.toolboxView.showFullToolbox()
@@ -326,7 +326,7 @@ class MoobeeDetailsViewController: MBViewController {
     @IBAction func backButtonPressed(_ sender: UIButton) {
         MoobeezManager.shared.save()
         NotificationCenter.default.post(name: .BeeDidChangeNotification, object: moobee?.tmdbId)
-        contentView.isHidden = true
+        contentView.removeFromSuperview()
         hideDetailsViewController()
     }
     

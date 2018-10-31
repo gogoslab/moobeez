@@ -611,7 +611,6 @@
 				64445C831F5A215D007EB5A8 /* Frameworks */,
 				64445C841F5A215D007EB5A8 /* Resources */,
 				C03DD3EFC5BF073CB38F09C7 /* [CP] Embed Pods Frameworks */,
-				664E9D4A0113D82700CC5A19 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -678,21 +677,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		664E9D4A0113D82700CC5A19 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Moobeez/Pods-Moobeez-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C03DD3EFC5BF073CB38F09C7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

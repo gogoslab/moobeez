@@ -10,4 +10,5 @@ target 'Moobeez' do
   platform :ios, '8.0'
   pod 'SDWebImage', '~> 4.0'
   pod 'youtube-ios-player-helper', '~> 0.1.4'
+  
 end

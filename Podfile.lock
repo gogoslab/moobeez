@@ -8,10 +8,15 @@ DEPENDENCIES:
   - SDWebImage (~> 4.0)
   - youtube-ios-player-helper (~> 0.1.4)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - SDWebImage
+    - youtube-ios-player-helper
+
 SPEC CHECKSUMS:
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
   youtube-ios-player-helper: 21ab92db027c7ff86cb17a3843a3f6eafc8158d2
 
-PODFILE CHECKSUM: 9be89e65dde2ac05b9bcd9bd1419b0bd042983d6
+PODFILE CHECKSUM: bfce4d5fe6c5adcc3751fe0dd40e0db351e72d2e
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3

@@ -8,6 +8,7 @@
 
 import UIKit
 import UserNotifications
+import SDWebImage
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {

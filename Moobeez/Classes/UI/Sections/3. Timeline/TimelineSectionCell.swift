@@ -106,11 +106,18 @@ class TimelineItemCell : UITableViewCell {
                 starsView?.isHidden = true
             }
             
-            watchedButton?.isHidden = item!.date!.timeIntervalSinceNow > 0 || item!.watched!
+            let today = Calendar.current.startOfDay(for: Date(timeIntervalSinceNow: (SettingsManager.shared.addExtraDay ? -24 * 3600 : 0)))
+            
+            watchedButton?.isHidden = item!.date!.timeIntervalSince(today) > 0 || item!.watched!
         }
     }
 
     @IBAction func watchedButtonPressed(_ sender: Any) {
+        item?.teebeeEpisode?.watched = true
+        MoobeezManager.shared.save()
+        
+        NotificationCenter.default.post(name: .TeebeeSeasonDidChangeNotification , object: item?.teebeeEpisode?.season)
+        NotificationCenter.default.post(name: .TeebeezDidChangeNotification , object: nil)
     }
 }
 
