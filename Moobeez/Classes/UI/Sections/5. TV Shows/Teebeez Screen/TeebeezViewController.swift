@@ -38,7 +38,7 @@ class TeebeezViewController: MBViewController {
         
         addTitleLogo()
         
-        let context = MoobeezManager.shared.persistentContainer.viewContext;
+        let context = MoobeezManager.shared.moobeezDatabase.context
         
         var fetchRequest = NSFetchRequest<NSFetchRequestResult> (entityName: "TeebeeEpisode")
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: false)]
@@ -59,7 +59,7 @@ class TeebeezViewController: MBViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let teebeezToUpdate:[Teebee] = MoobeezManager.shared.fetch(predicate: NSPredicate(format: "lastUpdate < %@", NSDate(timeIntervalSinceNow:-24 * 3600)))
+        let teebeezToUpdate:[Teebee] = MoobeezManager.shared.moobeezDatabase.fetch(predicate: NSPredicate(format: "lastUpdate < %@", NSDate(timeIntervalSinceNow:-24 * 3600)))
         
         updateTeebeez(teebeezToUpdate)
     }
@@ -244,7 +244,7 @@ extension TeebeezViewController : UICollectionViewDelegate, UICollectionViewData
             let dictionary = rowInfo as! Dictionary<String, Any>
             
             do {
-                let teebee:Teebee? = try MoobeezManager.coreDataContex!.existingObject(with: dictionary["season.teebee"]! as! NSManagedObjectID) as? Teebee
+                let teebee:Teebee? = try MoobeezManager.shared.moobeezDatabase.context.existingObject(with: dictionary["season.teebee"]! as! NSManagedObjectID) as? Teebee
                 cell.bee = teebee
                 if dictionary["count"] != nil {
                     cell.notifications = dictionary["count"] as! Int16

@@ -26,7 +26,7 @@ class MoobeezViewController: MBViewController {
         
         addTitleLogo()
         
-        let context = MoobeezManager.shared.persistentContainer.viewContext;
+        let context = MoobeezManager.shared.moobeezDatabase.context
         let fetchRequest = NSFetchRequest<Moobee> (entityName: "Moobee")
 
         fetchRequest.predicate = NSPredicate(format: "type == %ld", MoobeeType.seen.rawValue)

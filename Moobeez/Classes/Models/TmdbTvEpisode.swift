@@ -23,7 +23,7 @@ extension TmdbTvEpisode {
         }
         
         if episode == nil {
-            episode = TmdbTvEpisode.init(entity: NSEntityDescription.entity(forEntityName: "TmdbTvEpisode", in: MoobeezManager.tempDataContex!)!, insertInto: insert ? MoobeezManager.tempDataContex : nil)
+            episode = TmdbTvEpisode.init(entity: NSEntityDescription.entity(forEntityName: "TmdbTvEpisode", in: MoobeezManager.shared.tmdbDatabase.context)!, insertInto: insert ? MoobeezManager.shared.tmdbDatabase.context : nil)
         }
         
         episode!.addEntriesFrom(tmdbDictionary: tmdbDictionary)
@@ -41,7 +41,7 @@ extension TmdbTvEpisode {
             return nil
         }
         
-        let episode = MoobeezManager.tempDataContex!.object(with: (MoobeezManager.tempDataContex!.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbTvEpisode
+        let episode = MoobeezManager.shared.tmdbDatabase.context.object(with: (MoobeezManager.shared.tmdbDatabase.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbTvEpisode
         
         return episode
         
@@ -52,7 +52,7 @@ extension TmdbTvEpisode {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TmdbTvSeason")
         
         do {
-            let fetchedItems:[TmdbTvEpisode] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbTvEpisode]
+            let fetchedItems:[TmdbTvEpisode] = try MoobeezManager.shared.tmdbDatabase.context.fetch(fetchRequest) as! [TmdbTvEpisode]
             
             for item in fetchedItems {
                 links[item.tmdbId] = item.objectID.uriRepresentation()
@@ -69,7 +69,7 @@ extension TmdbTvEpisode {
         fetchRequest.predicate = NSPredicate(format: "tmdbId == %ld", tmdbId)
         
         do {
-            let fetchedItems:[TmdbTvEpisode] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbTvEpisode]
+            let fetchedItems:[TmdbTvEpisode] = try MoobeezManager.shared.tmdbDatabase.context.fetch(fetchRequest) as! [TmdbTvEpisode]
             
             if fetchedItems.count > 0 {
                 return fetchedItems[0]

@@ -23,7 +23,7 @@ extension TmdbCharacter {
         }
         
         if character == nil {
-            character = TmdbCharacter.init(entity: NSEntityDescription.entity(forEntityName: "TmdbCharacter", in: MoobeezManager.tempDataContex!)!, insertInto: insert ? MoobeezManager.tempDataContex : nil)
+            character = TmdbCharacter.init(entity: NSEntityDescription.entity(forEntityName: "TmdbCharacter", in: MoobeezManager.shared.tmdbDatabase.context)!, insertInto: insert ? MoobeezManager.shared.tmdbDatabase.context : nil)
         }
         
         character!.addEntriesFrom(tmdbDictionary: tmdbDictionary)
@@ -41,7 +41,7 @@ extension TmdbCharacter {
             return nil
         }
         
-        let character = MoobeezManager.tempDataContex!.object(with: (MoobeezManager.tempDataContex!.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbCharacter
+        let character = MoobeezManager.shared.tmdbDatabase.context.object(with: (MoobeezManager.shared.tmdbDatabase.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbCharacter
         
         return character
     }
@@ -51,7 +51,7 @@ extension TmdbCharacter {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TmdbCharacter")
         
         do {
-            let fetchedItems:[TmdbCharacter] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbCharacter]
+            let fetchedItems:[TmdbCharacter] = try MoobeezManager.shared.tmdbDatabase.context.fetch(fetchRequest) as! [TmdbCharacter]
             
             for item in fetchedItems {
                 if item.characterId != nil {
@@ -70,7 +70,7 @@ extension TmdbCharacter {
         fetchRequest.predicate = NSPredicate(format: "characterId == %@", tmdbId)
         
         do {
-            let fetchedItems:[TmdbCharacter] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbCharacter]
+            let fetchedItems:[TmdbCharacter] = try MoobeezManager.shared.tmdbDatabase.context.fetch(fetchRequest) as! [TmdbCharacter]
             
             if fetchedItems.count > 0 {
                 return fetchedItems[0]

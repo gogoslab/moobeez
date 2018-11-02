@@ -14,19 +14,23 @@ class MoobeezManager: NSObject {
 
     static let shared:MoobeezManager = MoobeezManager()
     
+    var moobeezDatabase = Database(databaseName: "Moobeez")
+    var tmdbDatabase = Database(databaseName: "Tmdb")
+    
     private override init() {
         super.init()
     }
     
     func loadFromSqlIfNeeded () -> Bool {
         
-        if UserDefaults.standard.bool(forKey: "didTransferSqlDatabase") {
-            return false
-        }
+        #if MAIN
+//        if UserDefaults.standard.bool(forKey: "didTransferSqlDatabase") {
+//            return false
+//        }
         
-        deleteTable(name: "Moobee")
-        deleteTable(name: "Teebee")
-        deleteTable(name: "TeebeeEpisode")
+        moobeezDatabase.deleteTable(name: "Moobee")
+        moobeezDatabase.deleteTable(name: "Teebee")
+        moobeezDatabase.deleteTable(name: "TeebeeEpisode")
 
         let db = SQLiteDB.shared
         
@@ -40,7 +44,7 @@ class MoobeezManager: NSObject {
             
             for row in moobeez {
                 
-                let moobee:Moobee = NSEntityDescription.insertNewObject(forEntityName: "Moobee", into: persistentContainer.viewContext) as! Moobee
+                let moobee:Moobee = NSEntityDescription.insertNewObject(forEntityName: "Moobee", into: moobeezDatabase.context) as! Moobee
                 
                 moobee.name = row["name"] as? String
                 moobee.rating = (row["rating"] as! NSNumber).floatValue
@@ -59,7 +63,7 @@ class MoobeezManager: NSObject {
             
             for row in teebeez {
                 
-                let teebee:Teebee = NSEntityDescription.insertNewObject(forEntityName: "Teebee", into: persistentContainer.viewContext) as! Teebee
+                let teebee:Teebee = NSEntityDescription.insertNewObject(forEntityName: "Teebee", into: moobeezDatabase.context) as! Teebee
                 
                 teebee.name = row["name"] as? String
                 teebee.rating = (row["rating"] as! NSNumber).floatValue
@@ -92,10 +96,13 @@ class MoobeezManager: NSObject {
         UserDefaults.standard.synchronize()
 
         return true
+        #else
+        return false
+        #endif
     }
     
     public func save () {
-        saveContext()
+        moobeezDatabase.saveContext()
     }
     
     public func load () {
@@ -109,130 +116,23 @@ class MoobeezManager: NSObject {
         TmdbTvShow.updateLinks()
         
         NotificationCenter.default.addObserver(forName: .TeebeezDidChangeNotification, object: nil, queue: nil) { (_) in
+            #if MAIN
             UIApplication.shared.applicationIconBadgeNumber = self.showsNotWatched
+            #endif
         }
-    }
-    
-    // MARK: - Core Data stack
-    
-    lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-         */
-        
-        let container = NSPersistentContainer(name: "Moobeez")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
-    lazy var tempContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-         */
-        
-        let container = NSPersistentContainer(name: "Tmdb")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-    
-    // MARK: - Core Data Saving support
-    
-    private func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
-    }
-    
-    static var coreDataContex:NSManagedObjectContext? {
-        get {
-            return MoobeezManager.shared.persistentContainer.viewContext
-        }
-    }
-    
-    static var tempDataContex:NSManagedObjectContext? {
-        get {
-            return MoobeezManager.shared.tempContainer.viewContext
-        }
-    }
-    
-    public func fetch<T : NSManagedObject>(predicate:NSPredicate? = nil, sort sortDescriptors:[NSSortDescriptor]? = nil) -> [T] {
-        
-        let className = String(describing: T.self)
-        
-        let fetchRequest = NSFetchRequest<T> (entityName: className)
-        
-        fetchRequest.predicate = predicate
-        
-        fetchRequest.sortDescriptors = sortDescriptors
-        
-        do {
-            let result = try MoobeezManager.coreDataContex?.fetch(fetchRequest)
-            
-            return result ?? [T]()
-        }
-        catch let error {
-           print("Get offline \(String(describing: T.self)): \(error)")
-        }
-        
-        return [T]()
-        
     }
     
     // MARK: - Delete temp data
     
     func deleteTempData () {
         
-        let moobeez:[Moobee] = fetch(predicate: NSPredicate(format: "type == %ld", MoobeeType.new.rawValue))
+        let moobeez:[Moobee] = moobeezDatabase.fetch(predicate: NSPredicate(format: "type == %ld", MoobeeType.new.rawValue))
         
         for moobee in moobeez {
             moobee.managedObjectContext?.delete(moobee)
         }
         
-        let teebeez:[Teebee] = fetch(predicate: NSPredicate(format: "temporary == true"))
+        let teebeez:[Teebee] = moobeezDatabase.fetch(predicate: NSPredicate(format: "temporary == true"))
         
         for teebee in teebeez {
             teebee.managedObjectContext?.delete(teebee)
@@ -250,31 +150,13 @@ class MoobeezManager: NSObject {
 
         save()
     }
-    
-    private func deleteTable(name:String, predicate:NSPredicate? = nil)
-    {
-        // Create Fetch Request
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: name)
-        fetchRequest.predicate = predicate
-        
-        // Create Batch Delete Request
-        let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-        
-        do {
-            try persistentContainer.viewContext.execute(batchDeleteRequest)
-            
-        } catch let error {
-            print(error.localizedDescription)
-            // Error Handling
-        }
-    }
 }
 
 extension MoobeezManager {
     
     func addMoobee(_ moobee:Moobee) {
         if moobee.managedObjectContext == nil {
-            persistentContainer.viewContext.insert(moobee)
+            moobeezDatabase.context.insert(moobee)
             save()
             NotificationCenter.default.post(name: .MoobeezDidChangeNotification, object: moobee.tmdbId)
             NotificationCenter.default.post(name: .BeeDidChangeNotification, object: moobee.tmdbId)
@@ -283,7 +165,7 @@ extension MoobeezManager {
     
     func removeMoobee(_ moobee:Moobee) {
         if moobee.managedObjectContext != nil {
-            persistentContainer.viewContext.delete(moobee)
+            moobeezDatabase.context.delete(moobee)
             save()
             NotificationCenter.default.post(name: .MoobeezDidChangeNotification, object: moobee.tmdbId)
             NotificationCenter.default.post(name: .BeeDidChangeNotification, object: moobee.tmdbId)
@@ -292,7 +174,7 @@ extension MoobeezManager {
     
     func addTeebee(_ teebee:Teebee) {
         if teebee.managedObjectContext == nil {
-            persistentContainer.viewContext.insert(teebee)
+            moobeezDatabase.context.insert(teebee)
         }
         teebee.temporary = false
         save()
@@ -318,26 +200,17 @@ extension MoobeezManager {
         
         var items = [TimelineItem]()
         
-        let moobeez:[Moobee] = fetch(predicate: NSPredicate(format: "type == %ld OR (type == %ld AND releaseDate >= %@)", MoobeeType.seen.rawValue, MoobeeType.watchlist.rawValue, today as CVarArg),
+        let moobeez:[Moobee] = moobeezDatabase.fetch(predicate: NSPredicate(format: "type == %ld OR (type == %ld AND releaseDate >= %@)", MoobeeType.seen.rawValue, MoobeeType.watchlist.rawValue, today as CVarArg),
                                      sort:[NSSortDescriptor(key: "date", ascending: false)])
         
         for moobee in moobeez {
             items.append(TimelineItem(moobee:moobee))
         }
+
+        let episodes:[TeebeeEpisode] = moobeezDatabase.fetch(predicate: NSPredicate(format: "watched == 0 AND releaseDate >= %@", today as CVarArg), sort: [NSSortDescriptor(key: "releaseDate", ascending: true)])
         
-        let episodesFetchRequest = NSFetchRequest<TeebeeEpisode> (entityName: "TeebeeEpisode")
-        episodesFetchRequest.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: true)]
-        episodesFetchRequest.predicate = NSPredicate(format: "watched == 0 AND releaseDate >= %@", today as CVarArg)
-        
-        do {
-            let episodes = try MoobeezManager.coreDataContex!.fetch(episodesFetchRequest)
-            
-            for episode in episodes {
-                items.append(TimelineItem(episode:episode))
-            }
-        }
-        catch (_) {
-            
+        for episode in episodes {
+            items.append(TimelineItem(episode:episode))
         }
         
         let dictionary: [Date : [TimelineItem]] = Dictionary(grouping: items, by: { $0.date!})
@@ -358,38 +231,17 @@ extension MoobeezManager {
         
         var items = [TimelineItem]()
         
-        let moobeezFetchRequest = NSFetchRequest<Moobee> (entityName: "Moobee")
-        
-        moobeezFetchRequest.predicate = NSPredicate(format: "type == %ld AND releaseDate < %@", MoobeeType.watchlist.rawValue, today as CVarArg)
-        
-        moobeezFetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-        
-        do {
-            let moobeez = try MoobeezManager.coreDataContex!.fetch(moobeezFetchRequest)
-            
-            for moobee in moobeez {
-                items.append(TimelineItem(moobee:moobee))
-            }
-        }
-        catch (_) {
-            
+        let moobeez:[Moobee] = moobeezDatabase.fetch(predicate: NSPredicate(format: "type == %ld AND releaseDate < %@", MoobeeType.watchlist.rawValue, today as CVarArg), sort: [NSSortDescriptor(key: "date", ascending: false)])
+
+        for moobee in moobeez {
+            items.append(TimelineItem(moobee:moobee))
         }
         
-        let episodesFetchRequest = NSFetchRequest<TeebeeEpisode> (entityName: "TeebeeEpisode")
-        episodesFetchRequest.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: true), NSSortDescriptor(key: "number", ascending: true)]
-        episodesFetchRequest.predicate = NSPredicate(format: "watched == 0 AND releaseDate < %@", today as CVarArg)
+        let episodes:[TeebeeEpisode] = moobeezDatabase.fetch(predicate: NSPredicate(format: "watched == 0 AND releaseDate < %@", today as CVarArg), sort: [NSSortDescriptor(key: "releaseDate", ascending: true), NSSortDescriptor(key: "number", ascending: true)])
         
-        do {
-            let episodes = try MoobeezManager.coreDataContex!.fetch(episodesFetchRequest)
-            
-            for episode in episodes {
-                items.append(TimelineItem(episode:episode))
-            }
+        for episode in episodes {
+            items.append(TimelineItem(episode:episode))
         }
-        catch (_) {
-            
-        }
-        
         let dictionary: [Date : [TimelineItem]] = Dictionary(grouping: items, by: { $0.date!})
         
         var grouppedItems = dictionary.sorted(by: { $0.0 < $1.0 })
@@ -413,7 +265,7 @@ extension MoobeezManager {
         
             let predicate = NSPredicate(format: "watched == 0 AND releaseDate < %@ AND releaseDate.timeIntervalSince1970 > 100 AND season.teebee.temporary == false", argumentArray: [tommorow])
 
-            let episodes: [TeebeeEpisode] = fetch(predicate: predicate)
+            let episodes: [TeebeeEpisode] = moobeezDatabase.fetch(predicate: predicate)
             
             return episodes.count
         }
@@ -427,7 +279,7 @@ extension MoobeezManager {
             
             let predicate = NSPredicate(format: "temporary == false")
             
-            var teebeez: [Teebee] = fetch(predicate: predicate)
+            var teebeez: [Teebee] = moobeezDatabase.fetch(predicate: predicate)
             
             teebeez = teebeez.filter { $0.nextEpisode?.releaseDate != nil && ($0.nextEpisode?.releaseDate)! < tommorow && ($0.nextEpisode?.releaseDate)!.timeIntervalSince1970 > 100 }
             

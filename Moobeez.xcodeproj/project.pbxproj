@@ -40,6 +40,33 @@
 		64794D361F72A6F200488683 /* MoobeeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64794D351F72A6F200488683 /* MoobeeDetailsViewController.swift */; };
 		64794D3B1F72B33A00488683 /* EmptySegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64794D3A1F72B33A00488683 /* EmptySegue.swift */; };
 		64794D401F72BEFB00488683 /* MBShowDetailSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64794D3F1F72BEFB00488683 /* MBShowDetailSegue.swift */; };
+		64A49E90218B4E41003CE800 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A49E8F218B4E41003CE800 /* NotificationCenter.framework */; };
+		64A49E93218B4E41003CE800 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A49E92218B4E41003CE800 /* TodayViewController.swift */; };
+		64A49E96218B4E41003CE800 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64A49E94218B4E41003CE800 /* MainInterface.storyboard */; };
+		64A49E9A218B4E41003CE800 /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 64A49E8E218B4E41003CE800 /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		64A49EA0218B5253003CE800 /* TvEpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A49E9F218B5253003CE800 /* TvEpisodeCell.swift */; };
+		64A49EA1218B5321003CE800 /* Moobee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6468F86B1F73FA040023D72B /* Moobee.swift */; };
+		64A49EA2218B5321003CE800 /* Teebee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ACB0271F8B5EB700D9883D /* Teebee.swift */; };
+		64A49EA3218B5321003CE800 /* TeebeeEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A82BE01FAB5DB100268DA8 /* TeebeeEpisode.swift */; };
+		64A49EA4218B5321003CE800 /* TeebeeSeason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ACB0291F8B617600D9883D /* TeebeeSeason.swift */; };
+		64A49EA5218B5321003CE800 /* TmdbCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB2C631F83E17700B672D8 /* TmdbCharacter.swift */; };
+		64A49EA6218B5321003CE800 /* TmdbImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB2C671F84E25900B672D8 /* TmdbImage.swift */; };
+		64A49EA7218B5321003CE800 /* TmdbMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B63E2F1F66E30F00710A4E /* TmdbMovie.swift */; };
+		64A49EA8218B5321003CE800 /* TmdbPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB2C651F83E19100B672D8 /* TmdbPerson.swift */; };
+		64A49EA9218B5321003CE800 /* TmdbTvEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647451D71FC734ED0082CB4B /* TmdbTvEpisode.swift */; };
+		64A49EAA218B5321003CE800 /* TmdbTvSeason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EED1F635571003828E3 /* TmdbTvSeason.swift */; };
+		64A49EAB218B5321003CE800 /* TmdbTvShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EEB1F63529E003828E3 /* TmdbTvShow.swift */; };
+		64A49EAC218B5321003CE800 /* TimelineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F359920419D4F00C07DB1 /* TimelineItem.swift */; };
+		64A49EAD218B532C003CE800 /* UIImageView+Tmdb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EFA1F65FF34003828E3 /* UIImageView+Tmdb.swift */; };
+		64A49EAE218B5351003CE800 /* MoobeezManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EE51F633BD7003828E3 /* MoobeezManager.swift */; };
+		64A49EAF218B53DC003CE800 /* Moobeez.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64445C8B1F5A215D007EB5A8 /* Moobeez.xcdatamodeld */; };
+		64A49EB0218B5504003CE800 /* Tmdb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64ACB0241F8B5B1C00D9883D /* Tmdb.xcdatamodeld */; };
+		64A49EB2218B55F4003CE800 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A49EB1218B55F4003CE800 /* AppDelegate.swift */; };
+		64A49EB3218B561C003CE800 /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BF29301FACBEFD0056299B /* Date+Helpers.swift */; };
+		64A49EB4218B5640003CE800 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E76BA61F5A3E6E007F9727 /* Notifications.swift */; };
+		64A49EB5218B56D6003CE800 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A82BE51FAB7CD100268DA8 /* SettingsManager.swift */; };
+		64A49EBA218B63DA003CE800 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A49EB9218B63DA003CE800 /* Database.swift */; };
+		64A49EBB218B63DA003CE800 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A49EB9218B63DA003CE800 /* Database.swift */; };
 		64A82BE11FAB5DB100268DA8 /* TeebeeEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A82BE01FAB5DB100268DA8 /* TeebeeEpisode.swift */; };
 		64A82BE41FAB724600268DA8 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A82BE31FAB724600268DA8 /* HeaderView.swift */; };
 		64A82BE61FAB7CD100268DA8 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A82BE51FAB7CD100268DA8 /* SettingsManager.swift */; };
@@ -72,11 +99,38 @@
 		64ECC0411FA2229500824076 /* TeebeezViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ECC03B1FA2229400824076 /* TeebeezViewController.swift */; };
 		64ECC0421FA2229500824076 /* SearchTVsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ECC03D1FA2229400824076 /* SearchTVsViewController.swift */; };
 		AFB4C4B0C199546DDD569603 /* Pods_Moobeez.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E83B5F42BE95F8674D687FE5 /* Pods_Moobeez.framework */; };
+		FDE62C10C834908C9B061C66 /* Pods_Today.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407466ACE3E1F031CD25558D /* Pods_Today.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		64A49E98218B4E41003CE800 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64445C7E1F5A215D007EB5A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64A49E8D218B4E41003CE800;
+			remoteInfo = Today;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		64A49E9E218B4E41003CE800 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				64A49E9A218B4E41003CE800 /* Today.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3F3C25900C20806C3BCFD6BF /* Pods-Moobeez.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moobeez.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moobeez/Pods-Moobeez.release.xcconfig"; sourceTree = "<group>"; };
+		407466ACE3E1F031CD25558D /* Pods_Today.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Today.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AAD5D17A378B9F6FE0F5D84 /* Pods-Moobeez.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moobeez.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moobeez/Pods-Moobeez.debug.xcconfig"; sourceTree = "<group>"; };
+		60E6D430780AC182A19EAE1B /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		641454EB1F852DCC00569DE9 /* CastThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastThumbnailCell.swift; sourceTree = "<group>"; };
 		64339FA11F824AB2007C59CB /* ThemedItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedItems.swift; sourceTree = "<group>"; };
 		643F359720419B4B00C07DB1 /* TimelineSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineSectionCell.swift; sourceTree = "<group>"; };
@@ -112,6 +166,15 @@
 		64794D351F72A6F200488683 /* MoobeeDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoobeeDetailsViewController.swift; sourceTree = "<group>"; };
 		64794D3A1F72B33A00488683 /* EmptySegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySegue.swift; sourceTree = "<group>"; };
 		64794D3F1F72BEFB00488683 /* MBShowDetailSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MBShowDetailSegue.swift; sourceTree = "<group>"; };
+		64A49E8E218B4E41003CE800 /* Today.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Today.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		64A49E8F218B4E41003CE800 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		64A49E92218B4E41003CE800 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		64A49E95218B4E41003CE800 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		64A49E97218B4E41003CE800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64A49E9F218B5253003CE800 /* TvEpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TvEpisodeCell.swift; sourceTree = "<group>"; };
+		64A49EB1218B55F4003CE800 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		64A49EB8218B5D9E003CE800 /* Today.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Today.entitlements; sourceTree = "<group>"; };
+		64A49EB9218B63DA003CE800 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		64A82BE01FAB5DB100268DA8 /* TeebeeEpisode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeebeeEpisode.swift; sourceTree = "<group>"; };
 		64A82BE31FAB724600268DA8 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		64A82BE51FAB7CD100268DA8 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
@@ -146,6 +209,7 @@
 		64ECC03B1FA2229400824076 /* TeebeezViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeebeezViewController.swift; sourceTree = "<group>"; };
 		64ECC03D1FA2229400824076 /* SearchTVsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTVsViewController.swift; sourceTree = "<group>"; };
 		E83B5F42BE95F8674D687FE5 /* Pods_Moobeez.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moobeez.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7881A08BD6992FA4BCDE5C7 /* Pods-Today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.release.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +220,15 @@
 				64CAAE471F62EA84008FEF01 /* libsqlite3.tbd in Frameworks */,
 				64CAAE481F62EA84008FEF01 /* libsqlite3.0.tbd in Frameworks */,
 				AFB4C4B0C199546DDD569603 /* Pods_Moobeez.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64A49E8B218B4E41003CE800 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64A49E90218B4E41003CE800 /* NotificationCenter.framework in Frameworks */,
+				FDE62C10C834908C9B061C66 /* Pods_Today.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				64445C881F5A215D007EB5A8 /* Moobeez */,
+				64A49E91218B4E41003CE800 /* Today */,
 				64445C871F5A215D007EB5A8 /* Products */,
 				CE8162FEE8A8060B74E33617 /* Pods */,
 				E985BF051946DF91780C689B /* Frameworks */,
@@ -195,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				64445C861F5A215D007EB5A8 /* Moobeez.app */,
+				64A49E8E218B4E41003CE800 /* Today.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -438,6 +513,19 @@
 			path = Segues;
 			sourceTree = "<group>";
 		};
+		64A49E91218B4E41003CE800 /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				64A49EB8218B5D9E003CE800 /* Today.entitlements */,
+				64A49E92218B4E41003CE800 /* TodayViewController.swift */,
+				64A49E94218B4E41003CE800 /* MainInterface.storyboard */,
+				64A49E97218B4E41003CE800 /* Info.plist */,
+				64A49E9F218B5253003CE800 /* TvEpisodeCell.swift */,
+				64A49EB1218B55F4003CE800 /* AppDelegate.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
 		64A82BE21FAB722E00268DA8 /* Header View */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,6 +631,7 @@
 				64BF292F1FACBEB60056299B /* Extensions */,
 				64527EFC1F65FF3E003828E3 /* Tmdb */,
 				64527EF21F65DF88003828E3 /* UI */,
+				64A49EB9218B63DA003CE800 /* Database.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -585,6 +674,8 @@
 			children = (
 				5AAD5D17A378B9F6FE0F5D84 /* Pods-Moobeez.debug.xcconfig */,
 				3F3C25900C20806C3BCFD6BF /* Pods-Moobeez.release.xcconfig */,
+				60E6D430780AC182A19EAE1B /* Pods-Today.debug.xcconfig */,
+				F7881A08BD6992FA4BCDE5C7 /* Pods-Today.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -595,6 +686,8 @@
 				64CAAE461F62EA84008FEF01 /* libsqlite3.0.tbd */,
 				64CAAE451F62EA84008FEF01 /* libsqlite3.tbd */,
 				E83B5F42BE95F8674D687FE5 /* Pods_Moobeez.framework */,
+				64A49E8F218B4E41003CE800 /* NotificationCenter.framework */,
+				407466ACE3E1F031CD25558D /* Pods_Today.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -611,15 +704,35 @@
 				64445C831F5A215D007EB5A8 /* Frameworks */,
 				64445C841F5A215D007EB5A8 /* Resources */,
 				C03DD3EFC5BF073CB38F09C7 /* [CP] Embed Pods Frameworks */,
+				64A49E9E218B4E41003CE800 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				64A49E99218B4E41003CE800 /* PBXTargetDependency */,
 			);
 			name = Moobeez;
 			productName = Moobeez;
 			productReference = 64445C861F5A215D007EB5A8 /* Moobeez.app */;
 			productType = "com.apple.product-type.application";
+		};
+		64A49E8D218B4E41003CE800 /* Today */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64A49E9B218B4E41003CE800 /* Build configuration list for PBXNativeTarget "Today" */;
+			buildPhases = (
+				281B217001F13C4299C9F93A /* [CP] Check Pods Manifest.lock */,
+				64A49E8A218B4E41003CE800 /* Sources */,
+				64A49E8B218B4E41003CE800 /* Frameworks */,
+				64A49E8C218B4E41003CE800 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Today;
+			productName = Today;
+			productReference = 64A49E8E218B4E41003CE800 /* Today.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -627,7 +740,7 @@
 		64445C7E1F5A215D007EB5A8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0900;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = Gogolabs;
 				TargetAttributes = {
@@ -639,6 +752,15 @@
 								enabled = 1;
 							};
 							com.apple.Push = {
+								enabled = 1;
+							};
+						};
+					};
+					64A49E8D218B4E41003CE800 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
 							};
 						};
@@ -659,6 +781,7 @@
 			projectRoot = "";
 			targets = (
 				64445C851F5A215D007EB5A8 /* Moobeez */,
+				64A49E8D218B4E41003CE800 /* Today */,
 			);
 		};
 /* End PBXProject section */
@@ -674,9 +797,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		64A49E8C218B4E41003CE800 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64A49E96218B4E41003CE800 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		281B217001F13C4299C9F93A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Today-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C03DD3EFC5BF073CB38F09C7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -740,6 +889,7 @@
 				64445CA71F5A2B72007EB5A8 /* MBNavigationController.swift in Sources */,
 				64527EEC1F63529E003828E3 /* TmdbTvShow.swift in Sources */,
 				64BB2C681F84E25900B672D8 /* TmdbImage.swift in Sources */,
+				64A49EBA218B63DA003CE800 /* Database.swift in Sources */,
 				643F359820419B4B00C07DB1 /* TimelineSectionCell.swift in Sources */,
 				64445C8A1F5A215D007EB5A8 /* AppDelegate.swift in Sources */,
 				64527EE61F633BD7003828E3 /* MoobeezManager.swift in Sources */,
@@ -784,7 +934,45 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		64A49E8A218B4E41003CE800 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64A49EA7218B5321003CE800 /* TmdbMovie.swift in Sources */,
+				64A49EA5218B5321003CE800 /* TmdbCharacter.swift in Sources */,
+				64A49EB2218B55F4003CE800 /* AppDelegate.swift in Sources */,
+				64A49EAD218B532C003CE800 /* UIImageView+Tmdb.swift in Sources */,
+				64A49EAB218B5321003CE800 /* TmdbTvShow.swift in Sources */,
+				64A49EAC218B5321003CE800 /* TimelineItem.swift in Sources */,
+				64A49EA4218B5321003CE800 /* TeebeeSeason.swift in Sources */,
+				64A49EA9218B5321003CE800 /* TmdbTvEpisode.swift in Sources */,
+				64A49EA1218B5321003CE800 /* Moobee.swift in Sources */,
+				64A49EB3218B561C003CE800 /* Date+Helpers.swift in Sources */,
+				64A49EA3218B5321003CE800 /* TeebeeEpisode.swift in Sources */,
+				64A49EA6218B5321003CE800 /* TmdbImage.swift in Sources */,
+				64A49EB0218B5504003CE800 /* Tmdb.xcdatamodeld in Sources */,
+				64A49EA2218B5321003CE800 /* Teebee.swift in Sources */,
+				64A49EAE218B5351003CE800 /* MoobeezManager.swift in Sources */,
+				64A49EB4218B5640003CE800 /* Notifications.swift in Sources */,
+				64A49E93218B4E41003CE800 /* TodayViewController.swift in Sources */,
+				64A49EA0218B5253003CE800 /* TvEpisodeCell.swift in Sources */,
+				64A49EA8218B5321003CE800 /* TmdbPerson.swift in Sources */,
+				64A49EAF218B53DC003CE800 /* Moobeez.xcdatamodeld in Sources */,
+				64A49EB5218B56D6003CE800 /* SettingsManager.swift in Sources */,
+				64A49EAA218B5321003CE800 /* TmdbTvSeason.swift in Sources */,
+				64A49EBB218B63DA003CE800 /* Database.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		64A49E99218B4E41003CE800 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64A49E8D218B4E41003CE800 /* Today */;
+			targetProxy = 64A49E98218B4E41003CE800 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		64445C921F5A215D007EB5A8 /* Main.storyboard */ = {
@@ -801,6 +989,14 @@
 				64445C981F5A215D007EB5A8 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		64A49E94218B4E41003CE800 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64A49E95218B4E41003CE800 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -921,11 +1117,18 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5AAD5D17A378B9F6FE0F5D84 /* Pods-Moobeez.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Moobeez/Moobeez.entitlements;
 				DEVELOPMENT_TEAM = Z4252ZWMEJ;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"MAIN=1",
+				);
 				INFOPLIST_FILE = Moobeez/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D MAIN";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Moobeez/Bridging-Header.h";
@@ -938,14 +1141,64 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3F3C25900C20806C3BCFD6BF /* Pods-Moobeez.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Moobeez/Moobeez.entitlements;
 				DEVELOPMENT_TEAM = Z4252ZWMEJ;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"COCOAPODS=1",
+					"MAIN=1",
+				);
 				INFOPLIST_FILE = Moobeez/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "-D MAIN";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Moobeez/Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		64A49E9C218B4E41003CE800 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 60E6D430780AC182A19EAE1B /* Pods-Today.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z4252ZWMEJ;
+				INFOPLIST_FILE = Today/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift.Today";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		64A49E9D218B4E41003CE800 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7881A08BD6992FA4BCDE5C7 /* Pods-Today.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z4252ZWMEJ;
+				INFOPLIST_FILE = Today/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift.Today";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -968,6 +1221,15 @@
 			buildConfigurations = (
 				64445C9E1F5A215D007EB5A8 /* Debug */,
 				64445C9F1F5A215D007EB5A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64A49E9B218B4E41003CE800 /* Build configuration list for PBXNativeTarget "Today" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64A49E9C218B4E41003CE800 /* Debug */,
+				64A49E9D218B4E41003CE800 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

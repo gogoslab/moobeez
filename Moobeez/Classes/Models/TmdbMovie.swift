@@ -29,7 +29,7 @@ extension TmdbMovie {
         }
         
         if movie == nil {
-            movie = TmdbMovie.init(entity: NSEntityDescription.entity(forEntityName: "TmdbMovie", in: MoobeezManager.tempDataContex!)!, insertInto: insert ? MoobeezManager.tempDataContex : nil)
+            movie = TmdbMovie.init(entity: NSEntityDescription.entity(forEntityName: "TmdbMovie", in: MoobeezManager.shared.tmdbDatabase.context)!, insertInto: insert ? MoobeezManager.shared.tmdbDatabase.context : nil)
         }
         
         movie!.addEntriesFrom(tmdbDictionary: tmdbDictionary)
@@ -47,7 +47,7 @@ extension TmdbMovie {
             return nil
         }
         
-        let movie = MoobeezManager.tempDataContex!.object(with: (MoobeezManager.tempDataContex!.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbMovie
+        let movie = MoobeezManager.shared.tmdbDatabase.context.object(with: (MoobeezManager.shared.tmdbDatabase.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbMovie
         
         return movie
         
@@ -58,7 +58,7 @@ extension TmdbMovie {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TmdbMovie")
         
         do {
-            let fetchedItems:[TmdbMovie] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbMovie]
+            let fetchedItems:[TmdbMovie] = try MoobeezManager.shared.tmdbDatabase.context.fetch(fetchRequest) as! [TmdbMovie]
             
             for item in fetchedItems {
                 links[item.tmdbId] = item.objectID.uriRepresentation()
@@ -75,7 +75,7 @@ extension TmdbMovie {
         fetchRequest.predicate = NSPredicate(format: "tmdbId == %ld", tmdbId)
         
         do {
-            let fetchedItems:[TmdbMovie] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbMovie]
+            let fetchedItems:[TmdbMovie] = try MoobeezManager.shared.tmdbDatabase.context.fetch(fetchRequest) as! [TmdbMovie]
             
             if fetchedItems.count > 0 {
                 return fetchedItems[0]
@@ -249,9 +249,11 @@ extension TmdbMovie {
             
             var url:URL = URL(string: "imdb:///title/\((imdbId)!)/")!
             
+            #if MAIN
             if UIApplication.shared.canOpenURL(url) == false {
                 url = URL(string: "http://m.imdb.com/title/\((imdbId)!)/")!
             }
+            #endif
             
             return url
         }

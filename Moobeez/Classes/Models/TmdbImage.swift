@@ -23,7 +23,7 @@ extension TmdbImage {
         }
         
         if image == nil {
-            image = TmdbImage.init(entity: NSEntityDescription.entity(forEntityName: "TmdbImage", in: MoobeezManager.tempDataContex!)!, insertInto: insert ? MoobeezManager.tempDataContex : nil)
+            image = TmdbImage.init(entity: NSEntityDescription.entity(forEntityName: "TmdbImage", in: MoobeezManager.shared.tmdbDatabase.context)!, insertInto: insert ? MoobeezManager.shared.tmdbDatabase.context : nil)
         }
         
         image!.addEntriesFrom(tmdbDictionary: tmdbDictionary)
@@ -39,7 +39,7 @@ extension TmdbImage {
             return nil
         }
         
-        let image = MoobeezManager.tempDataContex!.object(with: (MoobeezManager.tempDataContex!.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[path]!))!) as! TmdbImage
+        let image = MoobeezManager.shared.tmdbDatabase.context.object(with: (MoobeezManager.shared.tmdbDatabase.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[path]!))!) as! TmdbImage
         
         return image
     }
@@ -50,7 +50,7 @@ extension TmdbImage {
         fetchRequest.predicate = NSPredicate(format: "path == %@", path)
         
         do {
-            let fetchedItems:[TmdbImage] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbImage]
+            let fetchedItems:[TmdbImage] = try MoobeezManager.shared.tmdbDatabase.context.fetch(fetchRequest) as! [TmdbImage]
             
             if fetchedItems.count > 0 {
                 return fetchedItems[0]

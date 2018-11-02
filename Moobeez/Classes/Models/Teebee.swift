@@ -17,7 +17,7 @@ extension Teebee {
         fetchRequest.predicate = NSPredicate(format: "tmdbId == %ld", tmdbId)
         
         do {
-            let fetchedItems:[Teebee] = try MoobeezManager.coreDataContex!.fetch(fetchRequest) as! [Teebee]
+            let fetchedItems:[Teebee] = try MoobeezManager.shared.moobeezDatabase.context.fetch(fetchRequest) as! [Teebee]
             
             if fetchedItems.count > 0 {
                 return fetchedItems[0]
@@ -32,7 +32,7 @@ extension Teebee {
     
     convenience init(tmdbTvShow tvShow:TmdbTvShow) {
         
-        self.init(entity: NSEntityDescription.entity(forEntityName: "Teebee", in: MoobeezManager.coreDataContex!)!, insertInto: MoobeezManager.coreDataContex)
+        self.init(entity: NSEntityDescription.entity(forEntityName: "Teebee", in: MoobeezManager.shared.moobeezDatabase.context)!, insertInto: MoobeezManager.shared.moobeezDatabase.context)
         
         self.tmdbId = tvShow.tmdbId
         self.name = tvShow.name
@@ -80,7 +80,7 @@ extension Teebee {
             }
         }
         
-        let season:TeebeeSeason = NSManagedObject(entity: NSEntityDescription.entity(forEntityName: "TeebeeSeason", in: MoobeezManager.coreDataContex!)!, insertInto: self.managedObjectContext) as! TeebeeSeason
+        let season:TeebeeSeason = NSManagedObject(entity: NSEntityDescription.entity(forEntityName: "TeebeeSeason", in: MoobeezManager.shared.moobeezDatabase.context)!, insertInto: self.managedObjectContext) as! TeebeeSeason
         
         season.number = number
         season.teebee = self
@@ -143,7 +143,7 @@ extension Teebee {
             fetchRequest.predicate = NSPredicate(format: "watched == 0 AND season.teebee == %@ AND releaseDate != nil", self)
             
             do {
-                let fetchedItems:[TeebeeEpisode] = try MoobeezManager.coreDataContex!.fetch(fetchRequest) as! [TeebeeEpisode]
+                let fetchedItems:[TeebeeEpisode] = try MoobeezManager.shared.moobeezDatabase.context.fetch(fetchRequest) as! [TeebeeEpisode]
                 
                 if fetchedItems.count > 0 {
                     return fetchedItems[0]

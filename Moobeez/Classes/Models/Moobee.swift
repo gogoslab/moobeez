@@ -28,7 +28,7 @@ extension Moobee {
         fetchRequest.predicate = NSPredicate(format: "tmdbId == %ld", tmdbId)
         
         do {
-            let fetchedItems:[Moobee] = try MoobeezManager.coreDataContex!.fetch(fetchRequest) as! [Moobee]
+            let fetchedItems:[Moobee] = try MoobeezManager.shared.moobeezDatabase.context.fetch(fetchRequest) as! [Moobee]
             
             if fetchedItems.count > 0 {
                 return fetchedItems[0]
@@ -43,7 +43,7 @@ extension Moobee {
     
     convenience init(tmdbMovie movie:TmdbMovie) {
         
-        self.init(entity: NSEntityDescription.entity(forEntityName: "Moobee", in: MoobeezManager.coreDataContex!)!, insertInto: nil)
+        self.init(entity: NSEntityDescription.entity(forEntityName: "Moobee", in: MoobeezManager.shared.moobeezDatabase.context)!, insertInto: nil)
         
         self.name = movie.name
         self.moobeeType = .new

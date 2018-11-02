@@ -23,7 +23,7 @@ extension TeebeeSeason {
             }
         }
         
-        let episode:TeebeeEpisode = NSManagedObject(entity: NSEntityDescription.entity(forEntityName: "TeebeeEpisode", in: MoobeezManager.coreDataContex!)!, insertInto: self.managedObjectContext) as! TeebeeEpisode
+        let episode:TeebeeEpisode = NSManagedObject(entity: NSEntityDescription.entity(forEntityName: "TeebeeEpisode", in: MoobeezManager.shared.moobeezDatabase.context)!, insertInto: self.managedObjectContext) as! TeebeeEpisode
 
         episode.number = number
         episode.season = self

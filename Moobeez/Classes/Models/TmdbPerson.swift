@@ -23,7 +23,7 @@ extension TmdbPerson {
         }
         
         if person == nil {
-            person = TmdbPerson.init(entity: NSEntityDescription.entity(forEntityName: "TmdbPerson", in: MoobeezManager.tempDataContex!)!, insertInto: insert ? MoobeezManager.tempDataContex : nil)
+            person = TmdbPerson.init(entity: NSEntityDescription.entity(forEntityName: "TmdbPerson", in: MoobeezManager.shared.tmdbDatabase.context)!, insertInto: insert ? MoobeezManager.shared.tmdbDatabase.context : nil)
         }
         
         person!.addEntriesFrom(tmdbDictionary: tmdbDictionary)
@@ -41,7 +41,7 @@ extension TmdbPerson {
             return nil
         }
         
-        let person = MoobeezManager.tempDataContex!.object(with: (MoobeezManager.tempDataContex!.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbPerson
+        let person = MoobeezManager.shared.tmdbDatabase.context.object(with: (MoobeezManager.shared.tmdbDatabase.context.persistentStoreCoordinator?.managedObjectID(forURIRepresentation: links[tmdbId]!))!) as! TmdbPerson
         
         return person
     }
@@ -51,7 +51,7 @@ extension TmdbPerson {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TmdbPerson")
         
         do {
-            let fetchedItems:[TmdbPerson] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbPerson]
+            let fetchedItems:[TmdbPerson] = try MoobeezManager.shared.tmdbDatabase.context.fetch(fetchRequest) as! [TmdbPerson]
             
             for item in fetchedItems {
                 links[item.personId] = item.objectID.uriRepresentation()
@@ -68,7 +68,7 @@ extension TmdbPerson {
         fetchRequest.predicate = NSPredicate(format: "personId == %ld", tmdbId)
         
         do {
-            let fetchedItems:[TmdbPerson] = try MoobeezManager.tempDataContex!.fetch(fetchRequest) as! [TmdbPerson]
+            let fetchedItems:[TmdbPerson] = try MoobeezManager.shared.tmdbDatabase.context.fetch(fetchRequest) as! [TmdbPerson]
             
             if fetchedItems.count > 0 {
                 return fetchedItems[0]
