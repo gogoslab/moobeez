@@ -28,7 +28,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         collectionView.reloadData()
         placeholderLabel.isHidden = episodes.count > 0
         
-        self.extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+        self.extensionContext?.widgetLargestAvailableDisplayMode = episodes.count > episodesPerRow ? .expanded : .compact
     }
         
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
@@ -40,6 +40,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         collectionView.reloadData()
         placeholderLabel.isHidden = episodes.count > 0
+        
+        self.extensionContext?.widgetLargestAvailableDisplayMode = episodes.count > episodesPerRow ? .expanded : .compact
         
         completionHandler(NCUpdateResult.newData)
     }
@@ -101,6 +103,15 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
         
         return CGSize(width: leftWidth / CGFloat(episodesPerRow), height: layout.itemSize.height)
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let episode = episodes[indexPath.row]
+        let myAppUrl = URL(string: "moobeez://teebee?id=\(episode.season!.teebee!.tmdbId)&season=\(episode.season!.number)&episode=\(episode.number)")!
+        extensionContext?.open(myAppUrl, completionHandler: { (_) in
+            
+        })
+
     }
     
 }

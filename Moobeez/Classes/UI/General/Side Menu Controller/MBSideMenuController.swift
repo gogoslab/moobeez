@@ -42,6 +42,8 @@ class MBSideMenuController: UIViewController {
         }
         
         performSegue(withIdentifier: "ShowTimelineSegue", sender: nil)
+        
+        DeepLinking.parseCachedUrl()
     }
 
     public func showMenu(_ animated:Bool = true)

@@ -87,38 +87,66 @@ class TimelineItemCell : UITableViewCell {
     
     var item:TimelineItem? {
         didSet {
+            NotificationCenter.default.removeObserver(self)
             
-            guard item != nil else {
-                return
+            reloadData()
+            
+            if let season = item?.teebeeEpisode?.season {
+                NotificationCenter.default.addObserver(forName: .TeebeeSeasonDidChangeNotification, object: season, queue: .main) { (_) in
+                    self.reloadData()
+                }
             }
             
-            backdropImageView.loadTmdbBackdropWithPath(path: item!.backdropPath)
-            
-            titleLabel.text = item!.name
-            
-            subtitleLabel?.text = item!.subtitle
-            
-            if item!.rating >= 0 {
-                starsView?.isHidden = false
-                starsView?.rating = CGFloat(item!.rating)
+            if let moobee = item?.moobee {
+                NotificationCenter.default.addObserver(forName: .BeeDidChangeNotification, object: moobee, queue: .main) { (_) in
+                    self.reloadData()
+                }
             }
-            else {
-                starsView?.isHidden = true
-            }
-            
-            let today = Calendar.current.startOfDay(for: Date(timeIntervalSinceNow: (SettingsManager.shared.addExtraDay ? -24 * 3600 : 0)))
-            
-            watchedButton?.isHidden = item!.date!.timeIntervalSince(today) > 0 || item!.watched!
         }
+    }
+    
+    func reloadData() {
+        guard item != nil else {
+            return
+        }
+        
+        backdropImageView.loadTmdbBackdropWithPath(path: item!.backdropPath)
+        
+        titleLabel.text = item!.name
+        
+        subtitleLabel?.text = item!.subtitle
+        
+        if item!.rating >= 0 {
+            starsView?.isHidden = false
+            starsView?.rating = CGFloat(item!.rating)
+        }
+        else {
+            starsView?.isHidden = true
+        }
+        
+        let today = Calendar.current.startOfDay(for: Date(timeIntervalSinceNow: (SettingsManager.shared.addExtraDay ? -24 * 3600 : 0)))
+        
+        watchedButton?.isHidden = item!.date!.timeIntervalSince(today) > 0 || item!.watched!
+        
     }
 
     @IBAction func watchedButtonPressed(_ sender: Any) {
         item?.teebeeEpisode?.watched = true
         MoobeezManager.shared.save()
         
-        NotificationCenter.default.post(name: .TeebeeSeasonDidChangeNotification , object: item?.teebeeEpisode?.season)
-        NotificationCenter.default.post(name: .TeebeezDidChangeNotification , object: nil)
+        if let episode = item?.teebeeEpisode {
+            NotificationCenter.default.post(name: .BeeDidChangeNotification , object: episode.season?.teebee)
+            NotificationCenter.default.post(name: .TeebeeSeasonDidChangeNotification, object: episode.season)
+            NotificationCenter.default.post(name: .TeebeezDidChangeNotification , object: nil)
+        }
+        
+        if let moobee = item?.moobee {
+            NotificationCenter.default.post(name: .BeeDidChangeNotification , object: moobee)
+            NotificationCenter.default.post(name: .MoobeezDidChangeNotification , object: nil)
+        }
     }
+    
+    
 }
 
 extension TimelineSectionCell : UITableViewDataSource, UITableViewDelegate {

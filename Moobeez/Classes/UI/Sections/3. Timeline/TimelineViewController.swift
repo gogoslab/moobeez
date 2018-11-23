@@ -29,15 +29,6 @@ class TimelineViewController: MBViewController {
         
         loadItems()
         
-        NotificationCenter.default.addObserver(forName: .TeebeezDidChangeNotification, object: nil, queue: nil) { (_) in
-            self.tableView.reloadData()
-            self.scrollToFirstItem()
-        }
-        NotificationCenter.default.addObserver(forName: .MoobeezDidChangeNotification, object: nil, queue: nil) { (_) in
-            self.tableView.reloadData()
-            self.scrollToFirstItem()
-        }
-
         tableView.reloadData()
         
     }

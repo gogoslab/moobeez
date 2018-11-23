@@ -93,6 +93,8 @@
 		64CAAE481F62EA84008FEF01 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CAAE461F62EA84008FEF01 /* libsqlite3.0.tbd */; };
 		64DB559321A85B0F00EA9A81 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64DB559221A85B0F00EA9A81 /* Common.xcassets */; };
 		64DB559421A85B0F00EA9A81 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64DB559221A85B0F00EA9A81 /* Common.xcassets */; };
+		64DB559621A8791900EA9A81 /* DeepLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB559521A8791900EA9A81 /* DeepLinking.swift */; };
+		64DB559821A8795100EA9A81 /* URL+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB559721A8795000EA9A81 /* URL+Helpers.swift */; };
 		64E76BA71F5A3E6E007F9727 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E76BA61F5A3E6E007F9727 /* Notifications.swift */; };
 		64EA92231FB1FA7600793F52 /* SeasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EA92221FB1FA7600793F52 /* SeasonCell.swift */; };
 		64EA92271FB1FAE000793F52 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EA92261FB1FAE000793F52 /* EpisodeCell.swift */; };
@@ -204,6 +206,8 @@
 		64CAAE451F62EA84008FEF01 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		64CAAE461F62EA84008FEF01 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		64DB559221A85B0F00EA9A81 /* Common.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Common.xcassets; sourceTree = "<group>"; };
+		64DB559521A8791900EA9A81 /* DeepLinking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinking.swift; sourceTree = "<group>"; };
+		64DB559721A8795000EA9A81 /* URL+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Helpers.swift"; sourceTree = "<group>"; };
 		64E76BA61F5A3E6E007F9727 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		64EA92221FB1FA7600793F52 /* SeasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCell.swift; sourceTree = "<group>"; };
 		64EA92261FB1FAE000793F52 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
@@ -595,6 +599,7 @@
 			isa = PBXGroup;
 			children = (
 				64BF29301FACBEFD0056299B /* Date+Helpers.swift */,
+				64DB559721A8795000EA9A81 /* URL+Helpers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -636,6 +641,7 @@
 				64527EFC1F65FF3E003828E3 /* Tmdb */,
 				64527EF21F65DF88003828E3 /* UI */,
 				64A49EB9218B63DA003CE800 /* Database.swift */,
+				64DB559521A8791900EA9A81 /* DeepLinking.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -900,6 +906,7 @@
 				64445C8A1F5A215D007EB5A8 /* AppDelegate.swift in Sources */,
 				64527EE61F633BD7003828E3 /* MoobeezManager.swift in Sources */,
 				64ACB02D1F8B8F8800D9883D /* SearchMoviesViewController.swift in Sources */,
+				64DB559821A8795100EA9A81 /* URL+Helpers.swift in Sources */,
 				64B63E2C1F66E0AE00710A4E /* TmdbService+Movies.swift in Sources */,
 				64ECC0351FA2180D00824076 /* VideoViewController.swift in Sources */,
 				64BAA69E1FA0D8FB00BC2E58 /* YoutubeVideoViewController.swift in Sources */,
@@ -937,6 +944,7 @@
 				64EA92271FB1FAE000793F52 /* EpisodeCell.swift in Sources */,
 				641454EC1F852DCC00569DE9 /* CastThumbnailCell.swift in Sources */,
 				64A82BE41FAB724600268DA8 /* HeaderView.swift in Sources */,
+				64DB559621A8791900EA9A81 /* DeepLinking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
