@@ -36,4 +36,10 @@ extension TeebeeEpisode {
             return "Soon"
         }
     }
+    
+    public override var description: String {
+        get {
+            return "\(self.season?.teebee?.name ?? "unknown show") - Season \(self.season?.number ?? -1) - Episode \(self.number) - Release date \(abs(self.releaseDate!.timeIntervalSince1970))"
+        }
+    }
 }

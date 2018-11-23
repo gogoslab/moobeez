@@ -24,9 +24,9 @@ class MoobeezManager: NSObject {
     func loadFromSqlIfNeeded () -> Bool {
         
         #if MAIN
-//        if UserDefaults.standard.bool(forKey: "didTransferSqlDatabase") {
-//            return false
-//        }
+        if UserDefaults.standard.bool(forKey: "didTransferSqlDatabase") {
+            return false
+        }
         
         moobeezDatabase.deleteTable(name: "Moobee")
         moobeezDatabase.deleteTable(name: "Teebee")

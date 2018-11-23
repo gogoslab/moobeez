@@ -25,6 +25,7 @@ static const size_t kBitsPerComponent = 8;
     @autoreleasepool{
         
         CGImageRef imageRef = image.CGImage;
+        
         CGColorSpaceRef colorspaceRef = [UIImage colorSpaceForImageRef:imageRef];
         
         size_t width = CGImageGetWidth(imageRef);

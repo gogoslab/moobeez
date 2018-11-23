@@ -91,6 +91,8 @@
 		64CAAE431F62EA6A008FEF01 /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CAAE411F62EA6A008FEF01 /* SQLTable.swift */; };
 		64CAAE471F62EA84008FEF01 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CAAE451F62EA84008FEF01 /* libsqlite3.tbd */; };
 		64CAAE481F62EA84008FEF01 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CAAE461F62EA84008FEF01 /* libsqlite3.0.tbd */; };
+		64DB559321A85B0F00EA9A81 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64DB559221A85B0F00EA9A81 /* Common.xcassets */; };
+		64DB559421A85B0F00EA9A81 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64DB559221A85B0F00EA9A81 /* Common.xcassets */; };
 		64E76BA71F5A3E6E007F9727 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E76BA61F5A3E6E007F9727 /* Notifications.swift */; };
 		64EA92231FB1FA7600793F52 /* SeasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EA92221FB1FA7600793F52 /* SeasonCell.swift */; };
 		64EA92271FB1FAE000793F52 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EA92261FB1FAE000793F52 /* EpisodeCell.swift */; };
@@ -201,6 +203,7 @@
 		64CAAE441F62EA78008FEF01 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		64CAAE451F62EA84008FEF01 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		64CAAE461F62EA84008FEF01 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		64DB559221A85B0F00EA9A81 /* Common.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Common.xcassets; sourceTree = "<group>"; };
 		64E76BA61F5A3E6E007F9727 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		64EA92221FB1FA7600793F52 /* SeasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCell.swift; sourceTree = "<group>"; };
 		64EA92261FB1FAE000793F52 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
@@ -294,6 +297,7 @@
 				64445C921F5A215D007EB5A8 /* Main.storyboard */,
 				64445C8B1F5A215D007EB5A8 /* Moobeez.xcdatamodeld */,
 				64ACB0241F8B5B1C00D9883D /* Tmdb.xcdatamodeld */,
+				64DB559221A85B0F00EA9A81 /* Common.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -791,6 +795,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64DB559321A85B0F00EA9A81 /* Common.xcassets in Resources */,
 				64445C991F5A215D007EB5A8 /* LaunchScreen.storyboard in Resources */,
 				64445C961F5A215D007EB5A8 /* Assets.xcassets in Resources */,
 				64445C941F5A215D007EB5A8 /* Main.storyboard in Resources */,
@@ -801,6 +806,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64DB559421A85B0F00EA9A81 /* Common.xcassets in Resources */,
 				64A49E96218B4E41003CE800 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1174,7 +1180,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				OTHER_SWIFT_FLAGS = "";
+				OTHER_SWIFT_FLAGS = "-D SD_UIKIT";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift.Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1195,7 +1201,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_FAST_MATH = YES;
-				OTHER_SWIFT_FLAGS = "";
+				OTHER_SWIFT_FLAGS = "-D SD_UIKIT";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift.Today";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

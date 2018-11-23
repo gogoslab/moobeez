@@ -18,29 +18,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LoM-4b-BfX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No episodes today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Uo-gm-MdX">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LoM-4b-BfX">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="gSm-G5-nAl">
-                                    <size key="itemSize" width="60" height="90"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gSm-G5-nAl">
+                                    <size key="itemSize" width="47" height="90"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                                    <inset key="sectionInset" minX="10" minY="5" maxX="10" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TvEpisodeCell" id="TRi-mf-THD" customClass="TvEpisodeCell" customModule="Today" customModuleProvider="target">
-                                        <rect key="frame" x="5" y="5" width="60" height="90"/>
+                                        <rect key="frame" x="10" y="5" width="47" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="60" height="90"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="47" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NJs-0b-yGG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="75"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NJs-0b-yGG">
+                                                    <rect key="frame" x="0.0" y="0.0" width="47" height="75"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqm-8r-ahm">
-                                                    <rect key="frame" x="0.0" y="75" width="60" height="15"/>
+                                                    <rect key="frame" x="0.0" y="75" width="47" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="aUq-zm-ocp"/>
                                                     </constraints>
@@ -65,8 +70,22 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="M4Y-Lb-cyx" id="YCn-mi-krY"/>
+                                    <outlet property="delegate" destination="M4Y-Lb-cyx" id="Pvp-hx-vNf"/>
+                                </connections>
                             </collectionView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="LoM-4b-BfX" firstAttribute="bottom" secondItem="ssy-KU-ocm" secondAttribute="bottom" id="47A-Ga-jW5"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="trailing" secondItem="3Uo-gm-MdX" secondAttribute="trailing" id="BZv-KO-I5X"/>
+                            <constraint firstItem="3Uo-gm-MdX" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" id="IJS-Et-ZVZ"/>
+                            <constraint firstItem="LoM-4b-BfX" firstAttribute="top" secondItem="ssy-KU-ocm" secondAttribute="top" id="KWU-5v-BTp"/>
+                            <constraint firstItem="3Uo-gm-MdX" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" id="Ks2-Yt-OgG"/>
+                            <constraint firstItem="LoM-4b-BfX" firstAttribute="leading" secondItem="ssy-KU-ocm" secondAttribute="leading" id="cMU-fl-VJw"/>
+                            <constraint firstItem="ssy-KU-ocm" firstAttribute="bottom" secondItem="3Uo-gm-MdX" secondAttribute="bottom" id="ibH-D0-wss"/>
+                            <constraint firstItem="LoM-4b-BfX" firstAttribute="trailing" secondItem="ssy-KU-ocm" secondAttribute="trailing" id="rgB-RF-2jX"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ssy-KU-ocm"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -74,6 +93,7 @@
                     <size key="freeformSize" width="320" height="100"/>
                     <connections>
                         <outlet property="collectionView" destination="LoM-4b-BfX" id="i0M-Sx-reZ"/>
+                        <outlet property="placeholderLabel" destination="3Uo-gm-MdX" id="3JE-KJ-nhf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>

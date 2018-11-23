@@ -14,28 +14,28 @@ extension String {
     
     var sizeValue:Int {
         get {
-            return Int("\(self[index(after: startIndex)...])")!
+            return self == "original" ? Int.max : Int("\(self[index(after: startIndex)...])")!
         }
     }
     
     var sizeType:String {
         get {
-            return "\(self[..<index(after: startIndex)])"
+            return self == "original" ? "original" : "\(self[..<index(after: startIndex)])"
         }
     }
 }
 
 extension UIImageView {
     
-    static var imageSettings:NSDictionary = {
+    static var imageSettings:[String : Any] = {
         
-        var myDict: NSDictionary?
+        var imageSettings:[String : Any]?
         
         if let path = AppDelegate.GroupPath?.appendingPathComponent("ImagesSettings.plist") {
-            myDict = NSDictionary(contentsOf: path)
+            imageSettings = NSDictionary(contentsOf: path) as? [String : Any]
         }
         
-        return myDict!
+        return imageSettings ?? [:]
     }()
     
     static var tmdbRootPath:String = "https://image.tmdb.org/t/p/"
@@ -54,7 +54,15 @@ extension UIImageView {
     
     func loadImageWithUrl(url:URL, placeholder:UIImage? = nil, completion: ((Bool) -> Swift.Void)? = nil) {
         
-        sd_setImageWithPreviousCachedImage(with: url, placeholderImage: placeholder, options: [], progress: nil) { (image, error, cacheType, url) in
+        #if MAIN
+        let options:SDWebImageOptions = []
+        #else
+        let options = SDWebImageOptions.scaleDownLargeImages
+        #endif
+        
+        print("load image \(url.absoluteString)")
+        
+        sd_setImageWithPreviousCachedImage(with: url, placeholderImage: placeholder, options: options, progress: nil) { (image, error, cacheType, url) in
             if completion != nil {
                 completion!(error == nil)
             }
@@ -80,23 +88,28 @@ extension UIImageView {
             return
         }
         
-        let sizes:NSArray = UIImageView.imageSettings.object(forKey: "\(type)_sizes") as! NSArray
+        var sizes = UIImageView.imageSettings["\(type)_sizes"] as! [String]
         
-        for size:String in sizes as! [String] {
+        sizes = sizes.sorted { $0.sizeValue < $1.sizeValue }
+        
+        for size:String in sizes {
             if size != "original" {
                 let value:Int = size.sizeValue
                 if size.sizeType == "w" {
                     if (Float(value) >= Float(imageSize.width * UIScreen.main.scale * 0.8)) {
                         loadTmdbImageWithPath(path: path, width: value, placeholder: placeholder, completion:completion)
+                        break
                     }
                 }
                 else if size.sizeType == "h" {
                     if (Float(value) >= Float(imageSize.height * UIScreen.main.scale * 0.8)) {
                         loadTmdbImageWithPath(path: path, height: value, placeholder: placeholder, completion:completion)
+                        break
                     }
                 }
             } else {
                 loadTmdbOriginalImageWithPath(path: path, placeholder: placeholder, completion:completion)
+                break
             }
         }
         
