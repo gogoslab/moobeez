@@ -3,7 +3,7 @@
 //  Moobeez
 //
 //  Created by Radu Banea on 11/09/2017.
-//  Copyright © 2017 Gogolabs. All rights reserved.
+//  Copyright © 2017 Gogo's Lab. All rights reserved.
 //
 
 import UIKit
@@ -59,8 +59,6 @@ extension UIImageView {
         #else
         let options = SDWebImageOptions.scaleDownLargeImages
         #endif
-        
-        print("load image \(url.absoluteString)")
         
         sd_setImageWithPreviousCachedImage(with: url, placeholderImage: placeholder, options: options, progress: nil) { (image, error, cacheType, url) in
             if completion != nil {

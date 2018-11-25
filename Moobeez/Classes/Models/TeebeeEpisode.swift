@@ -3,7 +3,7 @@
 //  Moobeez
 //
 //  Created by Radu Banea on 02/11/2017.
-//  Copyright © 2017 Gogolabs. All rights reserved.
+//  Copyright © 2017 Gogo's Lab. All rights reserved.
 //
 
 import Foundation
@@ -39,7 +39,7 @@ extension TeebeeEpisode {
     
     public override var description: String {
         get {
-            return "\(self.season?.teebee?.name ?? "unknown show") - Season \(self.season?.number ?? -1) - Episode \(self.number) - Release date \(abs(self.releaseDate!.timeIntervalSince1970))"
+            return "\(self.season?.teebee?.name ?? "unknown show") - Season \(self.season?.number ?? -1) - Episode \(self.number) - Release date \(self.releaseDate!) - Watched \(self.watched)"
         }
     }
 }

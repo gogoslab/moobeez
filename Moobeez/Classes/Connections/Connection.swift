@@ -3,7 +3,7 @@
 //  Moobeez
 //
 //  Created by Radu Banea on 11/09/2017.
-//  Copyright © 2017 Gogolabs. All rights reserved.
+//  Copyright © 2017 Gogo's Lab. All rights reserved.
 //
 
 import UIKit
@@ -116,20 +116,20 @@ class Connection: NSObject {
                 {
                     let responseContent = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.allowFragments)
                     
-//                    SwiftyBeaver.info("response to \(String(describing: request.url?.absoluteString)):\n\(responseContent)")
+                    Console.info("response to \(String(describing: request.url?.absoluteString)):\n\(responseContent)")
                     
                     completionHandler!(nil, responseContent, statusCode)
                 }
                 catch let jsonError
                 {
-//                    SwiftyBeaver.error("response to \(String(describing: request.url?.absoluteString)):\n\(jsonError.localizedDescription)")
+                    Console.error("response to \(String(describing: request.url?.absoluteString)):\n\(jsonError.localizedDescription)")
 
                     completionHandler!(jsonError, nil, statusCode)
                 }
             }
             else
             {
-//                SwiftyBeaver.error("response to \(String(describing: request.url?.absoluteString)):\n\(String(describing: error?.localizedDescription))")
+                Console.error("response to \(String(describing: request.url?.absoluteString)):\n\(String(describing: error?.localizedDescription))")
 
                 completionHandler!(error, nil, statusCode)
             }

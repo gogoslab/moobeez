@@ -3,7 +3,7 @@
 //  Moobeez
 //
 //  Created by Radu Banea on 02/09/2017.
-//  Copyright © 2017 Gogolabs. All rights reserved.
+//  Copyright © 2017 Gogo's Lab. All rights reserved.
 //
 
 import UIKit
@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        initConsole()
         
         MoobeezManager.shared.load()
         TmdbService.startConfigurationConnection()

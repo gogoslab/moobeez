@@ -3,7 +3,7 @@
 //  Today
 //
 //  Created by Radu Banea on 01/11/2018.
-//  Copyright © 2018 Gogolabs. All rights reserved.
+//  Copyright © 2018 Gogo's Lab. All rights reserved.
 //
 
 import UIKit
@@ -16,15 +16,18 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet var placeholderLabel: UILabel!
     
     var episodes:[TeebeeEpisode] = [TeebeeEpisode]()
+    var shows:[[TeebeeEpisode]] = [[TeebeeEpisode]]()
     let episodesPerRow:Int = 6
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
         
-        let today = Calendar.current.startOfDay(for: Date(timeIntervalSinceNow: (SettingsManager.shared.addExtraDay ? -24 * 3600 : 0)))
+        initConsole()
+                
+        episodes = WidgetManager.episodes
+        shows = Array(Dictionary(grouping: episodes, by: {$0.season!.teebee!.tmdbId }).values)
         
-        episodes = MoobeezManager.shared.moobeezDatabase.fetch(predicate: NSPredicate(format: "watched == 0 AND releaseDate < %@ AND releaseDate.timeIntervalSince1970 > 100", today as CVarArg), sort: [NSSortDescriptor(key: "releaseDate", ascending: true), NSSortDescriptor(key: "number", ascending: true)])
         collectionView.reloadData()
         placeholderLabel.isHidden = episodes.count > 0
         
@@ -66,10 +69,19 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             
             let height = layout.sectionInset.bottom + layout.sectionInset.top + layout.minimumLineSpacing * CGFloat(rowsCount - 1)
             
-            return rowHeight * CGFloat(rowsCount) + height
+            return rowHeight * CGFloat(rowsCount) + height + 10
         }
     }
     
+    var showCompact:Bool {
+        get {
+            return (episodes.count > episodesPerRow) && (extensionContext?.widgetActiveDisplayMode ?? .compact == .compact)
+        }
+    }
+    
+    var cellsCount:Int {
+        return showCompact ? shows.count : episodes.count
+    }
 }
 
 extension TodayViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -79,14 +91,24 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return episodes.count
+        
+        return cellsCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TvEpisodeCell", for: indexPath) as! TvEpisodeCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellsCount > 2 ? "TvEpisodeCell" : "TvEpisodeBigCell", for: indexPath) as! TvEpisodeCell
         
-        cell.episode = episodes[indexPath.row]
+        if showCompact {
+            let episodes = shows[indexPath.row]
+            cell.episode = episodes.first
+            if episodes.count > 1 {
+                cell.titleLabel.text = "\(episodes.count) \(cellsCount > 2 ? "EP" : "Episodes")"
+            }
+        }
+        else {
+            cell.episode = episodes[indexPath.row]
+        }
         
         return cell
         
@@ -95,6 +117,8 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        
+        let episodesPerRow = cellsCount > 2 ? self.episodesPerRow : cellsCount
         
         var leftWidth = collectionView.frame.width
         leftWidth -= (layout.sectionInset.left + layout.sectionInset.right)
@@ -106,7 +130,7 @@ extension TodayViewController: UICollectionViewDataSource, UICollectionViewDeleg
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let episode = episodes[indexPath.row]
+        let episode = showCompact ? shows[indexPath.row].first! : episodes[indexPath.row]
         let myAppUrl = URL(string: "moobeez://teebee?id=\(episode.season!.teebee!.tmdbId)&season=\(episode.season!.number)&episode=\(episode.number)")!
         extensionContext?.open(myAppUrl, completionHandler: { (_) in
             

@@ -3,7 +3,7 @@
 //  Moobeez
 //
 //  Created by Radu Banea on 08/09/2017.
-//  Copyright © 2017 Gogolabs. All rights reserved.
+//  Copyright © 2017 Gogo's Lab. All rights reserved.
 //
 
 import UIKit
@@ -277,7 +277,7 @@ extension MoobeezManager {
             let today = Calendar.current.startOfDay(for: Date(timeIntervalSinceNow: (SettingsManager.shared.addExtraDay ? -24 * 3600 : 0)))
             let tommorow = today.addingTimeInterval(24 * 3600)
             
-            let predicate = NSPredicate(format: "temporary == false")
+            let predicate = NSPredicate(format: "temporary == false && isFavorite == true")
             
             var teebeez: [Teebee] = moobeezDatabase.fetch(predicate: predicate)
             

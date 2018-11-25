@@ -35,60 +35,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Moobeez/Classes/Managers/MoobeezManager.swift"
-            timestampString = "564690022.078928"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
-            landmarkName = "showsNotWatched"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Moobeez.MoobeezManager.showsNotWatched.getter : Swift.Int"
-                  moduleName = "Moobeez"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/radubanea/Developer/Gogo&apos;s%20Lab/Moobeez%204.0/Moobeez/Classes/Managers/MoobeezManager.swift"
-                  timestampString = "561252798.033365"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "432"
-                  endingLineNumber = "432"
-                  offsetFromSymbolStart = "572">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Moobeez.Teebee) -&gt; Swift.Bool in Moobeez.MoobeezManager.showsNotWatched.getter : Swift.Int"
-                  moduleName = "Moobeez"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/radubanea/Developer/Gogo&apos;s%20Lab/Moobeez%204.0/Moobeez/Classes/Managers/MoobeezManager.swift"
-                  timestampString = "561252798.035678"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "432"
-                  endingLineNumber = "432"
-                  offsetFromSymbolStart = "36">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Today/TvEpisodeCell.swift"
-            timestampString = "564690022.07942"
+            timestampString = "564792349.5830081"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "episode"
             landmarkType = "24">
          </BreakpointContent>
@@ -100,13 +52,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Moobeez/Classes/Utils/Tmdb/UIImageView+Tmdb.swift"
-            timestampString = "564690022.079483"
+            timestampString = "564795585.595256"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
             endingLineNumber = "119"
-            landmarkName = "loadTmdbPosterWithPath(path:placeholder:completion:)"
+            landmarkName = "UIImageView"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pods/SwiftyBeaver/Sources/ConsoleDestination.swift"
+            timestampString = "564764977.7481461"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "send(_:msg:thread:file:function:line:context:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Moobeez/Classes/Managers/MoobeezManager.swift"
+            timestampString = "564798055.519985"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "286"
+            endingLineNumber = "286"
+            landmarkName = "showsNotWatched"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

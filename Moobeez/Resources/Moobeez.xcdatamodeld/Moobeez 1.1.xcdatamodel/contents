@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A389" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Bee" representedClassName="Bee" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="backdropPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="posterPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="releaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="tmdbId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="Moobee" representedClassName="Moobee" parentEntity="Bee" syncable="YES" codeGenerationType="class">
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+    </entity>
+    <entity name="Teebee" representedClassName="Teebee" parentEntity="Bee" syncable="YES" codeGenerationType="class">
+        <attribute name="isFavorite" optional="YES" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="lastUpdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="temporary" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="seasons" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TeebeeSeason" inverseName="teebee" inverseEntity="TeebeeSeason" syncable="YES"/>
+    </entity>
+    <entity name="TeebeeEpisode" representedClassName="TeebeeEpisode" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="releaseDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="tmdbId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="watched" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="season" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TeebeeSeason" inverseName="episodes" inverseEntity="TeebeeSeason" syncable="YES"/>
+    </entity>
+    <entity name="TeebeeSeason" representedClassName="TeebeeSeason" syncable="YES" codeGenerationType="class">
+        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="posterPath" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="episodes" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TeebeeEpisode" inverseName="season" inverseEntity="TeebeeEpisode" syncable="YES"/>
+        <relationship name="teebee" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teebee" inverseName="seasons" inverseEntity="Teebee" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Bee" positionX="448" positionY="308" width="128" height="150"/>
+        <element name="Moobee" positionX="178" positionY="308" width="128" height="75"/>
+        <element name="Teebee" positionX="702" positionY="243" width="128" height="105"/>
+        <element name="TeebeeEpisode" positionX="1051" positionY="279" width="128" height="135"/>
+        <element name="TeebeeSeason" positionX="396" positionY="333" width="128" height="105"/>
+    </elements>
+</model>

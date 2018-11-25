@@ -3,7 +3,7 @@
 //  Moobeez
 //
 //  Created by Radu Banea on 20/09/2017.
-//  Copyright © 2017 Gogolabs. All rights reserved.
+//  Copyright © 2017 Gogo's Lab. All rights reserved.
 //
 
 import UIKit
@@ -224,6 +224,7 @@ class TeebeeDetailsViewController: MBViewController {
     @objc func reloadTeebee () {
         toolboxView.teebee = teebee
         addRemoveButton.setImage(teebee?.managedObjectContext != nil && teebee?.temporary ?? true == false ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
+        favoriteButton.isSelected = (teebee?.isFavorite)!
     }
     
     func reloadTvShow() {
@@ -381,6 +382,16 @@ class TeebeeDetailsViewController: MBViewController {
         else {
             toolboxView.showFullToolbox()
         }
+    }
+    
+    @IBAction func favoriteButtonPressed(_ sender: UIButton) {
+        teebee?.isFavorite = !(teebee?.isFavorite)!
+        
+        sender.isSelected = (teebee?.isFavorite)!
+        
+        MoobeezManager.shared.save()
+        
+        NotificationCenter.default.post(name: .TeebeezDidChangeNotification, object: teebee?.tmdbId)
     }
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {

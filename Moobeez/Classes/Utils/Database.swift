@@ -3,7 +3,7 @@
 //  Moobeez
 //
 //  Created by Radu Banea on 01/11/2018.
-//  Copyright © 2018 Gogolabs. All rights reserved.
+//  Copyright © 2018 Gogo's Lab. All rights reserved.
 //
 
 import UIKit
@@ -33,14 +33,15 @@ class Database: NSObject {
         let url = directory?.appendingPathComponent("\(name).sqlite")
         
         do {
-            try coordinator?.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: nil)
+            try coordinator?.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: [NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption: true])
         } catch var error as NSError {
             NSLog("Unresolved error \(error), \(error.userInfo)")
             abort()
         } catch {
             fatalError()
         }
-        print("\(coordinator?.persistentStores)")
+        
+        Console.debug("\(String(describing: coordinator?.persistentStores))")
         return coordinator!
         
     }()
@@ -81,7 +82,7 @@ class Database: NSObject {
             return result
         }
         catch let error {
-            print("Get offline \(String(describing: T.self)): \(error)")
+            Console.error("Get offline \(String(describing: T.self)): \(error)")
         }
         
         return [T]()
@@ -101,7 +102,7 @@ class Database: NSObject {
             try context.execute(batchDeleteRequest)
             
         } catch let error {
-            print(error.localizedDescription)
+            Console.error(error.localizedDescription)
             // Error Handling
         }
     }

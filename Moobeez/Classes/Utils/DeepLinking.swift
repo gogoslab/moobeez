@@ -3,7 +3,7 @@
 //  Moobeez
 //
 //  Created by Radu Banea on 23/11/2018.
-//  Copyright © 2018 Gogolabs. All rights reserved.
+//  Copyright © 2018 Gogo's Lab. All rights reserved.
 //
 
 import UIKit

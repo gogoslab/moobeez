@@ -3471,10 +3471,22 @@ dasd</string>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="h4M-Wu-xUQ">
-                                        <rect key="frame" x="315" y="5" width="50" height="100"/>
+                                        <rect key="frame" x="315" y="5" width="50" height="150"/>
                                         <subviews>
-                                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="522-9N-5JR" userLabel="Share Button">
+                                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aiE-aL-ncl" userLabel="Favorite Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="fwa-Y4-eA4"/>
+                                                    <constraint firstAttribute="height" constant="50" id="muq-GI-2vc"/>
+                                                </constraints>
+                                                <state key="normal" image="favorite_button"/>
+                                                <state key="selected" image="favorite_button_selected"/>
+                                                <connections>
+                                                    <action selector="favoriteButtonPressed:" destination="3Nt-Oz-oDC" eventType="touchUpInside" id="udX-Uq-2SM"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="522-9N-5JR" userLabel="Share Button">
+                                                <rect key="frame" x="0.0" y="50" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="50" id="JS9-s0-nH0"/>
                                                     <constraint firstAttribute="height" constant="50" id="i2k-v0-CmP"/>
@@ -3485,7 +3497,7 @@ dasd</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" alpha="0.75" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6g-hz-wo0" userLabel="IMDB Button">
-                                                <rect key="frame" x="0.0" y="50" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="100" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="Tzr-YR-e8h"/>
                                                     <constraint firstAttribute="width" constant="50" id="yls-Fb-9ml"/>
@@ -3541,6 +3553,7 @@ dasd</string>
                         <outlet property="descriptionTextViewConstraint" destination="bWI-BJ-Zpp" id="tdG-My-jZG"/>
                         <outlet property="episodesSegmentedControl" destination="sry-Ah-SVo" id="L5P-qq-nR6"/>
                         <outlet property="episodesTableViewConstraint" destination="PKK-F2-2bJ" id="taO-K6-Ux9"/>
+                        <outlet property="favoriteButton" destination="aiE-aL-ncl" id="VtZ-Ol-XcQ"/>
                         <outlet property="posterImageView" destination="sbJ-8m-0Yl" id="oTp-Zt-jwa"/>
                         <outlet property="toolboxView" destination="X3n-Ro-p0Z" id="QdB-nS-tgz"/>
                     </connections>
@@ -3998,7 +4011,7 @@ dasd</string>
     <inferredMetricsTieBreakers>
         <segue reference="ebp-na-cMx"/>
         <segue reference="Nnp-9k-zR7"/>
-        <segue reference="GwI-Wr-g4P"/>
+        <segue reference="IE1-La-flE"/>
         <segue reference="d8d-J4-40n"/>
         <segue reference="pjI-AB-bYJ"/>
     </inferredMetricsTieBreakers>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		575CAD94807352A1E1E0C829 /* Pods_Missed_Shows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3D9AD17811DD3A32E69F7EE /* Pods_Missed_Shows.framework */; };
 		641454EC1F852DCC00569DE9 /* CastThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641454EB1F852DCC00569DE9 /* CastThumbnailCell.swift */; };
 		64339FA21F824AB2007C59CB /* ThemedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64339FA11F824AB2007C59CB /* ThemedItems.swift */; };
 		643F359820419B4B00C07DB1 /* TimelineSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F359720419B4B00C07DB1 /* TimelineSectionCell.swift */; };
@@ -95,6 +96,38 @@
 		64DB559421A85B0F00EA9A81 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64DB559221A85B0F00EA9A81 /* Common.xcassets */; };
 		64DB559621A8791900EA9A81 /* DeepLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB559521A8791900EA9A81 /* DeepLinking.swift */; };
 		64DB559821A8795100EA9A81 /* URL+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB559721A8795000EA9A81 /* URL+Helpers.swift */; };
+		64DB55D721A9A26D00EA9A81 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB55D621A9A26D00EA9A81 /* Console.swift */; };
+		64DB55D821A9A26D00EA9A81 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB55D621A9A26D00EA9A81 /* Console.swift */; };
+		64DB55DE21AA0DDE00EA9A81 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A49E8F218B4E41003CE800 /* NotificationCenter.framework */; };
+		64DB55E821AA0DDE00EA9A81 /* Missed Shows.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 64DB55DD21AA0DDE00EA9A81 /* Missed Shows.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		64DB55EC21AA0E6300EA9A81 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64DB559221A85B0F00EA9A81 /* Common.xcassets */; };
+		64DB55ED21AA0EAC00EA9A81 /* MoobeezManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EE51F633BD7003828E3 /* MoobeezManager.swift */; };
+		64DB55EE21AA0EAF00EA9A81 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A82BE51FAB7CD100268DA8 /* SettingsManager.swift */; };
+		64DB55EF21AA0EBC00EA9A81 /* Moobee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6468F86B1F73FA040023D72B /* Moobee.swift */; };
+		64DB55F021AA0EBC00EA9A81 /* Teebee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ACB0271F8B5EB700D9883D /* Teebee.swift */; };
+		64DB55F121AA0EBC00EA9A81 /* TeebeeEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A82BE01FAB5DB100268DA8 /* TeebeeEpisode.swift */; };
+		64DB55F221AA0EBC00EA9A81 /* TeebeeSeason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ACB0291F8B617600D9883D /* TeebeeSeason.swift */; };
+		64DB55F321AA0EBC00EA9A81 /* TmdbCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB2C631F83E17700B672D8 /* TmdbCharacter.swift */; };
+		64DB55F421AA0EBC00EA9A81 /* TmdbImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB2C671F84E25900B672D8 /* TmdbImage.swift */; };
+		64DB55F521AA0EBC00EA9A81 /* TmdbMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B63E2F1F66E30F00710A4E /* TmdbMovie.swift */; };
+		64DB55F621AA0EBC00EA9A81 /* TmdbPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB2C651F83E19100B672D8 /* TmdbPerson.swift */; };
+		64DB55F721AA0EBC00EA9A81 /* TmdbTvEpisode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647451D71FC734ED0082CB4B /* TmdbTvEpisode.swift */; };
+		64DB55F821AA0EBC00EA9A81 /* TmdbTvSeason.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EED1F635571003828E3 /* TmdbTvSeason.swift */; };
+		64DB55F921AA0EBC00EA9A81 /* TmdbTvShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EEB1F63529E003828E3 /* TmdbTvShow.swift */; };
+		64DB55FA21AA0EBC00EA9A81 /* TimelineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F359920419D4F00C07DB1 /* TimelineItem.swift */; };
+		64DB55FB21AA0EF200EA9A81 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E76BA61F5A3E6E007F9727 /* Notifications.swift */; };
+		64DB55FC21AA0EF200EA9A81 /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BF29301FACBEFD0056299B /* Date+Helpers.swift */; };
+		64DB55FD21AA0EF200EA9A81 /* UIImageView+Tmdb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EFA1F65FF34003828E3 /* UIImageView+Tmdb.swift */; };
+		64DB55FE21AA0EF200EA9A81 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A49EB9218B63DA003CE800 /* Database.swift */; };
+		64DB55FF21AA0EF200EA9A81 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB55D621A9A26D00EA9A81 /* Console.swift */; };
+		64DB560021AA0F2C00EA9A81 /* TvEpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A49E9F218B5253003CE800 /* TvEpisodeCell.swift */; };
+		64DB560121AA0F2C00EA9A81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A49EB1218B55F4003CE800 /* AppDelegate.swift */; };
+		64DB560321AA0F5500EA9A81 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB560221AA0F5500EA9A81 /* WidgetManager.swift */; };
+		64DB560521AA108A00EA9A81 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A49E92218B4E41003CE800 /* TodayViewController.swift */; };
+		64DB560621AA109B00EA9A81 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64A49E94218B4E41003CE800 /* MainInterface.storyboard */; };
+		64DB560821AA10CB00EA9A81 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB560721AA10CB00EA9A81 /* WidgetManager.swift */; };
+		64DB560921AA122400EA9A81 /* Moobeez.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64445C8B1F5A215D007EB5A8 /* Moobeez.xcdatamodeld */; };
+		64DB560A21AA122400EA9A81 /* Tmdb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64ACB0241F8B5B1C00D9883D /* Tmdb.xcdatamodeld */; };
 		64E76BA71F5A3E6E007F9727 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64E76BA61F5A3E6E007F9727 /* Notifications.swift */; };
 		64EA92231FB1FA7600793F52 /* SeasonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EA92221FB1FA7600793F52 /* SeasonCell.swift */; };
 		64EA92271FB1FAE000793F52 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EA92261FB1FAE000793F52 /* EpisodeCell.swift */; };
@@ -114,6 +147,13 @@
 			remoteGlobalIDString = 64A49E8D218B4E41003CE800;
 			remoteInfo = Today;
 		};
+		64DB55E621AA0DDE00EA9A81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64445C7E1F5A215D007EB5A8 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64DB55DC21AA0DDE00EA9A81;
+			remoteInfo = "Missed Shows";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -124,6 +164,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				64A49E9A218B4E41003CE800 /* Today.appex in Embed App Extensions */,
+				64DB55E821AA0DDE00EA9A81 /* Missed Shows.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,8 +172,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1BFB79AD7E5905C6DFB46B35 /* Pods-Missed Shows.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Missed Shows.release.xcconfig"; path = "Pods/Target Support Files/Pods-Missed Shows/Pods-Missed Shows.release.xcconfig"; sourceTree = "<group>"; };
 		3F3C25900C20806C3BCFD6BF /* Pods-Moobeez.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moobeez.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moobeez/Pods-Moobeez.release.xcconfig"; sourceTree = "<group>"; };
 		407466ACE3E1F031CD25558D /* Pods_Today.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Today.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5061422E8A4208B72FB5DE27 /* Pods-Missed Shows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Missed Shows.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Missed Shows/Pods-Missed Shows.debug.xcconfig"; sourceTree = "<group>"; };
 		5AAD5D17A378B9F6FE0F5D84 /* Pods-Moobeez.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moobeez.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moobeez/Pods-Moobeez.debug.xcconfig"; sourceTree = "<group>"; };
 		60E6D430780AC182A19EAE1B /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		641454EB1F852DCC00569DE9 /* CastThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastThumbnailCell.swift; sourceTree = "<group>"; };
@@ -163,6 +206,7 @@
 		64527EF81F65F0B1003828E3 /* BeeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeeCell.swift; sourceTree = "<group>"; };
 		64527EFA1F65FF34003828E3 /* UIImageView+Tmdb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Tmdb.swift"; sourceTree = "<group>"; };
 		6456DB2D1F7417FA00C50192 /* UIImage+Luminosity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Luminosity.swift"; sourceTree = "<group>"; };
+		645875A321AA1C74009F7458 /* Moobeez 1.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Moobeez 1.1.xcdatamodel"; sourceTree = "<group>"; };
 		6468F8691F73EE990023D72B /* UIView+Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Shortcuts.swift"; sourceTree = "<group>"; };
 		6468F86B1F73FA040023D72B /* Moobee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moobee.swift; sourceTree = "<group>"; };
 		6468F86D1F7404430023D72B /* ToolboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolboxView.swift; sourceTree = "<group>"; };
@@ -208,6 +252,12 @@
 		64DB559221A85B0F00EA9A81 /* Common.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Common.xcassets; sourceTree = "<group>"; };
 		64DB559521A8791900EA9A81 /* DeepLinking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinking.swift; sourceTree = "<group>"; };
 		64DB559721A8795000EA9A81 /* URL+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Helpers.swift"; sourceTree = "<group>"; };
+		64DB55D621A9A26D00EA9A81 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
+		64DB55DD21AA0DDE00EA9A81 /* Missed Shows.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Missed Shows.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64DB55E521AA0DDE00EA9A81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64DB560221AA0F5500EA9A81 /* WidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetManager.swift; sourceTree = "<group>"; };
+		64DB560721AA10CB00EA9A81 /* WidgetManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetManager.swift; sourceTree = "<group>"; };
+		64DB560B21AA156C00EA9A81 /* Missed Shows.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Missed Shows.entitlements"; sourceTree = "<group>"; };
 		64E76BA61F5A3E6E007F9727 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		64EA92221FB1FA7600793F52 /* SeasonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonCell.swift; sourceTree = "<group>"; };
 		64EA92261FB1FAE000793F52 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
@@ -215,6 +265,7 @@
 		64ECC0371FA2229300824076 /* TeebeeDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeebeeDetailsViewController.swift; sourceTree = "<group>"; };
 		64ECC03B1FA2229400824076 /* TeebeezViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeebeezViewController.swift; sourceTree = "<group>"; };
 		64ECC03D1FA2229400824076 /* SearchTVsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTVsViewController.swift; sourceTree = "<group>"; };
+		E3D9AD17811DD3A32E69F7EE /* Pods_Missed_Shows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Missed_Shows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E83B5F42BE95F8674D687FE5 /* Pods_Moobeez.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moobeez.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7881A08BD6992FA4BCDE5C7 /* Pods-Today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.release.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -236,6 +287,15 @@
 			files = (
 				64A49E90218B4E41003CE800 /* NotificationCenter.framework in Frameworks */,
 				FDE62C10C834908C9B061C66 /* Pods_Today.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64DB55DA21AA0DDE00EA9A81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64DB55DE21AA0DDE00EA9A81 /* NotificationCenter.framework in Frameworks */,
+				575CAD94807352A1E1E0C829 /* Pods_Missed_Shows.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				64445C881F5A215D007EB5A8 /* Moobeez */,
-				64A49E91218B4E41003CE800 /* Today */,
+				64DB560421AA105B00EA9A81 /* Extensions */,
 				64445C871F5A215D007EB5A8 /* Products */,
 				CE8162FEE8A8060B74E33617 /* Pods */,
 				E985BF051946DF91780C689B /* Frameworks */,
@@ -277,6 +337,7 @@
 			children = (
 				64445C861F5A215D007EB5A8 /* Moobeez.app */,
 				64A49E8E218B4E41003CE800 /* Today.appex */,
+				64DB55DD21AA0DDE00EA9A81 /* Missed Shows.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -525,11 +586,8 @@
 			isa = PBXGroup;
 			children = (
 				64A49EB8218B5D9E003CE800 /* Today.entitlements */,
-				64A49E92218B4E41003CE800 /* TodayViewController.swift */,
-				64A49E94218B4E41003CE800 /* MainInterface.storyboard */,
 				64A49E97218B4E41003CE800 /* Info.plist */,
-				64A49E9F218B5253003CE800 /* TvEpisodeCell.swift */,
-				64A49EB1218B55F4003CE800 /* AppDelegate.swift */,
+				64DB560221AA0F5500EA9A81 /* WidgetManager.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -632,6 +690,29 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		64DB55DF21AA0DDE00EA9A81 /* Missed Shows */ = {
+			isa = PBXGroup;
+			children = (
+				64DB560B21AA156C00EA9A81 /* Missed Shows.entitlements */,
+				64DB560721AA10CB00EA9A81 /* WidgetManager.swift */,
+				64DB55E521AA0DDE00EA9A81 /* Info.plist */,
+			);
+			path = "Missed Shows";
+			sourceTree = "<group>";
+		};
+		64DB560421AA105B00EA9A81 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				64A49E92218B4E41003CE800 /* TodayViewController.swift */,
+				64A49E94218B4E41003CE800 /* MainInterface.storyboard */,
+				64A49E9F218B5253003CE800 /* TvEpisodeCell.swift */,
+				64A49EB1218B55F4003CE800 /* AppDelegate.swift */,
+				64A49E91218B4E41003CE800 /* Today */,
+				64DB55DF21AA0DDE00EA9A81 /* Missed Shows */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		64E76BA41F5A3E32007F9727 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -642,6 +723,7 @@
 				64527EF21F65DF88003828E3 /* UI */,
 				64A49EB9218B63DA003CE800 /* Database.swift */,
 				64DB559521A8791900EA9A81 /* DeepLinking.swift */,
+				64DB55D621A9A26D00EA9A81 /* Console.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -686,6 +768,8 @@
 				3F3C25900C20806C3BCFD6BF /* Pods-Moobeez.release.xcconfig */,
 				60E6D430780AC182A19EAE1B /* Pods-Today.debug.xcconfig */,
 				F7881A08BD6992FA4BCDE5C7 /* Pods-Today.release.xcconfig */,
+				5061422E8A4208B72FB5DE27 /* Pods-Missed Shows.debug.xcconfig */,
+				1BFB79AD7E5905C6DFB46B35 /* Pods-Missed Shows.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -698,6 +782,7 @@
 				E83B5F42BE95F8674D687FE5 /* Pods_Moobeez.framework */,
 				64A49E8F218B4E41003CE800 /* NotificationCenter.framework */,
 				407466ACE3E1F031CD25558D /* Pods_Today.framework */,
+				E3D9AD17811DD3A32E69F7EE /* Pods_Missed_Shows.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -720,6 +805,7 @@
 			);
 			dependencies = (
 				64A49E99218B4E41003CE800 /* PBXTargetDependency */,
+				64DB55E721AA0DDE00EA9A81 /* PBXTargetDependency */,
 			);
 			name = Moobeez;
 			productName = Moobeez;
@@ -744,6 +830,24 @@
 			productReference = 64A49E8E218B4E41003CE800 /* Today.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		64DB55DC21AA0DDE00EA9A81 /* Missed Shows */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64DB55EB21AA0DDE00EA9A81 /* Build configuration list for PBXNativeTarget "Missed Shows" */;
+			buildPhases = (
+				F501B09B9758E09B43E0ABE5 /* [CP] Check Pods Manifest.lock */,
+				64DB55D921AA0DDE00EA9A81 /* Sources */,
+				64DB55DA21AA0DDE00EA9A81 /* Frameworks */,
+				64DB55DB21AA0DDE00EA9A81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Missed Shows";
+			productName = "Missed Shows";
+			productReference = 64DB55DD21AA0DDE00EA9A81 /* Missed Shows.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -752,7 +856,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1000;
-				ORGANIZATIONNAME = Gogolabs;
+				ORGANIZATIONNAME = "Gogo's Lab";
 				TargetAttributes = {
 					64445C851F5A215D007EB5A8 = {
 						CreatedOnToolsVersion = 9.0;
@@ -767,6 +871,15 @@
 						};
 					};
 					64A49E8D218B4E41003CE800 = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					64DB55DC21AA0DDE00EA9A81 = {
 						CreatedOnToolsVersion = 10.1;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -792,6 +905,7 @@
 			targets = (
 				64445C851F5A215D007EB5A8 /* Moobeez */,
 				64A49E8D218B4E41003CE800 /* Today */,
+				64DB55DC21AA0DDE00EA9A81 /* Missed Shows */,
 			);
 		};
 /* End PBXProject section */
@@ -814,6 +928,15 @@
 			files = (
 				64DB559421A85B0F00EA9A81 /* Common.xcassets in Resources */,
 				64A49E96218B4E41003CE800 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64DB55DB21AA0DDE00EA9A81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64DB55EC21AA0E6300EA9A81 /* Common.xcassets in Resources */,
+				64DB560621AA109B00EA9A81 /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -846,11 +969,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Moobeez/Pods-Moobeez-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
 				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -870,6 +995,24 @@
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Moobeez-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F501B09B9758E09B43E0ABE5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Missed Shows-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -914,6 +1057,7 @@
 				64339FA21F824AB2007C59CB /* ThemedItems.swift in Sources */,
 				64527EF41F65DFAE003828E3 /* SearchBar.swift in Sources */,
 				64527EEE1F635571003828E3 /* TmdbTvSeason.swift in Sources */,
+				64DB55D721A9A26D00EA9A81 /* Console.swift in Sources */,
 				64794D361F72A6F200488683 /* MoobeeDetailsViewController.swift in Sources */,
 				64445C8D1F5A215D007EB5A8 /* Moobeez.xcdatamodeld in Sources */,
 				64CAAE431F62EA6A008FEF01 /* SQLTable.swift in Sources */,
@@ -968,13 +1112,47 @@
 				64A49EA2218B5321003CE800 /* Teebee.swift in Sources */,
 				64A49EAE218B5351003CE800 /* MoobeezManager.swift in Sources */,
 				64A49EB4218B5640003CE800 /* Notifications.swift in Sources */,
+				64DB560321AA0F5500EA9A81 /* WidgetManager.swift in Sources */,
 				64A49E93218B4E41003CE800 /* TodayViewController.swift in Sources */,
 				64A49EA0218B5253003CE800 /* TvEpisodeCell.swift in Sources */,
 				64A49EA8218B5321003CE800 /* TmdbPerson.swift in Sources */,
+				64DB55D821A9A26D00EA9A81 /* Console.swift in Sources */,
 				64A49EAF218B53DC003CE800 /* Moobeez.xcdatamodeld in Sources */,
 				64A49EB5218B56D6003CE800 /* SettingsManager.swift in Sources */,
 				64A49EAA218B5321003CE800 /* TmdbTvSeason.swift in Sources */,
 				64A49EBB218B63DA003CE800 /* Database.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64DB55D921AA0DDE00EA9A81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64DB560121AA0F2C00EA9A81 /* AppDelegate.swift in Sources */,
+				64DB560021AA0F2C00EA9A81 /* TvEpisodeCell.swift in Sources */,
+				64DB55F221AA0EBC00EA9A81 /* TeebeeSeason.swift in Sources */,
+				64DB55FC21AA0EF200EA9A81 /* Date+Helpers.swift in Sources */,
+				64DB55F021AA0EBC00EA9A81 /* Teebee.swift in Sources */,
+				64DB55F321AA0EBC00EA9A81 /* TmdbCharacter.swift in Sources */,
+				64DB55F621AA0EBC00EA9A81 /* TmdbPerson.swift in Sources */,
+				64DB55ED21AA0EAC00EA9A81 /* MoobeezManager.swift in Sources */,
+				64DB560821AA10CB00EA9A81 /* WidgetManager.swift in Sources */,
+				64DB55EF21AA0EBC00EA9A81 /* Moobee.swift in Sources */,
+				64DB55F921AA0EBC00EA9A81 /* TmdbTvShow.swift in Sources */,
+				64DB560521AA108A00EA9A81 /* TodayViewController.swift in Sources */,
+				64DB55FB21AA0EF200EA9A81 /* Notifications.swift in Sources */,
+				64DB560A21AA122400EA9A81 /* Tmdb.xcdatamodeld in Sources */,
+				64DB560921AA122400EA9A81 /* Moobeez.xcdatamodeld in Sources */,
+				64DB55EE21AA0EAF00EA9A81 /* SettingsManager.swift in Sources */,
+				64DB55FF21AA0EF200EA9A81 /* Console.swift in Sources */,
+				64DB55F721AA0EBC00EA9A81 /* TmdbTvEpisode.swift in Sources */,
+				64DB55F521AA0EBC00EA9A81 /* TmdbMovie.swift in Sources */,
+				64DB55F821AA0EBC00EA9A81 /* TmdbTvSeason.swift in Sources */,
+				64DB55FA21AA0EBC00EA9A81 /* TimelineItem.swift in Sources */,
+				64DB55F121AA0EBC00EA9A81 /* TeebeeEpisode.swift in Sources */,
+				64DB55F421AA0EBC00EA9A81 /* TmdbImage.swift in Sources */,
+				64DB55FE21AA0EF200EA9A81 /* Database.swift in Sources */,
+				64DB55FD21AA0EF200EA9A81 /* UIImageView+Tmdb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -985,6 +1163,11 @@
 			isa = PBXTargetDependency;
 			target = 64A49E8D218B4E41003CE800 /* Today */;
 			targetProxy = 64A49E98218B4E41003CE800 /* PBXContainerItemProxy */;
+		};
+		64DB55E721AA0DDE00EA9A81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64DB55DC21AA0DDE00EA9A81 /* Missed Shows */;
+			targetProxy = 64DB55E621AA0DDE00EA9A81 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1180,10 +1363,10 @@
 			baseConfigurationReference = 60E6D430780AC182A19EAE1B /* Pods-Today.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Extensions/Today/Today.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z4252ZWMEJ;
-				INFOPLIST_FILE = Today/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Extensions/Today/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -1202,15 +1385,56 @@
 			baseConfigurationReference = F7881A08BD6992FA4BCDE5C7 /* Pods-Today.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = Today/Today.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Extensions/Today/Today.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z4252ZWMEJ;
-				INFOPLIST_FILE = Today/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Extensions/Today/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-D SD_UIKIT";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift.Today";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		64DB55E921AA0DDE00EA9A81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5061422E8A4208B72FB5DE27 /* Pods-Missed Shows.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = "Extensions/Missed Shows/Missed Shows.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z4252ZWMEJ;
+				INFOPLIST_FILE = "$(SRCROOT)/Extensions/Missed Shows/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift.Missed-Shows";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		64DB55EA21AA0DDE00EA9A81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BFB79AD7E5905C6DFB46B35 /* Pods-Missed Shows.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_ENTITLEMENTS = "Extensions/Missed Shows/Missed Shows.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Z4252ZWMEJ;
+				INFOPLIST_FILE = "$(SRCROOT)/Extensions/Missed Shows/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift.Missed-Shows";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -1248,15 +1472,25 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		64DB55EB21AA0DDE00EA9A81 /* Build configuration list for PBXNativeTarget "Missed Shows" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64DB55E921AA0DDE00EA9A81 /* Debug */,
+				64DB55EA21AA0DDE00EA9A81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
 		64445C8B1F5A215D007EB5A8 /* Moobeez.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				645875A321AA1C74009F7458 /* Moobeez 1.1.xcdatamodel */,
 				64445C8C1F5A215D007EB5A8 /* Moobeez.xcdatamodel */,
 			);
-			currentVersion = 64445C8C1F5A215D007EB5A8 /* Moobeez.xcdatamodel */;
+			currentVersion = 645875A321AA1C74009F7458 /* Moobeez 1.1.xcdatamodel */;
 			path = Moobeez.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

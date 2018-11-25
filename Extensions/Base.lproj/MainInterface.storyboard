@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,15 +12,31 @@
         <!--Today View Controller-->
         <scene sceneID="cwh-vc-ff4">
             <objects>
-                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="Today" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="Missed_Shows" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No episodes today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Uo-gm-MdX">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Uo-gm-MdX">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <nil key="textColor"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">No teebeez
+</string>
+                                        <attributes>
+                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <font key="NSFont" size="15" name="HelveticaNeue-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Only favorite teebeez appear here">
+                                        <attributes>
+                                            <color key="NSColor" red="0.24076704545454541" green="0.24076704545454541" blue="0.24076704545454541" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <font key="NSFont" size="13" name=".SFNSText"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LoM-4b-BfX">
@@ -34,7 +49,7 @@
                                     <inset key="sectionInset" minX="10" minY="5" maxX="10" maxY="5"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TvEpisodeCell" id="TRi-mf-THD" customClass="TvEpisodeCell" customModule="Today" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TvEpisodeCell" id="TRi-mf-THD" customClass="TvEpisodeCell" customModule="Missed_Shows" customModuleProvider="target">
                                         <rect key="frame" x="10" y="5" width="47" height="87"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -42,10 +57,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NJs-0b-yGG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="47" height="75"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="47" height="72"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqm-8r-ahm">
-                                                    <rect key="frame" x="0.0" y="75" width="47" height="15"/>
+                                                    <rect key="frame" x="0.0" y="72" width="47" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="aUq-zm-ocp"/>
                                                     </constraints>
@@ -67,6 +82,56 @@
                                         <connections>
                                             <outlet property="posterImageView" destination="NJs-0b-yGG" id="J7Y-y6-u30"/>
                                             <outlet property="titleLabel" destination="nqm-8r-ahm" id="XzW-ds-RAB"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TvEpisodeBigCell" id="dqp-o9-SsZ" customClass="TvEpisodeCell" customModule="Missed_Shows" customModuleProvider="target">
+                                        <rect key="frame" x="67" y="5" width="200" height="87"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="87"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E6g-dj-cNj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="47" height="87"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="47" id="6au-F2-S9N"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="sB4-Zc-4cq">
+                                                    <rect key="frame" x="55" y="11" width="137" height="65"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label sjhkdh skadasdksjhd " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Rnj-Xw-chD">
+                                                            <rect key="frame" x="0.0" y="0.0" width="137" height="43"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="43" id="h0v-BY-wLg"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnB-1Q-I0k">
+                                                            <rect key="frame" x="0.0" y="48" width="137" height="17"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="sB4-Zc-4cq" firstAttribute="leading" secondItem="E6g-dj-cNj" secondAttribute="trailing" constant="8" id="2zA-dH-WaX"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="sB4-Zc-4cq" secondAttribute="trailing" id="AF8-mY-VqP"/>
+                                            <constraint firstItem="sB4-Zc-4cq" firstAttribute="centerY" secondItem="dqp-o9-SsZ" secondAttribute="centerY" id="Lm1-bW-UAi"/>
+                                            <constraint firstAttribute="bottom" secondItem="E6g-dj-cNj" secondAttribute="bottom" id="YBX-D3-sNk"/>
+                                            <constraint firstItem="E6g-dj-cNj" firstAttribute="leading" secondItem="dqp-o9-SsZ" secondAttribute="leading" id="e1s-pD-kRb"/>
+                                            <constraint firstItem="E6g-dj-cNj" firstAttribute="top" secondItem="dqp-o9-SsZ" secondAttribute="top" id="rbv-Uy-ebX"/>
+                                        </constraints>
+                                        <size key="customSize" width="200" height="87"/>
+                                        <connections>
+                                            <outlet property="posterImageView" destination="E6g-dj-cNj" id="FRN-uY-Adn"/>
+                                            <outlet property="showLabel" destination="Rnj-Xw-chD" id="2dP-QI-SPy"/>
+                                            <outlet property="titleLabel" destination="HnB-1Q-I0k" id="7ci-cl-dbI"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

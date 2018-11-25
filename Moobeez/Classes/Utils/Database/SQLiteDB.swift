@@ -93,7 +93,7 @@ class SQLiteDB:NSObject {
 			do {
 				try fm.copyItem(atPath:from, toPath:path)
 			} catch let error {
-				assert(false, "SQLiteDB: Failed to copy writable version of DB! Error - \(error.localizedDescription)")
+//                assert(false, "SQLiteDB: Failed to copy writable version of DB! Error - \(error.localizedDescription)")
 				return false
 			}
 		}

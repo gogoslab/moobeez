@@ -3,7 +3,7 @@
 //  Moobeez
 //
 //  Created by Radu Banea on 10/09/2017.
-//  Copyright © 2017 Gogolabs. All rights reserved.
+//  Copyright © 2017 Gogo's Lab. All rights reserved.
 //
 
 import UIKit
@@ -198,7 +198,7 @@ class TeebeezViewController: MBViewController {
                 MoobeezManager.shared.save()
             }
             else {
-                print("error updating \(nextTeebee.name ?? "unknown")")
+                Console.error("error updating \(nextTeebee.name ?? "unknown")")
             }
             
             DispatchQueue.main.async {

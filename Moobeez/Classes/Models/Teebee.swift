@@ -3,7 +3,7 @@
 //  Teebeez
 //
 //  Created by Radu Banea on 21/09/2017.
-//  Copyright © 2017 Gogolabs. All rights reserved.
+//  Copyright © 2017 Gogo's Lab. All rights reserved.
 //
 
 import Foundation
@@ -164,5 +164,11 @@ extension Teebee {
             }
         }
         
+    }
+    
+    public override var description: String {
+        get {
+            return "\(self.name ?? "unknown show") - \(nextEpisode != nil ? "Next Ep: \(nextEpisode!)" : "")"
+        }
     }
 }
