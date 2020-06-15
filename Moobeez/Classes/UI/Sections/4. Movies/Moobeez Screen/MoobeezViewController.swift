@@ -11,7 +11,7 @@ import CoreData
 
 class MoobeezViewController: MBViewController {
 
-    @IBOutlet var searchBar: UISearchBar!
+    @IBOutlet var searchBar: UITextField!
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var searchBarWidthConstraint: NSLayoutConstraint!
 
@@ -167,13 +167,21 @@ extension MoobeezViewController : UICollectionViewDelegate, UICollectionViewData
     }
 }
 
-extension MoobeezViewController : UISearchBarDelegate {
+extension MoobeezViewController : UITextFieldDelegate {
  
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    @IBAction func searchButtonPressed(_ sender:Any?) {
+        searchBar.becomeFirstResponder()
+    }
+    
+    @IBAction func searchCloseButtonPressed(_ sender:Any?) {
+        searchBar.resignFirstResponder()
+    }
+    
+    @IBAction func textFieldDidChange(_ textField: UITextField) {
         reloadItems()
     }
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         
         UIView.animate(withDuration: 0.3) {
 
@@ -184,22 +192,18 @@ extension MoobeezViewController : UISearchBarDelegate {
                 self.segmentedControl.setTitle(String(title.prefix(1)), forSegmentAt: i)
             }
             
-            searchBar.showsCancelButton = true
-            
-            searchBar.superview?.layoutIfNeeded()
+            self.segmentedControl.superview?.layoutIfNeeded()
 
         }
     }
     
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
 
         UIView.animate(withDuration: 0.3, animations: {
 
             self.searchBarWidthConstraint.isActive = false
             
-            searchBar.showsCancelButton = false
-            
-            searchBar.superview?.layoutIfNeeded()
+            self.segmentedControl.superview?.layoutIfNeeded()
 
         })
         { (_) in
