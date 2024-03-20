@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import youtube_ios_player_helper
+import YouTubeiOSPlayerHelper
 
 class YoutubeVideoViewController: MBViewController {
 
@@ -19,7 +19,7 @@ class YoutubeVideoViewController: MBViewController {
 
         // Do any additional setup after loading the view.
         if trailerPath != nil {
-            youtubePlayerView.load(withVideoId: trailerPath!)
+            _ = youtubePlayerView.load(withVideoId: trailerPath!)
         }
     }
 

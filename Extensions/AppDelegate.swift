@@ -14,7 +14,7 @@ class AppDelegate: NSObject {
     {
         get
         {
-            return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.moobeez")
+            return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.gogoslab.moobeez")
         }
     }
     

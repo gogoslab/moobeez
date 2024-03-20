@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ImageCell: UICollectionViewCell {
     @IBOutlet var imageView: UIImageView!
@@ -67,7 +68,7 @@ extension ImageGalleryViewController : UICollectionViewDelegate, UICollectionVie
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
         
-        cell.imageView.sd_setShowActivityIndicatorView(true)
+        cell.imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         cell.imageView.loadTmdbImage(image: images![indexPath.row])
         
         return cell

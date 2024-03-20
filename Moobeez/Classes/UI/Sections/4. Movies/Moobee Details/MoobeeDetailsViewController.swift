@@ -94,7 +94,7 @@ class MoobeeToolboxView : ToolboxView {
         let titles = title.components(separatedBy: " ")
         
         for watchlistButtonTileLabel in watchlistButtonTileLabels {
-            watchlistButtonTileLabel.text = titles[watchlistButtonTileLabels.index(of: watchlistButtonTileLabel)!]
+            watchlistButtonTileLabel.text = titles[watchlistButtonTileLabels.firstIndex(of: watchlistButtonTileLabel)!]
         }
     }
     

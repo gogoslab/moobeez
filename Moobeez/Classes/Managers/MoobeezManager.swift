@@ -21,95 +21,12 @@ class MoobeezManager: NSObject {
         super.init()
     }
     
-    func loadFromSqlIfNeeded () -> Bool {
-        
-        #if MAIN
-        if UserDefaults.standard.bool(forKey: "didTransferSqlDatabase") {
-            return false
-        }
-        
-        moobeezDatabase.deleteTable(name: "Moobee")
-        moobeezDatabase.deleteTable(name: "Teebee")
-        moobeezDatabase.deleteTable(name: "TeebeeEpisode")
-
-        let db = SQLiteDB.shared
-        
-        let dateFormatter = DateFormatter.init()
-        dateFormatter.dateFormat = "d M yyyy"
-        let referenceDate:Date = dateFormatter.date(from: "1 1 2001")!
-        
-        if (db.openDB())
-        {
-            let moobeez = db.query(sql: "SELECT * FROM Moobeez")
-            
-            for row in moobeez {
-                
-                let moobee:Moobee = NSEntityDescription.insertNewObject(forEntityName: "Moobee", into: moobeezDatabase.context) as! Moobee
-                
-                moobee.name = row["name"] as? String
-                moobee.rating = (row["rating"] as! NSNumber).floatValue
-                moobee.date = Date.init(timeInterval: (row["date"] as! NSNumber).doubleValue, since:referenceDate)
-                moobee.type = (row["type"] as! NSNumber).int16Value
-                moobee.isFavorite = (row["isFavorite"] as! NSNumber).boolValue
-
-                moobee.tmdbId = (row["tmdbId"] as! NSNumber).int64Value
-                moobee.posterPath = row["posterPath"] as? String
-                moobee.backdropPath = row["backdropPath"] as? String
-                moobee.releaseDate = Date.init(timeIntervalSince1970: (row["releaseDate"] as! NSNumber).doubleValue)
-
-            }
-            
-            let teebeez = db.query(sql: "SELECT * FROM Teebeez")
-            
-            for row in teebeez {
-                
-                let teebee:Teebee = NSEntityDescription.insertNewObject(forEntityName: "Teebee", into: moobeezDatabase.context) as! Teebee
-                
-                teebee.name = row["name"] as? String
-                teebee.rating = (row["rating"] as! NSNumber).floatValue
-                teebee.date = Date.init(timeIntervalSince1970: (row["date"] as! NSNumber).doubleValue)
-
-                teebee.tmdbId = (row["tmdbId"] as! NSNumber).int64Value
-                teebee.posterPath = row["posterPath"] as? String
-                teebee.backdropPath = row["backdropPath"] as? String
-                
-                teebee.lastUpdate = Date.init(timeIntervalSince1970: (row["lastUpdate"] as! NSNumber).doubleValue)
-
-                let oldTeebeeId = (row["ID"] as! NSNumber).int64Value
-                
-                let episodes = db.query(sql: "SELECT * FROM Episodes WHERE teebeeId = \(oldTeebeeId)")
-                
-                for rowEpisode in episodes {
-                    let teebeeSeason:TeebeeSeason = teebee.seasonWithNumber(number: (rowEpisode["seasonNumber"] as! NSNumber).int16Value)
-                    teebeeSeason.posterPath = ""
-                    let teebeeEpisode:TeebeeEpisode = teebeeSeason.episodeWithNumber(number: (rowEpisode["episodeNumber"] as! NSNumber).int16Value)
-                    
-                    teebeeEpisode.watched = (rowEpisode["watched"] as! NSNumber).boolValue
-                    teebeeEpisode.releaseDate = Date.init(timeIntervalSince1970: (rowEpisode["airDate"] as! NSNumber).doubleValue)
-                }
-            }
-            
-            save()
-        }
-        
-        UserDefaults.standard.set(true, forKey: "didTransferSqlDatabase")
-        UserDefaults.standard.synchronize()
-
-        return true
-        #else
-        return false
-        #endif
-    }
     
     public func save () {
         moobeezDatabase.saveContext()
     }
     
     public func load () {
-        
-        guard loadFromSqlIfNeeded() == false else {
-            return
-        }
         
         deleteTempData()
         TmdbMovie.updateLinks()

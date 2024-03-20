@@ -9,6 +9,7 @@
 import UIKit
 import UserNotifications
 import SDWebImage
+import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
@@ -19,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     {
         get
         {
-            return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.moobeez")
+            return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.gogoslab.moobeez")
         }
     }
     
@@ -102,6 +103,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        if GIDSignIn.sharedInstance.handle(url) {
+            return true
+        }
+        
         DeepLinking.parse(url)
         
         return false

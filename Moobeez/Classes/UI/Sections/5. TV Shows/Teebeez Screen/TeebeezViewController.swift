@@ -269,8 +269,9 @@ extension TeebeezViewController : UICollectionViewDelegate, UICollectionViewData
         
         let width = (collectionView.frame.size.width - 10 * 4) / 3
         
-        return CGSize(width: width, height: width * (UIApplication.shared.keyWindow?.frame.size.height)! /
-            (UIApplication.shared.keyWindow?.frame.size.width)!)
+        let screenSize = UIScreen.main.bounds.size
+        
+        return CGSize(width: width, height: width * screenSize.height / screenSize.width)
         
     }
     

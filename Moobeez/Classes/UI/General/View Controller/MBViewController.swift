@@ -14,7 +14,7 @@ class MBViewController: UIViewController {
 
     var statusBarStyle: UIStatusBarStyle = .default {
         didSet {
-            UIApplication.shared.statusBarStyle = statusBarStyle
+//            UIApplication.shared.statusBarStyle = statusBarStyle
             setNeedsStatusBarAppearanceUpdate()
         }
     }

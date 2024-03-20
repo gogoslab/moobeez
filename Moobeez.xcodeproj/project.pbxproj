@@ -3,15 +3,27 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 48;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		575CAD94807352A1E1E0C829 /* Pods_Missed_Shows.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3D9AD17811DD3A32E69F7EE /* Pods_Missed_Shows.framework */; };
 		641454EC1F852DCC00569DE9 /* CastThumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641454EB1F852DCC00569DE9 /* CastThumbnailCell.swift */; };
 		64339FA21F824AB2007C59CB /* ThemedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64339FA11F824AB2007C59CB /* ThemedItems.swift */; };
 		643F359820419B4B00C07DB1 /* TimelineSectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F359720419B4B00C07DB1 /* TimelineSectionCell.swift */; };
 		643F359A20419D4F00C07DB1 /* TimelineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 643F359920419D4F00C07DB1 /* TimelineItem.swift */; };
+		6443D8192B4C1A9D0031BAB2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6443D8182B4C1A9D0031BAB2 /* FirebaseAuth */; };
+		6443D81B2B4C1A9D0031BAB2 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 6443D81A2B4C1A9D0031BAB2 /* FirebaseAuthCombine-Community */; };
+		6443D81D2B4C1A9D0031BAB2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6443D81C2B4C1A9D0031BAB2 /* FirebaseFirestore */; };
+		6443D81F2B4C1A9D0031BAB2 /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 6443D81E2B4C1A9D0031BAB2 /* FirebaseFirestoreCombine-Community */; };
+		6443D8212B4C1A9D0031BAB2 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6443D8202B4C1A9D0031BAB2 /* FirebaseFirestoreSwift */; };
+		6443D8232B4C1A9D0031BAB2 /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 6443D8222B4C1A9D0031BAB2 /* FirebaseRemoteConfig */; };
+		6443D8252B4C1A9D0031BAB2 /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6443D8242B4C1A9D0031BAB2 /* FirebaseRemoteConfigSwift */; };
+		6443D82C2B4C480D0031BAB2 /* BoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6443D82B2B4C480D0031BAB2 /* BoardingViewController.swift */; };
+		6443D82E2B4C4ECA0031BAB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6443D82D2B4C4ECA0031BAB2 /* GoogleService-Info.plist */; };
+		6443D8312B4C51820031BAB2 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 6443D8302B4C51820031BAB2 /* GoogleSignIn */; };
+		6443D8332B4C51820031BAB2 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 6443D8322B4C51820031BAB2 /* GoogleSignInSwift */; };
+		6443D8362B4CA1E90031BAB2 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6443D8352B4CA1E90031BAB2 /* MyProfileViewController.swift */; };
+		6443D8382B4CA9620031BAB2 /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6443D8372B4CA9620031BAB2 /* ConnectViewController.swift */; };
 		64445C8A1F5A215D007EB5A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64445C891F5A215D007EB5A8 /* AppDelegate.swift */; };
 		64445C8D1F5A215D007EB5A8 /* Moobeez.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64445C8B1F5A215D007EB5A8 /* Moobeez.xcdatamodeld */; };
 		64445C941F5A215D007EB5A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64445C921F5A215D007EB5A8 /* Main.storyboard */; };
@@ -44,7 +56,6 @@
 		64A49E90218B4E41003CE800 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A49E8F218B4E41003CE800 /* NotificationCenter.framework */; };
 		64A49E93218B4E41003CE800 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A49E92218B4E41003CE800 /* TodayViewController.swift */; };
 		64A49E96218B4E41003CE800 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64A49E94218B4E41003CE800 /* MainInterface.storyboard */; };
-		64A49E9A218B4E41003CE800 /* Today.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 64A49E8E218B4E41003CE800 /* Today.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		64A49EA0218B5253003CE800 /* TvEpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A49E9F218B5253003CE800 /* TvEpisodeCell.swift */; };
 		64A49EA1218B5321003CE800 /* Moobee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6468F86B1F73FA040023D72B /* Moobee.swift */; };
 		64A49EA2218B5321003CE800 /* Teebee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ACB0271F8B5EB700D9883D /* Teebee.swift */; };
@@ -87,19 +98,18 @@
 		64BB2C641F83E17700B672D8 /* TmdbCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB2C631F83E17700B672D8 /* TmdbCharacter.swift */; };
 		64BB2C661F83E19100B672D8 /* TmdbPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB2C651F83E19100B672D8 /* TmdbPerson.swift */; };
 		64BB2C681F84E25900B672D8 /* TmdbImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BB2C671F84E25900B672D8 /* TmdbImage.swift */; };
+		64BE2F922B484EBA00168677 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 64BE2F912B484EBA00168677 /* SDWebImage */; };
+		64BE2F942B484EBB00168677 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 64BE2F932B484EBB00168677 /* SDWebImageMapKit */; };
+		64BE2F962B484EDD00168677 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 64BE2F952B484EDD00168677 /* SDWebImage */; };
+		64BE2F982B484EDD00168677 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 64BE2F972B484EDD00168677 /* SDWebImageMapKit */; };
+		64BE2F9A2B484EED00168677 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 64BE2F992B484EED00168677 /* SDWebImage */; };
+		64BE2F9C2B484EED00168677 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 64BE2F9B2B484EED00168677 /* SDWebImageMapKit */; };
 		64BF29311FACBEFD0056299B /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BF29301FACBEFD0056299B /* Date+Helpers.swift */; };
-		64CAAE421F62EA6A008FEF01 /* SQLiteDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CAAE401F62EA6A008FEF01 /* SQLiteDB.swift */; };
-		64CAAE431F62EA6A008FEF01 /* SQLTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64CAAE411F62EA6A008FEF01 /* SQLTable.swift */; };
-		64CAAE471F62EA84008FEF01 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CAAE451F62EA84008FEF01 /* libsqlite3.tbd */; };
-		64CAAE481F62EA84008FEF01 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 64CAAE461F62EA84008FEF01 /* libsqlite3.0.tbd */; };
 		64DB559321A85B0F00EA9A81 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64DB559221A85B0F00EA9A81 /* Common.xcassets */; };
 		64DB559421A85B0F00EA9A81 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64DB559221A85B0F00EA9A81 /* Common.xcassets */; };
 		64DB559621A8791900EA9A81 /* DeepLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB559521A8791900EA9A81 /* DeepLinking.swift */; };
 		64DB559821A8795100EA9A81 /* URL+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB559721A8795000EA9A81 /* URL+Helpers.swift */; };
-		64DB55D721A9A26D00EA9A81 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB55D621A9A26D00EA9A81 /* Console.swift */; };
-		64DB55D821A9A26D00EA9A81 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB55D621A9A26D00EA9A81 /* Console.swift */; };
 		64DB55DE21AA0DDE00EA9A81 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64A49E8F218B4E41003CE800 /* NotificationCenter.framework */; };
-		64DB55E821AA0DDE00EA9A81 /* Missed Shows.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 64DB55DD21AA0DDE00EA9A81 /* Missed Shows.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		64DB55EC21AA0E6300EA9A81 /* Common.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64DB559221A85B0F00EA9A81 /* Common.xcassets */; };
 		64DB55ED21AA0EAC00EA9A81 /* MoobeezManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EE51F633BD7003828E3 /* MoobeezManager.swift */; };
 		64DB55EE21AA0EAF00EA9A81 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A82BE51FAB7CD100268DA8 /* SettingsManager.swift */; };
@@ -119,7 +129,6 @@
 		64DB55FC21AA0EF200EA9A81 /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BF29301FACBEFD0056299B /* Date+Helpers.swift */; };
 		64DB55FD21AA0EF200EA9A81 /* UIImageView+Tmdb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64527EFA1F65FF34003828E3 /* UIImageView+Tmdb.swift */; };
 		64DB55FE21AA0EF200EA9A81 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A49EB9218B63DA003CE800 /* Database.swift */; };
-		64DB55FF21AA0EF200EA9A81 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB55D621A9A26D00EA9A81 /* Console.swift */; };
 		64DB560021AA0F2C00EA9A81 /* TvEpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A49E9F218B5253003CE800 /* TvEpisodeCell.swift */; };
 		64DB560121AA0F2C00EA9A81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A49EB1218B55F4003CE800 /* AppDelegate.swift */; };
 		64DB560321AA0F5500EA9A81 /* WidgetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DB560221AA0F5500EA9A81 /* WidgetManager.swift */; };
@@ -135,53 +144,23 @@
 		64ECC03E1FA2229500824076 /* TeebeeDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ECC0371FA2229300824076 /* TeebeeDetailsViewController.swift */; };
 		64ECC0411FA2229500824076 /* TeebeezViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ECC03B1FA2229400824076 /* TeebeezViewController.swift */; };
 		64ECC0421FA2229500824076 /* SearchTVsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64ECC03D1FA2229400824076 /* SearchTVsViewController.swift */; };
-		AFB4C4B0C199546DDD569603 /* Pods_Moobeez.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E83B5F42BE95F8674D687FE5 /* Pods_Moobeez.framework */; };
-		FDE62C10C834908C9B061C66 /* Pods_Today.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 407466ACE3E1F031CD25558D /* Pods_Today.framework */; };
+		EAE581FD2BAB7E6500734EC7 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = EAE581FC2BAB7E6500734EC7 /* SwiftyBeaver */; };
+		EAE581FF2BAB7EEE00734EC7 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = EAE581FE2BAB7EEE00734EC7 /* YouTubeiOSPlayerHelper */; };
+		EAE582012BAB7FCB00734EC7 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = EAE582002BAB7FCB00734EC7 /* SwiftyBeaver */; };
+		EAE582032BAB7FDD00734EC7 /* SwiftyBeaver in Frameworks */ = {isa = PBXBuildFile; productRef = EAE582022BAB7FDD00734EC7 /* SwiftyBeaver */; };
+		EAE582052BAB809100734EC7 /* Console.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE582042BAB809100734EC7 /* Console.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		64A49E98218B4E41003CE800 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 64445C7E1F5A215D007EB5A8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 64A49E8D218B4E41003CE800;
-			remoteInfo = Today;
-		};
-		64DB55E621AA0DDE00EA9A81 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 64445C7E1F5A215D007EB5A8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 64DB55DC21AA0DDE00EA9A81;
-			remoteInfo = "Missed Shows";
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		64A49E9E218B4E41003CE800 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				64A49E9A218B4E41003CE800 /* Today.appex in Embed App Extensions */,
-				64DB55E821AA0DDE00EA9A81 /* Missed Shows.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		1BFB79AD7E5905C6DFB46B35 /* Pods-Missed Shows.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Missed Shows.release.xcconfig"; path = "Pods/Target Support Files/Pods-Missed Shows/Pods-Missed Shows.release.xcconfig"; sourceTree = "<group>"; };
-		3F3C25900C20806C3BCFD6BF /* Pods-Moobeez.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moobeez.release.xcconfig"; path = "Pods/Target Support Files/Pods-Moobeez/Pods-Moobeez.release.xcconfig"; sourceTree = "<group>"; };
 		407466ACE3E1F031CD25558D /* Pods_Today.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Today.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5061422E8A4208B72FB5DE27 /* Pods-Missed Shows.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Missed Shows.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Missed Shows/Pods-Missed Shows.debug.xcconfig"; sourceTree = "<group>"; };
-		5AAD5D17A378B9F6FE0F5D84 /* Pods-Moobeez.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Moobeez.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Moobeez/Pods-Moobeez.debug.xcconfig"; sourceTree = "<group>"; };
-		60E6D430780AC182A19EAE1B /* Pods-Today.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.debug.xcconfig"; sourceTree = "<group>"; };
 		641454EB1F852DCC00569DE9 /* CastThumbnailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastThumbnailCell.swift; sourceTree = "<group>"; };
 		64339FA11F824AB2007C59CB /* ThemedItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemedItems.swift; sourceTree = "<group>"; };
 		643F359720419B4B00C07DB1 /* TimelineSectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineSectionCell.swift; sourceTree = "<group>"; };
 		643F359920419D4F00C07DB1 /* TimelineItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineItem.swift; sourceTree = "<group>"; };
+		6443D82B2B4C480D0031BAB2 /* BoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardingViewController.swift; sourceTree = "<group>"; };
+		6443D82D2B4C4ECA0031BAB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6443D8352B4CA1E90031BAB2 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		6443D8372B4CA9620031BAB2 /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		64445C861F5A215D007EB5A8 /* Moobeez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moobeez.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64445C891F5A215D007EB5A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		64445C8C1F5A215D007EB5A8 /* Moobeez.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Moobeez.xcdatamodel; sourceTree = "<group>"; };
@@ -244,15 +223,12 @@
 		64BB2C671F84E25900B672D8 /* TmdbImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbImage.swift; sourceTree = "<group>"; };
 		64BF29301FACBEFD0056299B /* Date+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helpers.swift"; sourceTree = "<group>"; };
 		64CAAE321F62DF51008FEF01 /* Moobeez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Moobeez.entitlements; sourceTree = "<group>"; };
-		64CAAE401F62EA6A008FEF01 /* SQLiteDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLiteDB.swift; sourceTree = "<group>"; };
-		64CAAE411F62EA6A008FEF01 /* SQLTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SQLTable.swift; sourceTree = "<group>"; };
 		64CAAE441F62EA78008FEF01 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		64CAAE451F62EA84008FEF01 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		64CAAE461F62EA84008FEF01 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		64DB559221A85B0F00EA9A81 /* Common.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Common.xcassets; sourceTree = "<group>"; };
 		64DB559521A8791900EA9A81 /* DeepLinking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeepLinking.swift; sourceTree = "<group>"; };
 		64DB559721A8795000EA9A81 /* URL+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Helpers.swift"; sourceTree = "<group>"; };
-		64DB55D621A9A26D00EA9A81 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 		64DB55DD21AA0DDE00EA9A81 /* Missed Shows.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Missed Shows.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64DB55E521AA0DDE00EA9A81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64DB560221AA0F5500EA9A81 /* WidgetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetManager.swift; sourceTree = "<group>"; };
@@ -267,7 +243,7 @@
 		64ECC03D1FA2229400824076 /* SearchTVsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTVsViewController.swift; sourceTree = "<group>"; };
 		E3D9AD17811DD3A32E69F7EE /* Pods_Missed_Shows.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Missed_Shows.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E83B5F42BE95F8674D687FE5 /* Pods_Moobeez.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Moobeez.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F7881A08BD6992FA4BCDE5C7 /* Pods-Today.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Today.release.xcconfig"; path = "Pods/Target Support Files/Pods-Today/Pods-Today.release.xcconfig"; sourceTree = "<group>"; };
+		EAE582042BAB809100734EC7 /* Console.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Console.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,9 +251,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64CAAE471F62EA84008FEF01 /* libsqlite3.tbd in Frameworks */,
-				64CAAE481F62EA84008FEF01 /* libsqlite3.0.tbd in Frameworks */,
-				AFB4C4B0C199546DDD569603 /* Pods_Moobeez.framework in Frameworks */,
+				6443D8232B4C1A9D0031BAB2 /* FirebaseRemoteConfig in Frameworks */,
+				EAE581FD2BAB7E6500734EC7 /* SwiftyBeaver in Frameworks */,
+				6443D8192B4C1A9D0031BAB2 /* FirebaseAuth in Frameworks */,
+				6443D8312B4C51820031BAB2 /* GoogleSignIn in Frameworks */,
+				64BE2F942B484EBB00168677 /* SDWebImageMapKit in Frameworks */,
+				6443D81F2B4C1A9D0031BAB2 /* FirebaseFirestoreCombine-Community in Frameworks */,
+				6443D8212B4C1A9D0031BAB2 /* FirebaseFirestoreSwift in Frameworks */,
+				64BE2F922B484EBA00168677 /* SDWebImage in Frameworks */,
+				6443D8332B4C51820031BAB2 /* GoogleSignInSwift in Frameworks */,
+				EAE581FF2BAB7EEE00734EC7 /* YouTubeiOSPlayerHelper in Frameworks */,
+				6443D81D2B4C1A9D0031BAB2 /* FirebaseFirestore in Frameworks */,
+				6443D8252B4C1A9D0031BAB2 /* FirebaseRemoteConfigSwift in Frameworks */,
+				6443D81B2B4C1A9D0031BAB2 /* FirebaseAuthCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,8 +271,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64BE2F962B484EDD00168677 /* SDWebImage in Frameworks */,
 				64A49E90218B4E41003CE800 /* NotificationCenter.framework in Frameworks */,
-				FDE62C10C834908C9B061C66 /* Pods_Today.framework in Frameworks */,
+				EAE582012BAB7FCB00734EC7 /* SwiftyBeaver in Frameworks */,
+				64BE2F982B484EDD00168677 /* SDWebImageMapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,8 +282,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64BE2F9A2B484EED00168677 /* SDWebImage in Frameworks */,
 				64DB55DE21AA0DDE00EA9A81 /* NotificationCenter.framework in Frameworks */,
-				575CAD94807352A1E1E0C829 /* Pods_Missed_Shows.framework in Frameworks */,
+				EAE582032BAB7FDD00734EC7 /* SwiftyBeaver in Frameworks */,
+				64BE2F9C2B484EED00168677 /* SDWebImageMapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,13 +311,29 @@
 			path = "Cast Cell";
 			sourceTree = "<group>";
 		};
+		6443D82A2B4C47DD0031BAB2 /* Boarding */ = {
+			isa = PBXGroup;
+			children = (
+				6443D82B2B4C480D0031BAB2 /* BoardingViewController.swift */,
+			);
+			path = Boarding;
+			sourceTree = "<group>";
+		};
+		6443D8342B4CA1BB0031BAB2 /* 8. My Profile */ = {
+			isa = PBXGroup;
+			children = (
+				6443D8352B4CA1E90031BAB2 /* MyProfileViewController.swift */,
+				6443D8372B4CA9620031BAB2 /* ConnectViewController.swift */,
+			);
+			path = "8. My Profile";
+			sourceTree = "<group>";
+		};
 		64445C7D1F5A215D007EB5A8 = {
 			isa = PBXGroup;
 			children = (
 				64445C881F5A215D007EB5A8 /* Moobeez */,
 				64DB560421AA105B00EA9A81 /* Extensions */,
 				64445C871F5A215D007EB5A8 /* Products */,
-				CE8162FEE8A8060B74E33617 /* Pods */,
 				E985BF051946DF91780C689B /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -345,6 +351,7 @@
 		64445C881F5A215D007EB5A8 /* Moobeez */ = {
 			isa = PBXGroup;
 			children = (
+				6443D82D2B4C4ECA0031BAB2 /* GoogleService-Info.plist */,
 				64CAAE321F62DF51008FEF01 /* Moobeez.entitlements */,
 				64CAAE441F62EA78008FEF01 /* Bridging-Header.h */,
 				64445CA11F5A2256007EB5A8 /* Classes */,
@@ -449,6 +456,8 @@
 				64445CB71F5A3152007EB5A8 /* 5. TV Shows */,
 				64445CB81F5A315E007EB5A8 /* 6. Suggestions */,
 				64479A661F86CD62009CAA7B /* 7. People */,
+				6443D8342B4CA1BB0031BAB2 /* 8. My Profile */,
+				6443D82A2B4C47DD0031BAB2 /* Boarding */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -662,15 +671,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		64CAAE3F1F62EA4B008FEF01 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				64CAAE401F62EA6A008FEF01 /* SQLiteDB.swift */,
-				64CAAE411F62EA6A008FEF01 /* SQLTable.swift */,
-			);
-			path = Database;
-			sourceTree = "<group>";
-		};
 		64CAAE4A1F62FBD5008FEF01 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -717,13 +717,12 @@
 			isa = PBXGroup;
 			children = (
 				64E76BA61F5A3E6E007F9727 /* Notifications.swift */,
-				64CAAE3F1F62EA4B008FEF01 /* Database */,
 				64BF292F1FACBEB60056299B /* Extensions */,
 				64527EFC1F65FF3E003828E3 /* Tmdb */,
 				64527EF21F65DF88003828E3 /* UI */,
 				64A49EB9218B63DA003CE800 /* Database.swift */,
 				64DB559521A8791900EA9A81 /* DeepLinking.swift */,
-				64DB55D621A9A26D00EA9A81 /* Console.swift */,
+				EAE582042BAB809100734EC7 /* Console.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -761,19 +760,6 @@
 			path = "Search TVs";
 			sourceTree = "<group>";
 		};
-		CE8162FEE8A8060B74E33617 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				5AAD5D17A378B9F6FE0F5D84 /* Pods-Moobeez.debug.xcconfig */,
-				3F3C25900C20806C3BCFD6BF /* Pods-Moobeez.release.xcconfig */,
-				60E6D430780AC182A19EAE1B /* Pods-Today.debug.xcconfig */,
-				F7881A08BD6992FA4BCDE5C7 /* Pods-Today.release.xcconfig */,
-				5061422E8A4208B72FB5DE27 /* Pods-Missed Shows.debug.xcconfig */,
-				1BFB79AD7E5905C6DFB46B35 /* Pods-Missed Shows.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		E985BF051946DF91780C689B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -794,20 +780,30 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64445C9D1F5A215D007EB5A8 /* Build configuration list for PBXNativeTarget "Moobeez" */;
 			buildPhases = (
-				EDB9993CDC0205EC73A4F3D8 /* [CP] Check Pods Manifest.lock */,
 				64445C821F5A215D007EB5A8 /* Sources */,
 				64445C831F5A215D007EB5A8 /* Frameworks */,
 				64445C841F5A215D007EB5A8 /* Resources */,
-				C03DD3EFC5BF073CB38F09C7 /* [CP] Embed Pods Frameworks */,
-				64A49E9E218B4E41003CE800 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				64A49E99218B4E41003CE800 /* PBXTargetDependency */,
-				64DB55E721AA0DDE00EA9A81 /* PBXTargetDependency */,
 			);
 			name = Moobeez;
+			packageProductDependencies = (
+				64BE2F912B484EBA00168677 /* SDWebImage */,
+				64BE2F932B484EBB00168677 /* SDWebImageMapKit */,
+				6443D8182B4C1A9D0031BAB2 /* FirebaseAuth */,
+				6443D81A2B4C1A9D0031BAB2 /* FirebaseAuthCombine-Community */,
+				6443D81C2B4C1A9D0031BAB2 /* FirebaseFirestore */,
+				6443D81E2B4C1A9D0031BAB2 /* FirebaseFirestoreCombine-Community */,
+				6443D8202B4C1A9D0031BAB2 /* FirebaseFirestoreSwift */,
+				6443D8222B4C1A9D0031BAB2 /* FirebaseRemoteConfig */,
+				6443D8242B4C1A9D0031BAB2 /* FirebaseRemoteConfigSwift */,
+				6443D8302B4C51820031BAB2 /* GoogleSignIn */,
+				6443D8322B4C51820031BAB2 /* GoogleSignInSwift */,
+				EAE581FC2BAB7E6500734EC7 /* SwiftyBeaver */,
+				EAE581FE2BAB7EEE00734EC7 /* YouTubeiOSPlayerHelper */,
+			);
 			productName = Moobeez;
 			productReference = 64445C861F5A215D007EB5A8 /* Moobeez.app */;
 			productType = "com.apple.product-type.application";
@@ -816,7 +812,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64A49E9B218B4E41003CE800 /* Build configuration list for PBXNativeTarget "Today" */;
 			buildPhases = (
-				281B217001F13C4299C9F93A /* [CP] Check Pods Manifest.lock */,
 				64A49E8A218B4E41003CE800 /* Sources */,
 				64A49E8B218B4E41003CE800 /* Frameworks */,
 				64A49E8C218B4E41003CE800 /* Resources */,
@@ -826,6 +821,11 @@
 			dependencies = (
 			);
 			name = Today;
+			packageProductDependencies = (
+				64BE2F952B484EDD00168677 /* SDWebImage */,
+				64BE2F972B484EDD00168677 /* SDWebImageMapKit */,
+				EAE582002BAB7FCB00734EC7 /* SwiftyBeaver */,
+			);
 			productName = Today;
 			productReference = 64A49E8E218B4E41003CE800 /* Today.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -834,7 +834,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 64DB55EB21AA0DDE00EA9A81 /* Build configuration list for PBXNativeTarget "Missed Shows" */;
 			buildPhases = (
-				F501B09B9758E09B43E0ABE5 /* [CP] Check Pods Manifest.lock */,
 				64DB55D921AA0DDE00EA9A81 /* Sources */,
 				64DB55DA21AA0DDE00EA9A81 /* Frameworks */,
 				64DB55DB21AA0DDE00EA9A81 /* Resources */,
@@ -844,6 +843,11 @@
 			dependencies = (
 			);
 			name = "Missed Shows";
+			packageProductDependencies = (
+				64BE2F992B484EED00168677 /* SDWebImage */,
+				64BE2F9B2B484EED00168677 /* SDWebImageMapKit */,
+				EAE582022BAB7FDD00734EC7 /* SwiftyBeaver */,
+			);
 			productName = "Missed Shows";
 			productReference = 64DB55DD21AA0DDE00EA9A81 /* Missed Shows.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -854,13 +858,14 @@
 		64445C7E1F5A215D007EB5A8 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1010;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1530;
 				ORGANIZATIONNAME = "Gogo's Lab";
 				TargetAttributes = {
 					64445C851F5A215D007EB5A8 = {
 						CreatedOnToolsVersion = 9.0;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1530;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -899,6 +904,13 @@
 				Base,
 			);
 			mainGroup = 64445C7D1F5A215D007EB5A8;
+			packageReferences = (
+				64BE2F902B4709E100168677 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				6443D8172B4C1A9D0031BAB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				6443D82F2B4C51820031BAB2 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				EAE581FA2BAB7DB300734EC7 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
+				EAE581FB2BAB7E6500734EC7 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */,
+			);
 			productRefGroup = 64445C871F5A215D007EB5A8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -917,6 +929,7 @@
 			files = (
 				64DB559321A85B0F00EA9A81 /* Common.xcassets in Resources */,
 				64445C991F5A215D007EB5A8 /* LaunchScreen.storyboard in Resources */,
+				6443D82E2B4C4ECA0031BAB2 /* GoogleService-Info.plist in Resources */,
 				64445C961F5A215D007EB5A8 /* Assets.xcassets in Resources */,
 				64445C941F5A215D007EB5A8 /* Main.storyboard in Resources */,
 			);
@@ -942,90 +955,12 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		281B217001F13C4299C9F93A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Today-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C03DD3EFC5BF073CB38F09C7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Moobeez/Pods-Moobeez-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework",
-				"${BUILT_PRODUCTS_DIR}/youtube-ios-player-helper/youtube_ios_player_helper.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyBeaver.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/youtube_ios_player_helper.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Moobeez/Pods-Moobeez-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EDB9993CDC0205EC73A4F3D8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Moobeez-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F501B09B9758E09B43E0ABE5 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Missed Shows-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		64445C821F5A215D007EB5A8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6443D8362B4CA1E90031BAB2 /* MyProfileViewController.swift in Sources */,
 				64ACB02A1F8B617600D9883D /* TeebeeSeason.swift in Sources */,
 				64ECC03E1FA2229500824076 /* TeebeeDetailsViewController.swift in Sources */,
 				64479A6A1F86D5AD009CAA7B /* TmdbService+People.swift in Sources */,
@@ -1040,6 +975,7 @@
 				64A82BE11FAB5DB100268DA8 /* TeebeeEpisode.swift in Sources */,
 				64445CAF1F5A2DAE007EB5A8 /* MBSideMenuSegue.swift in Sources */,
 				64ACB0261F8B5B1D00D9883D /* Tmdb.xcdatamodeld in Sources */,
+				6443D8382B4CA9620031BAB2 /* ConnectViewController.swift in Sources */,
 				64A82BE61FAB7CD100268DA8 /* SettingsManager.swift in Sources */,
 				64445CA71F5A2B72007EB5A8 /* MBNavigationController.swift in Sources */,
 				64527EEC1F63529E003828E3 /* TmdbTvShow.swift in Sources */,
@@ -1054,13 +990,13 @@
 				64ECC0351FA2180D00824076 /* VideoViewController.swift in Sources */,
 				64BAA69E1FA0D8FB00BC2E58 /* YoutubeVideoViewController.swift in Sources */,
 				6468F86E1F7404430023D72B /* ToolboxView.swift in Sources */,
+				6443D82C2B4C480D0031BAB2 /* BoardingViewController.swift in Sources */,
+				EAE582052BAB809100734EC7 /* Console.swift in Sources */,
 				64339FA21F824AB2007C59CB /* ThemedItems.swift in Sources */,
 				64527EF41F65DFAE003828E3 /* SearchBar.swift in Sources */,
 				64527EEE1F635571003828E3 /* TmdbTvSeason.swift in Sources */,
-				64DB55D721A9A26D00EA9A81 /* Console.swift in Sources */,
 				64794D361F72A6F200488683 /* MoobeeDetailsViewController.swift in Sources */,
 				64445C8D1F5A215D007EB5A8 /* Moobeez.xcdatamodeld in Sources */,
-				64CAAE431F62EA6A008FEF01 /* SQLTable.swift in Sources */,
 				64527EFB1F65FF34003828E3 /* UIImageView+Tmdb.swift in Sources */,
 				64445CBA1F5A3194007EB5A8 /* TimelineViewController.swift in Sources */,
 				64B63E271F66CAC100710A4E /* Connection.swift in Sources */,
@@ -1081,7 +1017,6 @@
 				643F359A20419D4F00C07DB1 /* TimelineItem.swift in Sources */,
 				64445CBC1F5A3540007EB5A8 /* DashboardViewController.swift in Sources */,
 				6456DB2E1F7417FA00C50192 /* UIImage+Luminosity.swift in Sources */,
-				64CAAE421F62EA6A008FEF01 /* SQLiteDB.swift in Sources */,
 				64794D3B1F72B33A00488683 /* EmptySegue.swift in Sources */,
 				64E76BA71F5A3E6E007F9727 /* Notifications.swift in Sources */,
 				64ACB0301F8B928600D9883D /* SearchResultCell.swift in Sources */,
@@ -1116,7 +1051,6 @@
 				64A49E93218B4E41003CE800 /* TodayViewController.swift in Sources */,
 				64A49EA0218B5253003CE800 /* TvEpisodeCell.swift in Sources */,
 				64A49EA8218B5321003CE800 /* TmdbPerson.swift in Sources */,
-				64DB55D821A9A26D00EA9A81 /* Console.swift in Sources */,
 				64A49EAF218B53DC003CE800 /* Moobeez.xcdatamodeld in Sources */,
 				64A49EB5218B56D6003CE800 /* SettingsManager.swift in Sources */,
 				64A49EAA218B5321003CE800 /* TmdbTvSeason.swift in Sources */,
@@ -1144,7 +1078,6 @@
 				64DB560A21AA122400EA9A81 /* Tmdb.xcdatamodeld in Sources */,
 				64DB560921AA122400EA9A81 /* Moobeez.xcdatamodeld in Sources */,
 				64DB55EE21AA0EAF00EA9A81 /* SettingsManager.swift in Sources */,
-				64DB55FF21AA0EF200EA9A81 /* Console.swift in Sources */,
 				64DB55F721AA0EBC00EA9A81 /* TmdbTvEpisode.swift in Sources */,
 				64DB55F521AA0EBC00EA9A81 /* TmdbMovie.swift in Sources */,
 				64DB55F821AA0EBC00EA9A81 /* TmdbTvSeason.swift in Sources */,
@@ -1157,19 +1090,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		64A49E99218B4E41003CE800 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 64A49E8D218B4E41003CE800 /* Today */;
-			targetProxy = 64A49E98218B4E41003CE800 /* PBXContainerItemProxy */;
-		};
-		64DB55E721AA0DDE00EA9A81 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 64DB55DC21AA0DDE00EA9A81 /* Missed Shows */;
-			targetProxy = 64DB55E621AA0DDE00EA9A81 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		64445C921F5A215D007EB5A8 /* Main.storyboard */ = {
@@ -1224,6 +1144,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1235,6 +1156,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1249,7 +1171,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1283,6 +1205,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1294,6 +1217,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1302,77 +1226,85 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		64445C9E1F5A215D007EB5A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5AAD5D17A378B9F6FE0F5D84 /* Pods-Moobeez.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Moobeez/Moobeez.entitlements;
-				DEVELOPMENT_TEAM = Z4252ZWMEJ;
+				DEVELOPMENT_TEAM = GWGNDB95V2;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
 					"MAIN=1",
 				);
 				INFOPLIST_FILE = Moobeez/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "-D MAIN";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gogoslab.moobeez;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Moobeez/Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		64445C9F1F5A215D007EB5A8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F3C25900C20806C3BCFD6BF /* Pods-Moobeez.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Moobeez/Moobeez.entitlements;
-				DEVELOPMENT_TEAM = Z4252ZWMEJ;
+				DEVELOPMENT_TEAM = GWGNDB95V2;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"COCOAPODS=1",
 					"MAIN=1",
 				);
 				INFOPLIST_FILE = Moobeez/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_SWIFT_FLAGS = "-D MAIN";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gogoslab.moobeez;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Moobeez/Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		64A49E9C218B4E41003CE800 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 60E6D430780AC182A19EAE1B /* Pods-Today.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Extensions/Today/Today.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z4252ZWMEJ;
 				INFOPLIST_FILE = "$(SRCROOT)/Extensions/Today/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-D SD_UIKIT";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift.Today";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gogoslab.moobeez.Today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -1382,18 +1314,21 @@
 		};
 		64A49E9D218B4E41003CE800 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7881A08BD6992FA4BCDE5C7 /* Pods-Today.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Extensions/Today/Today.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z4252ZWMEJ;
 				INFOPLIST_FILE = "$(SRCROOT)/Extensions/Today/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MTL_FAST_MATH = YES;
 				OTHER_SWIFT_FLAGS = "-D SD_UIKIT";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift.Today";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gogoslab.moobeez.Today;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -1403,18 +1338,21 @@
 		};
 		64DB55E921AA0DDE00EA9A81 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5061422E8A4208B72FB5DE27 /* Pods-Missed Shows.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "Extensions/Missed Shows/Missed Shows.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z4252ZWMEJ;
 				INFOPLIST_FILE = "$(SRCROOT)/Extensions/Missed Shows/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift.Missed-Shows";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gogoslab.moobeez.Missed-Shows";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -1424,17 +1362,20 @@
 		};
 		64DB55EA21AA0DDE00EA9A81 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1BFB79AD7E5905C6DFB46B35 /* Pods-Missed Shows.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = "Extensions/Missed Shows/Missed Shows.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z4252ZWMEJ;
 				INFOPLIST_FILE = "$(SRCROOT)/Extensions/Missed Shows/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.goggzy.moobeez-swift.Missed-Shows";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gogoslab.moobeez.Missed-Shows";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -1482,6 +1423,147 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6443D8172B4C1A9D0031BAB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.19.1;
+			};
+		};
+		6443D82F2B4C51820031BAB2 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+		64BE2F902B4709E100168677 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.18.8;
+			};
+		};
+		EAE581FA2BAB7DB300734EC7 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+		EAE581FB2BAB7E6500734EC7 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyBeaver/SwiftyBeaver.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6443D8182B4C1A9D0031BAB2 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6443D8172B4C1A9D0031BAB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		6443D81A2B4C1A9D0031BAB2 /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6443D8172B4C1A9D0031BAB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		6443D81C2B4C1A9D0031BAB2 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6443D8172B4C1A9D0031BAB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		6443D81E2B4C1A9D0031BAB2 /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6443D8172B4C1A9D0031BAB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		6443D8202B4C1A9D0031BAB2 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6443D8172B4C1A9D0031BAB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		6443D8222B4C1A9D0031BAB2 /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6443D8172B4C1A9D0031BAB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		6443D8242B4C1A9D0031BAB2 /* FirebaseRemoteConfigSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6443D8172B4C1A9D0031BAB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfigSwift;
+		};
+		6443D8302B4C51820031BAB2 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6443D82F2B4C51820031BAB2 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		6443D8322B4C51820031BAB2 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6443D82F2B4C51820031BAB2 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		64BE2F912B484EBA00168677 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64BE2F902B4709E100168677 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		64BE2F932B484EBB00168677 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64BE2F902B4709E100168677 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		64BE2F952B484EDD00168677 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64BE2F902B4709E100168677 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		64BE2F972B484EDD00168677 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64BE2F902B4709E100168677 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		64BE2F992B484EED00168677 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64BE2F902B4709E100168677 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		64BE2F9B2B484EED00168677 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 64BE2F902B4709E100168677 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		EAE581FC2BAB7E6500734EC7 /* SwiftyBeaver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAE581FB2BAB7E6500734EC7 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
+			productName = SwiftyBeaver;
+		};
+		EAE581FE2BAB7EEE00734EC7 /* YouTubeiOSPlayerHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAE581FA2BAB7DB300734EC7 /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
+			productName = YouTubeiOSPlayerHelper;
+		};
+		EAE582002BAB7FCB00734EC7 /* SwiftyBeaver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAE581FB2BAB7E6500734EC7 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
+			productName = SwiftyBeaver;
+		};
+		EAE582022BAB7FDD00734EC7 /* SwiftyBeaver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAE581FB2BAB7E6500734EC7 /* XCRemoteSwiftPackageReference "SwiftyBeaver" */;
+			productName = SwiftyBeaver;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		64445C8B1F5A215D007EB5A8 /* Moobeez.xcdatamodeld */ = {

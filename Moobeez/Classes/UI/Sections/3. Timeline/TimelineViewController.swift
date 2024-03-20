@@ -58,7 +58,7 @@ class TimelineViewController: MBViewController {
         }
         
         if future {
-            let firstIndex = items?.index(where: {return $0.0 >= Calendar.current.startOfDay(for: Date())})
+            let firstIndex = items?.firstIndex(where: {return $0.0 >= Calendar.current.startOfDay(for: Date())})
             
             if firstIndex != nil {
                 tableView.scrollToRow(at: IndexPath(row:0, section: firstIndex!), at: .top, animated: false)

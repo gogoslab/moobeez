@@ -42,7 +42,7 @@ class StarsView: UIView {
     var percent: CGFloat = 0 {
         didSet {
             removeConstraint(widthConstraint)
-            widthConstraint = NSLayoutConstraint(item: fullStarsImageView, attribute: NSLayoutConstraint.Attribute.width,
+            widthConstraint = NSLayoutConstraint(item: fullStarsImageView!, attribute: NSLayoutConstraint.Attribute.width,
                                                  relatedBy: NSLayoutConstraint.Relation.equal,
                                                  toItem: self, attribute: NSLayoutConstraint.Attribute.width,
                                                  multiplier: percent, constant: 0)

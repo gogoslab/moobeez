@@ -28,7 +28,7 @@ class Database: NSObject {
         let model = NSManagedObjectModel(contentsOf: currentBundle.url(forResource:resourceName, withExtension:"momd")!)
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: model!)
         
-        let directory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.moobeez")
+        let directory = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.gogoslab.moobeez")
         
         let url = directory?.appendingPathComponent("\(name).sqlite")
         

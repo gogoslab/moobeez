@@ -9,7 +9,7 @@
 import Foundation
 
 public extension URL {
-    public var parameters:[String : Any] {
+    var parameters:[String : Any] {
         get {
             let components = NSURLComponents(url: self, resolvingAgainstBaseURL: false)
             

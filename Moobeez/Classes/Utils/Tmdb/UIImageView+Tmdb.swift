@@ -60,7 +60,7 @@ extension UIImageView {
         let options = SDWebImageOptions.scaleDownLargeImages
         #endif
         
-        sd_setImageWithPreviousCachedImage(with: url, placeholderImage: placeholder, options: options, progress: nil) { (image, error, cacheType, url) in
+        sd_setImage(with: url, placeholderImage: placeholder, options: options, progress: nil) { (image, error, cacheType, url) in
             if completion != nil {
                 completion!(error == nil)
             }
