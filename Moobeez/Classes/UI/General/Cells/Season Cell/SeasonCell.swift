@@ -18,9 +18,9 @@ class SeasonCell: UITableViewCell {
     var tapGesture:UITapGestureRecognizer?
     
     @IBAction func watchButtonPressed(_ sender: Any) {
-        season?.episodes?.enumerateObjects({ (episode, _, _) in
-            (episode as! TeebeeEpisode).watched = !watchButton.isSelected
-            NotificationCenter.default.post(name: .TeebeeEpisodeDidChangeNotification , object: (episode as! TeebeeEpisode).tmdbId)
+        season?.episodes.forEach({ episode in
+            episode.watched = !watchButton.isSelected
+            NotificationCenter.default.post(name: .TeebeeEpisodeDidChangeNotification , object: episode.tmdbId)
         })
         watchButton.isSelected = !watchButton.isSelected
         MoobeezManager.shared.save()
@@ -34,7 +34,7 @@ class SeasonCell: UITableViewCell {
         }
     }
     
-    var season:TeebeeSeason? {
+    var season:Teebee.Season? {
         didSet
         {
             NotificationCenter.default.removeObserver(self, name: Notification.Name.TeebeeSeasonDidChangeNotification, object: oldValue)
@@ -62,7 +62,7 @@ class SeasonCell: UITableViewCell {
         let details:NSMutableAttributedString = NSMutableAttributedString()
         details.append(NSAttributedString(string: "\(season!.watchedEpisodesCount)", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.2039215714, green: 0.6666666865, blue: 0.8627451062, alpha: 1)]))
         details.append(NSAttributedString(string: " / "))
-        details.append(NSAttributedString(string: "\(season!.episodes!.count)", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.2039215714, green: 0.6666666865, blue: 0.8627451062, alpha: 1)]))
+        details.append(NSAttributedString(string: "\(season!.episodes.count)", attributes: [NSAttributedString.Key.foregroundColor : #colorLiteral(red: 0.2039215714, green: 0.6666666865, blue: 0.8627451062, alpha: 1)]))
         details.append(NSAttributedString(string: " episodes watched"))
         
         detailsLabel.attributedText = details

@@ -8,22 +8,22 @@
 
 import Foundation
 
-typealias ConnectionTvShowHandler = (_ error: Error?, _ responseContent: TmdbTvShow?) -> ()
-typealias ConnectionSearchTvShowsHandler = (_ error: Error?, _ responseContent: [TmdbTvShow]) -> ()
+typealias ConnectionTvShowHandler = (_ error: Error?, _ responseContent: Tmdb.TvShow?) -> ()
+typealias ConnectionSearchTvShowsHandler = (_ error: Error?, _ responseContent: [Tmdb.TvShow]) -> ()
 
 extension TmdbService {
     
-    static func startTvShowConnection(tmdbId:Int64, completionHandler:ConnectionTvShowHandler? = nil) {
+    static func startTvShowConnection(tmdbId: String, completionHandler:ConnectionTvShowHandler? = nil) {
         
         _ = TmdbConnection.startConnection(urlString: "tv/\(tmdbId)", parameters: ["append_to_response" : "credits,images,external_ids"], contentType: ContentType.json) { (error, responseContent, code) in
             
-            var tvShow: TmdbTvShow? = nil
+            var tvShow: Tmdb.TvShow? = nil
             
             if error == nil {
                 
                 let content: Dictionary<String, Any> = responseContent as! Dictionary<String, Any>
                 
-                tvShow = TmdbTvShow.create(tmdbDictionary: content)
+                tvShow = Tmdb.tvShow(content)
             }
             
             if tvShow != nil && tvShow!.seasonsCount > 0 {
@@ -36,9 +36,9 @@ extension TmdbService {
         
     }
     
-    static func startTvShowConnection(tvShow:TmdbTvShow, completionHandler:ConnectionTvShowHandler? = nil) {
+    static func startTvShowConnection(tvShow:Tmdb.TvShow, completionHandler:ConnectionTvShowHandler? = nil) {
         
-        _ = TmdbConnection.startConnection(urlString: "tv/\(tvShow.tmdbId)", parameters: ["append_to_response" : "credits,images,external_ids"], contentType: ContentType.json) { (error, responseContent, code) in
+        _ = TmdbConnection.startConnection(urlString: "tv/\(tvShow.id)", parameters: ["append_to_response" : "credits,images,external_ids"], contentType: ContentType.json) { (error, responseContent, code) in
             
             if error == nil {
                 tvShow.addEntriesFrom(tmdbDictionary: responseContent as! [String : Any])
@@ -58,7 +58,7 @@ extension TmdbService {
         
         _ = TmdbConnection.startConnection(urlString: "search/tv", parameters: ["query" : query], contentType: ContentType.json) { (error, responseContent, code) in
             
-            var tvShows:[TmdbTvShow] = [TmdbTvShow]()
+            var tvShows:[Tmdb.TvShow] = [Tmdb.TvShow]()
             
             if error == nil {
                 
@@ -74,7 +74,7 @@ extension TmdbService {
                             
                             if title.lowercased().range(of: query.lowercased()) != nil {
                                 
-                                let tvShow:TmdbTvShow = TmdbTvShow.create(tmdbDictionary: tvShowDictionary)
+                                let tvShow:Tmdb.TvShow = Tmdb.tvShow(tvShowDictionary)
                                 tvShows.append(tvShow)
                                 
                             }
@@ -88,12 +88,12 @@ extension TmdbService {
         }
     }
     
-    static func startTvShowSeasonConnection(tvShow:TmdbTvShow, seasonNumber:Int16, completionHandler:ConnectionTvShowHandler? = nil) {
+    static func startTvShowSeasonConnection(tvShow:Tmdb.TvShow, seasonNumber:Int, completionHandler:ConnectionTvShowHandler? = nil) {
         
-        _ = TmdbConnection.startConnection(urlString: "tv/\(tvShow.tmdbId)/season/\(seasonNumber)", parameters: nil, contentType: ContentType.json) { (error, responseContent, code) in
+        _ = TmdbConnection.startConnection(urlString: "tv/\(tvShow.id)/season/\(seasonNumber)", parameters: nil, contentType: ContentType.json) { (error, responseContent, code) in
             
             if error == nil {
-                let season:TmdbTvSeason = tvShow.seasonWithNumber(number: seasonNumber)
+                let season:Tmdb.Season = tvShow.seasonWithNumber(number: seasonNumber)
                 season.addEntriesFrom(tmdbDictionary: responseContent as! [String : Any])
             }
             

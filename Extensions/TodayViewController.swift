@@ -15,8 +15,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var placeholderLabel: UILabel!
     
-    var episodes:[TeebeeEpisode] = [TeebeeEpisode]()
-    var shows:[[TeebeeEpisode]] = [[TeebeeEpisode]]()
+    var episodes:[Teebee.Episode] = [Teebee.Episode]()
+    var shows:[[Teebee.Episode]] = [[Teebee.Episode]]()
     let episodesPerRow:Int = 6
     
     override func viewDidLoad() {

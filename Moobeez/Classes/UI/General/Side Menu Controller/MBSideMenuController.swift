@@ -96,6 +96,8 @@ class MBSideMenuController: UIViewController {
         
         containerView.isUserInteractionEnabled = true
         
+        searchBar.resignFirstResponder()
+        
     }
 
     @IBAction func backgroundTapped(_ sender: Any) {

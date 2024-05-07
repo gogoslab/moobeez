@@ -21,7 +21,7 @@ class SearchResultCell: UITableViewCell {
         // Initialization code
     }
     
-    var movie:TmdbMovie?
+    var movie:Tmdb.Movie?
     {
         didSet {
             posterImageView.loadTmdbPosterWithPath(path: movie?.posterPath, placeholder:#imageLiteral(resourceName: "default_image"))
@@ -40,7 +40,7 @@ class SearchResultCell: UITableViewCell {
         }
     }
     
-    var person:TmdbPerson?
+    var person:Tmdb.Person?
     {
         didSet {
             posterImageView.loadTmdbProfileWithPath(path: person?.profilePath)
@@ -52,7 +52,7 @@ class SearchResultCell: UITableViewCell {
         }
     }
     
-    var tvShow:TmdbTvShow?
+    var tvShow:Tmdb.TvShow?
     {
         didSet {
             posterImageView.loadTmdbPosterWithPath(path: tvShow?.posterPath, placeholder:#imageLiteral(resourceName: "default_image"))

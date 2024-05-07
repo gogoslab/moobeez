@@ -63,7 +63,9 @@ class MoobeeToolboxView : ToolboxView {
             starsView.updateHandler = {
                 self.moobee?.rating = Float(self.starsView.rating)
                 
-                MoobeezManager.shared.save()
+                NotificationCenter.default.post(name: .BeeDidChangeNotification, object: self.moobee?.tmdbId)
+                
+                self.moobee?.save()
             }
             
             let dateFormatter = DateFormatter()
@@ -80,14 +82,14 @@ class MoobeeToolboxView : ToolboxView {
         }
         
         for cell:UIView in sawMovieViews {
-            cell.isHidden = (moobee?.moobeeType != MoobeeType.seen)
+            cell.isHidden = (moobee?.type != .seen)
         }
         
         for cell:UIView in didntSawMovieViews {
-            cell.isHidden = (moobee?.moobeeType == MoobeeType.seen)
+            cell.isHidden = (moobee?.type == .seen)
         }
         
-        watchlistButton.isSelected = moobee?.moobeeType == MoobeeType.watchlist
+        watchlistButton.isSelected = moobee?.type == .watchlist
         
         let title:String = (watchlistButton.isSelected ? "remove from watchlist" : "add to watchlist")
         
@@ -143,8 +145,10 @@ class MoobeeToolboxView : ToolboxView {
 
 class MoobeeDetailsViewController: MBViewController {
 
-    var movie:TmdbMovie?
+    var movie:Tmdb.Movie?
     var moobee:Moobee?
+    
+    var characters:[Tmdb.Character] = []
     
     var posterImage:UIImage?
     
@@ -176,7 +180,7 @@ class MoobeeDetailsViewController: MBViewController {
             movie = moobee?.movie
         }
         else if movie != nil {
-            moobee = Moobee.fetchMoobeeWithTmdbId((movie?.tmdbId)!)
+            moobee = Moobee.fetchMoobeeWithTmdbId((movie?.id)!)
             
             if moobee == nil {
                 moobee = Moobee(tmdbMovie: movie!)
@@ -191,7 +195,7 @@ class MoobeeDetailsViewController: MBViewController {
         loadPoster()
         
         if movie != nil {
-            TmdbService.startMovieConnection(movie: movie!) { (error: Error?, movie: TmdbMovie?) in
+            TmdbService.startMovieConnection(movie: movie!) { (error: Error?, movie: Tmdb.Movie?) in
                 DispatchQueue.main.async {
                     self.moobee?.movie = movie
                     self.reloadMovie()
@@ -199,7 +203,7 @@ class MoobeeDetailsViewController: MBViewController {
             }
         }
         else {
-            TmdbService.startMovieConnection(tmdbId: (moobee?.tmdbId)!) { (error: Error?, movie: TmdbMovie?) in
+            TmdbService.startMovieConnection(tmdbId: (moobee?.tmdbId)!) { (error: Error?, movie: Tmdb.Movie?) in
                 DispatchQueue.main.async {
                     self.movie = movie
                     self.reloadMovie()
@@ -209,12 +213,18 @@ class MoobeeDetailsViewController: MBViewController {
         
         reloadMoobee()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadMoobee), name: .BeeDidChangeNotification, object:moobee?.tmdbId)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            NotificationCenter.default.addObserver(self, selector: #selector(self.reloadMoobee), name: .BeeDidChangeNotification, object:self.moobee?.tmdbId)
+        }
     }
     
     @objc func reloadMoobee () {
         toolboxView.moobee = moobee
-        addRemoveButton.isHidden = moobee?.moobeeType == MoobeeType.new
+        addRemoveButton.isHidden = moobee?.type == .new
+        characters = (moobee?.movie?.characters ?? movie?.characters ?? []).sorted(by: { c1, c2 in
+            c1.castId < c2.castId
+        })        
+        toolboxView.castCollectionView.reloadData()
     }
     
     func reloadMovie() {
@@ -223,6 +233,10 @@ class MoobeeDetailsViewController: MBViewController {
         self.castCollectionViewConstraint.constant = self.toolboxView.castDetailsCollectionView.contentSize.height
         self.loadPoster()
         self.toolboxView.descriptionTextView.text = movie?.overview
+        characters = (moobee?.movie?.characters ?? movie?.characters ?? []).sorted(by: { c1, c2 in
+            c1.castId < c2.castId
+        })
+        toolboxView.castCollectionView.reloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -258,7 +272,7 @@ class MoobeeDetailsViewController: MBViewController {
             
             let imageGalleryViewController:ImageGalleryViewController = segue.destination as! ImageGalleryViewController
             
-            imageGalleryViewController.images = movie?.backdropImages?.allObjects as? [TmdbImage]
+            imageGalleryViewController.images = movie?.backdropImages
             
             (UIApplication.shared.delegate as! AppDelegate).isPortrait = false
             
@@ -295,7 +309,7 @@ class MoobeeDetailsViewController: MBViewController {
             }
             
             for castCell:UICollectionViewCell in collectionView!.visibleCells {
-                if (castCell as! CastThumbnailCell).person?.personId == (viewController as! PersonDetailsViewController).person?.personId {
+                if (castCell as! CastThumbnailCell).person?.id == (viewController as! PersonDetailsViewController).person?.id {
                     return (castCell as! CastThumbnailCell).imageView
                 }
             }
@@ -331,17 +345,17 @@ class MoobeeDetailsViewController: MBViewController {
     }
     
     @IBAction func watchlistButtonPressed(_ sender: UIButton) {
-        if moobee?.moobeeType != MoobeeType.watchlist {
-            moobee?.moobeeType = MoobeeType.watchlist
+        if moobee?.type != .watchlist {
+            moobee?.type = .watchlist
         }
         else {
-            moobee?.moobeeType = MoobeeType.new
+            moobee?.type = .new
         }
         toolboxView.reloadTypeCells()
         
         MoobeezManager.shared.addMoobee(moobee!)
         MoobeezManager.shared.save()
-        addRemoveButton.isHidden = moobee?.moobeeType == MoobeeType.new
+        addRemoveButton.isHidden = moobee?.type == .new
 
         if let searchViewController = presenting as? SearchMoviesViewController {
             presenting = searchViewController.presenting
@@ -355,14 +369,14 @@ class MoobeeDetailsViewController: MBViewController {
     }
     
     @IBAction func sawMovieButtonPressed(_ sender: UIButton) {
-        moobee?.moobeeType = MoobeeType.seen
+        moobee?.type = .seen
         moobee?.rating = 2.5
         moobee?.date = Date()
         toolboxView.moobee = moobee
         
         MoobeezManager.shared.addMoobee(moobee!)
         MoobeezManager.shared.save()
-        addRemoveButton.isHidden = moobee?.moobeeType == MoobeeType.new
+        addRemoveButton.isHidden = moobee?.type == .new
 
         if let searchViewController = presenting as? SearchMoviesViewController {
             presenting = searchViewController.presenting
@@ -391,11 +405,11 @@ class MoobeeDetailsViewController: MBViewController {
     }
     
     @IBAction func trailersButtonPressed(_ sender: UIButton) {
-        if movie?.trailerType == TrailerType.youtube.rawValue {
+        if movie?.trailerType == .youtube {
             performSegue(withIdentifier: "YoutubeViewSegue", sender: nil)
         }
         
-        if movie?.trailerType == TrailerType.quicktime.rawValue {
+        if movie?.trailerType == .quicktime {
             performSegue(withIdentifier: "VideoViewSegue", sender: nil)
         }
     }
@@ -413,7 +427,7 @@ class MoobeeDetailsViewController: MBViewController {
     }
     
     @IBAction func addRemoveButtonPressed(_ sender: UIButton) {
-        moobee?.moobeeType = MoobeeType.new
+        moobee?.type = .new
         NotificationCenter.default.post(name: .MoobeezDidChangeNotification, object: moobee?.tmdbId)
         reloadMoobee()
     }
@@ -469,14 +483,14 @@ extension MoobeeDetailsViewController : UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return movie?.characters?.count ?? 0;
+        return characters.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell:CastThumbnailCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CastCell", for: indexPath) as! CastThumbnailCell
         
-        let character:TmdbCharacter = movie?.characters?[indexPath.row] as! TmdbCharacter
+        let character = characters[indexPath.row]
         cell.person = character.person
         cell.character = character
         cell.applyTheme(lightTheme: toolboxView.lightTheme)

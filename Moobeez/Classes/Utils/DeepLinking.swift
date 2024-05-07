@@ -41,7 +41,7 @@ class DeepLinking: NSObject {
                     return
                 }
                 
-                guard let teebee = Teebee.fetchTeebeeWithTmdbId(Int64(id) ?? 0) else {
+                guard let teebee = Teebee.fetchTeebeeWithTmdbId(id) else {
                     return
                 }
                 
@@ -55,7 +55,7 @@ class DeepLinking: NSObject {
                     return
                 }
                 
-                guard let moobee = Moobee.fetchMoobeeWithTmdbId(Int64(id) ?? 0) else {
+                guard let moobee = Moobee.fetchMoobeeWithTmdbId(id) else {
                     return
                 }
                 

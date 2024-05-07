@@ -9,32 +9,51 @@
 import Foundation
 import CoreData
 
-extension Teebee {
+class Teebee: Bee, Identifiable, Equatable, Codable {
     
-    static func fetchTeebeeWithTmdbId(_ tmdbId:Int64) -> Teebee? {
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Teebee")
-        fetchRequest.predicate = NSPredicate(format: "tmdbId == %ld", tmdbId)
-        
-        do {
-            let fetchedItems:[Teebee] = try MoobeezManager.shared.moobeezDatabase.context.fetch(fetchRequest) as! [Teebee]
-            
-            if fetchedItems.count > 0 {
-                return fetchedItems[0]
-            }
-            
-        } catch {
-            fatalError("Failed to fetch moobeez: \(error)")
-        }
-        
-        return nil
+    static func == (lhs: Teebee, rhs: Teebee) -> Bool {
+        return lhs.id == rhs.id
     }
     
-    convenience init(tmdbTvShow tvShow:TmdbTvShow) {
+    var id = UUID()
+    
+    var name: String
+    
+    var date: Date?
+    
+    var posterPath: String?
+    var backdropPath: String?
+    var releaseDate: Date?
+    var rating: Float = 5
+    var tmdbId: String?
+    
+    var isFavorite: Bool = false
+
+    var temporary: Bool = false    
+    var lastUpdateDate: Date?
+    
+    var seasons: [Season] = []
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case date
+        case posterPath
+        case backdropPath
+        case releaseDate
+        case rating
+        case tmdbId
         
-        self.init(entity: NSEntityDescription.entity(forEntityName: "Teebee", in: MoobeezManager.shared.moobeezDatabase.context)!, insertInto: MoobeezManager.shared.moobeezDatabase.context)
+        case isFavorite
+        case lastUpdateDate
+        case temporary
         
-        self.tmdbId = tvShow.tmdbId
+        case seasons
+    }
+    
+    init(tmdbTvShow tvShow:Tmdb.TvShow) {
+        
+        self.tmdbId = tvShow.id
         self.name = tvShow.name
         self.rating = 2.5
         self.date = Date()
@@ -42,50 +61,61 @@ extension Teebee {
         self.backdropPath = tvShow.backdropPath
         self.temporary = true
         
-        for tmdbSeason:TmdbTvSeason in Array(tvShow.seasons!) as! [TmdbTvSeason] {
+        for tmdbSeason:Tmdb.Season in tvShow.seasons {
             let season = seasonWithNumber(number: tmdbSeason.seasonNumber)
             season.posterPath = tmdbSeason.posterPath
         }
     }
     
-    var tvShow:TmdbTvShow? {
+}
+
+extension Teebee {
+    
+    static func fetchTeebeeWithTmdbId(_ tmdbId: String) -> Teebee? {
+        
+        return MoobeezManager.shared.teebeez.first { teebee in
+            teebee.tmdbId == tmdbId
+        }
+    }
+    
+    var tvShow:Tmdb.TvShow? {
         get {
-            return TmdbTvShow.fetchTvShowWithId(tmdbId)
+            return tmdbId == nil ? nil : Tmdb.TvShows[tmdbId!]
         }
         set (tvShow) {
-            tmdbId = (tvShow != nil ? tvShow!.tmdbId : nil)!
+            guard let tvShow = tvShow else {
+                tmdbId = nil
+                return
+            }
+            tmdbId = tvShow.id
             
-            if tvShow != nil
-            {
-                self.posterPath = tvShow!.posterPath
-                self.backdropPath = tvShow!.backdropPath
-                
-                for tmdbSeason:TmdbTvSeason in Array(tvShow!.seasons!) as! [TmdbTvSeason] {
-                    let season = seasonWithNumber(number: tmdbSeason.seasonNumber)
-                    season.setTmdbSeason(tmdbSeason: tmdbSeason)
-                }
+            self.posterPath = tvShow.posterPath
+            self.backdropPath = tvShow.backdropPath
+            
+            for tmdbSeason:Tmdb.Season in tvShow.seasons {
+                let season = seasonWithNumber(number: tmdbSeason.seasonNumber)
+                season.setTmdbSeason(tmdbSeason: tmdbSeason)
             }
         }
     }
     
-    func seasonWithNumber(number:Int16) -> TeebeeSeason
+    func seasonWithNumber(number: Int) -> Season
     {
-        if seasons != nil {
-            for season:TeebeeSeason in Array(seasons!) as! [TeebeeSeason]
+        for season:Season in seasons
+        {
+            if (season.number == number)
             {
-                if (season.number == number)
-                {
-                    return season
-                }
+                return season
             }
         }
         
-        let season:TeebeeSeason = NSManagedObject(entity: NSEntityDescription.entity(forEntityName: "TeebeeSeason", in: MoobeezManager.shared.moobeezDatabase.context)!, insertInto: self.managedObjectContext) as! TeebeeSeason
+        let season = Season()
         
         season.number = number
         season.teebee = self
+        season.tmdbId = "\(tmdbId ?? "")_\(number)"
         
-        addToSeasons(season)
+        seasons.append(season)
         
         return season
     }
@@ -95,17 +125,9 @@ extension Teebee {
         get {
             var episodesCount = 0
             
-            guard seasons != nil else {
-                return 0
-            }
-            
-            for season in seasons! {
+            for season in seasons {
                 
-                guard season is TeebeeSeason else {
-                    continue
-                }
-                
-                episodesCount += (season as! TeebeeSeason).watchedEpisodesCount
+                episodesCount += season.watchedEpisodesCount
             }
             
             return episodesCount
@@ -117,58 +139,103 @@ extension Teebee {
         get {
             var episodesCount = 0
             
-            guard seasons != nil else {
-                return 0
-            }
-            
-            for season in seasons! {
+            for season in seasons {
                 
-                guard season is TeebeeSeason else {
-                    continue
-                }
-                
-                episodesCount += (season as! TeebeeSeason).notWatchedEpisodesCount
+                episodesCount += season.pastEpisodes.count
             }
             
             return episodesCount
         }
     }
     
-    var nextEpisode: TeebeeEpisode?
+    var nextEpisode: Episode?
     {
         get {
             
-            let fetchRequest = NSFetchRequest<NSFetchRequestResult> (entityName: "TeebeeEpisode")
-            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: true), NSSortDescriptor(key: "number", ascending: true)]
-            fetchRequest.predicate = NSPredicate(format: "watched == 0 AND season.teebee == %@ AND releaseDate != nil", self)
-            
-            do {
-                let fetchedItems:[TeebeeEpisode] = try MoobeezManager.shared.moobeezDatabase.context.fetch(fetchRequest) as! [TeebeeEpisode]
-                
-                if fetchedItems.count > 0 {
-                    return fetchedItems[0]
+            for season in seasons {
+                for episode in season.episodes {
+                    if episode.watched == false && episode.releaseDate != nil {
+                        return episode
+                    }
                 }
-                
-            } catch {
-                fatalError("Failed to fetch moobeez: \(error)")
             }
             
             return nil
         }
     }
     
-    func markAsWatched() {
-        if let seasons = seasons?.array as? [TeebeeSeason] {
+    var notWatchedEpisodes: [Episode] {
+        get {
+            var notWatchedEpisodes: [Episode] = []
+            
             for season in seasons {
-                season.watched = true
+                notWatchedEpisodes.append(contentsOf: season.pastEpisodes)
             }
+            
+            return notWatchedEpisodes
+        }
+    }
+    
+    var nextEpisodes: [Episode] {
+        get {
+            var nextEpisodes: [Episode] = []
+            
+            for season in seasons {
+                nextEpisodes.append(contentsOf: season.nextEpisodes)
+            }
+            
+            return nextEpisodes
+        }
+    }
+    
+    func markAsWatched() {
+        for season in seasons {
+            season.watched = true
+        }
+    }
+    
+    func episodesBetween(startDate: Date? = nil, endDate: Date? = nil) -> [Teebee.Episode] {
+        
+        return seasons.flatMap { season in
+            return season.episodesBetween(startDate: startDate, endDate: endDate)
+        }
+    }
+    
+    public var description: String {
+        get {
+            return "\(self.name) - \(nextEpisode != nil ? "Next Ep: \(nextEpisode!)" : "")"
+        }
+    }
+}
+
+extension Teebee {
+    
+    var file: URL {
+        get {
+            return URL.teebeezDirectory.appendingPathComponent(id.uuidString)
+        }
+    }
+    
+    func save() {
+        
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        do {
+            print("Writing...  📖: \(file.description)")
+            try encoder.encode(self).write(to: file)
+        } catch {
+            print("Couldn’t save new entry to \(file), \(error.localizedDescription)")
+        }
+    }
+    
+    func delete() {
+        
+        do {
+            try FileManager.default.removeItem(at: file)
+        } catch {
+            
         }
         
     }
     
-    public override var description: String {
-        get {
-            return "\(self.name ?? "unknown show") - \(nextEpisode != nil ? "Next Ep: \(nextEpisode!)" : "")"
-        }
-    }
 }

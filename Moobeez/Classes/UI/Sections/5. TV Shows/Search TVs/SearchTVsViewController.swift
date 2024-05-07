@@ -14,7 +14,7 @@ class SearchTVsViewController: MBViewController {
     @IBOutlet var tableView:UITableView!
     @IBOutlet var searchBar:SearchBar!
     
-    var tvShows:[TmdbTvShow]?
+    var tvShows:[Tmdb.TvShow]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class SearchTVsViewController: MBViewController {
         }
         
         for cell:UITableViewCell in tableView.visibleCells {
-            if (cell as! SearchResultCell).tvShow?.tmdbId == (viewController as! TeebeeDetailsViewController).tvShow?.tmdbId {
+            if (cell as! SearchResultCell).tvShow?.id == (viewController as! TeebeeDetailsViewController).tvShow?.id {
                 return (cell as! SearchResultCell).posterImageView
             }
         }
@@ -83,7 +83,7 @@ extension SearchTVsViewController : UITableViewDataSource, UITableViewDelegate {
         
         let cell:SearchResultCell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as! SearchResultCell
         
-        let tvShow:TmdbTvShow = tvShows![indexPath.row]
+        let tvShow:Tmdb.TvShow = tvShows![indexPath.row]
         
         cell.tvShow = tvShow
         

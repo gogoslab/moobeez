@@ -98,7 +98,7 @@ class TimelineItemCell : UITableViewCell {
             }
             
             if let moobee = item?.moobee {
-                NotificationCenter.default.addObserver(forName: .BeeDidChangeNotification, object: moobee, queue: .main) { (_) in
+                NotificationCenter.default.addObserver(forName: .BeeDidChangeNotification, object: moobee.tmdbId, queue: .main) { (_) in
                     self.reloadData()
                 }
             }
@@ -159,7 +159,7 @@ extension TimelineSectionCell : UITableViewDataSource, UITableViewDelegate {
         
         let item = items[indexPath.row]
         
-        let cell:TimelineItemCell = tableView.dequeueReusableCell(withIdentifier: (item.teebeeEpisode != nil ? "TVCell" : (item.moobee!.moobeeType == .seen ? "MovieCell" : "WatchlistCell"))) as! TimelineItemCell
+        let cell:TimelineItemCell = tableView.dequeueReusableCell(withIdentifier: (item.teebeeEpisode != nil ? "TVCell" : (item.moobee!.type == .seen ? "MovieCell" : "WatchlistCell"))) as! TimelineItemCell
         
         cell.item = item
         

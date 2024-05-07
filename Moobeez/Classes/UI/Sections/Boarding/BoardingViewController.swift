@@ -17,7 +17,9 @@ class BoardingViewController: ConnectViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FirebaseApp.configure()
+        if FirebaseApp.allApps?.isEmpty ?? true {            
+            FirebaseApp.configure()
+        }
         
         self.buttonsStackView.isHidden = true
         
@@ -45,5 +47,6 @@ class BoardingViewController: ConnectViewController {
     
     
     @IBAction func skipButtonPressed(_ sender: Any) {
+        goToMain()
     }
 }

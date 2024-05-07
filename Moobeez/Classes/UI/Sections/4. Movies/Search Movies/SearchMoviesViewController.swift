@@ -14,7 +14,7 @@ class SearchMoviesViewController: MBViewController {
     @IBOutlet var tableView:UITableView!
     @IBOutlet var searchBar:SearchBar!
     
-    var movies:[TmdbMovie]?
+    var movies:[Tmdb.Movie]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class SearchMoviesViewController: MBViewController {
         }
         
         for cell:UITableViewCell in tableView.visibleCells {
-            if (cell as! SearchResultCell).movie?.tmdbId == (viewController as! MoobeeDetailsViewController).movie?.tmdbId {
+            if (cell as! SearchResultCell).movie?.id == (viewController as! MoobeeDetailsViewController).movie?.id {
                 return (cell as! SearchResultCell).posterImageView
             }
         }
@@ -83,7 +83,7 @@ extension SearchMoviesViewController : UITableViewDataSource, UITableViewDelegat
         
         let cell:SearchResultCell = tableView.dequeueReusableCell(withIdentifier: "SearchResultCell") as! SearchResultCell
         
-        let movie:TmdbMovie = movies![indexPath.row]
+        let movie:Tmdb.Movie = movies![indexPath.row]
         
         cell.movie = movie
         

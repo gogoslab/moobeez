@@ -8,22 +8,22 @@
 
 import Foundation
 
-typealias ConnectionMovieHandler = (_ error: Error?, _ responseContent: TmdbMovie?) -> ()
-typealias ConnectionSearchMoviesHandler = (_ error: Error?, _ responseContent: [TmdbMovie]) -> ()
+typealias ConnectionMovieHandler = (_ error: Error?, _ responseContent: Tmdb.Movie?) -> ()
+typealias ConnectionSearchMoviesHandler = (_ error: Error?, _ responseContent: [Tmdb.Movie]) -> ()
 
 extension TmdbService {
     
-    static func startMovieConnection(tmdbId:Int64, completionHandler:ConnectionMovieHandler? = nil) {
+    static func startMovieConnection(tmdbId: String, completionHandler:ConnectionMovieHandler? = nil) {
         
         _ = TmdbConnection.startConnection(urlString: "movie/\(tmdbId)", parameters: ["append_to_response" : "casts,images,trailers"], contentType: ContentType.json) { (error, responseContent, code) in
             
-            var movie: TmdbMovie? = nil
+            var movie: Tmdb.Movie? = nil
             
             if error == nil {
                 
                 let content: Dictionary<String, Any> = responseContent as! Dictionary<String, Any>
                 
-                movie = TmdbMovie.create(tmdbDictionary: content)
+                movie = Tmdb.movie(content)
             }
             
             if completionHandler != nil {
@@ -34,9 +34,9 @@ extension TmdbService {
         
     }
     
-    static func startMovieConnection(movie:TmdbMovie, completionHandler:ConnectionMovieHandler? = nil) {
+    static func startMovieConnection(movie:Tmdb.Movie, completionHandler:ConnectionMovieHandler? = nil) {
         
-        _ = TmdbConnection.startConnection(urlString: "movie/\(movie.tmdbId)", parameters: ["append_to_response" : "casts,images,trailers"], contentType: ContentType.json) { (error, responseContent, code) in
+        _ = TmdbConnection.startConnection(urlString: "movie/\(movie.id)", parameters: ["append_to_response" : "casts,images,trailers"], contentType: ContentType.json) { (error, responseContent, code) in
             
             if error == nil {
                 movie.addEntriesFrom(tmdbDictionary: responseContent as! [String : Any])
@@ -54,7 +54,7 @@ extension TmdbService {
         
         _ = TmdbConnection.startConnection(urlString: "search/movie", parameters: ["query" : query], contentType: ContentType.json) { (error, responseContent, code) in
             
-            var movies:[TmdbMovie] = [TmdbMovie]()
+            var movies:[Tmdb.Movie] = [Tmdb.Movie]()
             
             if error == nil {
                 
@@ -70,7 +70,7 @@ extension TmdbService {
                         
                             if title.lowercased().range(of: query.lowercased()) != nil {
                                 
-                                let movie:TmdbMovie = TmdbMovie.create(tmdbDictionary: movieDictionary)
+                                let movie = Tmdb.movie(movieDictionary)
                                 movies.append(movie)
                                 
                             }

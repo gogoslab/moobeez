@@ -29,7 +29,7 @@ class EpisodeCell: UITableViewCell {
         }
     }
     
-    var episode:TeebeeEpisode? {
+    var episode:Teebee.Episode? {
         didSet
         {
             NotificationCenter.default.removeObserver(self, name: Notification.Name.TeebeeEpisodeDidChangeNotification, object: oldValue?.tmdbId)

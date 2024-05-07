@@ -19,26 +19,18 @@ class MoobeezViewController: MBViewController {
     
     let segmentedTitles:[String] = ["Seen", "Watchlist", "Favorites"]
     
-    var fetchedResultsController:NSFetchedResultsController<Moobee>? = nil
+    var moobeez:[Moobee] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addTitleLogo()
         
-        let context = MoobeezManager.shared.moobeezDatabase.context
-        let fetchRequest = NSFetchRequest<Moobee> (entityName: "Moobee")
-
-        fetchRequest.predicate = NSPredicate(format: "type == %ld", MoobeeType.seen.rawValue)
-        
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-        
-        fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        do {
-            try fetchedResultsController?.performFetch()
-        } catch {
-            fatalError("Failed to fetch entities: \(error)")
-        }
+        moobeez = MoobeezManager.shared.moobeez.filter({ moobee in
+            moobee.type == .seen
+        }).sorted(by: { m1, m2 in
+            m1.date!.compare(m2.date!) == .orderedDescending
+        })
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.add, target: self, action: #selector(showMovieSearch))
         
@@ -87,72 +79,57 @@ class MoobeezViewController: MBViewController {
     
     @objc func reloadItems () {
         
-        var predicateFormat:String = ""
-        var sortDescriptors:[NSSortDescriptor]?
-        
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            predicateFormat = "type == \(MoobeeType.seen.rawValue)"
-            sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+            moobeez = MoobeezManager.shared.moobeez.filter({ moobee in
+                moobee.type == .seen
+            }).sorted(by: { m1, m2 in
+                m1.date!.compare(m2.date!) == .orderedDescending
+            })
             break
         case 1:
-            predicateFormat = "type == \(MoobeeType.watchlist.rawValue)"
-            sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: false)]
+            moobeez = MoobeezManager.shared.moobeez.filter({ moobee in
+                moobee.type == .watchlist
+            }).sorted(by: { m1, m2 in
+                m1.date!.compare(m2.date!) == .orderedDescending
+            })
             break
         case 2:
-            predicateFormat = "type == \(MoobeeType.seen.rawValue) AND isFavorite == 1"
-            sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+            moobeez = MoobeezManager.shared.moobeez.filter({ moobee in
+                moobee.type == .seen && moobee.isFavorite
+            }).sorted(by: { m1, m2 in
+                m1.date!.compare(m2.date!) == .orderedDescending
+            })
             
         default:
             break
         }
         
-        if searchBar.text != nil && (searchBar.text)!.count > 0 {
-            predicateFormat = predicateFormat + " AND name CONTAINS[cd] '\(searchBar.text!)'"
+        if let filter = searchBar.text, filter.count > 0 {
+            moobeez = moobeez.filter({ moobee in
+                moobee.name.contains(filter)
+            })
         }
         
-        fetchedResultsController?.fetchRequest.predicate = NSPredicate(format: predicateFormat)
-        fetchedResultsController?.fetchRequest.sortDescriptors = sortDescriptors
-        
-        do {
-            try fetchedResultsController?.performFetch()
-            collectionView.reloadData()
-        } catch {
-            fatalError("Failed to fetch entities: \(error)")
-        }
+        collectionView.reloadData()
     }
 }
 
 extension MoobeezViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if let frc = fetchedResultsController {
-            return frc.sections!.count
-        }
-        return 0
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let sections = self.fetchedResultsController?.sections else {
-            fatalError("No sections in fetchedResultsController")
-        }
-        let sectionInfo = sections[section]
-        return sectionInfo.numberOfObjects
+        return moobeez.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell:BeeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BeeCell", for: indexPath) as! BeeCell
         
-        guard let sections = self.fetchedResultsController?.sections else {
-            fatalError("No sections in fetchedResultsController")
-        }
-        
-        let sectionInfo = sections[indexPath.section]
-        
-        let rowInfo = sectionInfo.objects![indexPath.row]
-        
-        cell.bee = rowInfo as? Bee
+        cell.bee = moobeez[indexPath.item]
         
         return cell
     }

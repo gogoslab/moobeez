@@ -20,7 +20,7 @@ class CastThumbnailCell: UICollectionViewCell {
         }
     }
     
-    var person:TmdbPerson? {
+    var person:Tmdb.Person? {
         didSet {
             guard person != nil else {
                 return
@@ -42,7 +42,7 @@ class CastThumbnailCell: UICollectionViewCell {
         }
     }
     
-    var character:TmdbCharacter? {
+    var character:Tmdb.Character? {
         didSet {
             guard character != nil else {
                 return
@@ -54,7 +54,7 @@ class CastThumbnailCell: UICollectionViewCell {
         }
     }
     
-    var movie:TmdbItem? {
+    var movie:Tmdb.Item? {
         didSet {
             guard movie != nil else {
                 return

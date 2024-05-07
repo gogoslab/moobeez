@@ -20,34 +20,12 @@ class TeebeezViewController: MBViewController {
     
     let segmentedTitles:[String] = ["To see", "Soon", "All"]
     
-    var fetchedResultsController:NSFetchedResultsController<NSFetchRequestResult>?
-    {
-        get {
-            if (segmentedControl.selectedSegmentIndex == 1) {
-                return episodesResultsController;
-            }
-            return teebeezResultsController;
-        }
-    }
-    
-    var teebeezResultsController:NSFetchedResultsController<NSFetchRequestResult>? = nil
-    var episodesResultsController:NSFetchedResultsController<NSFetchRequestResult>? = nil
+    var results:[Any] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addTitleLogo()
-        
-        let context = MoobeezManager.shared.moobeezDatabase.context
-        
-        var fetchRequest = NSFetchRequest<NSFetchRequestResult> (entityName: "TeebeeEpisode")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: false)]
-        teebeezResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "", cacheName: nil)
-        
-        fetchRequest = NSFetchRequest<NSFetchRequestResult> (entityName: "TeebeeEpisode")
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "releaseDate", ascending: true)]
-        
-        episodesResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: "formattedDate", cacheName: nil)
         
         reloadItems()
         
@@ -59,7 +37,9 @@ class TeebeezViewController: MBViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let teebeezToUpdate:[Teebee] = MoobeezManager.shared.moobeezDatabase.fetch(predicate: NSPredicate(format: "lastUpdate < %@", NSDate(timeIntervalSinceNow:-24 * 3600)))
+        let teebeezToUpdate:[Teebee] = MoobeezManager.shared.teebeez.filter({ teebee in
+            teebee.lastUpdateDate?.timeIntervalSinceNow ?? 0 < -24 * 3600
+        })
         
         updateTeebeez(teebeezToUpdate)
     }
@@ -109,74 +89,62 @@ class TeebeezViewController: MBViewController {
     
     @objc func reloadItems () {
         
-        var predicateFormat:String = ""
-        var args:[Any]?
-        
         let today = Calendar.current.startOfDay(for: Date(timeIntervalSinceNow: (SettingsManager.shared.addExtraDay ? -24 * 3600 : 0)))
         let tommorow = today.addingTimeInterval(24 * 3600)
         let nextWeek = today.addingTimeInterval(7 * 24 * 3600)
 
+        let filter = searchBar.text ?? ""
+        
+        var teebeez = MoobeezManager.shared.teebeez
+            
+           teebeez = teebeez.filter({ teebee in
+               return !teebee.temporary && (filter.isEmpty || teebee.name.contains(filter))
+        })
         
         switch segmentedControl.selectedSegmentIndex {
         case 0:
-            predicateFormat = "watched == 0 AND releaseDate < %@ AND releaseDate.timeIntervalSince1970 > 100 AND season.teebee.temporary == false"
-            args = [tommorow]
-            
-            let keypathExp = NSExpression(forKeyPath: "tmdbId") // can be any column
-            let countExpression = NSExpression(forFunction: "count:", arguments: [keypathExp])
-
-            let countExpressionDescription = NSExpressionDescription()
-            countExpressionDescription.expression = countExpression
-            countExpressionDescription.name = "count"
-            countExpressionDescription.expressionResultType = .integer16AttributeType
-
-            fetchedResultsController?.fetchRequest.propertiesToFetch = ["season.teebee", countExpressionDescription]
-            fetchedResultsController?.fetchRequest.propertiesToGroupBy = ["season.teebee"]
-
-            fetchedResultsController?.fetchRequest.resultType = .dictionaryResultType
+            results = teebeez.filter({ teebee in
+                teebee.notWatchedEpisodesCount > 0
+            }).map({ teebee in
+                (teebee, teebee.notWatchedEpisodesCount)
+            })
             
             break
         case 1:
-            predicateFormat = "watched == 0 AND releaseDate >= %@ AND releaseDate <= %@ AND season.teebee.temporary == false"
-            args = [tommorow, nextWeek]
+            results = []
+            
+            let episodes: [Teebee.Episode] = teebeez.flatMap { teebee in
+                return teebee.episodesBetween(startDate: tommorow, endDate: nextWeek)
+            }.sorted(by: { e1, e2 in
+                return e1.releaseDate!.compare(e2.releaseDate!) == .orderedAscending
+             })
+            
+            var groupped: [String : [Teebee.Episode]] = [:]
+            
+            groupped = episodes.reduce(into: groupped) { partialResult, episode in
+                if partialResult[episode.formattedDate] == nil {
+                    partialResult[episode.formattedDate] = [Teebee.Episode]()
+                }
+                partialResult[episode.formattedDate]!.append(episode)
+            }
+            
+            let dates = ["Today", "Tommorow", "This week", "Next week", "Soon"]
+            
+            for date in dates {
+                if let episodes = groupped[date] {
+                    results.append((date, episodes))
+                }
+            }
+            
             break
         case 2:
-            predicateFormat = "season.teebee.temporary == false"
-            fetchedResultsController?.fetchRequest.propertiesToFetch = ["season.teebee"]
-            fetchedResultsController?.fetchRequest.propertiesToGroupBy = ["season.teebee"]
-
-            fetchedResultsController?.fetchRequest.resultType = .dictionaryResultType
-            
+            results = teebeez
         default:
             break
         }
+                
+        collectionView.reloadData()
         
-        if searchBar.text != nil && (searchBar.text)!.count > 0 {
-            if predicateFormat.count > 0 {
-                predicateFormat = predicateFormat + " AND "
-            }
-            predicateFormat = predicateFormat + "season.teebee.name CONTAINS[cd] '\(searchBar.text!)'"
-        }
-        
-        if predicateFormat.count > 0 {
-            if args == nil {
-                fetchedResultsController?.fetchRequest.predicate = NSPredicate(format: predicateFormat)
-            }
-            else {
-                fetchedResultsController?.fetchRequest.predicate = NSPredicate(format: predicateFormat, argumentArray: args)
-            }
-        }
-        else {
-            fetchedResultsController?.fetchRequest.predicate = nil
-        }
-
-        
-        do {
-            try fetchedResultsController?.performFetch()
-            collectionView.reloadData()
-        } catch {
-            fatalError("Failed to fetch entities: \(error)")
-        }
     }
     
     func updateTeebeez(_ teebeez:[Teebee], index: Int = 0) {
@@ -192,13 +160,18 @@ class TeebeezViewController: MBViewController {
         
         let nextTeebee = teebeez[index]
         
-        TmdbService.startTvShowConnection(tmdbId: nextTeebee.tmdbId) { (error, _) in
+        guard let tmdbId = nextTeebee.tmdbId else {
+            self.updateTeebeez(teebeez, index: index + 1)
+            return
+        }
+        
+        TmdbService.startTvShowConnection(tmdbId: tmdbId) { (error, _) in
             if error == nil {
-                nextTeebee.lastUpdate = Date()
-                MoobeezManager.shared.save()
+                nextTeebee.lastUpdateDate = Date()
+                nextTeebee.save()
             }
             else {
-                Console.error("error updating \(nextTeebee.name ?? "unknown")")
+                Console.error("error updating \(nextTeebee.name)")
             }
             
             DispatchQueue.main.async {
@@ -214,52 +187,42 @@ class TeebeezViewController: MBViewController {
 extension TeebeezViewController : UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if let frc = fetchedResultsController {
-            return frc.sections!.count
+        if segmentedControl.selectedSegmentIndex == 1 {
+            return results.count
         }
-        return 0
+        
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let sections = self.fetchedResultsController?.sections else {
-            fatalError("No sections in fetchedResultsController")
+        if segmentedControl.selectedSegmentIndex == 1 {
+            return (results[section] as! (String, [Teebee.Episode])).1.count
         }
-        let sectionInfo = sections[section]
-        return sectionInfo.numberOfObjects
+        
+        return results.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell:BeeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BeeCell", for: indexPath) as! BeeCell
         
-        guard let sections = self.fetchedResultsController?.sections else {
-            fatalError("No sections in fetchedResultsController")
-        }
+        cell.notifications = 0
         
-        let sectionInfo = sections[indexPath.section]
-        
-        let rowInfo = sectionInfo.objects![indexPath.row]
-        
-        if rowInfo is Dictionary<String, Any> {
-            let dictionary = rowInfo as! Dictionary<String, Any>
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            let item = results[indexPath.item] as! (teebee: Teebee, count: Int)
+            cell.bee = item.teebee
+            cell.notifications = item.count
             
-            do {
-                let teebee:Teebee? = try MoobeezManager.shared.moobeezDatabase.context.existingObject(with: dictionary["season.teebee"]! as! NSManagedObjectID) as? Teebee
-                cell.bee = teebee
-                if dictionary["count"] != nil {
-                    cell.notifications = dictionary["count"] as! Int16
-                }
-                else {
-                    cell.notifications = 0;
-                }
-                
-            } catch {
-                fatalError("Failed to fetch teebeez: \(error)")
-            }
-        }
-        else if rowInfo is TeebeeEpisode {
-            cell.bee = (rowInfo as! TeebeeEpisode).season?.teebee
-            cell.notifications = 0;
+            break
+        case 1:
+            cell.bee = (results[indexPath.section] as! (String, episodes: [Teebee.Episode])).episodes[indexPath.item].season!.teebee
+            
+            break
+        case 2:
+            cell.bee = results[indexPath.item] as! Teebee
+        default:
+            break
         }
         
         return cell
@@ -289,9 +252,7 @@ extension TeebeezViewController : UICollectionViewDelegate, UICollectionViewData
         if kind == UICollectionView.elementKindSectionHeader && segmentedControl.selectedSegmentIndex == 1 {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView", for: indexPath) as! HeaderView
             
-            let sectionInfo = self.fetchedResultsController?.sections![indexPath.section]
-            
-            headerView.titleLabel.text = sectionInfo?.name.uppercased()
+            headerView.titleLabel.text = (results[indexPath.section] as! (date: String, [Teebee.Episode])).date
             
             return headerView
         }

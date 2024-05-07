@@ -26,7 +26,7 @@ class BeeCell: UICollectionViewCell {
         didSet {
             
             if bee is Moobee {
-                headerView.isHidden = (bee as! Moobee).moobeeType != MoobeeType.seen
+                headerView.isHidden = (bee as! Moobee).type != .seen
             }
             
             starsView.rating = CGFloat(bee?.rating ?? 0.0)
@@ -51,11 +51,11 @@ class BeeCell: UICollectionViewCell {
         nameLabel.text = bee?.name
         
         if bee is Moobee {
-            headerView.isHidden = (bee as! Moobee).moobeeType != MoobeeType.seen
+            headerView.isHidden = (bee as! Moobee).type != .seen
         }
     }
     
-    var notifications:Int16 = 0 {
+    var notifications: Int = 0 {
         didSet {
             notificationView.isHidden = notifications <= 1
             notificationLabel.text = "\(notifications)"

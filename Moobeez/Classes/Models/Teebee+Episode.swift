@@ -1,5 +1,5 @@
 //
-//  TeebeeEpisode.swift
+//  Teebee.Episode.swift
 //  Moobeez
 //
 //  Created by Radu Banea on 02/11/2017.
@@ -9,7 +9,38 @@
 import Foundation
 import CoreData
 
-extension TeebeeEpisode {
+extension Teebee {
+    
+    class Episode: Codable {
+        
+        var name: String
+        var number: Int
+        var releaseDate: Date?
+        var tmdbId: String?
+        
+        var watched: Bool
+        
+        var season: Season?
+        
+        enum CodingKeys: String, CodingKey {
+            case name
+            case number
+            case releaseDate
+            case tmdbId
+            case watched
+        }
+        
+        init() {
+            name = ""
+            number = 0
+            watched = false
+        }
+        
+    }
+}
+
+
+extension Teebee.Episode {
     
     @objc var formattedDate:String {
         get {            
@@ -37,7 +68,7 @@ extension TeebeeEpisode {
         }
     }
     
-    public override var description: String {
+    public var description: String {
         get {
             return "\(self.season?.teebee?.name ?? "unknown show") - Season \(self.season?.number ?? -1) - Episode \(self.number) - Release date \(self.releaseDate!) - Watched \(self.watched)"
         }

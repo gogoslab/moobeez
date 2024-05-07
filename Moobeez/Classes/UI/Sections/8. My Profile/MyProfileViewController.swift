@@ -24,15 +24,21 @@ class MyProfileViewController: MBViewController {
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func deleteButtonPressed(_ sender: Any) {
+        
     }
-    */
+    
+    @IBAction func signOutButtonPressed(_ sender: Any) {
+        do {
+            try Auth.auth().signOut()
+            (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController = self.storyboard?.instantiateViewController(withIdentifier: "Boarding")
+        }
+        catch let error {
+            debugPrint(error.localizedDescription)
+        }
+        
+        
+    }
+    
 
 }

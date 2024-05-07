@@ -10,7 +10,7 @@ import UIKit
 
 class WidgetManager: NSObject {
 
-    static var episodes:[TeebeeEpisode] {
+    static var episodes:[Teebee.Episode] {
         get {
             let today = Calendar.current.startOfDay(for: Date(timeIntervalSinceNow: (SettingsManager.shared.addExtraDay ? -24 * 3600 : 0)))
             

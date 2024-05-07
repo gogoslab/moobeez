@@ -137,8 +137,8 @@ extension UIImageView {
         loadTmdbImageWithPath(path: path, type: "backdrop", size: size, placeholder: placeholder, completion: completion)
     }
     
-    func loadTmdbImage(image:TmdbImage, completion: ((Bool) -> Swift.Void)? = nil) {
-        if image.poster {
+    func loadTmdbImage(image:Tmdb.Image, completion: ((Bool) -> Swift.Void)? = nil) {
+        if image.isPoster {
             loadTmdbPosterWithPath(path: image.path, placeholder:nil, completion: completion)
         }
         else {

@@ -15,7 +15,7 @@ class TvEpisodeCell: UICollectionViewCell {
     @IBOutlet var showLabel: UILabel?
     
     
-    var episode:TeebeeEpisode? {
+    var episode:Teebee.Episode? {
         didSet
         {
             if let episode = episode {

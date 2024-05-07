@@ -14,7 +14,7 @@ class TimelineItem: NSObject {
         self.init()
         self.moobee = moobee
         
-        if moobee.moobeeType == .seen {
+        if moobee.type == .seen {
             date = moobee.date
         }
         else {
@@ -26,7 +26,7 @@ class TimelineItem: NSObject {
         dateString = date?.string(withFormat: "YYYY-MM-DD")
     }
     
-    convenience init(episode:TeebeeEpisode) {
+    convenience init(episode:Teebee.Episode) {
         self.init()
         self.teebeeEpisode = episode
         
@@ -39,7 +39,7 @@ class TimelineItem: NSObject {
     
     var moobee:Moobee?
     
-    var teebeeEpisode:TeebeeEpisode?
+    var teebeeEpisode:Teebee.Episode?
     
     var name:String? {
         get {
@@ -85,7 +85,7 @@ class TimelineItem: NSObject {
     var watched:Bool? {
         get {
             if moobee != nil {
-                return (moobee!.moobeeType == .seen) as Bool
+                return moobee!.type == .seen
             }
             
             if teebeeEpisode != nil {
@@ -98,7 +98,7 @@ class TimelineItem: NSObject {
     
     var rating:Float {
         if moobee != nil {
-            if moobee!.moobeeType == .seen {
+            if moobee!.type == .seen {
                 return moobee!.rating
             }
         }

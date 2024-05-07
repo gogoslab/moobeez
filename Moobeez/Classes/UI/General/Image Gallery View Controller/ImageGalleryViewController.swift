@@ -16,7 +16,7 @@ class ImageCell: UICollectionViewCell {
 class ImageGalleryViewController: MBViewController {
 
     @IBOutlet var collectionView: UICollectionView!
-    public var images:[TmdbImage]?
+    public var images:[Tmdb.Image]?
     
     @IBOutlet weak var transitionImageView: UIImageView!
     

@@ -36,7 +36,7 @@ class PersonToolboxView : ToolboxView {
         super.init(coder: aDecoder)
     }
     
-    var person:TmdbPerson? {
+    var person:Tmdb.Person? {
         
         didSet {
             nameTextField.text = person?.name
@@ -71,7 +71,7 @@ class PersonToolboxView : ToolboxView {
 
 class PersonDetailsViewController: MBViewController {
 
-    var person:TmdbPerson?
+    var person:Tmdb.Person?
     
     @IBOutlet var profileImageView:UIImageView!
     @IBOutlet var contentView:UIView!
@@ -96,7 +96,7 @@ class PersonDetailsViewController: MBViewController {
         
         toolboxView.person = person
         
-        TmdbService.startPersonConnection(person: person!) { (error: Error?, person: TmdbPerson?) in
+        TmdbService.startPersonConnection(person: person!) { (error: Error?, person: Tmdb.Person?) in
             DispatchQueue.main.async {
                 self.reloadCharacters()
                 self.toolboxView.person = person
@@ -130,7 +130,7 @@ class PersonDetailsViewController: MBViewController {
             
             let cell:CastThumbnailCell? = sender as? CastThumbnailCell
             
-            moobeeViewController.movie = cell?.movie as? TmdbMovie
+            moobeeViewController.movie = cell?.movie as? Tmdb.Movie
             
             moobeeViewController.posterImage = cell?.imageView.image
         }
@@ -141,7 +141,7 @@ class PersonDetailsViewController: MBViewController {
             
             let cell:CastThumbnailCell? = sender as? CastThumbnailCell
             
-            teebeeViewController.tvShow = cell?.movie as? TmdbTvShow
+            teebeeViewController.tvShow = cell?.movie as? Tmdb.TvShow
             
             teebeeViewController.posterImage = cell?.imageView.image
         }
@@ -150,7 +150,7 @@ class PersonDetailsViewController: MBViewController {
             
             let imageGalleryViewController:ImageGalleryViewController = segue.destination as! ImageGalleryViewController
             
-            imageGalleryViewController.images = person?.profileImages?.allObjects as? [TmdbImage]
+            imageGalleryViewController.images = person?.profileImages
             
             (UIApplication.shared.delegate as! AppDelegate).isPortrait = false
             
@@ -168,7 +168,7 @@ class PersonDetailsViewController: MBViewController {
             }
             
             for castCell:UICollectionViewCell in collectionView!.visibleCells {
-                if (castCell as! CastThumbnailCell).movie?.tmdbId == (viewController as! MoobeeDetailsViewController).movie?.tmdbId {
+                if (castCell as! CastThumbnailCell).movie?.id == (viewController as! MoobeeDetailsViewController).movie?.id {
                     return (castCell as! CastThumbnailCell).imageView
                 }
             }
@@ -183,7 +183,7 @@ class PersonDetailsViewController: MBViewController {
             }
             
             for castCell:UICollectionViewCell in collectionView!.visibleCells {
-                if (castCell as! CastThumbnailCell).movie?.tmdbId == (viewController as! TeebeeDetailsViewController).tvShow?.tmdbId {
+                if (castCell as! CastThumbnailCell).movie?.id == (viewController as! TeebeeDetailsViewController).tvShow?.id {
                     return (castCell as! CastThumbnailCell).imageView
                 }
             }
@@ -213,21 +213,23 @@ class PersonDetailsViewController: MBViewController {
         statusBarStyle = topBarLuminosity <= 0.60 ? .lightContent : .default;
     }
     
-    var characters:[TmdbCharacter]?
+    var characters:[Tmdb.Character]?
     func reloadCharacters() {
         
-        characters = person?.characters?.filtered(using: NSPredicate(format: "movie != nil")).sortedArray(comparator: { (c1, c2) -> ComparisonResult in
-            
-            guard (c1 as! TmdbCharacter).date == nil else {
-                return ComparisonResult.orderedAscending
+        characters = person?.characters.filter({ character in
+            character.movie != nil
+        }).sorted(by: { c1, c2 in
+            guard let d1 = c1.date else {
+                return true
             }
             
-            guard (c2 as! TmdbCharacter).date == nil else {
-                return ComparisonResult.orderedDescending
+            guard let d2 = c2.date else {
+                return false
             }
             
-            return (c2 as! TmdbCharacter).date?.compare(((c1 as! TmdbCharacter).date)!) ?? ComparisonResult.orderedAscending
-        }) as? [TmdbCharacter]
+            return d1.compare(d2) == .orderedDescending
+        })
+        
         self.toolboxView.moviesCollectionView.reloadData()
         self.toolboxView.moviesDetailsCollectionView.reloadData()
         self.moviesCollectionViewConstraint.constant = self.toolboxView.moviesDetailsCollectionView.contentSize.height
@@ -285,7 +287,7 @@ extension PersonDetailsViewController : UICollectionViewDelegate, UICollectionVi
         
         let cell:CastThumbnailCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CastCell", for: indexPath) as! CastThumbnailCell
         
-        let character:TmdbCharacter = (characters?[indexPath.row])!
+        let character:Tmdb.Character = (characters?[indexPath.row])!
         cell.movie = character.movie
         cell.character = character
         cell.applyTheme(lightTheme: toolboxView.lightTheme)
@@ -295,13 +297,13 @@ extension PersonDetailsViewController : UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let character:TmdbCharacter = (characters?[indexPath.row])!
+        let character:Tmdb.Character = (characters?[indexPath.row])!
         
-        if character.movie is TmdbMovie {
+        if character.movie is Tmdb.Movie {
             performSegue(withIdentifier: "MovieDetailsSegue", sender: collectionView.cellForItem(at: indexPath))
         }
         
-        if character.movie is TmdbTvShow {
+        if character.movie is Tmdb.TvShow {
             performSegue(withIdentifier: "TvShowDetailsSegue", sender: collectionView.cellForItem(at: indexPath))
         }
         

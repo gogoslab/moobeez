@@ -62,7 +62,7 @@ class TeebeeToolboxView : ToolboxView {
                 MoobeezManager.shared.save()
             }
             
-            let nextEpisode:TeebeeEpisode? = teebee?.nextEpisode
+            let nextEpisode:Teebee.Episode? = teebee?.nextEpisode
             
             if nextEpisode == nil {
                 nextEpisodeLabel.text = "Next episode to watch: Unknown date"
@@ -141,7 +141,7 @@ class TeebeeToolboxView : ToolboxView {
 
 class TeebeeDetailsViewController: MBViewController {
 
-    var tvShow:TmdbTvShow?
+    var tvShow:Tmdb.TvShow?
     var teebee:Teebee?
     
     var posterImage:UIImage?
@@ -164,6 +164,8 @@ class TeebeeDetailsViewController: MBViewController {
     
     var episodesManager:EpisodesList?
     
+    var characters:[Tmdb.Character] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -179,7 +181,7 @@ class TeebeeDetailsViewController: MBViewController {
             tvShow = teebee?.tvShow
         }
         else if tvShow != nil {
-            teebee = Teebee.fetchTeebeeWithTmdbId((tvShow?.tmdbId)!)
+            teebee = Teebee.fetchTeebeeWithTmdbId((tvShow?.id)!)
             
             if teebee == nil {
                 teebee = Teebee(tmdbTvShow: tvShow!)
@@ -192,7 +194,7 @@ class TeebeeDetailsViewController: MBViewController {
         loadPoster()
         
         if tvShow != nil {
-            TmdbService.startTvShowConnection(tvShow: tvShow!) { (error: Error?, tvShow: TmdbTvShow?) in
+            TmdbService.startTvShowConnection(tvShow: tvShow!) { (error: Error?, tvShow: Tmdb.TvShow?) in
                 DispatchQueue.main.async {
                     self.teebee?.tvShow = tvShow
                     self.reloadTvShow()
@@ -200,7 +202,7 @@ class TeebeeDetailsViewController: MBViewController {
             }
         }
         else {
-            TmdbService.startTvShowConnection(tmdbId: (teebee?.tmdbId)!) { (error: Error?, tvShow: TmdbTvShow?) in
+            TmdbService.startTvShowConnection(tmdbId: (teebee?.tmdbId)!) { (error: Error?, tvShow: Tmdb.TvShow?) in
                 DispatchQueue.main.async {
                     self.tvShow = tvShow
                     self.teebee?.tvShow = tvShow
@@ -223,8 +225,13 @@ class TeebeeDetailsViewController: MBViewController {
     
     @objc func reloadTeebee () {
         toolboxView.teebee = teebee
-        addRemoveButton.setImage(teebee?.managedObjectContext != nil && teebee?.temporary ?? true == false ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
+        addRemoveButton.setImage(teebee?.temporary ?? true == false ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
         favoriteButton.isSelected = (teebee?.isFavorite)!
+        
+        characters = (teebee?.tvShow?.characters ?? tvShow?.characters ?? []).sorted(by: { c1, c2 in
+            c1.castId < c2.castId
+        })
+        toolboxView.castCollectionView.reloadData()
     }
     
     func reloadTvShow() {
@@ -236,6 +243,11 @@ class TeebeeDetailsViewController: MBViewController {
         
         episodesManager?.parent = self
         self.toolboxView.episodesTableView.reloadData()
+        
+        characters = (teebee?.tvShow?.characters ?? tvShow?.characters ?? []).sorted(by: { c1, c2 in
+            c1.castId < c2.castId
+        })
+        toolboxView.castCollectionView.reloadData()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -272,7 +284,7 @@ class TeebeeDetailsViewController: MBViewController {
             
             let imageGalleryViewController:ImageGalleryViewController = segue.destination as! ImageGalleryViewController
             
-            imageGalleryViewController.images = tvShow?.backdropImages?.allObjects as? [TmdbImage]
+//            imageGalleryViewController.images = tvShow?.backdropImages?.allObjects as? [Tmdb.Image]
             
             (UIApplication.shared.delegate as! AppDelegate).isPortrait = false
             
@@ -289,7 +301,7 @@ class TeebeeDetailsViewController: MBViewController {
             }
             
             for castCell:UICollectionViewCell in collectionView!.visibleCells {
-                if (castCell as! CastThumbnailCell).person?.personId == (viewController as! PersonDetailsViewController).person?.personId {
+                if (castCell as! CastThumbnailCell).person?.id == (viewController as! PersonDetailsViewController).person?.id {
                     return (castCell as! CastThumbnailCell).imageView
                 }
             }
@@ -349,14 +361,14 @@ class TeebeeDetailsViewController: MBViewController {
     
     @IBAction func addRemoveButtonPressed(_ sender: UIButton) {
         
-        if teebee?.managedObjectContext == nil || teebee?.temporary ?? true {
+        if teebee?.temporary ?? true {
             MoobeezManager.shared.addTeebee(teebee!)
         }
         else {
            MoobeezManager.shared.removeTeebee(teebee!)
         }
         
-        addRemoveButton.setImage(teebee?.managedObjectContext != nil && teebee?.temporary ?? true == false ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
+        addRemoveButton.setImage(teebee?.temporary ?? true == false ? #imageLiteral(resourceName: "delete_button") : #imageLiteral(resourceName: "add_button") , for: UIControl.State.normal)
         
         if let searchViewController = presenting as? SearchTVsViewController {
             presenting = searchViewController.presenting
@@ -439,14 +451,14 @@ extension TeebeeDetailsViewController : UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return tvShow?.characters?.count ?? 0;
+        return tvShow?.characters.count ?? 0;
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell:CastThumbnailCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CastCell", for: indexPath) as! CastThumbnailCell
         
-        let character:TmdbCharacter = tvShow?.characters?[indexPath.row] as! TmdbCharacter
+        let character:Tmdb.Character = tvShow!.characters[indexPath.row]
         cell.person = character.person
         cell.character = character
         cell.applyTheme(lightTheme: toolboxView.lightTheme)
@@ -462,9 +474,9 @@ class EpisodesList : NSObject, UITableViewDelegate, UITableViewDataSource {
     {
         didSet
         {
-            seasons = parent?.teebee?.seasons?.filtered(using: NSPredicate(block: { (season, key) -> Bool in
-                return ((season as! TeebeeSeason).episodes?.count)! > 0
-            })).sortedArray(using: [NSSortDescriptor(key: "number", ascending: true)]) as? [TeebeeSeason]
+            seasons = parent?.teebee?.seasons.filter({ season in
+                season.episodes.count > 0
+            }).sorted(by: { s1, s2 in s1.number < s2.number })
             
             let unwatchedSeasons = seasons?.filter({ (season) -> Bool in
                 return !season.watched
@@ -479,21 +491,27 @@ class EpisodesList : NSObject, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    var selectedSeason:TeebeeSeason?
+    var selectedSeason:Teebee.Season?
     {
         didSet
         {
-            if selectedSeason == nil {
+            guard let selectedSeason = selectedSeason else {
                 episodes = nil
                 return
             }
             
-            episodes = (selectedSeason?.episodes?.sortedArray(using: [NSSortDescriptor(key: "releaseDate", ascending: true), NSSortDescriptor(key:"number", ascending:true)]) as? [TeebeeEpisode])?.filter { $0.releaseDate?.timeIntervalSince1970 ?? 0 > 100}
+            episodes = selectedSeason.episodes.filter({ e in
+                e.releaseDate != nil
+            }).sorted(by: { e1, e2 in
+                e1.releaseDate!.compare(e2.releaseDate!) == .orderedAscending
+            }).filter({ e in
+                e.releaseDate!.timeIntervalSince(.distantPast) > 100
+            })
         }
     }
     
-    var seasons:[TeebeeSeason]?
-    var episodes:[TeebeeEpisode]?
+    var seasons:[Teebee.Season]?
+    var episodes:[Teebee.Episode]?
     
     var teebee:Teebee? {
         get {
@@ -511,15 +529,15 @@ class EpisodesList : NSObject, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        guard seasons != nil else {
+        guard let seasons = seasons else {
             return 0
         }
         
-        guard selectedSeason != nil else {
+        guard let selectedSeason = selectedSeason else {
             return 1
         }
         
-        guard selectedSeason == seasons![section] else {
+        guard selectedSeason.tmdbId == seasons[section].tmdbId else {
             return 0
         }
         
@@ -532,7 +550,7 @@ class EpisodesList : NSObject, UITableViewDelegate, UITableViewDataSource {
             
             let cell:SeasonCell = tableView.dequeueReusableCell(withIdentifier: "SeasonCell") as! SeasonCell
             
-            let season:TeebeeSeason = seasons![indexPath.section]
+            let season:Teebee.Season = seasons![indexPath.section]
             
             cell.applyTheme(lightTheme: (parent?.toolboxView.lightTheme)!)
             
@@ -544,7 +562,7 @@ class EpisodesList : NSObject, UITableViewDelegate, UITableViewDataSource {
         
         let cell:EpisodeCell = tableView.dequeueReusableCell(withIdentifier: "EpisodeCell") as! EpisodeCell
         
-        let episode:TeebeeEpisode = (episodes)![indexPath.row - 1]
+        let episode:Teebee.Episode = (episodes)![indexPath.row - 1]
         cell.applyTheme(lightTheme: (parent?.toolboxView.lightTheme)!)
         
         cell.episode = episode
@@ -561,12 +579,12 @@ class EpisodesList : NSObject, UITableViewDelegate, UITableViewDataSource {
         
         guard indexPath.row > 0 else {
             
-            let season:TeebeeSeason = seasons![indexPath.section]
+            let season:Teebee.Season = seasons![indexPath.section]
             
             return season.watched ? 0 : tableView.rowHeight
         }
         
-        let episode:TeebeeEpisode = (episodes)![indexPath.row - 1]
+        let episode:Teebee.Episode = (episodes)![indexPath.row - 1]
         
         return episode.watched ? 0 : tableView.rowHeight
     }
@@ -579,7 +597,7 @@ class EpisodesList : NSObject, UITableViewDelegate, UITableViewDataSource {
         
         let season = seasons![indexPath.section]
         
-        if selectedSeason != season {
+        if selectedSeason?.tmdbId != season.tmdbId {
             selectedSeason = season
         }
         else {

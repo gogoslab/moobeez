@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias ConnectionPersonHandler = (_ error: Error?, _ responseContent: TmdbPerson?) -> ()
+typealias ConnectionPersonHandler = (_ error: Error?, _ responseContent: Tmdb.Person?) -> ()
 
 extension TmdbService {
     
@@ -16,13 +16,13 @@ extension TmdbService {
         
         _ = TmdbConnection.startConnection(urlString: "person/\(personId)", parameters: ["append_to_response" : "combined_credits,images"], contentType: ContentType.json) { (error, responseContent, code) in
             
-            var person: TmdbPerson? = nil
+            var person: Tmdb.Person? = nil
             
             if error == nil {
                 
                 let content: Dictionary<String, Any> = responseContent as! Dictionary<String, Any>
                 
-                person = TmdbPerson.create(tmdbDictionary: content)
+                person = Tmdb.person(content)
             }
             
             if completionHandler != nil {
@@ -32,9 +32,9 @@ extension TmdbService {
         }
     }
     
-    static func startPersonConnection(person:TmdbPerson, completionHandler:ConnectionPersonHandler? = nil) {
+    static func startPersonConnection(person:Tmdb.Person, completionHandler:ConnectionPersonHandler? = nil) {
         
-        _ = TmdbConnection.startConnection(urlString: "person/\(person.personId)", parameters: ["append_to_response" : "combined_credits,images"], contentType: ContentType.json) { (error, responseContent, code) in
+        _ = TmdbConnection.startConnection(urlString: "person/\(person.id)", parameters: ["append_to_response" : "combined_credits,images"], contentType: ContentType.json) { (error, responseContent, code) in
             
             if error == nil {
                 person.addEntriesFrom(tmdbDictionary: responseContent as! [String : Any])
